@@ -106,7 +106,7 @@ svg {
   transform: translateY(0);
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.16em;
   color: #566b51;
@@ -131,7 +131,7 @@ svg {
   justify-content: space-between;
   align-items: center;
   min-height: 34px;
-  font-size: 10px;
+  font-size: 14px;
   color: #56614f;
 }
 .utility-bar .container > span {
@@ -179,7 +179,7 @@ svg {
 }
 .brand small {
   display: block;
-  font-size: 7px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.19em;
   margin-top: 3px;
@@ -187,7 +187,7 @@ svg {
 .desktop-nav {
   display: flex;
   gap: 28px;
-  font-size: 12px;
+  font-size: 16px;
 }
 .desktop-nav a {
   padding: 14px 0;
@@ -217,7 +217,7 @@ svg {
   align-items: center;
   justify-content: center;
   gap: 28px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   border: 1px solid transparent;
   border-radius: 3px;
@@ -240,7 +240,7 @@ svg {
   min-height: 42px;
   padding: 12px 17px;
   gap: 20px;
-  font-size: 11px;
+  font-size: 15px;
 }
 .outline-button {
   border-color: #a0ad96;
@@ -257,7 +257,7 @@ svg {
   background: #edf3db;
 }
 .text-link {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   display: inline-flex;
   gap: 15px;
@@ -282,7 +282,7 @@ svg {
 .mobile-nav a {
   padding: 14px 2px;
   border-bottom: 1px solid var(--line);
-  font-size: 15px;
+  font-size: 18px;
 }
 .hero {
   padding: 65px 0 62px;
@@ -303,13 +303,13 @@ h1 {
   font-size: 1.08em;
 }
 .hero .eyebrow {
-  font-size: 9px;
+  font-size: 13px;
   margin-bottom: 26px;
 }
 .hero-description {
   max-width: 445px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 17px;
   line-height: 1.85;
 }
 .hero-actions {
@@ -320,14 +320,14 @@ h1 {
   margin-top: 28px;
 }
 .hero-actions .text-link {
-  font-size: 11px;
+  font-size: 15px;
 }
 .hero-footnote {
   display: flex;
   gap: 8px;
   align-items: center;
   color: #67705f;
-  font-size: 9px;
+  font-size: 13px;
   margin: 29px 0 0;
 }
 .globe-composition {
@@ -352,13 +352,13 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.13em;
   color: #d0d8bc;
   z-index: 1;
 }
 .art-coordinate {
-  font-size: 8px;
+  font-size: 12px;
 }
 .globe-svg {
   position: absolute;
@@ -379,13 +379,13 @@ h1 {
   box-shadow: 0 10px 30px #102c2922;
 }
 .floating-note small {
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   display: block;
   margin-bottom: 7px;
 }
 .floating-note strong {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.6;
   display: block;
@@ -435,12 +435,12 @@ h1 {
   gap: 15px;
   border-top: 1px solid #d6dfbf33;
   padding-top: 15px;
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 0.05em;
   color: #d5ddc1;
 }
 .art-bottomline span:last-child {
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 0;
 }
 .principles-strip {
@@ -453,7 +453,7 @@ h1 {
   gap: 18px;
   align-items: center;
   padding-block: 24px;
-  font-size: 11px;
+  font-size: 15px;
 }
 .principles-strip .container > span {
   display: flex;
@@ -461,7 +461,7 @@ h1 {
   gap: 10px;
 }
 .strip-label {
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   color: #59634f;
 }
@@ -493,12 +493,12 @@ h2 {
 .section-heading > p,
 .section-intro p {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 16px;
   margin-bottom: 8px;
   line-height: 1.8;
 }
 .section-intro .text-link {
-  font-size: 11px;
+  font-size: 15px;
 }
 .reading-grid {
   display: grid;
@@ -532,7 +532,7 @@ h2 {
   position: absolute;
   top: 18px;
   left: 20px;
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 0.16em;
   color: #4c5d4b;
   z-index: 1;
@@ -615,7 +615,7 @@ h2 {
   left: 40px;
   bottom: 20px;
   transform: rotate(7deg);
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 0.15em;
   color: #6d4b38;
 }
@@ -676,7 +676,7 @@ h2 {
   padding: 22px 0 0;
 }
 .reading-content .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 11px;
 }
 .reading-content h3 {
@@ -687,7 +687,7 @@ h2 {
   max-width: 300px;
 }
 .reading-content p {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   margin-bottom: 20px;
   max-width: 320px;
@@ -698,7 +698,7 @@ h2 {
   justify-content: space-between;
   border-top: 1px solid var(--line);
   padding-top: 15px;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 500;
 }
 .perspective-section {
@@ -714,7 +714,7 @@ h2 {
 }
 .perspective-heading .eyebrow {
   color: #bdcaa9;
-  font-size: 9px;
+  font-size: 13px;
 }
 .perspective-heading h2 {
   font-size: 60px;
@@ -724,14 +724,14 @@ h2 {
   color: #dce7b6;
 }
 .perspective-heading > p:not(.eyebrow) {
-  font-size: 13px;
+  font-size: 17px;
   color: #c8d0bc;
   max-width: 320px;
   line-height: 1.9;
 }
 .perspective-heading .button {
   margin-top: 16px;
-  font-size: 11px;
+  font-size: 15px;
 }
 .perspective-principles {
   padding-top: 8px;
@@ -751,7 +751,7 @@ h2 {
   padding-bottom: 0;
 }
 .principle-number {
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   color: #b1c298;
   padding-top: 5px;
@@ -766,7 +766,7 @@ h2 {
 }
 .perspective-principle p {
   color: #c4cdb8;
-  font-size: 12px;
+  font-size: 16px;
   margin: 0;
   max-width: 310px;
 }
@@ -777,7 +777,7 @@ h2 {
   align-items: center;
 }
 .glossary-teaser-copy > p:not(.eyebrow) {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--muted);
   max-width: 360px;
 }
@@ -818,12 +818,12 @@ h2 {
   flex: 1;
 }
 .term-preview h3 {
-  font-size: 18px;
+  font-size: 21px;
   margin-bottom: 5px;
   letter-spacing: -0.4px;
 }
 .term-preview p {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--muted);
   margin: 0;
 }
@@ -874,7 +874,7 @@ h2 {
   color: #536349;
   border: 1px solid #d4dcc6;
   border-radius: 20px;
-  font-size: 8px;
+  font-size: 12px;
   padding: 5px 10px;
   white-space: nowrap;
   letter-spacing: 0.02em;
@@ -885,14 +885,14 @@ h2 {
   margin-bottom: 12px;
 }
 .category-card p {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--muted);
   max-width: 250px;
   margin-bottom: 27px;
 }
 .category-number {
   display: block;
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   color: #66705e;
 }
@@ -902,11 +902,11 @@ h2 {
   justify-content: space-between;
   gap: 20px;
   padding-top: 20px;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--muted);
 }
 .coverage-bottom .text-link {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--ink);
 }
 .home-faq {
@@ -918,7 +918,7 @@ h2 {
   font-size: 50px;
 }
 .home-faq > div > .text-link {
-  font-size: 10px;
+  font-size: 14px;
 }
 .faq-list {
   border-top: 1px solid var(--line);
@@ -933,7 +933,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   padding: 24px 0;
   line-height: 1.6;
@@ -949,7 +949,7 @@ h2 {
   transform: rotate(45deg);
 }
 .faq-list details > p {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--muted);
   padding: 0 25px 22px 0;
   margin: 0;
@@ -979,7 +979,7 @@ h2 {
   border-radius: 40px 40px 4px 4px;
 }
 .newsletter .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 11px;
 }
 .newsletter h2 {
@@ -987,7 +987,7 @@ h2 {
   margin-bottom: 14px;
 }
 .newsletter p:last-child {
-  font-size: 11px;
+  font-size: 15px;
   color: #5a674c;
   margin: 0;
 }
@@ -996,7 +996,7 @@ h2 {
   align-items: center;
   gap: 8px;
   align-self: center;
-  font-size: 10px;
+  font-size: 14px;
   border: 1px solid #b8c49a;
   border-radius: 20px;
   padding: 10px 13px;
@@ -1016,12 +1016,12 @@ h2 {
   padding-bottom: 45px;
 }
 .footer-brand p {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--muted);
   margin: 18px 0 12px;
 }
 .footer-brand .text-link {
-  font-size: 10px;
+  font-size: 14px;
 }
 .footer-columns {
   display: grid;
@@ -1034,12 +1034,12 @@ h2 {
   flex-direction: column;
   align-items: start;
   gap: 15px;
-  font-size: 10px;
+  font-size: 14px;
   color: #53604e;
 }
 .footer-columns h2 {
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 0;
   margin-bottom: 8px;
@@ -1063,7 +1063,7 @@ h2 {
   color: #5b714d;
 }
 .footer-disclosures p {
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.9;
   color: #5a6553;
   margin: 0;
@@ -1083,7 +1083,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  font-size: 9px;
+  font-size: 13px;
   color: #5d6756;
   padding: 22px 0;
 }
@@ -1102,7 +1102,7 @@ h2 {
 .breadcrumbs {
   display: flex;
   gap: 12px;
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.02em;
   color: #59634f;
   margin-bottom: 48px;
@@ -1118,7 +1118,7 @@ h2 {
   gap: 80px;
 }
 .page-heading .eyebrow {
-  font-size: 9px;
+  font-size: 13px;
   margin-bottom: 18px;
 }
 .page-heading h1 {
@@ -1127,7 +1127,7 @@ h2 {
   margin: 0;
 }
 .page-description {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--muted);
   line-height: 1.9;
   max-width: 360px;
@@ -1144,7 +1144,7 @@ h2 {
   top: 30px;
 }
 .contents-nav .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 22px;
 }
 .contents-nav > a:not(.text-link) {
@@ -1153,39 +1153,39 @@ h2 {
   gap: 14px;
   padding: 15px 0;
   border-bottom: 1px solid var(--line);
-  font-size: 11px;
+  font-size: 15px;
 }
 .contents-nav > a > span {
-  font-size: 8px;
+  font-size: 12px;
   color: var(--muted);
 }
 .contents-nav > a:hover {
   color: #6d6f37;
 }
 .contents-nav > p:not(.eyebrow) {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--muted);
 }
 .contents-nav > .text-link {
   display: flex;
-  font-size: 10px;
+  font-size: 14px;
 }
 .aside-note {
   margin-top: 30px;
   background: #eef1e2;
   border: 1px solid #dfe5cf;
   padding: 22px;
-  font-size: 12px;
+  font-size: 16px;
 }
 .aside-note > p {
-  font-size: 12px;
+  font-size: 16px;
   margin: 12px 0;
 }
 .aside-note > a {
   display: flex;
   gap: 10px;
   align-items: center;
-  font-size: 10px;
+  font-size: 14px;
   margin-top: 10px;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -1202,7 +1202,7 @@ h2 {
 .learning-chapter > p:not(.eyebrow),
 .legal-content section > p,
 .standards-list section > p {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--muted);
   line-height: 1.95;
 }
@@ -1229,7 +1229,7 @@ h2 {
   letter-spacing: -2px;
 }
 .pair-explainer small {
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.15em;
   color: #59674c;
 }
@@ -1244,7 +1244,7 @@ h2 {
   width: 100%;
   margin: 0;
   text-align: center;
-  font-size: 10px;
+  font-size: 14px;
   color: #637151;
 }
 .key-takeaway,
@@ -1258,13 +1258,13 @@ h2 {
   margin-top: 25px;
 }
 .key-takeaway strong {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
 }
 .key-takeaway p,
 .risk-callout p {
   margin: 8px 0 0;
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -1280,12 +1280,12 @@ h2 {
   background: #f3f4eb;
 }
 .concept-grid h3 {
-  font-size: 17px;
+  font-size: 20px;
   margin-bottom: 9px;
   letter-spacing: -0.5px;
 }
 .concept-grid p {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   margin: 0;
 }
@@ -1295,7 +1295,7 @@ h2 {
   margin: 25px 0;
 }
 .risk-callout h3 {
-  font-size: 18px;
+  font-size: 21px;
   margin-bottom: 10px;
 }
 .risk-callout p {
@@ -1305,7 +1305,7 @@ h2 {
   list-style: decimal;
   padding-left: 22px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.9;
   margin: 26px 0;
 }
@@ -1315,7 +1315,7 @@ h2 {
 }
 .question-list li::marker {
   color: #6b8057;
-  font-size: 11px;
+  font-size: 15px;
 }
 .document-disclaimer,
 .review-notice,
@@ -1324,7 +1324,7 @@ h2 {
   border: 1px solid #d7ddc9;
   background: #edf1e2;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.9;
   color: #5c6950;
 }
@@ -1346,7 +1346,7 @@ h2 {
   gap: 24px;
 }
 .next-read .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 9px;
 }
 .next-read h3 {
@@ -1355,7 +1355,7 @@ h2 {
   margin: 0;
 }
 .next-read .button {
-  font-size: 10px;
+  font-size: 14px;
   white-space: nowrap;
 }
 .glossary-controls {
@@ -1379,13 +1379,13 @@ h2 {
   border: 0;
   background: transparent;
   color: var(--ink);
-  font-size: 14px;
+  font-size: 18px;
 }
 .glossary-search input::placeholder {
   color: #59634f;
 }
 .glossary-search > span {
-  font-size: 9px;
+  font-size: 13px;
   color: var(--muted);
   white-space: nowrap;
 }
@@ -1400,7 +1400,7 @@ h2 {
   padding: 9px 15px;
   background: transparent;
   border-radius: 20px;
-  font-size: 10px;
+  font-size: 14px;
   min-height: 36px;
   color: #53624a;
 }
@@ -1418,11 +1418,11 @@ h2 {
   align-items: center;
   gap: 20px;
   min-height: 79px;
-  font-size: 11px;
+  font-size: 15px;
   color: var(--muted);
 }
 .results-heading .text-link {
-  font-size: 11px;
+  font-size: 15px;
 }
 .glossary-entry {
   display: flex;
@@ -1456,14 +1456,14 @@ h2 {
   margin: 0;
 }
 .glossary-entry p {
-  font-size: 13px;
+  font-size: 17px;
   line-height: 1.9;
   color: var(--muted);
   max-width: 850px;
   margin: 0;
 }
 .fine-print {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--muted);
   border-top: 1px solid var(--line);
   padding-top: 24px;
@@ -1484,7 +1484,7 @@ h2 {
   margin-bottom: 15px;
 }
 .empty-state p {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--muted);
 }
 .empty-state .button {
@@ -1495,7 +1495,7 @@ h2 {
   scroll-margin-top: 35px;
 }
 .faq-group > .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 13px;
 }
 .faq-group h2 {
@@ -1510,7 +1510,7 @@ h2 {
   margin-bottom: 45px;
 }
 .methodology-intro p:not(.review-notice) {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--muted);
   line-height: 1.9;
 }
@@ -1529,7 +1529,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 11px;
+  font-size: 15px;
   letter-spacing: 0.1em;
   color: #526746;
   margin-bottom: 35px;
@@ -1540,7 +1540,7 @@ h2 {
   margin-bottom: 16px;
 }
 .criteria-card > p {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--muted);
   line-height: 1.9;
 }
@@ -1548,12 +1548,12 @@ h2 {
   border-top: 1px solid #d6ddc8;
   padding-top: 22px;
   margin-top: 27px;
-  font-size: 13px;
+  font-size: 17px;
   line-height: 1.8;
 }
 .criteria-question > span {
   display: block;
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 0.17em;
   color: #526746;
   margin-bottom: 8px;
@@ -1569,7 +1569,7 @@ h2 {
   gap: 35px;
 }
 .editorial-banner .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 14px;
 }
 .editorial-banner h2 {
@@ -1577,13 +1577,13 @@ h2 {
   margin-bottom: 15px;
 }
 .editorial-banner p:not(.eyebrow) {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   margin: 0;
 }
 .editorial-banner .button {
   white-space: nowrap;
-  font-size: 11px;
+  font-size: 15px;
 }
 .standards-list section {
   border-bottom: 1px solid var(--line);
@@ -1591,7 +1591,7 @@ h2 {
   margin-bottom: 33px;
 }
 .standards-list section > .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 14px;
 }
 .standards-list h2 {
@@ -1612,7 +1612,7 @@ h2 {
   font-size: 44px;
 }
 .about-story p:not(.eyebrow) {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--muted);
   line-height: 1.9;
 }
@@ -1637,7 +1637,7 @@ h2 {
   margin-bottom: 15px;
 }
 .value-grid p {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--muted);
 }
 .about-next {
@@ -1647,7 +1647,7 @@ h2 {
   align-items: center;
 }
 .about-next p:not(.eyebrow) {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--muted);
 }
 .inline-links {
@@ -1656,7 +1656,7 @@ h2 {
   gap: 20px;
 }
 .inline-links .text-link {
-  font-size: 11px;
+  font-size: 15px;
 }
 .contact-layout {
   display: grid;
@@ -1681,7 +1681,7 @@ h2 {
   margin-bottom: 20px;
 }
 .contact-layout aside > p {
-  font-size: 13px;
+  font-size: 17px;
   max-width: 350px;
   color: var(--muted);
 }
@@ -1689,7 +1689,7 @@ h2 {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 10px !important;
+  font-size: 14px !important;
   margin-top: 25px;
 }
 .contact-help {
@@ -1698,14 +1698,14 @@ h2 {
   margin-top: 35px;
 }
 .contact-help h3 {
-  font-size: 16px;
+  font-size: 19px;
   margin-bottom: 10px;
 }
 .contact-help .text-link {
-  font-size: 11px;
+  font-size: 15px;
 }
 .contact-help p {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--muted);
   margin-top: 20px;
   max-width: 310px;
@@ -1717,7 +1717,7 @@ h2 {
   border-radius: 5px;
 }
 .form-panel > .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 12px;
 }
 .form-panel h2 {
@@ -1730,12 +1730,12 @@ h2 {
   gap: 10px;
 }
 .contact-form .form-notice {
-  font-size: 11px;
+  font-size: 15px;
   margin-bottom: 15px;
   background: #e9eedb;
 }
 .contact-form label {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 500;
 }
 .contact-form input,
@@ -1746,7 +1746,7 @@ h2 {
   padding: 13px;
   width: 100%;
   margin-bottom: 12px;
-  font-size: 14px;
+  font-size: 18px;
   color: var(--ink);
 }
 .contact-form textarea {
@@ -1754,11 +1754,11 @@ h2 {
 }
 .contact-form button {
   align-self: start;
-  font-size: 11px;
+  font-size: 15px;
 }
 .contact-form [role="status"] {
   min-height: 1.8em;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.8;
   color: var(--muted);
   margin-bottom: 0;
@@ -1781,7 +1781,7 @@ h2 {
   font-size: clamp(40px, 5vw, 64px);
 }
 .document .document-lead {
-  font-size: 18px;
+  font-size: 21px;
   line-height: 1.8;
   color: var(--muted);
   margin-bottom: 30px;
@@ -1804,7 +1804,7 @@ h2 {
   white-space: nowrap;
   border: 0;
 }
-@media (min-width: 901px) {
+@media (min-width: 1051px) {
   .mobile-nav {
     display: none;
   }
@@ -1838,10 +1838,10 @@ h2 {
   .art-bottomline {
     left: 20px;
     right: 20px;
-    font-size: 6px;
+    font-size: 10px;
   }
   .art-bottomline span:last-child {
-    font-size: 6px;
+    font-size: 10px;
   }
   .perspective-grid,
   .glossary-teaser,
@@ -1874,7 +1874,7 @@ h2 {
     padding: 35px;
   }
   .newsletter-status {
-    font-size: 9px;
+    font-size: 13px;
   }
   .page-heading h1 {
     font-size: 54px;
@@ -1889,7 +1889,7 @@ h2 {
     font-size: 80px;
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
   .desktop-nav,
   .header-cta {
     display: none;
@@ -1902,7 +1902,7 @@ h2 {
     background: transparent;
     border-radius: 3px;
     padding: 11px 13px;
-    font-size: 11px;
+    font-size: 15px;
     min-height: 44px;
     color: var(--ink);
   }
@@ -1936,24 +1936,24 @@ h2 {
     grid-template-columns: 1.03fr 1fr;
   }
   .hero .eyebrow {
-    font-size: 7px;
+    font-size: 11px;
   }
   .hero-description {
-    font-size: 12px;
+    font-size: 16px;
   }
   .hero-actions {
     gap: 13px;
   }
   .hero-actions .button {
-    font-size: 10px;
+    font-size: 14px;
     padding-inline: 14px;
     gap: 15px;
   }
   .hero-actions .text-link {
-    font-size: 10px;
+    font-size: 14px;
   }
   .hero-footnote {
-    font-size: 8px;
+    font-size: 12px;
     gap: 6px;
   }
   .globe-composition {
@@ -1962,22 +1962,22 @@ h2 {
   }
   .art-topline {
     top: 35px;
-    font-size: 6px;
+    font-size: 10px;
     left: 25px;
     right: 25px;
   }
   .art-coordinate {
-    font-size: 6px;
+    font-size: 10px;
   }
   .floating-note {
     padding: 11px 13px;
     gap: 7px;
   }
   .floating-note small {
-    font-size: 6px;
+    font-size: 10px;
   }
   .floating-note strong {
-    font-size: 9px;
+    font-size: 13px;
   }
   .note-one {
     top: 110px;
@@ -1999,7 +1999,7 @@ h2 {
     bottom: 18px;
   }
   .principles-strip .container {
-    font-size: 9px;
+    font-size: 13px;
     padding-block: 20px;
     gap: 12px;
   }
@@ -2025,7 +2025,7 @@ h2 {
     height: 80px;
   }
   .art-index {
-    font-size: 6px;
+    font-size: 10px;
     left: 14px;
     top: 14px;
   }
@@ -2046,7 +2046,7 @@ h2 {
   }
   .risk-art > span {
     left: 20px;
-    font-size: 5px;
+    font-size: 10px;
     bottom: 15px;
   }
   .tools-art {
@@ -2082,13 +2082,13 @@ h2 {
     font-size: 19px;
   }
   .reading-content p {
-    font-size: 11px;
+    font-size: 15px;
   }
   .card-action {
-    font-size: 9px;
+    font-size: 13px;
   }
   .reading-content .eyebrow {
-    font-size: 7px;
+    font-size: 11px;
   }
   .section {
     padding-block: 65px;
@@ -2106,10 +2106,10 @@ h2 {
     gap: 14px;
   }
   .perspective-principle h3 {
-    font-size: 17px;
+    font-size: 20px;
   }
   .perspective-principle p {
-    font-size: 11px;
+    font-size: 15px;
   }
   .perspective-principle > svg {
     width: 21px;
@@ -2129,16 +2129,16 @@ h2 {
     font-size: 35px;
   }
   .term-preview p {
-    font-size: 9px;
+    font-size: 13px;
   }
   .category-card {
     padding: 20px;
   }
   .category-card h3 {
-    font-size: 18px;
+    font-size: 21px;
   }
   .category-card p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .home-faq {
     gap: 45px;
@@ -2147,7 +2147,7 @@ h2 {
     font-size: 43px;
   }
   .faq-list summary {
-    font-size: 13px;
+    font-size: 17px;
   }
   .newsletter {
     flex-wrap: wrap;
@@ -2175,7 +2175,7 @@ h2 {
     margin-block: 15px 5px;
   }
   .footer-columns nav {
-    font-size: 11px;
+    font-size: 15px;
   }
   .footer-bottom {
     flex-wrap: wrap;
@@ -2188,7 +2188,7 @@ h2 {
     gap: 35px;
   }
   .page-description {
-    font-size: 12px;
+    font-size: 16px;
   }
   .reading-layout {
     grid-template-columns: 175px 1fr;
@@ -2200,7 +2200,7 @@ h2 {
   .learning-chapter > p:not(.eyebrow),
   .legal-content section > p,
   .standards-list section > p {
-    font-size: 13px;
+    font-size: 17px;
   }
   .concept-grid {
     gap: 12px;
@@ -2233,7 +2233,7 @@ h2 {
     font-size: 36px;
   }
   .about-story p:not(.eyebrow) {
-    font-size: 12px;
+    font-size: 16px;
   }
   .value-grid {
     gap: 25px;
@@ -2242,7 +2242,7 @@ h2 {
     font-size: 20px;
   }
   .value-grid p {
-    font-size: 12px;
+    font-size: 16px;
   }
   .about-next {
     gap: 40px;
@@ -2267,10 +2267,10 @@ h2 {
   }
   .utility-bar .container {
     min-height: 32px;
-    font-size: 8px;
+    font-size: 12px;
   }
   .utility-bar a {
-    font-size: 7px;
+    font-size: 11px;
     gap: 5px;
   }
   .utility-bar .container > span {
@@ -2284,7 +2284,7 @@ h2 {
     gap: 9px;
   }
   .brand small {
-    font-size: 6px;
+    font-size: 10px;
   }
   .hero {
     padding: 40px 0;
@@ -2298,11 +2298,11 @@ h2 {
     line-height: 1.02;
   }
   .hero .eyebrow {
-    font-size: 7px;
+    font-size: 11px;
     margin-bottom: 23px;
   }
   .hero-description {
-    font-size: 13px;
+    font-size: 17px;
     max-width: 470px;
   }
   .hero-actions {
@@ -2310,15 +2310,15 @@ h2 {
     margin-top: 24px;
   }
   .hero-actions .button {
-    font-size: 11px;
+    font-size: 15px;
     gap: 22px;
     padding-inline: 17px;
   }
   .hero-actions .text-link {
-    font-size: 10px;
+    font-size: 14px;
   }
   .hero-footnote {
-    font-size: 8px;
+    font-size: 12px;
     margin-top: 24px;
   }
   .globe-composition {
@@ -2332,10 +2332,10 @@ h2 {
     top: 36px;
     left: 30px;
     right: 30px;
-    font-size: 7px;
+    font-size: 11px;
   }
   .art-coordinate {
-    font-size: 7px;
+    font-size: 11px;
   }
   .globe-svg {
     top: 5px;
@@ -2344,10 +2344,10 @@ h2 {
     padding: 14px 16px;
   }
   .floating-note small {
-    font-size: 6px;
+    font-size: 10px;
   }
   .floating-note strong {
-    font-size: 10px;
+    font-size: 14px;
   }
   .note-one {
     top: 110px;
@@ -2359,20 +2359,20 @@ h2 {
   }
   .art-bottomline {
     flex-direction: row;
-    font-size: 6px;
+    font-size: 10px;
     gap: 10px;
     left: 20px;
     right: 20px;
     bottom: 20px;
   }
   .art-bottomline span:last-child {
-    font-size: 6px;
+    font-size: 10px;
   }
   .principles-strip .container {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px 25px;
-    font-size: 9px;
+    font-size: 13px;
     padding-block: 20px;
   }
   .principles-strip .container svg {
@@ -2392,17 +2392,17 @@ h2 {
     font-size: 40px;
   }
   .section-heading .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     margin-bottom: 14px;
   }
   .section-intro p {
-    font-size: 12px;
+    font-size: 16px;
   }
   .section-intro p br {
     display: none;
   }
   .section-intro .text-link {
-    font-size: 11px;
+    font-size: 15px;
   }
   .reading-grid {
     grid-template-columns: 1fr;
@@ -2412,7 +2412,7 @@ h2 {
     height: 240px;
   }
   .art-index {
-    font-size: 7px;
+    font-size: 11px;
     top: 20px;
     left: 21px;
   }
@@ -2449,7 +2449,7 @@ h2 {
   .risk-art > span {
     left: 40px;
     bottom: 20px;
-    font-size: 7px;
+    font-size: 11px;
   }
   .tools-art {
     margin-top: 52px;
@@ -2484,7 +2484,7 @@ h2 {
     padding-top: 22px;
   }
   .reading-content .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
   }
   .reading-content h3 {
     font-size: 25px;
@@ -2492,11 +2492,11 @@ h2 {
     margin-bottom: 12px;
   }
   .reading-content p {
-    font-size: 12px;
+    font-size: 16px;
     max-width: 400px;
   }
   .card-action {
-    font-size: 10px;
+    font-size: 14px;
   }
   .perspective-section {
     padding-block: 48px;
@@ -2509,7 +2509,7 @@ h2 {
     font-size: 56px;
   }
   .perspective-heading > p:not(.eyebrow) {
-    font-size: 13px;
+    font-size: 17px;
     max-width: 400px;
   }
   .perspective-principle {
@@ -2517,10 +2517,10 @@ h2 {
     padding-block: 25px;
   }
   .perspective-principle h3 {
-    font-size: 18px;
+    font-size: 21px;
   }
   .perspective-principle p {
-    font-size: 12px;
+    font-size: 16px;
     max-width: 360px;
   }
   .perspective-principle > svg {
@@ -2534,7 +2534,7 @@ h2 {
     font-size: 39px;
   }
   .glossary-teaser-copy > p:not(.eyebrow) {
-    font-size: 13px;
+    font-size: 17px;
   }
   .term-stack {
     padding-top: 5px;
@@ -2549,7 +2549,7 @@ h2 {
     font-size: 40px;
   }
   .term-preview p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .term-preview h3 {
     font-size: 19px;
@@ -2574,23 +2574,23 @@ h2 {
     font-size: 23px;
   }
   .category-card p {
-    font-size: 12px;
+    font-size: 16px;
     max-width: 400px;
   }
   .category-number {
-    font-size: 9px;
+    font-size: 13px;
   }
   .badge {
-    font-size: 9px;
+    font-size: 13px;
   }
   .coverage-bottom {
     flex-direction: column;
     align-items: start;
     gap: 9px;
-    font-size: 9px;
+    font-size: 13px;
   }
   .coverage-bottom .text-link {
-    font-size: 10px;
+    font-size: 14px;
   }
   .home-faq {
     grid-template-columns: 1fr;
@@ -2601,12 +2601,12 @@ h2 {
     margin-bottom: 15px;
   }
   .faq-list summary {
-    font-size: 14px;
+    font-size: 18px;
     padding-block: 22px;
     gap: 20px;
   }
   .faq-list details > p {
-    font-size: 12px;
+    font-size: 16px;
     padding-right: 8px;
   }
   .newsletter {
@@ -2622,17 +2622,17 @@ h2 {
     font-size: 32px;
   }
   .newsletter .eyebrow {
-    font-size: 7px;
+    font-size: 11px;
   }
   .newsletter > div:nth-child(2) {
     flex-basis: 100%;
   }
   .newsletter-status {
     margin: 0;
-    font-size: 9px;
+    font-size: 13px;
   }
   .newsletter p:last-child {
-    font-size: 11px;
+    font-size: 15px;
   }
   .site-footer {
     padding-top: 38px;
@@ -2646,14 +2646,14 @@ h2 {
     gap: 32px 22px;
   }
   .footer-columns nav {
-    font-size: 11px;
+    font-size: 15px;
     gap: 17px;
   }
   .footer-columns h2 {
-    font-size: 11px;
+    font-size: 15px;
   }
   .footer-disclosures p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .footer-disclosures > p {
     margin-left: 0;
@@ -2663,14 +2663,14 @@ h2 {
     flex-direction: column;
     gap: 12px;
     padding-block: 24px;
-    font-size: 9px;
+    font-size: 13px;
   }
   .page-heading {
     padding-top: 20px;
     padding-bottom: 38px;
   }
   .breadcrumbs {
-    font-size: 8px;
+    font-size: 12px;
     margin-bottom: 33px;
     gap: 9px;
   }
@@ -2684,11 +2684,11 @@ h2 {
     overflow-wrap: anywhere;
   }
   .page-heading .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     margin-bottom: 16px;
   }
   .page-description {
-    font-size: 13px;
+    font-size: 17px;
     max-width: 480px;
     margin: 0;
   }
@@ -2700,11 +2700,11 @@ h2 {
     position: static;
   }
   .contents-nav > a:not(.text-link) {
-    font-size: 12px;
+    font-size: 16px;
     padding-block: 13px;
   }
   .contents-nav .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     margin-bottom: 13px;
   }
   .aside-note {
@@ -2719,10 +2719,10 @@ h2 {
     font-size: 37px;
   }
   .learning-chapter > .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
   }
   .learning-chapter > p:not(.eyebrow) {
-    font-size: 13px;
+    font-size: 17px;
   }
   .pair-explainer {
     gap: 22px;
@@ -2732,10 +2732,10 @@ h2 {
     font-size: 42px;
   }
   .pair-explainer small {
-    font-size: 7px;
+    font-size: 11px;
   }
   .pair-explainer > p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .key-takeaway,
   .risk-callout {
@@ -2749,13 +2749,13 @@ h2 {
     padding: 18px 15px;
   }
   .concept-grid h3 {
-    font-size: 16px;
+    font-size: 19px;
   }
   .concept-grid p {
-    font-size: 11px;
+    font-size: 15px;
   }
   .question-list {
-    font-size: 13px;
+    font-size: 17px;
     padding-left: 18px;
   }
   .next-read {
@@ -2769,7 +2769,7 @@ h2 {
     gap: 9px;
   }
   .glossary-search input {
-    font-size: 12px;
+    font-size: 16px;
   }
   .glossary-search > span {
     display: none;
@@ -2780,11 +2780,11 @@ h2 {
   }
   .filter-tabs button {
     padding: 8px 11px;
-    font-size: 9px;
+    font-size: 13px;
     min-height: 36px;
   }
   .results-heading {
-    font-size: 10px;
+    font-size: 14px;
     min-height: 67px;
     gap: 12px;
   }
@@ -2792,7 +2792,7 @@ h2 {
     overflow-wrap: anywhere;
   }
   .results-heading .text-link {
-    font-size: 9px;
+    font-size: 13px;
     white-space: nowrap;
   }
   .glossary-entry {
@@ -2813,13 +2813,13 @@ h2 {
     overflow-wrap: anywhere;
   }
   .entry-heading .badge {
-    font-size: 8px;
-  }
-  .glossary-entry p {
     font-size: 12px;
   }
+  .glossary-entry p {
+    font-size: 16px;
+  }
   .fine-print {
-    font-size: 10px;
+    font-size: 14px;
   }
   .empty-state {
     padding: 40px 15px;
@@ -2828,7 +2828,7 @@ h2 {
     font-size: 29px;
   }
   .empty-state p {
-    font-size: 12px;
+    font-size: 16px;
   }
   .faq-group h2 {
     font-size: 31px;
@@ -2839,7 +2839,7 @@ h2 {
     margin-bottom: 30px;
   }
   .methodology-intro p:not(.review-notice) {
-    font-size: 13px;
+    font-size: 17px;
   }
   .criteria-grid {
     grid-template-columns: 1fr;
@@ -2855,10 +2855,10 @@ h2 {
     font-size: 27px;
   }
   .criteria-card > p {
-    font-size: 12px;
+    font-size: 16px;
   }
   .criteria-question {
-    font-size: 12px;
+    font-size: 16px;
     margin-top: 23px;
     padding-top: 20px;
   }
@@ -2874,7 +2874,7 @@ h2 {
     font-size: 31px;
   }
   .standards-list section > p {
-    font-size: 13px;
+    font-size: 17px;
   }
   .about-story {
     grid-template-columns: 1fr;
@@ -2887,7 +2887,7 @@ h2 {
     font-size: 39px;
   }
   .about-story p:not(.eyebrow) {
-    font-size: 13px;
+    font-size: 17px;
   }
   .value-grid {
     grid-template-columns: 1fr;
@@ -2898,14 +2898,14 @@ h2 {
     padding-top: 22px;
   }
   .value-grid article > .eyebrow {
-    font-size: 9px;
+    font-size: 13px;
     margin-bottom: 15px;
   }
   .value-grid h3 {
     font-size: 24px;
   }
   .value-grid p {
-    font-size: 13px;
+    font-size: 17px;
   }
   .about-next {
     grid-template-columns: 1fr;
@@ -2915,7 +2915,7 @@ h2 {
     font-size: 40px;
   }
   .about-next p:not(.eyebrow) {
-    font-size: 13px;
+    font-size: 17px;
   }
   .contact-layout {
     grid-template-columns: 1fr;
@@ -2941,13 +2941,13 @@ h2 {
     font-size: 27px;
   }
   .legal-content section > p {
-    font-size: 13px;
+    font-size: 17px;
   }
   .review-notice,
   .form-notice,
   .document-disclaimer {
     padding: 19px;
-    font-size: 11px;
+    font-size: 15px;
   }
   .document {
     padding-block: 50px;
@@ -2959,7 +2959,7 @@ h2 {
     font-size: 45px;
   }
   .document .document-lead {
-    font-size: 15px;
+    font-size: 18px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2972,4 +2972,32 @@ h2 {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* Keep the larger reading scale comfortable in compact layouts. */
+.art-bottomline { flex-wrap: wrap; }
+.header-inner { gap: 20px; }
+.card-action { gap: 14px; }
+.newsletter-status { flex-shrink: 0; }
+.contact-status { align-items: flex-start; }
+.contact-status .status-dot { margin-top: 8px; }
+@media (max-width: 1050px) {
+  .desktop-nav, .header-cta { display: none; }
+  .menu-button { display: flex; }
+  .mobile-nav:not([hidden]) { display: flex; }
+}
+@media (max-width: 640px) {
+  .header-inner { gap: 12px; }
+  .brand small { font-size: 8px; letter-spacing: .12em; }
+  .utility-bar .container { flex-wrap: wrap; gap: 6px; padding-block: 8px; }
+  .utility-bar a { display: none; }
+  .art-bottomline { flex-direction: column; gap: 5px; }
+  .floating-note { padding: 12px; }
+  .note-one { max-width: calc(100% - 45px); }
+  .note-two { max-width: calc(100% - 45px); }
+  .footer-columns { gap: 30px 18px; }
+  .next-read .button, .editorial-banner .button { white-space: normal; }
+  .term-preview { gap: 12px; }
+  .term-letter { min-width: 44px; }
+  .term-preview p { line-height: 1.6; }
 }
