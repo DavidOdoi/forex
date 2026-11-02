@@ -1,6 +1,6 @@
 # Devin Forex
 
-A Next.js App Router foundation built with TypeScript, React, and Tailwind CSS. All pages use Server Components by default; only the mobile navigation and local contact demo need client interactivity. No external fonts, tracking, financial data feeds, or content integrations are loaded.
+A Next.js App Router publication built with TypeScript, React, and Tailwind CSS. All pages use Server Components by default; only the mobile navigation, searchable glossary, and local contact demo need client interactivity. Fonts are hosted locally; no external font requests, tracking, financial data feeds, or content integrations are loaded.
 
 ## Local development
 
@@ -28,9 +28,14 @@ npm run build
 - `/risk-disclosure`
 - `/privacy-policy`
 - `/terms-and-conditions`
+- `/learn`: currency pairs, costs, risk, and platform questions
+- `/glossary`: 17 searchable definitions with topic filters
+- `/methodology`: proposed evaluation framework
+- `/editorial-standards`: sourcing, transparency, and corrections commitments
+- `/faq`: nine common questions with accessible disclosure controls
 - Custom 404 for unmatched URLs
 
-Search, category cards, and newsletter are clearly marked coming soon and do not collect data or link to unpublished content.
+Broker category cards and newsletter are clearly marked coming soon and do not collect data or link to unpublished content.
 
 ## Brand and launch configuration
 
@@ -38,7 +43,7 @@ Edit `src/lib/site.ts` for the site name, description, domain, logo, favicon, ve
 
 Set `SITE_URL` to the confirmed HTTPS origin (for example your actual custom domain without a path) before building for the public domain. `.env.example` documents this optional, non-secret variable. No secrets or email service are required. Do not add credentials to source control.
 
-Without `SITE_URL`, robots blocks indexing, canonical URLs and unknown organization properties are omitted, and the sitemap is empty rather than pointing to a fabricated domain. With `SITE_URL`, each existing page receives a canonical URL and the sitemap lists exactly the seven public pages. The 404 is not included. Organization schema uses only the verified configuration fields. Open Graph and Twitter metadata are included without fabricated images or social handles.
+Without `SITE_URL`, robots blocks indexing, canonical URLs and unknown organization properties are omitted, and the sitemap is empty rather than pointing to a fabricated domain. With `SITE_URL`, each existing page receives a canonical URL and the sitemap lists exactly the twelve public pages. The 404 is not included. Organization schema uses only the verified configuration fields. Open Graph and Twitter metadata are included without fabricated images or social handles.
 
 `VERCEL_ENV=preview` blocks indexing even when a domain is supplied. Also keep Vercel's preview deployment protection enabled: robots directives are not access control. For a local indexable-domain smoke test, use `SITE_URL` with a temporary test origin only for the test build; do not publish it. Rebuild after changing domain settings.
 
@@ -57,7 +62,7 @@ Security headers cover MIME sniffing, framing, referrer policy, restricted brows
 
 ## Browser checks
 
-`tests/foundation.spec.ts` covers desktop/mobile navigation, all public routes, local form validation, placeholders, security headers, metadata, robots/sitemap behavior, and 404 status. Browser binaries are a development-only prerequisite:
+`tests/foundation.spec.ts` covers desktop/mobile navigation, all public routes, glossary filters/search/reset, FAQ keyboard interaction, learning deep links, local form validation, placeholders, security headers, metadata, robots/sitemap behavior, 404 status, and automated WCAG accessibility checks. Browser binaries are a development-only prerequisite:
 
 ```sh
 npx playwright install chromium
@@ -75,12 +80,14 @@ Keyword research, taxonomy, articles, review/comparison pages, detailed evaluati
 
 ## File map
 
-All files were created in the previously empty checkout; no existing application files were overwritten.
+The original foundation was created in an empty checkout. The editorial redesign adds five resource pages, locally hosted fonts, a custom SVG globe illustration, and a searchable glossary while retaining all existing pages.
 
-- `src/app/`: root layout, global styles, homepage, About, Contact, the four legal pages, custom 404, robots and sitemap routes.
-- `src/components/`: header/mobile menu, footer, local contact form, legal-page template, and decorative SVG arrow.
+- `src/app/`: root layout, global styles, homepage, About, Contact, Learn, Glossary, Methodology, Editorial Standards, FAQs, the four legal pages, custom 404, robots and sitemap routes.
+- `src/components/`: header/mobile menu, footer, local contact form, legal-page template, page headings, searchable glossary, custom globe art, and a shared icon set.
 - `src/lib/site.ts`: central brand configuration, navigation, SEO helper, and public URL list.
 - `src/lib/legal.ts`: draft legal content.
+- `src/lib/education.ts`: original glossary definitions and FAQ answers.
+- `vercel.json`: explicit Next.js framework selection to prevent the earlier “Other” preset issue.
 - `public/brand.svg`, `public/favicon.svg`: temporary monogram assets.
 - `package.json`, `package-lock.json`: scripts and locked dependencies.
 - `tsconfig.json`, generated `next-env.d.ts`: TypeScript configuration.
@@ -91,4 +98,4 @@ All files were created in the previously empty checkout; no existing application
 
 ## Validated in this environment
 
-Clean `npm ci`, type checking, linting (zero errors/warnings), and production build passed. All five browser tests passed using system Chromium. Both unconfigured-domain behavior and a temporary test-only configured-domain build were checked; the final build has no domain configured. Desktop/mobile screenshots were inspected, and all seven public pages were checked for horizontal overflow at 320, 390, 768, and 1440 pixels. Production dependency audit reported zero known vulnerabilities at validation time. These checks do not constitute legal approval, a full accessibility audit, or measured Core Web Vitals. Nothing was deployed or purchased.
+Clean `npm ci`, type checking, linting (zero errors/warnings), and production build passed. All eight browser tests passed using system Chromium. Both unconfigured-domain behavior and a temporary test-only configured-domain build were checked; the final build has no domain configured. Desktop/mobile screenshots were inspected, and all twelve public pages were checked for horizontal overflow at 320, 390, 768, and 1440 pixels. Production dependency audit reported zero known vulnerabilities at validation time. These checks do not constitute legal approval, a full accessibility audit, or measured Core Web Vitals. Nothing was deployed or purchased.

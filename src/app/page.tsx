@@ -1,21 +1,357 @@
-import { Arrow } from "@/components/arrow";
 import Link from "next/link";
+import { Icon } from "@/components/icon";
+import { GlobeArt } from "@/components/globe-art";
 import { pageMetadata, site } from "@/lib/site";
-export const metadata = { ...pageMetadata("A clearer perspective on forex", site.description, "/"), title: { absolute: `${site.name} | A clearer perspective on forex` } };
-const categories = [
-  { n: "01", icon: "▤", title: "Broker Reviews", text: "A closer look at trading services, with a structured approach to the details that matter.", tag: "LOOK BEYOND THE SURFACE" },
-  { n: "02", icon: "⇄", title: "Broker Comparisons", text: "A clearer framework for understanding differences, trade-offs, and suitability.", tag: "UNDERSTAND THE DIFFERENCES" },
-  { n: "03", icon: "▦", title: "Trading Platforms", text: "Explore how platform tools, usability, and functionality shape the trading experience.", tag: "GET TO KNOW THE TOOLS" },
+export const metadata = {
+  ...pageMetadata("Knowledge before the trade", site.description, "/"),
+  title: { absolute: `${site.name} | Knowledge before the trade` },
+};
+const reading = [
+  {
+    number: "01",
+    category: "THE ESSENTIALS",
+    title: "A currency pair. Two sides to every story.",
+    text: "Understand what you’re actually looking at when you see a forex quote.",
+    href: "/learn#basics",
+    art: "pairs",
+    label: "Understand currency pairs",
+  },
+  {
+    number: "02",
+    category: "RISK & PERSPECTIVE",
+    title: "Before the opportunity, understand the risk.",
+    text: "Leverage, margin, and why protecting capital starts with understanding loss.",
+    href: "/learn#risk",
+    art: "risk",
+    label: "Learn about trading risk",
+  },
+  {
+    number: "03",
+    category: "THE TOOLKIT",
+    title: "Know the tools. Ask better questions.",
+    text: "The questions to bring to any trading platform before making a commitment.",
+    href: "/learn#platforms",
+    art: "tools",
+    label: "Explore platform essentials",
+  },
 ];
-export default function Home() { return <>
-  <section className="hero"><div className="container hero-grid"><div className="hero-copy"><div className="eyebrow"><span className="short-line"/>A MORE CONSIDERED APPROACH</div><h1>Navigate forex.<br/>Start with <span>clarity.</span></h1><p className="hero-description">Trading services can be complex. We’re building a clearer way to understand them — with thoughtful evaluation, transparent information, and risk in perspective.</p><div className="hero-actions"><a className="button primary" href="#explore">Explore what’s ahead <span><Arrow/></span></a><Link className="text-link" href="/about">Get to know Devin Forex <span>→</span></Link></div><p className="hero-footnote"><span className="small-shield">◇</span> Informed perspectives. No promises of profit.</p></div>
-  <div className="perspective-card" aria-label="Our editorial priorities"><div className="card-topline"><span>THE DEVIN FOREX PERSPECTIVE</span><span className="small-cross">✳</span></div><h2>Good decisions begin<br/>with better questions.</h2><div className="perspective-art" aria-hidden="true"><div className="art-grid"/><svg viewBox="0 0 400 150" preserveAspectRatio="none"><path d="M0 126 L62 126 L62 100 L130 100 L130 80 L205 80 L205 53 L280 53 L280 22 L400 22" fill="none" stroke="#76b8a9" strokeWidth="2"/><circle cx="280" cy="22" r="5" fill="#b9dfc8"/></svg><span className="art-label">A framework for understanding</span></div><div className="priority-row"><span>01</span><strong>Understand the service</strong><span><Arrow/></span></div><div className="priority-row"><span>02</span><strong>Consider the trade-offs</strong><span><Arrow/></span></div><div className="priority-row"><span>03</span><strong>Keep risk in view</strong><span><Arrow/></span></div><p className="card-caption">Our approach to evaluation, illustrated. Not market data.</p></div>
-  </div></section>
-  <div className="principles-strip"><div className="container"><span>Built on a simple principle</span><strong>More context. <span>Less noise.</span></strong><span className="strip-end">Transparency at every step <span><Arrow/></span></span></div></div>
-  <section className="section container" id="explore"><div className="section-heading"><div><p className="eyebrow">THE FOUNDATION FOR WHAT’S NEXT</p><h2>A clearer view of your options.</h2></div><p>Our coverage is taking shape.<br/>Here’s where we’re starting.</p></div>
-  <div className="search-placeholder"><span aria-hidden="true">⌕</span><label className="sr-only" htmlFor="future-search">Search Devin Forex — coming soon</label><input id="future-search" type="search" placeholder="Find clarity on trading services…" disabled/><span className="badge">Coming soon</span></div>
-  <div className="category-grid">{categories.map(c => <article className="category-card" key={c.n}><div className="category-top"><span className="category-icon" aria-hidden="true">{c.icon}</span><span className="badge">Coming soon</span></div><h3>{c.title}</h3><p>{c.text}</p><div className="category-bottom"><span>{c.tag}</span><span>{c.n}</span></div></article>)}</div></section>
-  <section className="method-section"><div className="container method-grid"><div><p className="eyebrow">A PROCESS, NOT A PROMISE</p><h2>How we evaluate<br/>trading services.</h2><p className="muted">Clear criteria. Considered context. A consistent framework designed to put the important questions first.</p><Link href="/about" className="text-link">More about our approach <span><Arrow/></span></Link></div><div className="method-list">{[{title:"Look at the full picture",text:"Consider service information, platform functionality, costs, and limitations together."},{title:"Make the criteria clear",text:"Explain what is being assessed and distinguish verifiable information from opinion."},{title:"Put transparency first",text:"Be open about commercial relationships, uncertainties, and the limits of our coverage."}].map((step,i) => <div className="method-step" key={step.title}><span>0{i+1}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></div>)}</div></div></section>
-  <section className="section container trust-grid"><div><p className="eyebrow">OPEN BY DESIGN</p><h2>Transparency is<br/>part of the foundation.</h2><p className="muted">We may introduce affiliate partnerships in the future. If we do, we’ll make those relationships clear. This site currently contains no active affiliate links or broker recommendations.</p><Link href="/affiliate-disclosure" className="text-link">Read our affiliate disclosure <span><Arrow/></span></Link></div><aside className="risk-card"><span className="risk-icon" aria-hidden="true">!</span><div><h3>Keep risk in perspective.</h3><p>{site.disclaimer}</p><Link href="/risk-disclosure" className="text-link">Understand the risks <span><Arrow/></span></Link></div></aside></section>
-  <section className="container newsletter"><div><p className="eyebrow">A LITTLE MORE PERSPECTIVE</p><h2>Clarity, delivered thoughtfully.</h2><p>Future updates on our coverage and approach. No sign-ups just yet.</p></div><div className="newsletter-status"><span className="mail-icon" aria-hidden="true">✉</span><span>Our newsletter is on the horizon.</span><span className="badge">Coming soon</span></div></section>
-</>; }
+export default function Home() {
+  return (
+    <>
+      <section className="hero">
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow">
+              <span className="eyebrow-dot" />
+              FOR THE CURIOUS. FOR THE CONSIDERED.
+            </p>
+            <h1>
+              Your next move
+              <br />
+              starts with
+              <br />
+              <em>understanding.</em>
+            </h1>
+            <p className="hero-description">
+              Make sense of forex, one clear explanation at a time. Explore the
+              fundamentals, understand the risks, and approach trading services
+              with better questions.
+            </p>
+            <div className="hero-actions">
+              <Link className="button primary" href="/learn">
+                Build your knowledge <Icon name="arrow" size={17} />
+              </Link>
+              <a className="text-link" href="#explore">
+                Take a look around <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+            <div className="hero-footnote">
+              <Icon name="shield" size={16} />
+              <span>General education. No trading signals. No promises.</span>
+            </div>
+          </div>
+          <GlobeArt />
+        </div>
+      </section>
+      <div className="principles-strip">
+        <div className="container">
+          <span className="strip-label">A BETTER STARTING POINT</span>
+          <span>
+            <Icon name="book" size={19} />
+            Plain-language education
+          </span>
+          <span>
+            <Icon name="compass" size={19} />A thoughtful framework
+          </span>
+          <span>
+            <Icon name="shield" size={19} />
+            Risk always in view
+          </span>
+        </div>
+      </div>
+      <section className="section container" id="explore">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">01 / THE READING ROOM</p>
+            <h2>
+              A little knowledge.
+              <br />
+              <em>A wider perspective.</em>
+            </h2>
+          </div>
+          <div className="section-intro">
+            <p>
+              You don’t need more noise.
+              <br />
+              You need somewhere clear to start.
+            </p>
+            <Link href="/learn" className="text-link">
+              Explore the learning hub <Icon name="arrow" size={15} />
+            </Link>
+          </div>
+        </div>
+        <div className="reading-grid">
+          {reading.map((item) => (
+            <Link href={item.href} className="reading-card" key={item.number}>
+              <div className={`reading-art ${item.art}`} aria-hidden="true">
+                <span className="art-index">FIELD NOTES / {item.number}</span>
+                {item.art === "pairs" ? (
+                  <div className="currency-art">
+                    <span>€</span>
+                    <div className="currency-divider" />
+                    <span>$</span>
+                  </div>
+                ) : item.art === "risk" ? (
+                  <div className="risk-art">
+                    <div />
+                    <div />
+                    <div />
+                    <span>KNOW YOUR EXPOSURE</span>
+                  </div>
+                ) : (
+                  <div className="tools-art">
+                    <span />
+                    <span />
+                    <span />
+                    <i />
+                    <i />
+                  </div>
+                )}
+                <span className="art-corner">
+                  <Icon name="arrow" size={18} />
+                </span>
+              </div>
+              <div className="reading-content">
+                <span className="eyebrow">{item.category}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <span className="card-action">
+                  {item.label}
+                  <Icon name="arrow" size={15} />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+      <section className="perspective-section">
+        <div className="container perspective-grid">
+          <div className="perspective-heading">
+            <p className="eyebrow">02 / THE DEVIN PERSPECTIVE</p>
+            <h2>
+              Less hype.
+              <br />
+              More <em>substance.</em>
+            </h2>
+            <p>
+              Financial information should help you think clearly. That’s the
+              standard we’re building around.
+            </p>
+            <Link href="/editorial-standards" className="button light-button">
+              What we stand for <Icon name="arrow" size={16} />
+            </Link>
+          </div>
+          <div className="perspective-principles">
+            {[
+              {
+                icon: "book" as const,
+                title: "Clarity over complexity",
+                text: "Straightforward explanations that put unfamiliar terms into context.",
+              },
+              {
+                icon: "layers" as const,
+                title: "Context over shortcuts",
+                text: "Understand the mechanics and the trade-offs before considering a decision.",
+              },
+              {
+                icon: "shield" as const,
+                title: "Transparency, by default",
+                text: "Clear disclosures, visible limitations, and no invented track records.",
+              },
+            ].map((p, i) => (
+              <div className="perspective-principle" key={p.title}>
+                <span className="principle-number">0{i + 1}</span>
+                <Icon name={p.icon} size={25} />
+                <div>
+                  <h3>{p.title}</h3>
+                  <p>{p.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section container glossary-teaser">
+        <div className="glossary-teaser-copy">
+          <p className="eyebrow">03 / FIND THE WORDS</p>
+          <h2>
+            Forex has a language.
+            <br />
+            <em>Let’s make it yours.</em>
+          </h2>
+          <p>
+            Pips. Spreads. Margin. Start with clear definitions of the terms
+            you’ll encounter, without getting lost in the jargon.
+          </p>
+          <Link href="/glossary" className="button outline-button">
+            Open the glossary <Icon name="arrow" size={16} />
+          </Link>
+        </div>
+        <div className="term-stack">
+          <Link href="/glossary#leverage" className="term-preview">
+            <span className="term-letter">L</span>
+            <div>
+              <h3>Leverage</h3>
+              <p>Greater exposure. Greater potential for loss.</p>
+            </div>
+            <Icon name="arrow" size={18} />
+          </Link>
+          <Link href="/glossary#spread" className="term-preview">
+            <span className="term-letter">S</span>
+            <div>
+              <h3>Spread</h3>
+              <p>The gap between bid and ask prices.</p>
+            </div>
+            <Icon name="arrow" size={18} />
+          </Link>
+          <Link href="/glossary#pip" className="term-preview">
+            <span className="term-letter">P</span>
+            <div>
+              <h3>Pip</h3>
+              <p>A conventional unit of price movement.</p>
+            </div>
+            <Icon name="arrow" size={18} />
+          </Link>
+          <span className="handwritten-note">
+            Big ideas. Clear definitions.
+          </span>
+        </div>
+      </section>
+      <section className="coverage-section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">04 / ON THE HORIZON</p>
+              <h2>Our next chapter.</h2>
+            </div>
+            <p>
+              Thoughtful coverage takes a foundation.
+              <br />
+              Here’s what we’re preparing next.
+            </p>
+          </div>
+          <div className="category-grid">
+            {[
+              {
+                icon: "compass" as const,
+                title: "Broker Reviews",
+                text: "A framework for looking beyond a service’s headline claims.",
+              },
+              {
+                icon: "layers" as const,
+                title: "Broker Comparisons",
+                text: "A structured way to understand differences and trade-offs.",
+              },
+              {
+                icon: "globe" as const,
+                title: "Trading Platforms",
+                text: "A closer look at the tools behind the trading experience.",
+              },
+            ].map((c, i) => (
+              <article className="category-card" key={c.title}>
+                <div className="category-top">
+                  <Icon name={c.icon} />
+                  <span className="badge">Coming soon</span>
+                </div>
+                <h3>{c.title}</h3>
+                <p>{c.text}</p>
+                <span className="category-number">0{i + 1}</span>
+              </article>
+            ))}
+          </div>
+          <div className="coverage-bottom">
+            <span>No active broker recommendations or affiliate links.</span>
+            <Link href="/methodology" className="text-link">
+              Explore our evaluation framework <Icon name="arrow" size={15} />
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="section container home-faq">
+        <div>
+          <p className="eyebrow">A FEW GOOD QUESTIONS</p>
+          <h2>
+            Before you
+            <br />
+            <em>go further.</em>
+          </h2>
+          <Link href="/faq" className="text-link">
+            All frequently asked questions <Icon name="arrow" size={15} />
+          </Link>
+        </div>
+        <div className="faq-list">
+          {[
+            [
+              "Is Devin Forex a broker?",
+              "No. Devin Forex is an educational publication. We do not open trading accounts, hold client funds, execute trades, or provide trading signals.",
+            ],
+            [
+              "Is this personalised financial advice?",
+              "No. Our material is general information and does not account for your personal circumstances, objectives, or ability to bear losses.",
+            ],
+            [
+              "Can I compare or choose brokers here?",
+              "Broker reviews and comparisons are not published yet. You can explore our evaluation framework to understand the questions we plan to consider.",
+            ],
+          ].map(([q, a]) => (
+            <details key={q}>
+              <summary>
+                {q}
+                <Icon name="plus" size={18} />
+              </summary>
+              <p>{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+      <section className="container newsletter">
+        <div className="newsletter-mark" aria-hidden="true">
+          <Icon name="mail" size={32} />
+        </div>
+        <div>
+          <p className="eyebrow">GOOD READING. NO NOISE.</p>
+          <h2>
+            A clearer perspective,
+            <br />
+            <em>in your inbox.</em>
+          </h2>
+          <p>Our newsletter is taking shape. No sign-ups just yet.</p>
+        </div>
+        <span className="newsletter-status">
+          <span className="status-dot" />
+          Newsletter · Coming soon
+        </span>
+      </section>
+    </>
+  );
+}
