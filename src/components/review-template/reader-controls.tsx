@@ -1,10 +1,12 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ChevronDown, Globe2, Info, X } from "lucide-react";
 
 export function ReaderContents({ links }: { links: { id: string; label: string }[] }) {
   const [active, setActive] = useState("overview");
+  const [expanded, setExpanded] = useState(false);
+  const listId = useId();
   useEffect(() => {
     const header = document.querySelector("body > header");
     const updateHeader = () => document.documentElement.style.setProperty("--br-header-height", `${header?.getBoundingClientRect().height ?? 76}px`);
@@ -20,7 +22,8 @@ export function ReaderContents({ links }: { links: { id: string; label: string }
   }, [links]);
   return <nav className="br-contents" aria-label="Review sections">
     <p>On this page</p>
-    <ol>{links.map((link, i) => <li key={link.id}><a href={`#${link.id}`} aria-current={active === link.id ? "location" : undefined} onClick={() => setActive(link.id)}><span aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>{link.label}</a></li>)}</ol>
+    <button className="br-contents-toggle" type="button" aria-expanded={expanded} aria-controls={listId} onClick={() => setExpanded(value => !value)}>Contents<ChevronDown size={20} /></button>
+    <ol id={listId} className={expanded ? "is-expanded" : ""}>{links.map((link, i) => <li key={link.id}><a href={`#${link.id}`} aria-current={active === link.id ? "location" : undefined} onClick={() => { setActive(link.id); setExpanded(false); }}><span aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>{link.label}</a></li>)}</ol>
   </nav>;
 }
 

@@ -27,7 +27,7 @@ export default function Page() {
           {[[researchInventory.retail, "Retail brokers in research"], [withSources, "Brokers with source material"], [withFindings, "Brokers with checked findings"]].map(([value, label]) => <div key={label} className="rounded-2xl border bg-card p-6"><p className="font-display text-5xl">{value}</p><p className="mt-2 text-muted-foreground">{label}</p></div>)}
         </div>
         <div className="flex flex-wrap items-center justify-between gap-5 rounded-2xl border bg-primary p-7 text-primary-foreground">
-          <div className="max-w-2xl"><h2 className="text-2xl font-semibold">See the populated review template</h2><p className="mt-2 leading-relaxed opacity-85">FXPesa demonstrates the detailed format. Other profiles cover entities in the UK, Australia, Cyprus, Seychelles, Singapore, the UAE and more.</p></div>
+          <div className="max-w-2xl"><h2 className="text-2xl font-semibold">See the populated review template</h2><p className="mt-2 leading-relaxed opacity-85">Exness demonstrates the detailed format. Other profiles cover entities in the UK, Australia, Cyprus, Seychelles, Singapore, the UAE and more.</p></div>
           <Link href="/reviews/template" className="rounded-full bg-gold px-6 py-3 font-semibold text-primary-foreground">View populated template →</Link>
           <Link href="/reviews/template?blank=1" className="text-sm underline underline-offset-4">Preview review template</Link>
         </div>

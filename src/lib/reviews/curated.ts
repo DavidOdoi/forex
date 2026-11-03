@@ -148,13 +148,14 @@ export function curatedReview(name: string, slug: string): BrokerReview {
     set("forex-commission-per-lot", "Standard/Pro: no commission advertised. Zero: from US$0.05 per side per lot. Raw Spread: up to US$3.50 per side per lot. Confirm the exact instrument’s charge.", ["standard", "pro"]);
     set("deposit-and-account-charges", "The fee page states that opening an account and account management carry no charge. Funding-page footnotes warn that particular payment methods can carry deposit fees.", ["fees", "payments"]);
     set("withdrawal-fee", "The provider advertises withdrawal-fee coverage, but the fee-page footnote says third-party charges may apply depending on the method. Check the payment method in the Personal Area before transacting.", ["fees"]);
-    set("published-processing-times", "The payment page defines instant as automatic processing, not guaranteed arrival. Non-instant requests are described as processed within 24 hours; the receiving bank/provider may take longer.", ["payments"]);
+    set("published-processing-times", "The payment page lists deposit and withdrawal requests 24/7. Instant means automatic processing, not guaranteed arrival. Non-instant requests are described as processed within 24 hours; the receiving bank/provider may take longer.", ["payments"]);
     set("withdrawal-requirements", "Payments must use the customer’s own personal accounts; third-party deposits and withdrawals are not accepted. Contact support if the original funding method is unavailable.", ["payments"]);
     set("client-money-arrangements", "The Kenyan payment page states that client funds are segregated in multiple tier-one banks. This is the provider’s disclosure; bank arrangements were not independently audited here.", ["payments"]);
     set("published-onboarding-steps", "The funding page lists registration and verification, selection of an available payment method, then submission of a deposit request. Verification speed was not tested.", ["payments"]);
     set("retail-and-professional-accounts", "The local pages advertise Standard, Pro, Zero and Raw Spread. Product branding such as Pro does not by itself establish regulatory professional-client status.", ["standard", "pro"]);
     set("cfds-and-underlying-markets", "The account tables list forex, metals, energies, stocks and indices. The site’s risk disclosure identifies the offering as leveraged online forex/CFD trading.", ["standard", "local"]);
     set("leverage-by-product-and-region", "The Kenyan Standard, Pro, Zero and Raw Spread tables list maximum leverage of 1:400. Instrument and margin conditions still apply.", ["standard", "pro"]);
+    set("demo-account", "The Kenyan Standard and professional-account pages link a free demo. Demo funds are virtual; no demo platform was tested for this review.", ["standard", "pro"]);
     intro("fees", "Account choice changes both the advertised spread floor and the commission. The Kenyan tables are used here; international maximum leverage and deposit claims have not been carried across. Spreads may widen with market conditions.");
     intro("deposit-and-withdrawal", "Automatic approval and money arriving in a receiving account are different stages. The local payment documentation explicitly makes arrival time dependent on the selected method and requires the customer to use their own payment account.");
     intro("account-opening", "The country restriction is unusually explicit: the local entity serves Kenyan residents and Kenyan-incorporated companies. Some account-table minimum-deposit cells were empty in the retrieved page, so the missing amounts remain unconfirmed.");
@@ -163,6 +164,7 @@ export function curatedReview(name: string, slug: string): BrokerReview {
     faq(1, "The local website identifies Exness (KE) Limited. CMA lists Exness KE Limited under licence 162. The local offering is restricted to Kenyan residents and Kenyan-incorporated legal entities; confirm the name in your actual agreement.", ["local", "cma"]);
     faq(2, costs, ["standard", "pro"]);
     faq(4, "Use your own payment account. The provider says some requests are automatically approved, but arrival times, payment limits and any exceptions are shown by method in the Personal Area. We did not test a payment.", ["payments"]);
+    review.faqs[6] = { question: "Can I withdraw money from Exness on weekends?", answer: "The Kenyan payment page says deposits and withdrawals can be requested 24/7. “Instant” describes automatic processing, not guaranteed arrival. Non-instant requests are described as processed within 24 hours; banks and payment providers can take longer. Check the selected method in your Personal Area.", sourceIds: ["payments"] };
   }
 
   if (slug === "pepperstone") {

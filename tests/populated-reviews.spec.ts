@@ -3,6 +3,8 @@ import { getReview, researchEntries, directoryEntries, reviewCountries } from ".
 import { reviewedFields } from "../src/lib/reviews/curated";
 import { fieldValue } from "../src/lib/reviews/template";
 import { reviewDigest, wordCount } from "../src/lib/reviews/digest";
+import { reviewAccounts, reviewQuickFacts } from "../src/lib/reviews/flow";
+import { reviewStructuredData } from "../src/lib/reviews/seo";
 
 test("all retail records retain identity, country separation and evidence integrity", () => {
   expect(researchEntries).toHaveLength(298);
@@ -72,10 +74,10 @@ test("every broker and country page stays under 1800 total words, including coll
 test("review has useful internal and external links, country canonical metadata and truthful schema", async ({ page, request }) => {
   await page.goto("/reviews/etoro?country=Singapore");
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/reviews\/etoro\?country=Singapore$/);
-  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /eToro Review — Singapore/);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /eToro Review 2026:.*Singapore/);
   const schema = await page.locator('script[type="application/ld+json"]').textContent();
   const graph = JSON.parse(schema!)["@graph"];
-  expect(graph.map((item: { "@type": string }) => item["@type"])).toEqual(["BreadcrumbList"]);
+  expect(graph.map((item: { "@type": string }) => item["@type"])).toEqual(["BreadcrumbList", "FAQPage"]);
   expect(schema).not.toMatch(/AggregateRating|ratingValue/);
   const main = page.getByRole("main");
   for (const href of ["/reviews", "/tools", "/best-brokers", "/about#research-methodology"])
@@ -85,9 +87,9 @@ test("review has useful internal and external links, country canonical metadata 
   expect(await response.text()).toContain('id="research-methodology"');
 });
 
-test("default template shows the populated FXPesa review, citations and five account placements", async ({ page, request }) => {
-  await page.goto("/reviews/template");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("FXPesa review");
+test("populated FXPesa review retains citations, complete research and five account placements", async ({ page, request }) => {
+  await page.goto("/reviews/fxpesa?country=Kenya");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/FXPesa Review 2026/);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
   await expect(page.locator("#key-data")).toContainText("US$100");
   await expect(page.locator("#fees")).toContainText("US$3.50");
@@ -131,7 +133,7 @@ test("directory search, status filters and pagination expose research without pr
   await expect(page.getByRole("status")).toContainText("1 brokers");
   await expect(page.locator("article")).toContainText("Singapore");
   await page.getByRole("link", { name: "Open research draft" }).click();
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("eToro review");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/eToro Review 2026/);
   await page.goto("/reviews");
   await page.getByLabel("Research status").selectOption("pending");
   await expect(page.locator("article").first()).toContainText("Research pending");
@@ -172,4 +174,75 @@ test("reading navigation and commercial disclosure work with the keyboard", asyn
   await faq.locator("summary").focus();
   await page.keyboard.press("Enter");
   await expect(faq).toHaveAttribute("open", "");
+});
+
+test("Exness template follows the requested table-first flow without unsupported figures", async ({ page }) => {
+  await page.goto("/reviews/template");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026");
+  await expect(page.getByRole("complementary", { name: "Review verdict" })).toContainText("Not rated");
+  await expect(page.locator(".br-quick-grid > div")).toHaveCount(9);
+  await expect(page.locator(".br-quick-grid > div").first()).toContainText("Not verified");
+  await expect(page.locator(".br-account-table tbody tr")).toHaveCount(4);
+  await expect(page.locator(".br-account-table")).toContainText("From US$0.05 / lot / side");
+  await expect(page.locator("#safety")).toContainText("162");
+  await expect(page.locator("#safety")).not.toContainText("FCA");
+  await expect(page.locator("#deposit-and-withdrawal")).toContainText("24/7");
+  expect(await page.locator(".br-article .br-section[id]").evaluateAll(nodes => nodes.map(node => node.id))).toEqual(["overview", "account-opening", "fees", "deposit-and-withdrawal", "safety", "review-faq", "sources"]);
+  const faqSchema = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"].find((item: { "@type": string }) => item["@type"] === "FAQPage");
+  expect(faqSchema.mainEntity.some((item: { name: string }) => item.name.includes("weekends"))).toBe(true);
+  expect(faqSchema.mainEntity.some((item: { name: string }) => item.name.includes("market maker"))).toBe(false);
+  const smallText = await page.locator("main *").evaluateAll(nodes => nodes.filter(node => node.getClientRects().length && getComputedStyle(node).visibility === "visible" && [...node.childNodes].some(child => child.nodeType === Node.TEXT_NODE && child.textContent?.trim()) && parseFloat(getComputedStyle(node).fontSize) < 16).map(node => ({ text: node.textContent?.slice(0, 40), size: getComputedStyle(node).fontSize })));
+  expect(smallText).toEqual([]);
+});
+
+test("mobile contents drawer opens, navigates and closes", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/reviews/template");
+  const contents = page.getByRole("navigation", { name: "Review sections" });
+  const toggle = contents.getByRole("button", { name: "Contents" });
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await toggle.click();
+  await contents.getByRole("link", { name: "Account types", exact: true }).click();
+  await expect(page).toHaveURL(/#account-opening$/);
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator("#account-opening")).toBeInViewport();
+});
+
+test("account comparisons, quick facts and rating schema require matching evidence", () => {
+  const { review } = getReview("exness", "Kenya")!;
+  expect(reviewAccounts(review)).toHaveLength(4);
+  expect(reviewQuickFacts(review).find(f => f.label === "Minimum deposit")!.state).toBe("unknown");
+  expect(reviewAccounts(getReview("exness", "Seychelles")!.review)).toEqual([]);
+  expect(JSON.stringify(reviewStructuredData(review))).not.toContain("ratingValue");
+  review.status = "published";
+  review.author = { name: "Test Editor", role: "Reviewer" };
+  review.verifiedAt = "2026-11-03";
+  review.overallScore = { value: 4.8, outOf: 5, methodologyUrl: "https://example.com/methodology", sourceIds: ["standard"] };
+  const product = reviewStructuredData(review)["@graph"].find(item => (item as { "@type": string })["@type"] === "Product");
+  expect(product).toBeTruthy();
+  expect(JSON.stringify(product)).toContain('"ratingValue":4.8');
+  expect(JSON.stringify(product)).not.toContain("aggregateRating");
+  review.sources = [];
+  expect(reviewAccounts(review)).toEqual([]);
+  expect(reviewQuickFacts(review).every(f => f.state === "unknown")).toBe(true);
+  expect(JSON.stringify(reviewStructuredData(review))).not.toContain("ratingValue");
+});
+
+test("standalone HTML includes embedded styles and schema with working native navigation", async ({ page, request }) => {
+  const response = await request.get("/templates/exness-review.html");
+  expect(response.status()).toBe(200);
+  const html = await response.text();
+  expect(html).toContain("<style>");
+  expect(html).not.toContain("/_next/");
+  await page.goto("/templates/exness-review.html");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026");
+  await expect(page.locator('script:not([type="application/ld+json"])')).toHaveCount(0);
+  await expect(page.locator('link[rel="stylesheet"]')).toHaveCount(0);
+  await expect(page.locator(".br-account-table tbody tr")).toHaveCount(4);
+  await page.getByRole("navigation", { name: "Review sections" }).getByRole("link", { name: "Trading costs", exact: true }).click();
+  await expect(page).toHaveURL(/exness-review\.html#fees$/);
+  for (const width of [320, 390, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
 });

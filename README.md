@@ -74,7 +74,7 @@ Seven browser tests cover every exported route, metadata, image loading, navigat
 
 ## Populated broker research and reusable template
 
-`/reviews/template` opens the populated FXPesa Kenya example. `/reviews/template?blank=1` preserves the original empty layout, and `/reviews/template/data` still downloads the blank reusable JSON. The reference supplied by the user informs layout only; its prose, ratings, author identities and testing claims are not copied.
+`/reviews/template` opens the populated Exness Kenya example. `/reviews/template?blank=1` preserves the original empty layout, and `/reviews/template/data` still downloads the blank reusable JSON. The reference supplied by the user informs layout only; its prose, ratings, author identities and testing claims are not copied.
 
 `/reviews` is a searchable, paginated catalogue of **298 retail brokers** from the 325-entry directory. The other 27 institutional, interbank and introducing providers need different research formats. Source-only drafts show bounded quotations, retrieval dates, links and unresolved checks. Missing evidence is not converted into fees, scores, country eligibility or recommendations.
 
@@ -90,11 +90,11 @@ All individual research drafts and JSON downloads are **noindex** and excluded f
 
 The five account-opening placements remain present. No affiliate URL was supplied, so their account-opening controls stay inactive. Published records can enable a verified, country-matched HTTPS destination through `BrokerReview.accountOpening`. Affiliate anchors preserve partner parameters, use `rel="sponsored nofollow noopener noreferrer"` and disclose compensation. No click tracking is sent.
 
-The original blank-template interactions remain available at `?blank=1`. Populated pages use a shorter editorial layout: a summary and fact card, sticky contents, compact cost/entity/payment sections, short FAQs, linked sources and contextual internal links. Empty field tables and repeated findings are omitted. Five compact account placements remain, with disclosures and disabled-state explanations.
+The original blank-template interactions remain available at `?blank=1`. Populated pages use a table-first review flow: a three-sentence verdict directly below the H1, a nine-cell facts grid, pros/cons, account tiers, fees, withdrawals, safety, platforms, FAQs and linked sources. A left contents menu becomes a collapsible drawer on mobile. Main review text uses system fonts at a minimum of 16px, with a white background and black text; warning boxes use a light grey accent. Empty field tables and repeated findings are omitted. Five compact account placements remain, with disclosures and disabled-state explanations.
 
 `src/lib/reviews/digest.ts` selects whole evidence-backed findings within an editorial word budget. Country-specific short summaries retain charge exceptions, provider attribution and unresolved source conflicts. It never cuts a sentence to meet the cap. The full research record and JSON download remain unchanged. Invalid/unsupported facts stay withheld. The browser suite checks every current broker/country variant against the **1,800-word maximum**, counting hidden FAQ/dialog text and the shared navigation/footer too.
 
-`src/lib/reviews/seo.ts` supplies country-specific titles, descriptions, canonical URLs, social metadata and breadcrumb structured data. Country parameters are preserved. Unfinished reviews stay noindex, with internal-link following allowed; the template stays noindex/nofollow. No stars or fake review schema are emitted. Article schema requires a published record, a real author and a valid verification date. Useful links lead to the research method on `/about`, the broker directory, comparisons, calculators and primary external documents. These improvements do not guarantee a ranking.
+`src/lib/reviews/seo.ts` supplies country-specific titles, descriptions, canonical URLs, social metadata and breadcrumb structured data. Country parameters are preserved. Unfinished reviews stay noindex, with internal-link following allowed; the template stays noindex/nofollow. The five-star graphic is explicitly labelled Not rated until supported scoring data exists. No assumed 4.8 rating is assigned. FAQPage schema includes only sourced, visible answers; an unverified execution-model answer is excluded. Product/Review schema requires a published review, a supported score, real author and valid verification date; a single editorial score is never represented as an aggregate rating. Article schema also requires a published record, real author and valid verification date. Useful links lead to the research method on `/about`, the broker directory, comparisons, calculators and primary external documents. These improvements do not guarantee a ranking.
 
 ```sh
 npm run typecheck
@@ -107,3 +107,16 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test
 The browser suite covers the original site, blank format, populated example, citations, five account placements, country isolation, unsupported-country responses, JSON evidence records, all 298 identities, source/status filters, pagination and responsive layouts. These checks do not measure factual accuracy or guarantee a search-engine outcome.
 
 [tools/research/README.md](tools/research/README.md) documents optional future collection and offline catalogue export. The current website can render the saved material without running a scraper.
+
+
+## Standalone HTML review example
+
+`/templates/exness-review.html` is a single self-contained document with embedded CSS and JSON-LD, inline SVGs, responsive tables, native FAQ/contents controls and no framework runtime or external font/style dependencies. It is the sourced **Kenyan Exness example**, not a generic global Exness fee schedule. It remains noindex; unknown minimums and ratings are not invented. A download link appears in the matching Exness review.
+
+To regenerate it after reviewing changes, build and start the local production server, then run:
+
+```sh
+node tools/export-review-html.mjs 'http://127.0.0.1:3100/reviews/exness?country=Kenya' public/templates/exness-review.html
+```
+
+The exporter reads only the local rendered review. It removes the framework runtime, makes internal links absolute, fixes the exported country selection, and converts controls to native HTML. It does not fetch broker websites. The complete structured research JSON remains available separately.
