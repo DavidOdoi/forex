@@ -5,14 +5,9 @@ import { ChevronDown, Search, UserCircle } from "lucide-react";
 
 const menu = [
   {
-    label: "Best brokers",
+    label: "Compare brokers",
     to: "/best-brokers",
-    items: [
-      "Best overall",
-      "For beginners",
-      "Lowest spreads",
-      "M-Pesa brokers",
-    ],
+    items: ["Overview", "For beginners", "Account costs", "M-Pesa brokers"],
   },
   {
     label: "Broker reviews",
@@ -32,7 +27,7 @@ const menu = [
   {
     label: "About us",
     to: "/about",
-    items: ["Our story", "How we test", "Contact"],
+    items: ["Our story", "How we research", "Contact"],
   },
 ] as const;
 
@@ -116,8 +111,8 @@ export function SiteFooter() {
       <p className="mx-auto mt-4 max-w-3xl">
         Risk warning: CFDs and forex are complex instruments with a high risk of
         losing money rapidly due to leverage. Only trade with money you can
-        afford to lose. This site contains affiliate links; we may receive
-        compensation when you open an account.
+        afford to lose. Future affiliate relationships will be disclosed. There
+        are currently no active referral links.
       </p>
       <p className="mt-4">© 2026 Devin Forex</p>
     </footer>

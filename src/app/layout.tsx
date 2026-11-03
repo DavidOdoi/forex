@@ -10,8 +10,9 @@ import "@fontsource/instrument-serif/latin-400-italic.css";
 import "./globals.css";
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
-  title: "Devin Forex — Trade with the best brokers",
-  description: "Compare top forex brokers and start trading smarter.",
+  title: "Devin Forex — Broker Research and Comparisons",
+  description:
+    "Explore forex broker research, account terms and trading risks. Research is in preparation.",
   openGraph: { type: "website" },
   twitter: { card: "summary_large_image" },
   icons: { icon: "/favicon.ico" },

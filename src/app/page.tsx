@@ -2,27 +2,27 @@ import type { Metadata } from "next";
 import { canonical } from "@/lib/site";
 export const metadata: Metadata = {
   ...{
-    title: { absolute: "Devin Forex — Compare the World's Best Forex Brokers" },
+    title: { absolute: "Devin Forex — Broker Research and Comparisons" },
     description:
-      "Hand-picked, regulated forex brokers with tight spreads and fast execution. Open your account in minutes.",
+      "Explore the questions behind broker regulation, account costs and trading services. Research is in preparation.",
     openGraph: {
-      title: "Devin Forex — Compare the Best Forex Brokers",
+      title: "Devin Forex — Broker Research and Comparisons",
       description:
-        "Hand-picked, regulated forex brokers with tight spreads and fast execution.",
+        "Broker research and comparisons in preparation. No hands-on testing or ratings are currently published.",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: "Devin Forex — Compare the Best Forex Brokers",
+      title: "Devin Forex — Broker Research and Comparisons",
       description:
-        "Hand-picked, regulated forex brokers with tight spreads and fast execution.",
+        "Broker research and comparisons in preparation. No hands-on testing or ratings are currently published.",
     },
   },
   alternates: canonical("/"),
 };
 import Image from "next/image";
 import hero from "@/assets/hero-fx-light.jpg";
-import { brokers } from "@/lib/brokers";
+import { brokers, brokerResearchNotice } from "@/lib/brokers";
 import { BrokerCard } from "@/components/broker-card";
 
 const pairs = [
@@ -50,15 +50,16 @@ export default function Index() {
         <div className="absolute inset-0 -z-10 rounded-[2rem] bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="max-w-3xl py-20">
           <p className="mb-6 inline-block rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary">
-            Trusted broker guide · 2026
+            Broker research · In preparation
           </p>
           <h1 className="font-display text-6xl leading-[0.95] md:text-8xl">
             Trade the world&apos;s <em className="text-gold">largest market</em>{" "}
             with the right partner.
           </h1>
           <p className="mt-8 max-w-xl text-lg text-muted-foreground">
-            We test regulated forex brokers on spreads, speed and payouts — so
-            you can open an account with confidence in minutes.
+            We are preparing source-based broker profiles covering regulation,
+            costs, platforms and withdrawals. We have not carried out hands-on
+            testing or published broker ratings.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
@@ -93,14 +94,12 @@ export default function Index() {
 
       <section id="brokers" className="mx-auto max-w-7xl px-6 py-28">
         <h2 className="font-display text-5xl md:text-6xl">
-          Top-rated <em className="text-gold">brokers</em>
+          Broker <em className="text-gold">research</em>
         </h2>
-        <p className="mt-4 text-muted-foreground">
-          Regulated, fast, and loved by traders worldwide.
-        </p>
+        <p className="mt-4 text-muted-foreground">{brokerResearchNotice}</p>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {brokers.map((b, i) => (
-            <BrokerCard key={b.slug} b={b} rank={i + 1} />
+          {brokers.map((b) => (
+            <BrokerCard key={b.slug} b={b} />
           ))}
         </div>
       </section>
@@ -114,7 +113,7 @@ export default function Index() {
             [
               "01",
               "Choose a broker",
-              "Pick from our vetted list based on your goals and budget.",
+              "Research the legal entity, account terms and restrictions relevant to your country.",
             ],
             [
               "02",

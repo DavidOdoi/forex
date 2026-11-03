@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { canonical } from "@/lib/site";
 export const metadata: Metadata = {
   ...{
-    title: { absolute: "About Devin Forex — Our Story & Testing Method" },
+    title: { absolute: "About Devin Forex — Our Purpose & Research Approach" },
     description:
-      "Who we are, how we test brokers and how Devin Forex is funded.",
+      "Our purpose, planned source-based research and approach to commercial disclosures.",
     openGraph: {
       title: "About Devin Forex",
-      description: "Who we are and how we test forex brokers.",
+      description: "Our purpose and planned source-based research approach.",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: "About Devin Forex",
-      description: "Who we are and how we test forex brokers.",
+      description: "Our purpose and planned source-based research approach.",
     },
   },
   alternates: canonical("/about"),
@@ -27,21 +27,21 @@ export default function Page() {
         eyebrow="About us"
         title="Helping traders choose"
         accent="wisely"
-        text="Devin Forex was built to cut through the noise and point traders to brokers they can genuinely trust."
+        text="Devin Forex is being developed to help readers understand forex brokers and the questions to ask before choosing a service."
       />
       <section className="mx-auto grid max-w-7xl gap-6 px-6 pb-16 md:grid-cols-3">
         {[
           [
             "Our story",
-            "We started Devin Forex after seeing too many new traders lose money to unregulated brokers.",
+            "Our aim is to explain broker services, costs and risks using clearly identified sources and transparent limitations.",
           ],
           [
-            "How we test",
-            "We check regulation, open live accounts, measure spreads and test real withdrawals.",
+            "How we research",
+            "We plan to check official broker documents and regulator registers. We have not opened live accounts or tested deposits, execution or withdrawals.",
           ],
           [
             "How we earn",
-            "Brokers may pay us a referral commission. It never costs you anything extra.",
+            "Any future affiliate relationships will be clearly disclosed. There are currently no active referral links.",
           ],
         ].map(([t, d]) => (
           <div key={t} className="rounded-2xl glass p-8">

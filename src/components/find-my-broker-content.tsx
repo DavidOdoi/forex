@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { PageHero } from "@/components/site-header";
 import { BrokerCard } from "@/components/broker-card";
-import { brokers } from "@/lib/brokers";
+import { brokers, brokerResearchNotice } from "@/lib/brokers";
 
 const questions = [
   { key: "beginner", q: "Are you new to trading?" },
@@ -15,9 +15,9 @@ export default function Page() {
   const done = answers.length === questions.length;
   const ranked = [...brokers].sort((a, b) => score(b) - score(a));
   function score(b: (typeof brokers)[number]) {
-    return (
-      questions.reduce((s, q, i) => s + (answers[i] && b[q.key] ? 1 : 0), 0) +
-      b.rating / 10
+    return questions.reduce(
+      (s, q, i) => s + (answers[i] && b[q.key] ? 1 : 0),
+      0,
     );
   }
 
@@ -26,8 +26,8 @@ export default function Page() {
       <PageHero
         eyebrow="30-second quiz"
         title="Find your"
-        accent="perfect broker"
-        text="Answer three quick questions and we'll match you with the best fit."
+        accent="research starting point"
+        text="Preview how preference matching could work once broker profiles are verified. This demonstration uses unverified export data and is not a recommendation."
       />
       <section className="mx-auto max-w-3xl px-6 pb-28">
         {!done ? (
@@ -56,9 +56,12 @@ export default function Page() {
         ) : (
           <div>
             <h2 className="mb-6 text-center font-display text-4xl">
-              Your best match
+              Illustrative match
             </h2>
-            {ranked[0] && <BrokerCard b={ranked[0]} rank={1} />}
+            <p className="mb-6 text-sm text-muted-foreground">
+              {brokerResearchNotice}
+            </p>
+            {ranked[0] && <BrokerCard b={ranked[0]} />}
             <button
               onClick={() => setAnswers([])}
               className="mx-auto mt-6 block text-sm text-muted-foreground underline"

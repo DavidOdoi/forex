@@ -21,6 +21,11 @@ test("all seven exported pages render with their metadata and assets", async ({
     expect(response?.status()).toBe(200);
     await expect(page.getByRole("main")).toHaveCount(1);
     await expect(page.locator("h1")).toHaveCount(1);
+    if (route === "/reviews") {
+      await expect(page.getByRole("main")).toContainText("We have not carried out hands-on testing or published broker ratings");
+      await expect(page.locator("article").getByText("Not rated", { exact: true })).toHaveCount(4);
+      await expect(page.getByRole("main")).not.toContainText("We open real accounts, deposit real money and test withdrawals");
+    }
     await expect(page).toHaveTitle(/Devin Forex/);
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
       "content",
@@ -67,19 +72,26 @@ test("desktop navigation, dropdowns, comparison table and original broker cards"
     name: "Main navigation",
     exact: true,
   });
-  await nav.getByRole("link", { name: "Best brokers", exact: true }).hover();
+  await nav.getByRole("link", { name: "Compare brokers", exact: true }).hover();
   await expect(
-    nav.getByRole("link", { name: "Best overall", exact: true }),
+    nav.getByRole("link", { name: "Overview", exact: true }),
   ).toBeVisible();
-  await nav.getByRole("link", { name: "Best overall", exact: true }).click();
+  await nav.getByRole("link", { name: "Overview", exact: true }).click();
   await expect(page).toHaveURL(/\/best-brokers$/);
   await expect(page.locator("table tbody tr")).toHaveCount(4);
+  await expect(
+    page.locator("table tbody").getByText("Not rated", { exact: true }),
+  ).toHaveCount(4);
+  await expect(page.getByRole("main")).toContainText("unverified examples");
   for (const name of names)
     await expect(
       page.getByRole("heading", { name, exact: true }),
     ).toBeVisible();
   const outbound = page.locator('article a[target="_blank"]');
   await expect(outbound).toHaveCount(4);
+  await expect(
+    page.locator("article").getByText("Not rated", { exact: true }),
+  ).toHaveCount(4);
   for (const link of await outbound.all()) {
     await expect(link).toHaveAttribute("href", "#");
     await expect(link).toHaveAttribute("rel", /sponsored/);
@@ -130,32 +142,26 @@ test("the three calculators retain the export’s formulas and results", async (
   page,
 }) => {
   await page.goto("/tools");
-  const pip = page
-    .locator("section > div")
-    .filter({
-      has: page.getByRole("heading", { name: "Pip calculator", exact: true }),
-    });
+  const pip = page.locator("section > div").filter({
+    has: page.getByRole("heading", { name: "Pip calculator", exact: true }),
+  });
   await expect(pip).toContainText("$10.00");
   await pip.getByLabel("Lot size", { exact: true }).fill("2.5");
   await expect(pip).toContainText("$25.00");
-  const size = page
-    .locator("section > div")
-    .filter({
-      has: page.getByRole("heading", { name: "Position size", exact: true }),
-    });
+  const size = page.locator("section > div").filter({
+    has: page.getByRole("heading", { name: "Position size", exact: true }),
+  });
   await expect(size).toContainText("0.10");
   await size.getByLabel("Account balance ($)", { exact: true }).fill("2000");
   await expect(size).toContainText("0.20");
   await size.getByLabel("Stop loss (pips)", { exact: true }).fill("0");
   await expect(size).toContainText("0.00");
-  const profit = page
-    .locator("section > div")
-    .filter({
-      has: page.getByRole("heading", {
-        name: "Profit calculator",
-        exact: true,
-      }),
-    });
+  const profit = page.locator("section > div").filter({
+    has: page.getByRole("heading", {
+      name: "Profit calculator",
+      exact: true,
+    }),
+  });
   await expect(profit).toContainText("$150.00");
   await profit.getByLabel("Pips gained / lost", { exact: true }).fill("-30");
   await expect(profit).toContainText("$-150.00");
@@ -178,7 +184,7 @@ test("broker finder completes the original three questions and restarts", async 
   ).toBeVisible();
   await page.getByRole("button", { name: "Yes", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Your best match", exact: true }),
+    page.getByRole("heading", { name: "Illustrative match", exact: true }),
   ).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Exness", exact: true }),
@@ -192,6 +198,7 @@ test("broker finder completes the original three questions and restarts", async 
 test("homepage anchors, FAQs and reduced-motion ticker", async ({ page }) => {
   await page.goto("/");
   await page
+    .getByRole("main")
     .getByRole("link", { name: "Compare brokers", exact: true })
     .click();
   await expect(page).toHaveURL(/#brokers$/);
