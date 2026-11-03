@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { getReview, researchEntries, directoryEntries, reviewCountries } from "../src/lib/reviews/catalog";
 import { reviewedFields } from "../src/lib/reviews/curated";
 import { fieldValue } from "../src/lib/reviews/template";
+import { reviewDigest, wordCount } from "../src/lib/reviews/digest";
 
 test("all retail records retain identity, country separation and evidence integrity", () => {
   expect(researchEntries).toHaveLength(298);
@@ -24,6 +25,64 @@ test("all retail records retain identity, country separation and evidence integr
       }
     }
   }
+});
+
+test("short summaries keep critical charge exceptions and respect the evidence guard", () => {
+  const { review } = getReview("fxpesa", "Kenya")!;
+  const digest = reviewDigest(review);
+  const costs = digest.sections.find(s => s.id === "fees")!.fields[0].value!;
+  expect(costs).toContain("US$3.50 per lot, per side");
+  expect(costs).toContain("Product-specific terms apply");
+  const payments = digest.sections.find(s => s.id === "deposit-and-withdrawal")!.fields.map(f => f.value).join(" ");
+  expect(payments).toContain("US$30");
+  expect(payments).toContain("up to 15 working days");
+  expect(reviewDigest(getReview("pepperstone", "Kenya")!.review).sections.flatMap(s => s.fields).map(f => f.value).join(" ")).toContain("US$25/£15");
+  review.sources = [];
+  expect(reviewDigest(review).sections.every(s => s.fields.length === 0)).toBe(true);
+  expect(reviewDigest(review).minimum).toBeUndefined();
+  expect(reviewDigest(review).lead).not.toContain("KES and USD");
+});
+
+test("every broker and country page stays under 1800 total words, including collapsed text", async ({ request }) => {
+  test.setTimeout(120_000);
+  const paths = researchEntries.flatMap(e => {
+    const countries = reviewCountries(e.slug);
+    return countries.length ? countries.map(country => `/reviews/${e.slug}?country=${encodeURIComponent(country)}`) : [`/reviews/${e.slug}`];
+  });
+  paths.push("/reviews/template");
+  const counts: { path: string; words: number }[] = [];
+  for (let i = 0; i < paths.length; i += 6) {
+    await Promise.all(paths.slice(i, i + 6).map(async path => {
+      const response = await request.get(path);
+      expect(response.status(), path).toBe(200);
+      const html = await response.text();
+      // Count all server-rendered body copy, including closed FAQs, navigation,
+      // the disclosure dialog and footer. Hydration scripts are not article text.
+      const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)![1];
+      const text = body.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ");
+      const words = wordCount(text);
+      expect(words, path).toBeLessThanOrEqual(1800);
+      counts.push({ path, words });
+    }));
+  }
+  const max = counts.sort((a, b) => b.words - a.words)[0];
+  console.log(`Word cap: ${paths.length} pages checked; longest ${max.words} words (${max.path}).`);
+});
+
+test("review has useful internal and external links, country canonical metadata and truthful schema", async ({ page, request }) => {
+  await page.goto("/reviews/etoro?country=Singapore");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/reviews\/etoro\?country=Singapore$/);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /eToro Review — Singapore/);
+  const schema = await page.locator('script[type="application/ld+json"]').textContent();
+  const graph = JSON.parse(schema!)["@graph"];
+  expect(graph.map((item: { "@type": string }) => item["@type"])).toEqual(["BreadcrumbList"]);
+  expect(schema).not.toMatch(/AggregateRating|ratingValue/);
+  const main = page.getByRole("main");
+  for (const href of ["/reviews", "/tools", "/best-brokers", "/about#research-methodology"])
+    await expect(main.locator(`a[href="${href}"]:visible`).first()).toBeVisible();
+  await expect(main.locator('a[href="https://www.etoro.com/customer-service/regulation-license/"]').first()).toBeVisible();
+  const response = await request.get("/about");
+  expect(await response.text()).toContain('id="research-methodology"');
 });
 
 test("default template shows the populated FXPesa review, citations and five account placements", async ({ page, request }) => {
@@ -86,8 +145,31 @@ test("populated reviews and directory fit mobile and desktop without browser err
     for (const path of ["/reviews", "/reviews/template", "/reviews/etoro?country=United%20Kingdom", "/reviews/aaafx"]) {
       await page.goto(path);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${path} at ${width}px`).toBe(true);
-      if (path === "/reviews/template") await page.screenshot({ path: `test-results/populated-review-${width}.png` });
+      if (path === "/reviews/template") {
+        await page.evaluate(() => document.fonts.ready);
+        await page.screenshot({ path: `test-results/populated-review-${width}.png` });
+        await page.locator("#fees").scrollIntoViewIfNeeded();
+        await page.screenshot({ path: `test-results/populated-review-fees-${width}.png` });
+      }
     }
   }
   expect(errors).toEqual([]);
+});
+
+test("reading navigation and commercial disclosure work with the keyboard", async ({ page }) => {
+  await page.goto("/reviews/template");
+  const disclosure = page.getByRole("button", { name: "Advertiser disclosure", exact: true });
+  await disclosure.click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await expect(page.getByRole("dialog")).toContainText("No affiliate link");
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("dialog")).not.toBeVisible();
+  await expect(disclosure).toBeFocused();
+  await page.getByRole("navigation", { name: "Review sections" }).getByRole("link", { name: "Trading costs", exact: true }).click();
+  await expect(page).toHaveURL(/#fees$/);
+  await expect(page.locator("#fees")).toBeInViewport();
+  const faq = page.locator("#review-faq details").first();
+  await faq.locator("summary").focus();
+  await page.keyboard.press("Enter");
+  await expect(faq).toHaveAttribute("open", "");
 });

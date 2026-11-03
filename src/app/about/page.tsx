@@ -37,14 +37,14 @@ export default function Page() {
           ],
           [
             "How we research",
-            "We plan to check official broker documents and regulator registers. We have not opened live accounts or tested deposits, execution or withdrawals.",
+            "We read primary broker documents and identify the relevant country and legal entity. Provider claims are attributed; regulator checks are labelled separately. Sources and check dates stay attached to findings. Drafts require editorial checks before publication. We have not tested live accounts or withdrawals, and we do not assign unsupported ratings.",
           ],
           [
             "How we earn",
             "Any future affiliate relationships will be clearly disclosed. There are currently no active referral links.",
           ],
         ].map(([t, d]) => (
-          <div key={t} className="rounded-2xl glass p-8">
+          <div key={t} id={t === "How we research" ? "research-methodology" : undefined} className="scroll-mt-32 rounded-2xl glass p-8">
             <h2 className="font-display text-3xl text-gold">{t}</h2>
             <p className="mt-3 text-muted-foreground">{d}</p>
           </div>

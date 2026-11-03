@@ -90,7 +90,11 @@ All individual research drafts and JSON downloads are **noindex** and excluded f
 
 The five account-opening placements remain present. No affiliate URL was supplied, so their account-opening controls stay inactive. Published records can enable a verified, country-matched HTTPS destination through `BrokerReview.accountOpening`. Affiliate anchors preserve partner parameters, use `rel="sponsored nofollow noopener noreferrer"` and disclose compensation. No click tracking is sent.
 
-The original blank-template interactions remain available, while populated country profiles use an actual entity selector. Empty research chapters start collapsed in drafts. Sources and short unverified research excerpts appear separately, so a global source is not treated as a selected country's account schedule.
+The original blank-template interactions remain available at `?blank=1`. Populated pages use a shorter editorial layout: a summary and fact card, sticky contents, compact cost/entity/payment sections, short FAQs, linked sources and contextual internal links. Empty field tables and repeated findings are omitted. Five compact account placements remain, with disclosures and disabled-state explanations.
+
+`src/lib/reviews/digest.ts` selects whole evidence-backed findings within an editorial word budget. Country-specific short summaries retain charge exceptions, provider attribution and unresolved source conflicts. It never cuts a sentence to meet the cap. The full research record and JSON download remain unchanged. Invalid/unsupported facts stay withheld. The browser suite checks every current broker/country variant against the **1,800-word maximum**, counting hidden FAQ/dialog text and the shared navigation/footer too.
+
+`src/lib/reviews/seo.ts` supplies country-specific titles, descriptions, canonical URLs, social metadata and breadcrumb structured data. Country parameters are preserved. Unfinished reviews stay noindex, with internal-link following allowed; the template stays noindex/nofollow. No stars or fake review schema are emitted. Article schema requires a published record, a real author and a valid verification date. Useful links lead to the research method on `/about`, the broker directory, comparisons, calculators and primary external documents. These improvements do not guarantee a ranking.
 
 ```sh
 npm run typecheck

@@ -51,6 +51,7 @@ import { Fragment } from "react";
 import { Finding } from "./finding";
 import { CollectedResearch } from "./research-notes";
 import "./review-template.css";
+import { EditorialReviewPage } from "./editorial-review";
 
 function EvidenceList({
   title,
@@ -280,6 +281,10 @@ function Sidebar({ review }: { review: BrokerReview }) {
   );
 }
 export function BrokerReviewPage({ review, research, countries = [] }: { review: BrokerReview; research?: ResearchEntry; countries?: string[] }) {
+  if (review.status !== "template") return <EditorialReviewPage review={review} research={research} countries={countries} />;
+  return <LegacyReviewPage review={review} research={research} countries={countries} />;
+}
+function LegacyReviewPage({ review, research, countries = [] }: { review: BrokerReview; research?: ResearchEntry; countries?: string[] }) {
   const score = scoreValue(review.overallScore, review);
   const sources = review.sources.filter(isValidSource);
   const isTemplate = review.status === "template";
