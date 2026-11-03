@@ -101,3 +101,9 @@ Every review renders exactly **five** account-opening placements: the review hea
 Partner URLs, including referral parameters, are preserved as supplied. Active affiliate anchors open in a new tab with `rel="sponsored nofollow noopener noreferrer"` and disclose potential compensation. The advertiser-disclosure dialog reflects whether an affiliate destination is active. The `data-account-cta` placement attribute provides integration points for future analytics; no analytics or click tracking is currently sent.
 
 Recent visual refinements add restrained gold account cards, a dark green variation after Safety, clearer section headers, summary tiles, striped data tables, and softer sidebar depth. The review’s information structure and existing evidence fields remain in place.
+
+## Python broker-directory research pipeline
+
+[tools/research/README.md](tools/research/README.md) documents the importer, CSV audit, BeautifulSoup/PDF collector, research queues, and source snapshots. It reads the supplied directory's actual columns and reuses the TypeScript review factory. Country hints and scraped claims stay unverified; nothing is automatically published.
+
+Research output goes to ignored `research-output/`. The current input contains 325 entries, including 298 retail FX/CFD candidates; institutional, interbank and introducing providers are retained separately. The initial collection is blocked by environment network policy. The detailed research README lists the pilot domains and the precise action needed to continue.

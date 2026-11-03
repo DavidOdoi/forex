@@ -6,3 +6,6 @@ out/
 *.tsbuildinfo
 playwright-report/
 test-results/
+research-output/
+.venv-research/
+__pycache__/
