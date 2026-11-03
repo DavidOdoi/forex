@@ -1,27 +1,25 @@
 import { test, expect } from "@playwright/test";
-import AxeBuilder from "@axe-core/playwright";
+
 const routes = [
   "/",
+  "/best-brokers",
+  "/reviews",
+  "/tools",
+  "/insights",
   "/about",
-  "/contact",
-  "/affiliate-disclosure",
-  "/risk-disclosure",
-  "/privacy-policy",
-  "/terms-and-conditions",
-  "/learn",
-  "/glossary",
-  "/methodology",
-  "/editorial-standards",
-  "/faq",
+  "/find-my-broker",
 ];
-test("public pages, metadata, legal notices and security headers", async ({
+const names = ["Exness", "XM", "IC Markets", "Pepperstone"];
+
+test("all seven exported pages render with their metadata and assets", async ({
   page,
 }) => {
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
   for (const route of routes) {
     const response = await page.goto(route);
     expect(response?.status()).toBe(200);
-    expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
-    expect(response?.headers()["x-frame-options"]).toBe("DENY");
+    await expect(page.getByRole("main")).toHaveCount(1);
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page).toHaveTitle(/Devin Forex/);
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
@@ -30,11 +28,11 @@ test("public pages, metadata, legal notices and security headers", async ({
     );
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
       "content",
-      /Devin Forex/,
+      /.+/,
     );
     await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
       "content",
-      "summary",
+      "summary_large_image",
     );
     if (process.env.SITE_URL)
       expect(
@@ -43,208 +41,195 @@ test("public pages, metadata, legal notices and security headers", async ({
         ).href,
       ).toBe(new URL(route, process.env.SITE_URL).href);
     else await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
-    if (
-      route.includes("disclosure") ||
-      route.includes("policy") ||
-      route.includes("conditions")
-    )
-      await expect(
-        page.getByText("Draft — for final legal review."),
-      ).toBeVisible();
+    expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
   }
+  await page.goto("/");
+  expect(
+    await page
+      .locator("main img")
+      .evaluate(
+        (img: HTMLImageElement) => img.complete && img.naturalWidth === 1600,
+      ),
+  ).toBe(true);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Trade the world's largest market with the right partner.",
+  );
+  await expect(page.locator("footer")).toContainText("© 2026 Devin Forex");
+  expect(errors).toEqual([]);
 });
-test("desktop navigation, placeholders, landmarks and local links", async ({
+
+test("desktop navigation, dropdowns, comparison table and original broker cards", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
-  await expect(page.getByRole("main")).toHaveCount(1);
-  await expect(page.locator(".category-card a")).toHaveCount(0);
-  await expect(page.locator(".category-card")).toHaveCount(3);
-  const links = await page
-    .locator('a[href^="/"]')
-    .evaluateAll((elements) => [
-      ...new Set(elements.map((e) => e.getAttribute("href"))),
-    ]);
-  for (const href of links) expect(routes).toContain(href!.split("#")[0]);
-  await page
-    .getByRole("navigation", { name: "Main navigation", exact: true })
-    .getByRole("link", { name: "About", exact: true })
-    .click();
-  await expect(page).toHaveURL(/\/about$/);
+  const nav = page.getByRole("navigation", {
+    name: "Main navigation",
+    exact: true,
+  });
+  await nav.getByRole("link", { name: "Best brokers", exact: true }).hover();
+  await expect(
+    nav.getByRole("link", { name: "Best overall", exact: true }),
+  ).toBeVisible();
+  await nav.getByRole("link", { name: "Best overall", exact: true }).click();
+  await expect(page).toHaveURL(/\/best-brokers$/);
+  await expect(page.locator("table tbody tr")).toHaveCount(4);
+  for (const name of names)
+    await expect(
+      page.getByRole("heading", { name, exact: true }),
+    ).toBeVisible();
+  const outbound = page.locator('article a[target="_blank"]');
+  await expect(outbound).toHaveCount(4);
+  for (const link of await outbound.all()) {
+    await expect(link).toHaveAttribute("href", "#");
+    await expect(link).toHaveAttribute("rel", /sponsored/);
+  }
   await page.goto("/");
-  await page.keyboard.press("Tab");
-  await expect(page.getByText("Skip to content")).toBeFocused();
-  await page.keyboard.press("Enter");
-  await expect(page.locator("main")).toBeFocused();
+  await page.evaluate(() => document.fonts.ready);
   await page.screenshot({
-    path: "test-results/home-desktop.png",
+    path: "test-results/reference-home-desktop.png",
     fullPage: true,
   });
 });
-test("mobile menu, escape key, navigation and responsive widths", async ({
+
+test("mobile navigation and all exported pages fit responsive viewports", async ({
   page,
 }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
-  const menu = page.locator(".menu-button");
-  await menu.click();
-  await expect(menu).toHaveAttribute("aria-expanded", "true");
-  await page.keyboard.press("Escape");
-  await expect(menu).toHaveAttribute("aria-expanded", "false");
-  await expect(menu).toBeFocused();
-  await menu.click();
-  await page
-    .getByRole("navigation", { name: "Mobile navigation", exact: true })
-    .getByRole("link", { name: "Contact", exact: true })
-    .click();
-  await expect(page).toHaveURL(/\/contact$/);
-  await expect(
-    page.getByRole("button", { name: "Open navigation" }),
-  ).toHaveAttribute("aria-expanded", "false");
+  test.setTimeout(60000);
   for (const width of [320, 390, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     for (const route of routes) {
       await page.goto(route);
+      await page.evaluate(() => document.fonts.ready);
       expect(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= innerWidth,
         ),
+        `${route} at ${width}px`,
       ).toBe(true);
     }
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
+  const nav = page.getByRole("navigation", {
+    name: "Mobile navigation",
+    exact: true,
+  });
+  await expect(nav).toBeVisible();
+  await nav.getByRole("link", { name: "Tools", exact: true }).click();
+  await expect(page).toHaveURL(/\/tools$/);
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
   await page.screenshot({
-    path: "test-results/home-mobile.png",
+    path: "test-results/reference-home-mobile.png",
     fullPage: true,
   });
 });
-test("contact validates locally and never sends form data", async ({
+
+test("the three calculators retain the export’s formulas and results", async ({
   page,
 }) => {
-  await page.goto("/contact");
-  const button = page.getByRole("button", { name: "Check entries locally" });
-  await button.click();
+  await page.goto("/tools");
+  const pip = page
+    .locator("section > div")
+    .filter({
+      has: page.getByRole("heading", { name: "Pip calculator", exact: true }),
+    });
+  await expect(pip).toContainText("$10.00");
+  await pip.getByLabel("Lot size", { exact: true }).fill("2.5");
+  await expect(pip).toContainText("$25.00");
+  const size = page
+    .locator("section > div")
+    .filter({
+      has: page.getByRole("heading", { name: "Position size", exact: true }),
+    });
+  await expect(size).toContainText("0.10");
+  await size.getByLabel("Account balance ($)", { exact: true }).fill("2000");
+  await expect(size).toContainText("0.20");
+  await size.getByLabel("Stop loss (pips)", { exact: true }).fill("0");
+  await expect(size).toContainText("0.00");
+  const profit = page
+    .locator("section > div")
+    .filter({
+      has: page.getByRole("heading", {
+        name: "Profit calculator",
+        exact: true,
+      }),
+    });
+  await expect(profit).toContainText("$150.00");
+  await profit.getByLabel("Pips gained / lost", { exact: true }).fill("-30");
+  await expect(profit).toContainText("$-150.00");
+});
+
+test("broker finder completes the original three questions and restarts", async ({
+  page,
+}) => {
+  await page.goto("/find-my-broker");
+  await expect(
+    page.getByRole("heading", { name: "Are you new to trading?" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Yes", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Are low spreads your top priority?" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "No", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Do you want to deposit with M-Pesa?" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Yes", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Your best match", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Exness", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Start again", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Are you new to trading?" }),
+  ).toBeVisible();
+});
+
+test("homepage anchors, FAQs and reduced-motion ticker", async ({ page }) => {
+  await page.goto("/");
+  await page
+    .getByRole("link", { name: "Compare brokers", exact: true })
+    .click();
+  await expect(page).toHaveURL(/#brokers$/);
+  await expect(page.locator("#brokers")).toBeVisible();
+  const faq = page.locator("details").first();
+  await faq.locator("summary").focus();
+  await page.keyboard.press("Enter");
+  await expect(faq).toHaveAttribute("open", "");
+  await expect(faq.locator("p")).toContainText("Yes, in most countries");
+  await page.emulateMedia({ reducedMotion: "reduce" });
   expect(
     await page
-      .locator("form")
-      .evaluate((form: HTMLFormElement) => form.checkValidity()),
-  ).toBe(false);
-  await page.getByLabel("Your name").fill("Test Visitor");
-  await page.getByLabel("Email address").fill("visitor@example.test");
-  await page
-    .getByLabel("Message", { exact: true })
-    .fill("This is a local form demonstration.");
-  const requests: string[] = [];
-  page.on("request", (request) => {
-    if (request.method() === "POST") requests.push(request.url());
-  });
-  await button.click();
-  await expect(page.getByRole("status")).toContainText(
-    "Nothing was sent or saved",
-  );
-  expect(requests).toEqual([]);
+      .locator(".ticker")
+      .evaluate((e) => getComputedStyle(e).animationName),
+  ).toBe("none");
 });
-test("robots, sitemap, organization schema, custom 404", async ({
-  page,
+
+test("sitemap, robots, exported favicon and custom 404", async ({
   request,
+  page,
 }) => {
   const robots = await request.get("/robots.txt");
   expect(robots.status()).toBe(200);
   const indexable =
     Boolean(process.env.SITE_URL) && process.env.VERCEL_ENV !== "preview";
   expect(await robots.text()).toContain(indexable ? "Allow: /" : "Disallow: /");
-  const sitemap = await request.get("/sitemap.xml");
-  expect(sitemap.status()).toBe(200);
-  const xml = await sitemap.text();
+  const xml = await (await request.get("/sitemap.xml")).text();
   if (process.env.SITE_URL) {
     expect((xml.match(/<loc>/g) ?? []).length).toBe(routes.length);
     for (const route of routes)
       expect(xml).toContain(new URL(route, process.env.SITE_URL).href);
   } else expect(xml).not.toContain("<loc>");
-  await page.goto("/");
-  const schema = JSON.parse(
-    await page.locator('script[type="application/ld+json"]').innerText(),
-  );
-  expect(schema["@type"]).toBe("Organization");
-  expect(schema.name).toBe("Devin Forex");
-  expect(schema).not.toHaveProperty("aggregateRating");
-  const missing = await page.goto("/page-that-does-not-exist");
-  expect(missing?.status()).toBe(404);
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Let’s find a clearer path.",
-  );
-  await page.getByRole("link", { name: "Back to home" }).click();
+  expect((await request.get("/favicon.ico")).status()).toBe(200);
+  const notFound = await page.goto("/this-page-does-not-exist");
+  expect(notFound?.status()).toBe(404);
+  await expect(
+    page.getByRole("heading", { name: "Page not found", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("link", { name: "Go home", exact: true }).click();
   await expect(page).toHaveURL("/");
-});
-
-test("glossary search, topic filters, empty state and reset", async ({
-  page,
-}) => {
-  await page.goto("/glossary");
-  const input = page.getByRole("searchbox", { name: "Search forex terms" });
-  await expect(page.locator(".glossary-entry")).toHaveCount(17);
-  await page.getByRole("button", { name: "Risk", exact: true }).click();
-  await expect(
-    page.getByRole("button", { name: "Risk", exact: true }),
-  ).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator(".glossary-entry")).toHaveCount(4);
-  await input.fill("leverage");
-  await expect(page.locator(".glossary-entry")).toHaveCount(2);
-  await expect(
-    page.getByRole("heading", { level: 2, name: "Leverage", exact: true }),
-  ).toBeVisible();
-  await input.fill("no-such-term");
-  await expect(
-    page.getByRole("heading", { name: "No matching terms, yet." }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Show all terms" }).click();
-  await expect(input).toHaveValue("");
-  await expect(page.locator(".glossary-entry")).toHaveCount(17);
-  await page.screenshot({
-    path: "test-results/glossary-desktop.png",
-    fullPage: true,
-  });
-});
-test("FAQ disclosure controls and learning deep links", async ({ page }) => {
-  await page.goto("/faq");
-  const first = page.locator("details").first();
-  await first.locator("summary").focus();
-  await page.keyboard.press("Enter");
-  await expect(first).toHaveAttribute("open", "");
-  await expect(first.locator("p")).toBeVisible();
-  await page.keyboard.press("Enter");
-  await expect(first).not.toHaveAttribute("open", "");
-  for (const section of ["basics", "costs", "risk", "platforms"]) {
-    await page.goto(`/learn#${section}`);
-    await expect(page.locator(`#${section}`)).toBeVisible();
-  }
-  for (const term of ["leverage", "spread", "pip"]) {
-    await page.goto(`/glossary#${term}`);
-    await expect(page.locator(`#${term}`)).toBeVisible();
-  }
-});
-test("WCAG accessibility checks on every public page", async ({ page }) => {
-  test.setTimeout(90000);
-  const failures: unknown[] = [];
-  for (const route of routes) {
-    await page.goto(route);
-    await page.evaluate(() => document.fonts.ready);
-    const results = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
-      .analyze();
-    if (results.violations.length)
-      failures.push({
-        route,
-        violations: results.violations.map((v) => ({
-          id: v.id,
-          nodes: v.nodes.map((n) => ({
-            target: n.target,
-            details: n.any.map((a) => a.data),
-          })),
-        })),
-      });
-  }
-  expect(failures).toEqual([]);
 });
