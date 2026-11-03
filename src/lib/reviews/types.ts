@@ -54,11 +54,21 @@ export interface ReviewChapter {
   limitations: ReviewPoint[];
   panels: ReviewPanel[];
 }
+export interface AccountOpeningLink {
+  url: string | null;
+  status: "not-configured" | "needs-verification" | "verified";
+  sourceIds: string[];
+  legalEntity: string | null;
+  jurisdiction: string | null;
+  checkedAt: string | null;
+  isAffiliate: boolean;
+}
 export interface BrokerReview {
   schemaVersion: 1;
   status: "template" | "draft" | "published";
   broker: { name: string; slug: string; website: string | null };
   jurisdiction: string | null;
+  accountOpening: AccountOpeningLink;
   author: { name: string; role: string } | null;
   factChecker: { name: string; role: string } | null;
   verifiedAt: string | null;

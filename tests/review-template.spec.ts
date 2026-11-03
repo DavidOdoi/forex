@@ -1,8 +1,12 @@
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { AccountOpeningCta } from "../src/components/review-template/account-cta";
 import { test, expect } from "@playwright/test";
 import {
   createReviewTemplate,
   fieldValue,
   scoreValue,
+  accountOpeningHref,
 } from "../src/lib/reviews/template";
 
 test("review template is linked, clearly labelled and excluded from indexing", async ({
@@ -22,8 +26,18 @@ test("review template is linked, clearly labelled and excluded from indexing", a
   await expect(page.getByRole("main")).toContainText("Layout preview");
   await expect(page.getByRole("main")).toContainText("No sources added yet");
   await expect(
-    page.getByRole("button", { name: "Broker link pending" }),
-  ).toBeDisabled();
+    page.getByRole("button", {
+      name: "Open an account with Example Broker",
+      exact: true,
+    }),
+  ).toHaveCount(5);
+  for (const button of await page
+    .getByRole("button", {
+      name: "Open an account with Example Broker",
+      exact: true,
+    })
+    .all())
+    await expect(button).toBeDisabled();
   expect(await page.locator('script[type="application/ld+json"]').count()).toBe(
     0,
   );
@@ -122,6 +136,22 @@ test("review template fits desktop, tablet and mobile layouts", async ({
       ),
       `${width}px overflow`,
     ).toBe(true);
+    await expect(page.locator("[data-account-cta]")).toHaveCount(5);
+    for (const cta of await page.locator("[data-account-cta]").all())
+      await expect(cta).toBeVisible();
+    expect(
+      await page
+        .locator("[data-account-cta]")
+        .evaluateAll((nodes) =>
+          nodes.map((node) => node.getAttribute("data-account-cta")),
+        ),
+    ).toEqual([
+      "hero",
+      "overview",
+      "after-safety",
+      "after-account-opening",
+      "verdict",
+    ]);
     const sidebar = page.getByRole("complementary", {
       name: "Broker research summary",
     });
@@ -152,6 +182,8 @@ test("JSON download is a blank, complete and reusable broker record", async ({
   expect(record.status).toBe("template");
   expect(record.chapters).toHaveLength(7);
   expect(record.overallScore).toBeNull();
+  expect(record.accountOpening.url).toBeNull();
+  expect(record.accountOpening.status).toBe("not-configured");
   expect(record.author).toBeNull();
   expect(record.factChecker).toBeNull();
   expect(record.sources).toEqual([]);
@@ -205,4 +237,83 @@ test("unsupported values and scores are withheld until supporting evidence is pr
   expect(scoreValue(score, review)).toBeNull();
   review.sources[0].url = "javascript:alert(1)";
   expect(fieldValue(field, review)).toBe("Needs verification");
+});
+
+test("account-opening links require a published review and matching verified destination records", () => {
+  const review = createReviewTemplate();
+  expect(accountOpeningHref(review)).toBeNull();
+  review.accountOpening.url = "https://broker.example/open?partner=devin";
+  review.accountOpening.status = "verified";
+  review.accountOpening.sourceIds = ["account-terms"];
+  review.accountOpening.legalEntity = "Broker legal entity";
+  review.accountOpening.jurisdiction = "Kenya";
+  review.accountOpening.checkedAt = "2026-11-03";
+  review.sources.push({
+    id: "account-terms",
+    title: "Official account terms",
+    url: "https://broker.example/terms",
+    publisher: "Broker legal entity",
+    checkedAt: "2026-11-03",
+    legalEntity: "Broker legal entity",
+    jurisdiction: "Kenya",
+  });
+  expect(accountOpeningHref(review)).toBeNull();
+  review.status = "published";
+  expect(accountOpeningHref(review)).toBeNull();
+  review.jurisdiction = "Kenya";
+  expect(accountOpeningHref(review)).toBe(
+    "https://broker.example/open?partner=devin",
+  );
+  review.accountOpening.url = "javascript:alert(1)";
+  expect(accountOpeningHref(review)).toBeNull();
+  review.accountOpening.url = "https://user:password@broker.example/open";
+  expect(accountOpeningHref(review)).toBeNull();
+  review.accountOpening.url = "https://broker.example/open";
+  review.accountOpening.jurisdiction = "United Kingdom";
+  expect(accountOpeningHref(review)).toBeNull();
+  review.accountOpening.jurisdiction = "Kenya";
+  review.accountOpening.status = "needs-verification";
+  expect(accountOpeningHref(review)).toBeNull();
+});
+
+test("configured account CTA preserves the partner URL and discloses the commercial relationship", async ({
+  page,
+}) => {
+  const review = createReviewTemplate("Sample Broker", "sample-broker");
+  review.status = "published";
+  review.jurisdiction = "Kenya";
+  review.accountOpening = {
+    url: "https://broker.example/open?partner=devin&campaign=review",
+    status: "verified",
+    sourceIds: ["terms"],
+    legalEntity: "Sample legal entity",
+    jurisdiction: "Kenya",
+    checkedAt: "2026-11-03",
+    isAffiliate: true,
+  };
+  review.sources.push({
+    id: "terms",
+    title: "Account terms",
+    url: "https://broker.example/terms",
+    publisher: "Sample legal entity",
+    legalEntity: "Sample legal entity",
+    jurisdiction: "Kenya",
+    checkedAt: "2026-11-03",
+  });
+  await page.setContent(
+    renderToStaticMarkup(
+      createElement(AccountOpeningCta, { review, placement: "overview" }),
+    ),
+  );
+  const link = page.getByRole("link", {
+    name: "Open an account with Sample Broker",
+    exact: true,
+  });
+  await expect(link).toHaveAttribute("href", review.accountOpening.url!);
+  await expect(link).toHaveAttribute("target", "_blank");
+  await expect(link).toHaveAttribute("rel", /sponsored/);
+  await expect(link).toHaveAttribute("rel", /noopener/);
+  await expect(
+    page.getByText(/Devin Forex may receive compensation/),
+  ).toBeVisible();
 });

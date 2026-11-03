@@ -63,7 +63,11 @@ export function ReviewNavigation() {
     </nav>
   );
 }
-export function DisclosureButton() {
+export function DisclosureButton({
+  hasAffiliateLink = false,
+}: {
+  hasAffiliateLink?: boolean;
+}) {
   const ref = useRef<HTMLDialogElement>(null);
   return (
     <>
@@ -94,8 +98,9 @@ export function DisclosureButton() {
           </button>
         </div>
         <p>
-          This is a review-format preview. No affiliate link or paid placement
-          is active in this template.
+          {hasAffiliateLink
+            ? "Account-opening links in this review may earn Devin Forex a commission. Commercial relationships do not establish a broker’s quality or suitability."
+            : "This is a review-format preview. No affiliate link or paid placement is active in this template."}
         </p>
         <p>
           Any future commercial relationship will be disclosed alongside the

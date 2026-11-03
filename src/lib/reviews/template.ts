@@ -203,6 +203,15 @@ export function createReviewTemplate(
     status: "template",
     broker: { name, slug, website: null },
     jurisdiction: null,
+    accountOpening: {
+      url: null,
+      status: "not-configured",
+      sourceIds: [],
+      legalEntity: null,
+      jurisdiction: null,
+      checkedAt: null,
+      isAffiliate: true,
+    },
     author: null,
     factChecker: null,
     verifiedAt: null,
@@ -319,4 +328,36 @@ export function scoreValue(
     return null;
   }
   return `${score.value.toFixed(1)}/5`;
+}
+
+export function accountOpeningHref(review: BrokerReview): string | null {
+  const link = review.accountOpening;
+  if (
+    review.status !== "published" ||
+    link.status !== "verified" ||
+    !review.jurisdiction ||
+    review.jurisdiction !== link.jurisdiction ||
+    !link.url
+  )
+    return null;
+  try {
+    const url = new URL(link.url);
+    if (url.protocol !== "https:" || url.username || url.password) return null;
+  } catch {
+    return null;
+  }
+  const display = fieldValue(
+    {
+      id: "account-opening-link",
+      label: "Account opening link",
+      value: link.url,
+      status: "verified",
+      sourceIds: link.sourceIds,
+      legalEntity: link.legalEntity,
+      jurisdiction: link.jurisdiction,
+      checkedAt: link.checkedAt,
+    },
+    review,
+  );
+  return display === link.url ? link.url : null;
 }

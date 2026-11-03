@@ -36,6 +36,7 @@ import {
   scoreValue,
   verifiedSources,
   validDate,
+  accountOpeningHref,
 } from "@/lib/reviews/template";
 import {
   ComparisonPreview,
@@ -44,6 +45,8 @@ import {
   KeyData,
   ReviewNavigation,
 } from "./interactions";
+import { AccountOpeningCta } from "./account-cta";
+import { Fragment } from "react";
 import "./review-template.css";
 
 function EvidenceList({
@@ -235,14 +238,14 @@ function Sidebar({ review }: { review: BrokerReview }) {
               </dd>
             </div>
           </dl>
-          <button className="review-button" type="button" disabled>
-            Broker link pending
-            <ExternalLink size={16} />
-          </button>
-          <p className="review-small-print">
-            A verified destination and appropriate disclosure are needed before
-            a broker link is activated.
-          </p>
+          <div className="review-sidebar-account-note">
+            <CircleHelp size={16} />
+            <p>
+              {accountOpeningHref(review)
+                ? "Account options are available through the links in this review."
+                : "Account links are inactive in this preview. Check account availability and terms before applying."}
+            </p>
+          </div>
           <a className="review-inline-link" href="#methodology">
             How we research
             <ArrowUpRight size={14} />
@@ -304,7 +307,12 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
               <span>/</span>
               <span>Template</span>
             </nav>
-            <DisclosureButton />
+            <DisclosureButton
+              hasAffiliateLink={
+                Boolean(accountOpeningHref(review)) &&
+                review.accountOpening.isAffiliate
+              }
+            />
           </div>
           <div className="review-hero-grid">
             <div>
@@ -359,6 +367,7 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
                   </div>
                 </div>
               </div>
+              <AccountOpeningCta review={review} placement="hero" />
             </div>
             <CountryScope />
           </div>
@@ -438,6 +447,7 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
               The essential details, at a glance.
             </h3>
             <KeyData review={review} />
+            <AccountOpeningCta review={review} placement="overview" />
             <div className="review-feedback-preview">
               <BadgeInfo size={22} />
               <div>
@@ -453,12 +463,18 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
           </section>
           <ComparisonPreview />
           {review.chapters.map((chapter, i) => (
-            <Chapter
-              key={chapter.id}
-              chapter={chapter}
-              review={review}
-              index={i}
-            />
+            <Fragment key={chapter.id}>
+              <Chapter chapter={chapter} review={review} index={i} />
+              {chapter.id === "safety" && (
+                <AccountOpeningCta review={review} placement="after-safety" />
+              )}
+              {chapter.id === "account-opening" && (
+                <AccountOpeningCta
+                  review={review}
+                  placement="after-account-opening"
+                />
+              )}
+            </Fragment>
           ))}
           <section className="review-verdict">
             <span className="review-overline">
@@ -473,6 +489,7 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
               review.
             </p>
           </section>
+          <AccountOpeningCta review={review} placement="verdict" />
           <section id="review-faq" className="review-faq">
             <div className="review-overline">THE QUESTIONS THAT MATTER</div>
             <h2>Frequently asked questions</h2>
