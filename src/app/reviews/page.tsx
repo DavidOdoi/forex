@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { canonical } from "@/lib/site";
 export const metadata: Metadata = {
   ...{
@@ -34,6 +35,20 @@ export default function Page() {
         text="We are preparing broker profiles using official publications and regulator registers. We have not carried out hands-on testing or published broker ratings."
       />
       <section className="mx-auto max-w-7xl space-y-6 px-6 pb-28">
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border bg-card p-6">
+          <div>
+            <h2 className="text-xl font-semibold">Our review format</h2>
+            <p className="mt-2 text-muted-foreground">
+              Explore the structure before researched profiles are published.
+            </p>
+          </div>
+          <Link
+            href="/reviews/template"
+            className="rounded-full bg-gold px-6 py-3 font-semibold text-primary-foreground"
+          >
+            Preview review template →
+          </Link>
+        </div>
         <p className="text-muted-foreground">{brokerResearchNotice}</p>
         {brokers.map((b) => (
           <article

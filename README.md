@@ -71,3 +71,23 @@ Seven browser tests cover every exported route, metadata, image loading, navigat
 - `src/lib/site.ts`: public origin, indexability, and route list.
 - `src/assets/hero-fx-light.jpg`, `public/favicon.ico`: supplied visual assets.
 - `tests/foundation.spec.ts`, `playwright.config.ts`: production browser checks.
+
+## Reusable broker review template
+
+Open `/reviews/template` from the **Preview review template** link on `/reviews`. This is a clearly labelled layout preview inspired by the supplied BrokerChooser HTML: a reviewer header, market selector, sticky chapter navigation, summary/pros-and-cons area, key-data and benchmark-fee tabs, a broker sidebar, comparison controls, seven detailed review chapters, FAQ, methodology, and source records. It uses locally hosted IBM Plex Sans within the review page; the existing website design stays in place.
+
+The uploaded reference is used for section structure and layout. Its article text, author identities, photographs, ratings, testing assertions, awards, testimonials, statistics, and broker-specific financial claims are not reused.
+
+- `src/lib/reviews/types.ts` defines `BrokerReview`, chapters, factual fields, score metadata, and source records.
+- `src/lib/reviews/template.ts` exports `createReviewTemplate(name, slug)` and a blank example record. Each invocation produces an independent record for one broker.
+- `src/components/review-template/review-page.tsx` renders that record with `BrokerReviewPage`. Interactive navigation, disclosure, tabs, country selection and comparison controls live in `interactions.tsx`.
+- `/reviews/template/data` downloads `broker-review-template.json`, including all seven chapters and their empty factual fields. The download includes no scores, authors, sources or verified findings.
+- The preview is excluded from the sitemap and sends `noindex, nofollow` metadata. The JSON response also sends `X-Robots-Tag: noindex, nofollow`. When production crawling is enabled, robots allows crawlers to read the preview’s noindex directive.
+
+A factual field has a value, evidence status, source IDs, legal entity, jurisdiction, and check date. A value displays as a finding only when marked verified with matching, dated source metadata. Otherwise it displays **Not researched** or **Needs verification**. Scores require a bounded numerical value, HTTPS methodology URL, and supporting source records. Source URLs must use HTTPS and include publisher, title, entity, jurisdiction and a valid check date.
+
+These guards check the structure and internal consistency of supplied research records. They do **not** fetch, authenticate, independently verify, or judge the truth of a source. They are not a complete publication-approval system. No scraper, CSV importer, scoring algorithm, author credential verification, or live broker-review publishing workflow is connected yet. The market selector demonstrates regional scope; it does not establish availability or populate the blank JSON download.
+
+All preview values remain empty. The broker CTA is disabled. Research notes, author/fact-checker slots, dates, ratings, screenshots, strengths, limitations, FAQ answers, and sources must be completed through a separate verified research process. The template adds no Review or AggregateRating structured data. Once the research workflow is defined, real records can be rendered using the same component without duplicating page code.
+
+`tests/review-template.spec.ts` covers discovery, noindex/sitemap exclusion, all sections, keyboard tabs, market-scope wording, disclosure dialog/focus, chapter collapsing, anchor navigation, comparison selection, FAQs, desktop/mobile layout, JSON download, record isolation, and evidence guards. Screenshots are saved as `test-results/review-template-1440-top.png` and `test-results/review-template-390-top.png`, with full-page versions alongside them.
