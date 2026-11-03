@@ -15,6 +15,10 @@ import json
 import re
 import subprocess
 import time
+import os
+import tempfile
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import Counter
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -97,7 +101,10 @@ def countries(value: str) -> list[str]:
 
 def write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    with tempfile.NamedTemporaryFile("w", dir=path.parent, encoding="utf-8", delete=False) as handle:
+        temporary = Path(handle.name)
+        handle.write(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
+    os.replace(temporary, path)
 
 
 def read_directory(path: Path) -> list[dict[str, str]]:
@@ -208,17 +215,40 @@ class FetchResult:
     note: str | None = None
 
 
+class HostThrottle:
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.host_locks = {}
+        self.last = {}
+        self.delays = {}
+
+    def wait(self, host, delay):
+        with self.lock:
+            host_lock = self.host_locks.setdefault(host, threading.Lock())
+        with host_lock:
+            interval = max(delay, self.delays.get(host, 1.0))
+            pause = interval - (time.monotonic() - self.last.get(host, 0))
+            if pause > 0:
+                time.sleep(pause)
+            self.last[host] = time.monotonic()
+
+    def set_delay(self, host, delay):
+        with self.lock:
+            self.delays[host] = max(delay, self.delays.get(host, 1.0))
+
+
 class Fetcher:
-    def __init__(self, out: Path, allowed_hosts: set[str], delay: float = 1.0, timeout: float = 20.0, cache_hours: float = 24.0, session: requests.Session | None = None):
+    def __init__(self, out: Path, allowed_hosts: set[str], delay: float = 1.0, timeout: float = 20.0, cache_hours: float = 24.0, session: requests.Session | None = None, throttle: HostThrottle | None = None):
         self.out = out
-        self.allowed_hosts = allowed_hosts
+        self.allowed_hosts = set(allowed_hosts)
+        self.allowed_hosts.update(host[4:] if host.startswith("www.") else "www." + host for host in allowed_hosts)
         self.delay = max(1.0, delay)
         self.timeout = timeout
         self.cache_hours = cache_hours
         self.session = session or requests.Session()
         # Keep inherited HTTPS proxy, injected credentials and CA configuration.
         self.session.headers.update({"User-Agent": USER_AGENT, "Accept": "text/html,application/pdf,text/plain;q=0.9"})
-        self.last_request: dict[str, float] = {}
+        self.throttle = throttle or HostThrottle()
         self.robots: dict[str, tuple[robotparser.RobotFileParser | None, str, float]] = {}
         self.current_run: dict[str, FetchResult] = {}
 
@@ -231,10 +261,7 @@ class Fetcher:
             host = urlparse(normalized).hostname
             if host not in self.allowed_hosts:
                 return FetchResult(first, normalized, "unlisted-redirect-host", now(), note="Add this destination only after confirming its identity and network permission"), b""
-            pause = self.delay - (time.monotonic() - self.last_request.get(host, 0))
-            if pause > 0:
-                time.sleep(pause)
-            self.last_request[host] = time.monotonic()
+            self.throttle.wait(host, self.delay)
             try:
                 with self.session.get(normalized, timeout=self.timeout, allow_redirects=False, stream=True) as response:
                     code = response.status_code
@@ -302,7 +329,7 @@ class Fetcher:
             return False, status
         if delay > 30:
             return False, "crawl-delay-exceeds-budget"
-        self.delay = max(self.delay, delay)
+        self.throttle.set_delay(p.hostname, delay)
         if parser and not parser.can_fetch(BOT_NAME, url):
             return False, "robots-disallowed"
         return True, status
@@ -345,8 +372,11 @@ class Fetcher:
                 ext = ".pdf" if result.content_type == "application/pdf" else ".html" if "html" in result.content_type else ".txt"
                 snapshot = self.out / "snapshots" / (digest + ext)
                 snapshot.parent.mkdir(parents=True, exist_ok=True)
-                if not snapshot.exists():
-                    snapshot.write_bytes(body)
+                if not snapshot.exists() or hashlib.sha256(snapshot.read_bytes()).hexdigest() != digest:
+                    with tempfile.NamedTemporaryFile("wb", dir=snapshot.parent, delete=False) as handle:
+                        temporary = Path(handle.name)
+                        handle.write(body)
+                    os.replace(temporary, snapshot)
                 result.content_sha256 = digest
                 result.snapshot_path = str(snapshot.relative_to(self.out))
                 write_json(cache_file, asdict(result))
@@ -420,7 +450,7 @@ def extract_document(body: bytes, content_type: str, source_url: str, broker_nam
     return {"status": status, "title": title[:250], "text": text, "broker_name_mentioned": bool(re.search(r"\b" + re.escape(broker_name) + r"\b", text, re.I)), "candidates": candidates, "links": sorted(unique_links.values(), key=lambda x: (-x["priority"], x["url"]))}
 
 
-def collect(records: list[dict[str, Any]], out: Path, names: list[str] | None, limit: int, max_pages: int) -> dict[str, Any]:
+def collect(records: list[dict[str, Any]], out: Path, names: list[str] | None, limit: int, max_pages: int, workers: int = 1) -> dict[str, Any]:
     selected = [r for r in records if r["provider_queue"] == "retail-research"]
     if names:
         requested = {name.casefold() for name in names}
@@ -430,10 +460,12 @@ def collect(records: list[dict[str, Any]], out: Path, names: list[str] | None, l
             raise ValueError("Unknown or non-retail selection: " + ", ".join(sorted(missing)))
     selected = selected[:limit]
     hosts = {urlparse(url).hostname for r in selected for url in [r["website_candidate"], *r["primary_source_candidates"]] if url}
-    fetcher = Fetcher(out, hosts)
+    throttle = HostThrottle()
     summary: dict[str, Any] = {"started_at": now(), "selected_brokers": [r["name"] for r in selected], "required_source_domains": sorted(hosts), "fetch_statuses": Counter(), "pages_collected": 0, "usable_source_documents": 0, "analysis_statuses": Counter(), "unverified_snippet_candidates": 0, "verified_fields": 0, "reviews_published": 0, "brokers": []}
     write_json(out / "required-domains.json", sorted(hosts))
-    for record in selected:
+    def collect_one(record):
+        fetcher = Fetcher(out, hosts, throttle=throttle)
+        stats = {"fetch_statuses": Counter(), "analysis_statuses": Counter(), "pages_collected": 0, "usable_source_documents": 0, "unverified_snippet_candidates": 0}
         queue = list(dict.fromkeys(u for u in [record["website_candidate"], *record["primary_source_candidates"]] if u))
         folder = out / "brokers" / record["id"]
         pages, seen = [], set()
@@ -444,24 +476,37 @@ def collect(records: list[dict[str, Any]], out: Path, names: list[str] | None, l
             seen.add(url)
             result, body = fetcher.fetch(url)
             page = {"fetch": asdict(result), "analysis": None}
-            summary["fetch_statuses"][result.status] += 1
+            stats["fetch_statuses"][result.status] += 1
             if result.status == "ok":
                 analysis = extract_document(body, result.content_type or "", result.final_url or url, record["name"])
                 page["analysis"] = {k: v for k, v in analysis.items() if k != "text"}
                 extracted = folder / "extracted" / f"{result.content_sha256}.txt"
                 extracted.parent.mkdir(parents=True, exist_ok=True)
                 extracted.write_text(analysis["text"], encoding="utf-8")
-                summary["pages_collected"] += 1
-                summary["analysis_statuses"][analysis["status"]] += 1
+                stats["pages_collected"] += 1
+                stats["analysis_statuses"][analysis["status"]] += 1
                 if analysis["status"] == "extracted":
-                    summary["usable_source_documents"] += 1
-                summary["unverified_snippet_candidates"] += len(analysis["candidates"])
-                if urlparse(result.final_url or url).hostname == urlparse(record["website_candidate"] or "").hostname:
+                    stats["usable_source_documents"] += 1
+                stats["unverified_snippet_candidates"] += len(analysis["candidates"])
+                if (urlparse(result.final_url or url).hostname or "").removeprefix("www.") == (urlparse(record["website_candidate"] or "").hostname or "").removeprefix("www."):
                     queue.extend(item["url"] for item in analysis["links"] if item["url"] not in seen)
             pages.append(page)
         dossier = {"broker_id": record["id"], "collected_at": now(), "review_status": "draft-not-verified", "scope": {"basis": "listed-jurisdiction-candidates", "country_candidates": record["jurisdiction_candidates"], "headquarters": None, "verified_contracting_entities": [], "verified_client_markets": []}, "flags": record["flags"], "pages": pages, "publication_blockers": ["Human source verification and entity/country mapping are outstanding", "No independently verified factual fields have been approved"]}
         write_json(folder / "evidence-candidates.json", dossier)
-        summary["brokers"].append({"id": record["id"], "country_candidates": record["jurisdiction_candidates"], "fetch_statuses": [p["fetch"]["status"] for p in pages]})
+        stats["broker"] = {"id": record["id"], "country_candidates": record["jurisdiction_candidates"], "fetch_statuses": [p["fetch"]["status"] for p in pages]}
+        return stats
+
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = {executor.submit(collect_one, record): record for record in selected}
+        for future in as_completed(futures):
+            stats = future.result()
+            for key in ["pages_collected", "usable_source_documents", "unverified_snippet_candidates"]:
+                summary[key] += stats[key]
+            summary["fetch_statuses"].update(stats["fetch_statuses"])
+            summary["analysis_statuses"].update(stats["analysis_statuses"])
+            summary["brokers"].append(stats["broker"])
+            write_json(out / "collection-summary.json", summary)
+            print(json.dumps({"broker": stats["broker"]["id"], "completed": len(summary["brokers"]), "selected": len(selected), "usable_documents": stats["usable_source_documents"], "statuses": dict(stats["fetch_statuses"])}), flush=True)
     summary["completed_at"] = now()
     summary["fetch_statuses"] = dict(summary["fetch_statuses"])
     summary["analysis_statuses"] = dict(summary["analysis_statuses"])
@@ -476,6 +521,7 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=ROOT / "research-output")
     parser.add_argument("--brokers", nargs="+", help="Exact CSV broker names for a research pilot")
     parser.add_argument("--limit", type=int, default=5, help="Collection limit; audit and prepare always retain the full directory")
+    parser.add_argument("--workers", type=int, default=1, choices=range(1,5), help="Concurrent broker tasks; per-host spacing remains shared")
     parser.add_argument("--max-pages", type=int, default=5, help="Per-broker request budget")
     args = parser.parse_args()
     if not 1 <= args.limit <= 325 or not 1 <= args.max_pages <= 15:
@@ -487,7 +533,7 @@ def main() -> int:
         if args.command in ("prepare", "collect"):
             print(json.dumps(prepare(records, args.out, template_record())))
         if args.command == "collect":
-            summary = collect(records, args.out, args.brokers, args.limit, args.max_pages)
+            summary = collect(records, args.out, args.brokers, args.limit, args.max_pages, args.workers)
             print(json.dumps({key: summary[key] for key in ["selected_brokers", "pages_collected", "unverified_snippet_candidates", "verified_fields", "fetch_statuses", "required_source_domains"]}))
             # Distinguish blocked collection from successful audit/setup in automation.
             return 2 if summary["usable_source_documents"] == 0 else 0

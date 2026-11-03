@@ -2,7 +2,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, CircleHelp, Globe2, X } from "lucide-react";
 import type { BrokerReview, ReviewField } from "@/lib/reviews/types";
-import { fieldValue } from "@/lib/reviews/template";
+import { Finding } from "./finding";
+import { useRouter } from "next/navigation";
 export const sectionLinks = [
   ["key-data", "Key data"],
   ["fees", "Fees"],
@@ -100,7 +101,7 @@ export function DisclosureButton({
         <p>
           {hasAffiliateLink
             ? "Account-opening links in this review may earn Devin Forex a commission. Commercial relationships do not establish a broker’s quality or suitability."
-            : "This is a review-format preview. No affiliate link or paid placement is active in this template."}
+            : "No affiliate link or paid placement is active on this page. Account links remain inactive until configured and checked."}
         </p>
         <p>
           Any future commercial relationship will be disclosed alongside the
@@ -118,8 +119,22 @@ export function DisclosureButton({
     </>
   );
 }
-export function CountryScope() {
+export function CountryScope({ current, countries = [], slug }: { current?: string | null; countries?: string[]; slug?: string }) {
   const [country, setCountry] = useState("");
+  const router = useRouter();
+  if (slug) return (
+    <div className="review-country">
+      <label htmlFor="review-country"><Globe2 size={16} />Country / entity profile</label>
+      <div>
+        <select id="review-country" value={current ?? ""} onChange={e => router.push(`/reviews/${slug}?country=${encodeURIComponent(e.target.value)}`)} disabled={!countries.length}>
+          {!countries.length && <option value="">Country not yet established</option>}
+          {countries.map(c => <option key={c}>{c}</option>)}
+        </select>
+        <ChevronDown size={15} />
+      </div>
+      <p role="status">{current ? `Showing the ${current} entity profile. Resident eligibility and account terms must be checked separately. Other countries’ terms are not applied.` : "Country and legal entity are still being researched. No resident eligibility is inferred."}</p>
+    </div>
+  );
   return (
     <div className="review-country">
       <label htmlFor="review-country">
@@ -173,7 +188,7 @@ function DataTable({
         {fields.map((f) => (
           <tr key={f.id}>
             <th scope="row">{f.label}</th>
-            <td>{fieldValue(f, review)}</td>
+            <td><Finding field={f} review={review} /></td>
           </tr>
         ))}
       </tbody>

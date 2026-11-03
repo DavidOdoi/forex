@@ -72,38 +72,34 @@ Seven browser tests cover every exported route, metadata, image loading, navigat
 - `src/assets/hero-fx-light.jpg`, `public/favicon.ico`: supplied visual assets.
 - `tests/foundation.spec.ts`, `playwright.config.ts`: production browser checks.
 
-## Reusable broker review template
+## Populated broker research and reusable template
 
-Open `/reviews/template` from the **Preview review template** link on `/reviews`. This is a clearly labelled layout preview inspired by the supplied BrokerChooser HTML: a reviewer header, market selector, sticky chapter navigation, summary/pros-and-cons area, key-data and benchmark-fee tabs, a broker sidebar, comparison controls, seven detailed review chapters, FAQ, methodology, and source records. It uses locally hosted IBM Plex Sans within the review page; the existing website design stays in place.
+`/reviews/template` opens the populated FXPesa Kenya example. `/reviews/template?blank=1` preserves the original empty layout, and `/reviews/template/data` still downloads the blank reusable JSON. The reference supplied by the user informs layout only; its prose, ratings, author identities and testing claims are not copied.
 
-The uploaded reference is used for section structure and layout. Its article text, author identities, photographs, ratings, testing assertions, awards, testimonials, statistics, and broker-specific financial claims are not reused.
+`/reviews` is a searchable, paginated catalogue of **298 retail brokers** from the 325-entry directory. The other 27 institutional, interbank and introducing providers need different research formats. Source-only drafts show bounded quotations, retrieval dates, links and unresolved checks. Missing evidence is not converted into fees, scores, country eligibility or recommendations.
 
-- `src/lib/reviews/types.ts` defines `BrokerReview`, chapters, factual fields, score metadata, and source records.
-- `src/lib/reviews/template.ts` exports `createReviewTemplate(name, slug)` and a blank example record. Each invocation produces an independent record for one broker.
-- `src/components/review-template/review-page.tsx` renders that record with `BrokerReviewPage`. Interactive navigation, disclosure, tabs, country selection and comparison controls live in `interactions.tsx`.
-- `/reviews/template/data` downloads `broker-review-template.json`, including all seven chapters and their empty factual fields. The download includes no scores, authors, sources or verified findings.
-- The preview is excluded from the sitemap and sends `noindex, nofollow` metadata. The JSON response also sends `X-Robots-Tag: noindex, nofollow`. When production crawling is enabled, robots allows crawlers to read the preview’s noindex directive.
+`/reviews/[slug]?country=Country` renders a separate entity profile where available. Coverage includes Kenya, the UK, Australia, Cyprus, Seychelles, Singapore, the UAE, Mauritius, Belize, Curaçao, the BVI and the Cayman Islands. This identifies researched entities, not every country in which a group accepts clients. An unsupported country returns 404 rather than silently reusing another country's facts. Country leads from the CSV are labelled unverified.
 
-A factual field has a value, evidence status, source IDs, legal entity, jurisdiction, and check date. A value displays as a finding only when marked verified with matching, dated source metadata. Otherwise it displays **Not researched** or **Needs verification**. Scores require a bounded numerical value, HTTPS methodology URL, and supporting source records. Source URLs must use HTTPS and include publisher, title, entity, jurisdiction and a valid check date.
+- `src/lib/reviews/curated.ts`: checked Kenyan register entries and detailed local findings for FXPesa, Exness, Pepperstone and XM.
+- `src/lib/reviews/international.ts`: separately attributed international entity disclosures. Provider-reported permissions are not described as independent register checks.
+- `src/data/review-research.json`: bounded saved-source catalogue; raw HTML/PDF snapshots and full extracted text stay ignored.
+- `src/lib/reviews/catalog.ts`: country selection and source-backed data binding to the existing reusable review component.
+- `/reviews/[slug]/data?country=Country`: downloadable populated review plus separately labelled unverified research material.
 
-These guards check the structure and internal consistency of supplied research records. They do **not** fetch, authenticate, independently verify, or judge the truth of a source. They are not a complete publication-approval system. No scraper, CSV importer, scoring algorithm, author credential verification, or live broker-review publishing workflow is connected yet. The market selector demonstrates regional scope; it does not establish availability or populate the blank JSON download.
+All individual research drafts and JSON downloads are **noindex** and excluded from the sitemap. They retain no assigned author/fact-checker identities, numerical ratings or claims of hands-on testing. A source check is not independent editorial approval. Account terms and conflicting source wording still require review before a complete review can be published. Each populated field links to its source record and carries entity, country and check date. The data guards check internal consistency; they do not independently prove a source's truth.
 
-All preview values remain empty. The five account-opening CTA placements are disabled until each broker’s link has been configured and verified. Research notes, author/fact-checker slots, dates, ratings, screenshots, strengths, limitations, FAQ answers, and sources must be completed through a separate verified research process. The template adds no Review or AggregateRating structured data. Once the research workflow is defined, real records can be rendered using the same component without duplicating page code.
+The five account-opening placements remain present. No affiliate URL was supplied, so their account-opening controls stay inactive. Published records can enable a verified, country-matched HTTPS destination through `BrokerReview.accountOpening`. Affiliate anchors preserve partner parameters, use `rel="sponsored nofollow noopener noreferrer"` and disclose compensation. No click tracking is sent.
 
-`tests/review-template.spec.ts` covers discovery, noindex/sitemap exclusion, all sections, keyboard tabs, market-scope wording, disclosure dialog/focus, chapter collapsing, anchor navigation, comparison selection, FAQs, desktop/mobile layout, JSON download, record isolation, and evidence guards. Screenshots are saved as `test-results/review-template-1440-top.png` and `test-results/review-template-390-top.png`, with full-page versions alongside them.
+The original blank-template interactions remain available, while populated country profiles use an actual entity selector. Empty research chapters start collapsed in drafts. Sources and short unverified research excerpts appear separately, so a global source is not treated as a selected country's account schedule.
 
-### Account-opening calls to action
+```sh
+npm run typecheck
+npm run lint
+npm run build
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test
+.venv-research/bin/python -m unittest discover -s tools/research -p 'test_*.py'
+```
 
-Every review renders exactly **five** account-opening placements: the review header, after key data, after Safety, after Account Opening, and after the final verdict. They are shared components, not desktop/mobile duplicates. Each placement has a prominent “Open an account” control, broker name, risk text, and an applicable affiliate disclosure. No extra account-opening button is rendered in the sidebar.
+The browser suite covers the original site, blank format, populated example, citations, five account placements, country isolation, unsupported-country responses, JSON evidence records, all 298 identities, source/status filters, pagination and responsive layouts. These checks do not measure factual accuracy or guarantee a search-engine outcome.
 
-`BrokerReview.accountOpening` holds the single broker-specific destination and its evidence metadata: `url`, `status`, `sourceIds`, `legalEntity`, `jurisdiction`, `checkedAt`, and `isAffiliate`. The blank JSON download includes these fields. A live link requires a published review, a verified HTTPS URL without embedded credentials, matching source metadata, and a jurisdiction matching the review’s own scope. Unconfigured or unverified links render as disabled preview buttons without fabricated destinations. Source records remain human-supplied metadata, not automated verification of the remote page.
-
-Partner URLs, including referral parameters, are preserved as supplied. Active affiliate anchors open in a new tab with `rel="sponsored nofollow noopener noreferrer"` and disclose potential compensation. The advertiser-disclosure dialog reflects whether an affiliate destination is active. The `data-account-cta` placement attribute provides integration points for future analytics; no analytics or click tracking is currently sent.
-
-Recent visual refinements add restrained gold account cards, a dark green variation after Safety, clearer section headers, summary tiles, striped data tables, and softer sidebar depth. The review’s information structure and existing evidence fields remain in place.
-
-## Python broker-directory research pipeline
-
-[tools/research/README.md](tools/research/README.md) documents the importer, CSV audit, BeautifulSoup/PDF collector, research queues, and source snapshots. It reads the supplied directory's actual columns and reuses the TypeScript review factory. Country hints and scraped claims stay unverified; nothing is automatically published.
-
-Research output goes to ignored `research-output/`. The current input contains 325 entries, including 298 retail FX/CFD candidates; institutional, interbank and introducing providers are retained separately. The initial collection is blocked by environment network policy. The detailed research README lists the pilot domains and the precise action needed to continue.
+[tools/research/README.md](tools/research/README.md) documents optional future collection and offline catalogue export. The current website can render the saved material without running a scraper.

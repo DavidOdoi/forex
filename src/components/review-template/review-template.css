@@ -2271,3 +2271,31 @@
     margin-bottom: 34px;
   }
 }
+.review-citations {
+  display: inline-flex;
+  gap: 4px;
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2660a1;
+  line-height: 1.3;
+}
+.review-citations a { display: inline-block; padding: 2px; text-decoration: underline; text-underline-offset: 2px; }
+.has-research .review-data-table tbody th { width: 32%; vertical-align: top; }
+.has-research .review-data-table tbody td { font-size: 16px; line-height: 1.7; }
+.review-source-list li { scroll-margin-top: 180px; }
+.review-collected { margin: 42px 0; padding: 30px; border: 1px solid #dce3e8; border-radius: 18px; background: #f6f8fb; }
+.review-collected h2 { margin: 12px 0; font-size: 30px; line-height: 1.2; }
+.review-collected > p { color: #52616f; font-size: 17px; line-height: 1.75; margin: 14px 0; }
+.review-collected figure { margin: 24px 0; border-left: 3px solid #c7a34a; padding-left: 20px; }
+.review-collected blockquote { margin: 12px 0; font-size: 18px; line-height: 1.7; }
+.review-collected figcaption, .review-collected li p { font-size: 14px; line-height: 1.6; color: #52616f; }
+.review-collected figcaption > span { display: block; margin-top: 6px; }
+.review-collected a { display: inline-flex; align-items: center; gap: 6px; color: #2660a1; text-decoration: underline; overflow-wrap: anywhere; }
+.review-collected a svg { flex-shrink: 0; }
+.review-collected summary { padding: 14px 0; font-weight: 600; cursor: pointer; }
+.review-collected li { margin: 16px 0; }
+@media (max-width: 600px) {
+  .review-collected { padding: 20px; }
+  .has-research .review-data-table tbody td { font-size: 15px; }
+}

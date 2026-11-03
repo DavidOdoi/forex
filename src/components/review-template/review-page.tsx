@@ -30,13 +30,14 @@ import type {
   ReviewChapter,
   ReviewPoint,
 } from "@/lib/reviews/types";
+import type { ResearchEntry } from "@/lib/reviews/research-types";
 import {
-  fieldValue,
   isValidSource,
   scoreValue,
   verifiedSources,
   validDate,
   accountOpeningHref,
+  fieldValue,
 } from "@/lib/reviews/template";
 import {
   ComparisonPreview,
@@ -47,6 +48,8 @@ import {
 } from "./interactions";
 import { AccountOpeningCta } from "./account-cta";
 import { Fragment } from "react";
+import { Finding } from "./finding";
+import { CollectedResearch } from "./research-notes";
 import "./review-template.css";
 
 function EvidenceList({
@@ -114,9 +117,11 @@ function Chapter({
   index: number;
 }) {
   const score = scoreValue(chapter.score, review);
+  const isTemplate = review.status === "template";
+  const hasFindings = chapter.panels.some(p => p.fields.some(f => f.status === "verified" && fieldValue(f, review) === f.value));
   return (
     <section id={chapter.id} className="review-chapter-section">
-      <details className="review-chapter" open>
+      <details className="review-chapter" open={isTemplate || hasFindings}>
         <summary>
           <div>
             <span className="review-overline">
@@ -136,11 +141,11 @@ function Chapter({
             {chapter.introduction ??
               `This chapter is ready for verified ${chapter.title.toLowerCase()} findings. Research has not been completed.`}
           </p>
-          <ProsCons
+          {(isTemplate || chapter.strengths.length > 0 || chapter.limitations.length > 0) && <ProsCons
             review={review}
             positives={chapter.strengths}
             negatives={chapter.limitations}
-          />
+          />}
           {chapter.panels.map((panel) => (
             <div className="review-panel" key={panel.title}>
               <h3>{panel.title}</h3>
@@ -157,7 +162,7 @@ function Chapter({
                     {panel.fields.map((f) => (
                       <tr key={f.id}>
                         <th scope="row">{f.label}</th>
-                        <td>{fieldValue(f, review)}</td>
+                        <td><Finding field={f} review={review} /></td>
                       </tr>
                     ))}
                   </tbody>
@@ -165,7 +170,7 @@ function Chapter({
               </div>
             </div>
           ))}
-          {["mobile-app", "web-platform"].includes(chapter.id) && (
+          {review.status === "template" && ["mobile-app", "web-platform"].includes(chapter.id) && (
             <div className="review-platform-placeholder">
               <MonitorSmartphone size={35} />
               <strong>Platform evidence belongs here</strong>
@@ -181,10 +186,10 @@ function Chapter({
               <ChevronDown size={16} />
             </summary>
             <p>
-              Record the exact account, legal entity, market, source URL and
+              {isTemplate ? <>Record the exact account, legal entity, market, source URL and
               check date. Identify information supplied by the provider,
               distinguish it from independent confirmation, and describe any
-              missing or conflicting evidence.
+              missing or conflicting evidence.</> : <>Provider publications describe the provider’s terms and claims. They are not independent performance or safety tests. Items labelled “Not researched” or “Needs verification” remain unresolved. Source links next to completed findings identify the exact country, entity and check date.</>}
             </p>
           </details>
         </div>
@@ -208,7 +213,7 @@ function Sidebar({ review }: { review: BrokerReview }) {
             </div>
             <div>
               <h2>{review.broker.name}</h2>
-              <span className="review-neutral-badge">Research not started</span>
+              <span className="review-neutral-badge">{review.status === "template" ? "Research not started" : "Research draft"}</span>
             </div>
           </div>
           <div className="review-sidebar-score">
@@ -226,8 +231,8 @@ function Sidebar({ review }: { review: BrokerReview }) {
               <dd>Not performed</dd>
             </div>
             <div>
-              <dt>Country coverage</dt>
-              <dd>Not verified</dd>
+              <dt>Entity profile</dt>
+              <dd>{review.jurisdiction ?? "Not verified"}</dd>
             </div>
             <div>
               <dt>Last verified</dt>
@@ -243,7 +248,7 @@ function Sidebar({ review }: { review: BrokerReview }) {
             <p>
               {accountOpeningHref(review)
                 ? "Account options are available through the links in this review."
-                : "Account links are inactive in this preview. Check account availability and terms before applying."}
+                : "Account links are not configured. Check account availability and terms before applying."}
             </p>
           </div>
           <a className="review-inline-link" href="#methodology">
@@ -274,25 +279,28 @@ function Sidebar({ review }: { review: BrokerReview }) {
     </aside>
   );
 }
-export function BrokerReviewPage({ review }: { review: BrokerReview }) {
+export function BrokerReviewPage({ review, research, countries = [] }: { review: BrokerReview; research?: ResearchEntry; countries?: string[] }) {
   const score = scoreValue(review.overallScore, review);
   const sources = review.sources.filter(isValidSource);
+  const isTemplate = review.status === "template";
+  const dataUrl = isTemplate ? "/reviews/template/data" : `/reviews/${review.broker.slug}/data${review.jurisdiction ? `?country=${encodeURIComponent(review.jurisdiction)}` : ""}`;
+  const checkedDates = sources.map(s => s.checkedAt).concat(research?.sources.map(s => s.checkedAt) ?? []).sort();
+  const lastSourceCheck = checkedDates.at(-1);
   return (
-    <main className="review-template" id="review-main">
+    <main className={`review-template${isTemplate ? "" : " has-research"}`} id="review-main">
       <div className="review-preview-bar">
         <div className="review-container">
           <span>
             <FileText size={16} />
-            <strong>REVIEW TEMPLATE</strong>
+            <strong>{isTemplate ? "REVIEW TEMPLATE" : "RESEARCH DRAFT"}</strong>
             <span className="review-preview-detail">
-              Layout preview · no broker findings published
+              {isTemplate ? "Layout preview · no broker findings published" : "Source-based findings · editorial review pending"}
             </span>
           </span>
           <a
-            href="/reviews/template/data"
-            download="broker-review-template.json"
+            href={isTemplate ? "/reviews/template/data" : "/reviews/template?blank=1"}
           >
-            Download data template
+            {isTemplate ? "Download data template" : "View blank template"}
             <ArrowDown size={15} />
           </a>
         </div>
@@ -305,7 +313,7 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
               <span>/</span>
               <Link href="/reviews">Broker reviews</Link>
               <span>/</span>
-              <span>Template</span>
+              <span>{isTemplate ? "Template" : review.broker.name}</span>
             </nav>
             <DisclosureButton
               hasAffiliateLink={
@@ -329,7 +337,7 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
                     DEVIN FOREX / BROKER RESEARCH
                   </div>
                   <h1>{review.broker.name} review</h1>
-                  <p>A reusable format. A consistent standard of evidence.</p>
+                  <p>{isTemplate ? "A reusable format. A consistent standard of evidence." : `${review.jurisdiction ? `${review.jurisdiction} entity profile` : "Country scope in research"} · Fees, platforms and primary sources`}</p>
                 </div>
               </div>
               <div className="review-byline">
@@ -338,8 +346,8 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
                     <UserRound size={19} />
                   </span>
                   <div>
-                    <span>Written by</span>
-                    <strong>{review.author?.name ?? "Not assigned"}</strong>
+                    <span>{isTemplate ? "Written by" : "Editorial review"}</span>
+                    <strong>{review.author?.name ?? (isTemplate ? "Not assigned" : "Pending assignment")}</strong>
                   </div>
                 </div>
                 <div>
@@ -358,18 +366,18 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
                     <Clock3 size={19} />
                   </span>
                   <div>
-                    <span>Last verified</span>
+                    <span>{isTemplate ? "Last verified" : "Sources checked"}</span>
                     <strong>
                       {review.verifiedAt && validDate(review.verifiedAt)
                         ? review.verifiedAt
-                        : "Not yet verified"}
+                        : lastSourceCheck ?? "Not yet verified"}
                     </strong>
                   </div>
                 </div>
               </div>
               <AccountOpeningCta review={review} placement="hero" />
             </div>
-            <CountryScope />
+            <CountryScope current={review.jurisdiction} countries={countries} slug={isTemplate ? undefined : review.broker.slug} />
           </div>
         </div>
       </header>
@@ -391,7 +399,7 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
               <span className="review-neutral-badge">
                 Source-based research
               </span>
-              <span className="review-draft-badge">Template preview</span>
+              <span className="review-draft-badge">{isTemplate ? "Template preview" : "Editorial review pending"}</span>
             </div>
             <p className="review-lead">
               {review.verdict ??
@@ -436,17 +444,15 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
               <div>
                 <h3>Who is this broker for?</h3>
                 <p>
-                  Suitability conclusions will be added after the relevant
-                  costs, restrictions and risks have been researched. No
-                  recommendation is published in this preview.
+                  {review.faqs[0].answer && verifiedSources(review.faqs[0].sourceIds, review) ? review.faqs[0].answer : "Suitability depends on your country, experience, costs and the risks you can afford. This draft does not make a personal recommendation. Outstanding research is labelled throughout."}
                 </p>
               </div>
             </div>
-            <ProsCons review={review} />
+            {(isTemplate || review.strengths.length > 0 || review.limitations.length > 0) && <ProsCons review={review} />}
             <h3 className="review-block-title">
               The essential details, at a glance.
             </h3>
-            <KeyData review={review} />
+            {isTemplate || review.keyData.some(f => f.status === "verified") ? <KeyData review={review} /> : <p className="review-method-note">No account figures have been approved yet. Collected source notes and outstanding checks are shown below.</p>}
             <AccountOpeningCta review={review} placement="overview" />
             <div className="review-feedback-preview">
               <BadgeInfo size={22} />
@@ -461,7 +467,8 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
               </div>
             </div>
           </section>
-          <ComparisonPreview />
+          {research && <CollectedResearch entry={research} hasFindings={sources.length > 0} />}
+          {isTemplate && <ComparisonPreview />}
           {review.chapters.map((chapter, i) => (
             <Fragment key={chapter.id}>
               <Chapter chapter={chapter} review={review} index={i} />
@@ -480,13 +487,13 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
             <span className="review-overline">
               BRINGING THE EVIDENCE TOGETHER
             </span>
-            <h2>Our final verdict</h2>
-            <span className="review-neutral-badge">Not yet published</span>
+            <h2>{isTemplate ? "Our final verdict" : "Research conclusion"}</h2>
+            <span className="review-neutral-badge">{isTemplate ? "Not yet published" : "Provisional · review pending"}</span>
             <p>
-              A useful conclusion explains the broker’s specific trade-offs, who
+              {review.verdict ?? <>A useful conclusion explains the broker’s specific trade-offs, who
               might find the service relevant, and where important uncertainties
               remain. It will be written after source verification and editorial
-              review.
+              review.</>}
             </p>
           </section>
           <AccountOpeningCta review={review} placement="verdict" />
@@ -515,9 +522,9 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
               <FileCheck2 size={15} />
               OUR RESEARCH APPROACH
             </div>
-            <h2>How this review will be built</h2>
+            <h2>{isTemplate ? "How this review will be built" : "How this draft was researched"}</h2>
             <p>
-              Research comes first. The template keeps the evidence visible.
+              {isTemplate ? "Research comes first. The template keeps the evidence visible." : "Primary-source statements are attributed to their publishers. Regulator checks cover only the named entity and licence. No funded-account, withdrawal or platform test was performed, and an independent editorial fact check is still pending."}
             </p>
             <ol>
               {[
@@ -570,7 +577,7 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
             {sources.length ? (
               <ol className="review-source-list">
                 {sources.map((source) => (
-                  <li key={source.id}>
+                  <li key={source.id} id={`source-${source.id}`}>
                     <a
                       href={source.url}
                       target="_blank"
@@ -612,8 +619,8 @@ export function BrokerReviewPage({ review }: { review: BrokerReview }) {
             </div>
             <a
               className="review-inline-link"
-              href="/reviews/template/data"
-              download="broker-review-template.json"
+              href={dataUrl}
+              download
             >
               Download the structured review data
               <ArrowDown size={15} />

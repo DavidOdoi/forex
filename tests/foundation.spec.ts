@@ -23,7 +23,7 @@ test("all seven exported pages render with their metadata and assets", async ({
     await expect(page.locator("h1")).toHaveCount(1);
     if (route === "/reviews") {
       await expect(page.getByRole("main")).toContainText("We have not carried out hands-on testing or published broker ratings");
-      await expect(page.locator("article").getByText("Not rated", { exact: true })).toHaveCount(4);
+      await expect(page.getByRole("searchbox", { name: "Search broker reviews" })).toBeVisible();
       await expect(page.getByRole("main")).not.toContainText("We open real accounts, deposit real money and test withdrawals");
     }
     await expect(page).toHaveTitle(/Devin Forex/);

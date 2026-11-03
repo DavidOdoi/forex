@@ -15,7 +15,7 @@ test("review template is linked, clearly labelled and excluded from indexing", a
 }) => {
   await page.goto("/reviews");
   await page.getByRole("link", { name: "Preview review template" }).click();
-  await expect(page).toHaveURL(/\/reviews\/template$/);
+  await expect(page).toHaveURL(/\/reviews\/template\?blank=1$/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Example Broker review",
   );
@@ -63,7 +63,7 @@ test("review template is linked, clearly labelled and excluded from indexing", a
 test("data tabs, market selector and advertiser disclosure work with the keyboard", async ({
   page,
 }) => {
-  await page.goto("/reviews/template");
+  await page.goto("/reviews/template?blank=1");
   const tabs = page.getByRole("tablist", { name: "Broker data" });
   await tabs.getByRole("tab", { name: "Key data", exact: true }).focus();
   await page.keyboard.press("ArrowRight");
@@ -97,7 +97,7 @@ test("data tabs, market selector and advertiser disclosure work with the keyboar
 test("navigation, collapsible chapters, comparisons and FAQs are functional", async ({
   page,
 }) => {
-  await page.goto("/reviews/template");
+  await page.goto("/reviews/template?blank=1");
   const fees = page.locator("#fees .review-chapter");
   await fees.locator(":scope > summary").click();
   await expect(fees).not.toHaveAttribute("open", "");
@@ -128,7 +128,7 @@ test("review template fits desktop, tablet and mobile layouts", async ({
 }) => {
   for (const width of [320, 390, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
-    await page.goto("/reviews/template");
+    await page.goto("/reviews/template?blank=1");
     await page.evaluate(() => document.fonts.ready);
     expect(
       await page.evaluate(

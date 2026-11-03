@@ -109,7 +109,7 @@ export function AccountOpeningCta({
             )
           ) : (
             <span id={`account-link-status-${placement}`}>
-              Preview only. The account-opening link is not configured.
+              {review.status === "template" ? "Preview only. " : "Research draft. "}The account-opening link is not configured.
             </span>
           )}
           <span>

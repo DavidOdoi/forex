@@ -80,23 +80,21 @@ Exit status is `0` for successful audit/preparation, or collection with at least
 
 The uploaded directory has **325 entries**: 298 retail FX/CFD research candidates, 14 institutional/professional providers, 12 interbank providers, and one introducing/relationship broker. The importer prepared 298 blank drafts. Across the complete directory, 224 entries have no established jurisdiction, 12 lack a verified website, and 147 have no usable primary-source URL recorded.
 
-The initial five-broker collection produced **no source pages or verified fields**: the environment proxy denied destination access. Sixteen offline tests passed, including real PDF text extraction, mocked request/robots behavior, cache integrity, CSV validation, provider separation, and preservation of editor drafts. These tests validate software behavior, not the brokers' financial claims.
+The November 3 collection attempted all **298 retail brokers** with a three-page budget and four workers. It retrieved 661 successful page responses and produced usable source documents for **232 brokers**. Some responses are JavaScript shells, duplicates or generic regulatory guidance; successful retrieval is not a verified review. Access denials, unreadable robots policies, unapproved redirect hosts and rate limits remain recorded. No additional scraping is needed to render the saved catalogue.
 
-The first batch needs these exact source domains in this chat's cloud environment settings:
+```sh
+.venv-research/bin/python tools/research/research.py collect \
+  --csv /path/to/forex-broker-directory-2026-11-02.csv \
+  --limit 298 --max-pages 3 --workers 4
 
-```text
-exness.com
-licensees.cma.or.ke
-pepperstone.com
-www.fxpesa.com
-www.ic.com
-www.icmarkets.com
-www.xm.com
-www.xm.ke
-xm.com
+.venv-research/bin/python tools/research/export_catalog.py
 ```
 
-A configuration draft adds those domains while preserving previously saved custom hosts. Saving the draft does not change the running instance. Review and save the network change in environment settings, then publish the environment. Retry collection after access is applied; do not widen the policy to `*` or bypass the proxy. Other brokers, redirected hosts and regulator sources need their own scoped additions in later batches.
+Workers use independent sessions and a shared per-host throttle; robot crawl delays still apply. JSON/cache writes are atomic. Bare and `www` canonical aliases are supported without bypassing the environment proxy or a site's access controls. PDF extraction includes fontTools support.
+
+`export_catalog.py` reads saved dossiers without making network requests. It exports the 298 retail identities, retrieval metadata, content hashes, source-status flags, unverified country leads and at most three short source quotations (75 words total per broker). Generic regulator guidance is not quoted as a broker's own terms. It never approves a field, assigns a score, enables an affiliate link or marks a review published. The bounded export is tracked at `src/data/review-research.json`; raw snapshots and full page text remain ignored.
+
+Country-specific findings that were separately read and checked are maintained in `src/lib/reviews/curated.ts` and `international.ts`. Provider-reported permissions are attributed as provider claims. Kenyan licence entries were cross-checked with the CMA register. These profiles remain editorial drafts, not independently approved reviews or trading tests. Countries mentioned in the input directory are still leads unless a specific entity profile has been researched.
 
 ## Validate
 
@@ -104,4 +102,4 @@ A configuration draft adds those domains while preserving previously saved custo
 .venv-research/bin/python -m unittest discover -s tools/research -p 'test_*.py' -v
 ```
 
-The current pipeline stops at evidence collection. A separate review step must resolve each entity, country, account and source conflict before approving structured facts, generating broker-specific prose, assigning any score, or publishing a page. It provides no measured 90% accuracy result yet. Raw directory data, snapshots and generated drafts stay outside source control and the website until that workflow is explicitly implemented.
+The collector stops at evidence staging; the catalogue export and explicitly curated country profiles render in noindex research pages. An independent editorial review must resolve account conditions, eligibility, protection claims and conflicts before publication. There is no measured 90% accuracy result, rating methodology or active affiliate destination. Software checks verify data consistency and UI behaviour, not the truth of financial claims.
