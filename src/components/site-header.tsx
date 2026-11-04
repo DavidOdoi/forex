@@ -4,31 +4,23 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Globe2, Search, UserCircle } from "lucide-react";
 
 const menu = [
-  {
-    label: "Compare brokers",
-    to: "/best-brokers",
-    items: ["Overview", "For beginners", "Account costs", "Global broker directory"],
-  },
-  {
-    label: "Broker reviews",
-    to: "/reviews",
-    items: ["Exness", "XM", "IC Markets", "Pepperstone"],
-  },
-  {
-    label: "Tools",
-    to: "/tools",
-    items: ["Pip calculator", "Position size", "Profit calculator"],
-  },
-  {
-    label: "Insights",
-    to: "/insights",
-    items: ["Beginner guides", "Strategies", "Market news"],
-  },
-  {
-    label: "About us",
-    to: "/about",
-    items: ["Our story", "How we research", "Contact"],
-  },
+  { label: "Compare brokers", to: "/best-brokers", items: [
+    { label: "Overview", href: "/best-brokers" }, { label: "For beginners", href: "/find-my-broker" },
+    { label: "Account cost example", href: "/reviews/exness#fees" }, { label: "Global broker directory", href: "/reviews" },
+  ] },
+  { label: "Broker reviews", to: "/reviews", items: [
+    { label: "Exness", href: "/reviews/exness" }, { label: "XM", href: "/reviews/xm" },
+    { label: "IC Markets", href: "/reviews/ic-markets" }, { label: "Pepperstone", href: "/reviews/pepperstone" },
+  ] },
+  { label: "Tools", to: "/tools", items: [
+    { label: "Pip calculator", href: "/tools#pip-calculator" }, { label: "Position size", href: "/tools#position-size" }, { label: "Profit calculator", href: "/tools#profit-calculator" },
+  ] },
+  { label: "Insights", to: "/insights", items: [
+    { label: "Planned beginner guides", href: "/insights#beginner-guides" }, { label: "Planned strategies", href: "/insights#strategies" }, { label: "Planned market guides", href: "/insights#market-guides" },
+  ] },
+  { label: "About us", to: "/about", items: [
+    { label: "Our story", href: "/about#our-story" }, { label: "How we research", href: "/about#research-methodology" }, { label: "Corrections", href: "/about#corrections" }, { label: "Contact", href: "/about#contact" },
+  ] },
 ] as const;
 
 export function SiteHeader() {
@@ -57,11 +49,11 @@ export function SiteHeader() {
                 <div className="rounded-xl border bg-card p-2 shadow-glow">
                   {m.items.map((i) => (
                     <Link
-                      key={i}
-                      href={m.label === "Broker reviews" ? `/reviews/${i.toLowerCase().replaceAll(" ", "-")}` : i === "Global broker directory" ? "/reviews" : m.to}
+                      key={i.label}
+                      href={i.href}
                       className="block rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
                     >
-                      {i}
+                      {i.label}
                     </Link>
                   ))}
                 </div>

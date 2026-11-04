@@ -1,8 +1,13 @@
 import type { MetadataRoute } from "next";
-import { publicPaths, siteUrl } from "@/lib/site";
+import { publicPaths, siteOrigin, indexable } from "@/lib/site";
+import { getReview, researchEntries, reviewCountries } from "@/lib/reviews/catalog";
+import { reviewSitemapEntries } from "@/lib/reviews/seo";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const url = siteUrl;
-  return url
-    ? publicPaths.map((path) => ({ url: new URL(path, url).href }))
-    : [];
+  if (!indexable) return [];
+  const reviews = researchEntries.flatMap(entry => reviewCountries(entry.slug).map(country => getReview(entry.slug, country)!.review));
+  return [
+    ...publicPaths.map(path => ({ url: new URL(path, siteOrigin).href })),
+    ...reviewSitemapEntries(reviews),
+  ];
 }

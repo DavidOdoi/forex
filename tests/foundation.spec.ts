@@ -39,13 +39,7 @@ test("all seven exported pages render with their metadata and assets", async ({
       "content",
       "summary_large_image",
     );
-    if (process.env.SITE_URL)
-      expect(
-        new URL(
-          (await page.locator('link[rel="canonical"]').getAttribute("href"))!,
-        ).href,
-      ).toBe(new URL(route, process.env.SITE_URL).href);
-    else await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+    expect(new URL((await page.locator('link[rel="canonical"]').getAttribute("href"))!).href).toBe(new URL(route, process.env.SITE_URL ?? "https://devinforex-five.vercel.app").href);
     expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
   }
   await page.goto("/");
@@ -221,9 +215,7 @@ test("sitemap, robots, exported favicon and custom 404", async ({
 }) => {
   const robots = await request.get("/robots.txt");
   expect(robots.status()).toBe(200);
-  const indexable =
-    Boolean(process.env.SITE_URL) && process.env.VERCEL_ENV !== "preview";
-  expect(await robots.text()).toContain(indexable ? "Allow: /" : "Disallow: /");
+  expect(await robots.text()).toContain("Allow: /");
   const xml = await (await request.get("/sitemap.xml")).text();
   if (process.env.SITE_URL) {
     expect((xml.match(/<loc>/g) ?? []).length).toBe(routes.length);

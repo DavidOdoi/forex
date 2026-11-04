@@ -9,6 +9,9 @@ export interface AccountRow {
   commission: string;
   minimum: string;
   minimumSourceIds?: string[];
+  platforms?: string;
+  platformSourceIds?: string[];
+  roundTripCommission?: string;
   sourceIds: string[];
 }
 export interface QuickFact {
@@ -29,11 +32,14 @@ export function reviewAccounts(review: BrokerReview): AccountRow[] {
   const deposit = checkedField(review, "minimum-deposit");
   const checkedDeposit = deposit?.checkedAt === "2026-11-04" && deposit.sourceIds.includes("global-minimum-deposit");
   const minimumSourceIds = checkedDeposit ? deposit.sourceIds : [];
+  const platform = checkedField(review, "platform-and-availability");
+  const platforms = platform?.checkedAt === "2026-11-04" && platform.sourceIds.includes("global-account-types") ? "MT4 / MT5" : undefined;
+  const platformSourceIds = platforms ? platform!.sourceIds : [];
   if (review.jurisdiction === "Global" && review.broker.slug === "exness" && checkedField(review, "forex-spread-and-commission") && checkedNovemberSource(review, "global-standard") && checkedNovemberSource(review, "global-pro")) return [
-    { name: "Standard", category: "Standard", spread: "From 0.2 pips", commission: "No commission", minimum: checkedDeposit ? "Varies by payment method and region" : "Not verified", minimumSourceIds, sourceIds: ["global-standard"] },
-    { name: "Pro", category: "Professional range¹", spread: "From 0.1 pips", commission: "No commission", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, sourceIds: ["global-pro"] },
-    { name: "Zero", category: "Professional range¹", spread: "From 0 pips", commission: "From US$0.05 / lot / side", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, sourceIds: ["global-pro"] },
-    { name: "Raw Spread", category: "Professional range¹", spread: "From 0 pips", commission: "Up to US$3.50 / lot / side", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, sourceIds: ["global-pro"] },
+    { name: "Standard", category: "Standard", spread: "From 0.2 pips", commission: "No commission", minimum: checkedDeposit ? "Varies by payment method and region" : "Not verified", minimumSourceIds, platforms, platformSourceIds, roundTripCommission: "US$0", sourceIds: ["global-standard"] },
+    { name: "Pro", category: "Professional range¹", spread: "From 0.1 pips", commission: "No commission", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, platforms, platformSourceIds, roundTripCommission: "US$0", sourceIds: ["global-pro"] },
+    { name: "Zero", category: "Professional range¹", spread: "From 0 pips", commission: "From US$0.05 / lot / side", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, platforms, platformSourceIds, roundTripCommission: "From US$0.10 / lot", sourceIds: ["global-pro"] },
+    { name: "Raw Spread", category: "Professional range¹", spread: "From 0 pips", commission: "Up to US$3.50 / lot / side", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, platforms, platformSourceIds, roundTripCommission: "Up to US$7 / lot", sourceIds: ["global-pro"] },
   ];
   if (review.jurisdiction !== "Kenya") return [];
   const pricing = checkedField(review, "forex-spread-and-commission");
@@ -91,9 +97,9 @@ export function verdictSentences(review: BrokerReview): string[] {
   const pricing = checkedField(review, "forex-spread-and-commission");
   const regulation = checkedField(review, "regulation-and-entity");
   if (review.jurisdiction === "Global" && pricing && regulation && review.broker.slug === "exness" && reviewAccounts(review).length) return [
-    "Exness’s international pages list four account types with different spread and commission structures.",
-    "Web/mobile trading and round-the-clock payment requests are documented, with receipt dependent on the payment provider.",
-    "Eligibility, leverage and protections vary by contracting entity; confirm the terms that apply to your location.",
+    "This source-based global overview uses public documents; no live-account tests were performed.",
+    "Standard/Pro advertise no separate commission; Zero/Raw Spread add per-side charges.",
+    "Compare total costs and your contracting entity, because eligibility and protections vary.",
   ];
   if (review.jurisdiction === "Global") return [
     `This is a global overview of ${review.broker.name}, covering the available group disclosures and research.`,
@@ -136,6 +142,10 @@ export function verdictSentences(review: BrokerReview): string[] {
 export function flowFaqs(review: BrokerReview) {
   const faqs = reviewDigest(review).faqs.filter(f => f.answer && verifiedSources(f.sourceIds, review));
   if (review.broker.slug === "exness" && review.jurisdiction === "Kenya") faqs.unshift({ question: "Is Exness a market maker?", answer: "This draft has not verified the contractual execution role of Exness (KE) Limited. Check that entity’s customer agreement and execution policy; another group company’s model should not be assumed to apply.", sourceIds: [] });
-  if (review.broker.slug === "exness" && review.jurisdiction === "Global") faqs.unshift({ question: "Is Exness a market maker?", answer: "This global overview has not verified the contractual execution role of every Exness entity. Check the customer agreement and execution policy of the company assigned to your account rather than assuming one group-wide model.", sourceIds: [] });
+  if (review.broker.slug === "exness" && review.jurisdiction === "Global") faqs.unshift({ question: "Is Exness a market maker?", answer: "Execution role remains unverified; consult your entity’s agreement.", sourceIds: [] });
+  if (review.jurisdiction === "Global" && review.broker.slug === "exness") {
+    const inactivity = checkedField(review, "inactivity-fee");
+    if (inactivity) faqs.push({ question: "Does Exness charge an inactivity fee?", answer: "Exness states no inactivity or reactivation fee. Inactive real accounts may be archived and need reactivation before trading.", sourceIds: inactivity.sourceIds });
+  }
   return faqs;
 }

@@ -38,7 +38,7 @@ export default function Page() {
           <BrokerCard key={b.slug} b={b} />
         ))}
       </section>
-      <section className="mx-auto max-w-7xl overflow-x-auto px-6 pb-28">
+      <section id="comparison" className="scroll-mt-32 mx-auto max-w-7xl overflow-x-auto px-6 pb-28">
         <h2 className="mb-6 font-display text-4xl">
           Side-by-side <em className="text-gold">comparison</em>
         </h2>

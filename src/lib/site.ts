@@ -7,6 +7,8 @@ if (
 )
   throw new Error("SITE_URL must be an HTTPS origin without a path");
 export const siteUrl = configuredUrl ? new URL(configuredUrl).origin : null;
+// Confirmed by the user; deployment configuration can override this origin.
+export const siteOrigin = siteUrl ?? "https://devinforex-five.vercel.app";
 export const publicPaths = [
   "/",
   "/best-brokers",
@@ -19,5 +21,5 @@ export const publicPaths = [
 export const indexable =
   Boolean(siteUrl) && process.env.VERCEL_ENV !== "preview";
 export function canonical(path: string) {
-  return siteUrl ? { canonical: path } : undefined;
+  return { canonical: new URL(path, siteOrigin).href };
 }

@@ -89,7 +89,7 @@ test("review has useful internal and external links, country canonical metadata 
 
 test("global Exness review retains citations, research and five official account links", async ({ page, request }) => {
   await page.goto("/reviews/exness");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Accounts, Withdrawals & Safety");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
   await expect(page.locator(".br-account-table")).toContainText("US$3.50");
   await expect(page.getByRole("columnheader", { name: "Minimum first deposit" })).toBeVisible();
@@ -99,7 +99,7 @@ test("global Exness review retains citations, research and five official account
   await expect(minimums.locator("a")).toHaveCount(4);
   await expect(minimums.first().locator("a")).toHaveAttribute("href", /get\.exness\.help\/hc\/en-us\/articles\/360011554840/);
   await expect(page.locator("#deposit-and-withdrawal")).toContainText("24/7");
-  await expect(page.locator(".review-source-list li")).toHaveCount(8);
+  await expect(page.locator(".review-source-list li")).toHaveCount(14);
   await expect(page.locator("[data-account-cta]")).toHaveCount(5);
   const links = page.getByRole("link", { name: "Open an account with Exness", exact: true });
   await expect(links).toHaveCount(5);
@@ -188,7 +188,7 @@ test("reading navigation and commercial disclosure work with the keyboard", asyn
 
 test("Exness template follows the requested table-first flow without unsupported figures", async ({ page }) => {
   await page.goto("/reviews/template");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Accounts, Withdrawals & Safety");
   await expect(page.getByRole("complementary", { name: "Review verdict" })).toContainText("Not rated");
   await expect(page.locator(".br-quick-grid > div")).toHaveCount(9);
   await expect(page.locator(".br-quick-grid > div").first()).toContainText("professional: from US$200");
@@ -197,7 +197,7 @@ test("Exness template follows the requested table-first flow without unsupported
   await expect(page.locator("#safety")).toContainText("730729");
   await expect(page.locator("#safety")).toContainText("Does not offer services to retail clients");
   await expect(page.locator("#deposit-and-withdrawal")).toContainText("24/7");
-  expect(await page.locator(".br-article .br-section[id]").evaluateAll(nodes => nodes.map(node => node.id))).toEqual(["overview", "account-opening", "fees", "deposit-and-withdrawal", "safety", "platforms", "customer-reviews", "review-faq", "sources"]);
+  expect(await page.locator(".br-article .br-section[id]").evaluateAll(nodes => nodes.map(node => node.id))).toEqual(["overview", "account-opening", "fees", "deposit-and-withdrawal", "safety", "platforms", "alternatives", "customer-reviews", "review-faq", "sources"]);
   const faqSchema = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"].find((item: { "@type": string }) => item["@type"] === "FAQPage");
   expect(faqSchema.mainEntity.some((item: { name: string }) => item.name.includes("weekends"))).toBe(true);
   expect(faqSchema.mainEntity.some((item: { name: string }) => item.name.includes("market maker"))).toBe(false);
@@ -234,9 +234,9 @@ test("account comparisons, quick facts and rating schema require matching eviden
   review.verifiedAt = "2026-11-03";
   review.overallScore = { value: 4.8, outOf: 5, methodologyUrl: "https://example.com/methodology", sourceIds: ["global-standard"] };
   const product = reviewStructuredData(review)["@graph"].find(item => (item as { "@type": string })["@type"] === "Product");
-  expect(product).toBeTruthy();
-  expect(JSON.stringify(product)).toContain('"ratingValue":4.8');
-  expect(JSON.stringify(product)).not.toContain("aggregateRating");
+  expect(product).toBeUndefined();
+  expect(JSON.stringify(reviewStructuredData(review))).not.toContain("ratingValue");
+  expect(JSON.stringify(reviewStructuredData(review))).not.toContain("aggregateRating");
   review.sources = [];
   expect(reviewAccounts(review)).toEqual([]);
   expect(reviewQuickFacts(review).every(f => f.state === "unknown")).toBe(true);
@@ -251,7 +251,7 @@ test("standalone HTML includes embedded styles and schema with working native na
   expect(html).not.toContain("/_next/");
   expect(html).not.toMatch(/Kenya|M-Pesa|USD\/KES/);
   await page.goto("/templates/exness-review.html");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Accounts, Withdrawals & Safety");
   await expect(page.locator(".br-account-table tbody tr td:last-child")).toHaveText([
     "Varies by payment method and region", "From US$200; region-dependent", "From US$200; region-dependent", "From US$200; region-dependent",
   ]);
@@ -280,7 +280,7 @@ test("global branding, expanded sourced pros and cons, and Trustpilot links are 
   }
   const trustpilot = page.getByRole("link", { name: /Find Exness customer reviews on Trustpilot/ });
   await expect(trustpilot).toHaveAttribute("href", /https:\/\/www\.trustpilot\.com\/search\?query=exness\.com/);
-  await expect(page.locator("#customer-reviews")).toContainText("not been independently retrieved");
+  await expect(page.locator("#customer-reviews")).toContainText("no rating or count was collected");
   const account = page.getByRole("link", { name: "Open an account with Exness", exact: true }).first();
   expect(await account.evaluate(el => getComputedStyle(el).backgroundImage)).toContain("linear-gradient");
   await expect(account).toHaveAttribute("rel", "noopener noreferrer");

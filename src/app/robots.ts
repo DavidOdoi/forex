@@ -4,7 +4,8 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      ...(indexable ? { allow: "/" } : { disallow: "/" }),
+      // Crawlers must be able to read each page's noindex directive.
+      allow: "/",
     },
     ...(indexable ? { sitemap: `${siteUrl}/sitemap.xml` } : {}),
   };

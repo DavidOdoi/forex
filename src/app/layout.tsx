@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/components/site-header";
-import { indexable, siteUrl } from "@/lib/site";
+import { indexable, siteOrigin } from "@/lib/site";
 import "@fontsource/manrope/latin-400.css";
 import "@fontsource/manrope/latin-500.css";
 import "@fontsource/manrope/latin-600.css";
@@ -9,7 +9,7 @@ import "@fontsource/instrument-serif/latin-400.css";
 import "@fontsource/instrument-serif/latin-400-italic.css";
 import "./globals.css";
 export const metadata: Metadata = {
-  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
+  metadataBase: new URL(siteOrigin),
   title: "Devin Forex — Broker Research and Comparisons",
   description:
     "Explore forex broker research, account terms and trading risks. Research is in preparation.",

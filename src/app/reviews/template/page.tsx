@@ -19,5 +19,5 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ b
   const { blank } = await searchParams;
   if (blank === "1") return <BrokerReviewPage review={reviewTemplate} />;
   const result = getReview("exness")!;
-  return <><BrokerReviewPage {...result} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewStructuredData(result.review)).replace(/</g, "\\u003c") }} /></>;
+  return <><BrokerReviewPage {...result} demo /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewStructuredData(result.review)).replace(/</g, "\\u003c") }} /></>;
 }

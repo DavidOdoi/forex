@@ -50,6 +50,7 @@ export default function Page() {
         {posts.map(([cat, title, time], i) => (
           <article
             key={title}
+            id={i === 0 ? "beginner-guides" : i === 2 ? "strategies" : i === 4 ? "market-guides" : undefined}
             className={`group cursor-pointer rounded-2xl border bg-card p-8 transition hover:border-primary/50 hover:shadow-glow ${i === 0 ? "md:col-span-2" : ""}`}
           >
             <span className="text-xs uppercase tracking-widest text-accent">

@@ -415,4 +415,23 @@ body:has(.br-review) > header .bg-gold {
 .br-entity-details { margin-top: 20px; }
 .br-entity-details > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; cursor: pointer; font-weight: 650; list-style: none; }
 .br-entity-details summary::-webkit-details-marker { display: none; }
+.br-demo-banner { padding: 10px 14px; margin-bottom: 18px !important; border: 1px solid #dedede; border-radius: 8px; font-size: 16px; background: #f7f7f7; }
+.br-demo-banner a, .br-accountability a, .br-cost-example a { text-decoration: underline; font-weight: 650; }
+.br-accountability { margin-top: 16px; padding: 14px 18px; border: 1px solid #dedede; border-radius: 8px; font-size: 16px; }
+.br-accountability p + p { margin-top: 4px; }
+.br-accountability summary { cursor: pointer; margin-top: 6px; font-weight: 650; }
+.br-accountability ul { padding: 8px 0 0 22px; }
+.br-account-table.has-platforms { min-width: 830px; }
+.br-round-trip { display: block; margin-top: 6px; font-size: 16px; }
+.br-cost-example { margin-top: 22px !important; padding: 20px; border: 1px solid #b3b3b3; border-radius: 10px; background: #f7f7f7; }
+.br-cost-example figcaption { font-size: 16px; }
+.br-cost-example p { margin-top: 12px; }
+.br-cost-example dl { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-top: 16px; }
+.br-cost-example dl > div { padding: 12px; background: #fff; border: 1px solid #dedede; border-radius: 6px; }
+.br-cost-example dt { font-weight: 650; }
+.br-cost-example dd { margin-top: 6px; }
+.br-payment-stages { padding-left: 20px; }
+.br-callout a { text-decoration: underline; }
+.br-register-check { font-size: 16px; }
+@media (max-width: 767px) { .br-cost-example dl { grid-template-columns: 1fr; } .br-cost-example { padding: 16px; } }
 .br-entity-details .br-comparison tbody th { width: 43%; }

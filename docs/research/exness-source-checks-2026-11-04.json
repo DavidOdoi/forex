@@ -1,0 +1,179 @@
+{
+  "purpose": "Evidence acquisition ledger, not editorial approval or live-account testing. Raw snapshots remain in the ignored research archive.",
+  "sources": [
+    {
+      "url": "https://www.exness.com/trading-platforms/",
+      "status": "ok",
+      "retrievedAt": "2026-11-03T14:43:19+00:00",
+      "sha256": "883f19a37427bb443e11e4fc10d4f59e6c19dfa0affcd8bb6aeaa440bc059fda",
+      "notes": []
+    },
+    {
+      "url": "https://www.exness.com/fees/",
+      "status": "ok",
+      "retrievedAt": "2026-11-03T14:43:17+00:00",
+      "sha256": "2902c2e82de38a2e513d091f3b5c838e8ea039388acf84bcc99af997f4721cad",
+      "notes": []
+    },
+    {
+      "url": "https://www.exness.com/",
+      "status": "ok",
+      "retrievedAt": "2026-11-03T14:43:13+00:00",
+      "sha256": "2f8aae18a51ba94ca36e34effef8c39ad08c07238158a50083a365a03cbaafca",
+      "notes": []
+    },
+    {
+      "url": "https://www.exness.com/pro-accounts/",
+      "status": "ok",
+      "retrievedAt": "2026-11-03T14:43:15+00:00",
+      "sha256": "ed61045322ca9f81331b8b0b0b6e0d87abd1042467bde30152328717023852af",
+      "notes": []
+    },
+    {
+      "url": "https://www.exness.com/deposits-and-withdrawals/",
+      "status": "ok",
+      "retrievedAt": "2026-11-03T14:43:16+00:00",
+      "sha256": "42df38d2227b827e5a83deea2e8b2d4f56fb94113a5c289cf82004b7f0e73a24",
+      "notes": []
+    },
+    {
+      "url": "https://www.exness.com/regulation/",
+      "status": "ok",
+      "retrievedAt": "2026-11-03T14:43:18+00:00",
+      "sha256": "ea34f0296fb3b8d5a8653c16d1d4b06f783b32ef55d823409644ab0a56076bec",
+      "notes": []
+    },
+    {
+      "url": "https://www.exness.com/standard-accounts/",
+      "status": "ok",
+      "retrievedAt": "2026-11-03T14:43:14+00:00",
+      "sha256": "77c28a1ffc7eed42603daf44622e439f61788fe85570cd6be4838ce9fb86d764",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/19601793405596-General-deposit-rules",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T10:26:20+00:00",
+      "sha256": "f8842f6f6b6f9541c3b5283877cc0ab988668119caf029f0e801a99763e1f00b",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/17537782738460-Standard-account",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T10:27:04+00:00",
+      "sha256": "b178a86ac86ebd69b2372c012e2228aa1188cdcc1a197ba83121314e5320b057",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/17537782878236-Zero-account",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T10:27:09+00:00",
+      "sha256": "8e95292f9919c91c5487327729f41965b205f4fd8bd5d45ecef3ee3e08ecf47c",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/17537767270556-Raw-Spread-account",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T10:27:07+00:00",
+      "sha256": "997d46d47f4c1e9a8fee78eaaec4caf8b7ad38a8b7d151ab466331a0286a61cb",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/360006858612-First-time-deposits",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T10:26:19+00:00",
+      "sha256": "2c21cf2bd5c2646ae2a7bc32d6fa6af25c514623740a72e6b11ecd48dfdd1e27",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/360013782240-Trading-account-types",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T10:26:22+00:00",
+      "sha256": "6f5af72645957096c7ceb31244782801197035334371f85da0ce83239957540a",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/360011554840-What-is-the-minimum-amount-needed-to-start-trading",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T10:26:21+00:00",
+      "sha256": "4c1893cea06fae4367a67ab0d3877dd4cfd0a2ff9d060c4d5369ad9d44ef42ad",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/17537794560540-Pro-account",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T10:27:06+00:00",
+      "sha256": "601bf10a379fb16e33d794b67f2f4c701cbf3ed844309fce6d516822088c1ab2",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/17537782906396-Archived-trading-accounts",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T11:37:47+00:00",
+      "sha256": "79eaa4db74efa7177455879a5f8a3a0fd48cce0557e28c2b479134345ce22e1f",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/360011745839-Does-Exness-charge-fees-on-orders-held-overnight",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T11:37:44+00:00",
+      "sha256": "19351796d129d60104ca1e2b049879345bf19e29fbd3b17641c5a08a7063822e",
+      "notes": []
+    },
+    {
+      "url": "https://fsaseychelles.sc/search-business/exness-sc-ltd",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T11:36:31+00:00",
+      "sha256": "3d95976164836c1bb260129bfa61db40cfbfadb099db3a5d46d3b84c174afac5",
+      "notes": [
+        "Company name, securities-dealer type and website matched. SD025 is not displayed; licence-number verification remains outstanding."
+      ]
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/360012604359-Are-any-payment-processing-fees-charged-by-Exness",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T11:37:46+00:00",
+      "sha256": "b742cc7620b9eb6acc712e7134d3f2332ef6b051cc9875dd1243dc96f3e732af",
+      "notes": []
+    },
+    {
+      "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/37681/",
+      "status": "http-error",
+      "retrievedAt": "2026-11-04T11:36:33+00:00",
+      "sha256": null,
+      "notes": [
+        "No usable page content collected. No independent verification claimed."
+      ]
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/11865031701532-Available-payment-methods",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T11:37:48+00:00",
+      "sha256": "4959ca448c351872eda9acd4dc753b1470b80e3b13f0f1cd815410b0b3172f50",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/4402341895570-Swap-free-status",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T11:37:45+00:00",
+      "sha256": "9e366af75544e23c8ce45cbd2862e33d1b5a6ef9b2cae887170d25fc18923dc0",
+      "notes": []
+    },
+    {
+      "url": "https://get.exness.help/hc/en-us/articles/14730069335324-Does-Exness-charge-a-fee-to-open-trading-accounts",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T11:37:49+00:00",
+      "sha256": "ea60d3f8e7f2aaf97626213c5a89f17b626a130cc8442a59bb28834fe0060660",
+      "notes": []
+    },
+    {
+      "url": "https://register.fca.org.uk/s/firm?id=001b000003587sXAAQ",
+      "status": "ok",
+      "retrievedAt": "2026-11-04T11:36:34+00:00",
+      "sha256": "ad321c4c4c4893a6ce766470c4b75d10a415f983f9350a4e58abbb26331f96b8",
+      "notes": [
+        "Returned a client-rendered shell; entity and licence were not independently confirmed."
+      ]
+    }
+  ]
+}

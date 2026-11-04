@@ -280,8 +280,8 @@ function Sidebar({ review }: { review: BrokerReview }) {
     </aside>
   );
 }
-export function BrokerReviewPage({ review, research, countries = [] }: { review: BrokerReview; research?: ResearchEntry; countries?: string[] }) {
-  if (review.status !== "template") return <EditorialReviewPage review={review} research={research} countries={countries} />;
+export function BrokerReviewPage({ review, research, countries = [], demo = false }: { review: BrokerReview; research?: ResearchEntry; countries?: string[]; demo?: boolean }) {
+  if (review.status !== "template") return <EditorialReviewPage review={review} research={research} countries={countries} demo={demo} />;
   return <LegacyReviewPage review={review} research={research} countries={countries} />;
 }
 function LegacyReviewPage({ review, research, countries = [] }: { review: BrokerReview; research?: ResearchEntry; countries?: string[] }) {

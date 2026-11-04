@@ -46,8 +46,8 @@ export function ReaderDisclosure({ affiliate, officialLink = false }: { affiliat
     <dialog ref={dialog} className="br-dialog" aria-labelledby="reader-disclosure-title" onClick={e => { if (e.target === e.currentTarget) dialog.current?.close(); }}>
       <button aria-label="Close advertiser disclosure" type="button" onClick={() => dialog.current?.close()}><X size={20} /></button>
       <h2 id="reader-disclosure-title">How account links work</h2>
-      <p>{affiliate ? "Devin Forex may receive compensation when you use an affiliate account link." : officialLink ? "No affiliate tracking is configured. The account buttons link directly to the broker’s official registration page." : "No affiliate link or paid placement is active on this page. Account links are not configured."} Compensation does not establish a broker’s quality or suitability.</p>
-      <p>Read our commercial policy in <a href="/about#research-methodology">our research approach</a>.</p>
+      <p>{affiliate ? "Devin Forex may receive compensation when you use an affiliate account link." : officialLink ? "No affiliate tracking. Buttons open the broker’s official registration page." : "No affiliate link or paid placement is active on this page. Account links are not configured."} Compensation does not establish suitability.</p>
+      <p>See <a href="/about#research-methodology">our research approach</a>.</p>
     </dialog>
   </>;
 }

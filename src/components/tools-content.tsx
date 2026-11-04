@@ -54,12 +54,12 @@ export default function Page() {
         text="Simple calculators for USD-quoted pairs like EUR/USD and GBP/USD."
       />
       <section className="mx-auto grid max-w-7xl gap-6 px-6 pb-28 md:grid-cols-3">
-        <div className="rounded-2xl border bg-card p-8">
+        <div id="pip-calculator" className="scroll-mt-32 rounded-2xl border bg-card p-8">
           <h2 className="mb-6 font-display text-3xl">Pip calculator</h2>
           <Field label="Lot size" value={lots} onChange={setLots} />
           <Result label="Value per pip" value={`$${pipValue.toFixed(2)}`} />
         </div>
-        <div className="rounded-2xl border bg-card p-8">
+        <div id="position-size" className="scroll-mt-32 rounded-2xl border bg-card p-8">
           <h2 className="mb-6 font-display text-3xl">Position size</h2>
           <div className="space-y-4">
             <Field
@@ -72,7 +72,7 @@ export default function Page() {
           </div>
           <Result label="Lot size" value={size.toFixed(2)} />
         </div>
-        <div className="rounded-2xl border bg-card p-8">
+        <div id="profit-calculator" className="scroll-mt-32 rounded-2xl border bg-card p-8">
           <h2 className="mb-6 font-display text-3xl">Profit calculator</h2>
           <div className="space-y-4">
             <Field label="Lot size" value={plLots} onChange={setPlLots} />

@@ -44,18 +44,23 @@ export default function Page() {
             "Any future affiliate relationships will be clearly disclosed. There are currently no active referral links.",
           ],
         ].map(([t, d]) => (
-          <div key={t} id={t === "How we research" ? "research-methodology" : undefined} className="scroll-mt-32 rounded-2xl glass p-8">
+          <div key={t} id={t === "How we research" ? "research-methodology" : t === "Our story" ? "our-story" : "commercial-policy"} className="scroll-mt-32 rounded-2xl glass p-8">
             <h2 className="font-display text-3xl text-gold">{t}</h2>
             <p className="mt-3 text-muted-foreground">{d}</p>
           </div>
         ))}
       </section>
-      <section className="mx-auto max-w-3xl px-6 pb-28 text-center">
+      <section id="corrections" className="scroll-mt-32 mx-auto max-w-3xl px-6 pb-16 text-base leading-relaxed">
+        <h2 className="font-display text-4xl">Corrections and updates</h2>
+        <p className="mt-4">A correction should identify the page, disputed claim, relevant legal entity and a primary-source URL with its date. Recheck the evidence and record substantive changes separately from source retrieval dates. Drafts stay unpublished until an accountable editor records approval.</p>
+        <p className="mt-4">The research workflow uses automated collection and AI-assisted drafting. Financial claims require source checking; no author qualifications or independent approvals are assumed. Author information is available on <a className="underline" href="/authors/david-odoi">David Odoi’s profile</a>.</p>
+      </section>
+      <section id="contact" className="scroll-mt-32 mx-auto max-w-3xl px-6 pb-28 text-center">
         <h2 className="font-display text-4xl">
           Get in <em className="text-gold">touch</em>
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Questions or partnership ideas? Email us at hello@devinforex.com
+          A public contact channel has not yet been confirmed. It must be established before the research publication launches.
         </p>
       </section>
     </main>

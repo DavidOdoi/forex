@@ -1,6 +1,7 @@
 import { createReviewTemplate } from "./template";
 import type { BrokerReview, ReviewField } from "./types";
 import { internationalEntities } from "./international";
+import { davidOdoi } from "../authors";
 
 // Global is an editorial overview, not a licensing jurisdiction or an allowlist
 // of residents. Entity permissions remain separately identified below.
@@ -37,6 +38,8 @@ export function globalReview(name: string, slug: string): BrokerReview {
   if (slug !== "exness") return review;
 
   review.broker.website = "https://www.exness.com/";
+  review.author = { ...davidOdoi };
+  review.publication = { publishedAt: null, updatedAt: "2026-11-04", approvedAt: null, approvedBy: null };
   source("global-standard", "Exness Standard account specifications", "https://www.exness.com/standard-accounts/");
   source("global-pro", "Exness Pro, Zero and Raw Spread account specifications", "https://www.exness.com/pro-accounts/");
   source("global-payments", "Exness deposit and withdrawal conditions", "https://www.exness.com/deposits-and-withdrawals/");
@@ -44,6 +47,15 @@ export function globalReview(name: string, slug: string): BrokerReview {
   source("global-regulation", "Exness regulatory permissions and retail restrictions", "https://www.exness.com/regulation/");
   source("global-platforms", "Exness trading platform comparison", "https://www.exness.com/trading-platforms/");
   source("global-minimum-deposit", "Exness minimum first-deposit requirements", "https://get.exness.help/hc/en-us/articles/360011554840-What-is-the-minimum-amount-needed-to-start-trading", "2026-11-04");
+  source("global-account-types", "Exness account types and platform support", "https://get.exness.help/hc/en-us/articles/360013782240-Trading-account-types", "2026-11-04");
+  source("global-swap-free", "Exness swap-free eligibility and exclusions", "https://get.exness.help/hc/en-us/articles/4402341895570-Swap-free-status", "2026-11-04");
+  source("global-inactivity", "Exness inactive accounts and reactivation fees", "https://get.exness.help/hc/en-us/articles/17537782906396-Archived-trading-accounts", "2026-11-04");
+  source("global-payment-fees", "Exness payment-processing fees", "https://get.exness.help/hc/en-us/articles/360012604359-Are-any-payment-processing-fees-charged-by-Exness", "2026-11-04");
+  source("global-payment-methods", "Exness regional payment-method availability", "https://get.exness.help/hc/en-us/articles/11865031701532-Available-payment-methods", "2026-11-04");
+  set("overnight-financing", "Swap-free covers specified instruments, subject to trading-activity eligibility. Other instruments incur swap; status can be withdrawn. Check the current instrument rate and your Personal Area status.", ["global-swap-free"], "2026-11-04");
+  set("inactivity-fee", "Exness states no inactivity or reactivation fee. Inactive real accounts may be archived and need reactivation before trading.", ["global-inactivity"], "2026-11-04");
+  set("deposit-methods-and-charges", "Methods depend on registered region, verification and provider availability. Your Personal Area shows fees, transaction limits and processing estimates; no universal country/method comparison was established.", ["global-payment-methods"], "2026-11-04");
+  set("withdrawal-methods-and-charges", "Exness states no deposit/withdrawal processing fee. Banks and payment providers may charge; confirm the selected method and any currency-conversion cost separately.", ["global-payment-fees"], "2026-11-04");
   set("minimum-deposit", "Standard: payment-method and regional minimums apply. Pro, Zero and Raw Spread: first deposits start at US$200, depending on region. Confirm the amount in your Personal Area; payment-method limits also apply.", ["global-minimum-deposit"], "2026-11-04");
   const pricing = "Standard advertises spreads from 0.2 pips with no commission; Pro from 0.1 pips with no commission. Zero starts at 0 pips with commission from US$0.05 per lot per side; Raw Spread starts at 0 pips with commission up to US$3.50 per lot per side. These are advertised floors, not measured average costs; account and instrument terms apply.";
   set("forex-trading-costs", pricing, ["global-standard", "global-pro"]);
@@ -61,29 +73,35 @@ export function globalReview(name: string, slug: string): BrokerReview {
   set("eligible-countries-and-client-category", "Eligibility is country- and entity-dependent. The regulatory page states that Exness (UK) Ltd and Exness (Cy) Ltd do not serve retail clients; group licences must not be assumed to protect another entity’s customers.", ["global-regulation"]);
   set("supported-mobile-platforms", "The international platform page lists Exness Trade and MT5 mobile. Supported devices and features vary; usability, security and execution were not tested.", ["global-platforms"]);
   set("platform-and-availability", "The provider documents Exness Terminal in a browser and MT5 mobile access, with real and demo MT5 accounts. Product and feature availability depends on the selected platform and account.", ["global-platforms"]);
-  set("cfds-and-underlying-markets", "The account pages list forex, metals, cryptocurrencies, energies, stocks and indices as leveraged trading instruments. This does not establish ownership of underlying shares or assets.", ["global-standard", "global-pro"]);
+  set("cfds-and-underlying-markets", "Forex, metals, crypto, energies, stock and index derivatives are listed. Availability varies; this does not establish ownership of underlying assets.", ["global-standard", "global-pro"]);
   set("regulation-and-entity", "Exness publishes several legal entities and permissions, listed below. These are provider disclosures, not independently checked register entries in this global overview. UK and Cyprus entities are explicitly described as not serving retail clients.", ["global-regulation"]);
   review.entities?.push(
     { name: "Exness (UK) Ltd", country: "United Kingdom", regulator: "FCA", licence: "730729", sourceId: "global-regulation", note: "Does not offer services to retail clients" },
     { name: "Exness (Cy) Ltd", country: "Cyprus", regulator: "CySEC", licence: "178/12", sourceId: "global-regulation", note: "Does not offer services to retail clients" },
   );
+  // The regulator page independently identifies the company and dealer type.
+  // It does not display SD025, so the licence number remains provider-reported.
+  review.sources.push({ id: "fsa-identity", title: "Seychelles FSA: Exness (SC) Ltd identity entry", url: "https://fsaseychelles.sc/search-business/exness-sc-ltd", publisher: "Seychelles FSA", checkedAt: "2026-11-04", legalEntity: "Exness (SC) Ltd", jurisdiction: "Seychelles" });
+  const seychelles = review.entities?.find(entity => entity.name === "Exness (SC) Ltd");
+  if (seychelles) seychelles.identitySourceId = "fsa-identity";
+  set("platform-and-availability", "Standard, Pro, Zero and Raw Spread guides document MT4/MT5. Confirm region-specific instrument availability.", ["global-account-types"], "2026-11-04");
   review.strengths = [
-    { title: "Four account pricing choices", explanation: "Standard/Pro advertise no separate commission; Zero/Raw Spread combine a spread with per-side commission.", sourceIds: ["global-standard", "global-pro"] },
-    { title: "Payment requests around the clock", explanation: "The provider lists 24/7 requests, including weekends; bank receipt remains payment-method dependent.", sourceIds: ["global-payments"] },
-    { title: "Browser and mobile access", explanation: "Exness Terminal, Exness Trade and MT5 mobile are documented; account and platform compatibility still matter.", sourceIds: ["global-platforms"] },
-    { title: "Demo access before live funding", explanation: "The international account pages link a free demo with virtual funds for practice.", sourceIds: ["global-standard"] },
-    { title: "No advertised account-management fee", explanation: "The fee FAQ describes free account opening and management; payment-method charges are a separate question.", sourceIds: ["global-fees"] },
+    { title: "Four pricing choices", explanation: "Standard/Pro: no commission. Zero/Raw Spread: per-side commission.", sourceIds: ["global-standard", "global-pro"] },
+    { title: "24/7 payment requests", explanation: "Bank settlement follows broker processing; timing varies.", sourceIds: ["global-payments"] },
+    { title: "Browser and mobile", explanation: "Documented platforms; compatibility varies by account.", sourceIds: ["global-platforms"] },
+    { title: "Virtual-money demo", explanation: "Practice before funding; demo execution was not tested.", sourceIds: ["global-standard"] },
+    { title: "No management fee advertised", explanation: "Opening/management are free; third-party payment charges may apply.", sourceIds: ["global-fees"] },
   ];
   review.limitations = [
-    { title: "Spread floors are not typical costs", explanation: "Zero-spread headlines can sit alongside commission, and spreads may widen during volatility or low liquidity.", sourceIds: ["global-standard", "global-pro"] },
-    { title: "Bank settlement can take longer", explanation: "Automatic approval does not guarantee immediate receipt; the provider’s published processing exceptions still apply.", sourceIds: ["global-payments"] },
-    { title: "Group licences are not universal protection", explanation: "The UK and Cyprus companies explicitly do not serve retail clients; confirm the entity on your agreement.", sourceIds: ["global-regulation"] },
+    { title: "Spread floors are not typical costs", explanation: "Zero-spread headlines can include commission; actual spreads vary with liquidity.", sourceIds: ["global-standard", "global-pro"] },
+    { title: "Bank settlement can take longer", explanation: "Automatic processing does not guarantee immediate receipt; payment-provider delays can apply.", sourceIds: ["global-payments"] },
+    { title: "Group licences are not universal protection", explanation: "UK/Cyprus entities do not serve retail clients; check your contracting company.", sourceIds: ["global-regulation"] },
     { title: "Higher initial funding for professional accounts", explanation: "Pro, Zero and Raw Spread start at US$200, depending on region. Payment-method minimums also apply.", sourceIds: ["global-minimum-deposit"] },
-    { title: "High leverage increases loss exposure", explanation: "The advertised maximum is not an entitlement for every account, instrument or entity. Confirm applicable restrictions.", sourceIds: ["global-standard", "global-pro"] },
+    { title: "High leverage increases loss exposure", explanation: "Eligibility and instrument/account limits apply; higher leverage amplifies losses.", sourceIds: ["global-standard", "global-pro"] },
   ];
-  review.faqs[1] = { question: "Which Exness company would hold my account?", answer: "The contracting company depends on the applicable location and account terms. Confirm the exact entity in the agreement shown during registration. The published UK and Cyprus permissions do not mean those entities serve international retail clients.", sourceIds: ["global-regulation"] };
-  review.faqs[5] = { question: "Is Exness available in every country?", answer: "No. The provider lists restricted jurisdictions, including the USA. A global website does not establish eligibility everywhere; confirm your location and contracting entity before applying.", sourceIds: ["global-regulation"] };
-  review.faqs[6] = { question: "Can I withdraw money from Exness on weekends?", answer: "The provider lists 24/7 requests. Automatic processing does not guarantee instant receipt, and non-instant requests are described as processed within 24 hours. Bank or payment-provider arrival can take longer.", sourceIds: ["global-payments"] };
+  review.faqs[1] = { question: "Which Exness company would hold my account?", answer: "Your registration agreement names the company. Location and account terms determine allocation; UK/Cyprus entities do not serve retail clients.", sourceIds: ["global-regulation"] };
+  review.faqs[5] = { question: "Is Exness available in every country?", answer: "No. Restrictions include the USA. Confirm your location’s eligibility and assigned company during registration.", sourceIds: ["global-regulation"] };
+  review.faqs[6] = { question: "Can I withdraw money from Exness on weekends?", answer: "Requests are available 24/7. Automatic processing does not guarantee receipt; non-instant requests are described as processed within 24 hours, with receiving-provider time additional.", sourceIds: ["global-payments"] };
   review.accountOpening = {
     url: "https://my.exness.com/accounts/sign-up?lng=en", status: "verified", sourceIds: ["global-standard"], legalEntity: entityScope,
     jurisdiction: GLOBAL_SCOPE, checkedAt, isAffiliate: false,

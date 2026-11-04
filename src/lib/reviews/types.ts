@@ -69,8 +69,9 @@ export interface BrokerReview {
   broker: { name: string; slug: string; website: string | null };
   jurisdiction: string | null;
   accountOpening: AccountOpeningLink;
-  author: { name: string; role: string } | null;
-  factChecker: { name: string; role: string } | null;
+  author: { name: string; role: string; profileUrl?: string; bio?: string } | null;
+  factChecker: { name: string; role: string; profileUrl?: string } | null;
+  publication?: { publishedAt: string | null; updatedAt: string | null; approvedAt: string | null; approvedBy: string | null };
   verifiedAt: string | null;
   overallScore: ReviewScore | null;
   verdict: string | null;
@@ -81,6 +82,6 @@ export interface BrokerReview {
   chapters: ReviewChapter[];
   faqs: { question: string; answer: string | null; sourceIds: string[] }[];
   sources: ReviewSource[];
-  entities?: { country: string; name: string; regulator: string | null; licence: string | null; sourceId: string; note?: string }[];
+  entities?: { country: string; name: string; regulator: string | null; licence: string | null; sourceId: string; note?: string; identitySourceId?: string }[];
   customerReviews?: { publisher: "Trustpilot"; url: string; rating: number | null; reviewCount: number | null; checkedAt: string | null };
 }
