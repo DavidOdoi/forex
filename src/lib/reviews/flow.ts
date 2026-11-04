@@ -8,6 +8,7 @@ export interface AccountRow {
   spread: string;
   commission: string;
   minimum: string;
+  minimumSourceIds?: string[];
   sourceIds: string[];
 }
 export interface QuickFact {
@@ -25,11 +26,14 @@ function checkedNovemberSource(review: BrokerReview, id: string) {
   return source && isValidSource(source) && source.jurisdiction === review.jurisdiction && source.checkedAt === "2026-11-03";
 }
 export function reviewAccounts(review: BrokerReview): AccountRow[] {
+  const deposit = checkedField(review, "minimum-deposit");
+  const checkedDeposit = deposit?.checkedAt === "2026-11-04" && deposit.sourceIds.includes("global-minimum-deposit");
+  const minimumSourceIds = checkedDeposit ? deposit.sourceIds : [];
   if (review.jurisdiction === "Global" && review.broker.slug === "exness" && checkedField(review, "forex-spread-and-commission") && checkedNovemberSource(review, "global-standard") && checkedNovemberSource(review, "global-pro")) return [
-    { name: "Standard", category: "Standard", spread: "From 0.2 pips", commission: "No commission", minimum: "Not verified", sourceIds: ["global-standard"] },
-    { name: "Pro", category: "Professional range¹", spread: "From 0.1 pips", commission: "No commission", minimum: "Not verified", sourceIds: ["global-pro"] },
-    { name: "Zero", category: "Professional range¹", spread: "From 0 pips", commission: "From US$0.05 / lot / side", minimum: "Not verified", sourceIds: ["global-pro"] },
-    { name: "Raw Spread", category: "Professional range¹", spread: "From 0 pips", commission: "Up to US$3.50 / lot / side", minimum: "Not verified", sourceIds: ["global-pro"] },
+    { name: "Standard", category: "Standard", spread: "From 0.2 pips", commission: "No commission", minimum: checkedDeposit ? "Varies by payment method and region" : "Not verified", minimumSourceIds, sourceIds: ["global-standard"] },
+    { name: "Pro", category: "Professional range¹", spread: "From 0.1 pips", commission: "No commission", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, sourceIds: ["global-pro"] },
+    { name: "Zero", category: "Professional range¹", spread: "From 0 pips", commission: "From US$0.05 / lot / side", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, sourceIds: ["global-pro"] },
+    { name: "Raw Spread", category: "Professional range¹", spread: "From 0 pips", commission: "Up to US$3.50 / lot / side", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, sourceIds: ["global-pro"] },
   ];
   if (review.jurisdiction !== "Kenya") return [];
   const pricing = checkedField(review, "forex-spread-and-commission");
@@ -61,7 +65,8 @@ export function reviewQuickFacts(review: BrokerReview): QuickFact[] {
     result.push(value ? { label, value, sourceIds, state } : { label, value: "Not verified", sourceIds: [], state: "unknown" });
   };
   const minimumLabels: Record<string, string> = { fxpesa: "Standard: none published; Premier: US$100", pepperstone: "US$10; bank-wire exception", xm: "US$5 equivalent" };
-  add("Minimum deposit", digest.minimum ? (accounts.length ? minimumLabels[review.broker.slug] : undefined) ?? digest.minimum.value ?? undefined : undefined, digest.minimum?.sourceIds);
+  const globalMinimum = review.jurisdiction === "Global" && review.broker.slug === "exness" && accounts[0]?.minimumSourceIds?.length ? "Standard: method/region; professional: from US$200" : undefined;
+  add("Minimum deposit", digest.minimum ? globalMinimum ?? (accounts.length ? minimumLabels[review.broker.slug] : undefined) ?? digest.minimum.value ?? undefined : undefined, digest.minimum?.sourceIds);
   const commission = accounts[0];
   add(commission ? `${commission.name} FX commission` : "FX commission", commission?.commission !== "Not verified" ? commission?.commission : undefined, commission?.sourceIds);
   const leverage = checkedField(review, "leverage-by-product-and-region");

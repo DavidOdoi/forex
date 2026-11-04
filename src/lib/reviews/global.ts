@@ -11,12 +11,12 @@ export function globalReview(name: string, slug: string): BrokerReview {
   review.jurisdiction = GLOBAL_SCOPE;
   const checkedAt = "2026-11-03";
   const entityScope = `${name} group disclosures; account entity must be confirmed`;
-  const source = (id: string, title: string, url: string) => {
-    review.sources.push({ id, title, url, publisher: name, checkedAt, legalEntity: entityScope, jurisdiction: GLOBAL_SCOPE });
+  const source = (id: string, title: string, url: string, sourceCheckedAt = checkedAt) => {
+    review.sources.push({ id, title, url, publisher: name, checkedAt: sourceCheckedAt, legalEntity: entityScope, jurisdiction: GLOBAL_SCOPE });
   };
   const fields = (): ReviewField[] => [...review.keyData, ...review.benchmarks, ...review.chapters.flatMap(c => c.panels.flatMap(p => p.fields))];
-  const set = (id: string, value: string, sourceIds: string[]) => {
-    fields().filter(f => f.id === id).forEach(f => Object.assign(f, { value, status: "verified", sourceIds, legalEntity: entityScope, jurisdiction: GLOBAL_SCOPE, checkedAt }));
+  const set = (id: string, value: string, sourceIds: string[], fieldCheckedAt = checkedAt) => {
+    fields().filter(f => f.id === id).forEach(f => Object.assign(f, { value, status: "verified", sourceIds, legalEntity: entityScope, jurisdiction: GLOBAL_SCOPE, checkedAt: fieldCheckedAt }));
   };
   const profiles = internationalEntities.filter(p => p.slug === slug);
   const urlIds = new Map<string, string>();
@@ -43,6 +43,8 @@ export function globalReview(name: string, slug: string): BrokerReview {
   source("global-fees", "Exness trading and payment fees", "https://www.exness.com/fees/");
   source("global-regulation", "Exness regulatory permissions and retail restrictions", "https://www.exness.com/regulation/");
   source("global-platforms", "Exness trading platform comparison", "https://www.exness.com/trading-platforms/");
+  source("global-minimum-deposit", "Exness minimum first-deposit requirements", "https://get.exness.help/hc/en-us/articles/360011554840-What-is-the-minimum-amount-needed-to-start-trading", "2026-11-04");
+  set("minimum-deposit", "Standard: payment-method and regional minimums apply. Pro, Zero and Raw Spread: first deposits start at US$200, depending on region. Confirm the amount in your Personal Area; payment-method limits also apply.", ["global-minimum-deposit"], "2026-11-04");
   const pricing = "Standard advertises spreads from 0.2 pips with no commission; Pro from 0.1 pips with no commission. Zero starts at 0 pips with commission from US$0.05 per lot per side; Raw Spread starts at 0 pips with commission up to US$3.50 per lot per side. These are advertised floors, not measured average costs; account and instrument terms apply.";
   set("forex-trading-costs", pricing, ["global-standard", "global-pro"]);
   set("forex-spread-and-commission", pricing, ["global-standard", "global-pro"]);
@@ -76,7 +78,7 @@ export function globalReview(name: string, slug: string): BrokerReview {
     { title: "Spread floors are not typical costs", explanation: "Zero-spread headlines can sit alongside commission, and spreads may widen during volatility or low liquidity.", sourceIds: ["global-standard", "global-pro"] },
     { title: "Bank settlement can take longer", explanation: "Automatic approval does not guarantee immediate receipt; the provider’s published processing exceptions still apply.", sourceIds: ["global-payments"] },
     { title: "Group licences are not universal protection", explanation: "The UK and Cyprus companies explicitly do not serve retail clients; confirm the entity on your agreement.", sourceIds: ["global-regulation"] },
-    { title: "Funding minimums need confirmation", explanation: "Minimum-deposit amounts were not readable in the retrieved tables. Check your selected account and payment method.", sourceIds: ["global-standard", "global-pro"] },
+    { title: "Higher initial funding for professional accounts", explanation: "Pro, Zero and Raw Spread start at US$200, depending on region. Payment-method minimums also apply.", sourceIds: ["global-minimum-deposit"] },
     { title: "High leverage increases loss exposure", explanation: "The advertised maximum is not an entitlement for every account, instrument or entity. Confirm applicable restrictions.", sourceIds: ["global-standard", "global-pro"] },
   ];
   review.faqs[1] = { question: "Which Exness company would hold my account?", answer: "The contracting company depends on the applicable location and account terms. Confirm the exact entity in the agreement shown during registration. The published UK and Cyprus permissions do not mean those entities serve international retail clients.", sourceIds: ["global-regulation"] };
