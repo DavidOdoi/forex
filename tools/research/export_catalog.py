@@ -11,8 +11,7 @@ def export_catalog(out: Path) -> dict:
     manifest = json.loads((out / "directory-manifest.json").read_text())
     entries = []
     for seed in manifest:
-        if seed["provider_queue"] != "retail-research":
-            continue
+        provider_type = {"retail-research": "retail", "institutional-separate-template": "institutional", "interbank-separate-template": "interbank", "introducing-broker-manual-review": "introducing"}.get(seed["provider_queue"], "other")
         dossier_path = out / "brokers" / seed["id"] / "evidence-candidates.json"
         dossier = json.loads(dossier_path.read_text()) if dossier_path.exists() else {}
         sources, notes, statuses = [], [], []
@@ -49,10 +48,13 @@ def export_catalog(out: Path) -> dict:
                 notes.append({"sourceId": source_id, "excerpt": excerpt, "fieldIds": candidate["field_ids"]})
                 remaining_words -= len(excerpt.split())
         entries.append({"slug": seed["id"], "name": seed["name"],
+                        "providerType": provider_type, "websiteCandidate": seed.get("website_candidate"),
+                        "sourceCandidates": seed.get("primary_source_candidates", []),
                         "countryCandidates": seed["jurisdiction_candidates"],
                         "sources": sources, "notes": notes,
                         "collectionStatuses": list(dict.fromkeys(statuses))})
-    return {"schemaVersion": 1, "inputEntries": len(manifest), "separateProviderEntries": len(manifest) - len(entries),
+    retail_count = sum(entry["providerType"] == "retail" for entry in entries)
+    return {"schemaVersion": 2, "inputEntries": len(manifest), "retailEntries": retail_count, "separateProviderEntries": len(entries) - retail_count,
             "entries": sorted(entries, key=lambda e: e["name"].casefold())}
 
 
@@ -63,4 +65,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
     result = export_catalog(args.out)
     write_json(args.destination, result)
-    print(json.dumps({"retail_entries": len(result["entries"]), "with_sources": sum(bool(e["sources"]) for e in result["entries"]), "separate_providers": result["separateProviderEntries"]}))
+    print(json.dumps({"total_entries": len(result["entries"]), "retail_entries": result["retailEntries"], "with_sources": sum(bool(e["sources"]) for e in result["entries"]), "other_provider_profiles": result["separateProviderEntries"]}))

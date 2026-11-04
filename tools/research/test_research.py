@@ -225,5 +225,31 @@ class FetchTests(unittest.TestCase):
         self.assertEqual(len(session.calls), 2)
 
 
+class CatalogueTests(unittest.TestCase):
+    def test_tracked_csv_and_catalogue_retain_every_identity_and_classification(self):
+        root = Path(__file__).resolve().parents[2]
+        rows = research.read_directory(root / "data/forex-broker-directory-2026-11-02.csv")
+        catalogue = json.loads((root / "src/data/review-research.json").read_text())
+        self.assertEqual(len(rows), 325)
+        self.assertEqual(len(catalogue["entries"]), len(rows))
+        self.assertEqual({research.slug(row["Broker"]) for row in rows}, {entry["slug"] for entry in catalogue["entries"]})
+        self.assertEqual({row["Broker"] for row in rows}, {entry["name"] for entry in catalogue["entries"]})
+        self.assertEqual(catalogue["retailEntries"], 298)
+        self.assertEqual(catalogue["separateProviderEntries"], 27)
+
+    def test_export_includes_nonretail_leads_without_promoting_them_to_collected_sources(self):
+        from export_catalog import export_catalog
+        records = [research.seed_record(row()), research.seed_record(row(Broker="Institutional Sample", **{"Provider type": "Institutional / professional FX"}))]
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp)
+            research.write_json(out / "directory-manifest.json", records)
+            result = export_catalog(out)
+            self.assertEqual(len(result["entries"]), 2)
+            self.assertEqual(result["retailEntries"], 1)
+            profile = next(entry for entry in result["entries"] if entry["providerType"] == "institutional")
+            self.assertEqual(profile["websiteCandidate"], "https://broker.example/")
+            self.assertEqual(profile["sources"], [])
+            self.assertEqual(profile["notes"], [])
+
 if __name__ == "__main__":
     unittest.main()

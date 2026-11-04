@@ -76,7 +76,7 @@ Seven foundation browser tests cover every exported route, metadata, image loadi
 
 `/reviews/template` opens the populated international Exness overview, with Global as the default scope. `/reviews/template?blank=1` preserves the original empty layout, and `/reviews/template/data` still downloads the blank reusable JSON. The reference supplied by the user informs layout only; its prose, ratings, author identities and testing claims are not copied.
 
-`/reviews` is a searchable, paginated catalogue of **298 retail brokers** from the 325-entry directory. The other 27 institutional, interbank and introducing providers need different research formats. Source-only drafts show bounded quotations, retrieval dates, links and unresolved checks. Missing evidence is not converted into fees, scores, country eligibility or recommendations.
+`/reviews` is a searchable, paginated catalogue of **all 325 directory entries**: 298 retail brokers, 14 institutional/professional providers, 12 interbank providers and one introducing provider. Every entry has a page using the shared review layout. Non-retail profiles adapt the questions to service access, commercial pricing and settlement, and do not display retail account-opening actions. CSV classifications remain unverified research leads. A server-rendered A–Z index links every entry, even without JavaScript. Source-only drafts show bounded quotations, retrieval dates, links and unresolved checks. Missing evidence is not converted into fees, scores, country eligibility or recommendations.
 
 `/reviews/[slug]?country=Country` renders a separate entity profile where available. The default is a global overview. Optional entity profiles include the UK, Australia, Cyprus, Seychelles, Singapore, the UAE, Mauritius, Belize, Curaçao, the BVI and the Cayman Islands. This identifies researched entities, not every country in which a group accepts clients. An unsupported country returns 404 rather than silently reusing another country's facts. Country leads from the CSV are labelled unverified.
 
@@ -105,7 +105,7 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test
 .venv-research/bin/python -m unittest discover -s tools/research -p 'test_*.py'
 ```
 
-The browser suite covers the original site, blank format, populated example, citations, five account placements, country isolation, unsupported-country responses, JSON evidence records, all 298 identities, source/status filters, pagination and responsive layouts. These checks do not measure factual accuracy or guarantee a search-engine outcome.
+The browser suite covers the original site, blank format, populated example, citations, five account placements, country isolation, unsupported-country responses, JSON evidence records, all 325 identities, source/status filters, pagination and responsive layouts. These checks do not measure factual accuracy or guarantee a search-engine outcome.
 
 [tools/research/README.md](tools/research/README.md) documents optional future collection and offline catalogue export. The current website can render the saved material without running a scraper.
 
@@ -141,3 +141,14 @@ The Exness review includes a hypothetical round-trip trading-cost illustration, 
 `src/lib/reviews/publication.ts` requires an accountable author biography/profile, core evidence matching the review scope, explicit dates and approval of the latest substantive update. Provider/source checks are distinct from approval. `publication.updatedAt` is manually recorded; builds do not refresh it. David Odoi's name was supplied by the user; no biography, credentials, reviewer, approval or publication date was invented. A confirmed public contact channel and remaining independent licence checks are also needed before launch.
 
 `tests/onpage-seo.spec.ts` covers publication/indexing eligibility, sitemap filtering, canonical metadata, schema without assumed broker review stars, server rendering without JavaScript, heading/anchor consistency, visible FAQ equivalence, demonstrations and navigation targets. Existing suites cover source isolation, all review word counts, calculators, account links and responsive layouts.
+
+
+## CSV-wide template and linking rollout
+
+The original [325-entry CSV](data/forex-broker-directory-2026-11-02.csv) is retained for reproducible identity checks. [docs/directory-rollout.md](docs/directory-rollout.md) records the scope and limitations. The catalogue exporter now includes all provider queues with explicit classifications; it does not promote candidate URLs or CSV assertions into verified financial fields. Existing retail source snapshots and curated Exness facts are retained.
+
+Every retail entry uses the shared article layout, five account placements, source/status handling, author accountability, a clearly hypothetical cost illustration and related research links. Missing evidence remains unset. Provider profiles adapt retail-specific wording and omit retail signup actions. Every draft stays noindex until its own publication requirements pass.
+
+`relatedReviewLinks` supplies three existing destinations per profile, favouring neighbouring entries within the same directory classification and shared separately sourced entity profiles. Each non-singleton provider group has reciprocal neighbour links; the A–Z index connects all 325 pages directly to the directory. Country parameters are retained only where a matching entity profile exists. These are research-navigation links, not recommendations or resident-eligibility claims.
+
+The directory supports provider-type and research-status filters. New browser checks validate all identities, every related destination, incoming links, the complete no-JavaScript index, provider-specific limitations and mobile navigation. Python tests compare the tracked catalogue against the original CSV and verify that institutional leads are retained without being classified as collected evidence.

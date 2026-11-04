@@ -1,0 +1,2 @@
+# Preserve the uploaded CSV bytes, including its original CRLF endings.
+data/forex-broker-directory-2026-11-02.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

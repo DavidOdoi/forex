@@ -22,7 +22,10 @@ export function publicationBlockers(review: BrokerReview): string[] {
   if (!publication || !dated(publication.approvedAt) || !dated(publication.updatedAt) || !publication.approvedBy || ![review.author?.name, review.factChecker?.name].includes(publication.approvedBy) || publication.approvedAt < publication.updatedAt)
     issues.push("A responsible editor’s approval is not recorded.");
   const fields = [...review.keyData, ...review.chapters.flatMap(chapter => chapter.panels.flatMap(panel => panel.fields))];
-  for (const id of ["minimum-deposit", "forex-spread-and-commission", "regulation-and-entity", "country-availability", "published-processing-times"]) {
+  const requiredFields = review.providerType && review.providerType !== "retail"
+    ? ["regulation-and-entity", "contracting-legal-entity", "eligible-countries-and-client-category", "platform-and-availability"]
+    : ["minimum-deposit", "forex-spread-and-commission", "regulation-and-entity", "country-availability", "published-processing-times"];
+  for (const id of requiredFields) {
     if (!fields.some(field => field.id === id && field.jurisdiction === review.jurisdiction && field.status === "verified" && fieldValue(field, review) === field.value)) {
       issues.push("Core account, eligibility or cost evidence still needs checking.");
       break;

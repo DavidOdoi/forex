@@ -1,11 +1,17 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "inputEntries": 325,
+  "retailEntries": 298,
   "separateProviderEntries": 27,
   "entries": [
     {
       "slug": "4xc",
       "name": "4XC",
+      "providerType": "retail",
+      "websiteCandidate": "https://4xc.com/",
+      "sourceCandidates": [
+        "https://4xc.com/instruments/forex/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -16,6 +22,9 @@
     {
       "slug": "aaafx",
       "name": "AAAFx",
+      "providerType": "retail",
+      "websiteCandidate": "https://aaafx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -26,6 +35,9 @@
     {
       "slug": "aafx-trading",
       "name": "AAFX Trading",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.aafxtrading.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -36,6 +48,11 @@
     {
       "slug": "accentforex",
       "name": "AccentForex",
+      "providerType": "retail",
+      "websiteCandidate": "https://accentforex.com/",
+      "sourceCandidates": [
+        "https://accentforex.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -63,6 +80,9 @@
     {
       "slug": "accm",
       "name": "ACCM",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.accmfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -73,6 +93,11 @@
     {
       "slug": "accuindex",
       "name": "Accuindex",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.accuindex.com/",
+      "sourceCandidates": [
+        "https://accuindex.com/en"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -85,6 +110,9 @@
     {
       "slug": "activtrades",
       "name": "ActivTrades",
+      "providerType": "retail",
+      "websiteCandidate": "https://activtrades.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -139,6 +167,11 @@
     {
       "slug": "acy-securities",
       "name": "ACY Securities",
+      "providerType": "retail",
+      "websiteCandidate": "https://acy.com/en/",
+      "sourceCandidates": [
+        "https://acy.com/en/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -149,6 +182,12 @@
     {
       "slug": "admirals",
       "name": "Admirals",
+      "providerType": "retail",
+      "websiteCandidate": "https://admiralmarkets.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/",
+        "https://admiralmarkets.com/"
+      ],
       "countryCandidates": [
         "Kenya",
         "Seychelles"
@@ -206,6 +245,9 @@
     {
       "slug": "adrofx",
       "name": "AdroFx",
+      "providerType": "retail",
+      "websiteCandidate": "https://adrofx.club/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -260,6 +302,9 @@
     {
       "slug": "adss",
       "name": "ADSS",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.adss.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -312,8 +357,27 @@
       ]
     },
     {
+      "slug": "advanced-markets",
+      "name": "Advanced Markets",
+      "providerType": "institutional",
+      "websiteCandidate": "https://advancedmarkets.com/",
+      "sourceCandidates": [
+        "https://advancedmarkets.com/legal/",
+        "https://advancedmarkets.com/"
+      ],
+      "countryCandidates": [
+        "United Kingdom"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "aetos",
       "name": "AETOS",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.aetoscg.com/en-au/index.html",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -324,6 +388,11 @@
     {
       "slug": "afterprime",
       "name": "Afterprime",
+      "providerType": "retail",
+      "websiteCandidate": "https://afterprime.com/",
+      "sourceCandidates": [
+        "https://afterprime.com/Forex"
+      ],
       "countryCandidates": [
         "Seychelles"
       ],
@@ -382,6 +451,9 @@
     {
       "slug": "alchemy-markets",
       "name": "Alchemy Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://alchemymarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -436,6 +508,9 @@
     {
       "slug": "alpari",
       "name": "Alpari",
+      "providerType": "retail",
+      "websiteCandidate": "https://alpari.com/en/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -491,6 +566,11 @@
     {
       "slug": "amana",
       "name": "Amana",
+      "providerType": "retail",
+      "websiteCandidate": "https://amana.app/",
+      "sourceCandidates": [
+        "https://amana.app/markets/currencies"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -539,6 +619,11 @@
     {
       "slug": "amarkets",
       "name": "AMarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.amarkets.com/",
+      "sourceCandidates": [
+        "https://www.amarkets.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -593,6 +678,11 @@
     {
       "slug": "anzo-capital",
       "name": "Anzo Capital",
+      "providerType": "retail",
+      "websiteCandidate": "https://anzocapital.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -614,6 +704,11 @@
     {
       "slug": "atc-brokers",
       "name": "ATC Brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://atcbrokers.com/",
+      "sourceCandidates": [
+        "https://atcbrokers.com/"
+      ],
       "countryCandidates": [
         "United Kingdom",
         "Cayman Islands"
@@ -671,6 +766,9 @@
     {
       "slug": "atfx",
       "name": "ATFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.atfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -724,8 +822,26 @@
       ]
     },
     {
+      "slug": "atfx-connect",
+      "name": "ATFX Connect",
+      "providerType": "institutional",
+      "websiteCandidate": "https://www.atfxconnect.com/",
+      "sourceCandidates": [
+        "https://www.atfxconnect.com/en/"
+      ],
+      "countryCandidates": [],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "avatrade",
       "name": "AvaTrade",
+      "providerType": "retail",
+      "websiteCandidate": "https://avatrade.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -782,6 +898,11 @@
     {
       "slug": "axi",
       "name": "Axi",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.axi.com/au",
+      "sourceCandidates": [
+        "https://www.axi.com/au"
+      ],
       "countryCandidates": [
         "Australia"
       ],
@@ -838,6 +959,9 @@
     {
       "slug": "axiance",
       "name": "Axiance",
+      "providerType": "retail",
+      "websiteCandidate": "https://axiance.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -848,6 +972,11 @@
     {
       "slug": "axiory",
       "name": "Axiory",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.axiory.com/",
+      "sourceCandidates": [
+        "https://www.axiory.com/"
+      ],
       "countryCandidates": [
         "Belize",
         "Mauritius"
@@ -861,6 +990,9 @@
     {
       "slug": "azaforex",
       "name": "AZAforex",
+      "providerType": "retail",
+      "websiteCandidate": "https://azaforex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -913,8 +1045,29 @@
       ]
     },
     {
+      "slug": "b2prime",
+      "name": "B2Prime",
+      "providerType": "institutional",
+      "websiteCandidate": "https://b2prime.com/",
+      "sourceCandidates": [
+        "https://b2prime.com/"
+      ],
+      "countryCandidates": [
+        "Mauritius",
+        "Seychelles",
+        "South Africa",
+        "Bahamas"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "baxia-markets",
       "name": "Baxia Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://baxiamarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -923,8 +1076,24 @@
       ]
     },
     {
+      "slug": "baxter-fx",
+      "name": "Baxter FX",
+      "providerType": "institutional",
+      "websiteCandidate": "https://www.baxter-fx.com/",
+      "sourceCandidates": [
+        "https://www.baxter-fx.com/"
+      ],
+      "countryCandidates": [],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "bbs-markets",
       "name": "BBS Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://bbsmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -974,6 +1143,9 @@
     {
       "slug": "bcr",
       "name": "BCR",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.thebcr.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -1029,6 +1201,11 @@
     {
       "slug": "beemarkets",
       "name": "BeeMarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://beemarkets.com/",
+      "sourceCandidates": [
+        "https://www.beemarkets.com/"
+      ],
       "countryCandidates": [
         "Australia"
       ],
@@ -1078,6 +1255,9 @@
     {
       "slug": "belleofx",
       "name": "BelleoFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://belleofx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -1132,6 +1312,11 @@
     {
       "slug": "big-boss",
       "name": "Big Boss",
+      "providerType": "retail",
+      "websiteCandidate": "https://bigboss-financial.com/",
+      "sourceCandidates": [
+        "https://www.bigboss-financial.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -1179,6 +1364,9 @@
     {
       "slug": "blackbull-markets",
       "name": "BlackBull Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://blackbull.com/en/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -1220,6 +1408,11 @@
     {
       "slug": "blackwell-global",
       "name": "Blackwell Global",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.blackwellglobal.com/",
+      "sourceCandidates": [
+        "https://www.blackwellglobal.com/en"
+      ],
       "countryCandidates": [
         "United Kingdom",
         "Bahamas",
@@ -1271,6 +1464,11 @@
     {
       "slug": "blaze-markets",
       "name": "Blaze Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.blazemarkets.com/",
+      "sourceCandidates": [
+        "https://blazemarkets.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -1318,6 +1516,9 @@
     {
       "slug": "blueberry",
       "name": "Blueberry",
+      "providerType": "retail",
+      "websiteCandidate": "https://blueberrymarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -1372,6 +1573,9 @@
     {
       "slug": "bmfn",
       "name": "BMFN",
+      "providerType": "retail",
+      "websiteCandidate": "https://bmfn.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -1426,6 +1630,11 @@
     {
       "slug": "bp-prime",
       "name": "BP Prime",
+      "providerType": "retail",
+      "websiteCandidate": "https://bpprime.com/",
+      "sourceCandidates": [
+        "https://bpprime.com/"
+      ],
       "countryCandidates": [
         "United Kingdom"
       ],
@@ -1481,8 +1690,26 @@
       ]
     },
     {
+      "slug": "britannia-global-markets",
+      "name": "Britannia Global Markets",
+      "providerType": "institutional",
+      "websiteCandidate": "https://www.britannia.com/",
+      "sourceCandidates": [
+        "https://www.britannia.com/britannia-global-markets/"
+      ],
+      "countryCandidates": [
+        "United Kingdom"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "ca-markets",
       "name": "CA Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.camarketsglobal.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -1493,6 +1720,11 @@
     {
       "slug": "capital-street-fx",
       "name": "Capital Street FX",
+      "providerType": "retail",
+      "websiteCandidate": "https://capitalstreetfx.com/",
+      "sourceCandidates": [
+        "https://www.capitalstreetfx.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -1541,6 +1773,12 @@
     {
       "slug": "capital-com",
       "name": "Capital.com",
+      "providerType": "retail",
+      "websiteCandidate": "https://capital.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/17/",
+        "https://capital.com/en-int"
+      ],
       "countryCandidates": [
         "Kenya",
         "Bahamas"
@@ -1592,6 +1830,11 @@
     {
       "slug": "capitalbear",
       "name": "CapitalBear",
+      "providerType": "retail",
+      "websiteCandidate": "https://capitalbear.com/",
+      "sourceCandidates": [
+        "https://capitalbear.com/en/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -1602,6 +1845,9 @@
     {
       "slug": "capitalcore",
       "name": "CapitalCore",
+      "providerType": "retail",
+      "websiteCandidate": "https://capitalcore.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -1656,6 +1902,9 @@
     {
       "slug": "cfi",
       "name": "CFI",
+      "providerType": "retail",
+      "websiteCandidate": "https://cfi.trade/en",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -1712,6 +1961,11 @@
     {
       "slug": "cgs-international-singapore",
       "name": "CGS International Singapore",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.cgsi.com.sg/",
+      "sourceCandidates": [
+        "https://www.cgsi.com.sg/our-offerings/products/fx?lang=EN"
+      ],
       "countryCandidates": [
         "Singapore"
       ],
@@ -1724,6 +1978,12 @@
     {
       "slug": "charles-schwab",
       "name": "Charles Schwab",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.schwab.com/forex",
+      "sourceCandidates": [
+        "https://www.cftc.gov/LearnAndProtect/forexfrauds",
+        "https://www.schwab.com/forex"
+      ],
       "countryCandidates": [
         "United States"
       ],
@@ -1780,6 +2040,11 @@
     {
       "slug": "cibfx",
       "name": "CIBFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://cibfx.com/",
+      "sourceCandidates": [
+        "https://cibfx.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -1834,6 +2099,9 @@
     {
       "slug": "city-index",
       "name": "City Index",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.cityindex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -1844,6 +2112,9 @@
     {
       "slug": "cm-trading",
       "name": "CM Trading",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.cmtrading.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -1899,6 +2170,11 @@
     {
       "slug": "cmc-markets",
       "name": "CMC Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.cmcmarkets.com/",
+      "sourceCandidates": [
+        "https://www.cmcmarkets.com/en"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -1953,6 +2229,9 @@
     {
       "slug": "cms-prime",
       "name": "CMS Prime",
+      "providerType": "retail",
+      "websiteCandidate": "https://cmsprime.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -2007,6 +2286,9 @@
     {
       "slug": "coinexx",
       "name": "Coinexx",
+      "providerType": "retail",
+      "websiteCandidate": "https://coinexx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -2017,6 +2299,9 @@
     {
       "slug": "colmex-pro",
       "name": "Colmex Pro",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.colmexpro.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -2072,6 +2357,11 @@
     {
       "slug": "corn-r-trader",
       "name": "Cornèr Trader",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.cornertrader.ch/en/",
+      "sourceCandidates": [
+        "https://www.cornertrader.ch/en/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -2119,6 +2409,9 @@
     {
       "slug": "cpt-markets",
       "name": "CPT Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.cptmarkets.co.uk/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -2174,6 +2467,9 @@
     {
       "slug": "crystal-ball-markets",
       "name": "Crystal Ball Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://crystalballmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -2229,6 +2525,11 @@
     {
       "slug": "ctforex",
       "name": "CTForex",
+      "providerType": "retail",
+      "websiteCandidate": "https://ctforex.com/",
+      "sourceCandidates": [
+        "https://ctforex.com/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -2239,6 +2540,9 @@
     {
       "slug": "darwinex",
       "name": "Darwinex",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.darwinex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -2287,6 +2591,11 @@
     {
       "slug": "db-investing",
       "name": "DB Investing",
+      "providerType": "retail",
+      "websiteCandidate": "https://dbinvesting.com/",
+      "sourceCandidates": [
+        "https://dbinvesting.com/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -2297,6 +2606,9 @@
     {
       "slug": "defcofx",
       "name": "DefcoFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://defcofx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -2307,6 +2619,11 @@
     {
       "slug": "deltastock",
       "name": "DeltaStock",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.deltastock.com/",
+      "sourceCandidates": [
+        "https://www.deltastock.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -2361,6 +2678,9 @@
     {
       "slug": "deriv",
       "name": "Deriv",
+      "providerType": "retail",
+      "websiteCandidate": "https://deriv.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -2416,6 +2736,9 @@
     {
       "slug": "dizicx",
       "name": "Dizicx",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.dizicx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -2426,6 +2749,11 @@
     {
       "slug": "dna-markets",
       "name": "DNA Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.dnamarkets.com/",
+      "sourceCandidates": [
+        "https://portal.dnamarkets.com/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -2436,6 +2764,11 @@
     {
       "slug": "dominion-markets",
       "name": "Dominion Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.dominionmarkets.com/",
+      "sourceCandidates": [
+        "https://www.dominionmarkets.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -2448,6 +2781,9 @@
     {
       "slug": "doo-financial",
       "name": "Doo Financial",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.doofinancial.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -2458,6 +2794,11 @@
     {
       "slug": "doo-prime",
       "name": "Doo Prime",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.dooprime.com/",
+      "sourceCandidates": [
+        "https://dooprimemarkets.com/en/market/forex-trading/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -2499,6 +2840,11 @@
     {
       "slug": "doto",
       "name": "Doto",
+      "providerType": "retail",
+      "websiteCandidate": "https://doto.com/",
+      "sourceCandidates": [
+        "https://doto.com/"
+      ],
       "countryCandidates": [
         "South Africa",
         "Mauritius",
@@ -2557,6 +2903,11 @@
     {
       "slug": "dukascopy",
       "name": "Dukascopy",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.dukascopy.com/",
+      "sourceCandidates": [
+        "https://www.dukascopy.com/swiss/english/home/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -2605,6 +2956,11 @@
     {
       "slug": "duramarkets",
       "name": "DuraMarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://duramarkets.com/",
+      "sourceCandidates": [
+        "https://duramarkets.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -2659,6 +3015,11 @@
     {
       "slug": "earn",
       "name": "Earn",
+      "providerType": "retail",
+      "websiteCandidate": "https://earn.eu/",
+      "sourceCandidates": [
+        "https://earn.eu/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -2713,6 +3074,9 @@
     {
       "slug": "easymarkets",
       "name": "easyMarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://easy-markets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -2767,6 +3131,9 @@
     {
       "slug": "ebc",
       "name": "EBC",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.ebc.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -2821,6 +3188,11 @@
     {
       "slug": "ec-markets",
       "name": "EC Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.ecmarkets.com/",
+      "sourceCandidates": [
+        "https://www.ecmarkets.co.uk/"
+      ],
       "countryCandidates": [
         "United Kingdom"
       ],
@@ -2871,6 +3243,9 @@
     {
       "slug": "eightcap",
       "name": "Eightcap",
+      "providerType": "retail",
+      "websiteCandidate": "https://eightcap.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -2918,6 +3293,11 @@
     {
       "slug": "elev8",
       "name": "Elev8",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.elev8.com/",
+      "sourceCandidates": [
+        "https://www.elev8.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -2959,6 +3339,11 @@
     {
       "slug": "empire-fx",
       "name": "Empire FX",
+      "providerType": "retail",
+      "websiteCandidate": "https://empirefx.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/17/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -3015,6 +3400,9 @@
     {
       "slug": "equiti",
       "name": "Equiti",
+      "providerType": "retail",
+      "websiteCandidate": "https://equiti.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -3069,6 +3457,11 @@
     {
       "slug": "errante",
       "name": "Errante",
+      "providerType": "retail",
+      "websiteCandidate": "https://errante.com/",
+      "sourceCandidates": [
+        "https://errante.com/about-errante/"
+      ],
       "countryCandidates": [
         "Seychelles"
       ],
@@ -3081,6 +3474,11 @@
     {
       "slug": "esperio",
       "name": "Esperio",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.esperio.org/",
+      "sourceCandidates": [
+        "https://www.esperio.org/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -3135,6 +3533,11 @@
     {
       "slug": "eto-markets",
       "name": "ETO Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://eto.group/",
+      "sourceCandidates": [
+        "https://www.eto.group/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -3145,6 +3548,11 @@
     {
       "slug": "etoro",
       "name": "eToro",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.etoro.com/",
+      "sourceCandidates": [
+        "https://www.etoro.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -3199,6 +3607,11 @@
     {
       "slug": "eurotrader",
       "name": "Eurotrader",
+      "providerType": "retail",
+      "websiteCandidate": "https://eurotrader.com/",
+      "sourceCandidates": [
+        "https://eurotrader.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -3256,6 +3669,11 @@
     {
       "slug": "evest",
       "name": "Evest",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.evest.com/",
+      "sourceCandidates": [
+        "https://www.evest.com/en"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -3296,6 +3714,11 @@
     {
       "slug": "exante",
       "name": "EXANTE",
+      "providerType": "retail",
+      "websiteCandidate": "https://exante.eu/",
+      "sourceCandidates": [
+        "https://support.exante.eu/en/articles/114018-what-is-exante"
+      ],
       "countryCandidates": [
         "United Kingdom",
         "Malta",
@@ -3356,6 +3779,11 @@
     {
       "slug": "exclusive-markets",
       "name": "Exclusive Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.exclusivemarkets.com/",
+      "sourceCandidates": [
+        "https://www.exclusivemarkets.com/about-us"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -3410,6 +3838,11 @@
     {
       "slug": "exness",
       "name": "Exness",
+      "providerType": "retail",
+      "websiteCandidate": "https://exness.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -3466,6 +3899,9 @@
     {
       "slug": "fbs",
       "name": "FBS",
+      "providerType": "retail",
+      "websiteCandidate": "https://fbs.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -3520,6 +3956,9 @@
     {
       "slug": "fibogroup",
       "name": "FIBOGroup",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fibogroup.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -3573,8 +4012,28 @@
       ]
     },
     {
+      "slug": "finalto",
+      "name": "Finalto",
+      "providerType": "institutional",
+      "websiteCandidate": "https://www.finalto.com/",
+      "sourceCandidates": [
+        "https://finalto.com/"
+      ],
+      "countryCandidates": [
+        "United Kingdom",
+        "Australia",
+        "Singapore"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "finpros",
       "name": "FinPros",
+      "providerType": "retail",
+      "websiteCandidate": "https://finpros.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -3585,6 +4044,9 @@
     {
       "slug": "firewoodfx",
       "name": "FirewoodFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.firewoodfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -3595,6 +4057,9 @@
     {
       "slug": "fisg",
       "name": "FISG",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fisg.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -3613,6 +4078,11 @@
     {
       "slug": "forex-com",
       "name": "Forex.com",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.forex.com/",
+      "sourceCandidates": [
+        "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+      ],
       "countryCandidates": [
         "United States"
       ],
@@ -3669,6 +4139,9 @@
     {
       "slug": "forex-ee",
       "name": "Forex.ee",
+      "providerType": "retail",
+      "websiteCandidate": "https://forex.ee/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -3723,6 +4196,11 @@
     {
       "slug": "forexmart",
       "name": "ForexMart",
+      "providerType": "retail",
+      "websiteCandidate": "https://forexmart.com/",
+      "sourceCandidates": [
+        "https://forexmart.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -3778,6 +4256,9 @@
     {
       "slug": "fortrade",
       "name": "Fortrade",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fortrade.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -3832,6 +4313,11 @@
     {
       "slug": "fp-markets",
       "name": "FP Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fpmarkets.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -3888,6 +4374,9 @@
     {
       "slug": "fpg",
       "name": "FPG",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fortuneprime.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -3898,6 +4387,9 @@
     {
       "slug": "freshforex",
       "name": "FreshForex",
+      "providerType": "retail",
+      "websiteCandidate": "https://freshforex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -3952,6 +4444,9 @@
     {
       "slug": "fusion-markets",
       "name": "Fusion Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://fusionmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -3962,6 +4457,9 @@
     {
       "slug": "fx-giants",
       "name": "FX Giants",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fxgiants.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -3972,6 +4470,11 @@
     {
       "slug": "fxcc",
       "name": "FXCC",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fxcc.com/",
+      "sourceCandidates": [
+        "https://www.fxcc.com/products"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -4026,6 +4529,11 @@
     {
       "slug": "fxcentrum",
       "name": "FXCentrum",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxcentrum.com/",
+      "sourceCandidates": [
+        "https://fxcentrum.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -4080,6 +4588,11 @@
     {
       "slug": "fxcess",
       "name": "FXCess",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fxcess.com/",
+      "sourceCandidates": [
+        "https://support.fxcess.net/en/support/solutions/articles/203000055258-which-markets-can-i-trade-with-fxcess-"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -4099,6 +4612,9 @@
     {
       "slug": "fxcl",
       "name": "FXCL",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fxclearing.com/home",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4153,6 +4669,9 @@
     {
       "slug": "fxcm",
       "name": "FXCM",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fxcm.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4201,6 +4720,11 @@
     {
       "slug": "fxflat",
       "name": "FXFlat",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fxflat.com/",
+      "sourceCandidates": [
+        "https://www.fxflat.com/fileadmin/downloads/Forms/en/FXFlat_Risk_Information_EN.pdf"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -4211,6 +4735,9 @@
     {
       "slug": "fxglobe",
       "name": "FXGlobe",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxglobe.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4265,6 +4792,9 @@
     {
       "slug": "fxglory",
       "name": "FXGlory",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxglory.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4320,6 +4850,11 @@
     {
       "slug": "fxgrow",
       "name": "FxGrow",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxgrow.com/",
+      "sourceCandidates": [
+        "https://www.fxgrow.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -4367,6 +4902,9 @@
     {
       "slug": "fxgt",
       "name": "FXGT",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxgt.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4421,6 +4959,9 @@
     {
       "slug": "fxnovus",
       "name": "FXNovus",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fxnovus.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4477,6 +5018,9 @@
     {
       "slug": "fxnx",
       "name": "FXNX",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxnx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4531,6 +5075,11 @@
     {
       "slug": "fxpesa",
       "name": "FXPesa",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fxpesa.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -4587,6 +5136,9 @@
     {
       "slug": "fxpig",
       "name": "FXPIG",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.fxpig.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -4597,6 +5149,9 @@
     {
       "slug": "fxprimus",
       "name": "FXPrimus",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxprimus.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4651,6 +5206,11 @@
     {
       "slug": "fxpro",
       "name": "FxPro",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxpro.com/",
+      "sourceCandidates": [
+        "https://www.fxpro.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -4698,6 +5258,9 @@
     {
       "slug": "fxt",
       "name": "FXT",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxtrading.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4746,6 +5309,11 @@
     {
       "slug": "fxtm",
       "name": "FXTM",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.forextime.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -4767,6 +5335,11 @@
     {
       "slug": "fxview",
       "name": "Fxview",
+      "providerType": "retail",
+      "websiteCandidate": "https://fxview.com/",
+      "sourceCandidates": [
+        "https://fxview.com/global/"
+      ],
       "countryCandidates": [
         "South Africa"
       ],
@@ -4779,6 +5352,9 @@
     {
       "slug": "fyntura",
       "name": "Fyntura",
+      "providerType": "retail",
+      "websiteCandidate": "https://fyntura.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -4789,6 +5365,9 @@
     {
       "slug": "gannmarkets",
       "name": "GANNMarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://gannmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -4799,6 +5378,9 @@
     {
       "slug": "gbe-brokers",
       "name": "GBE brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.gbebrokers.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4853,6 +5435,9 @@
     {
       "slug": "gci",
       "name": "GCI",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.gcitrading.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -4863,6 +5448,9 @@
     {
       "slug": "gerchik-co",
       "name": "Gerchik & Co",
+      "providerType": "retail",
+      "websiteCandidate": "https://gerchik.co/en",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4915,8 +5503,26 @@
       ]
     },
     {
+      "slug": "gfx-brokers",
+      "name": "GFX Brokers",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "global-prime",
       "name": "Global Prime",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.globalprime.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -4927,6 +5533,9 @@
     {
       "slug": "golden-brokers",
       "name": "Golden Brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://goldenbrokers.my/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -4981,6 +5590,9 @@
     {
       "slug": "gomarkets",
       "name": "GOMarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.gomarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -4991,6 +5603,9 @@
     {
       "slug": "grand-capital",
       "name": "Grand Capital",
+      "providerType": "retail",
+      "websiteCandidate": "https://grandcapital.net/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -5001,6 +5616,11 @@
     {
       "slug": "gt247",
       "name": "GT247",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.gt247.com/",
+      "sourceCandidates": [
+        "https://trader.easyequities.co.za/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -5020,6 +5640,11 @@
     {
       "slug": "gtc-fx",
       "name": "GTC FX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.gtcfx.com/",
+      "sourceCandidates": [
+        "https://www.gtcfx.com/en-intl"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -5030,6 +5655,9 @@
     {
       "slug": "gulf-brokers",
       "name": "Gulf Brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.gulfbrokers.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -5040,6 +5668,11 @@
     {
       "slug": "hankotrade",
       "name": "Hankotrade",
+      "providerType": "retail",
+      "websiteCandidate": "https://hankotrade.com/",
+      "sourceCandidates": [
+        "https://hankotrade.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -5094,6 +5727,9 @@
     {
       "slug": "hantec-markets",
       "name": "Hantec Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://hmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -5148,6 +5784,11 @@
     {
       "slug": "headway",
       "name": "Headway",
+      "providerType": "retail",
+      "websiteCandidate": "https://hw.site/",
+      "sourceCandidates": [
+        "https://hw.site/"
+      ],
       "countryCandidates": [
         "South Africa"
       ],
@@ -5160,6 +5801,12 @@
     {
       "slug": "hf-markets",
       "name": "HF Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.hfm.com/int",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/",
+        "https://www.hfm.com/int/en/about/regulatory-environment"
+      ],
       "countryCandidates": [
         "Kenya",
         "South Africa"
@@ -5215,8 +5862,28 @@
       ]
     },
     {
+      "slug": "hirose-financial-uk",
+      "name": "Hirose Financial UK",
+      "providerType": "institutional",
+      "websiteCandidate": "https://www.hiroseuk.com/",
+      "sourceCandidates": [
+        "https://www.hiroseuk.com/"
+      ],
+      "countryCandidates": [
+        "United Kingdom"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "hycm",
       "name": "HYCM",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.hycm.com/",
+      "sourceCandidates": [
+        "https://hycm.com/en/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -5264,6 +5931,12 @@
     {
       "slug": "ic-markets",
       "name": "IC Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.icmarkets.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/",
+        "https://www.ic.com/en/"
+      ],
       "countryCandidates": [
         "Kenya",
         "Seychelles"
@@ -5312,8 +5985,43 @@
       ]
     },
     {
+      "slug": "ic-securities",
+      "name": "IC Securities",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
+      "slug": "icap",
+      "name": "ICAP",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "icm-brokers",
       "name": "ICM Brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://icmbrokers.com/",
+      "sourceCandidates": [
+        "https://www.icmbrokers.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -5357,6 +6065,11 @@
     {
       "slug": "icm-capital",
       "name": "ICM Capital",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.icm.com/",
+      "sourceCandidates": [
+        "https://www.icm.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -5413,6 +6126,9 @@
     {
       "slug": "ifc-markets",
       "name": "IFC Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.ifcmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -5467,6 +6183,11 @@
     {
       "slug": "iforex-vestle",
       "name": "iFOREX (Vestle)",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.iforex.eu/",
+      "sourceCandidates": [
+        "https://www.iforex.eu/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -5477,6 +6198,11 @@
     {
       "slug": "ifx-brokers",
       "name": "IFX Brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://ifxbrokers.com/",
+      "sourceCandidates": [
+        "https://ifxbrokers.com/"
+      ],
       "countryCandidates": [
         "South Africa"
       ],
@@ -5489,6 +6215,12 @@
     {
       "slug": "ig",
       "name": "IG",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.ig.com/uk/",
+      "sourceCandidates": [
+        "https://www.ig.com/uk/",
+        "https://www.ig.com/uk"
+      ],
       "countryCandidates": [
         "United Kingdom"
       ],
@@ -5538,6 +6270,9 @@
     {
       "slug": "infinox",
       "name": "INFINOX",
+      "providerType": "retail",
+      "websiteCandidate": "https://infinox.com/en/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -5593,6 +6328,11 @@
     {
       "slug": "ingot-brokers",
       "name": "Ingot Brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.ingot.io/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -5651,6 +6391,9 @@
     {
       "slug": "instaforex",
       "name": "InstaForex",
+      "providerType": "retail",
+      "websiteCandidate": "https://instaforex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -5705,6 +6448,12 @@
     {
       "slug": "interactive-brokers",
       "name": "Interactive Brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.interactivebrokers.com/",
+      "sourceCandidates": [
+        "https://www.cftc.gov/LearnAndProtect/forexfrauds",
+        "https://www.interactivebrokers.com/"
+      ],
       "countryCandidates": [
         "United States",
         "United Kingdom",
@@ -5766,6 +6515,11 @@
     {
       "slug": "intertrader",
       "name": "Intertrader",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.intertrader.com/",
+      "sourceCandidates": [
+        "https://www.intertrader.com/row/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -5774,8 +6528,26 @@
       ]
     },
     {
+      "slug": "invast-global-26-degrees",
+      "name": "Invast Global / 26 Degrees",
+      "providerType": "institutional",
+      "websiteCandidate": "https://www.26degreesglobalmarkets.com/",
+      "sourceCandidates": [
+        "https://www.26degreesglobalmarkets.com/26-degrees-granted-licence-by-cysec/"
+      ],
+      "countryCandidates": [],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "investain",
       "name": "INVESTAiN",
+      "providerType": "retail",
+      "websiteCandidate": "https://investain.com/",
+      "sourceCandidates": [
+        "https://investain.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -5832,6 +6604,9 @@
     {
       "slug": "investizo",
       "name": "Investizo",
+      "providerType": "retail",
+      "websiteCandidate": "https://investizo.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -5886,6 +6661,11 @@
     {
       "slug": "iq-broker",
       "name": "IQ Broker",
+      "providerType": "retail",
+      "websiteCandidate": "https://iqbroker.org/",
+      "sourceCandidates": [
+        "https://iqbroker.org/en/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -5896,6 +6676,11 @@
     {
       "slug": "iq-option",
       "name": "IQ Option",
+      "providerType": "retail",
+      "websiteCandidate": "https://iqoption.com/",
+      "sourceCandidates": [
+        "https://iqoption.com/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -5906,6 +6691,9 @@
     {
       "slug": "ironfx",
       "name": "IronFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.ironfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -5916,6 +6704,12 @@
     {
       "slug": "iux",
       "name": "IUX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.iux.com/",
+      "sourceCandidates": [
+        "https://www.iux.za.com/en/regulation",
+        "https://help.iux.com/hc/en-us"
+      ],
       "countryCandidates": [
         "South Africa",
         "Mauritius"
@@ -5973,6 +6767,9 @@
     {
       "slug": "jetvix",
       "name": "Jetvix",
+      "providerType": "retail",
+      "websiteCandidate": "https://jetvix.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -6020,6 +6817,11 @@
     {
       "slug": "jfd",
       "name": "JFD",
+      "providerType": "retail",
+      "websiteCandidate": "https://jfdoverseas.com/",
+      "sourceCandidates": [
+        "https://research.jfdbrokers.com/en/online-trading/forex"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -6068,6 +6870,11 @@
     {
       "slug": "jp-markets",
       "name": "JP Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.jpmarkets.co.za/",
+      "sourceCandidates": [
+        "https://www.jpmarkets.co.za/"
+      ],
       "countryCandidates": [
         "South Africa"
       ],
@@ -6118,6 +6925,11 @@
     {
       "slug": "juno-markets",
       "name": "Juno Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.junomarkets.com/",
+      "sourceCandidates": [
+        "https://www.junomarkets.com/en"
+      ],
       "countryCandidates": [
         "Vanuatu"
       ],
@@ -6169,6 +6981,11 @@
     {
       "slug": "just2trade",
       "name": "Just2Trade",
+      "providerType": "retail",
+      "websiteCandidate": "https://just2trade.online/",
+      "sourceCandidates": [
+        "https://j2t.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -6202,6 +7019,9 @@
     {
       "slug": "justmarkets",
       "name": "JustMarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://justmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -6250,6 +7070,11 @@
     {
       "slug": "kcm-trade",
       "name": "KCM Trade",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.kcmtrade.com/",
+      "sourceCandidates": [
+        "https://www.kcmtrade.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -6306,6 +7131,11 @@
     {
       "slug": "key-to-markets",
       "name": "Key To Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://keytomarkets.com/",
+      "sourceCandidates": [
+        "https://keytomarkets.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -6362,6 +7192,11 @@
     {
       "slug": "kgi-securities-singapore",
       "name": "KGI Securities Singapore",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.kgieworld.sg/",
+      "sourceCandidates": [
+        "https://www.kgieworld.sg/forex/foreign-exchange"
+      ],
       "countryCandidates": [
         "Singapore"
       ],
@@ -6418,6 +7253,11 @@
     {
       "slug": "khwezi-trade",
       "name": "Khwezi Trade",
+      "providerType": "retail",
+      "websiteCandidate": "https://khwezitrade.co.za/",
+      "sourceCandidates": [
+        "https://khwezifinancialservices.co.za/"
+      ],
       "countryCandidates": [
         "South Africa"
       ],
@@ -6467,6 +7307,11 @@
     {
       "slug": "kvb-plus",
       "name": "KVB Plus",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.kvbplus.com/",
+      "sourceCandidates": [
+        "https://www.kvbplus.com/en"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -6507,6 +7352,11 @@
     {
       "slug": "land-prime",
       "name": "Land Prime",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.landprime.com/",
+      "sourceCandidates": [
+        "https://www.landprime.com/en-GB"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -6549,8 +7399,24 @@
       ]
     },
     {
+      "slug": "lcg",
+      "name": "LCG",
+      "providerType": "introducing",
+      "websiteCandidate": "https://www.lcg.com/",
+      "sourceCandidates": [
+        "https://www.lcg.com/"
+      ],
+      "countryCandidates": [],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "lhfx",
       "name": "LHFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://lhfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -6605,6 +7471,9 @@
     {
       "slug": "libertex",
       "name": "Libertex",
+      "providerType": "retail",
+      "websiteCandidate": "https://libertex.org/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -6659,6 +7528,9 @@
     {
       "slug": "lirunex",
       "name": "Lirunex",
+      "providerType": "retail",
+      "websiteCandidate": "https://lirunex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -6714,6 +7586,9 @@
     {
       "slug": "litefinance",
       "name": "LiteFinance",
+      "providerType": "retail",
+      "websiteCandidate": "https://litefinance.org/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -6767,8 +7642,22 @@
       ]
     },
     {
+      "slug": "lmax-global",
+      "name": "LMAX Global",
+      "providerType": "institutional",
+      "websiteCandidate": "https://www.lmax.com/global",
+      "sourceCandidates": [],
+      "countryCandidates": [],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "lmfx",
       "name": "LMFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://lmfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -6824,6 +7713,9 @@
     {
       "slug": "m4markets",
       "name": "M4Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.m4markets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -6878,6 +7770,11 @@
     {
       "slug": "markets-com",
       "name": "Markets.com",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.markets.com/",
+      "sourceCandidates": [
+        "https://www.markets.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -6932,6 +7829,9 @@
     {
       "slug": "markets4you",
       "name": "Markets4you",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.markets4you.com/en/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -6986,6 +7886,11 @@
     {
       "slug": "marketsvox",
       "name": "MarketsVox",
+      "providerType": "retail",
+      "websiteCandidate": "https://marketsvox.com/en/",
+      "sourceCandidates": [
+        "https://marketsvox.com/en/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -7040,6 +7945,11 @@
     {
       "slug": "maybank-securities-singapore",
       "name": "Maybank Securities Singapore",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.maybank-ke.com.sg/",
+      "sourceCandidates": [
+        "https://www.maybank2u.com.sg/en/personal/investment/securities/product/forex.page"
+      ],
       "countryCandidates": [
         "Singapore"
       ],
@@ -7059,8 +7969,26 @@
       ]
     },
     {
+      "slug": "mb-co-capital-limited",
+      "name": "MB&CO Capital Limited",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "milton-markets",
       "name": "Milton Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://miltonmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -7115,6 +8043,9 @@
     {
       "slug": "milton-prime",
       "name": "Milton Prime",
+      "providerType": "retail",
+      "websiteCandidate": "https://miltonprime.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -7169,6 +8100,11 @@
     {
       "slug": "mitrade",
       "name": "Mitrade",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.mitrade.com/",
+      "sourceCandidates": [
+        "https://www.mitrade.com/en"
+      ],
       "countryCandidates": [
         "South Africa",
         "Mauritius"
@@ -7219,6 +8155,9 @@
     {
       "slug": "modmount",
       "name": "ModMount",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.modmountltd.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -7260,6 +8199,11 @@
     {
       "slug": "monaxa",
       "name": "Monaxa",
+      "providerType": "retail",
+      "websiteCandidate": "https://monaxa.com/",
+      "sourceCandidates": [
+        "https://monaxa.com/forex"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -7314,6 +8258,9 @@
     {
       "slug": "moneta-markets",
       "name": "Moneta Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.monetamarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -7370,6 +8317,11 @@
     {
       "slug": "mtrading",
       "name": "MTrading",
+      "providerType": "retail",
+      "websiteCandidate": "https://mtrading.com/",
+      "sourceCandidates": [
+        "https://mtrading.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -7424,6 +8376,9 @@
     {
       "slug": "multibank",
       "name": "MultiBank",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.multibankgroup.com/en",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -7464,6 +8419,9 @@
     {
       "slug": "n1cm",
       "name": "N1CM",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.n1cm.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -7518,6 +8476,9 @@
     {
       "slug": "naga",
       "name": "NAGA",
+      "providerType": "retail",
+      "websiteCandidate": "https://naga.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -7558,6 +8519,11 @@
     {
       "slug": "neex",
       "name": "Neex",
+      "providerType": "retail",
+      "websiteCandidate": "https://neex.com/",
+      "sourceCandidates": [
+        "https://neex.com/en/"
+      ],
       "countryCandidates": [
         "South Africa",
         "Mauritius"
@@ -7608,6 +8574,11 @@
     {
       "slug": "nomo",
       "name": "nomo",
+      "providerType": "retail",
+      "websiteCandidate": "https://nomotrade.com/",
+      "sourceCandidates": [
+        "https://nomotrade.com/en"
+      ],
       "countryCandidates": [
         "South Africa"
       ],
@@ -7658,6 +8629,11 @@
     {
       "slug": "nordfx",
       "name": "NordFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://nordfx.com/",
+      "sourceCandidates": [
+        "https://nordfx.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -7714,6 +8690,9 @@
     {
       "slug": "npbfx",
       "name": "NPBFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.nmarkets.org/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -7724,6 +8703,9 @@
     {
       "slug": "nrdx",
       "name": "NRDX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.nrdx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -7734,6 +8716,12 @@
     {
       "slug": "oanda",
       "name": "OANDA",
+      "providerType": "retail",
+      "websiteCandidate": "https://oanda.com/",
+      "sourceCandidates": [
+        "https://www.cftc.gov/LearnAndProtect/forexfrauds",
+        "https://www.oanda.com/bvi-en/"
+      ],
       "countryCandidates": [
         "United States"
       ],
@@ -7788,8 +8776,29 @@
       ]
     },
     {
+      "slug": "obsidian-achernar",
+      "name": "Obsidian Achernar",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "ocbc-securities",
       "name": "OCBC Securities",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.iocbc.com/",
+      "sourceCandidates": [
+        "https://www.iocbc.com/platforms/iocbc-fx-trading-platform",
+        "https://www.iocbc.com/"
+      ],
       "countryCandidates": [
         "Singapore"
       ],
@@ -7846,6 +8855,9 @@
     {
       "slug": "octa",
       "name": "Octa",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.octafx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -7856,6 +8868,9 @@
     {
       "slug": "offersfx",
       "name": "OffersFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.offersfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -7866,6 +8881,9 @@
     {
       "slug": "olymp-trade",
       "name": "Olymp Trade",
+      "providerType": "retail",
+      "websiteCandidate": "https://olymptrade.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -7920,6 +8938,11 @@
     {
       "slug": "one-global-market",
       "name": "One Global Market",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.ogm.market/",
+      "sourceCandidates": [
+        "https://www.ogm.market/"
+      ],
       "countryCandidates": [
         "United Kingdom"
       ],
@@ -7976,6 +8999,9 @@
     {
       "slug": "onequity",
       "name": "OnEquity",
+      "providerType": "retail",
+      "websiteCandidate": "https://onequity.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8030,6 +9056,9 @@
     {
       "slug": "oneroyal",
       "name": "OneRoyal",
+      "providerType": "retail",
+      "websiteCandidate": "https://oneroyal.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8084,6 +9113,9 @@
     {
       "slug": "onsafx",
       "name": "Onsafx",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.onsafx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8124,6 +9156,11 @@
     {
       "slug": "opofinance",
       "name": "OpoFinance",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.opofinance.com/",
+      "sourceCandidates": [
+        "https://opofinance.com/"
+      ],
       "countryCandidates": [
         "Australia",
         "South Africa"
@@ -8174,6 +9211,9 @@
     {
       "slug": "oqtima",
       "name": "OQtima",
+      "providerType": "retail",
+      "websiteCandidate": "https://oqtima.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8200,6 +9240,9 @@
     {
       "slug": "orbex",
       "name": "Orbex",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.orbex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -8210,6 +9253,9 @@
     {
       "slug": "otet-markets",
       "name": "Otet Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.otetmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -8220,6 +9266,9 @@
     {
       "slug": "oxsecurities",
       "name": "OxSecurities",
+      "providerType": "retail",
+      "websiteCandidate": "https://oxsecurities.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8274,6 +9323,12 @@
     {
       "slug": "pepperstone",
       "name": "Pepperstone",
+      "providerType": "retail",
+      "websiteCandidate": "https://pepperstone.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/",
+        "https://pepperstone.com/en-au"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -8323,6 +9378,9 @@
     {
       "slug": "pfd",
       "name": "PFD",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.pfd-nz.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8377,6 +9435,11 @@
     {
       "slug": "phillip-nova",
       "name": "Phillip Nova",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.phillipnova.com.sg/",
+      "sourceCandidates": [
+        "https://www.phillipnova.com.sg/forex-trading-online-fx-broker-singapore-phillip-nova/"
+      ],
       "countryCandidates": [
         "Singapore"
       ],
@@ -8389,6 +9452,11 @@
     {
       "slug": "phillip-securities-poems",
       "name": "Phillip Securities (POEMS)",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.poems.com.sg/",
+      "sourceCandidates": [
+        "https://www.poems.com.sg/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -8443,6 +9511,11 @@
     {
       "slug": "phillipcapital",
       "name": "PhillipCapital",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.phillipcapital.com/",
+      "sourceCandidates": [
+        "https://www.phillipcapital.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -8490,6 +9563,9 @@
     {
       "slug": "plexytrade",
       "name": "Plexytrade",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.plexytrade.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8544,6 +9620,9 @@
     {
       "slug": "plus500",
       "name": "Plus500",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.plus500.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8598,6 +9677,11 @@
     {
       "slug": "pocket-broker",
       "name": "Pocket Broker",
+      "providerType": "retail",
+      "websiteCandidate": "https://pocket-broker.com/",
+      "sourceCandidates": [
+        "https://pocket-broker.com/en"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -8631,6 +9715,9 @@
     {
       "slug": "primexbt",
       "name": "PrimeXBT",
+      "providerType": "retail",
+      "websiteCandidate": "https://primexbt.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8685,6 +9772,9 @@
     {
       "slug": "profiforex",
       "name": "Profiforex",
+      "providerType": "retail",
+      "websiteCandidate": "https://profiforex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8725,6 +9815,9 @@
     {
       "slug": "pu-prime",
       "name": "PU Prime",
+      "providerType": "retail",
+      "websiteCandidate": "https://puprime.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8782,6 +9875,11 @@
     {
       "slug": "purple-trading",
       "name": "Purple Trading",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.purple-trading.com/",
+      "sourceCandidates": [
+        "https://www.purple-trading.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -8831,6 +9929,11 @@
     {
       "slug": "questrade",
       "name": "Questrade",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.questrade.com/",
+      "sourceCandidates": [
+        "https://corporatefx.questrade.com/pricing/self-directed-commissions-plans-fees/forex-cfd"
+      ],
       "countryCandidates": [
         "Canada"
       ],
@@ -8843,6 +9946,11 @@
     {
       "slug": "quicktrade",
       "name": "QuickTrade",
+      "providerType": "retail",
+      "websiteCandidate": "https://quicktrade.co.za/",
+      "sourceCandidates": [
+        "https://quicktrade.co.za/"
+      ],
       "countryCandidates": [
         "South Africa"
       ],
@@ -8897,8 +10005,26 @@
       ]
     },
     {
+      "slug": "regulus",
+      "name": "Regulus",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "riisk",
       "name": "riisk",
+      "providerType": "retail",
+      "websiteCandidate": "https://riisk.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -8946,6 +10072,9 @@
     {
       "slug": "roboforex",
       "name": "RoboForex",
+      "providerType": "retail",
+      "websiteCandidate": "https://roboforex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -9001,6 +10130,11 @@
     {
       "slug": "rock-west-rewalt",
       "name": "Rock-West / Rewalt",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.rock-west.com/",
+      "sourceCandidates": [
+        "https://www.rock-west.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -9056,6 +10190,11 @@
     {
       "slug": "rockglobal",
       "name": "RockGlobal",
+      "providerType": "retail",
+      "websiteCandidate": "https://rockglobal.co.nz/",
+      "sourceCandidates": [
+        "https://rockglobal.co.nz/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -9108,8 +10247,43 @@
       ]
     },
     {
+      "slug": "sarpong-capital",
+      "name": "Sarpong Capital",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
+      "slug": "savvy-africa",
+      "name": "Savvy Africa",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "saxo",
       "name": "Saxo",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.home.saxo/",
+      "sourceCandidates": [
+        "https://www.home.saxo/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -9164,6 +10338,9 @@
     {
       "slug": "scandinavian-capital-markets",
       "name": "Scandinavian Capital Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://scandinavianmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -9212,6 +10389,11 @@
     {
       "slug": "scope-markets",
       "name": "Scope Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.scopemarkets.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -9233,6 +10415,11 @@
     {
       "slug": "scorecm",
       "name": "ScoreCM",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.scorecm.com/",
+      "sourceCandidates": [
+        "https://www.scorecm.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -9285,8 +10472,43 @@
       ]
     },
     {
+      "slug": "serengeti-limited",
+      "name": "Serengeti Limited",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
+      "slug": "sic-brokers",
+      "name": "SIC Brokers",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "sicher-mayor",
       "name": "Sicher Mayor",
+      "providerType": "retail",
+      "websiteCandidate": "https://sichermayorfx.com/",
+      "sourceCandidates": [
+        "https://sichermayorfx.com/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -9297,6 +10519,11 @@
     {
       "slug": "simplefx",
       "name": "SimpleFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://simplefx.com/",
+      "sourceCandidates": [
+        "https://simplefx.com/"
+      ],
       "countryCandidates": [
         "South Africa",
         "Mauritius"
@@ -9358,6 +10585,9 @@
     {
       "slug": "skilling",
       "name": "Skilling",
+      "providerType": "retail",
+      "websiteCandidate": "https://skilling.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -9412,6 +10642,9 @@
     {
       "slug": "smartfx",
       "name": "SmartFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://smartfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -9463,6 +10696,9 @@
     {
       "slug": "solid-ecn",
       "name": "Solid ECN",
+      "providerType": "retail",
+      "websiteCandidate": "https://solidecn.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -9517,6 +10753,9 @@
     {
       "slug": "spread-co",
       "name": "Spread Co",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.spreadco.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -9572,6 +10811,11 @@
     {
       "slug": "spreadex",
       "name": "Spreadex",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.spreadex.com/",
+      "sourceCandidates": [
+        "https://www.spreadex.com/"
+      ],
       "countryCandidates": [
         "United Kingdom"
       ],
@@ -9623,6 +10867,9 @@
     {
       "slug": "squaredfinancial",
       "name": "SquaredFinancial",
+      "providerType": "retail",
+      "websiteCandidate": "https://sqfin.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -9633,6 +10880,11 @@
     {
       "slug": "startrader",
       "name": "STARTRADER",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.startrader.com/",
+      "sourceCandidates": [
+        "https://www.startrader.com/global/forex/"
+      ],
       "countryCandidates": [
         "Australia",
         "South Africa",
@@ -9690,8 +10942,28 @@
       ]
     },
     {
+      "slug": "stonex",
+      "name": "StoneX",
+      "providerType": "institutional",
+      "websiteCandidate": "https://www.stonex.com/",
+      "sourceCandidates": [
+        "https://www.stonex.com/en-gb/forex-trading/"
+      ],
+      "countryCandidates": [
+        "United Kingdom"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "strifor",
       "name": "Strifor",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.strifor.org/",
+      "sourceCandidates": [
+        "https://strifor.org/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -9741,8 +11013,24 @@
       ]
     },
     {
+      "slug": "sucden-financial",
+      "name": "Sucden Financial",
+      "providerType": "institutional",
+      "websiteCandidate": "https://www.sucdenfinancial.com/",
+      "sourceCandidates": [
+        "https://www.sucdenfinancial.com/en/markets/foreign-exchange/"
+      ],
+      "countryCandidates": [],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "swiss-markets",
       "name": "Swiss Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.swissmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -9753,6 +11041,11 @@
     {
       "slug": "swissquote",
       "name": "Swissquote",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.swissquote.com/en-ch/private",
+      "sourceCandidates": [
+        "https://www.swissquote.com/en-ch/private"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -9807,6 +11100,12 @@
     {
       "slug": "tastyfx",
       "name": "tastyfx",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.tastyfx.com/",
+      "sourceCandidates": [
+        "https://www.cftc.gov/LearnAndProtect/forexfrauds",
+        "https://www.tastyfx.com/"
+      ],
       "countryCandidates": [
         "United States"
       ],
@@ -9863,6 +11162,11 @@
     {
       "slug": "taurex",
       "name": "Taurex",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.tradetaurex.com/",
+      "sourceCandidates": [
+        "https://www.tradetaurex.com/faq-category/forex/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -9917,8 +11221,28 @@
       ]
     },
     {
+      "slug": "taw-impact-capital",
+      "name": "TAW Impact Capital",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "td-markets",
       "name": "TD Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://tdmarkets.com/",
+      "sourceCandidates": [
+        "https://www.tdmarkets.com/en/"
+      ],
       "countryCandidates": [
         "South Africa"
       ],
@@ -9968,6 +11292,9 @@
     {
       "slug": "tegasfx",
       "name": "TegasFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.tegasfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -10020,8 +11347,28 @@
       ]
     },
     {
+      "slug": "terika-financial-services-limited",
+      "name": "Terika Financial Services Limited",
+      "providerType": "interbank",
+      "websiteCandidate": null,
+      "sourceCandidates": [
+        "https://www.bog.gov.gh/wp-content/uploads/2025/12/Publication-of-Forex-Brokers-cross-border-Payments-and-Financial-services-providers.pdf"
+      ],
+      "countryCandidates": [
+        "Ghana"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "thinkmarkets",
       "name": "ThinkMarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.thinkmarkets.com/en/",
+      "sourceCandidates": [
+        "https://www.thinkmarkets.com/uk/"
+      ],
       "countryCandidates": [
         "United Kingdom"
       ],
@@ -10071,6 +11418,9 @@
     {
       "slug": "tickmill",
       "name": "Tickmill",
+      "providerType": "retail",
+      "websiteCandidate": "https://tickmill.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -10081,6 +11431,9 @@
     {
       "slug": "tiomarkets",
       "name": "TIOmarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://tiomarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -10122,6 +11475,11 @@
     {
       "slug": "titan-fx",
       "name": "Titan FX",
+      "providerType": "retail",
+      "websiteCandidate": "https://titanfx.com/",
+      "sourceCandidates": [
+        "https://titanfx.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -10171,6 +11529,11 @@
     {
       "slug": "tmgm",
       "name": "TMGM",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.tmgm.com/en",
+      "sourceCandidates": [
+        "https://www.tmgm.com/en"
+      ],
       "countryCandidates": [
         "Australia",
         "Mauritius",
@@ -10230,6 +11593,9 @@
     {
       "slug": "top1markets",
       "name": "TOP1Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.top1markets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -10282,8 +11648,26 @@
       ]
     },
     {
+      "slug": "topfx",
+      "name": "TopFX",
+      "providerType": "institutional",
+      "websiteCandidate": "https://topfx.com/",
+      "sourceCandidates": [
+        "https://topfx.eu/"
+      ],
+      "countryCandidates": [],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "trade-24-7",
       "name": "Trade 24/7",
+      "providerType": "retail",
+      "websiteCandidate": "https://trade247.com/",
+      "sourceCandidates": [
+        "https://trade247.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -10340,6 +11724,11 @@
     {
       "slug": "trade-nation",
       "name": "Trade Nation",
+      "providerType": "retail",
+      "websiteCandidate": "https://tradenation.com/",
+      "sourceCandidates": [
+        "https://tradenation.com/"
+      ],
       "countryCandidates": [
         "United Kingdom",
         "Australia",
@@ -10400,6 +11789,11 @@
     {
       "slug": "trade-com",
       "name": "Trade.com",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.trade.com/",
+      "sourceCandidates": [
+        "https://www.trade.com/en/global/"
+      ],
       "countryCandidates": [
         "United Kingdom",
         "Mauritius"
@@ -10450,6 +11844,11 @@
     {
       "slug": "tradequo",
       "name": "TradeQuo",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.tradequo.com/",
+      "sourceCandidates": [
+        "https://tradequo.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -10497,6 +11896,9 @@
     {
       "slug": "trader-s-way",
       "name": "Trader's Way",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.tradersway.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -10551,6 +11953,9 @@
     {
       "slug": "traders-trust",
       "name": "Traders Trust",
+      "providerType": "retail",
+      "websiteCandidate": "https://traders-trust.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -10599,6 +12004,11 @@
     {
       "slug": "tradeview-markets",
       "name": "Tradeview Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.tvmarkets.com/en/",
+      "sourceCandidates": [
+        "https://www.tradeviewmarkets.com/en/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -10640,6 +12050,11 @@
     {
       "slug": "trading-212",
       "name": "Trading 212",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.trading212.com/",
+      "sourceCandidates": [
+        "https://www.trading212.com/"
+      ],
       "countryCandidates": [
         "United Kingdom",
         "Australia"
@@ -10697,6 +12112,12 @@
     {
       "slug": "trading-com",
       "name": "Trading.com",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.trading.com/uk/",
+      "sourceCandidates": [
+        "https://www.cftc.gov/LearnAndProtect/forexfrauds",
+        "https://www.trading.com/uk/"
+      ],
       "countryCandidates": [
         "United States",
         "United Kingdom"
@@ -10748,6 +12169,11 @@
     {
       "slug": "tradu",
       "name": "Tradu",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.tradu.com/",
+      "sourceCandidates": [
+        "https://docs.tradu.com/kid-fx_uk.pdf"
+      ],
       "countryCandidates": [
         "United Kingdom"
       ],
@@ -10785,6 +12211,11 @@
     {
       "slug": "traze",
       "name": "Traze",
+      "providerType": "retail",
+      "websiteCandidate": "https://traze.com/",
+      "sourceCandidates": [
+        "https://traze.com/about-traze/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -10839,6 +12270,11 @@
     {
       "slug": "triomarkets",
       "name": "TrioMarkets",
+      "providerType": "retail",
+      "websiteCandidate": "https://triomarkets.com/",
+      "sourceCandidates": [
+        "https://www.triomarkets.com/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -10851,6 +12287,11 @@
     {
       "slug": "trive",
       "name": "Trive",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.trive.com/",
+      "sourceCandidates": [
+        "https://www.trive.com/"
+      ],
       "countryCandidates": [
         "Malta",
         "South Africa",
@@ -10910,6 +12351,9 @@
     {
       "slug": "tsg-brokers",
       "name": "TSG Brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://tsgbrokers.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -10964,6 +12408,9 @@
     {
       "slug": "ultima-markets",
       "name": "Ultima Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.ultimamarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11018,6 +12465,9 @@
     {
       "slug": "unitedpips",
       "name": "UnitedPips",
+      "providerType": "retail",
+      "websiteCandidate": "https://unitedpips.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11072,6 +12522,11 @@
     {
       "slug": "unum-capital",
       "name": "UNUM Capital",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.unum.co.za/",
+      "sourceCandidates": [
+        "https://unum.co.za/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -11119,6 +12574,11 @@
     {
       "slug": "uob-kay-hian",
       "name": "UOB Kay Hian",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.utrade.com.sg/",
+      "sourceCandidates": [
+        "https://www.uobkh.com/services/brokerage-services-retail-online"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -11138,6 +12598,9 @@
     {
       "slug": "utrada",
       "name": "UTrada",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.utrada.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11192,6 +12655,12 @@
     {
       "slug": "valetax",
       "name": "Valetax",
+      "providerType": "retail",
+      "websiteCandidate": "https://valetax.com/",
+      "sourceCandidates": [
+        "https://valetax.com/legal-documents/",
+        "https://valetax.com/trading-instruments/currency-pairs/"
+      ],
       "countryCandidates": [
         "Mauritius"
       ],
@@ -11248,6 +12717,9 @@
     {
       "slug": "valutrades",
       "name": "Valutrades",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.valutrades.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -11258,6 +12730,9 @@
     {
       "slug": "vantage",
       "name": "Vantage",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.vantagemarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11315,6 +12790,9 @@
     {
       "slug": "vantos-markets",
       "name": "Vantos Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.vantosmarkets.co.uk/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11369,6 +12847,9 @@
     {
       "slug": "varianse",
       "name": "VARIANSE",
+      "providerType": "retail",
+      "websiteCandidate": "https://varianse.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11421,8 +12902,27 @@
       ]
     },
     {
+      "slug": "velocity-trade",
+      "name": "Velocity Trade",
+      "providerType": "institutional",
+      "websiteCandidate": "https://velocitytrade.com/",
+      "sourceCandidates": [
+        "https://velocitytrade.com/"
+      ],
+      "countryCandidates": [
+        "United Kingdom",
+        "South Africa"
+      ],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "vida-markets",
       "name": "Vida Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.vidamarkets.com/en",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11480,6 +12980,11 @@
     {
       "slug": "vpfx",
       "name": "VPFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.vpfx.net/",
+      "sourceCandidates": [
+        "https://www.vpfx.net/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -11534,6 +13039,9 @@
     {
       "slug": "vt-markets",
       "name": "VT Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.vtmarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11590,6 +13098,9 @@
     {
       "slug": "weltrade",
       "name": "Weltrade",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.weltrade.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11644,6 +13155,9 @@
     {
       "slug": "westernfx",
       "name": "WesternFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.westernfx.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11698,6 +13212,11 @@
     {
       "slug": "wetrade",
       "name": "WeTrade",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.wetrade.com/",
+      "sourceCandidates": [
+        "https://www.wetrade.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -11753,6 +13272,11 @@
     {
       "slug": "windsor-brokers",
       "name": "Windsor Brokers",
+      "providerType": "retail",
+      "websiteCandidate": "https://windsorbrokers.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -11810,6 +13334,9 @@
     {
       "slug": "wonderinterest",
       "name": "Wonderinterest",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.wonderinterest.com/en",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11864,6 +13391,9 @@
     {
       "slug": "world-forex",
       "name": "World Forex",
+      "providerType": "retail",
+      "websiteCandidate": "https://wforex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -11918,6 +13448,9 @@
     {
       "slug": "wrpro",
       "name": "WrPro",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.wrpro.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -11928,6 +13461,9 @@
     {
       "slug": "xb-prime",
       "name": "XB Prime",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.xbprime.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -11938,6 +13474,9 @@
     {
       "slug": "xbtfx",
       "name": "XBTFX",
+      "providerType": "retail",
+      "websiteCandidate": "https://xbtfx.io/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -11948,6 +13487,9 @@
     {
       "slug": "xchief",
       "name": "xChief",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.xchief.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -11958,6 +13500,11 @@
     {
       "slug": "xglobal-markets",
       "name": "XGLOBAL Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.xglobalmarkets.com/",
+      "sourceCandidates": [
+        "https://www.xglobalmarkets.com/"
+      ],
       "countryCandidates": [],
       "sources": [],
       "notes": [],
@@ -11968,6 +13515,13 @@
     {
       "slug": "xm",
       "name": "XM",
+      "providerType": "retail",
+      "websiteCandidate": "https://xm.com/",
+      "sourceCandidates": [
+        "https://licensees.cma.or.ke/licenses/5/",
+        "https://www.xm.ke/help-center/about-the-company/faq-how-long-has-xm-been-in-the-industry",
+        "https://www.xm.com/"
+      ],
       "countryCandidates": [
         "Kenya"
       ],
@@ -12018,6 +13572,11 @@
     {
       "slug": "xpro-markets",
       "name": "XPro Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.xpromarkets.com/",
+      "sourceCandidates": [
+        "https://lp.xpromarkets.com/all-in-one-online-trading-brokerage/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -12067,6 +13626,11 @@
     {
       "slug": "xs",
       "name": "XS",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.xs.com/en/",
+      "sourceCandidates": [
+        "https://www.xs.com/en/"
+      ],
       "countryCandidates": [
         "Australia",
         "South Africa",
@@ -12126,6 +13690,11 @@
     {
       "slug": "xtb",
       "name": "XTB",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.xtb.com/int",
+      "sourceCandidates": [
+        "https://www.xtb.com/int"
+      ],
       "countryCandidates": [
         "United Kingdom"
       ],
@@ -12170,6 +13739,9 @@
     {
       "slug": "xtreme-markets",
       "name": "Xtreme Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.xtrememarkets.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -12224,6 +13796,11 @@
     {
       "slug": "xtrend-speed",
       "name": "Xtrend Speed",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.xtrendspeed.com/",
+      "sourceCandidates": [
+        "https://www.xtrendspeed.com/en-US"
+      ],
       "countryCandidates": [
         "South Africa"
       ],
@@ -12252,6 +13829,11 @@
     {
       "slug": "yadix",
       "name": "Yadix",
+      "providerType": "retail",
+      "websiteCandidate": "https://www.yadix.com/",
+      "sourceCandidates": [
+        "https://www.yadix.com/"
+      ],
       "countryCandidates": [
         "Seychelles"
       ],
@@ -12293,8 +13875,22 @@
       ]
     },
     {
+      "slug": "ycm-invest",
+      "name": "YCM-Invest",
+      "providerType": "institutional",
+      "websiteCandidate": "https://ycm-invest.com/",
+      "sourceCandidates": [],
+      "countryCandidates": [],
+      "sources": [],
+      "notes": [],
+      "collectionStatuses": []
+    },
+    {
       "slug": "yokin-broker",
       "name": "Yokin Broker",
+      "providerType": "retail",
+      "websiteCandidate": "https://yokinbroker.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -12313,6 +13909,9 @@
     {
       "slug": "z-forex",
       "name": "Z Forex",
+      "providerType": "retail",
+      "websiteCandidate": "https://zforex.com/",
+      "sourceCandidates": [],
       "countryCandidates": [],
       "sources": [
         {
@@ -12371,6 +13970,11 @@
     {
       "slug": "zarvista-cm",
       "name": "Zarvista CM",
+      "providerType": "retail",
+      "websiteCandidate": "https://zarvistacm.com/",
+      "sourceCandidates": [
+        "https://zarvistacm.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {
@@ -12425,6 +14029,11 @@
     {
       "slug": "zero-markets",
       "name": "Zero Markets",
+      "providerType": "retail",
+      "websiteCandidate": "https://zeromarkets.com/",
+      "sourceCandidates": [
+        "https://www.zeromarkets.com/"
+      ],
       "countryCandidates": [],
       "sources": [
         {

@@ -1,6 +1,7 @@
 import type { BrokerReview, ReviewField } from "./types";
 import { reviewDigest } from "./digest";
 import { fieldValue, isValidSource, verifiedSources } from "./template";
+import { providerLabels } from "./research-types";
 
 export interface AccountRow {
   name: string;
@@ -64,6 +65,7 @@ export function reviewAccounts(review: BrokerReview): AccountRow[] {
   return [];
 }
 export function reviewQuickFacts(review: BrokerReview): QuickFact[] {
+  if (review.providerType && review.providerType !== "retail") return ["Client category", "Minimum commitment", "Service pricing", "Contracting entity", "Regulatory permissions", "Platform access", "Country eligibility", "Funding arrangements", "Settlement terms"].map(label => ({ label, value: "Not verified", state: "unknown" as const, sourceIds: [] }));
   const digest = reviewDigest(review);
   const accounts = reviewAccounts(review);
   const result: QuickFact[] = [];
@@ -94,6 +96,11 @@ export function reviewQuickFacts(review: BrokerReview): QuickFact[] {
   return result;
 }
 export function verdictSentences(review: BrokerReview): string[] {
+  if (review.providerType && review.providerType !== "retail") return [
+    `The supplied directory classifies ${review.broker.name} as ${providerLabels[review.providerType]}; this remains an unverified research lead.`,
+    "Service access, counterparty eligibility and commercial terms have not been established.",
+    "This profile uses the shared research format without assuming retail trading accounts or resident acceptance.",
+  ];
   const pricing = checkedField(review, "forex-spread-and-commission");
   const regulation = checkedField(review, "regulation-and-entity");
   if (review.jurisdiction === "Global" && pricing && regulation && review.broker.slug === "exness" && reviewAccounts(review).length) return [
@@ -101,10 +108,14 @@ export function verdictSentences(review: BrokerReview): string[] {
     "Standard/Pro advertise no separate commission; Zero/Raw Spread add per-side charges.",
     "Compare total costs and your contracting entity, because eligibility and protections vary.",
   ];
-  if (review.jurisdiction === "Global") return [
-    `This is a global overview of ${review.broker.name}, covering the available group disclosures and research.`,
-    "Account costs and availability depend on your location and contracting entity.",
-    "Use the source links and entity-specific profiles to confirm the terms that apply to you.",
+  if (review.jurisdiction === "Global") return regulation ? [
+    `${review.broker.name}’s group disclosures identify the legal entities listed below; permissions apply to each named company.`,
+    "Account costs and resident eligibility still require entity-specific checks.",
+    "Confirm the company in your agreement and its current terms before applying.",
+  ] : [
+    `Research for ${review.broker.name} is incomplete; no source-backed account terms are approved in this profile.`,
+    "Collected material and directory leads still require entity-level checking.",
+    "Confirm eligibility, fees and funding conditions with the relevant legal entity before applying.",
   ];
   if (review.jurisdiction === "Kenya" && pricing && regulation && reviewAccounts(review).length) {
     if (review.broker.slug === "exness") return [

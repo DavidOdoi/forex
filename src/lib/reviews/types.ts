@@ -67,6 +67,8 @@ export interface BrokerReview {
   schemaVersion: 1;
   status: "template" | "draft" | "published";
   broker: { name: string; slug: string; website: string | null };
+  providerType?: import("./research-types").ProviderType;
+  relatedResearch?: { name: string; slug: string; href: string }[];
   jurisdiction: string | null;
   accountOpening: AccountOpeningLink;
   author: { name: string; role: string; profileUrl?: string; bio?: string } | null;

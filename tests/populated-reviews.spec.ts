@@ -6,9 +6,9 @@ import { reviewDigest, wordCount } from "../src/lib/reviews/digest";
 import { reviewAccounts, reviewQuickFacts } from "../src/lib/reviews/flow";
 import { reviewStructuredData } from "../src/lib/reviews/seo";
 
-test("all retail records retain identity, country separation and evidence integrity", () => {
-  expect(researchEntries).toHaveLength(298);
-  expect(new Set(researchEntries.map(e => e.slug)).size).toBe(298);
+test("all directory records retain identity, country separation and evidence integrity", () => {
+  expect(researchEntries).toHaveLength(325);
+  expect(new Set(researchEntries.map(e => e.slug)).size).toBe(325);
   expect(directoryEntries().filter(e => e.sourceCount > 0).length).toBeGreaterThan(200);
   const countries = new Set(researchEntries.flatMap(e => reviewCountries(e.slug)));
   for (const country of ["Global", "United Kingdom", "Australia", "Cyprus", "Seychelles", "Singapore", "United Arab Emirates", "Mauritius", "Cayman Islands"])
@@ -135,12 +135,12 @@ test("review scope loads distinct entity profiles without a regional site defaul
 
 test("directory search, status filters and pagination expose research without promoting unverified claims", async ({ page }) => {
   await page.goto("/reviews");
-  await expect(page.getByRole("status")).toContainText("298 brokers");
+  await expect(page.getByRole("status")).toContainText("325 entries");
   await expect(page.locator("article")).toHaveCount(24);
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await expect(page.getByRole("status")).toContainText("Page 2");
   await page.getByRole("searchbox", { name: "Search broker reviews" }).fill("eToro");
-  await expect(page.getByRole("status")).toContainText("1 brokers");
+  await expect(page.getByRole("status")).toContainText("1 entry");
   await expect(page.locator("article")).toContainText("Singapore");
   await page.getByRole("link", { name: "Open research draft" }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(/eToro Review 2026/);

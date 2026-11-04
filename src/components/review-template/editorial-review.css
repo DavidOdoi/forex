@@ -433,5 +433,11 @@ body:has(.br-review) > header .bg-gold {
 .br-payment-stages { padding-left: 20px; }
 .br-callout a { text-decoration: underline; }
 .br-register-check { font-size: 16px; }
+.br-provider-note { margin: 16px 0 !important; padding: 14px 18px; border: 1px solid #dedede; border-radius: 8px; font-size: 16px; }
+.br-directory-leads { margin: 20px 0; padding: 18px; border: 1px solid #dedede; border-radius: 8px; }
+.br-directory-leads h3 { font-size: 18px; }
+.br-directory-leads p { margin-top: 8px; }
+.br-directory-leads ul { margin-top: 10px; padding-left: 20px; }
+.br-directory-leads a { text-decoration: underline; }
 @media (max-width: 767px) { .br-cost-example dl { grid-template-columns: 1fr; } .br-cost-example { padding: 16px; } }
 .br-entity-details .br-comparison tbody th { width: 43%; }
