@@ -1,4 +1,4 @@
-// Replace each `url` with your personal referral link.
+// Discovery cards link to global research; account links live in each review.
 export type Broker = {
   slug: string;
   name: string;
@@ -11,7 +11,7 @@ export type Broker = {
   summary: string;
   beginner: boolean;
   lowCost: boolean;
-  mpesa: boolean;
+  demo: boolean;
 };
 
 export const brokers: Broker[] = [
@@ -19,61 +19,61 @@ export const brokers: Broker[] = [
     slug: "exness",
     name: "Exness",
     tag: "Research pending",
-    spread: "0.0",
-    min: "$10",
-    lev: "1:Unlimited",
-    reg: "FCA · CySEC · FSCA",
+    spread: "Account-dependent",
+    min: "Account-dependent",
+    lev: "Entity-dependent",
+    reg: "Check the contracting legal entity",
     url: "#",
     summary:
-      "Source verification is pending for this broker’s legal entities, account terms, platforms and payment options.",
+      "Explore the global overview, legal entities and documented account conditions. Availability and terms vary by location.",
     beginner: true,
     lowCost: true,
-    mpesa: true,
+    demo: true,
   },
   {
     slug: "xm",
     name: "XM",
     tag: "Research pending",
-    spread: "0.6",
-    min: "$5",
-    lev: "1:1000",
-    reg: "CySEC · ASIC · IFSC",
+    spread: "Account-dependent",
+    min: "Account-dependent",
+    lev: "Entity-dependent",
+    reg: "Check the contracting legal entity",
     url: "#",
     summary:
-      "Source verification is pending for this broker’s legal entities, account terms, platforms and payment options.",
+      "Explore the global overview, legal entities and documented account conditions. Availability and terms vary by location.",
     beginner: true,
     lowCost: false,
-    mpesa: true,
+    demo: true,
   },
   {
     slug: "ic-markets",
     name: "IC Markets",
     tag: "Research pending",
-    spread: "0.0",
-    min: "$200",
-    lev: "1:500",
-    reg: "ASIC · CySEC · FSA",
+    spread: "Account-dependent",
+    min: "Account-dependent",
+    lev: "Entity-dependent",
+    reg: "Check the contracting legal entity",
     url: "#",
     summary:
-      "Source verification is pending for this broker’s legal entities, account terms, platforms and payment options.",
+      "Explore the global overview, legal entities and documented account conditions. Availability and terms vary by location.",
     beginner: false,
     lowCost: true,
-    mpesa: false,
+    demo: true,
   },
   {
     slug: "pepperstone",
     name: "Pepperstone",
     tag: "Research pending",
-    spread: "0.1",
-    min: "$0",
-    lev: "1:500",
-    reg: "FCA · ASIC · CMA",
+    spread: "Account-dependent",
+    min: "Account-dependent",
+    lev: "Entity-dependent",
+    reg: "Check the contracting legal entity",
     url: "#",
     summary:
-      "Source verification is pending for this broker’s legal entities, account terms, platforms and payment options.",
+      "Explore the global overview, legal entities and documented account conditions. Availability and terms vary by location.",
     beginner: false,
     lowCost: true,
-    mpesa: false,
+    demo: true,
   },
 ];
 

@@ -149,7 +149,7 @@ export function CountryScope({ current, countries = [], slug }: { current?: stri
         >
           <option value="">Select a country</option>
           {[
-            "Kenya",
+            "Germany",
             "United Kingdom",
             "South Africa",
             "United States",

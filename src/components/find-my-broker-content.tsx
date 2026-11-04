@@ -7,7 +7,7 @@ import { brokers, brokerResearchNotice } from "@/lib/brokers";
 const questions = [
   { key: "beginner", q: "Are you new to trading?" },
   { key: "lowCost", q: "Are low spreads your top priority?" },
-  { key: "mpesa", q: "Do you want to deposit with M-Pesa?" },
+  { key: "demo", q: "Do you want to compare demo accounts?" },
 ] as const;
 
 export default function Page() {

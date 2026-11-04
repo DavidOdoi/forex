@@ -32,7 +32,6 @@ const pairs = [
   ["XAU/USD", "2384.10", "+0.54%"],
   ["AUD/USD", "0.6612", "-0.15%"],
   ["USD/CHF", "0.9034", "+0.05%"],
-  ["USD/KES", "129.40", "+0.02%"],
   ["BTC/USD", "68210", "+1.20%"],
 ];
 
@@ -118,7 +117,7 @@ export default function Index() {
             [
               "02",
               "Verify & fund",
-              "Sign up, verify your ID and deposit via card, bank or M-Pesa.",
+              "Verify your identity and choose a payment method supported for your country and account.",
             ],
             [
               "03",

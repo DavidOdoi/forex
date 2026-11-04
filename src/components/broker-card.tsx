@@ -1,4 +1,5 @@
 import type { Broker } from "@/lib/brokers";
+import Link from "next/link";
 
 export function BrokerCard({ b }: { b: Broker }) {
   return (
@@ -16,25 +17,23 @@ export function BrokerCard({ b }: { b: Broker }) {
       <dl className="mt-8 grid grid-cols-3 gap-4 border-y py-6 text-center">
         <div>
           <dt className="text-xs text-muted-foreground">Spread from</dt>
-          <dd className="mt-1 text-xl font-semibold">{b.spread} pips</dd>
+          <dd className="mt-1 text-base font-semibold">{b.spread}</dd>
         </div>
         <div>
           <dt className="text-xs text-muted-foreground">Min deposit</dt>
-          <dd className="mt-1 text-xl font-semibold">{b.min}</dd>
+          <dd className="mt-1 text-base font-semibold">{b.min}</dd>
         </div>
         <div>
           <dt className="text-xs text-muted-foreground">Leverage</dt>
-          <dd className="mt-1 text-xl font-semibold">{b.lev}</dd>
+          <dd className="mt-1 text-base font-semibold">{b.lev}</dd>
         </div>
       </dl>
-      <a
-        href={b.url}
-        target="_blank"
-        rel="sponsored noopener"
+      <Link
+        href={`/reviews/${b.slug}`}
         className="mt-6 block rounded-full bg-gold py-4 text-center font-semibold text-primary-foreground transition group-hover:scale-[1.02]"
       >
-        {b.name} link pending →
-      </a>
+        Read the {b.name} review →
+      </Link>
     </article>
   );
 }

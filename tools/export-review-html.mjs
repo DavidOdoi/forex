@@ -4,7 +4,7 @@ import { dirname, resolve } from "node:path";
 
 // Export the rendered review as one framework-free document. Run against the
 // local production server after building. No broker site is fetched or scraped.
-const target = new URL(process.argv[2] ?? "http://127.0.0.1:3100/reviews/exness?country=Kenya");
+const target = new URL(process.argv[2] ?? "http://127.0.0.1:3100/reviews/exness");
 if (!["127.0.0.1", "localhost"].includes(target.hostname)) throw new Error("Export from a local review preview only");
 const destination = resolve(process.argv[3] ?? "public/templates/exness-review.html");
 const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ?? "/usr/bin/chromium" });

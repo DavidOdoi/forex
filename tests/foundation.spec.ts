@@ -87,14 +87,13 @@ test("desktop navigation, dropdowns, comparison table and original broker cards"
     await expect(
       page.getByRole("heading", { name, exact: true }),
     ).toBeVisible();
-  const outbound = page.locator('article a[target="_blank"]');
+  const outbound = page.locator('article a[href^="/reviews/"]');
   await expect(outbound).toHaveCount(4);
   await expect(
     page.locator("article").getByText("Not rated", { exact: true }),
   ).toHaveCount(4);
   for (const link of await outbound.all()) {
-    await expect(link).toHaveAttribute("href", "#");
-    await expect(link).toHaveAttribute("rel", /sponsored/);
+    await expect(link).toHaveAttribute("href", /^\/reviews\//);
   }
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
@@ -180,7 +179,7 @@ test("broker finder completes the original three questions and restarts", async 
   ).toBeVisible();
   await page.getByRole("button", { name: "No", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Do you want to deposit with M-Pesa?" }),
+    page.getByRole("heading", { name: "Do you want to compare demo accounts?" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Yes", exact: true }).click();
   await expect(

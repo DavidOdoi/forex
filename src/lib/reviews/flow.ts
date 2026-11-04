@@ -25,6 +25,12 @@ function checkedNovemberSource(review: BrokerReview, id: string) {
   return source && isValidSource(source) && source.jurisdiction === review.jurisdiction && source.checkedAt === "2026-11-03";
 }
 export function reviewAccounts(review: BrokerReview): AccountRow[] {
+  if (review.jurisdiction === "Global" && review.broker.slug === "exness" && checkedField(review, "forex-spread-and-commission") && checkedNovemberSource(review, "global-standard") && checkedNovemberSource(review, "global-pro")) return [
+    { name: "Standard", category: "Standard", spread: "From 0.2 pips", commission: "No commission", minimum: "Not verified", sourceIds: ["global-standard"] },
+    { name: "Pro", category: "Professional range¹", spread: "From 0.1 pips", commission: "No commission", minimum: "Not verified", sourceIds: ["global-pro"] },
+    { name: "Zero", category: "Professional range¹", spread: "From 0 pips", commission: "From US$0.05 / lot / side", minimum: "Not verified", sourceIds: ["global-pro"] },
+    { name: "Raw Spread", category: "Professional range¹", spread: "From 0 pips", commission: "Up to US$3.50 / lot / side", minimum: "Not verified", sourceIds: ["global-pro"] },
+  ];
   if (review.jurisdiction !== "Kenya") return [];
   const pricing = checkedField(review, "forex-spread-and-commission");
   if (review.broker.slug === "exness" && pricing && checkedNovemberSource(review, "standard") && checkedNovemberSource(review, "pro")) return [
@@ -59,25 +65,36 @@ export function reviewQuickFacts(review: BrokerReview): QuickFact[] {
   const commission = accounts[0];
   add(commission ? `${commission.name} FX commission` : "FX commission", commission?.commission !== "Not verified" ? commission?.commission : undefined, commission?.sourceIds);
   const leverage = checkedField(review, "leverage-by-product-and-region");
-  add("Maximum leverage", leverage && review.jurisdiction === "Kenya" ? "Up to 1:400; instrument limits apply" : undefined, leverage?.sourceIds);
+  add("Maximum leverage", leverage ? (review.jurisdiction === "Global" ? "Conditional; see account terms" : review.jurisdiction === "Kenya" ? "Up to 1:400; instrument limits apply" : undefined) : undefined, leverage?.sourceIds);
   const swap = review.broker.slug === "exness" && accounts.length > 0;
-  add("Swap-free option", swap ? "Available; terms apply" : undefined, swap ? ["standard", "pro"] : [], swap ? "yes" : "unknown");
+  add("Swap-free option", swap ? "Available; terms apply" : undefined, swap ? (review.jurisdiction === "Global" ? ["global-standard", "global-pro"] : ["standard", "pro"]) : [], swap ? "yes" : "unknown");
   const segregated = checkedField(review, "client-money-arrangements");
   add("Segregated client funds", segregated ? "Yes · provider-reported" : undefined, segregated?.sourceIds, segregated ? "yes" : "unknown");
   const restrictions = checkedField(review, "country-availability");
-  const excludesUS = restrictions && review.jurisdiction === "Kenya" && ["exness", "fxpesa", "xm"].includes(review.broker.slug);
+  const excludesUS = restrictions && ((review.jurisdiction === "Global" && review.broker.slug === "exness") || (review.jurisdiction === "Kenya" && ["exness", "fxpesa", "xm"].includes(review.broker.slug)));
   add(review.broker.slug === "xm" ? "Accepts US citizens" : "Accepts US residents", excludesUS ? "No" : undefined, excludesUS ? restrictions.sourceIds : [], excludesUS ? "no" : "unknown");
   const demo = checkedField(review, "demo-account");
   add("Demo account", demo ? "Available; virtual funds" : undefined, demo?.sourceIds, demo ? "yes" : "unknown");
   const mobile = checkedField(review, "supported-mobile-platforms");
   add("Mobile trading", mobile ? "Documented; not tested" : undefined, mobile?.sourceIds, mobile ? "yes" : "unknown");
   const licence = checkedField(review, "licence-number");
-  add("Regulation", licence ? (licence.sourceIds.includes("cma") ? `CMA · ${licence.value}` : "Provider report · see safety") : undefined, licence?.sourceIds);
+  const regulation = checkedField(review, "regulation-and-entity");
+  add("Regulation", review.jurisdiction === "Global" && regulation ? "Entity-specific; see safety" : licence ? (licence.sourceIds.includes("cma") ? `CMA · ${licence.value}` : "Provider report · see safety") : undefined, review.jurisdiction === "Global" ? regulation?.sourceIds : licence?.sourceIds);
   return result;
 }
 export function verdictSentences(review: BrokerReview): string[] {
   const pricing = checkedField(review, "forex-spread-and-commission");
   const regulation = checkedField(review, "regulation-and-entity");
+  if (review.jurisdiction === "Global" && pricing && regulation && review.broker.slug === "exness" && reviewAccounts(review).length) return [
+    "Exness’s international pages list four account types with different spread and commission structures.",
+    "Web/mobile trading and round-the-clock payment requests are documented, with receipt dependent on the payment provider.",
+    "Eligibility, leverage and protections vary by contracting entity; confirm the terms that apply to your location.",
+  ];
+  if (review.jurisdiction === "Global") return [
+    `This is a global overview of ${review.broker.name}, covering the available group disclosures and research.`,
+    "Account costs and availability depend on your location and contracting entity.",
+    "Use the source links and entity-specific profiles to confirm the terms that apply to you.",
+  ];
   if (review.jurisdiction === "Kenya" && pricing && regulation && reviewAccounts(review).length) {
     if (review.broker.slug === "exness") return [
       "Exness’s Kenyan offering lists four accounts with different spread and commission structures.",
@@ -114,5 +131,6 @@ export function verdictSentences(review: BrokerReview): string[] {
 export function flowFaqs(review: BrokerReview) {
   const faqs = reviewDigest(review).faqs.filter(f => f.answer && verifiedSources(f.sourceIds, review));
   if (review.broker.slug === "exness" && review.jurisdiction === "Kenya") faqs.unshift({ question: "Is Exness a market maker?", answer: "This draft has not verified the contractual execution role of Exness (KE) Limited. Check that entity’s customer agreement and execution policy; another group company’s model should not be assumed to apply.", sourceIds: [] });
+  if (review.broker.slug === "exness" && review.jurisdiction === "Global") faqs.unshift({ question: "Is Exness a market maker?", answer: "This global overview has not verified the contractual execution role of every Exness entity. Check the customer agreement and execution policy of the company assigned to your account rather than assuming one group-wide model.", sourceIds: [] });
   return faqs;
 }

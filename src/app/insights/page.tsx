@@ -28,7 +28,7 @@ const posts = [
   ],
   [
     "Beginner guide",
-    "How to open your first trading account with M-Pesa",
+    "How to choose a broker and funding method for your country",
     "5 min",
   ],
   ["Strategy", "Risk management: the 2% rule explained", "6 min"],

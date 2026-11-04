@@ -51,7 +51,7 @@ export default function Page() {
                 "Spread",
                 "Min deposit",
                 "Leverage",
-                "M-Pesa",
+                "Research scope",
               ].map((h) => (
                 <th key={h} className="border-b p-4 font-medium">
                   {h}
@@ -64,13 +64,13 @@ export default function Page() {
               <tr key={b.slug} className="border-b last:border-0">
                 <td className="p-4 font-semibold">{b.name}</td>
                 <td className="p-4 text-muted-foreground">Not rated</td>
-                <td className="p-4">{b.spread} pips</td>
+                <td className="p-4">{b.spread}</td>
                 <td className="p-4">{b.min}</td>
                 <td className="p-4">{b.lev}</td>
                 <td
-                  className={`p-4 ${b.mpesa ? "text-gain" : "text-muted-foreground"}`}
+                  className="p-4 text-muted-foreground"
                 >
-                  {b.mpesa ? "Yes" : "No"}
+                  Global overview
                 </td>
               </tr>
             ))}

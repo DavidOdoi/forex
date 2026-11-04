@@ -30,23 +30,23 @@ export function ReaderContents({ links }: { links: { id: string; label: string }
 export function ReaderMarket({ current, countries, slug }: { current: string | null; countries: string[]; slug: string }) {
   const router = useRouter();
   return <div className="br-market">
-    <label htmlFor="reader-market"><Globe2 size={15} />Country / entity profile</label>
+    <label htmlFor="reader-market"><Globe2 size={15} />Review scope</label>
     <div><select id="reader-market" value={current ?? ""} disabled={!countries.length} onChange={e => router.push(`/reviews/${slug}?country=${encodeURIComponent(e.target.value)}`)}>
       {!countries.length && <option value="">Country not established</option>}
-      {countries.map(country => <option key={country}>{country}</option>)}
+      {countries.map(country => <option key={country} value={country}>{country === "Global" ? "Global overview" : country}</option>)}
     </select><ChevronDown size={16} aria-hidden="true" /></div>
-    <p>Account eligibility must be checked separately.</p>
+    <p>Eligibility and protections depend on your location and entity.</p>
   </div>;
 }
 
-export function ReaderDisclosure({ affiliate }: { affiliate: boolean }) {
+export function ReaderDisclosure({ affiliate, officialLink = false }: { affiliate: boolean; officialLink?: boolean }) {
   const dialog = useRef<HTMLDialogElement>(null);
   return <>
     <button className="br-disclosure" type="button" onClick={() => dialog.current?.showModal()}><Info size={14} />Advertiser disclosure</button>
     <dialog ref={dialog} className="br-dialog" aria-labelledby="reader-disclosure-title" onClick={e => { if (e.target === e.currentTarget) dialog.current?.close(); }}>
       <button aria-label="Close advertiser disclosure" type="button" onClick={() => dialog.current?.close()}><X size={20} /></button>
       <h2 id="reader-disclosure-title">How account links work</h2>
-      <p>{affiliate ? "Devin Forex may receive compensation when you use an affiliate account link." : "No affiliate link or paid placement is active on this page. Account links are not configured."} Compensation does not establish a broker’s quality or suitability.</p>
+      <p>{affiliate ? "Devin Forex may receive compensation when you use an affiliate account link." : officialLink ? "No affiliate tracking is configured. The account buttons link directly to the broker’s official registration page." : "No affiliate link or paid placement is active on this page. Account links are not configured."} Compensation does not establish a broker’s quality or suitability.</p>
       <p>Read our commercial policy in <a href="/about#research-methodology">our research approach</a>.</p>
     </dialog>
   </>;

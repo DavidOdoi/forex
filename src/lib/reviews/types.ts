@@ -81,4 +81,6 @@ export interface BrokerReview {
   chapters: ReviewChapter[];
   faqs: { question: string; answer: string | null; sourceIds: string[] }[];
   sources: ReviewSource[];
+  entities?: { country: string; name: string; regulator: string | null; licence: string | null; sourceId: string; note?: string }[];
+  customerReviews?: { publisher: "Trustpilot"; url: string; rating: number | null; reviewCount: number | null; checkedAt: string | null };
 }

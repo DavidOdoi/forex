@@ -375,3 +375,44 @@ body:has(.br-review) > header .bg-gold {
 .br-hero > .br-container > .br-meta { margin: 16px 0 0; }
 .br-verdict-action .br-account-hero { order: -1; margin: 0 0 18px; }
 .br-data-download + .br-data-download { display: flex; }
+
+/* Prominent account actions keep black labels on a warm gold surface. */
+.br-account .br-account-button {
+  min-height: 56px;
+  padding: 14px 22px;
+  border: 1px solid #aa751c;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffe4a2 0%, #efc05b 50%, #e3a731 100%);
+  color: #000;
+  box-shadow: 0 3px 0 #b98224, 0 10px 22px #ad7c2426;
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: .01em;
+  text-decoration: none;
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+}
+.br-account .br-account-button > svg {
+  flex-shrink: 0;
+  width: 27px;
+  height: 27px;
+  padding: 4px;
+  border-radius: 50%;
+  background: #ffffff70;
+}
+.br-verdict-action .br-account-button { padding-inline: 12px; gap: 8px; }
+.br-account .br-account-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #b98224, 0 14px 28px #ad7c2433;
+  filter: brightness(1.035);
+}
+.br-account .br-account-button:not(:disabled):active { transform: translateY(1px); box-shadow: 0 1px 0 #b98224; }
+.br-account .br-account-button:disabled { border-style: solid; opacity: 1; box-shadow: none; filter: saturate(.55); }
+.br-tradeoffs li + li { border-top: 1px solid #e4e4e4; padding-top: 13px; }
+.br-tradeoffs li > a { font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.br-tradeoffs li > p { margin-top: 6px; font-size: 16px; line-height: 1.6; }
+.br-comparison :is(th,td) > a, .br-callout a, .br-customer-reviews > a { font-weight: 650; text-decoration: underline; text-underline-offset: 4px; }
+.br-customer-reviews > a { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; }
+.br-entity-details { margin-top: 20px; }
+.br-entity-details > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; cursor: pointer; font-weight: 650; list-style: none; }
+.br-entity-details summary::-webkit-details-marker { display: none; }
+.br-entity-details .br-comparison tbody th { width: 43%; }

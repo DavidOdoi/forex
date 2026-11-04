@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { getReview, researchEntries, directoryEntries, reviewCountries } from "../src/lib/reviews/catalog";
-import { reviewedFields } from "../src/lib/reviews/curated";
+import { curatedReview, reviewedFields } from "../src/lib/reviews/curated";
 import { fieldValue } from "../src/lib/reviews/template";
 import { reviewDigest, wordCount } from "../src/lib/reviews/digest";
 import { reviewAccounts, reviewQuickFacts } from "../src/lib/reviews/flow";
@@ -9,9 +9,9 @@ import { reviewStructuredData } from "../src/lib/reviews/seo";
 test("all retail records retain identity, country separation and evidence integrity", () => {
   expect(researchEntries).toHaveLength(298);
   expect(new Set(researchEntries.map(e => e.slug)).size).toBe(298);
-  expect(directoryEntries().filter(e => e.sourceCount > 0).length).toBeGreaterThan(230);
+  expect(directoryEntries().filter(e => e.sourceCount > 0).length).toBeGreaterThan(200);
   const countries = new Set(researchEntries.flatMap(e => reviewCountries(e.slug)));
-  for (const country of ["Kenya", "United Kingdom", "Australia", "Cyprus", "Seychelles", "Singapore", "United Arab Emirates", "Mauritius", "Cayman Islands"])
+  for (const country of ["Global", "United Kingdom", "Australia", "Cyprus", "Seychelles", "Singapore", "United Arab Emirates", "Mauritius", "Cayman Islands"])
     expect(countries.has(country), country).toBe(true);
   for (const entry of researchEntries) {
     expect(entry.notes.reduce((n, note) => n + note.excerpt.split(/\s+/).length, 0)).toBeLessThanOrEqual(75);
@@ -20,7 +20,7 @@ test("all retail records retain identity, country separation and evidence integr
       const { review } = getReview(entry.slug, country)!;
       expect(review.status).toBe("draft");
       expect(review.overallScore).toBeNull();
-      expect(review.accountOpening.url).toBeNull();
+      if (review.accountOpening.url) expect(review.accountOpening.isAffiliate).toBe(false);
       for (const field of reviewedFields(review).filter(f => f.status === "verified")) {
         expect(fieldValue(field, review)).toBe(field.value);
         expect(field.jurisdiction).toBe(country);
@@ -30,7 +30,7 @@ test("all retail records retain identity, country separation and evidence integr
 });
 
 test("short summaries keep critical charge exceptions and respect the evidence guard", () => {
-  const { review } = getReview("fxpesa", "Kenya")!;
+  const review = curatedReview("FXPesa", "fxpesa");
   const digest = reviewDigest(review);
   const costs = digest.sections.find(s => s.id === "fees")!.fields[0].value!;
   expect(costs).toContain("US$3.50 per lot, per side");
@@ -38,7 +38,7 @@ test("short summaries keep critical charge exceptions and respect the evidence g
   const payments = digest.sections.find(s => s.id === "deposit-and-withdrawal")!.fields.map(f => f.value).join(" ");
   expect(payments).toContain("US$30");
   expect(payments).toContain("up to 15 working days");
-  expect(reviewDigest(getReview("pepperstone", "Kenya")!.review).sections.flatMap(s => s.fields).map(f => f.value).join(" ")).toContain("US$25/£15");
+  expect(reviewDigest(curatedReview("Pepperstone", "pepperstone")).sections.flatMap(s => s.fields).map(f => f.value).join(" ")).toContain("US$25/£15");
   review.sources = [];
   expect(reviewDigest(review).sections.every(s => s.fields.length === 0)).toBe(true);
   expect(reviewDigest(review).minimum).toBeUndefined();
@@ -87,36 +87,37 @@ test("review has useful internal and external links, country canonical metadata 
   expect(await response.text()).toContain('id="research-methodology"');
 });
 
-test("populated FXPesa review retains citations, complete research and five account placements", async ({ page, request }) => {
-  await page.goto("/reviews/fxpesa?country=Kenya");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/FXPesa Review 2026/);
+test("global Exness review retains citations, research and five official account links", async ({ page, request }) => {
+  await page.goto("/reviews/exness");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
-  await expect(page.locator("#key-data")).toContainText("US$100");
-  await expect(page.locator("#fees")).toContainText("US$3.50");
-  await expect(page.locator("#deposit-and-withdrawal")).toContainText("M-Pesa");
-  await expect(page.locator(".review-source-list li")).toHaveCount(10);
+  await expect(page.locator(".br-account-table")).toContainText("US$3.50");
+  await expect(page.locator("#deposit-and-withdrawal")).toContainText("24/7");
+  await expect(page.locator(".review-source-list li")).toHaveCount(7);
   await expect(page.locator("[data-account-cta]")).toHaveCount(5);
-  await expect(page.getByRole("button", { name: "Open an account with FXPesa", exact: true })).toHaveCount(5);
+  const links = page.getByRole("link", { name: "Open an account with Exness", exact: true });
+  await expect(links).toHaveCount(5);
+  await expect(links.first()).toHaveAttribute("href", "https://my.exness.com/accounts/sign-up?lng=en");
+  await expect(links.first()).not.toHaveAttribute("rel", /sponsored/);
+  await expect(page.getByRole("main")).not.toContainText(/Kenya|M-Pesa|KES\b/);
   await page.locator("#key-data .review-citations a").first().click();
-  await expect(page).toHaveURL(/#source-accounts$/);
-  const json = await request.get("/reviews/fxpesa/data?country=Kenya");
+  await expect(page).toHaveURL(/#source-global-standard$/);
+  const json = await request.get("/reviews/exness/data");
   expect(json.headers()["x-robots-tag"]).toContain("noindex");
   const record = await json.json();
-  expect(record.review.broker.name).toBe("FXPesa");
+  expect(record.review.jurisdiction).toBe("Global");
   expect(record.review.chapters).toHaveLength(7);
-  expect(reviewedFields(record.review).filter(f => f.status === "verified").length).toBeGreaterThan(30);
+  expect(reviewedFields(record.review).filter(f => f.status === "verified").length).toBeGreaterThan(18);
 });
 
-test("country selector loads the correct entity and rejects unsupported country combinations", async ({ page, request }) => {
+test("review scope loads distinct entity profiles without a regional site default", async ({ page, request }) => {
   await page.goto("/reviews/pepperstone?country=Australia");
-  await expect(page.locator("#key-data")).toContainText("Pepperstone Group Limited");
   await expect(page.locator("#safety")).toContainText("414530");
-  await expect(page.locator("#safety")).not.toContainText("CMA licence 128");
-  await page.getByLabel("Country / entity profile").selectOption("Kenya");
-  await expect(page).toHaveURL(/country=Kenya/);
-  await expect(page.locator("#safety")).toContainText("Pepperstone Markets Kenya Limited");
-  await expect(page.locator("#safety")).toContainText("128");
-  await expect(page.locator("#safety")).not.toContainText("414530");
+  await page.getByLabel("Review scope").selectOption("Global");
+  await expect(page).toHaveURL(/country=Global/);
+  await expect(page.getByLabel("Review scope")).toHaveValue("Global");
+  await expect(page.locator("#safety")).toContainText("Pepperstone Group Limited");
+  await expect(page.getByRole("main")).not.toContainText(/Kenya|CMA licence 128/);
   await page.goto("/reviews/etoro?country=Singapore");
   await expect(page.locator("#safety")).toContainText("CMS101824");
   expect((await request.get("/reviews/etoro/data?country=Kenya")).status()).toBe(404);
@@ -163,7 +164,7 @@ test("reading navigation and commercial disclosure work with the keyboard", asyn
   const disclosure = page.getByRole("button", { name: "Advertiser disclosure", exact: true });
   await disclosure.click();
   await expect(page.getByRole("dialog")).toBeVisible();
-  await expect(page.getByRole("dialog")).toContainText("No affiliate link");
+  await expect(page.getByRole("dialog")).toContainText("No affiliate tracking");
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).not.toBeVisible();
   await expect(disclosure).toBeFocused();
@@ -184,10 +185,10 @@ test("Exness template follows the requested table-first flow without unsupported
   await expect(page.locator(".br-quick-grid > div").first()).toContainText("Not verified");
   await expect(page.locator(".br-account-table tbody tr")).toHaveCount(4);
   await expect(page.locator(".br-account-table")).toContainText("From US$0.05 / lot / side");
-  await expect(page.locator("#safety")).toContainText("162");
-  await expect(page.locator("#safety")).not.toContainText("FCA");
+  await expect(page.locator("#safety")).toContainText("730729");
+  await expect(page.locator("#safety")).toContainText("Does not offer services to retail clients");
   await expect(page.locator("#deposit-and-withdrawal")).toContainText("24/7");
-  expect(await page.locator(".br-article .br-section[id]").evaluateAll(nodes => nodes.map(node => node.id))).toEqual(["overview", "account-opening", "fees", "deposit-and-withdrawal", "safety", "review-faq", "sources"]);
+  expect(await page.locator(".br-article .br-section[id]").evaluateAll(nodes => nodes.map(node => node.id))).toEqual(["overview", "account-opening", "fees", "deposit-and-withdrawal", "safety", "platforms", "customer-reviews", "review-faq", "sources"]);
   const faqSchema = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"].find((item: { "@type": string }) => item["@type"] === "FAQPage");
   expect(faqSchema.mainEntity.some((item: { name: string }) => item.name.includes("weekends"))).toBe(true);
   expect(faqSchema.mainEntity.some((item: { name: string }) => item.name.includes("market maker"))).toBe(false);
@@ -209,7 +210,7 @@ test("mobile contents drawer opens, navigates and closes", async ({ page }) => {
 });
 
 test("account comparisons, quick facts and rating schema require matching evidence", () => {
-  const { review } = getReview("exness", "Kenya")!;
+  const { review } = getReview("exness")!;
   expect(reviewAccounts(review)).toHaveLength(4);
   expect(reviewQuickFacts(review).find(f => f.label === "Minimum deposit")!.state).toBe("unknown");
   expect(reviewAccounts(getReview("exness", "Seychelles")!.review)).toEqual([]);
@@ -217,7 +218,7 @@ test("account comparisons, quick facts and rating schema require matching eviden
   review.status = "published";
   review.author = { name: "Test Editor", role: "Reviewer" };
   review.verifiedAt = "2026-11-03";
-  review.overallScore = { value: 4.8, outOf: 5, methodologyUrl: "https://example.com/methodology", sourceIds: ["standard"] };
+  review.overallScore = { value: 4.8, outOf: 5, methodologyUrl: "https://example.com/methodology", sourceIds: ["global-standard"] };
   const product = reviewStructuredData(review)["@graph"].find(item => (item as { "@type": string })["@type"] === "Product");
   expect(product).toBeTruthy();
   expect(JSON.stringify(product)).toContain('"ratingValue":4.8');
@@ -234,6 +235,7 @@ test("standalone HTML includes embedded styles and schema with working native na
   const html = await response.text();
   expect(html).toContain("<style>");
   expect(html).not.toContain("/_next/");
+  expect(html).not.toMatch(/Kenya|M-Pesa|USD\/KES/);
   await page.goto("/templates/exness-review.html");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026");
   await expect(page.locator('script:not([type="application/ld+json"])')).toHaveCount(0);
@@ -245,4 +247,25 @@ test("standalone HTML includes embedded styles and schema with working native na
     await page.setViewportSize({ width, height: 900 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
+});
+
+test("global branding, expanded sourced pros and cons, and Trustpilot links are explicit", async ({ page, request }) => {
+  for (const route of ["/", "/best-brokers", "/reviews", "/insights", "/find-my-broker", "/reviews/template"]) {
+    await page.goto(route);
+    await expect(page.locator("body")).not.toContainText(/Kenya|Kenyan|M-Pesa|USD\/KES|🇰🇪/);
+  }
+  await expect(page.getByLabel("Review scope")).toHaveValue("Global");
+  await expect(page.locator(".br-tradeoffs > div").first().locator("li")).toHaveCount(5);
+  await expect(page.locator(".br-tradeoffs > div").last().locator("li")).toHaveCount(5);
+  for (const point of await page.locator(".br-tradeoffs li").all()) {
+    await expect(point.locator("p")).toContainText(/.{25}/);
+    await expect(point.locator("a")).toHaveAttribute("href", /^https:\/\/www\.exness\.com\//);
+  }
+  const trustpilot = page.getByRole("link", { name: /Find Exness customer reviews on Trustpilot/ });
+  await expect(trustpilot).toHaveAttribute("href", /https:\/\/www\.trustpilot\.com\/search\?query=exness\.com/);
+  await expect(page.locator("#customer-reviews")).toContainText("not been independently retrieved");
+  const account = page.getByRole("link", { name: "Open an account with Exness", exact: true }).first();
+  expect(await account.evaluate(el => getComputedStyle(el).backgroundImage)).toContain("linear-gradient");
+  await expect(account).toHaveAttribute("rel", "noopener noreferrer");
+  expect((await (await request.get("/reviews/exness/data")).json()).review.customerReviews.rating).toBeNull();
 });

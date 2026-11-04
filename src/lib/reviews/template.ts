@@ -333,7 +333,8 @@ export function scoreValue(
 export function accountOpeningHref(review: BrokerReview): string | null {
   const link = review.accountOpening;
   if (
-    review.status !== "published" ||
+    review.status === "template" ||
+    (review.status !== "published" && link.isAffiliate) ||
     link.status !== "verified" ||
     !review.jurisdiction ||
     review.jurisdiction !== link.jurisdiction ||

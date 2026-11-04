@@ -1,13 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Search, UserCircle } from "lucide-react";
+import { ChevronDown, Globe2, Search, UserCircle } from "lucide-react";
 
 const menu = [
   {
     label: "Compare brokers",
     to: "/best-brokers",
-    items: ["Overview", "For beginners", "Account costs", "M-Pesa brokers"],
+    items: ["Overview", "For beginners", "Account costs", "Global broker directory"],
   },
   {
     label: "Broker reviews",
@@ -58,7 +58,7 @@ export function SiteHeader() {
                   {m.items.map((i) => (
                     <Link
                       key={i}
-                      href={m.to}
+                      href={m.label === "Broker reviews" ? `/reviews/${i.toLowerCase().replaceAll(" ", "-")}` : i === "Global broker directory" ? "/reviews" : m.to}
                       className="block rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
                     >
                       {i}
@@ -72,8 +72,8 @@ export function SiteHeader() {
         <div className="flex items-center gap-4">
           <Search className="hidden h-5 w-5 text-muted-foreground sm:block" />
           <UserCircle className="hidden h-5 w-5 text-muted-foreground sm:block" />
-          <span className="hidden text-sm text-muted-foreground sm:block">
-            🇰🇪 EN
+          <span className="hidden items-center gap-1 text-sm text-muted-foreground xl:flex">
+            <Globe2 size={16} aria-hidden="true" /> Global · EN
           </span>
           <Link
             href="/find-my-broker"

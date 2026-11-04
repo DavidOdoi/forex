@@ -12,6 +12,16 @@ export interface DigestSection {
 // Editorial summaries of the already checked November 3 records. Only matching
 // country records with valid field evidence may use these shorter statements.
 const concise: Record<string, Record<string, string>> = {
+  "exness/Global": {
+    "forex-spread-and-commission": "Compare the account table’s spread floors and per-side commissions together. Actual costs vary by instrument, volatility and liquidity; minimum spreads are not guaranteed.",
+    "regulation-and-entity": "Several entities and permissions are disclosed below. They are provider-reported here; UK and Cyprus entities explicitly do not serve retail clients.",
+    "contracting-legal-entity": "Your location and account terms determine the contracting company. Confirm its exact name and permissions in the registration agreement.",
+    "client-money-arrangements": "Exness reports segregated funds at tier-one banks. The arrangements were not independently audited for this review.",
+    "published-processing-times": "Requests are listed as 24/7. Automatic processing is not guaranteed arrival; non-instant requests are described as processed within 24 hours. Receiving providers may take longer.",
+    "supported-mobile-platforms": "Exness Trade and MT5 mobile are documented. Device compatibility, features and execution were not tested.",
+    "platform-and-availability": "Exness Terminal supports browser trading with real/demo MT5 accounts. Confirm platform and instrument availability for your account.",
+    "leverage-by-product-and-region": "Up to 1:Unlimited is advertised, subject to eligibility and instrument/account/entity conditions. Higher leverage amplifies losses.",
+  },
   "fxpesa/Kenya": {
     "minimum-deposit": "Standard: no published minimum. Premier: US$100. Payment-method limits may apply.",
     "forex-spread-and-commission": "Standard advertises a 1.4-pip average spread and US$0 commission. Premier: spreads from 0.0 pips plus US$3.50 per lot, per side. Product-specific terms apply; these are provider figures, not tested EUR/USD costs.",
@@ -114,7 +124,9 @@ export function reviewDigest(review: BrokerReview, research?: ResearchEntry) {
     "xm/Kenya": ["minimum-deposit", "regulation-and-entity"],
   };
   const checkedLead = leadRequirements[key]?.every(id => get(id)) ? leads[key] : undefined;
-  const lead = checkedLead ?? (sourceMap.length
+  const lead = checkedLead ?? (review.jurisdiction === "Global"
+    ? `A global overview of ${review.broker.name} account conditions, group disclosures and research. Terms and eligibility depend on the actual contracting entity and your location.`
+    : sourceMap.length
     ? `A source-based look at ${review.broker.name}${review.jurisdiction ? `’s ${review.jurisdiction} entity` : ""}. Start with the company and permissions below; regional account terms still need further checks.`
     : `Research for ${review.broker.name} is in progress. Available source notes are shown below; account terms and country eligibility remain unconfirmed.`);
   const conclusion = checkedLead
@@ -124,8 +136,8 @@ export function reviewDigest(review: BrokerReview, research?: ResearchEntry) {
     lead, conclusion, sections, faqs, sources: sourceMap,
     minimum: get("minimum-deposit"),
     currencies: get("account-currencies"),
-    positives: review.strengths.filter(p => verifiedSources(p.sourceIds, review)).slice(0, 3),
-    cautions: review.limitations.filter(p => verifiedSources(p.sourceIds, review)).slice(0, 3),
+    positives: review.strengths.filter(p => verifiedSources(p.sourceIds, review)).slice(0, 5),
+    cautions: review.limitations.filter(p => verifiedSources(p.sourceIds, review)).slice(0, 5),
     notes: sourceMap.length ? [] : (research?.notes ?? []).slice(0, 2),
   };
 }

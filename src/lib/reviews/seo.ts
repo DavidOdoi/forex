@@ -14,12 +14,12 @@ export function reviewHeading(review: BrokerReview): string {
 }
 export function reviewUrl(review: BrokerReview): string {
   const url = new URL(`/reviews/${review.broker.slug}`, origin);
-  if (review.jurisdiction) url.searchParams.set("country", review.jurisdiction);
+  if (review.jurisdiction && review.jurisdiction !== "Global") url.searchParams.set("country", review.jurisdiction);
   return url.href;
 }
 export function reviewMetadata(review: BrokerReview): Metadata {
-  const title = `${reviewHeading(review)}${review.jurisdiction ? ` — ${review.jurisdiction}` : ""} | Devin Forex`;
-  const description = `Explore ${review.broker.name}${review.jurisdiction ? ` in ${review.jurisdiction}` : ""}: documented costs, legal entities, platforms and linked sources. ${review.status === "draft" ? "Research draft; editorial checks pending." : "Read the review."}`;
+  const title = `${reviewHeading(review)}${review.jurisdiction && review.jurisdiction !== "Global" ? ` — ${review.jurisdiction}` : ""} | Devin Forex`;
+  const description = `Explore ${review.broker.name}${review.jurisdiction && review.jurisdiction !== "Global" ? ` in ${review.jurisdiction}` : " worldwide"}: account costs, legal entities, platforms and customer-review links. ${review.status === "draft" ? "Editorial checks pending." : "Read the review."}`;
   const url = reviewUrl(review);
   return {
     title: { absolute: title }, description,

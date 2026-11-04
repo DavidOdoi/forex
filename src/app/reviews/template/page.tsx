@@ -13,11 +13,11 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     description: "Blank, reusable review format with evidence fields and source records.",
     robots: { index: false, follow: false },
   };
-  return { ...reviewMetadata(getReview("exness", "Kenya")!.review), robots: { index: false, follow: false } };
+  return { ...reviewMetadata(getReview("exness")!.review), robots: { index: false, follow: false } };
 }
 export default async function Page({ searchParams }: { searchParams: Promise<{ blank?: string }> }) {
   const { blank } = await searchParams;
   if (blank === "1") return <BrokerReviewPage review={reviewTemplate} />;
-  const result = getReview("exness", "Kenya")!;
+  const result = getReview("exness")!;
   return <><BrokerReviewPage {...result} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewStructuredData(result.review)).replace(/</g, "\\u003c") }} /></>;
 }

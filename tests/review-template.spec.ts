@@ -74,11 +74,11 @@ test("data tabs, market selector and advertiser disclosure work with the keyboar
   await expect(page.getByRole("tabpanel")).toContainText("EUR/USD spread");
   await page.keyboard.press("Home");
   await expect(page.getByRole("tabpanel")).toContainText("Minimum deposit");
-  await page.getByLabel("Review market").selectOption("Kenya");
+  await page.getByLabel("Review market").selectOption("Germany");
   await expect(
     page.locator(".review-country").getByRole("status"),
   ).toContainText(
-    "Kenya: eligibility, legal entity and protections still need verification",
+    "Germany: eligibility, legal entity and protections still need verification",
   );
   const disclosure = page.getByRole("button", {
     name: "Advertiser disclosure",
