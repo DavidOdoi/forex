@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUp, Globe2 } from "lucide-react";
+import { ArrowRight, ArrowUp } from "lucide-react";
 import styles from "./site-footer.module.css";
+import { BrandLogo } from "./brand-logo";
 
 const linkGroups = [
   {
@@ -67,12 +68,11 @@ export function SiteFooter() {
         <div className={styles.navigation}>
           <div className={styles.identity}>
             <Link href="/" className={styles.wordmark} aria-label="Devin Forex home">
-              Devin <span>Forex</span>
+              <BrandLogo className={styles.logo} />
             </Link>
             <p className={styles.brandDescription}>
               A global perspective on brokers, markets and the tools behind your decisions.
             </p>
-            <p className={styles.locale}><Globe2 size={17} aria-hidden="true" /> Global · English</p>
           </div>
           <nav className={styles.linkGroups} aria-label="Footer navigation">
             {linkGroups.map(group => (

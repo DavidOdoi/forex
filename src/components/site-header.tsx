@@ -1,12 +1,15 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Globe2, Search, UserCircle } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { BrandLogo } from "./brand-logo";
+import styles from "./site-header.module.css";
 
 const menu = [
   { label: "Compare brokers", to: "/best-brokers", items: [
     { label: "Overview", href: "/best-brokers" }, { label: "For beginners", href: "/find-my-broker" },
-    { label: "Account cost example", href: "/reviews/exness#fees" }, { label: "Global broker directory", href: "/reviews" },
+    { label: "Account cost example", href: "/reviews/exness#fees" }, { label: "Broker directory", href: "/reviews" },
   ] },
   { label: "Broker reviews", to: "/reviews", items: [
     { label: "Exness", href: "/reviews/exness" }, { label: "XM", href: "/reviews/xm" },
@@ -29,73 +32,88 @@ const menu = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  return (
-    <header className="sticky top-0 z-50 border-b glass">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
-        <Link href="/" className="font-display text-3xl whitespace-nowrap">
-          Devin<span className="text-gold"> Forex</span>
-        </Link>
-        <nav
-          aria-label="Main navigation"
-          className="hidden items-center gap-1 lg:flex"
-        >
-          {menu.map((m) => (
-            <div key={m.label} className="group relative">
-              <Link
-                href={m.to}
-                className={`flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition hover:text-foreground ${pathname === m.to ? "text-primary" : "text-muted-foreground"}`}
-                aria-current={pathname === m.to ? "page" : undefined}
-              >
-                {m.label}
-                <ChevronDown className="h-4 w-4 transition group-hover:rotate-180" />
-              </Link>
-              <div className="invisible absolute left-0 top-full w-56 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                <div className="rounded-xl border bg-card p-2 shadow-glow">
-                  {m.items.map((i) => (
-                    <Link
-                      key={i.label}
-                      href={i.href}
-                      className="block rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
-                    >
-                      {i.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </nav>
-        <div className="flex items-center gap-4">
-          <Search className="hidden h-5 w-5 text-muted-foreground sm:block" />
-          <UserCircle className="hidden h-5 w-5 text-muted-foreground sm:block" />
-          <span className="hidden items-center gap-1 text-sm text-muted-foreground xl:flex">
-            <Globe2 size={16} aria-hidden="true" /> Global · EN
-          </span>
-          <Link
-            href="/find-my-broker"
-            className="whitespace-nowrap rounded-full bg-gold px-5 py-2 text-sm font-semibold text-primary-foreground shadow-glow"
-          >
-            Find my broker
-          </Link>
-        </div>
-      </div>
-      <nav
-        aria-label="Mobile navigation"
-        className="flex gap-4 overflow-x-auto px-6 pb-3 text-sm text-muted-foreground lg:hidden"
-      >
-        {menu.map((m) => (
-          <Link
-            key={m.label}
-            href={m.to}
-            className={`whitespace-nowrap ${pathname === m.to ? "text-primary" : ""}`}
-            aria-current={pathname === m.to ? "page" : undefined}
-          >
-            {m.label}
-          </Link>
-        ))}
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileGroup, setMobileGroup] = useState<string | null>(null);
+  const drawer = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const active = (path: string) => pathname === path || pathname.startsWith(path + "/");
+  function closeDrawer() { drawer.current?.close(); }
+  function openDrawer() { drawer.current?.showModal(); setMobileOpen(true); }
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previous; };
+  }, [mobileOpen]);
+  useEffect(() => {
+    const wide = window.matchMedia("(min-width: 1200px)");
+    const closeOnWide = () => { if (wide.matches) drawer.current?.close(); };
+    wide.addEventListener("change", closeOnWide);
+    return () => wide.removeEventListener("change", closeOnWide);
+  }, []);
+  useEffect(() => { drawer.current?.close(); }, [pathname]);
+  function menuKey(event: KeyboardEvent<HTMLDivElement>, id: string) {
+    if (event.key === "Escape") {
+      event.preventDefault(); setOpenMenu(null);
+      event.currentTarget.querySelector<HTMLButtonElement>("button")?.focus();
+    } else if (event.key === "ArrowDown" && event.target instanceof HTMLElement && !event.target.closest("[data-dropdown]")) {
+      event.preventDefault(); setOpenMenu(id);
+      const group = event.currentTarget;
+      requestAnimationFrame(() => group.querySelector<HTMLAnchorElement>("[data-dropdown] a")?.focus());
+    }
+  }
+  function drawerKey(event: KeyboardEvent<HTMLDialogElement>) {
+    if (event.key !== "Tab") return;
+    const dialog = event.currentTarget;
+    const focusable = [...dialog.querySelectorAll<HTMLElement>('a[href],button:not([disabled]),[tabindex="0"]')].filter(node => node.getClientRects().length > 0);
+    const first = focusable[0], last = focusable.at(-1);
+    if (!first || !last) { event.preventDefault(); dialog.focus(); return; }
+    if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && (document.activeElement === last || !dialog.contains(document.activeElement))) {
+      event.preventDefault(); first.focus();
+    }
+  }
+  return <header className={styles.header}>
+    <div className={styles.bar}>
+      <Link href="/" className={styles.brand} aria-label="Devin Forex home"><BrandLogo className={styles.logo} priority /></Link>
+      <nav className={styles.desktopNav} aria-label="Main navigation">
+        {menu.map((item, index) => <div className={styles.menuGroup} key={item.label}
+          onPointerEnter={event => { if (event.pointerType === "mouse") setOpenMenu(item.label); }}
+          onPointerLeave={event => { if (event.pointerType === "mouse" && !event.currentTarget.contains(document.activeElement)) setOpenMenu(null); }}
+          onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setOpenMenu(null); }}
+          onKeyDown={event => menuKey(event, item.label)}>
+          <div className={`${styles.menuTop} ${active(item.to) ? styles.active : ""}`}>
+            <Link href={item.to} aria-current={pathname === item.to ? "page" : undefined} onClick={() => setOpenMenu(null)}>{item.label}</Link>
+            <button type="button" aria-label={`${item.label} submenu`} aria-expanded={openMenu === item.label} aria-controls={`desktop-submenu-${index}`} onClick={() => setOpenMenu(current => current === item.label ? null : item.label)}><ChevronDown size={16} aria-hidden="true" /></button>
+          </div>
+          <div id={`desktop-submenu-${index}`} data-dropdown className={styles.dropdown} hidden={openMenu !== item.label}>
+            <p>{item.label}</p>{item.items.map(link => <Link key={link.label} href={link.href} onClick={() => setOpenMenu(null)}>{link.label}<ArrowRight size={15} aria-hidden="true" /></Link>)}
+          </div>
+        </div>)}
       </nav>
-    </header>
-  );
+      <div className={styles.headerActions}>
+        <Link className={styles.findBroker} href="/find-my-broker">Find my broker <ArrowRight size={17} aria-hidden="true" /></Link>
+        <button ref={trigger} className={styles.mobileTrigger} type="button" aria-label="Open navigation" aria-haspopup="dialog" aria-expanded={mobileOpen} aria-controls="mobile-navigation-drawer" onClick={openDrawer}><Menu size={25} aria-hidden="true" /></button>
+      </div>
+    </div>
+    <dialog ref={drawer} id="mobile-navigation-drawer" className={styles.drawer} aria-label="Site navigation" onKeyDown={drawerKey} onClose={() => { setMobileOpen(false); trigger.current?.focus({ preventScroll: true }); }} onClick={event => {
+      if (event.target === event.currentTarget) {
+        const rect = event.currentTarget.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeDrawer();
+      }
+    }}>
+      <div className={styles.drawerHeader}><Link href="/" aria-label="Devin Forex home" onClick={closeDrawer}><BrandLogo className={styles.drawerLogo} /></Link><button type="button" aria-label="Close navigation" onClick={closeDrawer}><X size={24} aria-hidden="true" /></button></div>
+      <nav className={styles.mobileNav} aria-label="Mobile navigation">
+        {menu.map((item, index) => <div key={item.label} className={styles.mobileGroup}>
+          <div className={`${styles.mobileTop} ${active(item.to) ? styles.active : ""}`}><Link href={item.to} onClick={closeDrawer} aria-current={pathname === item.to ? "page" : undefined}>{item.label}</Link><button type="button" aria-label={`${item.label} links`} aria-expanded={mobileGroup === item.label} aria-controls={`mobile-submenu-${index}`} onClick={() => setMobileGroup(current => current === item.label ? null : item.label)}><ChevronDown size={20} aria-hidden="true" /></button></div>
+          <div className={styles.mobileSubmenu} id={`mobile-submenu-${index}`} hidden={mobileGroup !== item.label}>{item.items.map(link => <Link href={link.href} key={link.label} onClick={closeDrawer}>{link.label}<ArrowRight size={15} aria-hidden="true" /></Link>)}</div>
+        </div>)}
+      </nav>
+      <div className={styles.drawerBottom}><p>Ready to explore your options?</p><Link className={styles.findBroker} href="/find-my-broker" onClick={closeDrawer}>Find my broker <ArrowRight size={18} aria-hidden="true" /></Link></div>
+    </dialog>
+  </header>;
 }
 
 export function PageHero({

@@ -124,9 +124,11 @@ test("mobile navigation and all exported pages fit responsive viewports", async 
     name: "Mobile navigation",
     exact: true,
   });
+  await page.getByRole("button", { name: "Open navigation", exact: true }).click();
   await expect(nav).toBeVisible();
   await nav.getByRole("link", { name: "Tools", exact: true }).click();
   await expect(page).toHaveURL(/\/tools$/);
+  await expect(page.getByRole("dialog", { name: "Site navigation", exact: true })).not.toBeVisible();
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({

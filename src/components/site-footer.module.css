@@ -142,16 +142,8 @@
   text-decoration: none;
 }
 
-.wordmark span { color: var(--footer-gold); }
+.logo { display: block; width: 176px; height: auto; filter: invert(1); }
 .brandDescription { margin: 20px 0; font-size: 18px; }
-
-.locale {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0;
-  font-size: 14px;
-}
 
 .linkGroups {
   display: grid;

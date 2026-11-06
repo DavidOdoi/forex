@@ -69,7 +69,8 @@ Foundation browser checks cover the original routes, metadata, image loading, na
 ## File map
 
 - `src/app/`: seven page routes, shared layout, source stylesheet, metadata endpoints, and custom 404.
-- `src/components/site-header.tsx`: original header and inner-page hero.
+- `src/components/site-header.tsx`: accessible desktop navigation, mobile dialog drawer and inner-page hero.
+- `src/components/brand-logo.tsx`: shared supplied brand artwork for the header, drawer and footer.
 - `src/components/site-footer.tsx`: shared server-rendered footer, with scoped styles in `site-footer.module.css`.
 - `src/components/broker-card.tsx`: original broker-card presentation.
 - `src/components/find-my-broker-content.tsx`: stateful broker-finder flow.
@@ -134,7 +135,7 @@ The exporter reads only the local rendered review. It removes the framework runt
 
 ## Global scope and customer feedback
 
-The site header uses a global language marker, and local payment/currency branding has been removed from public discovery pages, the quiz, the template and default review scopes. Global profiles use international sources; they do not relabel old regional fees as worldwide terms. Historical regional records stay in the private research archive rather than public default pages.
+The site is presented for an international audience without country/language selector labels in the header or footer. Local payment/currency branding has been removed from public discovery pages, the quiz, the template and default review scopes. Global profiles use international sources; they do not relabel old regional fees as worldwide terms. Historical regional records stay in the private research archive rather than public default pages.
 
 Pros and cons include short evidence-linked explanations. Relevant labels and account names link directly to their official documents, while the sources section retains full references. The Exness account figures were read from international Standard/Pro pages; regulation and platform disclosures are separately linked. The minimum-first-deposit guidance was checked in the official Help Center on November 4, 2026: Standard depends on payment method and region; Pro, Zero and Raw Spread start at US$200, with regional requirements and payment-method limits applying. The table, quick fact, caution and JSON record retain these qualifiers and link to the official explanation. Earlier source checks retain their original dates. Group entities and any non-retail restrictions are listed explicitly.
 
@@ -196,7 +197,7 @@ The shared reading size is 18px across prose, bullets, examples, table headers/c
 
 ## Shared footer — 6 November 2026
 
-The footer uses a black background, light text and gold accents with a serif closing statement, broker-research and insights actions, four groups of real navigation links, a global English label and separate risk/commercial disclosures. Its gold primary action uses dark text for contrast. Review-page styling applies its white palette to the header without overriding the shared black footer. Main footer copy and navigation links use 18px type. The responsive layout uses four navigation columns on desktop and two on smaller screens. A native back-to-top link targets `body#site-top` and requires no client script. The footer is a server component; its styles are scoped to avoid changing article layouts.
+The footer uses a black background, light text and gold accents with a serif closing statement, broker-research and insights actions, four groups of real navigation links and separate risk/commercial disclosures. Its gold primary action uses dark text for contrast. Review-page styling applies its white palette to the header without overriding the shared black footer. Main footer copy and navigation links use 18px type. The responsive layout uses four navigation columns on desktop and two on smaller screens. A native back-to-top link targets `body#site-top` and requires no client script. The footer is a server component; its styles are scoped to avoid changing article layouts.
 
 All footer destinations point to existing routes or sections. No social accounts, subscription forms, contact addresses or policy pages are invented. The review word-limit check measures review content, including collapsed text and source citations, rather than the shared site footer.
 
@@ -208,3 +209,12 @@ The learning library now includes 14 guides plus the short books resource. The n
 The comparison distinguishes USDC, ETH and the Ethereum network. It qualifies the ordinary ETH-gas rule using Circle’s current Paymaster documentation, separates inclusion/finality from provider cash-out timing, explains native versus bridged token checks and labels all numerical payment examples as hypothetical. The retrieved Circle reserve descriptions are attributed rather than presented as our own audit. No live transfer test, professional biography or credentials are invented.
 
 The [source ledger](docs/content/usdc-ethereum-source-checks-2026-11-06.json) records successful primary documentation plus blocked/unavailable candidates. Blocked material was not collected or used as verified evidence. The library now contains 20 credited local images in 34 placements. The four new guides use one relevant image each; the initial ten retain three. All body copy retains the existing white/black 18px layout. Optional per-article SEO titles allow a concise search title alongside a reader-oriented H1.
+
+
+## Brand, navigation and broker finder — 6 November 2026
+
+The supplied bull/bear DEVINFOREX artwork is prepared as a transparent 23KB local WebP. The shared logo appears in the opaque white header and mobile drawer; the black footer uses a light version through CSS inversion. Header navigation uses darker, larger text, current-section styling, explicit disclosure buttons and working category links. Placeholder search/account icons and country/language labels are removed.
+
+Desktop dropdowns support pointer, touch and keyboard interaction, including Arrow Down and Escape. Mobile navigation uses a native modal dialog with focus containment, Escape/close/backdrop handling, restored scrolling and automatic closure when navigating or switching to a desktop viewport. Both header and drawer have direct Find my broker links.
+
+The existing three-question finder retains its clearly labelled illustrative matching. Progress, previous-question navigation, focus/scroll handling, restart and full-directory access improve the flow; no broker suitability, verified preference claims or country eligibility is invented. Browser checks cover desktop and mobile entry points, navigation controls and all eight answer combinations.
