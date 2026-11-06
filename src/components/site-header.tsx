@@ -94,23 +94,6 @@ export function SiteHeader() {
   );
 }
 
-export function SiteFooter() {
-  return (
-    <footer className="border-t px-6 py-12 text-center text-xs text-muted-foreground">
-      <p className="font-display text-2xl text-foreground">
-        Devin<span className="text-gold"> Forex</span>
-      </p>
-      <p className="mx-auto mt-4 max-w-3xl">
-        Risk warning: CFDs and forex are complex instruments with a high risk of
-        losing money rapidly due to leverage. Only trade with money you can
-        afford to lose. Future affiliate relationships will be disclosed. There
-        are currently no active referral links.
-      </p>
-      <p className="mt-4">© 2026 Devin Forex</p>
-    </footer>
-  );
-}
-
 export function PageHero({
   eyebrow,
   title,

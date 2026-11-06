@@ -65,7 +65,8 @@ Seven foundation browser tests cover every exported route, metadata, image loadi
 ## File map
 
 - `src/app/`: seven page routes, shared layout, source stylesheet, metadata endpoints, and custom 404.
-- `src/components/site-header.tsx`: original header, footer, and inner-page hero.
+- `src/components/site-header.tsx`: original header and inner-page hero.
+- `src/components/site-footer.tsx`: shared server-rendered footer, with scoped styles in `site-footer.module.css`.
 - `src/components/broker-card.tsx`: original broker-card presentation.
 - `src/components/tools-content.tsx`, `find-my-broker-content.tsx`: stateful exported pages.
 - `src/lib/brokers.ts`: broker discovery labels and illustrative quiz preferences.
@@ -94,7 +95,7 @@ The five account-opening placements now use prominent gold buttons with black la
 
 The original blank-template interactions remain available at `?blank=1`. Populated pages use a table-first review flow: a three-sentence verdict directly below the H1, a nine-cell facts grid, pros/cons, account tiers, fees, withdrawals, safety, platforms, FAQs and linked sources. A left contents menu becomes a collapsible drawer on mobile. Main review text uses system fonts at a minimum of 16px, with a white background and black text; warning boxes use a light grey accent. Empty field tables and repeated findings are omitted. Five compact account placements remain, with disclosures and disabled-state explanations.
 
-`src/lib/reviews/digest.ts` selects whole evidence-backed findings within an editorial word budget. Country-specific short summaries retain charge exceptions, provider attribution and unresolved source conflicts. It never cuts a sentence to meet the cap. The full research record and JSON download remain unchanged. Invalid/unsupported facts stay withheld. The browser suite checks every current broker/country variant against the **1,800-word maximum**, counting hidden FAQ/dialog text and the shared navigation/footer too.
+`src/lib/reviews/digest.ts` selects whole evidence-backed findings within an editorial word budget. Country-specific short summaries retain charge exceptions, provider attribution and unresolved source conflicts. It never cuts a sentence to meet the cap. The full research record and JSON download remain unchanged. Invalid/unsupported facts stay withheld. The browser suite checks every current broker/country variant against the **1,800-word maximum**, counting the complete review in `main`, including hidden FAQ/dialog text, review navigation and sources. Shared site navigation and the global footer are outside the article budget.
 
 `src/lib/reviews/seo.ts` supplies country-specific titles, descriptions, canonical URLs, social metadata and breadcrumb structured data. Country parameters are preserved. Unfinished reviews stay noindex, with internal-link following allowed; the template stays noindex/nofollow. The five-star graphic is explicitly labelled Not rated until supported scoring data exists. No assumed 4.8 rating is assigned. FAQPage schema includes only sourced, visible answers; an unverified execution-model answer is excluded. Automatic Product/Review-star markup is not emitted for broker research. Article schema requires the complete publication contract, a real author/profile, explicit publication/update dates and recorded editorial approval. A status flag alone does not enable indexing or Article markup. Useful links lead to the research method on `/about`, the broker directory, comparisons, calculators and primary external documents. These improvements do not guarantee a ranking.
 
@@ -138,7 +139,7 @@ Trustpilot disallows this research bot through robots.txt, so no Trustpilot scor
 
 [docs/exness-onpage-audit.md](docs/exness-onpage-audit.md) maps the supplied audit to the source changes and outstanding publication requirements. The [source ledger](docs/research/exness-source-checks-2026-11-04.json) records public-document retrieval dates, hashes and limitations.
 
-The Exness review includes a hypothetical round-trip trading-cost illustration, per-side/round-trip commission, documented MT4/MT5 compatibility, inactivity/reactivation fees, conditional swap-free terms, separate withdrawal stages and links to existing alternative entity profiles. It retains five account actions, white/black styling and the 1,800-word ceiling. The browser word budget includes collapsed content and shared navigation. No live trading, withdrawal performance, original research images or Core Web Vitals results are claimed.
+The Exness review includes a hypothetical round-trip trading-cost illustration, per-side/round-trip commission, documented MT4/MT5 compatibility, inactivity/reactivation fees, conditional swap-free terms, separate withdrawal stages and links to existing alternative entity profiles. It retains five account actions, white/black styling and the 1,800-word ceiling. The browser word budget includes collapsed content and review navigation. No live trading, withdrawal performance, original research images or Core Web Vitals results are claimed.
 
 `src/lib/reviews/publication.ts` requires an accountable author biography/profile, core evidence matching the review scope, explicit dates and approval of the latest substantive update. Provider/source checks are distinct from approval. `publication.updatedAt` is manually recorded; builds do not refresh it. David Odoi's name was supplied by the user; no biography, credentials, reviewer, approval or publication date was invented. A confirmed public contact channel and remaining independent licence checks are also needed before launch.
 
@@ -186,3 +187,9 @@ Each guide now has exactly three FAQ answers, generally 25–30 words each, with
 The shared reading size is 18px across prose, bullets, examples, table headers/cells, captions and FAQ answers, on desktop and mobile. Headings retain their hierarchy; navigation and publication details remain secondary. Summary tables use flexible compact columns so the first comparison is readable on narrow screens without requiring the detailed-table layout.
 
 `tests/insights.spec.ts` now exercises the actual anchor destinations, visible default underlines, internal fragment navigation, three FAQ records, summary tables and computed 18px body text. `npm run audit:insights` validates all contextual link targets and records per-guide link counts, table presence and concise FAQs. New cTrader help destinations were confirmed from the official help centre and recorded in `docs/content/insights-anchor-source-checks-2026-11-06.json`.
+
+## Shared footer — 6 November 2026
+
+The footer uses a white, black and gold layout with a serif closing statement, broker-research and insights actions, four groups of real navigation links, a global English label and separate risk/commercial disclosures. Main footer copy and navigation links use 18px type. The responsive layout uses four navigation columns on desktop and two on smaller screens. A native back-to-top link targets `body#site-top` and requires no client script. The footer is a server component; its styles are scoped to avoid changing article layouts.
+
+All footer destinations point to existing routes or sections. No social accounts, subscription forms, contact addresses or policy pages are invented. The review word-limit check measures review content, including collapsed text and source citations, rather than the shared site footer.

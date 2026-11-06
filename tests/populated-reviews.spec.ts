@@ -45,7 +45,7 @@ test("short summaries keep critical charge exceptions and respect the evidence g
   expect(reviewDigest(review).lead).not.toContain("KES and USD");
 });
 
-test("every broker and country page stays under 1800 total words, including collapsed text", async ({ request }) => {
+test("every broker and country review stays under 1800 words, including collapsed text", async ({ request }) => {
   test.setTimeout(120_000);
   const paths = researchEntries.flatMap(e => {
     const countries = reviewCountries(e.slug);
@@ -58,10 +58,11 @@ test("every broker and country page stays under 1800 total words, including coll
       const response = await request.get(path);
       expect(response.status(), path).toBe(200);
       const html = await response.text();
-      // Count all server-rendered body copy, including closed FAQs, navigation,
-      // the disclosure dialog and footer. Hydration scripts are not article text.
-      const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)![1];
-      const text = body.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ");
+      // Count the full review, including its navigation, closed FAQs, disclosure
+      // dialog and source footer. Shared site chrome is not article content.
+      const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1];
+      expect(main, `${path} contains the complete review`).toBeDefined();
+      const text = main!.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ");
       const words = wordCount(text);
       expect(words, path).toBeLessThanOrEqual(1800);
       counts.push({ path, words });

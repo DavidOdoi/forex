@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { SiteHeader, SiteFooter } from "@/components/site-header";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { indexable, siteOrigin } from "@/lib/site";
 import "@fontsource/manrope/latin-400.css";
 import "@fontsource/manrope/latin-500.css";
@@ -23,7 +24,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
+      <body id="site-top">
         <SiteHeader />
         {children}
         <SiteFooter />
