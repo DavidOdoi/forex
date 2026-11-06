@@ -444,6 +444,16 @@ body:has(.br-review) > header .bg-gold {
 
 /* One readable body size, including tables and small-screen account cards. */
 .br-intro { max-width: 78ch; margin-bottom: 20px !important; }
+.br-intro p { font-size: 18px; line-height: 1.65; }
+.br-intro p + p { margin-top: 12px; }
+.br-intro a { text-decoration: underline; text-underline-offset: 4px; font-weight: 650; }
+.br-opening-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); grid-template-areas: "answer image" "actions image"; gap: 20px 24px; align-items: start; }
+.br-opening-grid .br-verdict-box { grid-area: answer; display: block; }
+.br-opening-grid .br-verdict-action { grid-area: actions; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border: 1px solid var(--br-line); border-radius: 12px; }
+.br-opening-grid .br-verdict-action .br-account-hero { margin: 0; }
+.br-opening-grid .br-verdict-copy { padding: 20px; }
+.br-opening-grid .br-fit { gap: 16px; }
+.br-opening-grid .br-opening-image { grid-area: image; margin-bottom: 0 !important; min-width: 0; }
 .br-verdict-label h2 { font-size: 24px; line-height: 1.25; font-weight: 750; }
 .br-verdict-box { border-radius: 16px; border-width: 1px; box-shadow: 0 8px 28px #00000008; }
 .br-fit { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 20px !important; padding-top: 18px; border-top: 1px solid var(--br-line); }
@@ -472,9 +482,14 @@ body:has(.br-review) > header .bg-gold {
 .br-platform-image figcaption { margin-top: 12px; font-size: 18px; line-height: 1.6; }
 .br-platform-image figcaption a { text-decoration: underline; text-underline-offset: 4px; font-weight: 650; }
 .br-evidence-table { margin-bottom: 20px; }
+@media (max-width: 1100px) {
+  .br-opening-grid { grid-template-columns: 1fr; grid-template-areas: "answer" "image" "actions"; }
+  .br-opening-grid .br-opening-image { width: min(100%, 680px); }
+}
 @media (max-width: 767px) {
   .br-fit { grid-template-columns: 1fr; gap: 14px; }
   .br-cost-inputs { grid-template-columns: 1fr; }
+  .br-opening-grid .br-verdict-action { grid-template-columns: 1fr; }
   .br-review .br-account-table, .br-review .br-account-table.has-platforms { min-width: 0; width: 100%; }
   .br-account-table, .br-account-table tbody { display: block; }
   .br-account-table caption { display: block; }

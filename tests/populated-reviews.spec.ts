@@ -281,9 +281,15 @@ test("Exness mobile account comparison reads as cards with uniform body text", a
     const layout = await page.evaluate(() => ({
       overflows: document.documentElement.scrollWidth > innerWidth,
       accountTableOverflows: (() => { const table = document.querySelector(".br-account-table")!; return table.scrollWidth > table.clientWidth; })(),
+      openingOrder: (() => {
+        const answer = document.querySelector('.br-verdict-box')!.getBoundingClientRect();
+        const image = document.querySelector('.br-opening-image')!.getBoundingClientRect();
+        const facts = document.querySelector('.br-quick-section')!.getBoundingClientRect();
+        return answer.bottom <= image.top && image.bottom <= facts.top;
+      })(),
       bodySizes: [...new Set([...document.querySelectorAll('.br-tradeoffs p, .br-comparison td, .br-intro, .br-verdict-copy > p, .br-cost-example p')].map(el => getComputedStyle(el).fontSize))],
     }));
-    expect(layout).toEqual({ overflows: false, accountTableOverflows: false, bodySizes: ["18px"] });
+    expect(layout).toEqual({ overflows: false, accountTableOverflows: false, openingOrder: true, bodySizes: ["18px"] });
   }
 });
 
@@ -301,7 +307,7 @@ test("standalone HTML includes embedded styles and schema with working native na
   ]);
   await expect(page.locator('script:not([type="application/ld+json"])')).toHaveCount(0);
   await expect(page.locator('link[rel="stylesheet"]')).toHaveCount(0);
-  await expect(page.locator("#platforms img")).toHaveAttribute("src", "https://devinforex-five.vercel.app/images/reviews/exness-terminal-preview.webp");
+  await expect(page.locator("#key-data .br-opening-image img")).toHaveAttribute("src", "https://devinforex-five.vercel.app/images/reviews/exness-terminal-preview.webp");
   const image = await request.get("/images/reviews/exness-terminal-preview.webp");
   expect(image.status()).toBe(200);
   expect(image.headers()["content-type"]).toMatch(/image\/webp/);

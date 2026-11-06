@@ -105,9 +105,9 @@ export function verdictSentences(review: BrokerReview): string[] {
   const pricing = checkedField(review, "forex-spread-and-commission");
   const regulation = checkedField(review, "regulation-and-entity");
   if (review.jurisdiction === "Global" && pricing && regulation && review.broker.slug === "exness" && reviewAccounts(review).length) return [
-    "Exness documents five accounts: Cent/Standard/Pro have no separate commission; Zero/Raw Spread add per-side charges.",
-    "Compare all-in costs; advertised spread floors do not establish the cheapest broker.",
-    "Check your contracting entity; execution and withdrawals remain untested here.",
+    "Exness is worth shortlisting for forex/CFD traders who want a choice of account pricing.",
+    "Standard advertises spreads from 0.2 pips with no separate commission; Zero/Raw Spread add per-side fees.",
+    "It does not suit US residents or investors seeking direct share ownership.",
   ];
   if (review.jurisdiction === "Global") return regulation ? [
     `${review.broker.name}’s group disclosures identify the legal entities listed below; permissions apply to each named company.`,

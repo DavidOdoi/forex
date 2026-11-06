@@ -73,6 +73,15 @@ test("essential review content is server rendered with valid headings, anchors a
     await page.goto("http://127.0.0.1:3100/reviews/exness");
     await expect(page.locator("main h1")).toHaveCount(1);
     await expect(page.locator("main h1")).toHaveText(reviewHeading(getReview("exness")!.review));
+    await expect(page.locator(".br-intro p")).toHaveCount(2);
+    await expect(page.locator(".br-intro p").first()).toContainText("Exness review");
+    const answer = page.locator(".br-verdict-copy");
+    await expect(answer.locator("p > strong")).toContainText("Exness is worth shortlisting");
+    await expect(answer).toContainText("Standard advertises spreads from 0.2 pips");
+    await expect(answer).toContainText("US residents");
+    await expect(answer).toContainText("Protections depend on your account’s legal entity");
+    await expect(answer).toContainText("24/7 requests; bank receipt can take longer");
+    await expect(page.locator("#overview h2")).toHaveText("Exness review: pros and cons");
     await expect(page.locator("[data-illustrative-cost]")).toContainText("Not a measured Exness quote");
     await expect(page.locator("[data-illustrative-cost]")).toContainText("US$10 / 1.0 pip");
     await expect(page.locator("#fees")).toContainText("no inactivity or reactivation fee");
@@ -80,15 +89,26 @@ test("essential review content is server rendered with valid headings, anchors a
     await expect(page.locator(".br-accountability a")).toHaveText("David Odoi");
     await expect(page.locator("#safety")).toContainText("licence number not displayed");
     await expect(page.locator("#platforms")).toContainText(/forex, metals/i);
-    const platformImage = page.locator("#platforms figure img");
+    const platformImage = page.locator("#key-data .br-opening-image img");
     await expect(platformImage).toHaveAttribute("alt", /Exness Terminal.*chart.*order-entry/);
     await expect(platformImage).toHaveAttribute("width", "992");
     await expect(platformImage).toHaveAttribute("height", "660");
-    await expect(platformImage).toHaveAttribute("loading", "lazy");
+    await expect(platformImage).toHaveAttribute("loading", "eager");
+    await expect(platformImage).toHaveAttribute("fetchpriority", "high");
+    await expect(page.locator("main .br-platform-image")).toHaveCount(1);
+    const openingOrder = await page.evaluate(() => {
+      const intro = document.querySelector('.br-intro')!;
+      const answer = document.querySelector('.br-verdict-box')!;
+      const image = document.querySelector('.br-opening-image')!;
+      const facts = document.querySelector('.br-quick-section')!;
+      const before = (first: Element, second: Element) => Boolean(first.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING);
+      return before(intro, answer) && before(answer, image) && before(image, facts);
+    });
+    expect(openingOrder).toBe(true);
     await platformImage.scrollIntoViewIfNeeded();
     await expect.poll(() => platformImage.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth)).toBe(992);
-    await expect(page.locator("#platforms figcaption")).toContainText("Product illustration, not our live-account test");
-    await expect(page.locator('#platforms figcaption a[href="https://www.exness.com/trading-platforms/"]')).toHaveText("Image: Exness");
+    await expect(page.locator("#key-data figcaption")).toContainText("Product illustration, not our live-account test");
+    await expect(page.locator('#key-data figcaption a[href="https://www.exness.com/trading-platforms/"]')).toHaveText("Image: Exness");
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/images\/reviews\/exness-terminal-preview\.webp$/);
     const validation = await page.evaluate(() => {
       const ids = [...document.querySelectorAll('[id]')].map(el => el.id);
