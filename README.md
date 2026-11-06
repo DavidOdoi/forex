@@ -53,6 +53,7 @@ The GitHub-connected Vercel project can build `main` with the Next.js preset, re
 ```sh
 npm run typecheck
 npm run lint
+npm run audit:insights
 npm run build
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test
 ```
@@ -100,6 +101,7 @@ The original blank-template interactions remain available at `?blank=1`. Populat
 ```sh
 npm run typecheck
 npm run lint
+npm run audit:insights
 npm run build
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test
 .venv-research/bin/python -m unittest discover -s tools/research -p 'test_*.py'
@@ -164,3 +166,13 @@ The article pages use a white background, readable black text, desktop sticky co
 These guides have a publication path separate from broker-review research. Existing broker draft status and review publication safeguards are retained. The publication record and article/source/image ledgers are in `docs/content/`. A factual author-role biography replaces draft-only editorial instructions; no professional credentials or firsthand test results were added.
 
 `tests/insights.spec.ts` checks the full guide set, source links, licence records and asset hashes; validates the word budgets and FAQs; loads every article without site JavaScript; checks canonical/indexing/schema output; exercises internal links, the reading resource, sitemap isolation and responsive layouts. Use the normal lint/typecheck/build and Playwright commands above.
+
+## SEO checklist and reading experience — 6 November 2026
+
+The latest instruction sets a hard 1,800-word ceiling and asks for enjoyable, direct writing. All ten guides now start with a short introduction followed immediately by a **Quick answer** section: a direct answer and three key points. Mobile contents follow that answer, so navigation does not delay it. Simpler headings, short lists, a latency-budget table and labelled examples help readers scan the supporting explanation. Existing section IDs remain stable when headings are shortened.
+
+Focus phrases stay near the start of the title tag, in the URL, description, introduction, a subheading and an accurate image alt. Titles use descriptive benefit language and remain within 65 characters, with optional branding when space permits. The source and image-credit links remain intact. The Article schema now reflects the visible summary, word count and actual modification date; original publication dates are preserved.
+
+Run `npm run audit:insights` to refresh the [SEO/readability report](docs/content/insights-seo-audit-2026-11-06.md). Its word count includes the answer card, headings, lists, tables, captions, image credits, FAQs, biography and disclaimer. Navigation, bylines and duplicate schema are excluded. The check enforces the maximum, not an arbitrary ranking-related minimum. The earlier 2,500-word suggestion was superseded and no expansion was applied.
+
+Exact-phrase density is reported as an informational metric, not forced to 1–1.5%. Google specifies no preferred word count and warns against unnatural repetition. Rank Math is a WordPress plugin; this Next.js project does not claim a plugin score or guaranteed rankings. The supplied references and Google guidance were retrieved successfully and are recorded in the [reference ledger](docs/content/insights-seo-reference-checks-2026-11-06.json).

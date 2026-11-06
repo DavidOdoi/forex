@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Fragment } from "react";
 import { getInsightImage, type InsightArticle, type RichText } from "@/lib/insights/catalog";
 
 function InlineText({ content }: { content: RichText }) {
@@ -11,10 +12,25 @@ function InlineText({ content }: { content: RichText }) {
 }
 
 export function ArticleContent({ article }: { article: InsightArticle }) {
+  const sections = article.blocks.flatMap(block => block.type === "quick-answer"
+    ? [{ id: block.id, text: block.title }]
+    : block.type === "heading" && block.level === 2 ? [{ id: block.id, text: block.text }] : []);
   return <div className="insight-content" data-article-content>
     {article.blocks.map((block, index) => {
       switch (block.type) {
         case "paragraph": return <p key={index}><InlineText content={block.content} /></p>;
+        case "quick-answer": return <Fragment key={block.id}>
+          <section className="insight-answer" data-quick-answer aria-labelledby={block.id}>
+            <h2 id={block.id}>{block.title}</h2><p>{block.answer}</p>
+            <ul>{block.points.map(point => <li key={point}>{point}</li>)}</ul>
+          </section>
+          <details className="insight-toc-mobile"><summary>On this page</summary><nav aria-label="On this page">{sections.map(section => <a key={section.id} href={`#${section.id}`}>{section.text}</a>)}</nav></details>
+        </Fragment>;
+        case "callout": return <aside key={index} className="insight-example" role="note" aria-label={block.title}><h3>{block.title}</h3><p><InlineText content={block.content} /></p></aside>;
+        case "list": {
+          const items = block.items.map((item, i) => <li key={i}><InlineText content={item} /></li>);
+          return block.ordered ? <ol key={index} className="insight-steps">{items}</ol> : <ul key={index} className="insight-bullets">{items}</ul>;
+        }
         case "heading": return block.level === 2
           ? <h2 key={block.id} id={block.id}>{block.text}</h2>
           : <h3 key={block.id} id={block.id}>{block.text}</h3>;

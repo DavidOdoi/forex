@@ -1,0 +1,80 @@
+[
+  {
+    "reference": "google-helpful",
+    "requested_url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+    "final_url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+    "status": "ok",
+    "fetched_at": "2026-11-06T06:47:04+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "1f3af355e4f4f8ba60dc5a35c3576cc0715a4db92b073a021603139e297a38e0",
+    "snapshot_path": "snapshots/1f3af355e4f4f8ba60dc5a35c3576cc0715a4db92b073a021603139e297a38e0.html",
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "reference": "google-spam",
+    "requested_url": "https://developers.google.com/search/docs/essentials/spam-policies",
+    "final_url": "https://developers.google.com/search/docs/essentials/spam-policies",
+    "status": "ok",
+    "fetched_at": "2026-11-06T06:47:06+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "c9de5f07bbcea4e6acb5470674d7402b369f8f8dbb6e89e3a9bebbdae91bb138",
+    "snapshot_path": "snapshots/c9de5f07bbcea4e6acb5470674d7402b369f8f8dbb6e89e3a9bebbdae91bb138.html",
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "reference": "rankmath-checklist",
+    "requested_url": "https://rankmath.com/blog/wordpress-seo-checklist/",
+    "final_url": "https://rankmath.com/blog/wordpress-seo-checklist/",
+    "status": "ok",
+    "fetched_at": "2026-11-06T06:47:04+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "c615c887e3e235ced8bdd424b495e97e598011fd799e1ebf4a98b9168007e062",
+    "snapshot_path": "snapshots/c615c887e3e235ced8bdd424b495e97e598011fd799e1ebf4a98b9168007e062.html",
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "reference": "rankmath-onpage",
+    "requested_url": "https://rankmath.com/blog/on-page-seo/",
+    "final_url": "https://rankmath.com/blog/on-page-seo/",
+    "status": "ok",
+    "fetched_at": "2026-11-06T06:47:06+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "cad3f290dc1c90556e09fecdc01d62561c1c0feeab142a16fcdabf01a09ed62f",
+    "snapshot_path": "snapshots/cad3f290dc1c90556e09fecdc01d62561c1c0feeab142a16fcdabf01a09ed62f.html",
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "reference": "rankmath-tests",
+    "requested_url": "https://rankmath.com/kb/score-100-in-tests/",
+    "final_url": "https://rankmath.com/kb/score-100-in-tests/",
+    "status": "ok",
+    "fetched_at": "2026-11-06T06:47:03+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "caf3b7f4c69ecc41c35678eecf0447f1e64b0407a4d3737d4c1731d1544248e8",
+    "snapshot_path": "snapshots/caf3b7f4c69ecc41c35678eecf0447f1e64b0407a4d3737d4c1731d1544248e8.html",
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "reference": "semrush",
+    "requested_url": "https://www.semrush.com/blog/on-page-seo-checklist/",
+    "final_url": "https://www.semrush.com/blog/on-page-seo-checklist/",
+    "status": "ok",
+    "fetched_at": "2026-11-06T06:47:02+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "61d0ef82e849daf236645d617cbd35e42c210cbf258d8c21afdfb450524a4f6f",
+    "snapshot_path": "snapshots/61d0ef82e849daf236645d617cbd35e42c210cbf258d8c21afdfb450524a4f6f.html",
+    "cache_hit": false,
+    "note": null
+  }
+]

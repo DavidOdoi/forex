@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { articleText, articleWordCount, insightArticles, insightGuides, insightImages } from "../src/lib/insights/catalog";
-import { insightsIndexable } from "../src/lib/insights/seo";
+import { insightsIndexable, insightTitleTag } from "../src/lib/insights/seo";
 import { siteOrigin } from "../src/lib/site";
 
 const words = (value: string) => (value.match(/[\p{L}\p{N}_]+(?:[’'-][\p{L}\p{N}_]+)*/gu) ?? []).length;
@@ -21,8 +21,24 @@ test("published guides retain complete copy, evidence links, real image files an
     expect(image.creator.length).toBeGreaterThan(0);
   }
   for (const article of insightGuides) {
-    expect(articleWordCount(article), article.slug).toBeGreaterThanOrEqual(1650);
-    expect(articleWordCount(article), article.slug).toBeLessThanOrEqual(1750);
+    expect(articleWordCount(article), article.slug).toBeLessThanOrEqual(1800);
+    expect(insightTitleTag(article).toLowerCase().startsWith(article.focusKeyword)).toBe(true);
+    expect(insightTitleTag(article).length).toBeLessThanOrEqual(65);
+    expect(article.slug).toBe(article.focusKeyword.replace(/\s+/g, "-"));
+    expect(article.slug.length).toBeLessThan(75);
+    expect(article.blocks[0].type).toBe("paragraph");
+    expect(article.blocks[1].type).toBe("quick-answer");
+    const intro = article.blocks[0];
+    if (intro.type === "paragraph") {
+      const text = intro.content.map(part => part.text).join("");
+      expect(text.toLowerCase()).toContain(article.focusKeyword);
+      expect(words(text)).toBeLessThanOrEqual(60);
+    }
+    const answer = article.blocks[1];
+    if (answer.type === "quick-answer") {
+      expect(words(answer.answer)).toBeLessThanOrEqual(65);
+      expect(answer.points).toHaveLength(3);
+    }
     expect(article.description.length).toBeGreaterThanOrEqual(150);
     expect(article.description.length).toBeLessThanOrEqual(160);
     expect(article.title.toLowerCase()).toContain(article.focusKeyword);
@@ -36,7 +52,7 @@ test("published guides retain complete copy, evidence links, real image files an
       expect(words(faq.answer)).toBeGreaterThanOrEqual(40);
       expect(words(faq.answer)).toBeLessThanOrEqual(60);
     }
-    const inline = article.blocks.flatMap(block => block.type === "paragraph" ? block.content : block.type === "table" ? [...block.headers, ...block.rows.flat()].flat() : []);
+    const inline = article.blocks.flatMap(block => block.type === "paragraph" || block.type === "callout" ? block.content : block.type === "list" ? block.items.flat() : block.type === "table" ? [...block.headers, ...block.rows.flat()].flat() : []);
     const internal = inline.filter(part => part.href?.startsWith("/insights/"));
     expect(internal).toHaveLength(2);
     expect(inline.filter(part => part.href?.startsWith("https://"))).toHaveLength(3);
@@ -64,6 +80,12 @@ test("all ten article URLs render essential content, images, citations and schem
       expect(response?.status()).toBe(200);
       await expect(page.locator("main h1")).toHaveText(article.title);
       await expect(page.locator("h1")).toHaveCount(1);
+      const quickAnswer = page.locator("[data-quick-answer]");
+      await expect(quickAnswer.getByRole("heading", { name: "Quick answer", exact: true })).toHaveCount(1);
+      await expect(quickAnswer.locator("li")).toHaveCount(3);
+      expect(await quickAnswer.evaluate(node => node.previousElementSibling === node.parentElement?.firstElementChild && node.previousElementSibling?.tagName === "P")).toBe(true);
+      await expect(page).toHaveTitle(insightTitleTag(article));
+      expect(await page.locator(".insight-content p").evaluateAll(nodes => nodes.every(node => (node.textContent?.match(/\S+/g) ?? []).length < 120))).toBe(true);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${siteOrigin}/insights/${article.slug}`);
       await expect(page.locator('meta[name="robots"]')).toHaveCount(1);
       await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", insightsIndexable ? "index, follow" : "noindex, follow");
@@ -78,6 +100,10 @@ test("all ten article URLs render essential content, images, citations and schem
       expect(record.headline).toBe(article.title);
       expect(record.author.name).toBe("David Odoi");
       expect(record.datePublished).toBe(article.publishedAt);
+      expect(record.dateModified).toBe(article.updatedAt);
+      expect(record.wordCount).toBe(articleWordCount(article));
+      const quick = article.blocks.find(block => block.type === "quick-answer");
+      expect(record.abstract).toBe(quick?.type === "quick-answer" ? quick.answer : undefined);
       expect(JSON.stringify(graph)).not.toMatch(/AggregateRating|ratingValue/);
       const faq = graph.find((item: { "@type": string }) => item["@type"] === "FAQPage");
       expect(faq.mainEntity).toHaveLength(4);
@@ -137,6 +163,33 @@ test("guide navigation, tables, image credits and gallery fit desktop and small 
   await expect(page.locator(".insight-credit-card")).toHaveCount(19);
   await page.goto("/insights");
   await page.locator('[data-insight-card] h3 a[href="/insights/auto-trading"]').click();
-  await expect(page.locator("h1")).toHaveText("Auto Trading: How to Evaluate Forex Bots Before You Risk Money");
+  await expect(page.locator("h1")).toHaveText("Auto Trading: A Practical Guide to Forex Bots and Risk");
   expect(errors).toEqual([]);
+});
+
+test("reader-visible article copy stays under 1800 words and the answer card is easy to reach", async ({ page }) => {
+  test.setTimeout(90000);
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const article of insightGuides) {
+    await page.goto(`/insights/${article.slug}`);
+    const text = await page.locator(".insight-article").evaluate(node => {
+      let value = (node as HTMLElement).innerText;
+      for (const element of node.querySelectorAll(".insight-kicker, .insight-byline, .insight-toc-mobile, .insight-author-role")) {
+        value = value.replace((element as HTMLElement).innerText, "");
+      }
+      return value;
+    });
+    expect(words(text), article.slug).toBeLessThanOrEqual(1800);
+    expect((await page.locator("[data-article-content] > p:first-child").textContent())!.toLowerCase()).toContain(article.focusKeyword);
+  }
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
+    await page.goto("/insights/best-day-trading-app-for-beginners");
+    await page.evaluate(() => document.fonts.ready);
+    const answer = page.locator("[data-quick-answer]");
+    await answer.scrollIntoViewIfNeeded();
+    await expect(answer).toBeInViewport();
+    await expect(answer.getByText("Start with TradingView", { exact: false })).toBeVisible();
+    await page.screenshot({ path: `test-results/insights-quick-answer-${width}.png` });
+  }
 });

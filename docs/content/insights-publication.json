@@ -12,5 +12,15 @@
   "uniqueImages": 19,
   "editorialChanges": "Removed draft-only publication wording, used a factual role-based author biography and introduced the reading list for a public audience. Trading limitations and citations are retained.",
   "brokerReviewPublication": "Unchanged; broker research publication guards remain in place.",
-  "sourcePackage": "devin-forex-articles-with-images-2026-11-06"
+  "sourcePackage": "devin-forex-articles-with-images-2026-11-06",
+  "revisions": [
+    {
+      "updatedAt": "2026-11-06T07:03:29+00:00",
+      "authorization": "User requested the SEO checklist, a hard 1800-word ceiling, Quick answer immediately after the introduction, simpler language and enjoyable reading.",
+      "scope": "Ten guides, with title, metadata, body structure and readability refinements; basic keyword correction to the reading-list resource.",
+      "lengthDecision": "The latest hard ceiling supersedes the 2500-word deep-dive suggestion. No long-form expansion was applied.",
+      "densityDecision": "Exact phrase density is reported transparently; natural wording takes priority over forced repetition.",
+      "contentChanges": "Short introductions, direct answers, three key points, simpler headings and prose, labelled examples, demo steps and a latency comparison table. Source links, image credits and FAQ answers are retained."
+    }
+  ]
 }

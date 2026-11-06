@@ -20,8 +20,10 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const article = getInsight(slug);
   if (!article) notFound();
-  const headings = article.blocks.filter(block => block.type === "heading" && block.level === 2);
-  const navLinks = headings.map(heading => heading.type === "heading" && <a key={heading.id} href={`#${heading.id}`}>{heading.text}</a>);
+  const headings = article.blocks.flatMap(block => block.type === "quick-answer"
+    ? [{ id: block.id, text: block.title }]
+    : block.type === "heading" && block.level === 2 ? [{ id: block.id, text: block.text }] : []);
+  const navLinks = headings.map(heading => <a key={heading.id} href={`#${heading.id}`}>{heading.text}</a>);
   const related = relatedInsights(article);
   return <main className="insights-page">
     <div className="insight-container">
@@ -29,9 +31,8 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
       <div className="insight-layout">
         <aside className="insight-toc"><nav aria-label="On this page"><strong>On this page</strong>{navLinks}</nav></aside>
         <article className="insight-article">
-          <details className="insight-toc-mobile"><summary>On this page</summary><nav aria-label="On this page">{navLinks}</nav></details>
           <header className="insight-article-header"><p className="insight-kicker">{article.topic}</p><h1>{article.title}</h1>
-            <div className="insight-byline"><span>By <Link href={davidOdoi.profileUrl}>{davidOdoi.name}</Link></span><span>Published <time dateTime={article.publishedAt}>{insightDate(article.publishedAt)}</time></span><span>{readingMinutes(article)} min read</span><span>Research prepared {insightDate(article.researchPreparedAt)}</span></div>
+            <div className="insight-byline"><span>By <Link href={davidOdoi.profileUrl}>{davidOdoi.name}</Link></span><span>{article.updatedAt === article.publishedAt ? "Published" : "Updated"} <time dateTime={article.updatedAt}>{insightDate(article.updatedAt)}</time></span><span>{readingMinutes(article)} min read</span><span>Research prepared {insightDate(article.researchPreparedAt)}</span></div>
           </header>
           <ArticleContent article={article} />
           <section className="insight-author" aria-labelledby="about-the-author"><h2 id="about-the-author">About the author</h2><p className="insight-author-role"><Link href={davidOdoi.profileUrl}>{davidOdoi.name}</Link> · Author at Devin Forex</p><p>{article.authorBio}</p></section>

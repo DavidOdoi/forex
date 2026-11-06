@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { siteOrigin } from "@/lib/site";
 import { davidOdoi } from "@/lib/authors";
-import { featuredImage, type InsightArticle } from "./catalog";
+import { articleWordCount, featuredImage, type InsightArticle } from "./catalog";
 
 // The user has explicitly authorised these guides for publication on the
 // confirmed production origin. Broker-review publication guards are separate.
@@ -9,11 +9,15 @@ export const insightsIndexable = process.env.VERCEL_ENV !== "preview";
 export function insightUrl(slug: string) {
   return new URL(`/insights/${slug}`, siteOrigin).href;
 }
+export function insightTitleTag(article: InsightArticle) {
+  const branded = `${article.title} | Devin Forex`;
+  return branded.length <= 65 ? branded : article.title;
+}
 export function insightMetadata(article: InsightArticle): Metadata {
   const image = featuredImage(article);
   const images = image ? [{ url: new URL(image.src, siteOrigin).href, width: image.width, height: image.height, alt: image.alt }] : [];
   return {
-    title: { absolute: `${article.title} | Devin Forex` },
+    title: { absolute: insightTitleTag(article) },
     description: article.description,
     alternates: { canonical: insightUrl(article.slug) },
     authors: [{ name: davidOdoi.name, url: new URL(davidOdoi.profileUrl, siteOrigin).href }],
@@ -30,9 +34,12 @@ export function insightMetadata(article: InsightArticle): Metadata {
 export function insightStructuredData(article: InsightArticle) {
   const url = insightUrl(article.slug);
   const image = featuredImage(article);
+  const answer = article.blocks.find(block => block.type === "quick-answer");
   const graph: object[] = [{
     "@type": "Article", "@id": `${url}#article`, headline: article.title,
     description: article.description, url, mainEntityOfPage: url, inLanguage: "en",
+    wordCount: articleWordCount(article),
+    ...(answer?.type === "quick-answer" ? { abstract: answer.answer } : {}),
     datePublished: article.publishedAt, dateModified: article.updatedAt,
     author: { "@type": "Person", name: davidOdoi.name, url: new URL(davidOdoi.profileUrl, siteOrigin).href },
     publisher: { "@type": "Organization", "@id": `${siteOrigin}/#organization`, name: "Devin Forex", url: siteOrigin },

@@ -4,6 +4,9 @@ import imageData from "@/data/insights/images.json";
 export type RichText = { text: string; href?: string }[];
 export type InsightBlock =
   | { type: "paragraph"; content: RichText }
+  | { type: "quick-answer"; id: string; title: string; answer: string; points: string[] }
+  | { type: "callout"; title: string; content: RichText }
+  | { type: "list"; ordered: boolean; items: RichText[] }
   | { type: "heading"; level: 2 | 3; id: string; text: string }
   | { type: "table"; label: string; headers: RichText[]; rows: RichText[][] }
   | { type: "image"; assetId: string; role: "featured" | "inline-1" | "inline-2"; alt: string; caption: string };
@@ -64,6 +67,9 @@ export function articleText(article: InsightArticle) {
   return [article.title, ...article.blocks.map(block => {
     switch (block.type) {
       case "paragraph": return rich(block.content);
+      case "quick-answer": return [block.title, block.answer, ...block.points].join("\n");
+      case "callout": return `${block.title}\n${rich(block.content)}`;
+      case "list": return block.items.map(rich).join("\n");
       case "heading": return block.text;
       case "table": return [...block.headers, ...block.rows.flat()].map(rich).join(" ");
       case "image": {
