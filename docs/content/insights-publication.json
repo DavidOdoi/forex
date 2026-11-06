@@ -21,6 +21,18 @@
       "lengthDecision": "The latest hard ceiling supersedes the 2500-word deep-dive suggestion. No long-form expansion was applied.",
       "densityDecision": "Exact phrase density is reported transparently; natural wording takes priority over forced repetition.",
       "contentChanges": "Short introductions, direct answers, three key points, simpler headings and prose, labelled examples, demo steps and a latency comparison table. Source links, image credits and FAQ answers are retained."
+    },
+    {
+      "updatedAt": "2026-11-06T07:55:51+00:00",
+      "authorization": "User requested contextual internal/external anchors, summary tables, exactly three brief FAQs, shorter paragraphs/bullets and uniform body type.",
+      "scope": "All ten published guides.",
+      "linkChanges": "Relevant product and concept names are linked in Quick answer text, summary/comparison tables and short FAQ answers. Persistent underlines identify links without relying on hover or colour.",
+      "summaryTables": 10,
+      "faqsPerGuide": 3,
+      "faqAnswerWordLimit": 35,
+      "bodyFontSize": "18px across prose, lists, table cells, examples, captions and FAQ answers; heading/navigation/publication-detail hierarchy retained.",
+      "formatting": "Twenty-nine longer paragraphs split at sentence boundaries without breaking existing citation anchors.",
+      "wordCeiling": 1800
     }
   ]
 }

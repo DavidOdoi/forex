@@ -2,9 +2,10 @@ import articleData from "@/data/insights/articles.json";
 import imageData from "@/data/insights/images.json";
 
 export type RichText = { text: string; href?: string }[];
+export type InsightSummaryTable = { caption: string; headers: RichText[]; rows: RichText[][] };
 export type InsightBlock =
   | { type: "paragraph"; content: RichText }
-  | { type: "quick-answer"; id: string; title: string; answer: string; points: string[] }
+  | { type: "quick-answer"; id: string; title: string; answer: string; points: string[]; anchors?: { text: string; href: string }[]; table?: InsightSummaryTable }
   | { type: "callout"; title: string; content: RichText }
   | { type: "list"; ordered: boolean; items: RichText[] }
   | { type: "heading"; level: 2 | 3; id: string; text: string }
@@ -67,7 +68,7 @@ export function articleText(article: InsightArticle) {
   return [article.title, ...article.blocks.map(block => {
     switch (block.type) {
       case "paragraph": return rich(block.content);
-      case "quick-answer": return [block.title, block.answer, ...block.points].join("\n");
+      case "quick-answer": return [block.title, block.answer, ...(block.table ? [block.table.caption, ...[...block.table.headers, ...block.table.rows.flat()].map(rich)] : []), ...block.points].join("\n");
       case "callout": return `${block.title}\n${rich(block.content)}`;
       case "list": return block.items.map(rich).join("\n");
       case "heading": return block.text;

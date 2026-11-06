@@ -1,0 +1,26 @@
+[
+  {
+    "requested_url": "https://help.ctrader.com/",
+    "final_url": "https://help.ctrader.com/",
+    "status": "ok",
+    "fetched_at": "2026-11-06T07:41:50+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "5993ffc3e8f63124f142f469aa1833b9ee0b3fc527f8faed135efad68ebc4921",
+    "snapshot_path": "snapshots/5993ffc3e8f63124f142f469aa1833b9ee0b3fc527f8faed135efad68ebc4921.html",
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "requested_url": "https://help.ctrader.com/ctrader/",
+    "final_url": "https://help.ctrader.com/ctrader/",
+    "status": "ok",
+    "fetched_at": "2026-11-06T07:53:54+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "caa7c67fdded95596d41473d8644d0b019d4539353ee3e6656fa0e0ef73f068f",
+    "snapshot_path": "snapshots/caa7c67fdded95596d41473d8644d0b019d4539353ee3e6656fa0e0ef73f068f.html",
+    "cache_hit": false,
+    "note": null
+  }
+]
