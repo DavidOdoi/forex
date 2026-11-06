@@ -10,6 +10,7 @@ export function insightUrl(slug: string) {
   return new URL(`/insights/${slug}`, siteOrigin).href;
 }
 export function insightTitleTag(article: InsightArticle) {
+  if (article.seoTitle) return article.seoTitle;
   const branded = `${article.title} | Devin Forex`;
   return branded.length <= 65 ? branded : article.title;
 }

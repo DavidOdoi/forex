@@ -5943,5 +5943,1956 @@
       }
     ],
     "faqs": []
+  },
+  {
+    "slug": "usdc-vs-ethereum-sending-money",
+    "title": "USDC vs Ethereum: Which Is Better for Sending Money?",
+    "description": "USDC vs Ethereum for sending money: compare price stability, transfer fees, speed, recipient access and network risks before choosing USDC or ETH for a payment.",
+    "focusKeyword": "usdc vs ethereum",
+    "format": "guide",
+    "category": "crypto-payments",
+    "topic": "Crypto & payments",
+    "publishedAt": "2026-11-06T11:30:29+00:00",
+    "updatedAt": "2026-11-06T11:30:29+00:00",
+    "researchPreparedAt": "2026-11-06T11:30:29+00:00",
+    "authorBio": "David Odoi writes for Devin Forex. This guide uses cited public documentation and labelled examples. It does not report a funded crypto-transfer test or an independent audit of issuer reserves.",
+    "disclaimer": "Educational information, not personal financial, tax or legal advice. Cryptoassets and stablecoins carry risks. Transfers may be irreversible; confirm the asset, network, recipient details and provider terms before sending.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "USDC vs Ethereum for sending money is really a choice between USDC and ETH. USDC usually suits a dollar-denominated payment; ETH suits someone who wants ETH itself. The practical answer also depends on the recipient’s supported network, fees and ability to use the money."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "USDC usually fits a payment when the recipient wants a predictable US-dollar amount and can receive and cash it out. ETH makes sense when they want ETH itself. Ethereum is a network that can carry either asset; check the full payment route before sending.",
+        "points": [
+          "Agree on the asset and exact network before transferring.",
+          "Compare the recipient’s net cash-out amount, not gas alone.",
+          "Confirm the address and send a small test for a new route."
+        ],
+        "anchors": [
+          {
+            "text": "USDC",
+            "href": "https://www.circle.com/usdc"
+          },
+          {
+            "text": "ETH",
+            "href": "https://ethereum.org/what-is-ether/"
+          }
+        ],
+        "table": {
+          "caption": "Choose by the recipient’s goal",
+          "headers": [
+            [
+              {
+                "text": "Recipient needs"
+              }
+            ],
+            [
+              {
+                "text": "Practical starting point"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "A dollar-denominated payment"
+                }
+              ],
+              [
+                {
+                  "text": "USDC",
+                  "href": "https://www.circle.com/usdc"
+                },
+                {
+                  "text": "; check cash-out access."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "ETH for holding or network use"
+                }
+              ],
+              [
+                {
+                  "text": "ETH",
+                  "href": "https://ethereum.org/what-is-ether/"
+                },
+                {
+                  "text": "; accept price volatility."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "A first transfer to a new wallet"
+                }
+              ],
+              [
+                {
+                  "text": "Check the sending steps",
+                  "href": "/insights/how-to-send-usdc"
+                },
+                {
+                  "text": " before proceeding."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "asset-and-network",
+        "text": "What is the difference between USDC and Ethereum?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Circle describes USDC",
+            "href": "https://www.circle.com/usdc"
+          },
+          {
+            "text": " as a US-dollar stablecoin designed to be redeemable 1:1. It publishes "
+          },
+          {
+            "text": "reserve disclosures",
+            "href": "https://www.circle.com/transparency"
+          },
+          {
+            "text": ". The peg is a design target, not a promise that every recipient can sell or withdraw at exactly USD 1 without fees."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "ETH is Ethereum’s native asset",
+            "href": "https://ethereum.org/what-is-ether/"
+          },
+          {
+            "text": ". Its market price changes. Ethereum is the blockchain network, not another name for USDC. USDC exists on several networks, so agreeing on the token name alone is insufficient."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A recipient can hold roughly USD 100 of USDC if the peg holds. That does not guarantee unchanged local-currency purchasing power. USD 100 of ETH can change in dollar value before arrival, while held or during conversion."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "payment-comparison",
+        "text": "USDC vs Ethereum for sending money: at a glance"
+      },
+      {
+        "type": "table",
+        "label": "USDC and ETH payment comparison",
+        "headers": [
+          [
+            {
+              "text": "Factor"
+            }
+          ],
+          [
+            {
+              "text": "USDC"
+            }
+          ],
+          [
+            {
+              "text": "ETH"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Asset"
+              }
+            ],
+            [
+              {
+                "text": "Dollar-denominated stablecoin"
+              }
+            ],
+            [
+              {
+                "text": "Ethereum’s native cryptoasset"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Dollar value"
+              }
+            ],
+            [
+              {
+                "text": "Targets USD 1; can deviate"
+              }
+            ],
+            [
+              {
+                "text": "Fluctuates with the market"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Typical purpose"
+              }
+            ],
+            [
+              {
+                "text": "Invoices, family payments, transfers of dollar value"
+              }
+            ],
+            [
+              {
+                "text": "Recipient wants ETH, gas or ecosystem use"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Ordinary Ethereum gas"
+              }
+            ],
+            [
+              {
+                "text": "Paid in ETH; wallet-service exceptions exist"
+              }
+            ],
+            [
+              {
+                "text": "Paid in ETH for an ordinary transfer"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Speed"
+              }
+            ],
+            [
+              {
+                "text": "Depends on the selected chain and provider"
+              }
+            ],
+            [
+              {
+                "text": "Depends on the selected chain and provider"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Important risks"
+              }
+            ],
+            [
+              {
+                "text": "Issuer, peg, redemption and transfer risks"
+              }
+            ],
+            [
+              {
+                "text": "Price volatility and transfer risks"
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "when-usdc-fits",
+        "text": "When USDC is the better fit"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "USDC can simplify a payment where both parties agree on a dollar amount. Examples include paying a freelancer, settling an invoice or helping family abroad. The recipient still needs a supported wallet or exchange and a workable route to spending or withdrawing."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For someone unfamiliar with crypto, receiving a stable-looking balance is not the same as receiving spendable bank money. Ask whether they can access the service, complete any checks, meet withdrawal minimums and receive the intended local currency."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Agree whether the invoice is denominated in US dollars or another currency."
+            }
+          ],
+          [
+            {
+              "text": "Check what the recipient receives after conversion and withdrawal charges."
+            }
+          ],
+          [
+            {
+              "text": "Compare the complete route with an available bank or remittance alternative."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "when-eth-fits",
+        "text": "When sending ETH makes more sense"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Choose ETH when the recipient specifically requests it: for holding, Ethereum gas, staking or an application they understand. That is a different goal from delivering a fixed dollar amount. Agree whether the payment is a quantity of ETH or a dollar value converted at a specified time."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "ETH sent to a compatible Ethereum wallet is not a guarantee of immediate access to every DeFi service. Separate apps, chains, eligibility checks and transaction permissions can introduce extra steps and risks."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "transfer-fees",
+        "text": "Fees: compare the whole payment route"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum transaction documentation",
+            "href": "https://ethereum.org/developers/docs/transactions/"
+          },
+          {
+            "text": " and its "
+          },
+          {
+            "text": "gas guide",
+            "href": "https://ethereum.org/developers/docs/gas/"
+          },
+          {
+            "text": " explain that the sender pays for execution. A simple ETH transfer between ordinary accounts typically uses 21,000 gas. USDC token transfers invoke a contract and generally need more; the wallet’s estimate matters."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum transaction fees vary with gas usage, fee pricing and network conditions. A small headline figure or a previous transfer’s charge is not a reliable quote for the next payment. There is no live fee quote in this article."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "The gas-token exception matters",
+        "content": [
+          {
+            "text": "Ordinary self-custody USDC transfers on Ethereum need ETH for gas. "
+          },
+          {
+            "text": "Circle Paymaster",
+            "href": "https://developers.circle.com/paymaster"
+          },
+          {
+            "text": " supports compatible smart wallets paying gas in USDC on supported chains, including Ethereum. Exchanges and sponsored services may handle charges differently."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For a fee formula and a worked example, read "
+          },
+          {
+            "text": "Ethereum gas fees explained",
+            "href": "/insights/ethereum-gas-fees-explained"
+          },
+          {
+            "text": ". Layer 2 networks such as Base or Arbitrum may reduce execution costs, but both endpoints must support the chosen network and token version."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Buying the asset: account for the quoted price, spread and service fee."
+            }
+          ],
+          [
+            {
+              "text": "Sending it: check exchange withdrawal charges and any separately paid gas."
+            }
+          ],
+          [
+            {
+              "text": "Using it: include conversion, cash-out, banking charges and minimum amounts."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "speed-and-settlement",
+        "text": "Speed: arrival is not the same as final settlement"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A wallet notification, inclusion in a block, consensus finality and an exchange’s deposit credit are different milestones. "
+          },
+          {
+            "text": "Ethereum’s Ether guide",
+            "href": "https://ethereum.org/what-is-ether/"
+          },
+          {
+            "text": " describes typical arrival under 30 seconds and finality around 15 minutes. These are descriptions of normal behaviour, not deadlines."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Other chains and Layer 2 systems have different confirmation rules. Moving funds back across networks can take longer than a same-chain payment. A recipient’s deposit checks, conversion process or bank payout may be the slowest step."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "On-chain transfers can run around the clock. That does not make every cash-out service available 24/7, and some conventional payment rails are also fast. Compare the actual route rather than assuming crypto is always quicker."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "network-checks",
+        "text": "Network risk: check this before sending"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "An Ethereum-style 0x address can exist on several networks. Matching the address format does not prove that an exchange supports deposits of the selected token on that chain. Use the recipient’s current deposit instructions."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Confirm the exact asset, network, recipient address and any required provider details."
+            }
+          ],
+          [
+            {
+              "text": "Check native USDC against "
+            },
+            {
+              "text": "Circle’s contract-address directory",
+              "href": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+            },
+            {
+              "text": "; a bridged version can have different support and risks."
+            }
+          ],
+          [
+            {
+              "text": "Verify the full address through a trusted channel; avoid copied transaction-history lookalikes."
+            }
+          ],
+          [
+            {
+              "text": "Check minimum deposits and required confirmations, then send a small test for a new route."
+            }
+          ],
+          [
+            {
+              "text": "For ordinary self-custody, plan how the recipient will pay gas when moving funds onward."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Transfers cannot normally be recalled once confirmed. Recovery by a provider is not guaranteed. Our "
+          },
+          {
+            "text": "crypto wallet security guide",
+            "href": "/insights/crypto-wallet-security-guide"
+          },
+          {
+            "text": " explains recovery phrases, transaction checks and common wallet traps."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "hundred-dollar-example",
+        "text": "Cost example: sending USD 100"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Assume ETH is USD 2,500 solely for this example. USD 100 buys 0.04 ETH before purchase costs. The table excludes fees and does not use a current market price or network-fee quote."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "Illustrative USD 100 payment before fees",
+        "headers": [
+          [
+            {
+              "text": "Check"
+            }
+          ],
+          [
+            {
+              "text": "USDC payment"
+            }
+          ],
+          [
+            {
+              "text": "ETH payment"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Amount"
+              }
+            ],
+            [
+              {
+                "text": "100 USDC"
+              }
+            ],
+            [
+              {
+                "text": "0.04 ETH at the assumed price"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "If USDC holds its peg and ETH is USD 2,500"
+              }
+            ],
+            [
+              {
+                "text": "About USD 100"
+              }
+            ],
+            [
+              {
+                "text": "About USD 100"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "If ETH falls to USD 2,400"
+              }
+            ],
+            [
+              {
+                "text": "About USD 100 if the peg holds"
+              }
+            ],
+            [
+              {
+                "text": "USD 96"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Network fee"
+              }
+            ],
+            [
+              {
+                "text": "Separate wallet/provider quote"
+              }
+            ],
+            [
+              {
+                "text": "Separate wallet/provider quote"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Cash-out result"
+              }
+            ],
+            [
+              {
+                "text": "Subtract applicable conversion and withdrawal costs"
+              }
+            ],
+            [
+              {
+                "text": "Revalue ETH, then subtract applicable costs"
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If a recipient pays USD 2 to convert or withdraw 100 USDC, the simplified net is USD 98, assuming the peg holds and no other deduction. Gas paid separately by the sender increases the sender’s cost; it is not automatically deducted from the recipient’s token balance."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "quick-decision",
+        "text": "USDC vs Ethereum: a quick decision guide"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Choose USDC for a dollar-denominated payment when the recipient can safely receive and use it."
+            }
+          ],
+          [
+            {
+              "text": "Choose ETH when the recipient wants ETH and accepts the price exposure."
+            }
+          ],
+          [
+            {
+              "text": "Compare supported lower-cost chains before sending a small payment on Mainnet."
+            }
+          ],
+          [
+            {
+              "text": "If the recipient lacks a suitable wallet or cash-out route, solve that before transferring."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Follow "
+          },
+          {
+            "text": "how to send USDC",
+            "href": "/insights/how-to-send-usdc"
+          },
+          {
+            "text": " for the practical checklist. The best payment choice is the one the recipient can actually receive, understand and use at an acceptable total cost."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "assetId": "ethereum-logo",
+        "role": "featured",
+        "alt": "USDC vs Ethereum: the Ethereum ETH logo",
+        "caption": "The Ethereum logo represents the network and ETH; USDC is a separate token that can travel on Ethereum. No affiliation or endorsement is implied."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "is-usdc-better-than-eth-for-sending-money",
+        "text": "Is USDC better than ETH for sending money?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Usually, when the recipient wants a dollar-denominated payment and has a suitable wallet and cash-out route. USDC targets USD 1; ETH exposes the recipient to market-price changes."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "do-i-need-eth-to-send-usdc-on-ethereum",
+        "text": "Do I need ETH to send USDC on Ethereum?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ordinary self-custody transfers need ETH for gas. Supported smart wallets, paymasters or custodial providers can handle fees differently, including charging USDC. Check the wallet’s actual fee quote."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "can-i-send-ethereum-usdc-directly-to-solana",
+        "text": "Can I send Ethereum USDC directly to Solana?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Not as an ordinary same-chain transfer. Use a supported cross-chain route or exchange process, and verify the destination asset and network. Sending incorrectly can cause permanent loss."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is USDC better than ETH for sending money?",
+        "answer": "Usually, when the recipient wants a dollar-denominated payment and has a suitable wallet and cash-out route. USDC targets USD 1; ETH exposes the recipient to market-price changes."
+      },
+      {
+        "question": "Do I need ETH to send USDC on Ethereum?",
+        "answer": "Ordinary self-custody transfers need ETH for gas. Supported smart wallets, paymasters or custodial providers can handle fees differently, including charging USDC. Check the wallet’s actual fee quote."
+      },
+      {
+        "question": "Can I send Ethereum USDC directly to Solana?",
+        "answer": "Not as an ordinary same-chain transfer. Use a supported cross-chain route or exchange process, and verify the destination asset and network. Sending incorrectly can cause permanent loss."
+      }
+    ],
+    "seoTitle": "USDC vs Ethereum for Sending Money: Fees, Speed & Risk"
+  },
+  {
+    "slug": "how-to-send-usdc",
+    "title": "How to Send USDC: A Clear Transfer Checklist",
+    "description": "Learn how to send USDC with clear checks for wallet addresses, networks, native tokens, gas fees and recipient cash-out access before making a crypto payment.",
+    "focusKeyword": "how to send usdc",
+    "format": "guide",
+    "category": "crypto-payments",
+    "topic": "Crypto & payments",
+    "publishedAt": "2026-11-06T11:30:29+00:00",
+    "updatedAt": "2026-11-06T11:30:29+00:00",
+    "researchPreparedAt": "2026-11-06T11:30:29+00:00",
+    "authorBio": "David Odoi writes for Devin Forex. This guide uses cited public documentation and labelled examples. It does not report a funded crypto-transfer test or an independent audit of issuer reserves.",
+    "disclaimer": "Educational information, not personal financial, tax or legal advice. Cryptoassets and stablecoins carry risks. Transfers may be irreversible; confirm the asset, network, recipient details and provider terms before sending.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Knowing how to send USDC starts with the recipient’s supported asset and network, not the send button. Agree on those details, check the full cost, and test a new route before transferring a meaningful amount."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "Confirm that both sides support the same USDC version on the same network. Check the full address, fees and deposit rules. For a new route, send a small test and ask the recipient to confirm access before sending the rest.",
+        "points": [
+          "Use fresh deposit instructions from the recipient’s actual service.",
+          "Check how the sender pays fees and how the recipient will move or cash out.",
+          "Never share a recovery phrase or private key to receive help."
+        ],
+        "anchors": [
+          {
+            "text": "USDC",
+            "href": "https://www.circle.com/usdc"
+          }
+        ],
+        "table": {
+          "caption": "How to send USDC: essential checks",
+          "headers": [
+            [
+              {
+                "text": "Check"
+              }
+            ],
+            [
+              {
+                "text": "Confirm before sending"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "Asset and chain"
+                }
+              ],
+              [
+                {
+                  "text": "Native USDC reference",
+                  "href": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+                },
+                {
+                  "text": "; exact destination support."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Gas"
+                }
+              ],
+              [
+                {
+                  "text": "Ordinary gas rules",
+                  "href": "https://ethereum.org/developers/docs/gas/"
+                },
+                {
+                  "text": " or the wallet’s supported fee service."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Recipient access"
+                }
+              ],
+              [
+                {
+                  "text": "Deposit minimum, confirmations and cash-out route."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "prepare-the-route",
+        "text": "How to send USDC step by step"
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          [
+            {
+              "text": "Ask which network and USDC token version the recipient’s wallet or exchange accepts. Do not choose a chain because its name looks familiar."
+            }
+          ],
+          [
+            {
+              "text": "Confirm whether you are sending from self-custody or making an exchange withdrawal. Those flows can quote fees differently."
+            }
+          ],
+          [
+            {
+              "text": "Obtain the recipient’s current address and any required extra deposit details through a trusted channel."
+            }
+          ],
+          [
+            {
+              "text": "Check the entire address after pasting it. A matching beginning and ending are not enough."
+            }
+          ],
+          [
+            {
+              "text": "Review the amount, network, token, service fee and separately paid gas on the final screen."
+            }
+          ],
+          [
+            {
+              "text": "For a new route, send a small amount that still meets the destination’s minimum."
+            }
+          ],
+          [
+            {
+              "text": "Wait for the destination’s required confirmations and ask the recipient to verify access."
+            }
+          ],
+          [
+            {
+              "text": "Recheck the details before sending the remainder; retain the transaction hash and receipt."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "check-the-token",
+        "text": "Check the token, not just the ticker"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Circle’s USDC contract directory",
+            "href": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+          },
+          {
+            "text": " lists native USDC by network. A token using a similar ticker, a testnet token or a bridged representation is not automatically the asset supported by the recipient. Use official references and the destination’s deposit instructions together."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "An address that looks compatible may belong to the same person on more than one chain. That does not make a transfer arrive across chains. Changing networks requires a supported cross-chain route or a provider that explicitly handles the movement."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If you are still choosing the asset, compare "
+          },
+          {
+            "text": "USDC vs Ethereum for sending money",
+            "href": "/insights/usdc-vs-ethereum-sending-money"
+          },
+          {
+            "text": ". Dollar denomination can help with payments, but issuer, peg and cash-out risks remain."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "prepare-gas",
+        "text": "Check who pays the fee"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "In a standard self-custody Ethereum transfer, the sender needs ETH for gas. The recipient can receive USDC without first holding ETH, but normally needs ETH to transfer it onward."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Circle Paymaster",
+            "href": "https://developers.circle.com/paymaster"
+          },
+          {
+            "text": " lets supported smart wallets charge gas in USDC on supported networks. Sponsored wallets and exchanges can present other fee arrangements. Confirm the actual service instead of assuming every USDC payment needs a separate ETH purchase."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Our "
+          },
+          {
+            "text": "Ethereum gas fee guide",
+            "href": "/insights/ethereum-gas-fees-explained"
+          },
+          {
+            "text": " separates gas units, gas price and the total displayed fee. Do not confuse a maximum fee cap with the final charge."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "cash-out",
+        "text": "Confirm how the recipient will use the money"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Before sending, ask whether the recipient will hold USDC, spend through a supported service or convert to a bank balance. Check account eligibility, identity requirements, supported currency, conversion spread, payout fees and withdrawal minimums."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "USDC is designed around the US dollar. A local-currency payout depends on the provider’s conversion quote and charges. Receiving 100 USDC does not guarantee a particular local-currency amount or a free bank withdrawal."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "A test verifies only the route",
+        "content": [
+          {
+            "text": "A successful small test is useful evidence that the chosen route works. It does not prove a service is trustworthy or guarantee that a larger payment will avoid additional checks."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "protect-the-wallet",
+        "text": "Protect the wallet while sending"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum’s security guidance",
+            "href": "https://ethereum.org/security/"
+          },
+          {
+            "text": " warns against sharing recovery phrases or private keys. A support request, address-verification form or recovery agent should not require those secrets."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Review the "
+          },
+          {
+            "text": "crypto wallet security checklist",
+            "href": "/insights/crypto-wallet-security-guide"
+          },
+          {
+            "text": " before signing. If the wallet displays an unexpected contract interaction or approval when you intended a simple transfer, pause and investigate."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "assetId": "ethereum-logo",
+        "role": "featured",
+        "alt": "How to send USDC: Ethereum ETH logo for the gas-token example",
+        "caption": "Ethereum is one possible USDC network. This logo does not identify the token or guarantee that a recipient supports a particular chain."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "does-the-recipient-need-eth-just-to-receive-usdc",
+        "text": "Does the recipient need ETH just to receive USDC?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Not for an ordinary incoming Ethereum token transfer. They generally need ETH to move it onward from a standard self-custody wallet, unless a supported service handles gas differently."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "what-should-i-check-before-a-large-usdc-transfer",
+        "text": "What should I check before a large USDC transfer?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Confirm the exact network, token version, full address, deposit minimum and required confirmations through trusted instructions. Test the route with a small amount and verify the recipient can access it."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "can-i-reverse-a-mistaken-transfer",
+        "text": "Can I reverse a mistaken transfer?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Usually not after confirmation. A custodial provider might offer limited recovery in some cases, but it is not guaranteed. Do not pay unsolicited recovery agents or share wallet secrets."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does the recipient need ETH just to receive USDC?",
+        "answer": "Not for an ordinary incoming Ethereum token transfer. They generally need ETH to move it onward from a standard self-custody wallet, unless a supported service handles gas differently."
+      },
+      {
+        "question": "What should I check before a large USDC transfer?",
+        "answer": "Confirm the exact network, token version, full address, deposit minimum and required confirmations through trusted instructions. Test the route with a small amount and verify the recipient can access it."
+      },
+      {
+        "question": "Can I reverse a mistaken transfer?",
+        "answer": "Usually not after confirmation. A custodial provider might offer limited recovery in some cases, but it is not guaranteed. Do not pay unsolicited recovery agents or share wallet secrets."
+      }
+    ]
+  },
+  {
+    "slug": "ethereum-gas-fees-explained",
+    "title": "Ethereum Gas Fees Explained: A Practical Guide",
+    "description": "Ethereum gas fees explained with a clear formula, a worked example, USDC transfer costs and smart-wallet exceptions. Check the wallet quote before you send.",
+    "focusKeyword": "ethereum gas fees explained",
+    "format": "guide",
+    "category": "crypto-payments",
+    "topic": "Crypto & payments",
+    "publishedAt": "2026-11-06T11:30:29+00:00",
+    "updatedAt": "2026-11-06T11:30:29+00:00",
+    "researchPreparedAt": "2026-11-06T11:30:29+00:00",
+    "authorBio": "David Odoi writes for Devin Forex. This guide uses cited public documentation and labelled examples. It does not report a funded crypto-transfer test or an independent audit of issuer reserves.",
+    "disclaimer": "Educational information, not personal financial, tax or legal advice. Cryptoassets and stablecoins carry risks. Transfers may be irreversible; confirm the asset, network, recipient details and provider terms before sending.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum gas fees explained simply: gas measures the work a transaction performs, while the gas price determines what that work costs. Read the wallet’s total quote, then check any separate exchange or conversion charges."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "For a normal Ethereum transaction, the fee is gas used multiplied by the effective gas price. A simple ETH transfer typically uses 21,000 gas; token and smart-contract transfers can use more. Quotes change, so a fixed dollar estimate is not a current fee promise.",
+        "points": [
+          "Gas units, gwei and an ETH fee are different quantities.",
+          "A USDC transfer usually involves more execution than a simple ETH payment.",
+          "Supported paymasters or custodial services can change how the user pays."
+        ],
+        "anchors": [
+          {
+            "text": "USDC",
+            "href": "https://www.circle.com/usdc"
+          }
+        ],
+        "table": {
+          "caption": "Ethereum gas fees explained: the key terms",
+          "headers": [
+            [
+              {
+                "text": "Term"
+              }
+            ],
+            [
+              {
+                "text": "Meaning"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "Gas used"
+                }
+              ],
+              [
+                {
+                  "text": "Execution work consumed by the transaction."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Effective gas price"
+                }
+              ],
+              [
+                {
+                  "text": "Final price paid per gas unit."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Total network fee"
+                }
+              ],
+              [
+                {
+                  "text": "Gas used × effective gas price",
+                  "href": "https://ethereum.org/developers/docs/gas/"
+                },
+                {
+                  "text": "."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "gas-formula",
+        "text": "Ethereum gas fees explained with a formula"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum’s gas documentation",
+            "href": "https://ethereum.org/developers/docs/gas/"
+          },
+          {
+            "text": " describes the base fee set by the protocol and the priority fee offered to the validator. The effective price is subject to the transaction’s fee cap; a configured maximum is not necessarily the final price paid."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Fee formula",
+        "content": [
+          {
+            "text": "Gas used × effective gas price in gwei × 0.000000001 = fee in ETH. Multiply that ETH amount by a relevant ETH/currency quote for a currency estimate."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A gas limit is a ceiling on execution units, not an amount of ETH. Setting it too low can make an included transaction fail. Raising the limit does not necessarily mean every allowed unit will be consumed."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "worked-fee-example",
+        "text": "A worked example with hypothetical inputs"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Assume a simple 21,000-gas ETH transfer and an effective gas price of 12 gwei. The fee is 252,000 gwei, or 0.000252 ETH. At an illustrative USD 2,500 per ETH, that equals USD 0.63. Neither input is a live quote."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "Hypothetical gas calculation",
+        "headers": [
+          [
+            {
+              "text": "Input or result"
+            }
+          ],
+          [
+            {
+              "text": "Illustrative value"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Gas used"
+              }
+            ],
+            [
+              {
+                "text": "21,000"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Effective gas price"
+              }
+            ],
+            [
+              {
+                "text": "12 gwei"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Fee in ETH"
+              }
+            ],
+            [
+              {
+                "text": "0.000252 ETH"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Assumed ETH price"
+              }
+            ],
+            [
+              {
+                "text": "USD 2,500"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Estimated currency cost"
+              }
+            ],
+            [
+              {
+                "text": "USD 0.63"
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The gas figure above is for a simple transfer between ordinary accounts. A smart-wallet call, contract recipient, token transfer, approval or other application action can require a different amount of gas."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "usdc-and-eth-fees",
+        "text": "Why USDC and ETH transfer fees can differ"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum transaction documentation",
+            "href": "https://ethereum.org/developers/docs/transactions/"
+          },
+          {
+            "text": " distinguishes transfers and contract interactions. USDC uses token-contract execution, so its gas estimate is not the same as sending ETH between ordinary accounts. A token approval can also be a separate charged transaction when a workflow requires one."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For the payment decision, read "
+          },
+          {
+            "text": "USDC vs Ethereum",
+            "href": "/insights/usdc-vs-ethereum-sending-money"
+          },
+          {
+            "text": ". Compare the end-to-end recipient outcome rather than treating the smaller gas number as the only criterion."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "gas-services",
+        "text": "Smart-wallet fee services are an exception"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Circle Paymaster",
+            "href": "https://developers.circle.com/paymaster"
+          },
+          {
+            "text": " supports compatible wallets paying fees in USDC on supported chains, including Ethereum. It does not make computation free; the service can charge the user and may include an additional service charge."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "An exchange withdrawal may instead show a service fee, minimum withdrawal or network charge inside its own interface. Check that quote rather than assuming the app’s charge equals the on-chain transaction fee."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "mainnet-and-layer-two",
+        "text": "Mainnet, Layer 2 and confirmation timing"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum Mainnet and networks such as Base or Arbitrum have different fee environments. A low Layer 2 fee does not establish the current Mainnet price. Both endpoints must support the exact asset and chain."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum’s Ether guide",
+            "href": "https://ethereum.org/what-is-ether/"
+          },
+          {
+            "text": " separates block inclusion from finality. Cross-network withdrawals and a recipient exchange’s crediting policy can take longer than an ordinary same-chain payment."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use "
+          },
+          {
+            "text": "how to send USDC",
+            "href": "/insights/how-to-send-usdc"
+          },
+          {
+            "text": " for the transfer steps, and check the "
+          },
+          {
+            "text": "wallet security guide",
+            "href": "/insights/crypto-wallet-security-guide"
+          },
+          {
+            "text": " before approving an unexpected transaction."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "assetId": "ethereum-logo",
+        "role": "featured",
+        "alt": "Ethereum gas fees explained: Ethereum ETH logo",
+        "caption": "ETH pays ordinary Ethereum gas. Supported wallet services can arrange a different asset for the user-facing charge."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "is-gas-paid-in-usdc-or-eth",
+        "text": "Is gas paid in USDC or ETH?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ordinary Ethereum transactions pay gas in ETH. Supported smart wallets can use paymaster services that charge the user USDC. The network still receives its required transaction fee."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "does-sending-more-money-always-cost-more-gas",
+        "text": "Does sending more money always cost more gas?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Not necessarily. Gas measures execution work, not a percentage of the amount sent. Transaction type, contract behaviour, network conditions and provider charges affect the total."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "does-a-failed-transaction-cost-gas",
+        "text": "Does a failed transaction cost gas?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "An included transaction that reverts can consume gas. A transaction that was never included is different. Inspect the receipt and distinguish network fees from any provider’s charges."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is gas paid in USDC or ETH?",
+        "answer": "Ordinary Ethereum transactions pay gas in ETH. Supported smart wallets can use paymaster services that charge the user USDC. The network still receives its required transaction fee."
+      },
+      {
+        "question": "Does sending more money always cost more gas?",
+        "answer": "Not necessarily. Gas measures execution work, not a percentage of the amount sent. Transaction type, contract behaviour, network conditions and provider charges affect the total."
+      },
+      {
+        "question": "Does a failed transaction cost gas?",
+        "answer": "An included transaction that reverts can consume gas. A transaction that was never included is different. Inspect the receipt and distinguish network fees from any provider’s charges."
+      }
+    ]
+  },
+  {
+    "slug": "crypto-wallet-security-guide",
+    "title": "Crypto Wallet Security Guide: Practical Checks Before Sending",
+    "description": "Use this crypto wallet security guide to protect recovery phrases, verify addresses and networks, review permissions and spot common transfer and support scams.",
+    "focusKeyword": "crypto wallet security guide",
+    "format": "guide",
+    "category": "crypto-payments",
+    "topic": "Crypto & payments",
+    "publishedAt": "2026-11-06T11:30:29+00:00",
+    "updatedAt": "2026-11-06T11:30:29+00:00",
+    "researchPreparedAt": "2026-11-06T11:30:29+00:00",
+    "authorBio": "David Odoi writes for Devin Forex. This guide uses cited public documentation and labelled examples. It does not report a funded crypto-transfer test or an independent audit of issuer reserves.",
+    "disclaimer": "Educational information, not personal financial, tax or legal advice. Cryptoassets and stablecoins carry risks. Transfers may be irreversible; confirm the asset, network, recipient details and provider terms before sending.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "This crypto wallet security guide focuses on checks you can make before sending or signing. Protect the recovery phrase, verify the exact destination and understand what the wallet is authorising. A familiar logo or a successful small transfer does not prove that a service is safe."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "Keep recovery phrases and private keys private. Verify the complete recipient address, asset and network through trusted instructions, then inspect the wallet’s signing screen. Treat unexpected approvals or requests to unlock a payout by paying more as reasons to pause.",
+        "points": [
+          "Never give a support agent your phrase or private key.",
+          "Read transaction details instead of signing by habit.",
+          "Separate a working transfer route from a trustworthy provider."
+        ],
+        "anchors": [
+          {
+            "text": "signing screen",
+            "href": "https://ethereum.org/developers/docs/transactions/"
+          }
+        ],
+        "table": {
+          "caption": "Crypto wallet security guide: essentials",
+          "headers": [
+            [
+              {
+                "text": "Risk"
+              }
+            ],
+            [
+              {
+                "text": "Useful check"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "Secret exposure"
+                }
+              ],
+              [
+                {
+                  "text": "Recovery-phrase protection",
+                  "href": "https://ethereum.org/security/"
+                },
+                {
+                  "text": " before using a wallet."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Wrong asset or chain"
+                }
+              ],
+              [
+                {
+                  "text": "Circle’s native USDC directory",
+                  "href": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+                },
+                {
+                  "text": " plus the recipient’s actual deposit instructions."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Unexpected permission"
+                }
+              ],
+              [
+                {
+                  "text": "Understand the request before signing."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "protect-wallet-secrets",
+        "text": "Crypto wallet security guide: protect the keys first"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum’s security guidance",
+            "href": "https://ethereum.org/security/"
+          },
+          {
+            "text": " says never to share recovery phrases or private keys. They are access credentials, not identity-verification documents. A person who obtains them can control the wallet even if you later change an app password."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Keep recovery material away from messages, email, cloud screenshots and public documents."
+            }
+          ],
+          [
+            {
+              "text": "Use the wallet manufacturer’s official setup and recovery instructions."
+            }
+          ],
+          [
+            {
+              "text": "Install updates and verify the app or extension source before entering sensitive information."
+            }
+          ],
+          [
+            {
+              "text": "Use strong account protection for custodial services and secure the connected email account."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A hardware wallet can isolate signing keys, but it does not make a malicious transaction safe to approve. Verify the device instructions and the actual request; a trusted device cannot decide the payment’s purpose for you."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "verify-address-network",
+        "text": "Verify the whole address and network"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Attackers can exploit copied transaction history, lookalike domains, altered clipboard contents or a compromised message thread. Obtain fresh instructions through a trusted channel and compare the full destination, not only a few characters."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The same address format can appear on multiple Ethereum-compatible networks. For USDC, compare the recipient’s supported chain and token with "
+          },
+          {
+            "text": "Circle’s native contract directory",
+            "href": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+          },
+          {
+            "text": ". A ticker alone does not confirm the asset."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Follow "
+          },
+          {
+            "text": "how to send USDC",
+            "href": "/insights/how-to-send-usdc"
+          },
+          {
+            "text": " for deposit minimums, a small route test and confirmation checks. A test amount below the destination’s minimum may fail to appear as an accessible balance."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "review-permissions",
+        "text": "Read transaction and approval requests"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ethereum’s transaction guide",
+            "href": "https://ethereum.org/developers/docs/transactions/"
+          },
+          {
+            "text": " explains the fields and execution behind a request. A token approval gives permission to spend tokens under its terms; it is different from simply receiving funds. Check the asset, spender and allowed amount before approving."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Do not sign an unexpected message because a chat agent calls it harmless. The purpose and exact format matter. If the request is unclear, stop and consult the wallet’s official documentation before proceeding."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Disconnecting is not the same as revoking",
+        "content": [
+          {
+            "text": "Disconnecting a website from a wallet does not necessarily remove a previously granted on-chain token allowance. Revocation can require a separate transaction and fee; it cannot reverse a completed theft."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "recognise-support-scams",
+        "text": "Spot support and recovery traps"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "A direct message from supposed support asks for a phrase, private key or remote access."
+            }
+          ],
+          [
+            {
+              "text": "A service demands another deposit, tax payment or unlocking fee before allowing a withdrawal."
+            }
+          ],
+          [
+            {
+              "text": "An unsolicited recovery agent promises guaranteed recovery of an irreversible transfer."
+            }
+          ],
+          [
+            {
+              "text": "A link imitates a familiar wallet domain or appears only inside an advertisement or chat."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "These are warning patterns, not a complete fraud detector. Use independently verified support details. Do not share secrets or follow new payment instructions merely because a stranger knows your public address or transaction hash."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "if-something-seems-wrong",
+        "text": "If a request or transfer looks wrong"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Pause further signing and preserve the address, transaction hash and provider correspondence without exposing secrets. Contact any relevant custodial provider through its verified channel; recovery remains uncertain."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If a private key or recovery phrase is exposed, changing an app password is insufficient. Follow the wallet provider’s incident guidance, using a trusted device and a newly secured wallet where appropriate."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Our "
+          },
+          {
+            "text": "USDC versus ETH payment comparison",
+            "href": "/insights/usdc-vs-ethereum-sending-money"
+          },
+          {
+            "text": " explains asset and network choices. The "
+          },
+          {
+            "text": "Ethereum gas-fee guide",
+            "href": "/insights/ethereum-gas-fees-explained"
+          },
+          {
+            "text": " helps distinguish an expected network charge from a suspicious request for more money."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "assetId": "laptop",
+        "role": "featured",
+        "alt": "Crypto wallet security guide: a laptop illustrating the importance of a trusted device",
+        "caption": "A trusted, updated device is one part of wallet security. This generic laptop photo is not a wallet test, product recommendation or endorsement."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "should-support-ever-need-my-recovery-phrase",
+        "text": "Should support ever need my recovery phrase?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "No. Someone with the phrase or private key can control the wallet. Do not type it into support forms, messages or recovery sites, or send it to an agent."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "does-a-small-test-transfer-make-the-recipient-safe",
+        "text": "Does a small test transfer make the recipient safe?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "No. It checks a specific transfer route and small deposit. It does not verify a provider’s legitimacy, future withdrawal access or how a larger payment will be handled."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "can-revoking-a-token-approval-recover-stolen-funds",
+        "text": "Can revoking a token approval recover stolen funds?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "No. Revocation can limit future use of a permission; it does not reverse completed transfers. A compromised recovery phrase or key requires a broader response, not just approval changes."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Should support ever need my recovery phrase?",
+        "answer": "No. Someone with the phrase or private key can control the wallet. Do not type it into support forms, messages or recovery sites, or send it to an agent."
+      },
+      {
+        "question": "Does a small test transfer make the recipient safe?",
+        "answer": "No. It checks a specific transfer route and small deposit. It does not verify a provider’s legitimacy, future withdrawal access or how a larger payment will be handled."
+      },
+      {
+        "question": "Can revoking a token approval recover stolen funds?",
+        "answer": "No. Revocation can limit future use of a permission; it does not reverse completed transfers. A compromised recovery phrase or key requires a broader response, not just approval changes."
+      }
+    ]
   }
 ]

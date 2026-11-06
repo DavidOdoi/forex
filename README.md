@@ -164,7 +164,7 @@ The directory supports provider-type and research-status filters. New browser ch
 
 ## Published Insights library — 6 November 2026
 
-The user explicitly authorised publishing the ten prepared educational guides. `/insights` now lists them by topic, each at `/insights/<slug>`. The indicator guide links to the shorter `/insights/best-swing-trading-books` companion resource. All contextual links resolve to real site routes. `/insights/image-credits` preserves the creators, source pages, licences and format-change records for the 19 bundled WebP assets used in 30 article placements.
+The user explicitly authorised publishing the original ten prepared educational guides. `/insights` lists the growing library by topic, each at `/insights/<slug>`. The indicator guide links to the shorter `/insights/best-swing-trading-books` companion resource. All contextual links resolve to real site routes. `/insights/image-credits` preserves the creators, source pages, licences and format-change records for the bundled WebP assets and their article placements.
 
 `src/data/insights/` contains typed static content; `src/lib/insights/` provides the catalogue and metadata/schema helpers. Server components render semantic headings, prose, tables and image figures. Article text remains available without client JavaScript. Each guide includes three brief matching FAQ answers, publication dates, the named author, research-based selection limitations and the original sources. The imported prose is rendered as React elements; no article HTML is executed.
 
@@ -199,3 +199,12 @@ The shared reading size is 18px across prose, bullets, examples, table headers/c
 The footer uses a white, black and gold layout with a serif closing statement, broker-research and insights actions, four groups of real navigation links, a global English label and separate risk/commercial disclosures. Main footer copy and navigation links use 18px type. The responsive layout uses four navigation columns on desktop and two on smaller screens. A native back-to-top link targets `body#site-top` and requires no client script. The footer is a server component; its styles are scoped to avoid changing article layouts.
 
 All footer destinations point to existing routes or sections. No social accounts, subscription forms, contact addresses or policy pages are invented. The review word-limit check measures review content, including collapsed text and source citations, rather than the shared site footer.
+
+
+## USDC, Ethereum and transfer guides — 6 November 2026
+
+The learning library now includes 14 guides plus the short books resource. The new `/insights/usdc-vs-ethereum-sending-money` comparison uses the supplied content brief selectively, following the user’s later instruction. It is 1,474 words including tables, captions, FAQs, biography and disclaimer. Three supporting guides cover `/insights/how-to-send-usdc`, `/insights/ethereum-gas-fees-explained` and `/insights/crypto-wallet-security-guide`. Each has three short FAQs, matching schema and contextual links to the other guides. `/usdc-vs-ethereum-sending-money` permanently redirects to the canonical Insights page.
+
+The comparison distinguishes USDC, ETH and the Ethereum network. It qualifies the ordinary ETH-gas rule using Circle’s current Paymaster documentation, separates inclusion/finality from provider cash-out timing, explains native versus bridged token checks and labels all numerical payment examples as hypothetical. The retrieved Circle reserve descriptions are attributed rather than presented as our own audit. No live transfer test, professional biography or credentials are invented.
+
+The [source ledger](docs/content/usdc-ethereum-source-checks-2026-11-06.json) records successful primary documentation plus blocked/unavailable candidates. Blocked material was not collected or used as verified evidence. The library now contains 20 credited local images in 34 placements. The four new guides use one relevant image each; the initial ten retain three. All body copy retains the existing white/black 18px layout. Optional per-article SEO titles allow a concise search title alongside a reader-oriented H1.

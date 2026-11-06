@@ -33,6 +33,26 @@
       "bodyFontSize": "18px across prose, lists, table cells, examples, captions and FAQ answers; heading/navigation/publication-detail hierarchy retained.",
       "formatting": "Twenty-nine longer paragraphs split at sentence boundaries without breaking existing citation anchors.",
       "wordCeiling": 1800
+    },
+    {
+      "updatedAt": "2026-11-06T11:30:29+00:00",
+      "authorization": "User supplied the USDC-versus-Ethereum content brief, then asked to keep the existing author profile and select the most useful parts of the brief.",
+      "scope": [
+        "usdc-vs-ethereum-sending-money",
+        "how-to-send-usdc",
+        "ethereum-gas-fees-explained",
+        "crypto-wallet-security-guide"
+      ],
+      "editorialDecisions": [
+        "Main comparison stays under 1800 words and uses three brief FAQs, reflecting the user’s existing preferences.",
+        "Three supporting guides provide real contextual destinations for USDC sending, gas fees and wallet security.",
+        "Ordinary ETH gas requirements are distinguished from supported smart-wallet/paymaster arrangements.",
+        "No fixed live gas price, guaranteed peg, guaranteed arrival time or unchanged local purchasing power is claimed.",
+        "Mainnet, Layer 2, block inclusion, finality, deposit credit and cash-out timing are distinguished.",
+        "Same factual David Odoi profile; no professional crypto credentials or transfer-test results were supplied."
+      ],
+      "imagePolicy": "One meaningful attributed image per new guide; existing guides retain their three images. One new CC BY 3.0 Ethereum Foundation logo is compressed and credited.",
+      "sourceLedger": "usdc-ethereum-source-checks-2026-11-06.json"
     }
   ]
 }

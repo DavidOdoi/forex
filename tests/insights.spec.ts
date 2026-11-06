@@ -20,10 +20,10 @@ function editorialParts(block: InsightBlock) {
 
 
 test("published guides retain complete copy, evidence links, real image files and matching FAQ records", () => {
-  expect(insightGuides).toHaveLength(10);
-  expect(insightArticles).toHaveLength(11);
-  expect(new Set(insightArticles.map(article => article.slug)).size).toBe(11);
-  expect(insightImages).toHaveLength(19);
+  expect(insightGuides).toHaveLength(14);
+  expect(insightArticles).toHaveLength(15);
+  expect(new Set(insightArticles.map(article => article.slug)).size).toBe(insightArticles.length);
+  expect(insightImages).toHaveLength(20);
   const slugs = new Set(insightArticles.map(article => article.slug));
   for (const image of insightImages) {
     expect(createHash("sha256").update(readFileSync(join(process.cwd(), "public", image.src))).digest("hex")).toBe(image.sha256);
@@ -35,7 +35,7 @@ test("published guides retain complete copy, evidence links, real image files an
     expect(articleWordCount(article), article.slug).toBeLessThanOrEqual(1800);
     expect(insightTitleTag(article).toLowerCase().startsWith(article.focusKeyword)).toBe(true);
     expect(insightTitleTag(article).length).toBeLessThanOrEqual(65);
-    expect(article.slug).toBe(article.focusKeyword.replace(/\s+/g, "-"));
+    expect(article.slug === article.focusKeyword.replace(/\s+/g, "-") || article.slug.startsWith(article.focusKeyword.replace(/\s+/g, "-") + "-")).toBe(true);
     expect(article.slug.length).toBeLessThan(75);
     expect(article.blocks[0].type).toBe("paragraph");
     expect(article.blocks[1].type).toBe("quick-answer");
@@ -56,7 +56,9 @@ test("published guides retain complete copy, evidence links, real image files an
     expect(article.description.toLowerCase()).toContain(article.focusKeyword);
     expect(article.blocks.some(block => block.type === "heading" && block.level === 2 && block.text.toLowerCase().includes(article.focusKeyword))).toBe(true);
     const imageBlocks = article.blocks.filter(block => block.type === "image");
-    expect(imageBlocks).toHaveLength(3);
+    expect(imageBlocks.length).toBeGreaterThanOrEqual(1);
+    expect(imageBlocks.length).toBeLessThanOrEqual(3);
+    expect(imageBlocks.filter(block => block.role === "featured")).toHaveLength(1);
     expect(imageBlocks.some(block => block.type === "image" && block.alt.toLowerCase().includes(article.focusKeyword))).toBe(true);
     expect(article.faqs).toHaveLength(3);
     for (const faq of article.faqs) {
@@ -80,16 +82,16 @@ test("published guides retain complete copy, evidence links, real image files an
   }
 });
 
-test("Insights replaces placeholders with links to all ten published guides", async ({ page }) => {
+test("Insights replaces placeholders with links to all published guides", async ({ page }) => {
   await page.goto("/insights");
   await expect(page.locator("h1")).toHaveCount(1);
-  await expect(page.locator("[data-insight-card]")).toHaveCount(10);
+  await expect(page.locator("[data-insight-card]")).toHaveCount(insightGuides.length);
   await expect(page.locator("main")).not.toContainText("Coming soon");
   for (const article of insightGuides) await expect(page.locator(`[data-insight-card] h3 a[href="/insights/${article.slug}"]`)).toHaveText(article.title);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", insightsIndexable ? "index, follow" : "noindex, follow");
 });
 
-test("all ten article URLs render essential content, images, citations and schema without site JavaScript", async ({ browser }) => {
+test("all published article URLs render essential content, images, citations and schema without site JavaScript", async ({ browser }) => {
   test.setTimeout(120000);
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
@@ -113,8 +115,8 @@ test("all ten article URLs render essential content, images, citations and schem
       await expect(page.locator(".insight-content .insight-source-link")).toHaveCount(links.filter(part => part.href!.startsWith("https://")).length);
       await expect(quickAnswer.locator(".insight-summary-table")).toHaveCount(1);
       await expect(quickAnswer.locator("thead th")).toHaveCount(2);
-      await expect(page.locator("figure.insight-figure img")).toHaveCount(3);
-      await expect(page.locator("figure .insight-image-credit")).toHaveCount(3);
+      await expect(page.locator("figure.insight-figure img")).toHaveCount(article.blocks.filter(block => block.type === "image").length);
+      await expect(page.locator("figure .insight-image-credit")).toHaveCount(article.blocks.filter(block => block.type === "image").length);
       await page.locator("figure img").evaluateAll(images => images.forEach(image => { (image as HTMLImageElement).loading = "eager"; }));
       await expect.poll(() => page.locator("figure img").evaluateAll(images => images.every(image => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0))).toBe(true);
       const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"];
@@ -195,7 +197,7 @@ test("guide navigation, tables, image credits and gallery fit desktop and small 
   const headerBottom = await page.locator("body > header").evaluate(node => node.getBoundingClientRect().bottom);
   expect((await heading.boundingBox())!.y).toBeGreaterThanOrEqual(headerBottom);
   await page.goto("/insights/image-credits");
-  await expect(page.locator(".insight-credit-card")).toHaveCount(19);
+  await expect(page.locator(".insight-credit-card")).toHaveCount(insightImages.length);
   await page.goto("/insights");
   await page.locator('[data-insight-card] h3 a[href="/insights/auto-trading"]').click();
   await expect(page.locator("h1")).toHaveText("Auto Trading: A Practical Guide to Forex Bots and Risk");

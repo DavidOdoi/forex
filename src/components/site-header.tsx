@@ -20,6 +20,7 @@ const menu = [
   ] },
   { label: "Insights", to: "/insights", items: [
     { label: "Beginner guides", href: "/insights#beginner-guides" }, { label: "Strategies & risk", href: "/insights#strategies" }, { label: "Platforms & technology", href: "/insights#market-guides" },
+    { label: "Crypto & payments", href: "/insights#crypto-payments" },
   ] },
   { label: "About us", to: "/about", items: [
     { label: "Our story", href: "/about#our-story" }, { label: "How we research", href: "/about#research-methodology" }, { label: "Corrections", href: "/about#corrections" }, { label: "Contact", href: "/about#contact" },

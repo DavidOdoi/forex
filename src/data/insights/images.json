@@ -264,5 +264,19 @@
     "modifications": "converted to WebP at quality 85; no retouching or cropping.",
     "sourceRetrievedAt": "2026-11-04",
     "sha256": "8df10e1ab86eb1d7e18d6f90a1ebc4585a80d563b1d69d0e50398b1b2865b106"
+  },
+  {
+    "id": "ethereum-logo",
+    "title": "Ethereum logo 2014.svg",
+    "src": "/images/insights/ethereum-logo.webp",
+    "width": 246,
+    "height": 400,
+    "creator": "Ethereum Foundation",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ethereum_logo_2014.svg",
+    "modifications": "Resized and converted to lossless WebP, preserving transparency; no retouching or cropping. Trademark belongs to its owner; no endorsement is implied.",
+    "sourceRetrievedAt": "2026-11-06",
+    "sha256": "791a2024d8285df7a4994798ca85048d9317ff68fe3b139a0d2940975d6a1621"
   }
 ]

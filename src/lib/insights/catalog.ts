@@ -14,10 +14,11 @@ export type InsightBlock =
 export type InsightArticle = {
   slug: string;
   title: string;
+  seoTitle?: string;
   description: string;
   focusKeyword: string;
   format: "guide" | "reading-list";
-  category: "beginner-guides" | "strategies" | "market-guides";
+  category: "beginner-guides" | "strategies" | "market-guides" | "crypto-payments";
   topic: string;
   publishedAt: string;
   updatedAt: string;
@@ -49,6 +50,7 @@ export const insightCategories = [
   { id: "beginner-guides", title: "Start with the essentials", description: "Understand the tools and workflows before putting money at risk." },
   { id: "strategies", title: "Strategies & risk", description: "Build a process for evaluating ideas, exposure and automated systems." },
   { id: "market-guides", title: "Platforms & technology", description: "Explore the systems, infrastructure and equipment behind modern trading." },
+  { id: "crypto-payments", title: "Crypto & payments", description: "Understand assets, transfer costs and wallet checks before sending money." },
 ] as const;
 
 export function getInsight(slug: string) {

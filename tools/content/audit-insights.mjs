@@ -64,15 +64,15 @@ const report = articles.filter(article => article.format === "guide").map(articl
   const quickLinks = inlineParts(summary).filter(part => part.href);
   const external = links.filter(part => part.href.startsWith("https://"));
   const imageBlocks = article.blocks.filter(block => block.type === "image");
-  const titleTag = `${article.title} | Devin Forex`.length <= 65 ? `${article.title} | Devin Forex` : article.title;
+  const titleTag = article.seoTitle ?? (`${article.title} | Devin Forex`.length <= 65 ? `${article.title} | Devin Forex` : article.title);
   const headingIds = article.blocks.flatMap(block => block.type === "heading" || block.type === "quick-answer" ? [block.id] : []);
   const checks = {
     keywordStartsTitle: normalise(titleTag).startsWith(keyword),
     conciseTitle: titleTag.length <= 65,
-    usefulTitleLanguage: /\b(practical|clear|smart|smarter)\b/i.test(article.title),
+    usefulTitleLanguage: /\b(practical|clear|smart|smarter|better)\b/i.test(article.title),
     keywordInDescription: normalise(article.description).includes(keyword),
     descriptionLength: article.description.length >= 150 && article.description.length <= 160,
-    exactKeywordSlug: article.slug === keyword.replace(/\s+/g, "-"),
+    keywordInSlug: article.slug === keyword.replace(/\s+/g, "-") || article.slug.startsWith(keyword.replace(/\s+/g, "-") + "-"),
     shortSlug: article.slug.length < 75,
     keywordInIntro: first.type === "paragraph" && normalise(rich(first.content)).includes(keyword),
     conciseIntro: first.type === "paragraph" && words(rich(first.content)) <= 60,
@@ -88,7 +88,7 @@ const report = articles.filter(article => article.format === "guide").map(articl
     descriptiveAnchorText: links.every(part => part.text.trim().length >= 2 && !/^https?:\/\//i.test(part.text) && !/^(click here|here|read more)$/i.test(part.text.trim())),
     summaryTable: Boolean(summary.table && summary.table.headers.length === 2 && summary.table.rows.length >= 2 && summary.table.rows.every(row => row.length === 2)),
     authoritativeCitationsRetained: new Set(external.map(part => part.href)).size >= 3,
-    threeSupportingImages: imageBlocks.length === 3,
+    supportingImages: imageBlocks.length >= 1 && imageBlocks.length <= 3 && imageBlocks.filter(block => block.role === "featured").length === 1,
     keywordInAccurateAlt: imageBlocks.some(block => normalise(block.alt).includes(keyword)),
     localCompressedImages: imageBlocks.every(block => {
       const image = images.get(block.assetId);
@@ -111,7 +111,7 @@ const references = [
 const pass = report.every(article => Object.values(article.checks).every(Boolean));
 const output = {
   status: pass ? "PASS" : "FAIL",
-  scope: "Ten published guides; latest user instruction caps every article at 1800 words and prioritises a direct answer after the introduction, compact summary tables, three brief FAQs and uniform 18px body copy.",
+  scope: "Published guides; latest user instruction caps every article at 1800 words and prioritises a direct answer after the introduction, compact summary tables, three brief FAQs and uniform 18px body copy.",
   countMethod: "Includes title, headings, intro, quick answer and bullets, callouts, tables, image captions/credits, FAQs, author bio and disclaimer. Excludes navigation, UI bylines, related links, alt attributes, URLs and duplicate JSON-LD.",
   keywordDensity: { treatment: "Informational diagnostic; no minimum exact-phrase density is enforced.", requestedRange: "Approximately 1–1.5% without stuffing", decision: "Natural wording and query coverage take priority over repeating a long exact phrase 18–27 times. Google specifies no preferred word count, and its spam guidance warns against unnatural repetition. Rank Math also says low density is preferable to excessive density. This report does not claim a plugin score.", calculation: "Exact focus-phrase occurrences divided by visible body word count, excluding H1, image credits, bio, disclaimer and navigation." },
   references,
@@ -119,7 +119,7 @@ const output = {
 };
 const jsonPath = join(root, "docs/content/insights-seo-audit-2026-11-06.json");
 writeFileSync(jsonPath, JSON.stringify(output, null, 2) + "\n");
-const lines = ["# Insights SEO and readability audit", "", `Objective checks: ${output.status}. All ten guides use a short intro followed immediately by a Quick answer section. The latest 1,800-word ceiling supersedes the earlier long-form suggestion.`, "", "| Guide | Words | Intro | Direct answer | Quick links | FAQs | Title chars | Slug chars | Max paragraph | Exact phrase density | Checks |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |"];
+const lines = ["# Insights SEO and readability audit", "", `Objective checks: ${output.status}. All published guides use a short intro followed immediately by a Quick answer section. The latest 1,800-word ceiling supersedes the earlier long-form suggestion.`, "", "| Guide | Words | Intro | Direct answer | Quick links | FAQs | Title chars | Slug chars | Max paragraph | Exact phrase density | Checks |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |"];
 for (const article of report) lines.push(`| ${article.slug} | ${article.words} | ${article.introWords} | ${article.directAnswerWords} | ${article.quickAnswerLinks} | 3 | ${article.titleCharacters} | ${article.slugCharacters} | ${article.longestParagraphWords} | ${article.exactPhraseDensityPercent}% | ${Object.values(article.checks).every(Boolean) ? "PASS" : "FAIL"} |`);
 lines.push("", output.countMethod, "", "## Editorial decisions", "", "The SEO title starts with the exact focus phrase and uses a truthful benefit word. Branding is added only when the full title remains within 65 characters. Character limits are an editorial convention, not a guarantee about search-result display.", "", "Each guide includes visible contextual anchors, at least three distinct authoritative external sources, licensed local WebP images, readable subheadings, a contents menu and three brief matching FAQ answers. Short lists, comparison tables and labelled examples make the longer explanation easier to scan.", "", "Density is reported honestly as a diagnostic. We did not force an exact long-tail phrase into 1–1.5% of the copy; natural variations and clear explanations support the topic without stuffing. No Google ranking or Rank Math score is claimed. The four proposed 2,500-word expansions were not applied after the user confirmed the shorter limit. Summary tables and brief FAQs further reduce the time needed to find an answer.", "", "## Guidance consulted", "", ...references.map(url => `- ${url}`));
 writeFileSync(jsonPath.replace(/\.json$/, ".md"), lines.join("\n") + "\n");

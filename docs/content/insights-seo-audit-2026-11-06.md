@@ -1,6 +1,6 @@
 # Insights SEO and readability audit
 
-Objective checks: PASS. All ten guides use a short intro followed immediately by a Quick answer section. The latest 1,800-word ceiling supersedes the earlier long-form suggestion.
+Objective checks: PASS. All published guides use a short intro followed immediately by a Quick answer section. The latest 1,800-word ceiling supersedes the earlier long-form suggestion.
 
 | Guide | Words | Intro | Direct answer | Quick links | FAQs | Title chars | Slug chars | Max paragraph | Exact phrase density | Checks |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
@@ -14,6 +14,10 @@ Objective checks: PASS. All ten guides use a short intro followed immediately by
 | best-indicators-for-swing-trading | 1566 | 44 | 39 | 8 | 3 | 52 | 33 | 50 | 0.277% | PASS |
 | best-laptop-computer-for-day-trading | 1569 | 43 | 43 | 7 | 3 | 58 | 36 | 52 | 0.276% | PASS |
 | best-bot-for-trading-futures | 1564 | 43 | 36 | 6 | 3 | 65 | 28 | 58 | 0.277% | PASS |
+| usdc-vs-ethereum-sending-money | 1474 | 44 | 44 | 6 | 3 | 54 | 30 | 47 | 0.219% | PASS |
+| how-to-send-usdc | 874 | 35 | 40 | 3 | 3 | 58 | 16 | 40 | 0.388% | PASS |
+| ethereum-gas-fees-explained | 797 | 34 | 45 | 2 | 3 | 60 | 27 | 45 | 0.427% | PASS |
+| crypto-wallet-security-guide | 891 | 46 | 40 | 3 | 3 | 61 | 28 | 46 | 0.378% | PASS |
 
 Includes title, headings, intro, quick answer and bullets, callouts, tables, image captions/credits, FAQs, author bio and disclaimer. Excludes navigation, UI bylines, related links, alt attributes, URLs and duplicate JSON-LD.
 
