@@ -209,7 +209,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .br-review *, .br-review *::before, .br-review *::after { scroll-behavior: auto !important; transition: none !important; } }
 
-/* Keep the shared header/footer in the review's white-and-black palette. */
+/* Keep the shared header in the review's white-and-black palette. */
 body:has(.br-review) {
   --background: #fff;
   --foreground: #000;
@@ -225,12 +225,12 @@ body:has(.br-review) {
   background: #fff;
   color: #000;
 }
-body:has(.br-review) > :is(header, footer) {
+body:has(.br-review) > header {
   background: #fff;
   color: #000;
   backdrop-filter: none;
 }
-body:has(.br-review) > :is(header, footer) .text-gold {
+body:has(.br-review) > header .text-gold {
   background: none;
   color: #000;
 }

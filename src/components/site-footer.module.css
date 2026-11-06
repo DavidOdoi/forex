@@ -1,9 +1,9 @@
 .footer {
-  --footer-ink: #111;
-  --footer-gold: #96651e;
-  --footer-line: #e4e2dc;
+  --footer-ink: #f5f5f5;
+  --footer-gold: #dbb66e;
+  --footer-line: #303030;
   border-top: 1px solid var(--footer-line);
-  background: #fff;
+  background: #000;
   color: var(--footer-ink);
   font-family: "Manrope", system-ui, sans-serif;
   font-size: 18px;
@@ -89,18 +89,18 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  border: 1px solid var(--footer-ink);
+  border: 1px solid var(--footer-gold);
   border-radius: 999px;
   padding: 13px 14px 13px 24px;
-  background: var(--footer-ink);
+  background: var(--footer-gold);
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
   transition: background-color .2s ease;
 }
 
-.footer .primaryAction { color: #fff; }
-.primaryAction:hover { background: #30302d; }
+.footer .primaryAction { color: #111; }
+.primaryAction:hover { background: #edcc8b; }
 
 .actionIcon {
   display: grid;
@@ -109,8 +109,8 @@
   height: 36px;
   place-items: center;
   border-radius: 50%;
-  background: #dbb66e;
-  color: var(--footer-ink);
+  background: #111;
+  color: var(--footer-gold);
 }
 
 .actionIcon svg { transition: transform .2s ease; }

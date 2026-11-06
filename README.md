@@ -196,7 +196,7 @@ The shared reading size is 18px across prose, bullets, examples, table headers/c
 
 ## Shared footer — 6 November 2026
 
-The footer uses a white, black and gold layout with a serif closing statement, broker-research and insights actions, four groups of real navigation links, a global English label and separate risk/commercial disclosures. Main footer copy and navigation links use 18px type. The responsive layout uses four navigation columns on desktop and two on smaller screens. A native back-to-top link targets `body#site-top` and requires no client script. The footer is a server component; its styles are scoped to avoid changing article layouts.
+The footer uses a black background, light text and gold accents with a serif closing statement, broker-research and insights actions, four groups of real navigation links, a global English label and separate risk/commercial disclosures. Its gold primary action uses dark text for contrast. Review-page styling applies its white palette to the header without overriding the shared black footer. Main footer copy and navigation links use 18px type. The responsive layout uses four navigation columns on desktop and two on smaller screens. A native back-to-top link targets `body#site-top` and requires no client script. The footer is a server component; its styles are scoped to avoid changing article layouts.
 
 All footer destinations point to existing routes or sections. No social accounts, subscription forms, contact addresses or policy pages are invented. The review word-limit check measures review content, including collapsed text and source citations, rather than the shared site footer.
 
