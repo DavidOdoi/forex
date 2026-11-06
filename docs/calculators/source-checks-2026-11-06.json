@@ -1,0 +1,98 @@
+[
+  {
+    "requested_url": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants",
+    "final_url": null,
+    "status": "access-denied",
+    "fetched_at": "2026-11-06T09:20:37+00:00",
+    "http_status": null,
+    "content_type": null,
+    "content_sha256": null,
+    "snapshot_path": null,
+    "cache_hit": false,
+    "note": "No page content was collected"
+  },
+  {
+    "requested_url": "https://www.mql5.com/en/docs/trading/ordercalcprofit",
+    "final_url": null,
+    "status": "access-denied",
+    "fetched_at": "2026-11-06T09:20:38+00:00",
+    "http_status": null,
+    "content_type": null,
+    "content_sha256": null,
+    "snapshot_path": null,
+    "cache_hit": false,
+    "note": "No page content was collected"
+  },
+  {
+    "requested_url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+    "final_url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+    "status": "ok",
+    "fetched_at": "2026-11-06T09:20:37+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "edba4aeb09ceec10ea3a326505a9305058fb17bbb2553836eca8a60645ce4a34",
+    "snapshot_path": "snapshots/edba4aeb09ceec10ea3a326505a9305058fb17bbb2553836eca8a60645ce4a34.html",
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "requested_url": "https://www.cftc.gov/LearnAndProtect/forexfrauds",
+    "final_url": "https://www.cftc.gov/LearnAndProtect/forexfrauds",
+    "status": "ok",
+    "fetched_at": "2026-11-06T09:20:38+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "c0837ac94cfc5f77a1e1a3905c8643ea5e58a7c84035bdb2b445da19f572d7cd",
+    "snapshot_path": "snapshots/c0837ac94cfc5f77a1e1a3905c8643ea5e58a7c84035bdb2b445da19f572d7cd.html",
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "requested_url": "https://www.ig.com/en/forex/what-is-a-pip-in-forex-trading",
+    "final_url": "https://www.ig.com/en/forex/what-is-a-pip-in-forex-trading",
+    "status": "http-error",
+    "fetched_at": "2026-11-06T09:27:39+00:00",
+    "http_status": 404,
+    "content_type": "text/html",
+    "content_sha256": null,
+    "snapshot_path": null,
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "requested_url": "https://www.metatrader5.com/en/terminal/help/trading/advanced_futures_forex",
+    "final_url": "https://www.metatrader5.com/en/terminal/help/trading/advanced_futures_forex",
+    "status": "http-error",
+    "fetched_at": "2026-11-06T09:27:39+00:00",
+    "http_status": 404,
+    "content_type": "text/html",
+    "content_sha256": null,
+    "snapshot_path": null,
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "requested_url": "https://www.ig.com/en/glossary-trading-terms/pip-definition",
+    "final_url": "https://www.ig.com/en/glossary-trading-terms/pip-definition",
+    "status": "ok",
+    "fetched_at": "2026-11-06T09:38:10+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "c2fe3bd534fb6b5d2b40d0eb42317e966b876aa9542ca4aa8e5e3cf69b260757",
+    "snapshot_path": "snapshots/c2fe3bd534fb6b5d2b40d0eb42317e966b876aa9542ca4aa8e5e3cf69b260757.html",
+    "cache_hit": false,
+    "note": null
+  },
+  {
+    "requested_url": "https://www.metatrader5.com/en/terminal/help/trading",
+    "final_url": "https://www.metatrader5.com/en/terminal/help/trading",
+    "status": "ok",
+    "fetched_at": "2026-11-06T09:38:10+00:00",
+    "http_status": 200,
+    "content_type": "text/html",
+    "content_sha256": "6820dd2e054dcb5ea253edd105c0c2405c5963a7f1732a4d520b18dd4e4e9bea",
+    "snapshot_path": "snapshots/6820dd2e054dcb5ea253edd105c0c2405c5963a7f1732a4d520b18dd4e4e9bea.html",
+    "cache_hit": false,
+    "note": null
+  }
+]

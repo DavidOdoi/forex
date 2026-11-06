@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
 import { insightArticles } from "../src/lib/insights/catalog";
 import { insightsIndexable } from "../src/lib/insights/seo";
+import { calculators, toolPath } from "../src/lib/calculators/catalog";
+import { calculatorsIndexable } from "../src/lib/calculators/seo";
 
 const routes = [
   "/",
@@ -133,33 +135,16 @@ test("mobile navigation and all exported pages fit responsive viewports", async 
   });
 });
 
-test("the three calculators retain the export’s formulas and results", async ({
+test("the tools hub links to all four working calculators and retains existing fragment targets", async ({
   page,
 }) => {
   await page.goto("/tools");
-  const pip = page.locator("section > div").filter({
-    has: page.getByRole("heading", { name: "Pip calculator", exact: true }),
-  });
-  await expect(pip).toContainText("$10.00");
-  await pip.getByLabel("Lot size", { exact: true }).fill("2.5");
-  await expect(pip).toContainText("$25.00");
-  const size = page.locator("section > div").filter({
-    has: page.getByRole("heading", { name: "Position size", exact: true }),
-  });
-  await expect(size).toContainText("0.10");
-  await size.getByLabel("Account balance ($)", { exact: true }).fill("2000");
-  await expect(size).toContainText("0.20");
-  await size.getByLabel("Stop loss (pips)", { exact: true }).fill("0");
-  await expect(size).toContainText("0.00");
-  const profit = page.locator("section > div").filter({
-    has: page.getByRole("heading", {
-      name: "Profit calculator",
-      exact: true,
-    }),
-  });
-  await expect(profit).toContainText("$150.00");
-  await profit.getByLabel("Pips gained / lost", { exact: true }).fill("-30");
-  await expect(profit).toContainText("$-150.00");
+  await expect(page.locator("[data-tool-card]")).toHaveCount(4);
+  for (const tool of calculators) await expect(page.getByRole("main").getByRole("link", { name: tool.heading, exact: true })).toHaveAttribute("href", toolPath(tool));
+  for (const id of ["pip-calculator", "position-size", "profit-calculator"]) await expect(page.locator(`#${id}`)).toHaveCount(1);
+  await page.getByRole("main").getByRole("link", { name: "Forex Trading Profit Calculator", exact: true }).click();
+  await expect(page).toHaveURL(/\/tools\/forex-profit-calculator$/);
+  await expect(page.locator("[data-result]")).toHaveText(/USD\s*250\.00/);
 });
 
 test("broker finder completes the original three questions and restarts", async ({
@@ -222,6 +207,7 @@ test("sitemap, robots, exported favicon and custom 404", async ({
   const expectedPaths = new Set([
     ...(process.env.SITE_URL && process.env.VERCEL_ENV !== "preview" ? routes : []),
     ...(insightsIndexable ? ["/insights", ...insightArticles.map(article => `/insights/${article.slug}`)] : []),
+    ...(calculatorsIndexable ? ["/tools", ...calculators.map(toolPath)] : []),
   ]);
   expect((xml.match(/<loc>/g) ?? []).length).toBe(expectedPaths.size);
   for (const path of expectedPaths) expect(xml).toContain(new URL(path, process.env.SITE_URL ?? "https://devinforex-five.vercel.app").href);

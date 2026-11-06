@@ -22,9 +22,10 @@ const linkGroups = [
   {
     title: "Trading tools",
     links: [
-      { label: "Pip calculator", href: "/tools#pip-calculator" },
-      { label: "Position size", href: "/tools#position-size" },
-      { label: "Profit calculator", href: "/tools#profit-calculator" },
+      { label: "Forex calculator", href: "/tools/forex-calculator" },
+      { label: "Position size", href: "/tools/forex-position-size-calculator" },
+      { label: "Profit calculator", href: "/tools/forex-profit-calculator" },
+      { label: "Compounding", href: "/tools/forex-compounding-calculator" },
     ],
   },
   {

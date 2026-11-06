@@ -1,6 +1,6 @@
 # Devin Forex — Lovable design rebuild
 
-This project reproduces the user-provided `forex-pathway-compass.zip` design in Next.js App Router for the existing Vercel project. The source’s hero image, fonts, colours, layout, ticker, and calculator formulas are retained. Unsupported hands-on testing claims, fabricated broker ratings, and recommendation badges have since been removed at the user’s request. The previous editorial design remains recoverable in Git history.
+This project uses the user-provided `forex-pathway-compass.zip` design in Next.js App Router for the existing Vercel project. The source’s hero image, fonts, colours, layout and ticker form the original foundation. The footer, editorial pages and calculators have since been improved at the user’s request. Unsupported hands-on testing claims, fabricated broker ratings and recommendation badges have been removed. Previous designs remain recoverable in Git history.
 
 ## Run locally
 
@@ -18,7 +18,11 @@ Production: `npm run build`, then `npm start`. The default port is 3000.
 - `/`: hero, ticker, broker cards, three-step section, FAQs
 - `/best-brokers`: unverified broker examples and comparison preview; no rankings or ratings
 - `/reviews`: research previews and verification checklists; no completed reviews or ratings
-- `/tools`: pip value, position size, and profit calculators
+- `/tools`: hub for four forex calculator pages, with existing calculator fragment targets preserved
+- `/tools/forex-calculator`: profit, pip value, position size and risk tabs
+- `/tools/forex-profit-calculator`: buy/sell P&L with commission and swap adjustments
+- `/tools/forex-position-size-calculator`: cash/percentage risk and rounded lot sizes
+- `/tools/forex-compounding-calculator`: hypothetical growth/loss scenarios, chart, breakdown and CSV
 - `/insights`: ten published trading guides, a companion reading list, and source-credited images
 - `/about`: publication purpose, planned research, commercial disclosures, and contact copy
 - `/find-my-broker`: three-question preference demonstration using explicitly unverified data
@@ -28,7 +32,7 @@ Production: `npm run build`, then `npm start`. The default port is 3000.
 
 The supplied export is the content and visual reference, not an independent source of verified financial research. Regulation claims, fees, minimum deposits, leverage, payment-method flags, the contact email, and market ticker figures came from the export without independent verification. Discovery cards use entity-dependent placeholders; sourced financial terms belong to the individual research pages. Numerical ratings, recommendation badges, fabricated pros/cons, hands-on testing claims, and the invented company backstory have been removed; research is described as planned work. The ticker contains static sample figures, not a live data feed. Broker cards link to internal research pages rather than placeholder referral links. Insight cards now link to published educational guides. The search/profile icons remain decorative as in the source. No contact delivery, account system or market-data service is connected; article publication uses static App Router content.
 
-The original calculators assume USD-quoted pairs and a $10 pip value for one standard lot; they do not model financing, commission, conversion, spread, or slippage. The quiz sorts only the supplied, unverified preference flags and labels its output an illustrative match. It does not use numerical ratings and is not a suitability assessment or broker recommendation. Verify all publication claims and configure actual destinations separately before treating this as researched broker coverage.
+The calculators now support 28 forex pairs and eight account currencies, JPY pip conventions, manual bid/ask conversions and configurable contracts. Prices are manual or explicitly illustrative; no live feed is connected. Profit estimates use execution prices and optional entered commission/swaps. Stop-loss sizing excludes slippage, gaps and costs; margin and liquidation are not modelled. The quiz sorts only supplied, unverified preference flags and labels its output an illustrative match. It is not a suitability assessment or broker recommendation. Verify all publication claims and configure actual destinations separately before treating this as researched broker coverage.
 
 ## Technical adaptations
 
@@ -60,7 +64,7 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test
 
 If system Chromium is unavailable, install a supported browser with `npx playwright install chromium`, then omit the executable-path variable. Browser downloads require access to their download domains.
 
-Seven foundation browser tests cover every exported route, metadata, image loading, navigation/dropdowns, the comparison table, broker research destinations, calculator values, quiz progression/reset, FAQs, reduced motion, 404, robots, sitemap, and layout overflow at 320, 390, 768, 1024, and 1440 pixels. Screenshots are written to ignored `test-results/`. Before the subsequent research-status copy changes, the rebuilt pages were compared against locally rendered original export components at 1440px and 390px; all fourteen comparisons matched page dimensions with only very small pixel-rendering differences. For domain-specific metadata checks, supply the same `SITE_URL` at build and test time. Tests do not validate the source’s financial claims or measure live Core Web Vitals.
+Foundation browser checks cover the original routes, metadata, image loading, navigation/dropdowns, the comparison table, broker research destinations, calculator discovery, quiz progression/reset, FAQs, reduced motion, 404, robots, sitemap, and layout overflow at 320, 390, 768, 1024, and 1440 pixels. Separate calculator checks cover financial formulas and input behaviour. Screenshots are written to ignored `test-results/`. Before the subsequent research-status copy changes, the rebuilt pages were compared against locally rendered original export components at 1440px and 390px; all fourteen comparisons matched page dimensions with only very small pixel-rendering differences. For domain-specific metadata checks, supply the same `SITE_URL` at build and test time. Tests do not measure live Core Web Vitals.
 
 ## File map
 
@@ -68,7 +72,9 @@ Seven foundation browser tests cover every exported route, metadata, image loadi
 - `src/components/site-header.tsx`: original header and inner-page hero.
 - `src/components/site-footer.tsx`: shared server-rendered footer, with scoped styles in `site-footer.module.css`.
 - `src/components/broker-card.tsx`: original broker-card presentation.
-- `src/components/tools-content.tsx`, `find-my-broker-content.tsx`: stateful exported pages.
+- `src/components/find-my-broker-content.tsx`: stateful broker-finder flow.
+- `src/components/calculators/`: calculator controls, responsive layouts, educational page renderer and local SVG chart.
+- `src/lib/calculators/`: financial functions, per-page content, metadata and structured data.
 - `src/lib/brokers.ts`: broker discovery labels and illustrative quiz preferences.
 - `src/lib/site.ts`: public origin, indexability, and route list.
 - `src/assets/hero-fx-light.jpg`, `public/favicon.ico`: supplied visual assets.

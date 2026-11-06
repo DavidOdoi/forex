@@ -119,7 +119,8 @@ test("specific menu and contextual links lead to existing content and section ta
   await expect(page.locator('#fees a[href="/tools#pip-calculator"]')).toHaveText("Calculate pip value");
   await expect(page.locator('#alternatives a[href="/reviews/pepperstone?country=Australia"]')).toHaveCount(1);
   const destinations = await page.locator('nav[aria-label="Main navigation"] a[href*="#"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")!));
-  expect(destinations).toContain("/tools#position-size");
+  await expect(page.locator('nav[aria-label="Main navigation"] a[href="/tools/forex-position-size-calculator"]')).toHaveCount(1);
+  expect((await page.request.get("/tools/forex-position-size-calculator")).status()).toBe(200);
   expect(destinations).toContain("/about#research-methodology");
   for (const href of destinations) {
     const [path, hash] = href.split("#");

@@ -13,7 +13,10 @@ const menu = [
     { label: "IC Markets", href: "/reviews/ic-markets" }, { label: "Pepperstone", href: "/reviews/pepperstone" },
   ] },
   { label: "Tools", to: "/tools", items: [
-    { label: "Pip calculator", href: "/tools#pip-calculator" }, { label: "Position size", href: "/tools#position-size" }, { label: "Profit calculator", href: "/tools#profit-calculator" },
+    { label: "Forex calculator", href: "/tools/forex-calculator" },
+    { label: "Profit calculator", href: "/tools/forex-profit-calculator" },
+    { label: "Position size calculator", href: "/tools/forex-position-size-calculator" },
+    { label: "Compounding calculator", href: "/tools/forex-compounding-calculator" },
   ] },
   { label: "Insights", to: "/insights", items: [
     { label: "Beginner guides", href: "/insights#beginner-guides" }, { label: "Strategies & risk", href: "/insights#strategies" }, { label: "Platforms & technology", href: "/insights#market-guides" },

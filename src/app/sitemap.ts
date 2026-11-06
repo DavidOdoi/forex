@@ -4,6 +4,8 @@ import { getReview, researchEntries, reviewCountries } from "@/lib/reviews/catal
 import { reviewSitemapEntries } from "@/lib/reviews/seo";
 import { insightArticles } from "@/lib/insights/catalog";
 import { insightUrl, insightsIndexable } from "@/lib/insights/seo";
+import { calculators, toolPath } from "@/lib/calculators/catalog";
+import { calculatorsIndexable } from "@/lib/calculators/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
@@ -13,6 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
   if (insightsIndexable) {
     entries.push({ url: new URL("/insights", siteOrigin).href }, ...insightArticles.map(article => ({ url: insightUrl(article.slug), lastModified: article.updatedAt })));
+  }
+  if (calculatorsIndexable) {
+    entries.push(...["/tools", ...calculators.map(toolPath)].map(path => ({ url: new URL(path, siteOrigin).href })));
   }
   return [...new Map(entries.map(entry => [entry.url, entry])).values()];
 }
