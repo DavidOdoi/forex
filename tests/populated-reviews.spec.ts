@@ -90,17 +90,19 @@ test("review has useful internal and external links, country canonical metadata 
 
 test("global Exness review retains citations, research and five official account links", async ({ page, request }) => {
   await page.goto("/reviews/exness");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Accounts, Withdrawals & Safety");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Safety & Account Types");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
   await expect(page.locator(".br-account-table")).toContainText("US$3.50");
   await expect(page.getByRole("columnheader", { name: "Minimum first deposit" })).toBeVisible();
   const minimums = page.locator(".br-account-table tbody tr td:last-child");
   await expect(minimums.first()).toHaveText("Varies by payment method and region");
-  for (const row of [1, 2, 3]) await expect(minimums.nth(row)).toHaveText("From US$200; region-dependent");
-  await expect(minimums.locator("a")).toHaveCount(4);
-  await expect(minimums.first().locator("a")).toHaveAttribute("href", /get\.exness\.help\/hc\/en-us\/articles\/360011554840/);
+  await expect(minimums.nth(1)).toHaveText("Varies by payment method and region");
+  for (const row of [2, 3, 4]) await expect(minimums.nth(row)).toHaveText("From US$200; region-dependent");
+  await expect(minimums.locator("a")).toHaveCount(5);
+  await expect(minimums.first().locator("a")).toHaveAttribute("href", /get\.exness\.help\/hc\/en-us\/articles\/17537782786588/);
+  await expect(minimums.nth(1).locator("a")).toHaveAttribute("href", /get\.exness\.help\/hc\/en-us\/articles\/360011554840/);
   await expect(page.locator("#deposit-and-withdrawal")).toContainText("24/7");
-  await expect(page.locator(".review-source-list li")).toHaveCount(14);
+  await expect(page.locator(".review-source-list li")).toHaveCount(15);
   await expect(page.locator("[data-account-cta]")).toHaveCount(5);
   const links = page.getByRole("link", { name: "Open an account with Exness", exact: true });
   await expect(links).toHaveCount(5);
@@ -115,7 +117,7 @@ test("global Exness review retains citations, research and five official account
   expect(record.review.jurisdiction).toBe("Global");
   expect(record.review.chapters).toHaveLength(7);
   const minimum = record.review.keyData.find((field: { id: string }) => field.id === "minimum-deposit");
-  expect(minimum.checkedAt).toBe("2026-11-04");
+  expect(minimum.checkedAt).toBe("2026-11-06");
   expect(minimum.value).toContain("depending on region");
   expect(reviewedFields(record.review).filter(f => f.status === "verified").length).toBeGreaterThan(18);
 });
@@ -189,11 +191,11 @@ test("reading navigation and commercial disclosure work with the keyboard", asyn
 
 test("Exness template follows the requested table-first flow without unsupported figures", async ({ page }) => {
   await page.goto("/reviews/template");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Accounts, Withdrawals & Safety");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Safety & Account Types");
   await expect(page.getByRole("complementary", { name: "Review verdict" })).toContainText("Not rated");
   await expect(page.locator(".br-quick-grid > div")).toHaveCount(9);
   await expect(page.locator(".br-quick-grid > div").first()).toContainText("professional: from US$200");
-  await expect(page.locator(".br-account-table tbody tr")).toHaveCount(4);
+  await expect(page.locator(".br-account-table tbody tr")).toHaveCount(5);
   await expect(page.locator(".br-account-table")).toContainText("From US$0.05 / lot / side");
   await expect(page.locator("#safety")).toContainText("730729");
   await expect(page.locator("#safety")).toContainText("Does not offer services to retail clients");
@@ -202,6 +204,9 @@ test("Exness template follows the requested table-first flow without unsupported
   const faqSchema = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"].find((item: { "@type": string }) => item["@type"] === "FAQPage");
   expect(faqSchema.mainEntity.some((item: { name: string }) => item.name.includes("weekends"))).toBe(true);
   expect(faqSchema.mainEntity.some((item: { name: string }) => item.name.includes("market maker"))).toBe(false);
+  expect(faqSchema.mainEntity).toHaveLength(3);
+  await expect(page.locator("#review-faq details")).toHaveCount(3);
+  await expect(page.locator(".br-verdict-box").getByRole("heading", { name: "Quick answer" })).toBeVisible();
   const smallText = await page.locator("main *").evaluateAll(nodes => nodes.filter(node => node.getClientRects().length && getComputedStyle(node).visibility === "visible" && [...node.childNodes].some(child => child.nodeType === Node.TEXT_NODE && child.textContent?.trim()) && parseFloat(getComputedStyle(node).fontSize) < 16).map(node => ({ text: node.textContent?.slice(0, 40), size: getComputedStyle(node).fontSize })));
   expect(smallText).toEqual([]);
 });
@@ -221,14 +226,17 @@ test("mobile contents drawer opens, navigates and closes", async ({ page }) => {
 
 test("account comparisons, quick facts and rating schema require matching evidence", () => {
   const { review } = getReview("exness")!;
-  expect(reviewAccounts(review)).toHaveLength(4);
+  expect(reviewAccounts(review)).toHaveLength(5);
   expect(reviewQuickFacts(review).find(f => f.label === "Minimum deposit")!.state).toBe("text");
   const withoutDepositSource = structuredClone(review);
   withoutDepositSource.sources = withoutDepositSource.sources.filter(source => source.id !== "global-minimum-deposit");
-  expect(reviewAccounts(withoutDepositSource)).toHaveLength(4);
+  expect(reviewAccounts(withoutDepositSource)).toHaveLength(5);
   expect(reviewAccounts(withoutDepositSource).every(account => account.minimum === "Not verified")).toBe(true);
   expect(reviewQuickFacts(withoutDepositSource).find(f => f.label === "Minimum deposit")!.state).toBe("unknown");
   expect(reviewAccounts(getReview("exness", "Seychelles")!.review)).toEqual([]);
+  const withoutCentEvidence = structuredClone(review);
+  withoutCentEvidence.sources = withoutCentEvidence.sources.filter(source => source.id !== "global-cent");
+  expect(reviewAccounts(withoutCentEvidence).map(account => account.name)).not.toContain("Standard Cent");
   expect(JSON.stringify(reviewStructuredData(review))).not.toContain("ratingValue");
   review.status = "published";
   review.author = { name: "Test Editor", role: "Reviewer" };
@@ -244,6 +252,41 @@ test("account comparisons, quick facts and rating schema require matching eviden
   expect(JSON.stringify(reviewStructuredData(review))).not.toContain("ratingValue");
 });
 
+test("Exness cost tool scales both commission sides and rejects missing or invalid inputs", async ({ page }) => {
+  await page.goto("/reviews/exness#fees");
+  const calculator = page.locator("[data-illustrative-cost]");
+  const result = calculator.locator("[data-roundtrip-result]");
+  await expect(result).toContainText("US$10 / 1.0 pip");
+  await calculator.getByLabel("Standard lots", { exact: true }).fill("0.1");
+  await expect(result).toContainText("US$1 / 1.0 pip");
+  await calculator.getByLabel("US$/lot/side", { exact: true }).fill("0");
+  await expect(result).toContainText("US$0.3 / 0.3 pips");
+  await calculator.getByLabel("Spread (pips)", { exact: true }).fill("0");
+  await expect(result).toContainText("US$0 / 0.0 pips");
+  await calculator.getByLabel("Standard lots", { exact: true }).fill("");
+  await expect(result).toContainText("Complete all three fields");
+  await expect(result).not.toContainText("US$");
+  await calculator.getByLabel("Standard lots", { exact: true }).fill("-1");
+  await expect(result).toContainText("Standard lots must be at least 0.01");
+  await calculator.getByLabel("Standard lots", { exact: true }).fill("1");
+  await calculator.getByLabel("US$/lot/side", { exact: true }).fill("3.5");
+  await expect(result).toContainText("US$7 / 0.7 pips");
+});
+
+test("Exness mobile account comparison reads as cards with uniform body text", async ({ page }) => {
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/reviews/template#account-opening");
+    await expect(page.locator(".br-account-table tbody tr")).toHaveCount(5);
+    const layout = await page.evaluate(() => ({
+      overflows: document.documentElement.scrollWidth > innerWidth,
+      accountTableOverflows: (() => { const table = document.querySelector(".br-account-table")!; return table.scrollWidth > table.clientWidth; })(),
+      bodySizes: [...new Set([...document.querySelectorAll('.br-tradeoffs p, .br-comparison td, .br-intro, .br-verdict-copy > p, .br-cost-example p')].map(el => getComputedStyle(el).fontSize))],
+    }));
+    expect(layout).toEqual({ overflows: false, accountTableOverflows: false, bodySizes: ["18px"] });
+  }
+});
+
 test("standalone HTML includes embedded styles and schema with working native navigation", async ({ page, request }) => {
   const response = await request.get("/templates/exness-review.html");
   expect(response.status()).toBe(200);
@@ -252,13 +295,13 @@ test("standalone HTML includes embedded styles and schema with working native na
   expect(html).not.toContain("/_next/");
   expect(html).not.toMatch(/Kenya|M-Pesa|USD\/KES/);
   await page.goto("/templates/exness-review.html");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Accounts, Withdrawals & Safety");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Safety & Account Types");
   await expect(page.locator(".br-account-table tbody tr td:last-child")).toHaveText([
-    "Varies by payment method and region", "From US$200; region-dependent", "From US$200; region-dependent", "From US$200; region-dependent",
+    "Varies by payment method and region", "Varies by payment method and region", "From US$200; region-dependent", "From US$200; region-dependent", "From US$200; region-dependent",
   ]);
   await expect(page.locator('script:not([type="application/ld+json"])')).toHaveCount(0);
   await expect(page.locator('link[rel="stylesheet"]')).toHaveCount(0);
-  await expect(page.locator(".br-account-table tbody tr")).toHaveCount(4);
+  await expect(page.locator(".br-account-table tbody tr")).toHaveCount(5);
   await page.getByRole("navigation", { name: "Review sections" }).getByRole("link", { name: "Trading costs", exact: true }).click();
   await expect(page).toHaveURL(/exness-review\.html#fees$/);
   for (const width of [320, 390, 1440]) {

@@ -18,6 +18,16 @@ try {
     const main = window.document.querySelector("main.br-review")?.cloneNode(true);
     if (!(main instanceof HTMLElement)) throw new Error("A populated review is required");
     main.querySelectorAll("dialog,script").forEach(node => node.remove());
+    // The download stays framework-free. Keep the server-rendered worked
+    // example and link to the interactive calculator instead of inert inputs.
+    main.querySelectorAll("[data-roundtrip-controls]").forEach(controls => {
+      const example = window.document.createElement("p");
+      example.textContent = "Fixed example: 1 standard lot, 0.3-pip spread, US$3.50/lot/side. ";
+      const live = window.document.createElement("a");
+      live.href = `${canonical}#fees`; live.textContent = "Use the interactive cost calculator";
+      example.append(live); controls.replaceWith(example);
+    });
+    main.querySelectorAll("noscript").forEach(node => node.remove());
     const disclosure = main.querySelector("button.br-disclosure");
     if (disclosure) {
       const link = window.document.createElement("a");

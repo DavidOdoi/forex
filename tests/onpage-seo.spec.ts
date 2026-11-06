@@ -8,7 +8,7 @@ function publicationFixture() {
   review.status = "published";
   // Fictional data is confined to this test fixture, never the public catalogue.
   review.author = { name: "Fixture Editor", role: "Editor", bio: "Fictional biography used only to test the publication contract.", profileUrl: "/authors/fixture-editor" };
-  review.publication = { publishedAt: "2026-11-04", updatedAt: "2026-11-04", approvedAt: "2026-11-04", approvedBy: "Fixture Editor" };
+  review.publication = { publishedAt: "2026-11-06", updatedAt: "2026-11-06", approvedAt: "2026-11-06", approvedBy: "Fixture Editor" };
   return review;
 }
 
@@ -26,10 +26,10 @@ test("publication requires accountability, approval, dates and matching core evi
   ready.publication!.approvedBy = "Fixture Editor";
   ready.publication!.updatedAt = "2026-11-03";
   expect(isReviewPublished(ready)).toBe(false);
-  ready.publication!.updatedAt = "2026-11-04";
+  ready.publication!.updatedAt = "2026-11-06";
   ready.publication!.approvedAt = "2026-11-03";
   expect(isReviewPublished(ready)).toBe(false);
-  ready.publication!.approvedAt = "2026-11-04";
+  ready.publication!.approvedAt = "2026-11-06";
   ready.sources = ready.sources.filter(source => source.id !== "global-minimum-deposit");
   expect(isReviewPublished(ready)).toBe(false);
   const wrongScope = publicationFixture();
@@ -49,7 +49,7 @@ test("only approved canonical articles can be indexable or enter the review site
   const demo = structuredClone(ready); demo.status = "template";
   const entries = reviewSitemapEntries([draft, demo, ready, structuredClone(ready)]);
   expect(entries).toHaveLength(1);
-  expect(entries[0]).toEqual({ url: reviewMetadata(ready).alternates!.canonical, lastModified: "2026-11-04" });
+  expect(entries[0]).toEqual({ url: reviewMetadata(ready).alternates!.canonical, lastModified: "2026-11-06" });
 });
 
 test("Article schema uses real-record fields and never assumes broker review-star eligibility", () => {
@@ -116,7 +116,7 @@ test("draft and demonstration responses remain noindex while crawlers can read t
 
 test("specific menu and contextual links lead to existing content and section targets", async ({ page, request }) => {
   await page.goto("/reviews/exness");
-  await expect(page.locator('#fees a[href="/tools#pip-calculator"]')).toHaveText("Calculate pip value");
+  await expect(page.locator('#fees a[href="/tools/forex-position-size-calculator"]')).toHaveText("Size your position");
   await expect(page.locator('#alternatives a[href="/reviews/pepperstone?country=Australia"]')).toHaveCount(1);
   const destinations = await page.locator('nav[aria-label="Main navigation"] a[href*="#"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")!));
   await expect(page.locator('nav[aria-label="Main navigation"] a[href="/tools/forex-position-size-calculator"]')).toHaveCount(1);

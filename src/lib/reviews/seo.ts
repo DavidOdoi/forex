@@ -8,6 +8,7 @@ import { isReviewPublished } from "./publication";
 export function reviewHeading(review: BrokerReview): string {
   const year = review.sources.map(source => source.checkedAt).sort().at(-1)?.slice(0, 4);
   if (review.providerType && review.providerType !== "retail") return `${review.broker.name} Research Profile: Services, Access & Safety`;
+  if (review.broker.slug === "exness" && review.jurisdiction === "Global") return `Exness Review${year ? ` ${year}` : ""}: Fees, Safety & Account Types`;
   return `${review.broker.name} Review${year ? ` ${year}` : ""}: Fees, Accounts, Withdrawals & Safety`;
 }
 export function reviewUrl(review: BrokerReview): string {
@@ -21,7 +22,7 @@ export function reviewMetadata(review: BrokerReview, deploymentIndexable = index
   const description = review.providerType && review.providerType !== "retail"
     ? `Research ${review.broker.name}: provider access, services and entity checks. Directory classification is unverified; editorial approval pending.`
     : review.broker.slug === "exness" && review.jurisdiction === "Global"
-    ? `Compare Exness accounts, first deposits, commissions, overnight charges and withdrawal conditions. Source-based research${published ? "." : "; editorial approval pending."}`
+    ? `Exness review: compare five accounts, fees, minimum deposits, regulation and withdrawal rules. Use the cost calculator. ${published ? "See linked sources." : "Source-based draft."}`
     : `Explore ${review.broker.name}${review.jurisdiction && review.jurisdiction !== "Global" ? ` in ${review.jurisdiction}` : " worldwide"}: account costs, legal entities and linked sources. ${published ? "Read the review." : "Editorial approval pending."}`;
   const url = reviewUrl(review);
   return {

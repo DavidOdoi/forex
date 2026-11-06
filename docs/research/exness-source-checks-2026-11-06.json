@@ -1,0 +1,126 @@
+{
+  "purpose": "Primary-document recheck for the global Exness template. Not editorial approval, live-account testing, measured pricing, a support test or a withdrawal test. Raw snapshots remain in the ignored research archive.",
+  "checks": [
+    {
+      "reference": "standard",
+      "url": "https://www.exness.com/standard-accounts/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:49+00:00",
+      "sha256": "b29373b6900bff9204b07b198b7bb259839565a156897f267849c9086a5e9d95"
+    },
+    {
+      "reference": "pro",
+      "url": "https://www.exness.com/pro-accounts/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:50+00:00",
+      "sha256": "8e51b43c012ae0863a13978266cec7a41a1fe2501063ab43c752ad6848126e47"
+    },
+    {
+      "reference": "accounts",
+      "url": "https://get.exness.help/hc/en-us/articles/360013782240-Trading-account-types",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:49+00:00",
+      "sha256": "8f158fc7325fee52c24314fdc340503b5a55f7009526009ff2adfa9179aa3c8b"
+    },
+    {
+      "reference": "minimum",
+      "url": "https://get.exness.help/hc/en-us/articles/360011554840-What-is-the-minimum-amount-needed-to-start-trading",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:50+00:00",
+      "sha256": "7b76b14bef512cd7235d2a01e73c935bdec29bf026c674d6edd6191353cda4a0"
+    },
+    {
+      "reference": "regulation",
+      "url": "https://www.exness.com/regulation/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:55+00:00",
+      "sha256": "a46c6eaf0da40b590804076ab5c0417ac2479964cc6e218ff8ef2faee4477e33"
+    },
+    {
+      "reference": "protection",
+      "url": "https://www.exness.com/client-protection/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:56+00:00",
+      "sha256": "541e577e8cd21bfd9ce9d8f7ff3a00cb6af98616675a7c238d4ac27b31c55588"
+    },
+    {
+      "reference": "payments",
+      "url": "https://www.exness.com/deposits-and-withdrawals/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:57+00:00",
+      "sha256": "32b020fe02b6e01d3b13891bd0cc1ac0ad8f4ad5925e1bb983a5463450c85d72"
+    },
+    {
+      "reference": "fees",
+      "url": "https://www.exness.com/fees/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:58+00:00",
+      "sha256": "8b83817aa4b62da5b55b501f6d50af670b10e8f93da1c4935e01a3b5d26acca2"
+    },
+    {
+      "reference": "fsa",
+      "url": "https://fsaseychelles.sc/search-business/exness-sc-ltd",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:58+00:00",
+      "sha256": "3c5b359151a3a4c97cb6f50b3fc4de35a9106644477f93a6bc0c03e1bd87d2e6"
+    },
+    {
+      "reference": "google-reviews",
+      "url": "https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:38:58+00:00",
+      "sha256": "64e77111043d8f863896df8bb00e2d9ceb06156425e47377567539b021bd4efa"
+    },
+    {
+      "reference": "cent",
+      "url": "https://get.exness.help/hc/en-us/articles/17537782786588-Standard-Cent-account",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:42:45+00:00",
+      "sha256": "9b6f3fc25e47f3ea7df48ea9c49dc56fd6f78cceea75f5831a78d861be3fd76e"
+    },
+    {
+      "reference": "platforms",
+      "url": "https://www.exness.com/trading-platforms/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:42:41+00:00",
+      "sha256": "2ad77d88e213871021e68483c316fa3144fffdf2eb0fab7dd388dde1136bd9cc"
+    },
+    {
+      "reference": "swap",
+      "url": "https://get.exness.help/hc/en-us/articles/4402341895570-Swap-free-status",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:42:43+00:00",
+      "sha256": "92f1343bcb34a366f6ee86c71522c5bab49a632a890c7f6984190bfc7fc6e4ca"
+    },
+    {
+      "reference": "inactivity",
+      "url": "https://get.exness.help/hc/en-us/articles/17537782906396-Archived-trading-accounts",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:42:47+00:00",
+      "sha256": "5fb5ac17b9a6ab4b8b7a7753614a1575d280429881f02bb1251aff1c066be096"
+    },
+    {
+      "reference": "payment-fees",
+      "url": "https://get.exness.help/hc/en-us/articles/360012604359-Are-any-payment-processing-fees-charged-by-Exness",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:42:49+00:00",
+      "sha256": "7b76317618846e7523f7f86aae2a3644a236cce238164462869faee623b787c6"
+    },
+    {
+      "reference": "payment-methods",
+      "url": "https://get.exness.help/hc/en-us/articles/11865031701532-Available-payment-methods",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T12:42:50+00:00",
+      "sha256": "b3776e1d703b932cf998ac03dbce21fbbcdd0a9f87eb23fb601c7b5aaded2c17"
+    }
+  ],
+  "editorialFindings": [
+    "Five account types are documented, including Standard Cent. Its 1 cent lot equals 0.01 standard lot; currency balances display in cents. MT4/MT5 are documented; some Cent instruments are MT5-only.",
+    "Standard/Cent first deposits depend on regional/payment minimums. Professional account first deposits start at US$200 depending on region. Floors are advertised, not measured averages.",
+    "UK, Cyprus and Mauritius entities do not currently provide retail services. The fresh regulatory page names Exness (BZ) Ltd. in Belize, differing from the older legal directory lead. Selected entity list is not a resident-allocation map.",
+    "FSA independently identifies Exness (SC) Ltd and Securities Dealer type. SD025 is not shown in that identity entry, so licence numbers remain provider-reported.",
+    "Automatic withdrawal processing is not guaranteed bank/provider arrival. No funded test, measured spread series, support response test or first-hand performance score exists for this review.",
+    "Negative balance protection and segregated funds are provider claims. Account-specific contract scope and exclusions remain to be checked. No compensation-scheme coverage inferred.",
+    "Google recommends original useful analysis and evidence rather than summaries alone. The tool calculates hypothetical all-in spread/commission costs; it supplies no live quotes or price ranking."
+  ]
+}

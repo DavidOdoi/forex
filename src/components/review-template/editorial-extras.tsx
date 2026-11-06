@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { BrokerReview } from "@/lib/reviews/types";
-import { isReviewPublished, publicationBlockers } from "@/lib/reviews/publication";
+import { isReviewPublished } from "@/lib/reviews/publication";
 import { internationalEntities } from "@/lib/reviews/international";
 
 export function EditorialAccountability({ review }: { review: BrokerReview }) {
@@ -8,7 +8,7 @@ export function EditorialAccountability({ review }: { review: BrokerReview }) {
   return <aside className="br-accountability" aria-label="Editorial accountability">
     <p>{review.author ? <>By {review.author.profileUrl ? <Link href={review.author.profileUrl}>{review.author.name}</Link> : review.author.name}</> : "Author not assigned"} · {review.factChecker ? `Reviewed by ${review.factChecker.name}` : "Reviewer not assigned"}</p>
     <p>Published: {isReviewPublished(review) ? date(review.publication?.publishedAt) : "Not published"}{review.publication?.updatedAt && <> · Substantive update: <time dateTime={review.publication.updatedAt}>{date(review.publication.updatedAt)}</time></>}</p>
-    {!isReviewPublished(review) && <details><summary>Editorial status</summary><ul>{publicationBlockers(review).filter(issue => !issue.startsWith("Draft:")).map(issue => <li key={issue}>{issue}</li>)}</ul></details>}
+    {!isReviewPublished(review) && <details><summary>Editorial status</summary><p>Source-based draft awaiting editorial approval. No live-account tests.</p></details>}
   </aside>;
 }
 

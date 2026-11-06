@@ -25,18 +25,19 @@ export function checkedField(review: BrokerReview, id: string): ReviewField | un
   return [...review.keyData, ...review.chapters.flatMap(c => c.panels.flatMap(p => p.fields))].find(f =>
     f.id === id && f.status === "verified" && f.jurisdiction === review.jurisdiction && fieldValue(f, review) === f.value);
 }
-function checkedNovemberSource(review: BrokerReview, id: string) {
+function checkedSourceAt(review: BrokerReview, id: string, checkedAt = "2026-11-03") {
   const source = review.sources.find(s => s.id === id);
-  return source && isValidSource(source) && source.jurisdiction === review.jurisdiction && source.checkedAt === "2026-11-03";
+  return source && isValidSource(source) && source.jurisdiction === review.jurisdiction && source.checkedAt === checkedAt;
 }
 export function reviewAccounts(review: BrokerReview): AccountRow[] {
   const deposit = checkedField(review, "minimum-deposit");
-  const checkedDeposit = deposit?.checkedAt === "2026-11-04" && deposit.sourceIds.includes("global-minimum-deposit");
+  const checkedDeposit = deposit?.checkedAt === "2026-11-06" && deposit.sourceIds.includes("global-minimum-deposit");
   const minimumSourceIds = checkedDeposit ? deposit.sourceIds : [];
   const platform = checkedField(review, "platform-and-availability");
-  const platforms = platform?.checkedAt === "2026-11-04" && platform.sourceIds.includes("global-account-types") ? "MT4 / MT5" : undefined;
+  const platforms = platform?.checkedAt === "2026-11-06" && platform.sourceIds.includes("global-account-types") ? "MT4 / MT5" : undefined;
   const platformSourceIds = platforms ? platform!.sourceIds : [];
-  if (review.jurisdiction === "Global" && review.broker.slug === "exness" && checkedField(review, "forex-spread-and-commission") && checkedNovemberSource(review, "global-standard") && checkedNovemberSource(review, "global-pro")) return [
+  if (review.jurisdiction === "Global" && review.broker.slug === "exness" && checkedField(review, "forex-spread-and-commission") && checkedSourceAt(review, "global-standard", "2026-11-06") && checkedSourceAt(review, "global-pro", "2026-11-06")) return [
+    ...(checkedSourceAt(review, "global-cent", "2026-11-06") && checkedSourceAt(review, "global-account-types", "2026-11-06") ? [{ name: "Standard Cent", category: "Cent lots²", spread: "From 0.3 pips", commission: "No commission", minimum: checkedDeposit ? "Varies by payment method and region" : "Not verified", minimumSourceIds: checkedDeposit ? ["global-cent"] : [], platforms, platformSourceIds: platforms ? ["global-cent"] : [], roundTripCommission: "US$0", sourceIds: ["global-cent"] }] : []),
     { name: "Standard", category: "Standard", spread: "From 0.2 pips", commission: "No commission", minimum: checkedDeposit ? "Varies by payment method and region" : "Not verified", minimumSourceIds, platforms, platformSourceIds, roundTripCommission: "US$0", sourceIds: ["global-standard"] },
     { name: "Pro", category: "Professional range¹", spread: "From 0.1 pips", commission: "No commission", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, platforms, platformSourceIds, roundTripCommission: "US$0", sourceIds: ["global-pro"] },
     { name: "Zero", category: "Professional range¹", spread: "From 0 pips", commission: "From US$0.05 / lot / side", minimum: checkedDeposit ? "From US$200; region-dependent" : "Not verified", minimumSourceIds, platforms, platformSourceIds, roundTripCommission: "From US$0.10 / lot", sourceIds: ["global-pro"] },
@@ -44,21 +45,21 @@ export function reviewAccounts(review: BrokerReview): AccountRow[] {
   ];
   if (review.jurisdiction !== "Kenya") return [];
   const pricing = checkedField(review, "forex-spread-and-commission");
-  if (review.broker.slug === "exness" && pricing && checkedNovemberSource(review, "standard") && checkedNovemberSource(review, "pro")) return [
+  if (review.broker.slug === "exness" && pricing && checkedSourceAt(review, "standard") && checkedSourceAt(review, "pro")) return [
     { name: "Standard", category: "Standard", spread: "From 0.2 pips", commission: "No commission", minimum: "Not verified", sourceIds: ["standard"] },
     { name: "Pro", category: "Professional range¹", spread: "From 0.1 pips", commission: "No commission", minimum: "Not verified", sourceIds: ["pro"] },
     { name: "Zero", category: "Professional range¹", spread: "From 0 pips", commission: "From US$0.05 / lot / side", minimum: "Not verified", sourceIds: ["pro"] },
     { name: "Raw Spread", category: "Professional range¹", spread: "From 0 pips", commission: "Up to US$3.50 / lot / side", minimum: "Not verified", sourceIds: ["pro"] },
   ];
-  if (review.broker.slug === "fxpesa" && pricing && checkedField(review, "minimum-deposit") && checkedNovemberSource(review, "accounts")) return [
+  if (review.broker.slug === "fxpesa" && pricing && checkedField(review, "minimum-deposit") && checkedSourceAt(review, "accounts")) return [
     { name: "Standard", category: "Live account", spread: "1.4 pips published average²", commission: "US$0³", minimum: "No published minimum", sourceIds: ["accounts"] },
     { name: "Premier", category: "Live account", spread: "From 0.0 pips", commission: "US$3.50 / lot / side", minimum: "US$100", sourceIds: ["accounts"] },
   ];
-  if (review.broker.slug === "pepperstone" && pricing && checkedNovemberSource(review, "accounts") && checkedNovemberSource(review, "pricing")) return [
+  if (review.broker.slug === "pepperstone" && pricing && checkedSourceAt(review, "accounts") && checkedSourceAt(review, "pricing")) return [
     { name: "Standard", category: "CFD account", spread: "Raw FX spread + 1 pip", commission: "No separate FX commission", minimum: "US$10 advertised⁴", sourceIds: ["accounts", "pricing"] },
     { name: "Razor", category: "CFD account", spread: "FX from 0.0 pips", commission: "From US$3.50 / lot / side⁵", minimum: "US$10 advertised⁴", sourceIds: ["accounts", "pricing"] },
   ];
-  if (review.broker.slug === "xm" && checkedField(review, "minimum-deposit") && checkedNovemberSource(review, "accounts")) return [
+  if (review.broker.slug === "xm" && checkedField(review, "minimum-deposit") && checkedSourceAt(review, "accounts")) return [
     { name: "Standard", category: "Live account", spread: "Not verified", commission: "Not verified", minimum: "US$5 equivalent", sourceIds: ["accounts"] },
     { name: "Ultra Low", category: "Live account", spread: "Not verified", commission: "Not verified", minimum: "US$5 equivalent", sourceIds: ["accounts"] },
   ];
@@ -104,9 +105,9 @@ export function verdictSentences(review: BrokerReview): string[] {
   const pricing = checkedField(review, "forex-spread-and-commission");
   const regulation = checkedField(review, "regulation-and-entity");
   if (review.jurisdiction === "Global" && pricing && regulation && review.broker.slug === "exness" && reviewAccounts(review).length) return [
-    "This source-based global overview uses public documents; no live-account tests were performed.",
-    "Standard/Pro advertise no separate commission; Zero/Raw Spread add per-side charges.",
-    "Compare total costs and your contracting entity, because eligibility and protections vary.",
+    "Exness documents five accounts: Cent/Standard/Pro have no separate commission; Zero/Raw Spread add per-side charges.",
+    "Compare all-in costs; advertised spread floors do not establish the cheapest broker.",
+    "Check your contracting entity; execution and withdrawals remain untested here.",
   ];
   if (review.jurisdiction === "Global") return regulation ? [
     `${review.broker.name}’s group disclosures identify the legal entities listed below; permissions apply to each named company.`,
@@ -151,12 +152,6 @@ export function verdictSentences(review: BrokerReview): string[] {
   ];
 }
 export function flowFaqs(review: BrokerReview) {
-  const faqs = reviewDigest(review).faqs.filter(f => f.answer && verifiedSources(f.sourceIds, review));
-  if (review.broker.slug === "exness" && review.jurisdiction === "Kenya") faqs.unshift({ question: "Is Exness a market maker?", answer: "This draft has not verified the contractual execution role of Exness (KE) Limited. Check that entity’s customer agreement and execution policy; another group company’s model should not be assumed to apply.", sourceIds: [] });
-  if (review.broker.slug === "exness" && review.jurisdiction === "Global") faqs.unshift({ question: "Is Exness a market maker?", answer: "Execution role remains unverified; consult your entity’s agreement.", sourceIds: [] });
-  if (review.jurisdiction === "Global" && review.broker.slug === "exness") {
-    const inactivity = checkedField(review, "inactivity-fee");
-    if (inactivity) faqs.push({ question: "Does Exness charge an inactivity fee?", answer: "Exness states no inactivity or reactivation fee. Inactive real accounts may be archived and need reactivation before trading.", sourceIds: inactivity.sourceIds });
-  }
-  return faqs;
+  // Use the same three evidenced answers in the document and FAQ schema.
+  return reviewDigest(review).faqs.filter(f => f.answer && verifiedSources(f.sourceIds, review)).slice(0, 3);
 }
