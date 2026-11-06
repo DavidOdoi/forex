@@ -1,5 +1,5 @@
 import type { BrokerReview, ReviewField } from "./types";
-import { reviewDigest } from "./digest";
+import { reviewDigest, wordCount } from "./digest";
 import { fieldValue, isValidSource, verifiedSources } from "./template";
 import { providerLabels } from "./research-types";
 
@@ -110,9 +110,9 @@ export function verdictSentences(review: BrokerReview): string[] {
     "It does not suit US residents or investors seeking direct share ownership.",
   ];
   if (review.jurisdiction === "Global") return regulation ? [
-    `${review.broker.name}’s group disclosures identify the legal entities listed below; permissions apply to each named company.`,
-    "Account costs and resident eligibility still require entity-specific checks.",
-    "Confirm the company in your agreement and its current terms before applying.",
+    `The available evidence supports an entity check for ${review.broker.name}; a full trading-cost and suitability verdict is pending.`,
+    "The disclosed companies have separate permissions; these do not establish universal account protection.",
+    "Confirm your contracting company, resident eligibility, fees and withdrawal terms before funding.",
   ] : [
     `Research for ${review.broker.name} is incomplete; no source-backed account terms are approved in this profile.`,
     "Collected material and directory leads still require entity-level checking.",
@@ -142,7 +142,7 @@ export function verdictSentences(review: BrokerReview): string[] {
   ];
   const source = review.sources.find(s => isValidSource(s) && s.jurisdiction === review.jurisdiction);
   return source ? [
-    `${review.broker.name} identifies ${source.legalEntity} in ${source.jurisdiction} in the linked source material.`,
+    `This ${review.broker.name} profile identifies ${source.legalEntity} in ${source.jurisdiction}; trading costs and account protections still need checking.`,
     "Account costs, eligibility and protections require separate checks for that entity.",
     "This source-based draft is not a completed suitability assessment or a live-account test.",
   ] : [
@@ -151,7 +151,40 @@ export function verdictSentences(review: BrokerReview): string[] {
     "Use the collected notes as research leads rather than account recommendations.",
   ];
 }
-export function flowFaqs(review: BrokerReview) {
-  // Use the same three evidenced answers in the document and FAQ schema.
-  return reviewDigest(review).faqs.filter(f => f.answer && verifiedSources(f.sourceIds, review)).slice(0, 3);
+export interface FlowFaq {
+  question: string;
+  answer: string;
+  sourceIds: string[];
+  evidence: "sourced" | "research-status";
+}
+export function flowFaqs(review: BrokerReview): FlowFaq[] {
+  const faqs: FlowFaq[] = reviewDigest(review).faqs
+    .filter(f => f.answer && verifiedSources(f.sourceIds, review))
+    .slice(0, 3).map(f => ({ ...f, answer: f.answer!, evidence: "sourced" }));
+  if (faqs.length === 3) return faqs;
+  const name = review.broker.name;
+  const retail = !review.providerType || review.providerType === "retail";
+  // Status answers describe this profile's evidence gaps, not uncollected broker
+  // facts. They never turn missing data into a fee, eligibility or safety claim.
+  const finding = (question: string, id: string, pending: string): FlowFaq => {
+    const field = checkedField(review, id);
+    if (field?.value && wordCount(field.value) <= 65) return { question, answer: field.value, sourceIds: field.sourceIds, evidence: "sourced" };
+    return { question, answer: field?.value
+      ? "A detailed, source-attributed finding is available in the research record. Read its full conditions; abbreviated figures can omit account, instrument or jurisdiction restrictions."
+      : pending, sourceIds: [], evidence: "research-status" };
+  };
+  const identity = finding(retail ? `Is ${name} regulated?` : `Who can use ${name}?`, retail ? "regulation-and-entity" : "eligible-countries-and-client-category", retail
+    ? "This profile has not verified the relevant legal entity and regulatory permissions. Match the company in your agreement to an official register before relying on a protection claim."
+    : "The directory classification is a research lead. Eligible counterparties, client category and access conditions are not verified; confirm these directly with the contracting company.");
+  const costs = finding(retail ? `What are ${name}’s trading costs?` : `What does ${name} charge?`, "forex-spread-and-commission", retail
+    ? "A complete, scope-specific fee schedule is not verified in this profile. Confirm spreads, opening/closing commission, overnight financing and payment charges with the company that would hold your account."
+    : "Commercial pricing and minimum commitments are not verified in this profile. Request the applicable service schedule, commissions and any settlement or custody charges before agreeing terms.");
+  const funding = finding(retail ? `How long do ${name} withdrawals take?` : `How does ${name} handle settlement?`, "published-processing-times", retail
+    ? "No withdrawal has been tested for this profile. Check your entity’s current method-specific estimate, limits and verification requirements; broker processing and receiving-provider arrival are separate."
+    : "Funding arrangements and settlement timelines remain unverified. Confirm the counterparty, currencies, cut-off times, charges and dispute process in the actual agreement.");
+  for (const faq of faqs.length ? [costs, funding, identity] : [identity, costs, funding]) {
+    if (faqs.length === 3) break;
+    if (!faqs.some(existing => existing.question === faq.question)) faqs.push(faq);
+  }
+  return faqs;
 }

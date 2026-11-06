@@ -1,0 +1,75 @@
+[
+  {
+    "slug": "exness",
+    "scopes": [
+      "Global"
+    ],
+    "src": "/images/reviews/exness-terminal-preview.webp",
+    "title": "Exness Terminal preview",
+    "width": 992,
+    "height": 660,
+    "alt": "Exness Terminal preview showing a trading chart and order-entry panel on a laptop",
+    "sourceUrl": "https://www.exness.com/trading-platforms/",
+    "publisherHost": "exness.com",
+    "evidenceSourceId": "global-platforms"
+  },
+  {
+    "slug": "etoro",
+    "title": "eToro platform preview",
+    "alt": "eToro product preview with watchlists, a trading chart, alerts and portfolio panels",
+    "scopes": [
+      "Global"
+    ],
+    "publisherHost": "etoro.com",
+    "src": "/images/reviews/etoro-platform-preview.webp",
+    "width": 768,
+    "height": 672,
+    "sourceUrl": "https://www.etoro.com/",
+    "evidenceSourceId": null
+  },
+  {
+    "slug": "pepperstone",
+    "title": "Pepperstone Australia platform preview",
+    "alt": "Pepperstone Australia product image showing a forex chart and order controls on a laptop",
+    "scopes": [
+      "Global",
+      "Australia"
+    ],
+    "publisherHost": "pepperstone.com",
+    "src": "/images/reviews/pepperstone-platform-preview.webp",
+    "width": 1024,
+    "height": 767,
+    "sourceUrl": "https://pepperstone.com/en-au",
+    "evidenceSourceId": null
+  },
+  {
+    "slug": "afterprime",
+    "title": "Afterprime MT5 platform preview",
+    "alt": "Afterprime product preview showing MT5 trading charts on desktop and mobile",
+    "scopes": [
+      "Global",
+      "Seychelles"
+    ],
+    "publisherHost": "afterprime.com",
+    "src": "/images/reviews/afterprime-platform-preview.webp",
+    "width": 319,
+    "height": 234,
+    "sourceUrl": "https://afterprime.com/",
+    "evidenceSourceId": null
+  },
+  {
+    "slug": "adss",
+    "title": "ADSS platform preview",
+    "alt": "ADSS desktop and mobile platform preview with a currency chart and order panel",
+    "scopes": [
+      "Global",
+      "United Arab Emirates"
+    ],
+    "publisherHost": "adss.com",
+    "src": "/images/reviews/adss-platform-preview.webp",
+    "width": 1024,
+    "height": 576,
+    "sourceUrl": "https://www.adss.com/",
+    "evidenceSourceId": null
+  }
+]

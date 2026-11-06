@@ -25,7 +25,7 @@ Checked 6 November 2026. The article is `/reviews/exness`; `/reviews/template` a
 | Image metadata | The same relevant image is used in Open Graph/Twitter metadata and Article schema when publication requirements are met. |
 | FAQs | Three brief, evidenced answers. Visible questions and answers match FAQPage data. |
 | Structured data | Breadcrumb and FAQ records reflect visible content. Article fields require a complete publication record. No copied review-star or Product rating markup. |
-| Word budget | The longest of 345 review/scope routes is the template at 1,791 words, counting collapsed content, citations and in-review navigation. |
+| Word budget | The longest of 345 review/scope routes is the template at 1,792 words, counting collapsed content, citations and in-review navigation. |
 | HTML download | Updated opening, embedded CSS/schema, native navigation and absolute image/source URLs work without the Next.js runtime. |
 
 Natural language and useful coverage take priority over forced keyword density, emotional claims or a cosmetic plugin score. The review retains five sourced pros and five cautions, five documented accounts, entity distinctions, payment-stage explanations and a hypothetical interactive trading-cost calculator. It does not claim measured spreads, support response times or tested withdrawals.
@@ -40,4 +40,4 @@ Evidence: [November 6 source checks](research/exness-source-checks-2026-11-06.js
 
 ## Validation
 
-Production build, ESLint and TypeScript passed. All 65 Playwright checks passed, including no-JavaScript content and image loading, intro/answer/image order, all 345 review word limits, responsive layouts, matching FAQ data, source guards, five account actions, calculator interactions and the standalone download. Desktop and mobile screenshots were inspected. These checks do not establish factual accuracy of every provider statement, field Core Web Vitals or a search ranking.
+Production build, ESLint and TypeScript passed. All 68 Playwright checks passed, including no-JavaScript content and image loading, intro/answer/image order, all 345 review word limits, responsive layouts, matching FAQ data, source guards, five account actions, calculator interactions and the standalone download. Desktop and mobile screenshots were inspected. These checks do not establish factual accuracy of every provider statement, field Core Web Vitals or a search ranking.

@@ -7,9 +7,10 @@ import { reviewDigest } from "@/lib/reviews/digest";
 import { checkedField, reviewAccounts, reviewQuickFacts, verdictSentences, flowFaqs } from "@/lib/reviews/flow";
 import { accountOpeningHref, scoreValue } from "@/lib/reviews/template";
 import { isReviewPublished } from "@/lib/reviews/publication";
-import { CostIllustration, EditorialAccountability, ResearchComparisons, RelatedResearch } from "./editorial-extras";
+import { EditorialAccountability, ResearchComparisons, RelatedResearch } from "./editorial-extras";
 import { reviewHeading } from "@/lib/reviews/seo";
 import { reviewPlatformImage } from "@/lib/reviews/media";
+import { reviewFocusKeyword, reviewIntroduction, reviewOpeningChecks } from "@/lib/reviews/opening";
 import { Finding } from "./finding";
 import { AccountOpeningCta } from "./account-cta";
 import { ReaderContents, ReaderDisclosure, ReaderMarket } from "./reader-controls";
@@ -42,6 +43,8 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
   const accounts = reviewAccounts(review);
   const facts = reviewQuickFacts(review);
   const verdict = verdictSentences(review);
+  const introduction = reviewIntroduction(review);
+  const openingChecks = reviewOpeningChecks(review);
   const faqs = flowFaqs(review);
   const score = scoreValue(review.overallScore, review);
   const section = (id: string) => digest.sections.find(s => s.id === id)!;
@@ -49,7 +52,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
   const platformFields = [...section("mobile-app").fields, ...section("web-platform").fields];
   const markets = checkedField(review, "cfds-and-underlying-markets");
   const detailedExness = review.broker.slug === "exness" && review.jurisdiction === "Global" && accounts.length > 0;
-  const platformImage = detailedExness ? reviewPlatformImage(review) : undefined;
+  const platformImage = reviewPlatformImage(review);
   const hasPlatforms = accounts.some(account => account.platforms);
   const safetyFields = safety.fields.filter(field => !detailedExness || field.id !== "contracting-legal-entity");
   const feeFields = fees.fields.filter(field => !detailedExness || field.id !== "forex-spread-and-commission");
@@ -71,22 +74,18 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
         <div className="br-topline"><nav aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/reviews">Broker reviews</Link><span>/</span><span>{review.broker.name}</span></nav><ReaderDisclosure affiliate={Boolean(accountOpeningHref(review)) && review.accountOpening.isAffiliate} officialLink={Boolean(accountOpeningHref(review)) && !review.accountOpening.isAffiliate} /></div>
         <p className="br-eyebrow">{retail ? "Global broker research" : "Global provider research"}</p>
         <h1>{reviewHeading(review)}</h1>{!retail && <p className="br-provider-note">Directory classification: {providerLabels[review.providerType!]}. Verification is pending; retail account access is not assumed.</p>}
-        {detailedExness && <div className="br-intro">
-          <p>This Exness review examines whether the broker’s forex and CFD accounts fit your needs. Your decision depends on <a href="#fees">total trading costs</a>, your country’s <a href="#safety">contracting entity</a> and how you deposit or withdraw.</p>
-          <p>Compare <a href="#account-opening">five account types</a>, minimum-deposit rules and platforms, then use the cost calculator to understand spread and commission. Findings come from linked public documents; live execution and withdrawals have not been tested.</p>
-        </div>}
+        <div className="br-intro">{introduction.map((paragraph, index) => <p key={index}>{paragraph.map((part, partIndex) => part.href ? <a key={partIndex} href={part.href}>{part.text}</a> : part.text)}</p>)}</div>
         <div className={platformImage ? "br-opening-grid" : undefined}>
         <aside className="br-verdict-box" aria-label="Review verdict">
-          <div className="br-verdict-copy"><div className="br-verdict-label">{detailedExness ? <h2>Quick answer</h2> : <strong>{retail ? "Our verdict" : "Research summary"}</strong>}{retail && <div className="br-rating">{(!detailedExness || score) && <span aria-hidden="true">{Array.from({ length: 5 }, (_, i) => <Star size={20} key={i} fill={score && review.overallScore && i < Math.round(review.overallScore.value) ? "currentColor" : "none"} />)}</span>}<strong>{score ?? "Not rated"}</strong></div>}</div>
-            <p>{detailedExness ? <><strong>{verdict[0]}</strong>{" "}{verdict.slice(1).join(" ")}</> : verdict.join(" ")}</p>
-            {detailedExness && <dl className="br-fit"><div><dt>Safety</dt><dd>Protections depend on your account’s legal entity.</dd></div><div><dt>Withdrawals</dt><dd>24/7 requests; bank receipt can take longer.</dd></div></dl>}
-            {!detailedExness && <p className="br-verdict-scope">{review.jurisdiction === "Global" ? "Global overview · Country and entity terms vary" : digest.sources[0]?.legalEntity ?? "Entity not yet verified"} · {digest.sources.length || research?.sources.length ? "Source-based research." : "Directory research; sources pending."}</p>}
+          <div className="br-verdict-copy"><div className="br-verdict-label"><h2>Quick answer</h2>{retail && <div className="br-rating">{score && <span aria-hidden="true">{Array.from({ length: 5 }, (_, i) => <Star size={20} key={i} fill={review.overallScore && i < Math.round(review.overallScore.value) ? "currentColor" : "none"} />)}</span>}<strong>{score ?? "Not rated"}</strong></div>}</div>
+            <p><strong>{verdict[0]}</strong>{" "}{verdict.slice(1).join(" ")}</p>
+            <dl className="br-fit">{openingChecks.map(check => <div key={check.label}><dt>{check.label}</dt><dd>{check.value}</dd></div>)}</dl>
           </div>
           {!platformImage && openingActions}
         </aside>
-        {platformImage && <figure className="br-platform-image br-opening-image">
-          <a href={platformImage.src} target="_blank" rel="noopener noreferrer" aria-label="View the Exness Terminal preview at full size"><Image src={platformImage.src} width={platformImage.width} height={platformImage.height} alt={platformImage.alt} loading="eager" fetchPriority="high" decoding="async" unoptimized /></a>
-          <figcaption>Exness Terminal preview. <a href={platformImage.sourceUrl} target="_blank" rel="noopener noreferrer">Image: Exness</a>. Product illustration, not our live-account test. <a href={platformImage.src} target="_blank" rel="noopener noreferrer">View full size</a>.</figcaption>
+        {platformImage && <figure className="br-platform-image br-opening-image" style={{ maxWidth: platformImage.width }}>
+          <a href={platformImage.src} target="_blank" rel="noopener noreferrer" aria-label={`View the ${platformImage.title} at full size`}><Image src={platformImage.src} width={platformImage.width} height={platformImage.height} alt={platformImage.alt} loading="eager" fetchPriority="high" decoding="async" unoptimized /></a>
+          <figcaption>{platformImage.title}. <a href={platformImage.sourceUrl} target="_blank" rel="noopener noreferrer">Image: {review.broker.name}</a>. Product illustration, not our live-account test. <a href={platformImage.src} target="_blank" rel="noopener noreferrer">View full size</a>.</figcaption>
         </figure>}
         {platformImage && openingActions}
         </div>
@@ -98,7 +97,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
     <div className="br-container br-layout">
       <aside className="br-sidebar" aria-label="Broker research summary"><div className="br-sticky"><ReaderContents links={links} /><div className="br-editor-note"><ShieldCheck size={22} /><h2>Check the entity.</h2><p>Terms vary by entity and location.</p><Link href="/about#research-methodology">Research method<ArrowUpRight size={17} /></Link></div></div></aside>
       <article className="br-article" aria-label={`${review.broker.name} review article`}>
-        <section className="br-section" id="overview"><h2>{detailedExness ? "Exness review: pros and cons" : retail ? `${review.broker.name} pros and cons` : "Research findings and open questions"}</h2><div className="br-tradeoffs"><div><h3><Check className="br-yes" size={22} />{retail ? "Pros" : "Documented findings"}</h3><ul>{digest.positives.length ? digest.positives.map(p => <li key={p.title}><a href={review.sources.find(s => s.id === p.sourceIds[0])?.url} target="_blank" rel="noopener noreferrer">{p.title}</a><p>{p.explanation}</p></li>) : <li>Assessment in progress</li>}</ul></div><div><h3><X className="br-no" size={22} />{retail ? "Cons & checks" : "Open questions"}</h3><ul>{digest.cautions.length ? digest.cautions.map(p => <li key={p.title}><a href={review.sources.find(s => s.id === p.sourceIds[0])?.url} target="_blank" rel="noopener noreferrer">{p.title}</a><p>{p.explanation}</p></li>) : <li>Full regional account terms still need checking</li>}</ul></div></div>{retail && <AccountOpeningCta review={review} placement="overview" compact />}</section>
+        <section className="br-section" id="overview"><h2>{`${reviewFocusKeyword(review)}: ${retail ? "pros and cons" : "findings and open questions"}`}</h2><div className="br-tradeoffs"><div><h3><Check className="br-yes" size={22} />{retail ? "Pros" : "Documented findings"}</h3><ul>{digest.positives.length ? digest.positives.map(p => <li key={p.title}><a href={review.sources.find(s => s.id === p.sourceIds[0])?.url} target="_blank" rel="noopener noreferrer">{p.title}</a><p>{p.explanation}</p></li>) : <li>Assessment in progress</li>}</ul></div><div><h3><X className="br-no" size={22} />{retail ? "Cons & checks" : "Open questions"}</h3><ul>{digest.cautions.length ? digest.cautions.map(p => <li key={p.title}><a href={review.sources.find(s => s.id === p.sourceIds[0])?.url} target="_blank" rel="noopener noreferrer">{p.title}</a><p>{p.explanation}</p></li>) : <li>Full regional account terms still need checking</li>}</ul></div></div>{retail && <AccountOpeningCta review={review} placement="overview" compact />}</section>
 
         <section className="br-section" id="account-opening"><h2>{retail ? `${review.broker.name} account types` : "Provider access requirements"}</h2>
           {detailedExness && <p className="br-answer">Compare Standard/Pro spread-only pricing against Zero/Raw Spread’s <a href="#fees">total trading costs</a>. Include both commission sides.</p>}
@@ -112,7 +111,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
         </section>
         {retail && <AccountOpeningCta review={review} placement="after-account-opening" compact />}
 
-        <section className="br-section" id="fees"><h2>{retail ? "Trading fees, spreads and commissions" : "Service pricing and charges"}</h2><p className="br-answer">{fees.fields.length ? "Add opening/closing commission to spread costs, then applicable swaps and external charges." : retail ? "A complete fee schedule for this country and entity has not yet been verified. Do not substitute costs from another group company." : "Commercial pricing and service charges have not been verified. Retail spreads and commissions are not assigned to this provider profile."}</p>{feeFields.length > 0 && <FactTable fields={feeFields} review={review} caption="Trading costs and exceptions" />}{retail && (detailedExness ? <RoundTripCost /> : <CostIllustration brokerName={review.broker.name} />)}{feeSource && <a className="br-text-link" href={feeSource.url} target="_blank" rel="noopener noreferrer">Check the published fee schedule<ArrowUpRight size={17} /></a>}</section>
+        <section className="br-section" id="fees"><h2>{retail ? "Trading fees, spreads and commissions" : "Service pricing and charges"}</h2><p className="br-answer">{fees.fields.length ? "Add opening/closing commission to spread costs, then applicable swaps and external charges." : retail ? "A complete fee schedule for this country and entity has not yet been verified. Do not substitute costs from another group company." : "Commercial pricing and service charges have not been verified. Retail spreads and commissions are not assigned to this provider profile."}</p>{feeFields.length > 0 && <FactTable fields={feeFields} review={review} caption="Trading costs and exceptions" />}{retail && <RoundTripCost brokerName={review.broker.name} />}{feeSource && <a className="br-text-link" href={feeSource.url} target="_blank" rel="noopener noreferrer">Check the published fee schedule<ArrowUpRight size={17} /></a>}</section>
 
         <section className="br-section" id="deposit-and-withdrawal"><h2>{retail ? "Deposit and withdrawal methods" : "Funding and settlement arrangements"}</h2>{payments && <aside className="br-callout" aria-label="Withdrawal timing note"><Clock3 size={23} /><div><h3>Automatic processing ≠ instant arrival</h3><ol className="br-payment-stages"><li><strong>Request:</strong> available 24/7.</li><li><strong>Broker:</strong> automatic, or non-instant processing described as within 24 hours.</li><li><strong>Receipt:</strong> receiving-provider settlement can take longer.</li></ol><a href={review.sources.find(source => source.id === payments.sourceIds[0])?.url} target="_blank" rel="noopener noreferrer">Exness withdrawal processing conditions</a></div></aside>}{fundingFields.length ? <FactTable fields={fundingFields} review={review} caption="Funding methods, fees and conditions" /> : <p className="br-empty">{retail ? "Regional payment methods, charges and settlement times still need verification." : "Funding channels, counterparty arrangements and settlement timelines require verification."}</p>}{detailedExness && <div className="br-withdrawal-check"><h3>Before your first withdrawal</h3><ul><li>Complete the verification requested in your Personal Area.</li><li>Check method limits, currency and receiving-provider fees.</li><li>Use an account in your name; save the transaction reference.</li></ul></div>}</section>
 

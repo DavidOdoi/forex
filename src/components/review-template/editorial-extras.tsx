@@ -12,15 +12,6 @@ export function EditorialAccountability({ review }: { review: BrokerReview }) {
   </aside>;
 }
 
-export function CostIllustration({ brokerName = "Exness" }: { brokerName?: string }) {
-  return <figure className="br-cost-example" data-illustrative-cost>
-    <figcaption><strong>Hypothetical EUR/USD round trip</strong> · Not a measured {brokerName} quote</figcaption>
-    <p>Assume 1 standard lot (100,000 EUR), a USD account, US$10/pip, a constant 0.3-pip spread and US$3.50 commission per lot per side.</p>
-    <dl><div><dt>Spread cost</dt><dd>0.3 × US$10 = <strong>US$3</strong></dd></div><div><dt>Open + close commission</dt><dd>2 × US$3.50 = <strong>US$7</strong></dd></div><div><dt>Round-trip total</dt><dd><strong>US$10 / 1.0 pip</strong></dd></div></dl>
-    <p>Excludes price movement, slippage, swaps and currency conversion. <Link href="/tools#pip-calculator">Calculate pip value</Link> or <Link href="/tools#position-size">estimate position size</Link>.</p>
-  </figure>;
-}
-
 export function RelatedResearch({ review }: { review: BrokerReview }) {
   return <section className="br-related" aria-label="Related provider research"><div><h2>Related research</h2></div>{review.relatedResearch?.map(entry => <Link key={entry.slug} href={entry.href}><span>{entry.name}{entry.href.includes("?country=") ? ` · ${review.jurisdiction}` : ""}</span><span aria-hidden="true">↗</span></Link>)}<Link href="/reviews#all-providers">Full broker directory ↗</Link>{(!review.providerType || review.providerType === "retail") && <Link href="/tools">Trading calculators ↗</Link>}</section>;
 }

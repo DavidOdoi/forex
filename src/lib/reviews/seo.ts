@@ -19,12 +19,19 @@ export function reviewUrl(review: BrokerReview): string {
 }
 export function reviewMetadata(review: BrokerReview, deploymentIndexable = indexable): Metadata {
   const published = isReviewPublished(review);
-  const title = `${reviewHeading(review)}${review.jurisdiction && review.jurisdiction !== "Global" ? ` — ${review.jurisdiction}` : ""} | Devin Forex`;
-  const description = review.providerType && review.providerType !== "retail"
-    ? `Research ${review.broker.name}: provider access, services and entity checks. Directory classification is unverified; editorial approval pending.`
+  const retail = !review.providerType || review.providerType === "retail";
+  const scope = review.jurisdiction && review.jurisdiction !== "Global" ? ` — ${review.jurisdiction}` : "";
+  const fullTitle = `${reviewHeading(review)}${scope}`;
+  const year = review.sources.map(source => source.checkedAt).sort().at(-1)?.slice(0, 4);
+  const shortTitle = `${review.broker.name} ${retail ? `Review${year ? ` ${year}` : ""}: Fees & Safety` : "Research Profile: Access & Safety"}${scope}`;
+  const titleCore = fullTitle.length <= 70 ? fullTitle : shortTitle;
+  const title = titleCore.length + " | Devin Forex".length <= 70 ? `${titleCore} | Devin Forex` : titleCore;
+  let description = !retail
+    ? `${review.broker.name} research profile: service access, pricing, entities and settlement checks. Directory classification is unverified; editorial review pending.`
     : review.broker.slug === "exness" && review.jurisdiction === "Global"
     ? `Exness review: compare five accounts, fees, minimum deposits, regulation and withdrawal rules. Use the cost calculator. ${published ? "See linked sources." : "Source-based draft."}`
-    : `Explore ${review.broker.name}${review.jurisdiction && review.jurisdiction !== "Global" ? ` in ${review.jurisdiction}` : " worldwide"}: account costs, legal entities and linked sources. ${published ? "Read the review." : "Editorial approval pending."}`;
+    : `${review.broker.name} review${review.jurisdiction && review.jurisdiction !== "Global" ? ` for ${review.jurisdiction}` : ""}: account costs, regulation, funding and linked sources. ${published ? "Compare the documented terms." : "Research draft; unverified terms are identified."}`;
+  if (description.length > 160) description = `${review.broker.name} ${retail ? "review" : "research profile"}${scope}: ${retail ? "fees, legal entities and funding" : "access, pricing and settlement"}. ${published ? "Read the sourced findings." : "Draft; outstanding checks are shown."}`;
   const url = reviewUrl(review);
   const image = reviewPlatformImage(review);
   const images = image ? [{ url: new URL(image.src, siteOrigin).href, width: image.width, height: image.height, alt: image.alt }] : undefined;
@@ -45,7 +52,7 @@ export function reviewStructuredData(review: BrokerReview) {
       { "@type": "ListItem", position: 3, name: `${review.broker.name}${review.jurisdiction && review.jurisdiction !== "Global" ? ` — ${review.jurisdiction}` : ""}`, item: url },
     ],
   }];
-  const faqs = flowFaqs(review).filter(faq => faq.answer && verifiedSources(faq.sourceIds, review));
+  const faqs = flowFaqs(review).filter(faq => faq.answer && (faq.evidence === "research-status" || verifiedSources(faq.sourceIds, review)));
   if (faqs.length) graph.push({ "@type": "FAQPage", "@id": `${url}#review-faq`, mainEntity: faqs.map(faq => ({
     "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer },
   })) });

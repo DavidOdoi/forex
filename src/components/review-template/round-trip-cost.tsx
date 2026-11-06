@@ -6,7 +6,7 @@ import { calculatePip, range } from "@/lib/calculators/forex";
 
 const money = (value: number) => `US$${value.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
 
-export function RoundTripCost() {
+export function RoundTripCost({ brokerName = "Exness" }: { brokerName?: string }) {
   const id = useId();
   const [lots, setLots] = useState("1");
   const [spread, setSpread] = useState("0.3");
@@ -24,7 +24,7 @@ export function RoundTripCost() {
     result = { spread: spreadCost, commission: roundTripCommission, total: spreadCost + roundTripCommission, pips: (spreadCost + roundTripCommission) / pip.loss };
   } catch (issue) { error = issue instanceof Error ? issue.message : "Check the values."; }
   return <figure className="br-cost-example br-cost-calculator" data-illustrative-cost>
-    <figcaption><strong>Estimate your EUR/USD round-trip cost</strong><span>Not a measured Exness quote</span></figcaption>
+    <figcaption><strong>Estimate your EUR/USD round-trip cost</strong><span>Not a measured {brokerName} quote</span></figcaption>
     <p>USD account · 100,000 EUR/standard lot · US$10/pip per lot. Edit these hypothetical defaults.</p>
     <div className="br-cost-inputs" data-roundtrip-controls>
       <label htmlFor={`${id}-lots`}>Standard lots<input id={`${id}-lots`} type="number" inputMode="decimal" min="0.01" max="1000" step="0.01" value={lots} onChange={event => setLots(event.target.value)} aria-describedby={`${id}-note`} /></label>
