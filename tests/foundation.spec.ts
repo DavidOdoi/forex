@@ -1,4 +1,6 @@
 import { test, expect } from "@playwright/test";
+import { insightArticles } from "../src/lib/insights/catalog";
+import { insightsIndexable } from "../src/lib/insights/seo";
 
 const routes = [
   "/",
@@ -217,11 +219,12 @@ test("sitemap, robots, exported favicon and custom 404", async ({
   expect(robots.status()).toBe(200);
   expect(await robots.text()).toContain("Allow: /");
   const xml = await (await request.get("/sitemap.xml")).text();
-  if (process.env.SITE_URL) {
-    expect((xml.match(/<loc>/g) ?? []).length).toBe(routes.length);
-    for (const route of routes)
-      expect(xml).toContain(new URL(route, process.env.SITE_URL).href);
-  } else expect(xml).not.toContain("<loc>");
+  const expectedPaths = new Set([
+    ...(process.env.SITE_URL && process.env.VERCEL_ENV !== "preview" ? routes : []),
+    ...(insightsIndexable ? ["/insights", ...insightArticles.map(article => `/insights/${article.slug}`)] : []),
+  ]);
+  expect((xml.match(/<loc>/g) ?? []).length).toBe(expectedPaths.size);
+  for (const path of expectedPaths) expect(xml).toContain(new URL(path, process.env.SITE_URL ?? "https://devinforex-five.vercel.app").href);
   expect((await request.get("/favicon.ico")).status()).toBe(200);
   const notFound = await page.goto("/this-page-does-not-exist");
   expect(notFound?.status()).toBe(404);

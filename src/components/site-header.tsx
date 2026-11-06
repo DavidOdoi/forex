@@ -16,7 +16,7 @@ const menu = [
     { label: "Pip calculator", href: "/tools#pip-calculator" }, { label: "Position size", href: "/tools#position-size" }, { label: "Profit calculator", href: "/tools#profit-calculator" },
   ] },
   { label: "Insights", to: "/insights", items: [
-    { label: "Planned beginner guides", href: "/insights#beginner-guides" }, { label: "Planned strategies", href: "/insights#strategies" }, { label: "Planned market guides", href: "/insights#market-guides" },
+    { label: "Beginner guides", href: "/insights#beginner-guides" }, { label: "Strategies & risk", href: "/insights#strategies" }, { label: "Platforms & technology", href: "/insights#market-guides" },
   ] },
   { label: "About us", to: "/about", items: [
     { label: "Our story", href: "/about#our-story" }, { label: "How we research", href: "/about#research-methodology" }, { label: "Corrections", href: "/about#corrections" }, { label: "Contact", href: "/about#contact" },

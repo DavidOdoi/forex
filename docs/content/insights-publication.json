@@ -1,0 +1,16 @@
+{
+  "publishedAt": "2026-11-06T06:16:03+00:00",
+  "authorization": "User explicitly requested pushing the ten prepared articles to the live website.",
+  "scope": "Ten educational guides, their companion reading list and credited image assets.",
+  "authorName": "David Odoi",
+  "researchPreparedAt": "2026-11-04",
+  "imageSourcesRetrievedAt": "2026-11-04",
+  "imagesPackagedAt": "2026-11-06",
+  "guideCount": 10,
+  "companionResourceCount": 1,
+  "imagePlacements": 30,
+  "uniqueImages": 19,
+  "editorialChanges": "Removed draft-only publication wording, used a factual role-based author biography and introduced the reading list for a public audience. Trading limitations and citations are retained.",
+  "brokerReviewPublication": "Unchanged; broker research publication guards remain in place.",
+  "sourcePackage": "devin-forex-articles-with-images-2026-11-06"
+}

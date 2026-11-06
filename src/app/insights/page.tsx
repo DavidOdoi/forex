@@ -1,70 +1,26 @@
 import type { Metadata } from "next";
-import { canonical } from "@/lib/site";
+import Link from "next/link";
+import { ArticleCard } from "@/components/insights/article-card";
+import { insightCategories, insightGuides } from "@/lib/insights/catalog";
+import { insightsIndexable } from "@/lib/insights/seo";
+import { canonical, siteOrigin } from "@/lib/site";
+import "./insights.css";
+
 export const metadata: Metadata = {
-  ...{
-    title: { absolute: "Forex Insights, Guides & Strategies — Devin Forex" },
-    description:
-      "Beginner guides, trading strategies and market insights from Devin Forex.",
-    openGraph: {
-      title: "Forex Insights — Devin Forex",
-      description: "Guides, strategies and market insights.",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Forex Insights — Devin Forex",
-      description: "Guides, strategies and market insights.",
-    },
-  },
+  title: { absolute: "Trading Insights, Guides & Strategies — Devin Forex" },
+  description: "Read practical guides to trading platforms, automation, swing indicators and risk, with documented sources, clear examples and transparent limitations.",
   alternates: canonical("/insights"),
+  robots: { index: insightsIndexable, follow: true },
+  openGraph: { title: "Trading Insights — Devin Forex", description: "Practical trading guides, tools and risk-management explanations.", type: "website", url: new URL("/insights", siteOrigin).href },
+  twitter: { card: "summary_large_image", title: "Trading Insights — Devin Forex", description: "Explore trading tools, platforms, strategies and risk." },
 };
-import { PageHero } from "@/components/site-header";
 
-const posts = [
-  [
-    "Beginner guide",
-    "What is forex trading? A complete beginner's guide",
-    "8 min",
-  ],
-  [
-    "Beginner guide",
-    "How to choose a broker and funding method for your country",
-    "5 min",
-  ],
-  ["Strategy", "Risk management: the 2% rule explained", "6 min"],
-  ["Strategy", "Support & resistance: trading the key levels", "9 min"],
-  ["Market", "Why gold (XAU/USD) moves the way it does", "7 min"],
-  ["Market", "How interest rates drive currency prices", "6 min"],
-];
-
-export default function Page() {
-  return (
-    <main>
-      <PageHero
-        eyebrow="Learn & grow"
-        title="Trading"
-        accent="insights"
-        text="Plain-language guides to help you trade with more confidence."
-      />
-      <section className="mx-auto grid max-w-7xl gap-6 px-6 pb-28 md:grid-cols-3">
-        {posts.map(([cat, title, time], i) => (
-          <article
-            key={title}
-            id={i === 0 ? "beginner-guides" : i === 2 ? "strategies" : i === 4 ? "market-guides" : undefined}
-            className={`group cursor-pointer rounded-2xl border bg-card p-8 transition hover:border-primary/50 hover:shadow-glow ${i === 0 ? "md:col-span-2" : ""}`}
-          >
-            <span className="text-xs uppercase tracking-widest text-accent">
-              {cat} · {time}
-            </span>
-            <h2
-              className={`mt-4 font-display leading-tight transition group-hover:text-primary ${i === 0 ? "text-5xl" : "text-3xl"}`}
-            >
-              {title}
-            </h2>
-            <p className="mt-6 text-sm text-muted-foreground">Coming soon →</p>
-          </article>
-        ))}
-      </section>
-    </main>
-  );
+export default function InsightsPage() {
+  return <main className="insights-page"><div className="insight-container">
+    <header className="insight-index-header"><p className="insight-kicker">The Devin Forex learning library</p><h1>Understand the tools.<br />Build a better process.</h1><p>Practical guides to trading platforms, automation and risk. Clear explanations, documented sources and examples you can evaluate for yourself.</p>
+      <nav className="insight-category-links" aria-label="Browse insight topics"><a href="#beginner-guides">Beginner guides</a><a href="#strategies">Strategies & risk</a><a href="#market-guides">Platforms & technology</a></nav>
+    </header>
+    {insightCategories.map(category => <section key={category.id} id={category.id} className="insight-library-section" aria-labelledby={`${category.id}-title`}><h2 id={`${category.id}-title`}>{category.title}</h2><p>{category.description}</p><div className="insight-card-grid">{insightGuides.filter(article => article.category === category.id).map(article => <ArticleCard key={article.slug} article={article} />)}</div></section>)}
+    <aside className="insight-library-note"><p>Prefer a reading list? Explore our <Link href="/insights/best-swing-trading-books">swing-trading book guide</Link>.</p><p>Guides use public documentation and labelled examples. Trading involves risk; product availability and provider terms vary by jurisdiction.</p><p>See the <Link href="/insights/image-credits">image sources and licences</Link> or learn about our <Link href="/about#research-methodology">research approach</Link>.</p></aside>
+  </div></main>;
 }

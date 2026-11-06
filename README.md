@@ -19,14 +19,14 @@ Production: `npm run build`, then `npm start`. The default port is 3000.
 - `/best-brokers`: unverified broker examples and comparison preview; no rankings or ratings
 - `/reviews`: research previews and verification checklists; no completed reviews or ratings
 - `/tools`: pip value, position size, and profit calculators
-- `/insights`: six original coming-soon content cards
+- `/insights`: ten published trading guides, a companion reading list, and source-credited images
 - `/about`: publication purpose, planned research, commercial disclosures, and contact copy
 - `/find-my-broker`: three-question preference demonstration using explicitly unverified data
 - Custom 404, plus technical `/robots.txt` and `/sitemap.xml` routes
 
 ## Source fidelity and boundaries
 
-The supplied export is the content and visual reference, not an independent source of verified financial research. Regulation claims, fees, minimum deposits, leverage, payment-method flags, the contact email, and market ticker figures came from the export without independent verification. Discovery cards use entity-dependent placeholders; sourced financial terms belong to the individual research pages. Numerical ratings, recommendation badges, fabricated pros/cons, hands-on testing claims, and the invented company backstory have been removed; research is described as planned work. The ticker contains static sample figures, not a live data feed. Broker cards link to internal research pages rather than placeholder referral links. Insight cards remain non-navigating “Coming soon” cards. The search/profile icons remain decorative as in the source. No contact delivery, account system, market-data service, or publishing service is connected.
+The supplied export is the content and visual reference, not an independent source of verified financial research. Regulation claims, fees, minimum deposits, leverage, payment-method flags, the contact email, and market ticker figures came from the export without independent verification. Discovery cards use entity-dependent placeholders; sourced financial terms belong to the individual research pages. Numerical ratings, recommendation badges, fabricated pros/cons, hands-on testing claims, and the invented company backstory have been removed; research is described as planned work. The ticker contains static sample figures, not a live data feed. Broker cards link to internal research pages rather than placeholder referral links. Insight cards now link to published educational guides. The search/profile icons remain decorative as in the source. No contact delivery, account system or market-data service is connected; article publication uses static App Router content.
 
 The original calculators assume USD-quoted pairs and a $10 pip value for one standard lot; they do not model financing, commission, conversion, spread, or slippage. The quiz sorts only the supplied, unverified preference flags and labels its output an illustrative match. It does not use numerical ratings and is not a suitability assessment or broker recommendation. Verify all publication claims and configure actual destinations separately before treating this as researched broker coverage.
 
@@ -44,7 +44,7 @@ The original calculators assume USD-quoted pairs and a $10 pip value for one sta
 
 ## Metadata and deployment
 
-No credentials are required. `src/lib/site.ts` centralizes the user-confirmed public origin, with `SITE_URL` as an override. Canonicals remain absolute even before production indexing is enabled. Without `SITE_URL`, base pages remain noindex and the sitemap is empty. Robots allows crawling so page-level noindex directives can be read. With production indexing enabled, the sitemap includes the seven public routes plus only reviews whose publication requirements pass. Vercel previews remain noindex.
+No credentials are required. `src/lib/site.ts` centralizes the user-confirmed public origin, with `SITE_URL` as an override. Canonicals remain absolute even before production indexing is enabled. Without `SITE_URL`, the original base pages remain noindex. The user-authorised Insights guides use the confirmed production origin and can be indexed without that optional override. The sitemap includes the Insights library and eleven article/resource URLs; with `SITE_URL` set, it also includes the original public routes plus only broker reviews whose separate publication requirements pass. Robots allows crawling so page-level directives can be read. Vercel previews remain noindex.
 
 The GitHub-connected Vercel project can build `main` with the Next.js preset, repository root as the Root Directory, `npm ci` for installation, and `npm run build` for building. Leave the Output Directory override off. Add a domain under Vercel Settings → Domains and follow the DNS instructions Vercel provides; set `SITE_URL` for Production only after confirming the public origin.
 
@@ -152,3 +152,15 @@ Every retail entry uses the shared article layout, five account placements, sour
 `relatedReviewLinks` supplies three existing destinations per profile, favouring neighbouring entries within the same directory classification and shared separately sourced entity profiles. Each non-singleton provider group has reciprocal neighbour links; the A–Z index connects all 325 pages directly to the directory. Country parameters are retained only where a matching entity profile exists. These are research-navigation links, not recommendations or resident-eligibility claims.
 
 The directory supports provider-type and research-status filters. New browser checks validate all identities, every related destination, incoming links, the complete no-JavaScript index, provider-specific limitations and mobile navigation. Python tests compare the tracked catalogue against the original CSV and verify that institutional leads are retained without being classified as collected evidence.
+
+## Published Insights library — 6 November 2026
+
+The user explicitly authorised publishing the ten prepared educational guides. `/insights` now lists them by topic, each at `/insights/<slug>`. The indicator guide links to the shorter `/insights/best-swing-trading-books` companion resource. All contextual links resolve to real site routes. `/insights/image-credits` preserves the creators, source pages, licences and format-change records for the 19 bundled WebP assets used in 30 article placements.
+
+`src/data/insights/` contains typed static content; `src/lib/insights/` provides the catalogue and metadata/schema helpers. Server components render semantic headings, prose, tables and image figures. Article text remains available without client JavaScript. Each guide includes four matching FAQ answers, publication dates, the named author, research-based selection limitations and the original sources. The imported prose is rendered as React elements; no article HTML is executed.
+
+The article pages use a white background, readable black text, desktop sticky contents and a mobile contents drawer. Next.js serves the locally bundled images, with eager loading for the featured image and lazy loading for inline images. Image attribution links are separate from the three editorial citations. Article/Breadcrumb/FAQ schema uses the actual publication record, without product ratings or invented testing claims. Public source preparation dates remain separate from the publication date.
+
+These guides have a publication path separate from broker-review research. Existing broker draft status and review publication safeguards are retained. The publication record and article/source/image ledgers are in `docs/content/`. A factual author-role biography replaces draft-only editorial instructions; no professional credentials or firsthand test results were added.
+
+`tests/insights.spec.ts` checks the full guide set, source links, licence records and asset hashes; validates the word budgets and FAQs; loads every article without site JavaScript; checks canonical/indexing/schema output; exercises internal links, the reading resource, sitemap isolation and responsive layouts. Use the normal lint/typecheck/build and Playwright commands above.
