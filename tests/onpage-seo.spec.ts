@@ -80,6 +80,16 @@ test("essential review content is server rendered with valid headings, anchors a
     await expect(page.locator(".br-accountability a")).toHaveText("David Odoi");
     await expect(page.locator("#safety")).toContainText("licence number not displayed");
     await expect(page.locator("#platforms")).toContainText(/forex, metals/i);
+    const platformImage = page.locator("#platforms figure img");
+    await expect(platformImage).toHaveAttribute("alt", /Exness Terminal.*chart.*order-entry/);
+    await expect(platformImage).toHaveAttribute("width", "992");
+    await expect(platformImage).toHaveAttribute("height", "660");
+    await expect(platformImage).toHaveAttribute("loading", "lazy");
+    await platformImage.scrollIntoViewIfNeeded();
+    await expect.poll(() => platformImage.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth)).toBe(992);
+    await expect(page.locator("#platforms figcaption")).toContainText("Product illustration, not our live-account test");
+    await expect(page.locator('#platforms figcaption a[href="https://www.exness.com/trading-platforms/"]')).toHaveText("Image: Exness");
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/images\/reviews\/exness-terminal-preview\.webp$/);
     const validation = await page.evaluate(() => {
       const ids = [...document.querySelectorAll('[id]')].map(el => el.id);
       const headings = [...document.querySelectorAll('main h1, main h2, main h3')].filter(el => !el.closest('dialog')).map(el => Number(el.tagName[1]));

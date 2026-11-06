@@ -53,6 +53,11 @@ try {
       const href = link.getAttribute("href");
       if (href && !href.startsWith("#")) link.setAttribute("href", new URL(href, canonical).href);
     });
+    // Keep credited review images usable when the downloaded file is opened
+    // from disk; its path is no longer relative to the website's root.
+    main.querySelectorAll("img[src]").forEach(img => {
+      img.setAttribute("src", new URL(img.getAttribute("src"), canonical).href);
+    });
     const schema = JSON.parse(window.document.querySelector('script[type="application/ld+json"]')?.textContent ?? "null");
     return { title: window.document.title, description: window.document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "", canonical, schema, body: main.outerHTML };
   });

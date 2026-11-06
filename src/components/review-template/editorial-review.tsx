@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronDown, CircleHelp, Clock3, Globe2, ShieldCheck, Star, X } from "lucide-react";
 import type { BrokerReview, ReviewField } from "@/lib/reviews/types";
 import { providerLabels, type ResearchEntry } from "@/lib/reviews/research-types";
@@ -8,6 +9,7 @@ import { accountOpeningHref, scoreValue } from "@/lib/reviews/template";
 import { isReviewPublished } from "@/lib/reviews/publication";
 import { CostIllustration, EditorialAccountability, ResearchComparisons, RelatedResearch } from "./editorial-extras";
 import { reviewHeading } from "@/lib/reviews/seo";
+import { reviewPlatformImage } from "@/lib/reviews/media";
 import { Finding } from "./finding";
 import { AccountOpeningCta } from "./account-cta";
 import { ReaderContents, ReaderDisclosure, ReaderMarket } from "./reader-controls";
@@ -47,6 +49,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
   const platformFields = [...section("mobile-app").fields, ...section("web-platform").fields];
   const markets = checkedField(review, "cfds-and-underlying-markets");
   const detailedExness = review.broker.slug === "exness" && review.jurisdiction === "Global" && accounts.length > 0;
+  const platformImage = detailedExness ? reviewPlatformImage(review) : undefined;
   const hasPlatforms = accounts.some(account => account.platforms);
   const safetyFields = safety.fields.filter(field => !detailedExness || field.id !== "contracting-legal-entity");
   const feeFields = fees.fields.filter(field => !detailedExness || field.id !== "forex-spread-and-commission");
@@ -105,7 +108,12 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
         <section className="br-section" id="safety"><h2>Is {review.broker.name} safe? Regulation and security</h2><p className="br-answer">Match your agreement’s company to its register entry. Regulation does not protect against trading losses.</p>{safetyFields.length ? <FactTable fields={safetyFields} review={review} caption="Legal entity and documented protections" /> : <p className="br-empty">The legal entity and regulatory permissions are not yet verified.</p>}{review.entities && review.entities.length > 0 && <details className="br-entity-details"><summary>Selected group entities and restrictions<ChevronDown size={18} /></summary><div className="br-table-scroll" role="region" aria-label="Group legal entities" tabIndex={0}><table className="br-comparison"><thead><tr><th scope="col">Entity / location</th><th scope="col">Provider-reported permission</th></tr></thead><tbody>{review.entities.map(entity => <tr key={`${entity.name}-${entity.country}`}><th scope="row">{entity.name}<br />{entity.country}</th><td><a href={review.sources.find(s => s.id === entity.sourceId)?.url} target="_blank" rel="noopener noreferrer">{entity.regulator ?? "Permission not established"}{entity.licence ? ` · ${entity.licence}` : ""}</a>{entity.note && <p>{entity.note}</p>}{entity.identitySourceId && <p className="br-register-check"><a href={review.sources.find(source => source.id === entity.identitySourceId)?.url} target="_blank" rel="noopener noreferrer">FSA identity/type matched</a>; licence number not displayed in this entry.</p>}</td></tr>)}</tbody></table></div></details>}<aside className="br-callout" aria-label="Trading risk"><ShieldCheck size={23} /><p>{retail ? "Leveraged forex and CFDs can exhaust your deposit. Advertised leverage is conditional; check margin limits and entity-specific protections before funding." : "Confirm the contracting company, client category, counterparty obligations and dispute arrangements before using a service."}</p></aside></section>
         {retail && <AccountOpeningCta review={review} placement="after-safety" compact />}
 
-        <section className="br-section" id="platforms"><h2>{markets ? "Platforms and trading markets" : "Platform access and compatibility"}</h2>{platformFields.length ? <FactTable fields={[...platformFields, ...(markets ? [markets] : [])]} review={review} caption="Documented platform access" /> : <p className="br-empty">Platform compatibility, service interfaces and available markets require source verification.</p>}{detailedExness && <p className="br-platform-guide">Try <Link href="/insights/best-platforms-for-day-trading">desktop, browser and mobile workflows</Link> on a demo. Support response speed remains untested.</p>}</section>
+        <section className="br-section" id="platforms"><h2>{markets ? "Platforms and trading markets" : "Platform access and compatibility"}</h2>
+          {platformImage && <figure className="br-platform-image">
+            <a href={platformImage.src} target="_blank" rel="noopener noreferrer" aria-label="View the Exness Terminal preview at full size"><Image src={platformImage.src} width={platformImage.width} height={platformImage.height} alt={platformImage.alt} loading="lazy" decoding="async" unoptimized /></a>
+            <figcaption>Exness Terminal preview. <a href={platformImage.sourceUrl} target="_blank" rel="noopener noreferrer">Image: Exness</a>. Product illustration, not our live-account test. <a href={platformImage.src} target="_blank" rel="noopener noreferrer">View full size</a>.</figcaption>
+          </figure>}
+          {platformFields.length ? <FactTable fields={[...platformFields, ...(markets ? [markets] : [])]} review={review} caption="Documented platform access" /> : <p className="br-empty">Platform compatibility, service interfaces and available markets require source verification.</p>}{detailedExness && <p className="br-platform-guide">Try <Link href="/insights/best-platforms-for-day-trading">desktop, browser and mobile workflows</Link> on a demo. Support response speed remains untested.</p>}</section>
         {detailedExness && <ResearchComparisons />}
         <section className="br-conclusion" id="verdict"><h2>{`Should you consider ${review.broker.name}?`}</h2><p>{detailedExness ? "Check your entity, total costs and funding method. Try a demo, set a risk limit and check a small withdrawal before adding capital." : digest.conclusion}</p><Link href={retail ? "/best-brokers" : "/reviews#all-providers"}>{retail ? "Compare broker research" : "Explore provider research"}<ArrowRight size={18} /></Link></section>
         {retail && <AccountOpeningCta review={review} placement="verdict" compact />}

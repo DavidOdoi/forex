@@ -301,6 +301,11 @@ test("standalone HTML includes embedded styles and schema with working native na
   ]);
   await expect(page.locator('script:not([type="application/ld+json"])')).toHaveCount(0);
   await expect(page.locator('link[rel="stylesheet"]')).toHaveCount(0);
+  await expect(page.locator("#platforms img")).toHaveAttribute("src", "https://devinforex-five.vercel.app/images/reviews/exness-terminal-preview.webp");
+  const image = await request.get("/images/reviews/exness-terminal-preview.webp");
+  expect(image.status()).toBe(200);
+  expect(image.headers()["content-type"]).toMatch(/image\/webp/);
+  expect((await image.body()).byteLength).toBeLessThan(50_000);
   await expect(page.locator(".br-account-table tbody tr")).toHaveCount(5);
   await page.getByRole("navigation", { name: "Review sections" }).getByRole("link", { name: "Trading costs", exact: true }).click();
   await expect(page).toHaveURL(/exness-review\.html#fees$/);
