@@ -22,7 +22,9 @@ If you want to know how to start forex trading in South Africa, begin with educa
 
 ## Is forex trading legal in South Africa?
 
-Yes, individuals can trade forex in South Africa. However, trading your own money differs from advising others or managing their funds, which can require authorisation. Offshore funding can also involve exchange-control and tax obligations. Ask an authorised bank about permitted offshore transfers, and keep records for tax reporting. A trading platform does not replace those responsibilities.
+Yes, individuals can trade forex in South Africa. However, trading your own money differs from advising others or managing their funds, which can require authorisation. Offshore funding can also involve exchange-control and tax obligations.
+
+Ask an authorised bank about permitted offshore transfers, and keep records for tax reporting. A trading platform does not replace those responsibilities.
 
 The Financial Sector Conduct Authority (FSCA) regulates financial services providers (FSPs). For CFDs, check the company issuing the contract: it needs the appropriate Over-the-Counter Derivative Provider (ODP) authorisation. A licence to give advice or arrange a deal is not the same permission.
 
