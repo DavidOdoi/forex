@@ -1,0 +1,182 @@
+{
+  "purpose": "Primary-source acquisition notes for a South African beginner article draft. Does not verify or recommend a particular broker or payment offering.",
+  "sources": [
+    {
+      "reference": "fsca",
+      "url": "https://www.fsca.co.za/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:47:37+00:00",
+      "sha256": "ecafb523e7a5407481e1d10fdb89ab771f6b74cc734ddddd467338ed23fa5139"
+    },
+    {
+      "reference": "fsp-search",
+      "url": "https://www.fsca.co.za/Fais/Search_FSP.htm",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:47:38+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "odp",
+      "url": "https://www.fsca.co.za/Regulated%20Entities/Pages/OTC-Derivatives-Providers.aspx",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:47:38+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "entities",
+      "url": "https://www.fsca.co.za/Regulated%20Entities/Pages/Regulated-Entities.aspx",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:47:40+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "sarb",
+      "url": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:47:41+00:00",
+      "sha256": "03e97f44db40f8d78f89e081dd8f13f71289ff3eb6d8f7e2ebf3f7a21d3ba399"
+    },
+    {
+      "reference": "momo",
+      "url": "https://www.momo.co.za/",
+      "status": "unsafe-url",
+      "retrievedAt": "2026-11-06T14:47:40+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "airtel",
+      "url": "https://www.airtel.africa/our-offerings/airtel-money",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:47:41+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "entities-new",
+      "url": "https://www.fsca.co.za/Regulated-Entities/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:48:36+00:00",
+      "sha256": "bd5e6c755c6c41736d8bfb85bb7ad94837d7d6aff74aae4cfd3177ab06c42bdd"
+    },
+    {
+      "reference": "financial-consumers",
+      "url": "https://www.fsca.co.za/Financial-Customers",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:48:35+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "airtel-money",
+      "url": "https://www.airtel.africa/our-offerings",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:48:32+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "momo-mtn",
+      "url": "https://www.mtn.com/momo/",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:48:34+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "fsp-current",
+      "url": "https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=financial-services-providers",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:51:05+00:00",
+      "sha256": "7ae4b85c925cb7987d78bfb41a74415faab64fea9974dd41d5251a73cf2d68b7"
+    },
+    {
+      "reference": "odp-current",
+      "url": "https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=otc-derivative-providers",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:51:06+00:00",
+      "sha256": "633a5d71472769cb56ed0d89fde00745064f090978a5d12ab9efb5298b6bb21c"
+    },
+    {
+      "reference": "fsca-frameworks",
+      "url": "https://www.fsca.co.za/Regulatory-Frameworks",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:51:04+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "airtel-home",
+      "url": "https://www.airtel.africa/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:50:59+00:00",
+      "sha256": "b787c08b167dfa892a3e902b7f0be4501cf3c22e9ef426cfa0968929997b1f5c"
+    },
+    {
+      "reference": "mtn-home",
+      "url": "https://www.mtn.co.za/home",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:51:03+00:00",
+      "sha256": "315e86154de3e66e7f967add8f383fa93b6ad48c36c26ca20f2de3588788e0d8"
+    },
+    {
+      "reference": "capital-market-licensing",
+      "url": "https://www.fsca.co.za/LR-Capital-Markets-Licenses/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:52:23+00:00",
+      "sha256": "913d6fa2c05b5ea037473c0f558bc3d884a94250b758287276175b34e4cb0a3d"
+    },
+    {
+      "reference": "airtel-money-current",
+      "url": "https://www.airtel.africa/mobile-money",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:53:01+00:00",
+      "sha256": "19d16c0309d18830b1591c4792d061c61d41fb5143b97d065ca08e4db1c24f5a"
+    },
+    {
+      "reference": "fsca-warnings",
+      "url": "https://www.fsca.co.za/Latest-News/",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:53:04+00:00",
+      "sha256": "da7348bd689638dbdf5e5b705a080d806fb77c46871fec7f8da2f1591f312334"
+    },
+    {
+      "reference": "fsca-rules",
+      "url": "https://www.fsca.co.za/Regulatory-Framework",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:53:07+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "archive-odp",
+      "url": "https://www2.fsca.co.za/Regulated%20Entities/Pages/OTC-Derivatives-Providers.aspx",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:56:34+00:00",
+      "sha256": null
+    },
+    {
+      "reference": "archive-fsp",
+      "url": "https://www2.fsca.co.za/Fais/Search_FSP.htm",
+      "status": "ok",
+      "retrievedAt": "2026-11-06T14:56:35+00:00",
+      "sha256": "c0864fb12b4d2309027432776cbfe7bf2dcb635af0c3a5b6b8b34be7cb113288"
+    },
+    {
+      "reference": "archive-frameworks",
+      "url": "https://www2.fsca.co.za/Regulatory%20Frameworks/Pages/OTC-Derivatives.aspx",
+      "status": "http-error",
+      "retrievedAt": "2026-11-06T14:56:36+00:00",
+      "sha256": null
+    }
+  ],
+  "limits": [
+    "Some old FSCA URLs returned 404. Current FSP/ODP portal URLs were taken from official FSCA navigation and were reachable; interactive entity records were not collected.",
+    "ODP authorisation attaches to the issuing principal/counterparty; an intermediary FSP licence alone is not the same authorisation.",
+    "Mobile-money brands are examples across African markets, not verified South African broker funding options.",
+    "No broker names, licence records, minimum deposits, fees, affiliate destinations or author credentials were invented. Requested editorial placeholders remain."
+  ],
+  "validation": {
+    "articleBodyWords": 1798,
+    "wordCountMethod": "Unicode words, including headings, tables, FAQ answers, affiliate disclosure and editorial broker/link placeholders; excluding H1, SEO metadata, image suggestions, author/disclaimer footer, source notes and JSON-LD.",
+    "titleCharacters": 57,
+    "descriptionCharacters": 155,
+    "faqs": 3,
+    "internalLinkSlots": 5,
+    "externalLinkSlots": 3,
+    "readingLevel": "Grade 7\u20139 target; no certified reading-level score is claimed."
+  }
+}

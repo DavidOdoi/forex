@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is forex trading legal in South Africa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, individuals can trade forex. Check the provider’s FSCA authorisation and, for CFDs, the issuing counterparty’s ODP status. Verify the exact entities on the official registers before depositing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much money do I need to start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A demo account is free. Live-account minimums vary by broker and payment method; deposit only money you can afford to lose. A low minimum does not make trading safe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use mobile money for forex trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some brokers may offer mobile-money methods. South African availability depends on the broker, country and payment provider. Confirm both deposits and withdrawals, including fees and restrictions, before registering."
+      }
+    }
+  ]
+}
