@@ -3462,6 +3462,21 @@
         ]
       },
       {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Trading from South Africa? Our "
+          },
+          {
+            "text": "South African forex beginner guide",
+            "href": "/insights/how-to-start-forex-trading-in-south-africa"
+          },
+          {
+            "text": " explains broker verification, demo practice, funding checks and affordable risk."
+          }
+        ]
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "frequently-asked-questions",
@@ -4082,6 +4097,21 @@
         "content": [
           {
             "text": "For a hypothetical move between brokers, compare symbol names, contract sizes, session times and account modes before importing old settings. A template may restore the appearance of a chart without reproducing the account assumptions behind its orders. Use a fresh demo checklist rather than assuming visual familiarity proves operational compatibility."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Trading from South Africa? Our "
+          },
+          {
+            "text": "South African forex beginner guide",
+            "href": "/insights/how-to-start-forex-trading-in-south-africa"
+          },
+          {
+            "text": " explains broker verification, demo practice, funding checks and affordable risk."
           }
         ]
       },
@@ -7892,6 +7922,1028 @@
       {
         "question": "Can revoking a token approval recover stolen funds?",
         "answer": "No. Revocation can limit future use of a permission; it does not reverse completed transfers. A compromised recovery phrase or key requires a broader response, not just approval changes."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-start-forex-trading-in-south-africa",
+    "title": "How to Start Forex Trading in South Africa: 7 Clear Steps",
+    "seoTitle": "How to Start Forex Trading in South Africa: 7 Clear Steps",
+    "description": "Learn how to start forex trading in South Africa. Verify FSCA and ODP status, practise on a free demo, compare payments and control risk before depositing.",
+    "focusKeyword": "how to start forex trading in south africa",
+    "format": "guide",
+    "category": "beginner-guides",
+    "topic": "Forex for South African beginners",
+    "publishedAt": "2026-11-06",
+    "updatedAt": "2026-11-06",
+    "researchPreparedAt": "2026-11-06",
+    "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
+    "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If you want to know how to start forex trading in South Africa, begin with education and a free demo account. Individuals can trade forex legally, but leveraged trading carries serious risk. Verify your broker, practise with virtual money and protect essential living expenses before considering a live account."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "Learning how to start forex trading in South Africa begins with a free demo. Verify the broker and CFD issuer, practise consistently and use strict risk limits before funding.",
+        "points": [
+          "Learn currency pairs, trading costs and basic orders.",
+          "Choose an appropriately FSCA-regulated forex broker and check its permissions.",
+          "Open a free demo account.",
+          "Practise until you consistently follow your plan.",
+          "Fund a live account only with money you can afford to lose.",
+          "Use strict position sizing and risk limits.",
+          "Track trades and improve gradually."
+        ],
+        "ordered": true,
+        "anchors": [
+          {
+            "text": "FSCA-regulated forex broker",
+            "href": "https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=financial-services-providers"
+          }
+        ],
+        "table": {
+          "caption": "Two checks before funding",
+          "headers": [
+            [
+              {
+                "text": "Check"
+              }
+            ],
+            [
+              {
+                "text": "Next step"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "Authorisation"
+                }
+              ],
+              [
+                {
+                  "text": "FSP permissions",
+                  "href": "https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=financial-services-providers"
+                },
+                {
+                  "text": " and "
+                },
+                {
+                  "text": "ODP status",
+                  "href": "https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=otc-derivative-providers"
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Risk budget"
+                }
+              ],
+              [
+                {
+                  "text": "Affordable capital and a small position."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "featured",
+        "alt": "How to start forex trading in South Africa: illustrative EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD candlesticks in MetaTrader 5; an illustration, not a trading signal."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "how-to-start-forex-trading-in-south-africa-legally",
+        "text": "How to start forex trading in South Africa legally"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Individuals can trade forex legally. Advising others or managing their funds can require authorisation. Offshore funding can involve exchange-control and tax obligations."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ask an authorised bank about "
+          },
+          {
+            "text": "permitted offshore transfers",
+            "href": "https://www.resbank.co.za/en/home/what-we-do/financial-surveillance"
+          },
+          {
+            "text": ", and keep records for tax reporting."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The Financial Sector Conduct Authority (FSCA) regulates financial services providers (FSPs). For CFDs, check the company issuing the contract: it needs the appropriate Over-the-Counter Derivative Provider (ODP) authorisation. A licence to give advice or arrange a deal is not the same permission."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the "
+          },
+          {
+            "text": "FSCA regulated entities search",
+            "href": "https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=financial-services-providers"
+          },
+          {
+            "text": " and its separate "
+          },
+          {
+            "text": "ODP search",
+            "href": "https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=otc-derivative-providers"
+          },
+          {
+            "text": ". Match the legal name, FSP number, permissions and contact details to your account agreement. Check current status rather than trusting a website badge."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Verify the exact entity",
+        "content": [
+          {
+            "text": "A broker claiming to be regulated is not enough. Confirm the exact South African entity, FSP number, and ODP status on the FSCA register before you deposit."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If an intermediary is involved, check its authorisation and the issuing counterparty—the company on the other side of your contract. Stop if the company names differ without a clear explanation."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Check contact details independently, then call the number shown by the regulator if you need clarification. Scammers can copy a genuine name and licence number while using different contact details."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "what-you-need-before-opening-an-account",
+        "text": "What you need before opening an account"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Prepare these; identification requirements vary:"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Smartphone, tablet or computer with reliable internet."
+            }
+          ],
+          [
+            {
+              "text": "Valid South African ID or passport."
+            }
+          ],
+          [
+            {
+              "text": "Proof of address."
+            }
+          ],
+          [
+            {
+              "text": "Email address and phone number."
+            }
+          ],
+          [
+            {
+              "text": "Bank account, debit card or supported payment method in your name."
+            }
+          ],
+          [
+            {
+              "text": "Free demo account."
+            }
+          ],
+          [
+            {
+              "text": "Risk capital that you can afford to lose completely."
+            }
+          ],
+          [
+            {
+              "text": "Basic knowledge of pips, lots, leverage, spreads and stop-losses."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Learn with free resources; expensive courses, paid signals and large deposits are unnecessary."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "forex-for-beginners-in-south-africa-the-basics",
+        "text": "Forex for beginners in South Africa: the basics"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Retail forex means speculating on currency prices, often through leveraged CFDs. It can cause rapid losses without delivering currency."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "Forex terms explained",
+        "headers": [
+          [
+            {
+              "text": "Term"
+            }
+          ],
+          [
+            {
+              "text": "Simple meaning"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Currency pair"
+              }
+            ],
+            [
+              {
+                "text": "Two currencies priced against each other, such as EUR/USD."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Base and quote"
+              }
+            ],
+            [
+              {
+                "text": "EUR is the base; USD tells you its price in dollars."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Major pairs"
+              }
+            ],
+            [
+              {
+                "text": "Widely traded pairs involving USD, including EUR/USD, GBP/USD and USD/JPY."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Pip"
+              }
+            ],
+            [
+              {
+                "text": "A common price-change unit; EUR/USD usually uses 0.0001."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Lot"
+              }
+            ],
+            [
+              {
+                "text": "Position size. One standard FX lot usually represents 100,000 base-currency units."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Leverage"
+              }
+            ],
+            [
+              {
+                "text": "Exposure larger than your deposit; it magnifies gains and losses."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Margin"
+              }
+            ],
+            [
+              {
+                "text": "Money reserved to support a position, not a maximum-loss limit."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Spread"
+              }
+            ],
+            [
+              {
+                "text": "The difference between the buy and sell prices."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Stop-loss"
+              }
+            ],
+            [
+              {
+                "text": "An exit instruction intended to limit losses; execution can be worse during gaps."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Take-profit"
+              }
+            ],
+            [
+              {
+                "text": "An instruction to close at a target price."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Buying versus selling"
+              }
+            ],
+            [
+              {
+                "text": "Buying benefits from a rising pair; selling benefits from a falling pair."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Demo account"
+              }
+            ],
+            [
+              {
+                "text": "A practice account using virtual funds."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For example, suppose you buy 0.01 standard lot of EUR/USD: 1,000 euros of exposure. A rise from 1.1000 to 1.1010 is ten pips, producing about US$1 gross profit. The opposite move creates about US$1 gross loss."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "At 0.10 lot, the same move is roughly ten times larger. Fees and financing change the net result. For ZAR forex trading accounts, also check the rand conversion."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "choose-a-broker-using-evidence",
+        "text": "Choose a broker using evidence"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The best forex broker in South Africa depends on your circumstances and the evidence available. Compare the same account type, entity and trading instrument rather than choosing a familiar brand name."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Advertised minimum spreads are not average trading costs. A zero-spread account may charge commission on both opening and closing. Check overnight financing if you plan to hold positions after the trading day ends."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Build your shortlist in our "
+          },
+          {
+            "text": "broker research directory",
+            "href": "/reviews"
+          },
+          {
+            "text": ", then verify each South African entity yourself."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "What to check before choosing a broker",
+        "headers": [
+          [
+            {
+              "text": "Check"
+            }
+          ],
+          [
+            {
+              "text": "What to verify"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Authorisation"
+              }
+            ],
+            [
+              {
+                "text": "Exact South African entity, FSP permissions and issuing counterparty’s ODP status."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Total costs"
+              }
+            ],
+            [
+              {
+                "text": "Spread, opening/closing commission, overnight charges and conversion."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Account currency"
+              }
+            ],
+            [
+              {
+                "text": "Whether ZAR is available and what conversion costs apply."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Funding"
+              }
+            ],
+            [
+              {
+                "text": "Supported methods, limits, ownership requirements and provider charges."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Withdrawals"
+              }
+            ],
+            [
+              {
+                "text": "Available routes, processing estimates, fees and verification requirements."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Platform"
+              }
+            ],
+            [
+              {
+                "text": "Device compatibility, demo access and order controls."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Support"
+              }
+            ],
+            [
+              {
+                "text": "Contact channels, complaints process and practical help."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "build-a-broker-shortlist-for-south-africa",
+        "text": "Build a broker shortlist for South Africa"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the "
+          },
+          {
+            "text": "broker research directory",
+            "href": "/reviews"
+          },
+          {
+            "text": " to locate company disclosures. Confirm the South African entity, permitted products, current fees and withdrawal route before applying. Broker profiles identify outstanding checks; listing a provider does not establish its authorisation for your account."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "check-mobile-money-deposits-and-withdrawals",
+        "text": "Check mobile-money deposits and withdrawals"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Mobile money can make deposits more accessible for some African traders. However, forex trading with mobile money in South Africa depends on the broker, country, payment provider and account entity."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "M-Pesa, MTN Mobile Money and Airtel Money are regional examples, not a confirmed list of South African broker payment options. A method advertised elsewhere in Africa may be unavailable to your South African account."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Before registering, confirm both deposits and withdrawals. Check provider fees, currency conversion, transaction limits and any restrictions on withdrawing through another method. Broker processing and bank or wallet arrival are different stages. Test a small withdrawal before adding more."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Check withdrawals before choosing a payment method",
+        "content": [
+          {
+            "text": "Do not choose a broker only because it accepts mobile money. First confirm that it is authorised for South African clients and that withdrawals work reliably."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use payment accounts in your name. Never send trading money to a salesperson’s personal bank account or wallet."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "practise-on-a-demo-before-trading-live",
+        "text": "Practise on a demo before trading live"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A free demo account lets you learn without depositing real trading capital. Practise opening and closing trades, reading charts, setting stop-losses and take-profits, calculating position size and testing one simple strategy."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Track emotions, including overconfidence after wins and attempts to recover losses. Practise for at least two to four weeks, or until you consistently follow your plan. This is a learning recommendation, not a profitability deadline."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Record your pair, entry rule, exit rule and maximum loss. Review whether you followed the plan, not just the money made or lost."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use our "
+          },
+          {
+            "text": "demo practice checklist",
+            "href": "/insights/best-day-trading-app-for-beginners#what-beginners-should-prioritise-during-a-demo-week"
+          },
+          {
+            "text": " to plan your first week."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Compare features in our "
+          },
+          {
+            "text": "MT4 and MT5 platform guide",
+            "href": "/insights/best-platforms-for-day-trading#how-to-compare-the-best-platforms-for-day-trading"
+          },
+          {
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For your first demo trade:"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          [
+            {
+              "text": "Log in to the platform."
+            }
+          ],
+          [
+            {
+              "text": "Select a major pair such as EUR/USD."
+            }
+          ],
+          [
+            {
+              "text": "Open its chart and identify recent direction."
+            }
+          ],
+          [
+            {
+              "text": "Decide whether your practice rules call for buying or selling."
+            }
+          ],
+          [
+            {
+              "text": "Choose a small position size."
+            }
+          ],
+          [
+            {
+              "text": "Set a stop-loss before entering."
+            }
+          ],
+          [
+            {
+              "text": "Set a realistic take-profit or exit rule."
+            }
+          ],
+          [
+            {
+              "text": "Place the trade."
+            }
+          ],
+          [
+            {
+              "text": "Record the entry, stop, target, reason and result."
+            }
+          ],
+          [
+            {
+              "text": "Review the trade after it closes."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Your first goal is process discipline. Demo success does not guarantee live success: real money, execution and emotions can change the experience."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "how-much-money-do-you-need",
+        "text": "How much money do you need?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Learning on a demo requires no trading deposit. Live-account minimums depend on the broker, account and payment method, so there is no universal starting figure."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Practise first. Start small. Position size and risk management matter more than reaching a broker’s deposit minimum. High leverage does not make a small account safer, and forex is unsuitable as a solution to financial pressure."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A common beginner risk guideline is 1% or less per trade. On an illustrative R2,000 account, 1% is R20; consider trading costs when calculating exposure. If the smallest permitted position exceeds your risk budget, stay on demo."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Explore a USD example with our "
+          },
+          {
+            "text": "forex position-size calculator",
+            "href": "/tools/forex-position-size-calculator"
+          },
+          {
+            "text": ". For a rand account, confirm the pip value in ZAR before calculating risk."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Never borrow money to trade. Use a stop-loss on every trade, remember that gaps can produce larger losses, and avoid chasing losses. Keep records of deposits, withdrawals, trades and fees."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Protect essential living expenses",
+        "content": [
+          {
+            "text": "If losing the full deposit would affect your rent, food, transport, family responsibilities, or debt repayments, do not trade that money."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Practise "
+          },
+          {
+            "text": "protective orders and risk controls",
+            "href": "/insights/best-platforms-for-day-trading#run-the-same-demo-checklist-on-each-candidate"
+          },
+          {
+            "text": " before trading live."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "avoid-these-common-mistakes",
+        "text": "Avoid these common mistakes"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Trading without practising on demo."
+            }
+          ],
+          [
+            {
+              "text": "Using excessive leverage or skipping a stop-loss."
+            }
+          ],
+          [
+            {
+              "text": "Risking too much on one trade."
+            }
+          ],
+          [
+            {
+              "text": "Following Telegram or WhatsApp signals blindly."
+            }
+          ],
+          [
+            {
+              "text": "Buying expensive courses before learning the basics."
+            }
+          ],
+          [
+            {
+              "text": "Trying to recover losses quickly."
+            }
+          ],
+          [
+            {
+              "text": "Overtrading out of boredom."
+            }
+          ],
+          [
+            {
+              "text": "Using money needed for essentials."
+            }
+          ],
+          [
+            {
+              "text": "Choosing an unverified broker."
+            }
+          ],
+          [
+            {
+              "text": "Ignoring withdrawal terms."
+            }
+          ],
+          [
+            {
+              "text": "Assuming a profitable strategy will work forever."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Allow days or weeks for platform skills and months for consistent strategy execution. Risk management needs ongoing attention. Expect learning and possible losses; profitability is never guaranteed or dependable short-term income."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "is-forex-trading-legal-in-south-africa",
+        "text": "Is forex trading legal in South Africa?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Yes, individuals can trade forex. Check the provider’s FSCA authorisation and, for CFDs, the issuing counterparty’s ODP status. Verify the exact entities on the official registers before depositing."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "how-much-money-do-i-need-to-start",
+        "text": "How much money do I need to start?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A demo account is free. Live-account minimums vary by broker and payment method; deposit only money you can afford to lose. A low minimum does not make trading safe."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "can-i-use-mobile-money-for-forex-trading",
+        "text": "Can I use mobile money for forex trading?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Some brokers may offer mobile-money methods. South African availability depends on the broker, country and payment provider. Confirm both deposits and withdrawals, including fees and restrictions, before registering."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "your-next-step",
+        "text": "Your next step"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Start with a free demo account. Verify the broker and CFD counterparty before depositing, then apply strict risk management and review your journal."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Forex and CFD trading are high risk and can result in substantial losses. Never trade money needed for essential living expenses."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is forex trading legal in South Africa?",
+        "answer": "Yes, individuals can trade forex. Check the provider’s FSCA authorisation and, for CFDs, the issuing counterparty’s ODP status. Verify the exact entities on the official registers before depositing."
+      },
+      {
+        "question": "How much money do I need to start?",
+        "answer": "A demo account is free. Live-account minimums vary by broker and payment method; deposit only money you can afford to lose. A low minimum does not make trading safe."
+      },
+      {
+        "question": "Can I use mobile money for forex trading?",
+        "answer": "Some brokers may offer mobile-money methods. South African availability depends on the broker, country and payment provider. Confirm both deposits and withdrawals, including fees and restrictions, before registering."
       }
     ]
   }

@@ -77,7 +77,7 @@ const report = articles.filter(article => article.format === "guide").map(articl
     keywordInIntro: first.type === "paragraph" && normalise(rich(first.content)).includes(keyword),
     conciseIntro: first.type === "paragraph" && words(rich(first.content)) <= 60,
     answerImmediatelyAfterIntro: first.type === "paragraph" && summary.type === "quick-answer",
-    conciseAnswer: summary.type === "quick-answer" && words(summary.answer) <= 65 && summary.points.length === 3,
+    conciseAnswer: summary.type === "quick-answer" && words(summary.answer) <= 65 && summary.points.length === (summary.ordered ? 7 : 3),
     keywordInSubheading: article.blocks.some(block => block.type === "heading" && normalise(block.text).includes(keyword)),
     keywordAcrossBody: keywordOccurrences >= 3,
     noExcessiveExactRepetition: density <= 1.5,

@@ -34,8 +34,9 @@ export function ArticleContent({ article }: { article: InsightArticle }) {
         case "quick-answer": return <Fragment key={block.id}>
           <section className="insight-answer" data-quick-answer aria-labelledby={block.id}>
             <h2 id={block.id}>{block.title}</h2><p><InlineText content={linkPhrases(block.answer, block.anchors)} /></p>
+            {block.ordered && <ol className="insight-answer-steps">{block.points.map(point => <li key={point}><InlineText content={linkPhrases(point, block.anchors)} /></li>)}</ol>}
             {block.table && <DataTable headers={block.table.headers} rows={block.table.rows} label={block.table.caption} compact />}
-            <ul>{block.points.map(point => <li key={point}><InlineText content={linkPhrases(point, block.anchors)} /></li>)}</ul>
+            {!block.ordered && <ul>{block.points.map(point => <li key={point}><InlineText content={linkPhrases(point, block.anchors)} /></li>)}</ul>}
           </section>
           <details className="insight-toc-mobile"><summary>On this page</summary><nav aria-label="On this page">{sections.map(section => <a key={section.id} href={`#${section.id}`}>{section.text}</a>)}</nav></details>
         </Fragment>;

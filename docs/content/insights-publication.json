@@ -53,6 +53,24 @@
       ],
       "imagePolicy": "One meaningful attributed image per new guide; existing guides retain their three images. One new CC BY 3.0 Ethereum Foundation logo is compressed and credited.",
       "sourceLedger": "usdc-ethereum-source-checks-2026-11-06.json"
+    },
+    {
+      "updatedAt": "2026-11-06T16:04:08.471965+00:00",
+      "authorization": "User explicitly requested publishing the completed South African forex beginner article on the website.",
+      "scope": [
+        "how-to-start-forex-trading-in-south-africa"
+      ],
+      "editorialDecisions": [
+        "Replaced broker/affiliate placeholders with a linked broker-research and regulatory-verification section; no broker ranking or affiliate destination invented.",
+        "Used the existing factual David Odoi author profile and actual publication date.",
+        "Retained seven ordered Quick answer steps and three brief matching FAQs; short paragraphs, summary tables and uniform body typography follow the site format.",
+        "Resolved all five internal link slots to existing relevant material and the position-size calculator; explicitly identifies the calculator example as USD and asks rand-account readers to confirm their ZAR pip value.",
+        "Kept the FSP-versus-issuing-ODP distinction and payment-provider/country caveats.",
+        "Reused an attributed CC BY-SA 4.0 MetaTrader 5 chart as an illustration near the top; no live-trading claim."
+      ],
+      "sourceLedger": "south-africa-forex-guide-source-checks-2026-11-06.json",
+      "shortUrl": "/how-to-start-forex-trading-in-south-africa/",
+      "canonicalPath": "/insights/how-to-start-forex-trading-in-south-africa"
     }
   ]
 }

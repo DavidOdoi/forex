@@ -5,7 +5,7 @@ export type RichText = { text: string; href?: string }[];
 export type InsightSummaryTable = { caption: string; headers: RichText[]; rows: RichText[][] };
 export type InsightBlock =
   | { type: "paragraph"; content: RichText }
-  | { type: "quick-answer"; id: string; title: string; answer: string; points: string[]; anchors?: { text: string; href: string }[]; table?: InsightSummaryTable }
+  | { type: "quick-answer"; id: string; title: string; answer: string; points: string[]; ordered?: boolean; anchors?: { text: string; href: string }[]; table?: InsightSummaryTable }
   | { type: "callout"; title: string; content: RichText }
   | { type: "list"; ordered: boolean; items: RichText[] }
   | { type: "heading"; level: 2 | 3; id: string; text: string }

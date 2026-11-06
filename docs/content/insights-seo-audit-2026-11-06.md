@@ -9,8 +9,8 @@ Objective checks: PASS. All published guides use a short intro followed immediat
 | social-trading-platforms-technology-stack | 1621 | 39 | 35 | 6 | 3 | 60 | 41 | 54 | 0.2% | PASS |
 | evolution-of-social-trading | 1615 | 41 | 33 | 8 | 3 | 60 | 27 | 50 | 0.269% | PASS |
 | auto-trading | 1587 | 44 | 38 | 4 | 3 | 54 | 12 | 50 | 0.343% | PASS |
-| best-day-trading-app-for-beginners | 1556 | 43 | 37 | 7 | 3 | 54 | 34 | 50 | 0.281% | PASS |
-| best-platforms-for-day-trading | 1578 | 38 | 41 | 9 | 3 | 54 | 30 | 50 | 0.275% | PASS |
+| best-day-trading-app-for-beginners | 1576 | 43 | 37 | 7 | 3 | 54 | 34 | 50 | 0.277% | PASS |
+| best-platforms-for-day-trading | 1598 | 38 | 41 | 9 | 3 | 54 | 30 | 50 | 0.271% | PASS |
 | best-indicators-for-swing-trading | 1566 | 44 | 39 | 8 | 3 | 52 | 33 | 50 | 0.277% | PASS |
 | best-laptop-computer-for-day-trading | 1569 | 43 | 43 | 7 | 3 | 58 | 36 | 52 | 0.276% | PASS |
 | best-bot-for-trading-futures | 1564 | 43 | 36 | 6 | 3 | 65 | 28 | 58 | 0.277% | PASS |
@@ -18,6 +18,7 @@ Objective checks: PASS. All published guides use a short intro followed immediat
 | how-to-send-usdc | 874 | 35 | 40 | 3 | 3 | 58 | 16 | 40 | 0.388% | PASS |
 | ethereum-gas-fees-explained | 797 | 34 | 45 | 2 | 3 | 60 | 27 | 45 | 0.427% | PASS |
 | crypto-wallet-security-guide | 891 | 46 | 40 | 3 | 3 | 61 | 28 | 46 | 0.378% | PASS |
+| how-to-start-forex-trading-in-south-africa | 1798 | 49 | 29 | 3 | 3 | 57 | 42 | 49 | 0.177% | PASS |
 
 Includes title, headings, intro, quick answer and bullets, callouts, tables, image captions/credits, FAQs, author bio and disclaimer. Excludes navigation, UI bylines, related links, alt attributes, URLs and duplicate JSON-LD.
 

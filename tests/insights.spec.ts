@@ -20,8 +20,8 @@ function editorialParts(block: InsightBlock) {
 
 
 test("published guides retain complete copy, evidence links, real image files and matching FAQ records", () => {
-  expect(insightGuides).toHaveLength(14);
-  expect(insightArticles).toHaveLength(15);
+  expect(insightGuides).toHaveLength(15);
+  expect(insightArticles).toHaveLength(16);
   expect(new Set(insightArticles.map(article => article.slug)).size).toBe(insightArticles.length);
   expect(insightImages).toHaveLength(20);
   const slugs = new Set(insightArticles.map(article => article.slug));
@@ -48,7 +48,7 @@ test("published guides retain complete copy, evidence links, real image files an
     const answer = article.blocks[1];
     if (answer.type === "quick-answer") {
       expect(words(answer.answer)).toBeLessThanOrEqual(65);
-      expect(answer.points).toHaveLength(3);
+      expect(answer.points).toHaveLength(answer.ordered ? 7 : 3);
     }
     expect(article.description.length).toBeGreaterThanOrEqual(150);
     expect(article.description.length).toBeLessThanOrEqual(160);
@@ -91,6 +91,24 @@ test("Insights replaces placeholders with links to all published guides", async 
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", insightsIndexable ? "index, follow" : "noindex, follow");
 });
 
+test("South Africa guide is published with seven steps, real links and no editorial placeholders", async ({ page, request }) => {
+  const slug = "how-to-start-forex-trading-in-south-africa";
+  const shortUrl = await request.get(`/${slug}`, { maxRedirects: 0 });
+  expect(shortUrl.status()).toBe(308);
+  expect(shortUrl.headers().location).toBe(`/insights/${slug}`);
+  await page.goto(`/${slug}`);
+  await expect(page).toHaveURL(new RegExp(`/insights/${slug}$`));
+  await expect(page.locator('[data-quick-answer] ol > li')).toHaveCount(7);
+  await expect(page.locator('[data-quick-answer] ol')).toHaveCSS('list-style-type', 'decimal');
+  await expect(page.locator('main')).not.toContainText(/\[(?:AFFILIATE LINK|INTERNAL LINK|EXTERNAL LINK|AUTHOR|LAST UPDATED|Broker [ABC])/);
+  await expect(page.locator('.insight-byline')).toContainText('David Odoi');
+  await expect(page.locator('.insight-disclaimer')).toContainText('No affiliate links are used');
+  await expect(page.locator('a[href="https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=financial-services-providers"]').first()).toBeVisible();
+  await expect(page.locator('.insight-content a[href="/reviews"]')).toHaveCount(2);
+  await page.goto('/insights');
+  await expect(page.locator(`[data-insight-card] h3 a[href="/insights/${slug}"]`)).toBeVisible();
+});
+
 test("all published article URLs render essential content, images, citations and schema without site JavaScript", async ({ browser }) => {
   test.setTimeout(120000);
   const context = await browser.newContext({ javaScriptEnabled: false });
@@ -103,7 +121,8 @@ test("all published article URLs render essential content, images, citations and
       await expect(page.locator("h1")).toHaveCount(1);
       const quickAnswer = page.locator("[data-quick-answer]");
       await expect(quickAnswer.getByRole("heading", { name: "Quick answer", exact: true })).toHaveCount(1);
-      await expect(quickAnswer.locator("li")).toHaveCount(3);
+      const answerBlock = article.blocks[1];
+      await expect(quickAnswer.locator("li")).toHaveCount(answerBlock.type === "quick-answer" ? answerBlock.points.length : 3);
       expect(await quickAnswer.evaluate(node => node.previousElementSibling === node.parentElement?.firstElementChild && node.previousElementSibling?.tagName === "P")).toBe(true);
       await expect(page).toHaveTitle(insightTitleTag(article));
       expect(await page.locator(".insight-content p").evaluateAll(nodes => nodes.every(node => (node.textContent?.match(/\S+/g) ?? []).length < 120))).toBe(true);
