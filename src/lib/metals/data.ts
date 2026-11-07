@@ -51,16 +51,23 @@ const cachedHistory = unstable_cache(async (symbol: Metal, date: string, credent
   const yearStart = today - 364 * 86400;
   const year = await json(`${api}/ohlc/${symbol}?startTimestamp=${yearStart}&endTimestamp=${today - 1}`, 43200, key);
   const points = parseHistory(daily.value, now);
+  const rows = Array.isArray(daily.value) ? daily.value : [];
+  const first = rows[0] && typeof rows[0] === "object" ? rows[0] as Record<string, unknown> : daily.value && !Array.isArray(daily.value) && typeof daily.value === "object" ? daily.value as Record<string, unknown> : {};
+  // Format metadata contains no response bodies, credentials or error text.
+  const sourceFormat = { kind: Array.isArray(daily.value) ? "array" : typeof daily.value, rows: rows.length,
+    fields: Object.keys(first).filter(field => /^[a-z_]{1,40}$/i.test(field)).slice(0, 12), dayType: typeof first.day, priceType: typeof first.avg_price,
+    ...(typeof first.day === "string" && /^\d{4}-\d{2}-\d{2}(?:[T 0-9:.+Z-]{0,30})?$/.test(first.day) ? { firstDay: first.day } : {}),
+  };
   const hasYearCoverage = points[0] && Date.parse(points[0].date) <= yearStart * 1000
     && points.filter(point => Date.parse(point.date) >= yearStart * 1000).length >= 200
     && dayStart(now) - Date.parse(points[points.length - 1].date) <= 4 * DAY;
   return {
-    status: points.length >= 2 ? "available" : "unavailable", ...(points.length < 2 ? { issue: "invalid-data" as const } : {}), points,
+    status: points.length >= 2 ? "available" : "unavailable", ...(points.length < 2 ? { issue: "invalid-data" as const } : {}), sourceFormat, points,
     today: parseOhlc(open, today, Math.max(end, Math.floor(now / 1000))),
     year: hasYearCoverage ? parseOhlc(year, yearStart, today - 1) : null,
     retrievedAt: new Date().toISOString(),
   };
-}, ["metals-history-v2"], { revalidate: 3600 });
+}, ["metals-history-v3"], { revalidate: 3600 });
 
 export const getHistory = cache(async (symbol: Metal): Promise<History> => {
   const key = configuredHistoryKey(process.env);

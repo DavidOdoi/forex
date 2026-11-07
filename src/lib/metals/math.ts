@@ -72,10 +72,17 @@ export function todayChange(quote: Quote | null, ohlc: Ohlc | null, now = Date.n
 export function parseHistory(value: unknown, now = Date.now()): Point[] {
   if (!Array.isArray(value) || value.length > 100000) return [];
   const points = value.flatMap(row => {
-    if (!row || typeof row.day !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(row.day) || !positive(row.avg_price)) return [];
-    const date = Date.parse(row.day);
-    if (!Number.isFinite(date) || new Date(date).toISOString().slice(0, 10) !== row.day || date >= dayStart(now)) return [];
-    return [{ date: row.day, price: row.avg_price }];
+    if (!row || typeof row.day !== "string") return [];
+    // Some SQL-backed responses serialize a daily bucket as midnight UTC and
+    // decimal averages as strings. Accept only lossless, unambiguous formats.
+    const match = /^(\d{4}-\d{2}-\d{2})(?:(?:T| )00:00:00(?:\.0{1,9})?(?:Z|\+00:00)?)?$/.exec(row.day);
+    if (!match) return [];
+    const rawPrice = row.avg_price;
+    const price = typeof rawPrice === "string" && /^\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(rawPrice.trim()) ? Number(rawPrice) : rawPrice;
+    if (!positive(price)) return [];
+    const date = Date.parse(match[1]);
+    if (!Number.isFinite(date) || new Date(date).toISOString().slice(0, 10) !== match[1] || date >= dayStart(now)) return [];
+    return [{ date: match[1], price }];
   });
   return [...new Map(points.map(p => [p.date, p])).values()].sort((a, b) => a.date.localeCompare(b.date));
 }

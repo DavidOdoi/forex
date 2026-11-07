@@ -50,6 +50,7 @@ test("ratios require recent aligned quotes and returns never invent a missing ba
   expect(historyChange(history, "month", now)).toBeNull(); expect(historyChange(history, "ytd", now)).toBeNull();
   expect(historyChange(history, "week", now + 8 * DAY)).toBeNull();
   expect(parseHistory([{ day: "2026-11-06", avg_price: 4200 }, { day: "2026-11-07", avg_price: 4300 }, { day: "2026-02-30", avg_price: 4000 }, { day: "2026-11-05", max_price: 4400 }], now)).toEqual([{ date: "2026-11-06", price: 4200 }]);
+  expect(parseHistory([{ day: "2026-11-06T00:00:00.000Z", avg_price: "4200.25" }, { day: "2026-11-05 00:00:00", avg_price: "4180.50" }, { day: "2026-11-04T03:00:00Z", avg_price: 4000 }, { day: "2026-11-03T00:00:00+03:00", avg_price: 4000 }, { day: "2026-11-02", avg_price: "USD 4000" }], now)).toEqual([{ date: "2026-11-05", price: 4180.5 }, { date: "2026-11-06", price: 4200.25 }]);
   const raw = { open: 4000, close: 4200, high: 4300, low: 3900, startTimestamp: open.start, endTimestamp: open.end };
   expect(parseOhlc(raw, open.start, open.end)?.high).toBe(4300);
   expect(parseOhlc({ ...raw, high: 3000 }, open.start, open.end)).toBeNull();

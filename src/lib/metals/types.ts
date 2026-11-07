@@ -11,6 +11,7 @@ export type History = {
   status: "available" | "not-configured" | "unavailable";
   issue?: "authentication-rejected" | "access-denied" | "rate-limit" | "provider-error" | "network-error" | "invalid-data";
   providerStatus?: number;
+  sourceFormat?: { kind: string; rows: number; fields: string[]; dayType: string; priceType: string; firstDay?: string };
   points: Point[];
   today: Ohlc | null;
   year: Ohlc | null;
