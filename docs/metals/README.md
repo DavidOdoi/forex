@@ -8,6 +8,8 @@ Built 7 November 2026. These are two working Next.js data pages, with the comple
 
 The gold page focuses on XAU/USD, weight, purity and gold value. The comparison page focuses on two metals, relative performance, the ratio and silver’s industrial demand. No additional keyword-variant pages were created.
 
+The dashboard presentation uses a white canvas, black primary text, larger tabular prices, distinct gold/silver identity cards and a switcher between the two resources. A visible timing guide distinguishes automatic spot-price checks from completed daily chart averages and daily FX reference rates. Chart panels include real-data area fills, a hover crosshair, selected-range high/low/percentage figures, accessible tables and CSV exports of unrounded provider observations. No quote, curve or movement is invented for visual effect.
+
 ## Connection status
 
 Current spot quotes work without an account. The source’s contract identifies gold and silver as USD per troy ounce. Currency estimates use Frankfurter’s dated daily blended reference rates, not live FX.

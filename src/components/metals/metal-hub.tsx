@@ -13,8 +13,8 @@ export async function MetalHub({ kind }: { kind: HubKind }) {
   return <main className={styles.hub}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(hubSchema(kind)).replace(/</g, "\\u003c") }} />
     <div className={styles.container}>
-      <nav aria-label="Breadcrumb" className={styles.breadcrumb}><Link href="/">Home</Link><span aria-hidden="true">/</span><span>{kind === "gold" ? "Gold price" : "Gold & silver prices"}</span></nav>
-      <header className={styles.hero}><p className={styles.eyebrow}>Devin Forex / Precious metals</p><h1>{hub.heading}</h1><p className={styles.tagline}>{hub.subheading}</p><p className={styles.intro}>{hub.intro}</p></header>
+      <div className={styles.pageTop}><nav aria-label="Breadcrumb" className={styles.breadcrumb}><Link href="/">Home</Link><span aria-hidden="true">/</span><span>Precious metals</span></nav><nav aria-label="Precious metal dashboards" className={styles.hubSwitcher}><Link href="/gold-price" aria-current={kind === "gold" ? "page" : undefined}>Gold price</Link><Link href="/gold-silver-prices" aria-current={kind === "comparison" ? "page" : undefined}>Gold & silver</Link></nav></div>
+      <header className={styles.hero}><p className={styles.eyebrow}><span aria-hidden="true" />Precious metals / Market overview</p><h1>{hub.heading}</h1><p className={styles.intro}>{hub.intro}</p></header>
       <MarketDashboard initial={initial} kind={kind} navigation={<nav className={styles.sectionNav} aria-label="On this page">{toc.map(([id, label]) => <a href={`#${id}`} key={id}>{label}</a>)}</nav>} />
       <noscript><p className={styles.warning}>JavaScript is off. The price cards show the server’s last retrieved reference; they will not refresh automatically. Reload to request an update. Interactive calculators and charts require JavaScript.</p></noscript>
       <article className={styles.editorial}>

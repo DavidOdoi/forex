@@ -47,6 +47,10 @@ def markdown(node):
         return f"**{value.strip()}**"
     if tag == "li":
         return "\n- " + value.strip()
+    if tag == "dt":
+        return "\n- **" + value.strip() + "**: "
+    if tag == "dd":
+        return value.strip() + "\n"
     if tag == "select":
         return " (" + "; ".join(option.get_text(" ", strip=True) for option in node.find_all("option")) + ")"
     if tag in {"p", "div", "section", "header", "article", "aside", "figure", "figcaption", "ul", "details"}:
@@ -72,6 +76,8 @@ for slug, kind in [("gold-price", "gold"), ("gold-silver-prices", "comparison")]
     headings = [f"{'  ' * (int(h.name[1]) - 1)}- {h.name.upper()}: {h.get_text(' ', strip=True)}" for h in main.find_all(re.compile("^h[123]$"))]
     internal, external = {}, {}
     for a in main.select("a[href]"):
+        if a.find_parent("nav"):
+            continue
         href, anchor = a["href"], a.get_text(" ", strip=True)
         if href.startswith("/") and href != "/":
             internal.setdefault(href, anchor)
@@ -155,11 +161,11 @@ Each page has exactly one H1. Quote and calculator H3s belong to their preceding
 | Next | Unique explanations, relevant resources, FAQs | {'Gold drivers, spot/futures/bullion/CFD distinction and gold trading considerations.' if kind == 'gold' else 'Ratio interpretation, industrial demand, gold/silver differences, South African currency context and product exposure.'} Short paragraphs, tables and contextual links. |
 | Last | Sources, corrections, original illustration | Named author, methodology, limitations, no invented expertise or broker endorsements. |
 
-Use 16px body copy and comparison-table cells, short paragraphs, 44px controls, strong focus states, a responsive white layout and restrained gold/silver accents. Small utility labels and source timestamps are secondary UI. Reserve card/chart space; the interface must never turn a missing quote into `0.00`.
+Use 16px body copy and comparison-table cells, short paragraphs, 44px controls, strong focus states, a responsive white layout and restrained gold/silver accents. Large tabular price figures, metal identity cards, a dashboard switcher, a visible spot/history/FX timing guide, chart area fills and styled result panels establish the visual hierarchy. Small utility labels and source timestamps are secondary UI. Reserve card/chart space; the interface must never turn a missing quote into `0.00`.
 
 ## Chart and calculator specification
 
-{chart} Historical points are provider **completed daily averages**, not closes. The current quote is never attached to this line. 24H displays an explicit unsupported explanation on the connected free daily-data plan. No dummy chart is published while historical access is absent.
+{chart} Historical points are provider **completed daily averages**, not closes. The current quote is never attached to this line. Area shading, a hover crosshair, exact selected-range dates, actual daily-average range high/low and the observed period percentage support reading the chart. Each metal has a CSV button that exports unrounded observations for the selected range with source attribution. 24H displays an explicit unsupported explanation on the connected free daily-data plan. No dummy chart is published while historical access is absent.
 
 {calculator} Use exact troy conversion, dated FX, fine-metal fraction and unrounded arithmetic; display errors for invalid input, missing data and overflow. Explain that results exclude retail costs and tax. Full formulas, period definitions, coverage guards, accessible table pagination and cache limits are in [data-and-operations.md](data-and-operations.md).
 

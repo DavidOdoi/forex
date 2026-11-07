@@ -20,15 +20,15 @@ Two-metal destination: aligned gold/silver quotes, ratio, comparable performance
 The block below exports the complete implemented server-visible copy, including FAQs and source anchors. Double-brace fields are data bindings, never literal publishable prices. Render a validated value with its as-of time or a specific unavailable state. Controls update their labels/results interactively; do not freeze an example quote in the article.
 
 ```markdown
-Devin Forex / Precious metals
+Precious metals / Market overview
 
 # Gold and silver spot prices
 
-Two metals. A clearer comparison.
+Gold and silver spot prices in USD per troy ounce. Compare daily performance, calculate metal value and track the ratio.
 
-Compare gold and silver spot prices in USD per troy ounce. Check both metals, estimate their value and see how many silver ounces equal one gold ounce.
+The latest reference
 
-## Gold and silver spot prices today
+## Current spot prices
 
 - Display currency (USD; ZAR; EUR; GBP)
 
@@ -48,9 +48,21 @@ Today vs UTC open · USD: {{silver.today_amount_and_percent_or_unavailable}}
 
 Status: {{silver.freshness_status}}. Provider updated {{silver.source_timestamp_utc}}.
 
-Source: [Gold API indicative spot feed](https://gold-api.com/faqs). Updates checked every 30 seconds while this tab is visible. Provider time means last source fetch, not a trade timestamp. Market-open status and underlying delay are not verified.
+Source: [Gold API indicative spot feed](https://gold-api.com/faqs) · Checked every 30 seconds while this tab is visible.
+
+- **Spot quotes**: Automatic 30s checks
+
+- **Chart & returns**: Completed daily averages
+
+- **Currency rates**: Daily reference rates
+
+What does “updated” mean?
+
+Provider time means its last source fetch, not a trade timestamp. The displayed price can lag behind the source because of caching. Market-open status and underlying feed delay are not verified; these are indicative references, not executable trading quotes.
 
 Choose ZAR, EUR or GBP for an estimated local-currency value. [How our data works](#data-sources)
+
+Au Ag
 
 Relative value, not a trading signal
 
@@ -60,7 +72,7 @@ Gold ÷ silver, using USD per troy ounce for both metals.
 
 **{{gold_silver_ratio_or_unavailable}}** 1 oz of gold ≈ {{validated_ratio}} oz of silver. Requires two recent quotes within 60 seconds of each other.
 
-See the movement
+Historical perspective
 
 ## Gold and silver price charts
 
@@ -77,6 +89,8 @@ Know the spot value
 Estimate each metal independently using the same weight convention. A kilogram of silver and a kilogram of gold have the same mass, but very different spot values.
 
 ### Gold value
+
+XAU
 
 - Calculate (Weight → value; Budget → weight)
 
@@ -95,6 +109,8 @@ Estimated spot metal value
 Reference quote: {{gold.source_timestamp_utc}}. Status: {{gold.freshness_status}}. FX reference if applicable: {{currency.reference_date}}. Uses unrounded inputs; display values are rounded.
 
 ### Silver value
+
+XAG
 
 - Calculate (Weight → value; Budget → weight)
 
@@ -116,7 +132,7 @@ Reference quote: {{silver.source_timestamp_utc}}. Status: {{silver.freshness_sta
 
 A consistent basis
 
-## Gold vs silver: performance and conversions
+## Gold and silver spot prices compared
 
 “Recent” means the last 7 or 30 calendar days, compared using completed daily averages in USD. The baseline is the latest available observation on or before the target date, up to four days earlier. YTD starts from the last available average before 1 January. Missing coverage stays unavailable.
 
@@ -221,7 +237,7 @@ Original DEVIN FOREX explanatory diagram. No current prices are embedded.
 ## Full heading structure
 
 - H1: Gold and silver spot prices
-  - H2: Gold and silver spot prices today
+  - H2: Current spot prices
     - H3: Gold XAU /USD
     - H3: Silver XAG /USD
   - H2: The gold-silver ratio
@@ -229,7 +245,7 @@ Original DEVIN FOREX explanatory diagram. No current prices are embedded.
   - H2: Gold and silver value calculators
     - H3: Gold value
     - H3: Silver value
-  - H2: Gold vs silver: performance and conversions
+  - H2: Gold and silver spot prices compared
   - H2: What the gold-silver ratio tells you
   - H2: What moves gold and silver differently?
   - H2: Comparing metal prices in South Africa
@@ -259,11 +275,11 @@ Each page has exactly one H1. Quote and calculator H3s belong to their preceding
 | Next | Unique explanations, relevant resources, FAQs | Ratio interpretation, industrial demand, gold/silver differences, South African currency context and product exposure. Short paragraphs, tables and contextual links. |
 | Last | Sources, corrections, original illustration | Named author, methodology, limitations, no invented expertise or broker endorsements. |
 
-Use 16px body copy and comparison-table cells, short paragraphs, 44px controls, strong focus states, a responsive white layout and restrained gold/silver accents. Small utility labels and source timestamps are secondary UI. Reserve card/chart space; the interface must never turn a missing quote into `0.00`.
+Use 16px body copy and comparison-table cells, short paragraphs, 44px controls, strong focus states, a responsive white layout and restrained gold/silver accents. Large tabular price figures, metal identity cards, a dashboard switcher, a visible spot/history/FX timing guide, chart area fills and styled result panels establish the visual hierarchy. Small utility labels and source timestamps are secondary UI. Reserve card/chart space; the interface must never turn a missing quote into `0.00`.
 
 ## Chart and calculator specification
 
-Two individually labelled, side-by-side gold/silver charts; 24H, 7D, 30D, 6M, 1Y and 5Y controls. Stack on mobile; do not imply matching Y-axis scales. Historical points are provider **completed daily averages**, not closes. The current quote is never attached to this line. 24H displays an explicit unsupported explanation on the connected free daily-data plan. No dummy chart is published while historical access is absent.
+Two individually labelled, side-by-side gold/silver charts; 24H, 7D, 30D, 6M, 1Y and 5Y controls. Stack on mobile; do not imply matching Y-axis scales. Historical points are provider **completed daily averages**, not closes. The current quote is never attached to this line. Area shading, a hover crosshair, exact selected-range dates, actual daily-average range high/low and the observed period percentage support reading the chart. Each metal has a CSV button that exports unrounded observations for the selected range with source attribution. 24H displays an explicit unsupported explanation on the connected free daily-data plan. No dummy chart is published while historical access is absent.
 
 Independent gold and silver calculators with troy-ounce/gram/kilogram units, USD/ZAR/EUR/GBP and purity. Gold includes karat/fineness; silver includes fine/sterling options. Use exact troy conversion, dated FX, fine-metal fraction and unrounded arithmetic; display errors for invalid input, missing data and overflow. Explain that results exclude retail costs and tax. Full formulas, period definitions, coverage guards, accessible table pagination and cache limits are in [data-and-operations.md](data-and-operations.md).
 

@@ -20,15 +20,15 @@ Gold-only destination: current XAU/USD, unit conversions, purity, spot-value cal
 The block below exports the complete implemented server-visible copy, including FAQs and source anchors. Double-brace fields are data bindings, never literal publishable prices. Render a validated value with its as-of time or a specific unavailable state. Controls update their labels/results interactively; do not freeze an example quote in the article.
 
 ```markdown
-Devin Forex / Precious metals
+Precious metals / Market overview
 
 # Gold price today
 
-One clear price. Every useful conversion.
+Gold price today in USD per troy ounce. Convert weights and currencies, estimate metal value and explore daily history.
 
-Check the gold price today in USD per troy ounce. Convert to grams, kilos or another currency, and estimate your gold’s spot value.
+The latest reference
 
-## Gold price today at a glance
+## Current gold price
 
 - Display currency (USD; ZAR; EUR; GBP)
 
@@ -46,11 +46,21 @@ Gold, by weight
 
 [Calculate your gold’s value](#calculator)
 
-Source: [Gold API indicative spot feed](https://gold-api.com/faqs). Updates checked every 30 seconds while this tab is visible. Provider time means last source fetch, not a trade timestamp. Market-open status and underlying delay are not verified.
+Source: [Gold API indicative spot feed](https://gold-api.com/faqs) · Checked every 30 seconds while this tab is visible.
+
+- **Spot quotes**: Automatic 30s checks
+
+- **Chart & returns**: Completed daily averages
+
+- **Currency rates**: Daily reference rates
+
+What does “updated” mean?
+
+Provider time means its last source fetch, not a trade timestamp. The displayed price can lag behind the source because of caching. Market-open status and underlying feed delay are not verified; these are indicative references, not executable trading quotes.
 
 Choose ZAR, EUR or GBP for an estimated local-currency value. [How our data works](#data-sources)
 
-See the movement
+Historical perspective
 
 ## Gold price chart
 
@@ -67,6 +77,8 @@ Know the spot value
 Convert weight into estimated value, or find how much gold a budget represents. Purity adjusts the metal content; it does not estimate a jeweller’s offer.
 
 ### Gold value
+
+XAU
 
 - Calculate (Weight → value; Budget → weight)
 
@@ -88,7 +100,7 @@ Reference quote: {{gold.source_timestamp_utc}}. Status: {{gold.freshness_status}
 
 A consistent basis
 
-## Recent gold-price performance
+## Gold price today and recent performance
 
 “Recent” means the last 7 or 30 calendar days, compared using completed daily averages in USD. The baseline is the latest available observation on or before the target date, up to four days earlier. YTD starts from the last available average before 1 January. Missing coverage stays unavailable.
 
@@ -206,12 +218,12 @@ Original DEVIN FOREX explanatory diagram. No current prices are embedded.
 ## Full heading structure
 
 - H1: Gold price today
-  - H2: Gold price today at a glance
+  - H2: Current gold price
     - H3: Gold XAU /USD
   - H2: Gold price chart
   - H2: Gold price calculator
     - H3: Gold value
-  - H2: Recent gold-price performance
+  - H2: Gold price today and recent performance
   - H2: What affects the gold price?
     - H3: Dollar, rates and inflation
     - H3: Demand and uncertainty
@@ -244,11 +256,11 @@ Each page has exactly one H1. Quote and calculator H3s belong to their preceding
 | Next | Unique explanations, relevant resources, FAQs | Gold drivers, spot/futures/bullion/CFD distinction and gold trading considerations. Short paragraphs, tables and contextual links. |
 | Last | Sources, corrections, original illustration | Named author, methodology, limitations, no invented expertise or broker endorsements. |
 
-Use 16px body copy and comparison-table cells, short paragraphs, 44px controls, strong focus states, a responsive white layout and restrained gold/silver accents. Small utility labels and source timestamps are secondary UI. Reserve card/chart space; the interface must never turn a missing quote into `0.00`.
+Use 16px body copy and comparison-table cells, short paragraphs, 44px controls, strong focus states, a responsive white layout and restrained gold/silver accents. Large tabular price figures, metal identity cards, a dashboard switcher, a visible spot/history/FX timing guide, chart area fills and styled result panels establish the visual hierarchy. Small utility labels and source timestamps are secondary UI. Reserve card/chart space; the interface must never turn a missing quote into `0.00`.
 
 ## Chart and calculator specification
 
-One gold-only chart; 24H, 7D, 30D, 6M, 1Y, 5Y and All controls. Historical points are provider **completed daily averages**, not closes. The current quote is never attached to this line. 24H displays an explicit unsupported explanation on the connected free daily-data plan. No dummy chart is published while historical access is absent.
+One gold-only chart; 24H, 7D, 30D, 6M, 1Y, 5Y and All controls. Historical points are provider **completed daily averages**, not closes. The current quote is never attached to this line. Area shading, a hover crosshair, exact selected-range dates, actual daily-average range high/low and the observed period percentage support reading the chart. Each metal has a CSV button that exports unrounded observations for the selected range with source attribution. 24H displays an explicit unsupported explanation on the connected free daily-data plan. No dummy chart is published while historical access is absent.
 
 One gold calculator with theoretical karat/fineness adjustment, USD/ZAR/EUR/GBP, troy ounces/grams/kilograms and weight-to-value or budget-to-weight modes. Use exact troy conversion, dated FX, fine-metal fraction and unrounded arithmetic; display errors for invalid input, missing data and overflow. Explain that results exclude retail costs and tax. Full formulas, period definitions, coverage guards, accessible table pagination and cache limits are in [data-and-operations.md](data-and-operations.md).
 

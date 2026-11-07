@@ -5,6 +5,7 @@ import { siteOrigin } from "../src/lib/site";
 import { emptyHistory, type History, type Quote } from "../src/lib/metals/types";
 import { metalsIndexable } from "../src/lib/metals/seo";
 import { configuredHistoryKey } from "../src/lib/metals/config";
+import { readFile } from "node:fs/promises";
 const now = Date.UTC(2026, 10, 7, 12), asOf = new Date(now).toISOString();
 const gold: Quote = { symbol: "XAU", price: 4200, asOf }, silver: Quote = { symbol: "XAG", price: 52.5, asOf };
 
@@ -118,11 +119,20 @@ test("calculators, ratio, honest free-plan chart ranges and accessible data work
   await expect(calc.getByRole("status")).toContainText("budget");
   await page.locator("#charts").scrollIntoViewIfNeeded();
   await expect(page.locator("#charts svg[role=img]")).toHaveCount(2);
-  await page.getByRole("button", { name: "24H", exact: true }).click(); await expect(page.locator("#charts")).toContainText("no intraday movement is inferred"); await expect(page.locator("#charts svg")).toHaveCount(0);
+  await page.getByRole("button", { name: "24H", exact: true }).click(); await expect(page.locator("#charts")).toContainText("no intraday movement is inferred"); await expect(page.locator('#charts svg[role="img"]')).toHaveCount(0);
   await page.getByRole("button", { name: "1Y", exact: true }).click();
   await page.getByText("View accessible chart data", { exact: true }).first().click();
   await expect(page.locator("#charts table").first().locator("tbody tr")).toHaveCount(50);
   await page.getByRole("button", { name: "Next", exact: true }).click(); await expect(page.locator("#charts")).toContainText("Page 2 of");
+  const downloadEvent = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download Gold chart data (CSV)", exact: true }).click();
+  const download = await downloadEvent;
+  expect(download.suggestedFilename()).toMatch(/^xau-daily-averages-\d{4}-\d{2}-\d{2}-to-\d{4}-\d{2}-\d{2}\.csv$/);
+  const csv = await readFile((await download.path())!, "utf8"), rows = csv.trim().split("\r\n");
+  expect(rows[0]).toBe("date_utc,average_usd_per_troy_ounce,metal,source");
+  expect(rows).toHaveLength(367);
+  expect(rows.slice(1).every(row => { const fields = row.split(","); return /^\d{4}-\d{2}-\d{2}$/.test(fields[0]) && Number(fields[1]) > 0 && fields[2] === "XAU" && fields[3] === "https://gold-api.com/"; })).toBe(true);
+  await expect(page.getByRole("definition").filter({ hasText: "Completed daily averages" })).toHaveCount(1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 test("stale or unavailable feeds never produce a current ratio or a fictional historical chart", async ({ page }) => {
@@ -130,7 +140,7 @@ test("stale or unavailable feeds never produce a current ratio or a fictional hi
   await expect(page.locator('[data-quote="XAU"]')).toContainText("Stale quote");
   await expect(page.locator("[data-ratio]")).toHaveText("Unavailable");
   await page.locator("#charts").scrollIntoViewIfNeeded(); await expect(page.locator("#charts")).toContainText("no sample prices or invented line");
-  await expect(page.locator("#charts svg")).toHaveCount(0);
+  await expect(page.locator('#charts svg[role="img"]')).toHaveCount(0);
   const calc = page.locator('[data-calculator="XAU"]'); await expect(calc).toContainText("Stale reference quote");
   await expect(calc.locator("output")).toHaveText(/4,200\.00/);
 });

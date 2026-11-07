@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowDownUp, ArrowUpRight, CircleHelp, RefreshCw } from "lucide-react";
+import { ArrowDownUp, ArrowUpRight, CircleHelp, RefreshCw, Clock3, ChartNoAxesCombined, Coins, ArrowRight } from "lucide-react";
 import { change, fxRate, historyChange, metalValue, metalWeight, money, percent, quoteIsFresh, ratio, timestampLabel, todayChange } from "@/lib/metals/math";
 import { currencies, emptyHistory, names, type Currency, type History, type Metal, type Snapshot, type Unit } from "@/lib/metals/types";
 import type { HubKind } from "@/lib/metals/content";
@@ -10,7 +10,10 @@ import styles from "./metals.module.css";
 const MetalChart = dynamic(() => import("./metal-chart"), { loading: () => <div className={styles.chartPlaceholder}>Loading chart controls…</div> });
 const units: Record<Unit, string> = { oz: "Troy ounces", g: "Grams", kg: "Kilograms" };
 function Delta({ value }: { value: ReturnType<typeof change> }) {
-  return value ? <span className={value.percent < 0 ? styles.loss : styles.gain}>{value.amount >= 0 ? "+" : "−"}{money(Math.abs(value.amount))} ({percent(value.percent)})</span> : <span>Not available</span>;
+  if (!value) return <span className={styles.unavailable}>Not available</span>;
+  // Differences below display precision must not look like a negative-zero loss.
+  const amount = Number(value.amount.toFixed(2)), pct = Number(value.percent.toFixed(2));
+  return <span className={pct === 0 ? styles.neutral : pct < 0 ? styles.loss : styles.gain}>{amount > 0 ? "+" : amount < 0 ? "−" : ""}{money(Math.abs(amount))} ({pct === 0 ? "0.00%" : percent(pct)})</span>;
 }
 function CurrencySelect({ value, onChange, id }: { value: Currency; onChange: (c: Currency) => void; id: string }) {
   return <label className={styles.currency} htmlFor={id}>Display currency<select id={id} value={value} onChange={e => onChange(e.target.value as Currency)}>{currencies.map(code => <option key={code}>{code}</option>)}</select></label>;
@@ -75,30 +78,32 @@ export function MarketDashboard({ initial, kind, navigation }: { initial: Snapsh
   }, []);
   return <div className={styles.dashboard}>
     <section id="spot-prices" aria-labelledby="spot-heading">
-      <div className={styles.sectionBar}><h2 id="spot-heading">{kind === "gold" ? "Gold price today at a glance" : "Gold and silver spot prices today"}</h2><CurrencySelect id="price-currency" value={currency} onChange={setCurrency} /></div>
+      <div className={styles.sectionBar}><div><p className={styles.eyebrow}>The latest reference</p><h2 id="spot-heading">{kind === "gold" ? "Current gold price" : "Current spot prices"}</h2></div><CurrencySelect id="price-currency" value={currency} onChange={setCurrency} /></div>
       <div className={kind === "gold" ? styles.singleQuote : styles.dualQuotes}>
         {selected.map(symbol => {
           const quote = snapshot.quotes[symbol], fresh = quoteIsFresh(quote, now);
           return <div key={symbol} className={`${styles.quote} ${symbol === "XAG" ? styles.silverQuote : ""}`} data-quote={symbol}>
-            <div className={styles.quoteTop}><span className={styles.symbol}>{symbol === "XAU" ? "Au" : "Ag"}</span><div><h3>{names[symbol]} <span>{symbol}/USD</span></h3><p>Price per troy ounce · {currency}</p></div><span className={fresh ? styles.status : styles.stale}>{fresh ? "Recently updated" : quote ? "Stale quote" : "Feed unavailable"}</span></div>
+            <div className={styles.quoteTop}><span className={styles.symbol}><small>{symbol === "XAU" ? "79" : "47"}</small>{symbol === "XAU" ? "Au" : "Ag"}</span><div><h3>{names[symbol]} <span>{symbol}/USD</span></h3><p><span className={styles.fullUnit}>Price per troy ounce</span><span className={styles.compactUnit}>Troy oz</span> · {currency}</p></div><span className={fresh ? styles.status : styles.stale}><span aria-hidden="true" />{fresh ? "Recent quote" : quote ? "Stale quote" : "Feed unavailable"}</span></div>
             <p className={styles.price}>{quote && rate ? <><span className={styles.priceCurrency}>{currency} </span><span>{new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(quote.price * rate)}</span></> : "Price unavailable"}</p>
             <div className={styles.dailyChange}><span>Today vs UTC open · USD</span><Delta value={todayChange(quote, history[symbol].today, now)} /></div>
-            <p className={styles.quoteTime}>{quote ? <>Provider updated <time dateTime={quote.asOf}>{timestampLabel(quote.asOf)}</time></> : "No verified provider timestamp. Please try again later."}</p>
+            <p className={styles.quoteTime}><Clock3 size={13} aria-hidden="true" />{quote ? <>Updated <time dateTime={quote.asOf}>{timestampLabel(quote.asOf)}</time></> : "No verified provider timestamp. Please try again later."}</p>
           </div>;
         })}
-        {kind === "gold" && <div className={styles.quickConversions}><p className={styles.eyebrow}>Gold, by weight</p>{(["g", "kg"] as const).map(unit => <div key={unit}><span>1 {unit === "g" ? "gram" : "kilogram"}</span><strong>{snapshot.quotes.XAU && rate ? money(metalValue(1, unit, snapshot.quotes.XAU.price, rate), currency) : "Unavailable"}</strong></div>)}<a href="#calculator">Calculate your gold’s value <ArrowUpRight size={16} aria-hidden="true" /></a></div>}
+        {kind === "gold" && <div className={styles.quickConversions}><div className={styles.conversionHeading}><Coins size={19} aria-hidden="true" /><p className={styles.eyebrow}>Gold, by weight</p></div>{(["g", "kg"] as const).map(unit => <div key={unit}><span>1 {unit === "g" ? "gram" : "kilogram"}<small>{unit === "g" ? "1/31.1034768 troy oz" : "1,000 grams"}</small></span><strong>{snapshot.quotes.XAU && rate ? money(metalValue(1, unit, snapshot.quotes.XAU.price, rate), currency) : "Unavailable"}</strong></div>)}<a href="#calculator">Calculate your gold’s value <ArrowUpRight size={16} aria-hidden="true" /></a></div>}
       </div>
-      <div className={styles.feedLine}><p>Source: <a href="https://gold-api.com/faqs">Gold API indicative spot feed</a>. Updates checked every 30 seconds while this tab is visible. Provider time means last source fetch, not a trade timestamp. Market-open status and underlying delay are not verified.</p><button type="button" onClick={() => retry.current()} disabled={refreshing}><RefreshCw size={16} aria-hidden="true" />{refreshing ? "Checking…" : "Refresh"}</button></div>
+      <div className={styles.feedLine}><p>Source: <a href="https://gold-api.com/faqs">Gold API indicative spot feed</a> · Checked every 30 seconds while this tab is visible.</p><button type="button" onClick={() => retry.current()} disabled={refreshing}><RefreshCw className={refreshing ? styles.refreshing : undefined} size={15} aria-hidden="true" />{refreshing ? "Checking…" : "Refresh prices"}</button></div>
+      <dl className={styles.dataModes} aria-label="Data freshness guide"><div><dt><span aria-hidden="true" />Spot quotes</dt><dd>Automatic 30s checks</dd></div><div><dt><ChartNoAxesCombined size={14} aria-hidden="true" />Chart & returns</dt><dd>Completed daily averages</dd></div><div><dt><ArrowDownUp size={14} aria-hidden="true" />Currency rates</dt><dd>Daily reference rates</dd></div></dl>
+      <details className={styles.timingDetails}><summary>What does “updated” mean?</summary><p>Provider time means its last source fetch, not a trade timestamp. The displayed price can lag behind the source because of caching. Market-open status and underlying feed delay are not verified; these are indicative references, not executable trading quotes.</p></details>
       {failed && <p role="status" className={styles.warning}>Refresh failed for one or more feeds. Any retained quote keeps its original timestamp; it is not a new price.</p>}
       <p className={styles.fxNote}>{currency === "USD" ? "Choose ZAR, EUR or GBP for an estimated local-currency value." : selectedFx && rate ? `${currency} conversions use Frankfurter’s daily USD reference rate dated ${selectedFx.date}, not live FX. Metal moves and currency moves both affect local value.` : `The ${currency} reference rate is unavailable or too old. Choose USD to use the metal feed directly.`} <a href="#data-sources">How our data works</a></p>
     </section>
 
     {navigation}
 
-    {kind === "comparison" && <section className={styles.ratioCard} id="ratio" aria-labelledby="ratio-heading"><div><p className={styles.eyebrow}>Relative value, not a trading signal</p><h2 id="ratio-heading">The gold-silver ratio</h2><p>Gold ÷ silver, using USD per troy ounce for both metals.</p></div><div className={styles.ratioValue}><strong data-ratio>{currentRatio === null ? "Unavailable" : `${currentRatio.toFixed(2)} : 1`}</strong><span>{currentRatio === null ? "Requires two recent quotes within 60 seconds of each other." : `1 oz of gold ≈ ${currentRatio.toFixed(2)} oz of silver at these spot references.`}</span></div></section>}
+    {kind === "comparison" && <section className={styles.ratioCard} id="ratio" aria-labelledby="ratio-heading"><div className={styles.ratioIcon} aria-hidden="true"><span>Au</span><ArrowRight size={18} /><span>Ag</span></div><div><p className={styles.eyebrow}>Relative value, not a trading signal</p><h2 id="ratio-heading">The gold-silver ratio</h2><p>Gold ÷ silver, using USD per troy ounce for both metals.</p></div><div className={styles.ratioValue}><strong data-ratio>{currentRatio === null ? "Unavailable" : `${currentRatio.toFixed(2)} : 1`}</strong><span>{currentRatio === null ? "Requires two recent quotes within 60 seconds of each other." : `1 oz of gold ≈ ${currentRatio.toFixed(2)} oz of silver at these spot references.`}</span></div></section>}
 
     <section id="charts" ref={chartRef} aria-labelledby="chart-heading" className={styles.module}>
-      <div className={styles.sectionBar}><div><p className={styles.eyebrow}>See the movement</p><h2 id="chart-heading">{kind === "gold" ? "Gold price chart" : "Gold and silver price charts"}</h2></div><span className={styles.badge}>USD · daily averages · UTC</span></div>
+      <div className={styles.sectionBar}><div><p className={styles.eyebrow}>Historical perspective</p><h2 id="chart-heading">{kind === "gold" ? "Gold price chart" : "Gold and silver price charts"}</h2></div><span className={styles.badge}><ChartNoAxesCombined size={14} aria-hidden="true" />USD · daily averages · UTC</span></div>
       <p>Historical lines use completed UTC-day average spot prices, not closing prices or futures. Current quotes above are separate. A daily average can hide larger intraday moves.</p>
       {showCharts ? <MetalChart kind={kind} history={history} loaded={historyLoaded} /> : <div className={styles.chartPlaceholder}>Historical chart loads when it approaches the screen.</div>}
       <noscript>Interactive chart controls require JavaScript. Quote timestamps and the source explanation remain available above and below.</noscript>
@@ -111,7 +116,7 @@ export function MarketDashboard({ initial, kind, navigation }: { initial: Snapsh
       <aside className={styles.warning}><CircleHelp size={20} aria-hidden="true" /><p><strong>Spot value is a starting point.</strong> Results exclude dealer premiums or discounts, buy-sell spreads, assay charges, tax/VAT, shipping, insurance and storage. Tax treatment varies by country and product. A resale offer may be below spot.</p></aside>
     </section>
 
-    <section id="performance" className={styles.module} aria-labelledby="performance-heading"><p className={styles.eyebrow}>A consistent basis</p><h2 id="performance-heading">{kind === "gold" ? "Recent gold-price performance" : "Gold vs silver: performance and conversions"}</h2>
+    <section id="performance" className={styles.module} aria-labelledby="performance-heading"><p className={styles.eyebrow}>A consistent basis</p><h2 id="performance-heading">{kind === "gold" ? "Gold price today and recent performance" : "Gold and silver spot prices compared"}</h2>
       <p>“Recent” means the last 7 or 30 calendar days, compared using completed daily averages in USD. The baseline is the latest available observation on or before the target date, up to four days earlier. YTD starts from the last available average before 1 January. Missing coverage stays unavailable.</p>
       <div className={styles.tableWrap}><table><caption>Spot quotes, daily-average returns and weight conversions</caption><thead><tr><th scope="col">Measure</th>{selected.map(s => <th scope="col" key={s}>{names[s]}</th>)}</tr></thead><tbody>
         <tr><th scope="row">Latest quote · USD/oz</th>{selected.map(s => <td key={s}>{snapshot.quotes[s] ? money(snapshot.quotes[s]!.price) : "Unavailable"}</td>)}</tr>
@@ -138,7 +143,7 @@ function ValueCalculator({ symbol, snapshot, now }: { symbol: Metal; snapshot: S
       result = mode === "value" ? money(metalValue(value, unit, quote.price, rate, fraction), currency) : `${new Intl.NumberFormat("en-US", { maximumFractionDigits: 6 }).format(metalWeight(value, unit, quote.price, rate, fraction))} ${unit === "oz" ? "troy oz" : unit}`;
     }
   } catch (e) { error = e instanceof Error ? e.message : "Check your inputs."; }
-  return <div className={styles.calculator} data-calculator={symbol}><h3>{names[symbol]} value</h3><div className={styles.fields}>
+  return <div className={styles.calculator} data-calculator={symbol}><div className={styles.calculatorTitle}><span className={`${styles.metalDot} ${symbol === "XAG" ? styles.silverDot : ""}`} aria-hidden="true" /><h3>{names[symbol]} value</h3><span className={styles.calculatorSymbol}>{symbol}</span></div><div className={styles.fields}>
     <label>Calculate<select aria-label="Calculate" value={mode} onChange={e => setMode(e.target.value)}><option value="value">Weight → value</option><option value="weight">Budget → weight</option></select></label>
     <label>{mode === "value" ? "Weight" : `Budget (${currency})`}<input type="number" inputMode="decimal" min="0" max="1000000000000" step="any" value={amount} onChange={e => setAmount(e.target.value)} /></label>
     <label>Weight unit<select value={unit} onChange={e => setUnit(e.target.value as Unit)}>{Object.entries(units).map(([key, name]) => <option key={key} value={key}>{name}</option>)}</select></label>

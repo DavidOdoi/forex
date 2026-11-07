@@ -6,7 +6,7 @@ export const hubs = {
     path: "/gold-price", title: "Gold Price Today: Live XAU/USD, Charts & Calculator",
     description: "Check the gold price today per ounce, gram and kilo in USD, ZAR, EUR and GBP. View XAU/USD charts, compare recent changes and estimate your gold’s spot value.",
     heading: "Gold price today", subheading: "One clear price. Every useful conversion.",
-    intro: "Check the gold price today in USD per troy ounce. Convert to grams, kilos or another currency, and estimate your gold’s spot value.",
+    intro: "Gold price today in USD per troy ounce. Convert weights and currencies, estimate metal value and explore daily history.",
     image: "/images/metals/gold-price-today-conversion-guide.png",
     imageAlt: "Gold price today conversion guide: one troy ounce equals 31.1034768 grams; one kilogram equals 1,000 grams",
     faqs: [
@@ -23,7 +23,7 @@ export const hubs = {
     path: "/gold-silver-prices", title: "Gold & Silver Prices Today: Live Spot Charts & Ratio",
     description: "Compare gold and silver spot prices in USD and ZAR. View charts, check the gold-silver ratio, compare performance and calculate the spot value of either metal.",
     heading: "Gold and silver spot prices", subheading: "Two metals. A clearer comparison.",
-    intro: "Compare gold and silver spot prices in USD per troy ounce. Check both metals, estimate their value and see how many silver ounces equal one gold ounce.",
+    intro: "Gold and silver spot prices in USD per troy ounce. Compare daily performance, calculate metal value and track the ratio.",
     image: "/images/metals/gold-silver-price-comparison-dashboard.png",
     imageAlt: "Gold and silver spot prices ratio diagram: gold per troy ounce divided by silver per troy ounce",
     faqs: [
