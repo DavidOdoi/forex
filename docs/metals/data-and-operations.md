@@ -70,11 +70,11 @@ No retail premium, spread, assay, tax/VAT, delivery, custody or financing assump
 
 Quotes share Next’s 30-second data cache. The browser checks the same-origin `/api/metals` every 30 seconds while visible, pauses hidden-tab polling and refreshes on return. Values update without changing the page structure.
 
-Authenticated history is fetched only by the server. Daily series and 52-week windows cache for 12 hours; today’s opening reference caches for one hour. Whole history results, including failures, cache for one hour. Stable UTC boundaries avoid a new upstream URL per visitor. Public routes accept no user-selected upstream URL or time window.
+Authenticated history is fetched only by the server. Daily series and 52-week windows cache for 12 hours; today’s opening reference caches for one hour. Whole history results, including failures, cache for one hour. Configuration is checked at request time: the supporting history endpoint uses `no-store`, so a missing-key response cannot be prerendered or retained by a CDN. Data-cache identity includes a server-only credential hash so changing a key does not reuse a failure from an old key. Stable UTC boundaries avoid a new upstream URL per visitor. Public routes accept no user-selected upstream URL or time window.
 
 With one shared Next data cache and no outside consumers of the same key, the initial load needs six history/OHLC calls for both metals; routine refreshes usually need two per hour, plus at most four 12-hour refreshes. This fits the currently documented shared ten-call hourly free allowance. Deployments, simultaneous cold regions, manual cache purges or another application using the key can exhaust it. Verify the actual account counter after setup; use one production region/cache and increase TTLs or add a shared rate gate if needed. Do not promise the free limit cannot be exceeded under every deployment topology.
 
-The API routes send `X-Robots-Tag: noindex` and public cache headers; they are supporting data endpoints, not extra search pages. There is no `NEXT_PUBLIC_` API key. Do not log header values or raw provider error bodies.
+The API routes send `X-Robots-Tag: noindex`; quotes have public cache headers, while history configuration is checked through a `no-store` endpoint backed by the shared server data cache. Public history failures expose only a fixed issue category and HTTP status, never raw error payloads, credential values or credential hashes. There is no `NEXT_PUBLIC_` API key. Do not log header values or raw provider error bodies.
 
 ## Core Web Vitals and mobile checks
 

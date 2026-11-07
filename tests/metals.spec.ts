@@ -46,6 +46,15 @@ test("ratios require recent aligned quotes and returns never invent a missing ba
   expect(parseOhlc(raw, open.start, open.end)?.high).toBe(4300);
   expect(parseOhlc({ ...raw, high: 3000 }, open.start, open.end)).toBeNull();
 });
+test("history configuration is checked at runtime and missing keys cannot be cached by the CDN", async ({ request }) => {
+  const response = await request.get("/api/metals/history");
+  expect(response.status()).toBe(200);
+  expect(response.headers()["cache-control"]).toContain("no-store");
+  expect(response.headers()["x-robots-tag"]).toBe("noindex");
+  const history = await response.json();
+  for (const symbol of ["XAU", "XAG"]) expect(["available", "unavailable", "not-configured"]).toContain(history[symbol].status);
+  expect(JSON.stringify(history)).not.toMatch(/x-api-key|GOLD_API_KEY|credentialScope/);
+});
 test("both hubs expose distinct indexable server content, source links, schema and working internal destinations", async ({ browser, request }) => {
   const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage();
   try { for (const kind of ["gold", "comparison"] as const) {

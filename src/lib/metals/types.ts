@@ -9,6 +9,8 @@ export type Point = { date: string; price: number };
 export type Ohlc = { open: number; high: number; low: number; close: number; start: number; end: number };
 export type History = {
   status: "available" | "not-configured" | "unavailable";
+  issue?: "authentication-rejected" | "access-denied" | "rate-limit" | "provider-error" | "network-error" | "invalid-data";
+  providerStatus?: number;
   points: Point[];
   today: Ohlc | null;
   year: Ohlc | null;
