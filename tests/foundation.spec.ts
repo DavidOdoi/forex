@@ -3,6 +3,8 @@ import { insightArticles } from "../src/lib/insights/catalog";
 import { insightsIndexable } from "../src/lib/insights/seo";
 import { calculators, toolPath } from "../src/lib/calculators/catalog";
 import { calculatorsIndexable } from "../src/lib/calculators/seo";
+import { hubPaths } from "../src/lib/metals/content";
+import { metalsIndexable } from "../src/lib/metals/seo";
 
 const routes = [
   "/",
@@ -210,6 +212,7 @@ test("sitemap, robots, exported favicon and custom 404", async ({
     ...(process.env.SITE_URL && process.env.VERCEL_ENV !== "preview" ? routes : []),
     ...(insightsIndexable ? ["/insights", ...insightArticles.map(article => `/insights/${article.slug}`)] : []),
     ...(calculatorsIndexable ? ["/tools", ...calculators.map(toolPath)] : []),
+    ...(metalsIndexable ? hubPaths : []),
   ]);
   expect((xml.match(/<loc>/g) ?? []).length).toBe(expectedPaths.size);
   for (const path of expectedPaths) expect(xml).toContain(new URL(path, process.env.SITE_URL ?? "https://devinforex-five.vercel.app").href);

@@ -20,6 +20,8 @@ const menu = [
     { label: "Profit calculator", href: "/tools/forex-profit-calculator" },
     { label: "Position size calculator", href: "/tools/forex-position-size-calculator" },
     { label: "Compounding calculator", href: "/tools/forex-compounding-calculator" },
+    { label: "Gold price today", href: "/gold-price" },
+    { label: "Gold & silver prices", href: "/gold-silver-prices" },
   ] },
   { label: "Insights", to: "/insights", items: [
     { label: "Beginner guides", href: "/insights#beginner-guides" }, { label: "Strategies & risk", href: "/insights#strategies" }, { label: "Platforms & technology", href: "/insights#market-guides" },
