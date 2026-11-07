@@ -177,7 +177,7 @@ Every destination above was checked against the local production app. Header and
 | --- | --- |
 {anchors(external)}
 
-These sources support actual methodology or market explanations. They are not affiliate links. Public provider terms and editorial references were checked on 7 November 2026; authenticated history verification is pending the owner’s free key.
+These sources support actual methodology or market explanations. They are not affiliate links. Public provider terms, editorial references and authenticated production history were checked on 7 November 2026. See [the connection verification record](README.md) for actual coverage and remaining optional-field limitations.
 
 ## Image and social-card plan
 
@@ -211,7 +211,7 @@ Target real-user p75 LCP ≤2.5s, INP ≤200ms and CLS ≤0.1; do not claim meas
 ## Verification before publication and claims to withhold
 
 - Revalidate every current quote, FX observation, timestamp, return, ratio and range at runtime. No financial test values are production data.
-- Confirm a real authenticated history response after `GOLD_API_KEY` is configured, including earliest/latest returned dates, Unix timestamp support, response shape, OHLC windows, truncation and account quota. Until then those modules honestly remain unavailable.
+- Authenticated production series and chart/return calculations were verified on 7 November 2026. See [the connection record](README.md). Recheck date/decimal formats, coverage, OHLC windows, truncation and quota after future provider changes; missing optional values remain unavailable.
 - Verify any future country-specific broker authorisation or tax statement from current primary evidence. There is no affiliate recommendation in this release.
 - Withhold “real-time executable price”, zero delay, complete all-time coverage, guaranteed returns/safety/withdrawals, a predictive ratio, universal VAT rates and Google-ranking promises without the necessary evidence or legal review. A daily FX reference must not be called live FX.
 

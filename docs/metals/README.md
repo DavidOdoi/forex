@@ -18,7 +18,9 @@ The free plan does **not** include minute/hour history. Therefore the 24H contro
 
 Without the key, current quotes, conversions, purity adjustments, budget calculations, the current ratio, explanatory copy and sources work. Historical charts, historical returns, today’s change and 52-week extremes remain unavailable. They are never populated from sample data. Test fixtures exist only in `tests/metals.spec.ts`.
 
-Authenticated history response shapes are implemented against the provider’s public documentation and tested with fixtures. An actual authenticated production response still needs verification after the owner configures the key. Do not describe that verification as completed beforehand.
+Authenticated production history was verified on 7 November 2026 after enabling the owner’s existing `gold_api` variable. The provider returns UTC-midnight date buckets and decimal averages as strings; the adapter normalizes these explicitly. At verification, the gold series contained 19,440 observations and silver 19,144, through 6 November 2026. Actual returned coverage starts in 1800 and contains gaps; this is not a claim of complete continuous market history.
+
+Real production charts were checked in Chromium on desktop and 320px mobile. Weekly, monthly and YTD figures matched independent arithmetic using the returned observations. Gold’s UTC opening reference and provider-observed 52-week range were available. Silver’s opening reference and 52-week range were unavailable at this check, so those fields remain unavailable rather than being inferred from daily averages. Intraday history remains unsupported by the connected free daily plan.
 
 ## Publication package
 

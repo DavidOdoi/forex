@@ -11,7 +11,7 @@
 | UTC-day opening reference | `https://api.gold-api.com/ohlc/{symbol}?startTimestamp=UTC_MIDNIGHT_SECONDS` | Compare the current quote with this segment’s `open`, only when both belong to the current UTC day. Cache the reference for one hour. This is not a New York prior-close return. |
 | Completed 52-week range | `/ohlc/{symbol}?startTimestamp=START&endTimestamp=END` | 364 completed UTC days. Validate OHLC fields and window bounds; require daily coverage reaching the start, at least 200 observations within the window and a latest observation no more than four days old. This is the provider’s observed range, not every venue’s high/low. |
 
-The long-history start requests all observations the provider can return since 1800, not a promise that the provider has continuous data since then. Show actual returned coverage. The first authenticated response must verify that negative Unix timestamps are accepted and whether any pagination or provider truncation applies. If not, adapt to the documented supported start and label the resulting scope; never fabricate older prices. All-time highs remain unasserted because complete market history is not established.
+The long-history start requests all observations the provider can return since 1800, not a promise that the provider has continuous data since then. Production responses on 7 November 2026 accepted the negative Unix start and returned dated series from 1800 through 6 November 2026: 19,440 gold observations and 19,144 silver observations. Date buckets arrived as UTC-midnight strings and decimal averages as strings; the parser validates and normalizes both. Show actual returned coverage and gaps. Independent completeness across every venue is not established, so all-time highs remain unasserted. Future provider changes need renewed checks for pagination or truncation.
 
 ## Checked primary sources
 
@@ -97,12 +97,12 @@ Targets after real deployment: p75 LCP ≤2.5s, INP ≤200ms and CLS ≤0.1. The
 | Monthly | Review primary-source links, API terms/free limits, source-unit contracts, author links, UI accessibility and related internal destinations. |
 | When product or source changes | Recheck formulas and schema; update visible editorial date only for substantive editorial changes. Add a correction note for a material error. |
 
-Before marking the history connection complete, verify a real authenticated response for each symbol, daily grouping semantics, earliest/latest coverage, negative start acceptance, OHLC window timestamps, no silent truncation and free-plan usage. Then check the actual production chart/return values against source observations and a hand calculation.
+The initial authenticated connection was verified on 7 November 2026 for both symbols, including returned daily grouping, date/decimal normalization, actual coverage and negative start acceptance. Real browser charts and weekly/monthly/YTD values matched hand calculations. Gold OHLC windows passed validation. Silver opening/52-week fields were unavailable at this check; do not infer those values from daily averages or present them as verified. Monitor account quota and recheck optional fields at the next normal cache refresh. A future source or plan change requires renewed validation of window timestamps, truncation and free-plan usage.
 
 ## Claims requiring verification before publication or use
 
 - The specific current price, daily change, timestamp, FX rate/date, ratio, returns and range must always come from validated source responses; no hard-coded numbers from a brief or test fixture.
-- Public spot and FX contracts, commercial-use terms and external references were checked. Authenticated historical source values remain pending owner configuration and real-response verification.
+- Public spot and FX contracts, commercial-use terms and external references were checked. Authenticated gold/silver series and browser return calculations were verified on 7 November 2026, with source coverage and remaining silver-field limitations recorded above. This does not independently audit every historical observation.
 - An assertion that a source is undelayed, executable, exchange-grade, complete or equivalent to every venue requires evidence not provided here.
 - Country/product-specific broker authorisation, tax treatment, premiums, custody terms and any future affiliate agreement need current primary evidence.
 
