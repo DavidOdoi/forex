@@ -181,6 +181,12 @@ test("broker finder completes the original three questions and restarts", async 
 
 test("homepage anchors, FAQs and reduced-motion ticker", async ({ page }) => {
   await page.goto("/");
+  const marketBoard = page.getByRole("region", { name: "Markets at a glance", exact: true });
+  await expect(marketBoard).toContainText("Illustrative quotes · not live market data");
+  await expect(marketBoard.getByRole("listitem")).toHaveCount(7);
+  await marketBoard.getByRole("button", { name: "Pause market ticker", exact: true }).click();
+  await expect(page.locator(".ticker")).toHaveCSS("animation-play-state", "paused");
+  await marketBoard.getByRole("button", { name: "Play market ticker", exact: true }).click();
   await page
     .getByRole("main")
     .getByRole("link", { name: "Compare brokers", exact: true })

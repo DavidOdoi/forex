@@ -24,16 +24,7 @@ import Image from "next/image";
 import hero from "@/assets/hero-fx-light.jpg";
 import { brokers, brokerResearchNotice } from "@/lib/brokers";
 import { BrokerCard } from "@/components/broker-card";
-
-const pairs = [
-  ["EUR/USD", "1.0872", "+0.12%"],
-  ["GBP/USD", "1.2741", "-0.08%"],
-  ["USD/JPY", "151.32", "+0.31%"],
-  ["XAU/USD", "2384.10", "+0.54%"],
-  ["AUD/USD", "0.6612", "-0.15%"],
-  ["USD/CHF", "0.9034", "+0.05%"],
-  ["BTC/USD", "68210", "+1.20%"],
-];
+import { MarketTicker } from "@/components/market-ticker";
 
 export default function Index() {
   return (
@@ -77,19 +68,7 @@ export default function Index() {
         </div>
       </section>
 
-      <div className="border-y bg-card/50 py-4">
-        <div className="ticker flex w-max gap-12 whitespace-nowrap">
-          {[...pairs, ...pairs].map(([p, v, c], i) => (
-            <span key={i} className="flex gap-3 text-sm">
-              <b>{p}</b>
-              <span className="text-muted-foreground">{v}</span>
-              <span className={c?.startsWith("+") ? "text-gain" : "text-loss"}>
-                {c}
-              </span>
-            </span>
-          ))}
-        </div>
-      </div>
+      <MarketTicker />
 
       <section id="brokers" className="mx-auto max-w-7xl px-6 py-28">
         <h2 className="font-display text-5xl md:text-6xl">
