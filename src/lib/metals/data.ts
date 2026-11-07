@@ -4,6 +4,7 @@ import { unstable_cache } from "next/cache";
 import { createHash } from "node:crypto";
 import { DAY, dayStart, parseFx, parseHistory, parseOhlc, parseQuote, utcDate } from "./math";
 import { emptyHistory, type History, type Metal, type Snapshot } from "./types";
+import { configuredHistoryKey } from "./config";
 
 const api = "https://api.gold-api.com";
 type JsonResult = { value: unknown; issue?: History["issue"]; providerStatus?: number };
@@ -33,7 +34,7 @@ export const getSnapshot = cache(async (): Promise<Snapshot> => {
 const cachedHistory = unstable_cache(async (symbol: Metal, date: string, credentialScope: string): Promise<History> => {
   // Part of the cache identity; never included in public data or logs.
   void credentialScope;
-  const key = process.env.GOLD_API_KEY;
+  const key = configuredHistoryKey(process.env);
   if (!key) return emptyHistory();
   const now = Date.now(), today = Date.parse(date) / 1000;
   // Stable UTC-day boundaries and shared Next data-cache entries keep the two
@@ -62,7 +63,7 @@ const cachedHistory = unstable_cache(async (symbol: Metal, date: string, credent
 }, ["metals-history-v2"], { revalidate: 3600 });
 
 export const getHistory = cache(async (symbol: Metal): Promise<History> => {
-  const key = process.env.GOLD_API_KEY;
+  const key = configuredHistoryKey(process.env);
   if (!key) return emptyHistory();
   // Cache complete failed responses too, avoiding repeated calls for an invalid
   // key, an exhausted shared quota, or a provider outage.

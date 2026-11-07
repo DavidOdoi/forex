@@ -4,8 +4,16 @@ import { hubs } from "../src/lib/metals/content";
 import { siteOrigin } from "../src/lib/site";
 import { emptyHistory, type History, type Quote } from "../src/lib/metals/types";
 import { metalsIndexable } from "../src/lib/metals/seo";
+import { configuredHistoryKey } from "../src/lib/metals/config";
 const now = Date.UTC(2026, 10, 7, 12), asOf = new Date(now).toISOString();
 const gold: Quote = { symbol: "XAU", price: 4200, asOf }, silver: Quote = { symbol: "XAG", price: 52.5, asOf };
+
+test("history accepts the owner's existing Production variable and preserves the documented variable's precedence", () => {
+  expect(configuredHistoryKey({ gold_api: " legacy-test-key \n" })).toBe("legacy-test-key");
+  expect(configuredHistoryKey({ GOLD_API_KEY: "primary-test-key", gold_api: "legacy-test-key" })).toBe("primary-test-key");
+  expect(configuredHistoryKey({ GOLD_API_KEY: "  ", gold_api: "legacy-test-key" })).toBe("legacy-test-key");
+  expect(configuredHistoryKey({})).toBeUndefined();
+});
 
 test("troy weight, purity and budget calculations preserve units and conversion direction", () => {
   expect(metalValue(GRAMS_PER_TROY_OUNCE, "g", 4200)).toBeCloseTo(4200, 10);

@@ -12,7 +12,7 @@ The gold page focuses on XAU/USD, weight, purity and gold value. The comparison 
 
 Current spot quotes work without an account. The source’s contract identifies gold and silver as USD per troy ounce. Currency estimates use Frankfurter’s dated daily blended reference rates, not live FX.
 
-Historical spot data needs a **free Gold API account**. The owner has agreed to add `GOLD_API_KEY` securely in Vercel. Never paste the key in chat, source code, client variables, screenshots or documentation. Add it for Production, then redeploy. No purchase is required for daily history under the provider’s currently documented free limit.
+Historical spot data needs a **free Gold API account**. The owner’s Production setting is named `gold_api`; the server accepts this existing name as well as the documented `GOLD_API_KEY` name. When both are set, the non-empty `GOLD_API_KEY` takes precedence. Never paste key values in chat, source code, client variables, screenshots or documentation. Configure the value securely in Vercel Production, then redeploy. No purchase is required for daily history under the provider’s currently documented free limit.
 
 The free plan does **not** include minute/hour history. Therefore the 24H control gives an explicit unavailable explanation. It must not display a made-up intraday line or a daily series relabelled as intraday. Premium intraday support is a separate optional integration, not a claim made by this release.
 
