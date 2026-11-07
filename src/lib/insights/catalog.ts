@@ -46,6 +46,7 @@ export type InsightImage = {
 export const insightArticles = articleData as InsightArticle[];
 export const insightImages = imageData as InsightImage[];
 export const insightGuides = insightArticles.filter(article => article.format === "guide");
+export const forexCountryGuides = insightGuides.filter(article => article.slug.startsWith("how-to-start-forex-trading-in-"));
 export const insightCategories = [
   { id: "beginner-guides", title: "Start with the essentials", description: "Understand the tools and workflows before putting money at risk." },
   { id: "strategies", title: "Strategies & risk", description: "Build a process for evaluating ideas, exposure and automated systems." },
@@ -90,6 +91,9 @@ export function readingMinutes(article: InsightArticle) {
 }
 export function relatedInsights(article: InsightArticle) {
   const others = insightGuides.filter(other => other.slug !== article.slug);
+  if (article.slug.startsWith("how-to-start-forex-trading-in-")) {
+    return [...others.filter(other => other.slug.startsWith("how-to-start-forex-trading-in-")), ...others.filter(other => !other.slug.startsWith("how-to-start-forex-trading-in-"))].slice(0, 3);
+  }
   return [...others.filter(other => other.category === article.category), ...others.filter(other => other.category !== article.category)].slice(0, 3);
 }
 export function insightDate(value: string) {

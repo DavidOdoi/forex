@@ -1,0 +1,318 @@
+{
+  "checkedAt": "2026-11-07T13:24:17.913463+00:00",
+  "scope": "Nine educational country guides; no unverified offshore leveraged-account funding permission is claimed.",
+  "sources": [
+    {
+      "id": "kenya-register",
+      "requestedUrl": "https://licensees.cma.or.ke/",
+      "finalUrl": "https://licensees.cma.or.ke/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:53:58+00:00",
+      "sha256": "f28886e94600597c8438a84f746d8eed09f010f671e15f2e9e41bf2c05b1eb37",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Dedicated online-forex broker and manager categories are named in the official portal.",
+      "shortExcerpt": "NON-DEALING ONLINE FOREIGN EXCHANGE BROKER ONLINE FOREIGN EXCHANGE MONEY MANAGER AUTHORISED SECURITIES DEALERS FUND MANAGERS INVESTMENT ADVISERS AUTHORISED DEPOSITORIES REIT MANAGERS COFFEE BROKERS REIT TRUSTEES"
+    },
+    {
+      "id": "kenya-online",
+      "requestedUrl": "https://licensees.cma.or.ke/licenses/5/",
+      "finalUrl": "https://licensees.cma.or.ke/licenses/5/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:56:20+00:00",
+      "sha256": "e0b037ebe8df8b12a17f4ed302434d0d214c55baaac5b91097ecbc46f026141e",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Live licence list linked from the portal’s online-forex broker category.",
+      "shortExcerpt": "List of licensees Name Address License Number Website"
+    },
+    {
+      "id": "kenya-managers",
+      "requestedUrl": "https://licensees.cma.or.ke/licenses/6/",
+      "finalUrl": "https://licensees.cma.or.ke/licenses/6/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:56:20+00:00",
+      "sha256": "0e2ad33d52ba1a446c5e7118da2c65543afd572d21a5c817c8804b64123e2235",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Separate list linked from the portal’s online-forex money-manager category.",
+      "shortExcerpt": "List of licensees Name Address License Number Website"
+    },
+    {
+      "id": "demo-help",
+      "requestedUrl": "https://www.metatrader5.com/en/terminal/help/startworking/acc_open",
+      "finalUrl": "https://www.metatrader5.com/en/terminal/help/startworking/acc_open",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T13:00:52+00:00",
+      "sha256": "0e4ccdf3934a54a15acbafa9c13fca7431be9ee2b4f63a709122e69d3d09d9e1",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Demo accounts use a training mode without trading capital.",
+      "shortExcerpt": "Demo accounts provide the opportunity to work in a training mode without real money, allowing to test a trading strategy. They feature all the same"
+    },
+    {
+      "id": "australia-fx",
+      "requestedUrl": "https://moneysmart.gov.au/investment-warnings/forex-trading",
+      "finalUrl": "https://moneysmart.gov.au/complex-investment-products/forex-trading",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:54:10+00:00",
+      "sha256": "f21ca36cdfe13ddf0ec48c6faacab509d72fb4a9eb93b90b9d7968fb168bf130",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "MoneySmart describes margin forex and asks readers to verify an AFS licence.",
+      "shortExcerpt": "forex provider has an Australian Financial Services (AFS) Licence. ASIC's Professional Registers Search will tell you if they do. If you trade through an overseas"
+    },
+    {
+      "id": "australia-cfd",
+      "requestedUrl": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds",
+      "finalUrl": "https://moneysmart.gov.au/complex-investment-products/contracts-for-difference-cfds",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:54:10+00:00",
+      "sha256": "1a05b44575babecc2a3348d41fe971c6d2607dc691ca165b2e41216bb34eb84c",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "MoneySmart explains Australian CFD issuer and client protections.",
+      "shortExcerpt": "CFD issuers operating in Australia must have an Australian financial services (AFS) licence. Overseas CFD providers often don’t hold an AFS licence, so consumer protections"
+    },
+    {
+      "id": "australia-register",
+      "requestedUrl": "https://asic.gov.au/online-services/search-asic-registers/professional-registers/",
+      "finalUrl": "https://www.asic.gov.au/online-services/search-asic-registers/professional-registers-search",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:54:16+00:00",
+      "sha256": "a4eb57c828dc5b6efd1cb92c28c49faccf3b3e988733d1c23049035605bbfafc",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Official register guidance includes checking licensed services.",
+      "shortExcerpt": "Professional registers search | ASIC Skip to main content Search ASIC registers In this section Key points: ASIC’s professional registers search allows you to search"
+    },
+    {
+      "id": "australia-order2020",
+      "requestedUrl": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2020-releases/20-254mr-asic-product-intervention-order-strengthens-cfd-protections",
+      "finalUrl": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2020-releases/20-254mr-asic-product-intervention-order-strengthens-cfd-protections",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T13:00:51+00:00",
+      "sha256": "87faf24a95f4ccf64a42de2000b2c9ec4e8846b8ae3a93c11788217822299173",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Retail currency-CFD leverage categories; not recommended leverage.",
+      "shortExcerpt": "30:1 for CFDs referencing an exchange rate for a major currency pair 20:1 for CFDs referencing an exchange rate for a minor currency pair, gold"
+    },
+    {
+      "id": "australia-order2022",
+      "requestedUrl": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-082mr-asic-s-cfd-product-intervention-order-extended-for-five-years",
+      "finalUrl": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-082mr-asic-s-cfd-product-intervention-order-extended-for-five-years",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T13:00:50+00:00",
+      "sha256": "c66f913e5e7a767e7de33756f1f65e4093d13e4b7bf809aed1866b36899e1442",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "CFD intervention order extension to 23 May 2027.",
+      "shortExcerpt": "23 May 2027. Since 29 March 2021, the product intervention order has strengthened protections by reducing CFD leverage available to retail clients and by targeting"
+    },
+    {
+      "id": "nigeria-sec",
+      "requestedUrl": "https://sec.gov.ng/",
+      "finalUrl": "https://sec.gov.ng/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:53:57+00:00",
+      "sha256": "10a2bc01688c69c19497d70253c17eaf9cf46fdc1d59d59827747b37685e0c44",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "SEC institutional identity and registration information; no retail forex-funding approval inferred.",
+      "shortExcerpt": "Securities and Exchange Commission, Nigeria Full Electronic Registration (e-Registration) now available on the ePortal | In a major boost to capital market regulation in Nigeria,"
+    },
+    {
+      "id": "nigeria-register",
+      "requestedUrl": "https://sec.gov.ng/for-investors/find-a-registered-operator/",
+      "finalUrl": "https://sec.gov.ng/for-investors/find-a-registered-operator/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:56:21+00:00",
+      "sha256": "48b5388d3b824beac69df0250f61f526bfed7029feadd27b10818d328286eecd",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "SEC registered-operator search; scope still requires checking.",
+      "shortExcerpt": "Registered Operator - Securities and Exchange Commission, Nigeria Full Electronic Registration (e-Registration) now available on the ePortal | In a major boost to capital market"
+    },
+    {
+      "id": "nigeria-fx-code",
+      "requestedUrl": "https://www.cbn.gov.ng/Out/2025/CCD/Nigeria%20FX%20Code%20.pdf",
+      "finalUrl": "https://www.cbn.gov.ng/Out/2025/CCD/Nigeria%20FX%20Code%20.pdf",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T13:15:41+00:00",
+      "sha256": "a463ea0cbf3d3fbd0f002016bca7157fd4ed56e93c8dcf41cd605dce4b021146",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Wholesale FX participants, not a resident CFD funding permission.",
+      "shortExcerpt": "wholesale foreign exchange (FX) market in Nigeria. It will facilitate better functioning of the market, further reinforcing Nigeria’s flexible exchange rate regime. The FX Code"
+    },
+    {
+      "id": "nigeria-bdc",
+      "requestedUrl": "https://www.cbn.gov.ng/Out/2024/FPRD/APPROVED%20BDC%20GUIDELINES%20May%2022%202024.pdf",
+      "finalUrl": "https://www.cbn.gov.ng/Out/2024/FPRD/APPROVED%20BDC%20GUIDELINES%20May%2022%202024.pdf",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T13:15:41+00:00",
+      "sha256": "db6ae2ddd9bd59587086aacf1955ba06c1a05446b4c68ab6bc915bac2fe8aecf",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Bureau operations, not retail CFD funding permission.",
+      "shortExcerpt": "Bureau de Change BOFIA Banks and Other Financial Institutions Act, 2020 BTA Business Travel Allowance BVN Bank Verification Number CAC Corporate Affairs Commission CARP Centralised"
+    },
+    {
+      "id": "ghana-approved-brokers",
+      "requestedUrl": "https://www.bog.gov.gh/news/authorised-fx-brokers-and-cross-border-payments-and-financial-services/",
+      "finalUrl": "https://www.bog.gov.gh/news/authorised-fx-brokers-and-cross-border-payments-and-financial-services/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T13:15:44+00:00",
+      "sha256": "cea54bfee2c27e641556febed43c6f7453428838cd3db0e40c91a77dee7d1eaf",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "FX-market broker approval, not approval of all retail CFD providers.",
+      "shortExcerpt": "every calendar year”. Download Download November 5, 2026 Notice of 133rd Monetary Policy Committee Meetings November 3, 2026 Press Release – Bank of Ghana to"
+    },
+    {
+      "id": "ghana-user-notice",
+      "requestedUrl": "https://www.bog.gov.gh/wp-content/uploads/2025/08/NOTICE-NO.-BG-GOV-SEC-2025-26-NOTICE-ON-UNAUTHORISED-FOREIGN-EXCHANGE-TRANSACTIONS.pdf",
+      "finalUrl": "https://www.bog.gov.gh/wp-content/uploads/2025/08/NOTICE-NO.-BG-GOV-SEC-2025-26-NOTICE-ON-UNAUTHORISED-FOREIGN-EXCHANGE-TRANSACTIONS.pdf",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T13:15:41+00:00",
+      "sha256": "9fb309b46a41cc79e19ed0df1395f66aacc6530a3ce518351170c00b4d955b52",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Legitimate external bank payments; no classification of CFD deposits as eligible.",
+      "shortExcerpt": "legitimate external payments, subject to applicable regulatory thresholds and commercial banks’ internal processes. The Bank of Ghana will continue to enforce compliance, and violators will"
+    },
+    {
+      "id": "uganda-cma",
+      "requestedUrl": "https://cmauganda.co.ug/",
+      "finalUrl": "https://cmauganda.co.ug/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:53:56+00:00",
+      "sha256": "0f8e147eb0fb761f095e20274d7bf13fae2239ad1fb4e02a1ffaf5e5d9f84b99",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Capital Markets Authority identity and institutional role.",
+      "shortExcerpt": "Capital Markets Authority GET LICENSED In carrying out its responsibilities, the CMA has approved 2 stock exchanges, licensed 02 securities central depositories, 06 brokers, 14"
+    },
+    {
+      "id": "uganda-licences",
+      "requestedUrl": "https://cmauganda.co.ug/cma-licensed-firms/",
+      "finalUrl": "https://cmauganda.co.ug/cma-licensed-firms/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:57:31+00:00",
+      "sha256": "9e67711e84243e8fd040639081603aebcda5b7e965424247d6cb4148833eeb14",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Firm register information must be interpreted by licensed activity.",
+      "shortExcerpt": "Licensed Firms - Capital Markets Authority Capital Markets Authority Uganda Licensed & Approved Persons As at June 26, 2026 The Capital Markets Authority has the"
+    },
+    {
+      "id": "botswana-nbfira",
+      "requestedUrl": "https://www.nbfira.org.bw/",
+      "finalUrl": "https://www.nbfira.org.bw/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:54:08+00:00",
+      "sha256": "1e5026c1b7c33152768c220a25b733094bfd7dd1a85976161b279306d4ab1f33",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Non-bank regulator identity; no offshore CFD funding determination.",
+      "shortExcerpt": "Non-Bank Financial Institutions Regulatory Authority Industry Consultations on NBFIRA’s Comprehensive Review of The Supervisory and Licensing Fees Framework Read More Approved Supervisory Levies for 2025/26"
+    },
+    {
+      "id": "botswana-capital",
+      "requestedUrl": "https://www.nbfira.org.bw/list-of-regulated-entities/cm-licensed-entities/",
+      "finalUrl": "https://www.nbfira.org.bw/list-of-regulated-entities/cm-licensed-entities/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:57:32+00:00",
+      "sha256": "d1e513c16c61d2de2b3b4dd1874370e4413ef2d288f1dc6b506ec7d8d1d43ae1",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Capital-markets register category; no individual provider endorsement.",
+      "shortExcerpt": "Regulated Entities NBFIRA Act 2023 How can we help you? Contact us at the NBFIRA Offices or submit an inquiry online. contacts Regulated Entities"
+    },
+    {
+      "id": "botswana-fx",
+      "requestedUrl": "https://www.bankofbotswana.bw/content/foreign-exchange-markets",
+      "finalUrl": "https://www.bankofbotswana.bw/content/foreign-exchange-markets",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:56:23+00:00",
+      "sha256": "8b714c3b87ecc01af1109bdc29db4bfe13c122c0ca52a0ba9b12766ba61514b6",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "FX-market description, not retail CFD or resident-funding approval.",
+      "shortExcerpt": "Foreign Exchange Markets | Bank of Botswana Skip to main content +267 3606000 Home Links FAQs Publications Careers Tenders Perception Survey Contact Us Foreign Exchange"
+    },
+    {
+      "id": "zimbabwe-sec",
+      "requestedUrl": "https://seczim.co.zw/",
+      "finalUrl": "https://seczim.co.zw/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:54:07+00:00",
+      "sha256": "8376acae05a63e6e5585278b962916c547c6aa24e5166686551cf225c03079f9",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Securities regulator identity, not OTC-forex funding approval.",
+      "shortExcerpt": "Securities and Exchange Commission of Zimbabwe What’s New Vacancy Notice Legal Graduate Trainee VACANCY NOTICE: PRINCIPAL AML SURVEILLANCE AND ANALYSIS OFFICER VACANCY NOTICE PROCUREMENT INTERN"
+    },
+    {
+      "id": "zimbabwe-scope",
+      "requestedUrl": "https://seczim.co.zw/licensing-requirements/securities-dealing-firms-and-securities-dealers/",
+      "finalUrl": "https://seczim.co.zw/licensing-requirements/securities-dealing-firms-and-securities-dealers/",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:56:25+00:00",
+      "sha256": "0b7324467b2d4b532e8567b699588fa71bfce1ffffb9d964281dd2d3ba99427d",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Securities-dealer licensing category.",
+      "shortExcerpt": "Securities Dealers - Securities and Exchange Commission of Zimbabwe Securities Dealing Firms and Securities Dealers Home Licensing Requirements Securities Dealing Firms and Securities Dealers Securities"
+    },
+    {
+      "id": "india-nse-new",
+      "requestedUrl": "https://www.nseindia.com/products-services/about-currency-derivatives",
+      "finalUrl": "https://www.nseindia.com/static/products-services/about-currency-derivatives",
+      "httpStatus": 200,
+      "retrievedAt": "2026-11-07T12:56:27+00:00",
+      "sha256": "6ca5d31c9c2b680edb01e3217da8ee1ddf689bd32056931c12a2e4c2fb1d0e50",
+      "verification": "retrieved-primary-source",
+      "claimSupported": "Exchange currency-derivatives education; not universal eligibility.",
+      "shortExcerpt": "Currency Derivatives - NSE India CAS Option Chain Market Turnover Listings IPO Circulars Daily Report Holidays Corporates Press Releases Contact Us English English हिन्दी (Hindi)"
+    },
+    {
+      "id": "india-rbi-user-faq",
+      "requestedUrl": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=3347",
+      "publicationDateReportedByOwner": "2024-08-28",
+      "automatedRetrievalStatus": "http-error",
+      "verification": "owner-supplied official-source quotation; independent automated retrieval unsuccessful",
+      "claimSupported": "RBI Forex Transactions FAQ; authorised persons, purposes and LRS overseas-margin prohibition.",
+      "shortExcerptProvidedByOwner": "Resident persons are permitted to undertake forex transactions only with authorised persons and for permitted purposes",
+      "limitation": "Used within the narrow scope of the supplied quotation; no general offshore CFD funding permission inferred."
+    },
+    {
+      "id": "india-rbi-user-lrs",
+      "requestedUrl": "https://www.rbi.org.in/commonperson/English/Scripts/FAQs.aspx?Id=1834",
+      "publicationDateReportedByOwner": "2023-04-06",
+      "automatedRetrievalStatus": "http-error",
+      "verification": "owner-supplied official-source quotation; independent automated retrieval unsuccessful",
+      "claimSupported": "RBI LRS FAQ; overseas-margin and foreign-exchange-trading exclusions.",
+      "shortExcerptProvidedByOwner": "Remittances for trading in foreign exchange abroad",
+      "limitation": "Used within the narrow scope of the supplied quotation; no general offshore CFD funding permission inferred."
+    },
+    {
+      "id": "uganda-user-act",
+      "requestedUrl": "https://www.bou.or.ug/uploads/THE_FOREIGN_EXCHANGE_AMENDMENT_ACT_2023_Act_No_18_of_2023_07da4b48d8.pdf",
+      "publicationDateReportedByOwner": "2023",
+      "automatedRetrievalStatus": "robots-unreadable",
+      "verification": "owner-supplied official-source quotation; independent automated retrieval unsuccessful",
+      "claimSupported": "Licensed FX/payment/remittance channels; no CFD deposit permission inferred.",
+      "shortExcerptProvidedByOwner": "Every transfer of foreign exchange to or from Uganda shall be made through a person licensed to carry out money remittance business.",
+      "limitation": "Used within the narrow scope of the supplied quotation; no general offshore CFD funding permission inferred."
+    },
+    {
+      "id": "zambia-user-fx",
+      "requestedUrl": "https://www.boz.zm/FX_Market_Explanatory_Notes_.pdf",
+      "publicationDateReportedByOwner": null,
+      "automatedRetrievalStatus": "robots-unreadable",
+      "verification": "owner-supplied official-source quotation; independent automated retrieval unsuccessful",
+      "claimSupported": "Authorised-dealer explanatory notes; no claim about publication date or CFD deposit approval.",
+      "shortExcerptProvidedByOwner": "Any person resident in Zambia",
+      "limitation": "Used within the narrow scope of the supplied quotation; no general offshore CFD funding permission inferred."
+    },
+    {
+      "id": "zimbabwe-user-directive",
+      "requestedUrl": "https://www.rbz.co.zw/documents/Regulations_Acts/2025/Guidelines_to_Authorised_Dealers_and_their_Clients_on_Foreign_Exchange_Transactions_8_Aug_2025_FXD4.pdf",
+      "publicationDateReportedByOwner": "2025-08-08",
+      "automatedRetrievalStatus": "access-denied",
+      "verification": "owner-supplied official-source quotation; independent automated retrieval unsuccessful",
+      "claimSupported": "Certain offshore investments; no allowance is presented as a permitted CFD deposit amount.",
+      "shortExcerptProvidedByOwner": "Resident individuals are allowed to invest offshore",
+      "limitation": "Used within the narrow scope of the supplied quotation; no general offshore CFD funding permission inferred."
+    }
+  ],
+  "discardedClaims": [
+    "No CBN wholesale, bureau or remittance rule is used as a Nigerian resident CFD funding permission.",
+    "No Ghana FX-market broker approval or external-payment rule is treated as CFD funding approval.",
+    "No broad Ugandan capital-mobility statement is used as a specific CFD funding permission.",
+    "The older Zambian SI No.55 reporting document is not used as evidence of current permission.",
+    "No Zimbabwe offshore-investment allowance is quoted as a permitted CFD deposit amount.",
+    "No Botswana funding permission is invented.",
+    "Conflicting overseas-investment direction identifiers in the supplied India report were not used; specific forex/LRS FAQs and NSE education support the narrower copy."
+  ]
+}

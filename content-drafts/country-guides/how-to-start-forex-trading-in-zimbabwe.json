@@ -1,0 +1,722 @@
+{
+  "research": {
+    "country": "Zimbabwe",
+    "slug": "how-to-start-forex-trading-in-zimbabwe",
+    "status": "education-only",
+    "publishable": true,
+    "offshoreFundingPermission": "not-established",
+    "sourceIds": [
+      "zimbabwe-sec",
+      "zimbabwe-scope",
+      "zimbabwe-user-directive",
+      "demo-help"
+    ],
+    "preparedAt": "2026-11-07",
+    "missingEvidence": [
+      "Current product/provider permission for resident retail margin forex or CFDs",
+      "Current lawful offshore margin-funding and withdrawal route",
+      "Relevant exceptions and whether older guidance is superseded"
+    ]
+  },
+  "article": {
+    "slug": "how-to-start-forex-trading-in-zimbabwe",
+    "title": "How to Start Forex Trading in Zimbabwe: 7 Clear Checks",
+    "seoTitle": "How to Start Forex Trading in Zimbabwe: 7 Clear Checks",
+    "description": "Learn how to start forex trading in Zimbabwe. Check the contract and funding rules, practise on demo, compare currency costs and build a risk budget first.",
+    "focusKeyword": "how to start forex trading in zimbabwe",
+    "format": "guide",
+    "category": "beginner-guides",
+    "topic": "Forex for Zimbabwe beginners",
+    "publishedAt": "2026-11-07",
+    "updatedAt": "2026-11-07",
+    "researchPreparedAt": "2026-11-07",
+    "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
+    "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Learning how to start forex trading in Zimbabwe begins with separating ordinary currency exchange from an offshore leveraged contract. Establish the account’s legal entity and current funding rules before depositing. A platform accepting registration is not confirmation that the proposed arrangement is permitted."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "How to start forex trading in Zimbabwe: practise on demo, identify the issuer and confirm current exchange-control requirements. RBZ guidance on certain offshore investments must not be treated as automatic permission to fund leveraged CFD accounts. Verify the product, funds and payment purpose first.",
+        "ordered": true,
+        "points": [
+          "Identify the contract, leverage and currency exposure.",
+          "Check the provider’s actual investment-service claim with SECZim.",
+          "Obtain the current RBZ and bank requirements for offshore margin funding.",
+          "Practise a written plan with virtual money.",
+          "Verify the deposit, trading-account and withdrawal currencies separately.",
+          "Set a loss budget in the actual account currency.",
+          "Keep records and do not fund while a required permission remains unresolved."
+        ],
+        "anchors": [
+          {
+            "text": "SECZim",
+            "href": "https://seczim.co.zw/"
+          }
+        ],
+        "table": {
+          "caption": "Before putting real money at risk in Zimbabwe",
+          "headers": [
+            [
+              {
+                "text": "Check"
+              }
+            ],
+            [
+              {
+                "text": "Practical action"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "Provider"
+                }
+              ],
+              [
+                {
+                  "text": "Identify the issuer and the precise permission being claimed."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Exchange control"
+                }
+              ],
+              [
+                {
+                  "text": "Ask the bank about the specific offshore margin-funding purpose."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Currency"
+                }
+              ],
+              [
+                {
+                  "text": "Confirm what is paid, what is held and what is returned."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "callout",
+        "title": "Offshore funding permission is not verified",
+        "content": [
+          {
+            "text": "We have not verified that residents may fund overseas leveraged forex or CFD accounts in Zimbabwe. This guide covers education and verification checks. Confirm the current product and transfer requirements with the relevant regulator, your bank and a qualified local adviser before depositing."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "featured",
+        "alt": "How to start forex trading in Zimbabwe: historical EUR/USD candlestick chart used to explain demo practice",
+        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "local-rules",
+        "text": "How to start forex trading in Zimbabwe: check the local route"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The "
+          },
+          {
+            "text": "Securities and Exchange Commission of Zimbabwe",
+            "href": "https://seczim.co.zw/"
+          },
+          {
+            "text": " publishes "
+          },
+          {
+            "text": "securities-dealer licensing information",
+            "href": "https://seczim.co.zw/licensing-requirements/securities-dealing-firms-and-securities-dealers/"
+          },
+          {
+            "text": ". That category should not be treated as a verified list of retail OTC forex or CFD providers."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The "
+          },
+          {
+            "text": "RBZ’s 8 August 2025 foreign-exchange guidelines",
+            "href": "https://www.rbz.co.zw/documents/Regulations_Acts/2025/Guidelines_to_Authorised_Dealers_and_their_Clients_on_Foreign_Exchange_Transactions_8_Aug_2025_FXD4.pdf"
+          },
+          {
+            "text": " describe conditions for certain offshore investments. General investment allowances do not establish that a leveraged broker deposit qualifies."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "We have not confirmed that residents may fund overseas leveraged forex or CFD accounts under that framework. Ask your authorised bank or a qualified local adviser about the actual product, funds and purpose; do not apply a general investment limit as a CFD deposit allowance."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If a local agent introduces the account, identify its role separately. Confirm who receives the payment, which company issues the contract and who must repay a withdrawal. Website registration does not resolve those questions."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "country-check",
+        "text": "Track three currencies, not one advertised balance"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The money you deposit, the currency your account reports and the currency you receive on withdrawal may differ. Ask for each explicitly. A platform displaying a USD balance does not by itself establish local payment permission or what can be withdrawn."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "account-preparation",
+        "text": "What to prepare before opening an account"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Prepare information, not a large deposit. Requirements depend on the lawful provider and product; check its current document list before sending sensitive records."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "A reliable device and internet connection, plus a secure email address."
+            }
+          ],
+          [
+            {
+              "text": "Government-issued identity and address evidence accepted by the provider, if required."
+            }
+          ],
+          [
+            {
+              "text": "Payment and contact details in your own name; no borrowed identity or third-party wallet."
+            }
+          ],
+          [
+            {
+              "text": "A written risk budget that excludes rent, food, family commitments and debt payments."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "forex-basics",
+        "text": "Understand the product and its costs"
+      },
+      {
+        "type": "table",
+        "label": "A short forex glossary",
+        "headers": [
+          [
+            {
+              "text": "Term"
+            }
+          ],
+          [
+            {
+              "text": "What to understand before practising"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Currency pair"
+              }
+            ],
+            [
+              {
+                "text": "The price of a base currency in a quote currency; EUR/USD is dollars per euro."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Pip and position size"
+              }
+            ],
+            [
+              {
+                "text": "For EUR/USD, a pip commonly means 0.0001; cash exposure depends on the units traded."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Spread and commission"
+              }
+            ],
+            [
+              {
+                "text": "The buy-sell price gap and any separate fees, potentially charged on both sides."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Leverage and margin"
+              }
+            ],
+            [
+              {
+                "text": "A small deposit can support a larger exposure; losses follow the exposure."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Financing"
+              }
+            ],
+            [
+              {
+                "text": "Holding a position overnight may add a charge or credit under the account terms."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Protective order"
+              }
+            ],
+            [
+              {
+                "text": "A stop is an instruction, not a guarantee of execution at that exact price."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Hypothetical example: buying 1,000 euros at EUR/USD 1.1000 and closing at 1.1010 produces US$1 gross profit. The opposite ten-pip move produces US$1 gross loss. Costs and account-currency conversion change the net result. This is classroom arithmetic, not an available-product or trade recommendation."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "provider-comparison",
+        "text": "Compare evidence before choosing a provider"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ask who issues the contract and handles your money, not just which app you will install. Match the account agreement, licence claim and official payment instructions. Keep screenshots and dated copies of the documents you relied on."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "Questions to ask before registering",
+        "headers": [
+          [
+            {
+              "text": "Area"
+            }
+          ],
+          [
+            {
+              "text": "Ask for"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Identity and permission"
+              }
+            ],
+            [
+              {
+                "text": "Legal company, relevant activity, jurisdiction and current register entry or official confirmation."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Total trading costs"
+              }
+            ],
+            [
+              {
+                "text": "Typical spread, opening/closing commission, financing and conversion; do not compare minimum spreads alone."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Client treatment"
+              }
+            ],
+            [
+              {
+                "text": "Account classification, complaint process, custody and terms that actually apply to your entity."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Payments"
+              }
+            ],
+            [
+              {
+                "text": "Official recipient, accepted account holder, full charges and withdrawal conditions in writing."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the "
+          },
+          {
+            "text": "broker research directory",
+            "href": "/reviews"
+          },
+          {
+            "text": " to find disclosures and outstanding questions. Its entries are research profiles, not a verified shortlist of authorised brokers for your country. Independently confirm any provider you investigate."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "payments-and-withdrawals",
+        "text": "Check funding and withdrawals separately"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Before any overseas transfer, give your bank the true recipient and purpose and ask what documents or permissions apply. Do not use a third party or misleading payment description to work around a restriction."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Request current written information about payment eligibility, conversion, intermediary costs and withdrawal currency. No universal card, bank or wallet route, exchange allowance or tax rate is established by this guide."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Keep a complete ledger of original payments, conversions, trades, fees and withdrawals. This is more useful than keeping only a screenshot of the final trading balance."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "demo-practice",
+        "text": "Practise a repeatable process on demo"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Choose one simple practice setup and write the entry, exit and maximum loss before placing an order. Record whether you followed the plan. A profitable demo run does not establish that the strategy, execution or emotional response will be the same with real money."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If your verified provider uses MetaTrader 5, "
+          },
+          {
+            "text": "MetaQuotes’ demo-account instructions",
+            "href": "https://www.metatrader5.com/en/terminal/help/startworking/acc_open"
+          },
+          {
+            "text": " explain the practice mode. The software’s availability does not establish local authorisation for a provider or a live account."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use our "
+          },
+          {
+            "text": "beginner demo checklist",
+            "href": "/insights/best-day-trading-app-for-beginners#what-beginners-should-prioritise-during-a-demo-week"
+          },
+          {
+            "text": " to structure practice. The "
+          },
+          {
+            "text": "platform comparison guide",
+            "href": "/insights/best-platforms-for-day-trading#how-to-compare-the-best-platforms-for-day-trading"
+          },
+          {
+            "text": " explains features; it does not establish local provider or product permission."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the account’s stated base currency for your journal. The example below is deliberately in USD as a mathematical illustration; it does not claim that every Zimbabwean resident can fund a USD margin account."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "risk-budget",
+        "text": "Set a cash loss budget before sizing"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Illustrative budgeting only: on US$500, a 1% planned loss budget is US$5. This is a teaching example, not a suitable deposit recommendation or proof that a particular account is available. A stop can slip, so actual losses can exceed the plan."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Trading capital and a broker’s minimum deposit are different decisions. If the smallest permitted position already exceeds your cash limit after costs, remain in simulation. More leverage does not make that position safer."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Our "
+          },
+          {
+            "text": "forex position-size calculator",
+            "href": "/tools/forex-position-size-calculator"
+          },
+          {
+            "text": " supports a USD teaching example and selected currencies, but not account currency accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Keep essential money outside the account",
+        "content": [
+          {
+            "text": "Never borrow trading capital or use money needed for living expenses. A small planned percentage is not a guarantee against loss, gaps, insolvency or fraud."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "common-mistakes",
+        "text": "Avoid these country-specific shortcuts"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Treating a securities-dealer listing as proof of OTC forex permission."
+            }
+          ],
+          [
+            {
+              "text": "Confusing a displayed USD balance with a verified withdrawal entitlement."
+            }
+          ],
+          [
+            {
+              "text": "Using somebody else’s payment account to bypass bank questions."
+            }
+          ],
+          [
+            {
+              "text": "Recording trading profit without the costs of entering and leaving the account."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Keep trade, fee, conversion and payment records. Ask a qualified local tax adviser how your actual instruments and circumstances are treated; this guide supplies no universal tax rate or exemption."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-1",
+        "text": "Does a SECZim securities listing prove forex-CFD permission?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Not by itself. Check the exact product, company and permission. A securities-dealer list does not establish every type of investment activity or an offshore margin-funding route."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-2",
+        "text": "Can I assume a USD account is permitted to fund?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "No. Ask your bank about the actual margin-funding purpose and current exchange-control requirements. Account currency, website access and payment acceptance are not substitutes for that check."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-3",
+        "text": "What records should I keep?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Keep account agreements, payment instructions, receipts, conversion rates, trades, charges and withdrawals. Record the currency of each item rather than relying only on the platform’s final balance."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "your-next-step",
+        "text": "Your next step"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the seven-step checklist to plan your learning in Zimbabwe. Resolve provider and payment permissions before real-money funding. Progress means a documented, repeatable process—not a promised income or a deadline for becoming profitable."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For a different jurisdiction, use our "
+          },
+          {
+            "text": "South Africa beginner guide",
+            "href": "/insights/how-to-start-forex-trading-in-south-africa"
+          },
+          {
+            "text": " or the "
+          },
+          {
+            "text": "Botswana guide",
+            "href": "/insights/how-to-start-forex-trading-in-botswana"
+          },
+          {
+            "text": ". Each country’s permissions need their own checks; one country’s licence or transfer route should not be transplanted to another."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does a SECZim securities listing prove forex-CFD permission?",
+        "answer": "Not by itself. Check the exact product, company and permission. A securities-dealer list does not establish every type of investment activity or an offshore margin-funding route."
+      },
+      {
+        "question": "Can I assume a USD account is permitted to fund?",
+        "answer": "No. Ask your bank about the actual margin-funding purpose and current exchange-control requirements. Account currency, website access and payment acceptance are not substitutes for that check."
+      },
+      {
+        "question": "What records should I keep?",
+        "answer": "Keep account agreements, payment instructions, receipts, conversion rates, trades, charges and withdrawals. Record the currency of each item rather than relying only on the platform’s final balance."
+      }
+    ]
+  }
+}

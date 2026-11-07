@@ -1,0 +1,166 @@
+{
+  "preparedAt": "2026-11-07",
+  "template": "how-to-start-forex-trading-in-south-africa",
+  "countries": [
+    {
+      "country": "Kenya",
+      "slug": "how-to-start-forex-trading-in-kenya",
+      "status": "source-cleared",
+      "publishable": true,
+      "offshoreFundingPermission": "no-general-offshore-permission-claimed",
+      "sourceIds": [
+        "kenya-register",
+        "kenya-online",
+        "kenya-managers",
+        "demo-help"
+      ],
+      "preparedAt": "2026-11-07",
+      "missingEvidence": []
+    },
+    {
+      "country": "Nigeria",
+      "slug": "how-to-start-forex-trading-in-nigeria",
+      "status": "education-only",
+      "publishable": true,
+      "offshoreFundingPermission": "not-established",
+      "sourceIds": [
+        "nigeria-sec",
+        "nigeria-register",
+        "nigeria-fx-code",
+        "nigeria-bdc"
+      ],
+      "preparedAt": "2026-11-07",
+      "missingEvidence": [
+        "Current product/provider permission for resident retail margin forex or CFDs",
+        "Current lawful offshore margin-funding and withdrawal route",
+        "Relevant exceptions and whether older guidance is superseded"
+      ]
+    },
+    {
+      "country": "Uganda",
+      "slug": "how-to-start-forex-trading-in-uganda",
+      "status": "education-only",
+      "publishable": true,
+      "offshoreFundingPermission": "not-established",
+      "sourceIds": [
+        "uganda-cma",
+        "uganda-licences",
+        "uganda-user-act",
+        "demo-help"
+      ],
+      "preparedAt": "2026-11-07",
+      "missingEvidence": [
+        "Current product/provider permission for resident retail margin forex or CFDs",
+        "Current lawful offshore margin-funding and withdrawal route",
+        "Relevant exceptions and whether older guidance is superseded"
+      ]
+    },
+    {
+      "country": "Ghana",
+      "slug": "how-to-start-forex-trading-in-ghana",
+      "status": "education-only",
+      "publishable": true,
+      "offshoreFundingPermission": "not-established",
+      "sourceIds": [
+        "ghana-approved-brokers",
+        "ghana-user-notice",
+        "demo-help"
+      ],
+      "preparedAt": "2026-11-07",
+      "missingEvidence": [
+        "Current product/provider permission for resident retail margin forex or CFDs",
+        "Current lawful offshore margin-funding and withdrawal route",
+        "Relevant exceptions and whether older guidance is superseded"
+      ]
+    },
+    {
+      "country": "Zambia",
+      "slug": "how-to-start-forex-trading-in-zambia",
+      "status": "education-only",
+      "publishable": true,
+      "offshoreFundingPermission": "not-established",
+      "sourceIds": [
+        "zambia-user-fx",
+        "demo-help"
+      ],
+      "preparedAt": "2026-11-07",
+      "missingEvidence": [
+        "Current product/provider permission for resident retail margin forex or CFDs",
+        "Current lawful offshore margin-funding and withdrawal route",
+        "Relevant exceptions and whether older guidance is superseded"
+      ]
+    },
+    {
+      "country": "Zimbabwe",
+      "slug": "how-to-start-forex-trading-in-zimbabwe",
+      "status": "education-only",
+      "publishable": true,
+      "offshoreFundingPermission": "not-established",
+      "sourceIds": [
+        "zimbabwe-sec",
+        "zimbabwe-scope",
+        "zimbabwe-user-directive",
+        "demo-help"
+      ],
+      "preparedAt": "2026-11-07",
+      "missingEvidence": [
+        "Current product/provider permission for resident retail margin forex or CFDs",
+        "Current lawful offshore margin-funding and withdrawal route",
+        "Relevant exceptions and whether older guidance is superseded"
+      ]
+    },
+    {
+      "country": "Botswana",
+      "slug": "how-to-start-forex-trading-in-botswana",
+      "status": "education-only",
+      "publishable": true,
+      "offshoreFundingPermission": "not-established",
+      "sourceIds": [
+        "botswana-nbfira",
+        "botswana-capital",
+        "botswana-fx"
+      ],
+      "preparedAt": "2026-11-07",
+      "missingEvidence": [
+        "Current product/provider permission for resident retail margin forex or CFDs",
+        "Current lawful offshore margin-funding and withdrawal route",
+        "Relevant exceptions and whether older guidance is superseded"
+      ]
+    },
+    {
+      "country": "Australia",
+      "slug": "how-to-start-forex-trading-in-australia",
+      "status": "source-cleared",
+      "publishable": true,
+      "offshoreFundingPermission": "no-general-offshore-permission-claimed",
+      "sourceIds": [
+        "australia-fx",
+        "australia-cfd",
+        "australia-register",
+        "australia-order2020",
+        "australia-order2022",
+        "demo-help"
+      ],
+      "preparedAt": "2026-11-07",
+      "missingEvidence": []
+    },
+    {
+      "country": "India",
+      "slug": "how-to-start-forex-trading-in-india",
+      "status": "restricted-authorised-route",
+      "publishable": true,
+      "offshoreFundingPermission": "LRS-overseas-margin-prohibited",
+      "sourceIds": [
+        "india-rbi-user-faq",
+        "india-rbi-user-lrs",
+        "india-nse-new"
+      ],
+      "preparedAt": "2026-11-07",
+      "missingEvidence": [
+        "Current eligibility, purpose and exposure requirements for a specific authorised domestic product",
+        "Exact exchange or authorised-provider contract specifications for that product",
+        "Any later RBI directions updating the cited FAQs; LRS overseas-margin prohibition is not an unresolved permission"
+      ]
+    }
+  ]
+}

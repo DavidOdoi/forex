@@ -1,0 +1,732 @@
+{
+  "research": {
+    "country": "Australia",
+    "slug": "how-to-start-forex-trading-in-australia",
+    "status": "source-cleared",
+    "publishable": true,
+    "offshoreFundingPermission": "no-general-offshore-permission-claimed",
+    "sourceIds": [
+      "australia-fx",
+      "australia-cfd",
+      "australia-register",
+      "australia-order2020",
+      "australia-order2022",
+      "demo-help"
+    ],
+    "preparedAt": "2026-11-07",
+    "missingEvidence": []
+  },
+  "article": {
+    "slug": "how-to-start-forex-trading-in-australia",
+    "title": "How to Start Forex Trading in Australia: 7 Clear Steps",
+    "seoTitle": "How to Start Forex Trading in Australia: 7 Clear Steps",
+    "description": "Learn how to start forex trading in Australia. Check AFS licence permissions, review retail CFD protections, practise on demo and compare costs before funding.",
+    "focusKeyword": "how to start forex trading in australia",
+    "format": "guide",
+    "category": "beginner-guides",
+    "topic": "Forex for Australia beginners",
+    "publishedAt": "2026-11-07",
+    "updatedAt": "2026-11-07",
+    "researchPreparedAt": "2026-11-07",
+    "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
+    "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Learning how to start forex trading in Australia starts with understanding margin FX and checking the provider’s Australian financial services licence. Begin on a demo, read the product documents and keep your retail-client protections in view before considering a real-money account."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "Learning how to start forex trading in Australia begins on demo. Check the provider’s AFS licence permissions, PDS and target market determination, then compare total costs. Avoid switching to wholesale status just for more leverage; it can remove important protections.",
+        "ordered": true,
+        "points": [
+          "Understand margin FX, leverage and how losses are calculated.",
+          "Check the exact provider and relevant AFS licence permissions.",
+          "Read the PDS, target market determination and retail-client terms.",
+          "Practise a written strategy with virtual funds.",
+          "Compare AUD conversion, spreads, commissions and overnight costs.",
+          "Use a small cash risk budget and a correctly converted pip value.",
+          "Keep records, understand complaints channels and review before adding capital."
+        ],
+        "anchors": [
+          {
+            "text": "AFS licence permissions",
+            "href": "https://www.asic.gov.au/online-services/search-asic-registers/professional-registers-search"
+          }
+        ],
+        "table": {
+          "caption": "Before putting real money at risk in Australia",
+          "headers": [
+            [
+              {
+                "text": "Check"
+              }
+            ],
+            [
+              {
+                "text": "Practical action"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "Licence"
+                }
+              ],
+              [
+                {
+                  "text": "Match the exact company and product permissions using "
+                },
+                {
+                  "text": "ASIC’s Professional Registers guidance",
+                  "href": "https://www.asic.gov.au/online-services/search-asic-registers/professional-registers-search"
+                },
+                {
+                  "text": "."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Classification"
+                }
+              ],
+              [
+                {
+                  "text": "Check retail or wholesale status and the protections attached to it."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Product"
+                }
+              ],
+              [
+                {
+                  "text": "Read the PDS and target market determination before deciding whether to proceed."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "featured",
+        "alt": "How to start forex trading in Australia: historical EUR/USD candlestick chart used to explain demo practice",
+        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "local-rules",
+        "text": "How to start forex trading in Australia: check the local route"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "ASIC’s MoneySmart explains that "
+          },
+          {
+            "text": "margin forex is generally regulated as a type of CFD",
+            "href": "https://moneysmart.gov.au/complex-investment-products/forex-trading"
+          },
+          {
+            "text": ". You speculate on the exchange rate rather than necessarily taking delivery of currency."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Check the exact issuer in "
+          },
+          {
+            "text": "ASIC’s professional-register information",
+            "href": "https://www.asic.gov.au/online-services/search-asic-registers/professional-registers-search"
+          },
+          {
+            "text": ". Match the legal name, AFS licence, relevant authorisations and contact details to the documents for your account. An Australian business number is not the same check."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "ASIC’s "
+          },
+          {
+            "text": "retail CFD intervention measures",
+            "href": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2020-releases/20-254mr-asic-product-intervention-order-strengthens-cfd-protections"
+          },
+          {
+            "text": " cap leverage at 30:1 for major-currency CFDs and 20:1 for minor-currency CFDs. These are maximums, not recommended settings."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "ASIC’s "
+          },
+          {
+            "text": "extension notice",
+            "href": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-082mr-asic-s-cfd-product-intervention-order-extended-for-five-years"
+          },
+          {
+            "text": " extended the order to 23 May 2027. It also describes margin close-out, negative-balance protection and restrictions on certain inducements. Recheck the current rules when applying."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "country-check",
+        "text": "Keep retail and wholesale treatment separate"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "MoneySmart warns that "
+          },
+          {
+            "text": "wholesale CFD clients can lose protections",
+            "href": "https://moneysmart.gov.au/complex-investment-products/contracts-for-difference-cfds"
+          },
+          {
+            "text": ", including features such as negative-balance protection and access to external dispute resolution. Higher advertised leverage is not a reason to accept a classification you do not understand."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "account-preparation",
+        "text": "What to prepare before opening an account"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Prepare information, not a large deposit. Requirements depend on the lawful provider and product; check its current document list before sending sensitive records."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "A reliable device and internet connection, plus a secure email address."
+            }
+          ],
+          [
+            {
+              "text": "Government-issued identity and address evidence accepted by the provider, if required."
+            }
+          ],
+          [
+            {
+              "text": "Payment and contact details in your own name; no borrowed identity or third-party wallet."
+            }
+          ],
+          [
+            {
+              "text": "A written risk budget that excludes rent, food, family commitments and debt payments."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "forex-basics",
+        "text": "Understand the product and its costs"
+      },
+      {
+        "type": "table",
+        "label": "A short forex glossary",
+        "headers": [
+          [
+            {
+              "text": "Term"
+            }
+          ],
+          [
+            {
+              "text": "What to understand before practising"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Currency pair"
+              }
+            ],
+            [
+              {
+                "text": "The price of a base currency in a quote currency; EUR/USD is dollars per euro."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Pip and position size"
+              }
+            ],
+            [
+              {
+                "text": "For EUR/USD, a pip commonly means 0.0001; cash exposure depends on the units traded."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Spread and commission"
+              }
+            ],
+            [
+              {
+                "text": "The buy-sell price gap and any separate fees, potentially charged on both sides."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Leverage and margin"
+              }
+            ],
+            [
+              {
+                "text": "A small deposit can support a larger exposure; losses follow the exposure."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Financing"
+              }
+            ],
+            [
+              {
+                "text": "Holding a position overnight may add a charge or credit under the account terms."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Protective order"
+              }
+            ],
+            [
+              {
+                "text": "A stop is an instruction, not a guarantee of execution at that exact price."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Hypothetical example: buying 1,000 euros at EUR/USD 1.1000 and closing at 1.1010 produces US$1 gross profit. The opposite ten-pip move produces US$1 gross loss. Costs and account-currency conversion change the net result. This is classroom arithmetic, not an available-product or trade recommendation."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "provider-comparison",
+        "text": "Compare evidence before choosing a provider"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ask who issues the contract and handles your money, not just which app you will install. Match the account agreement, licence claim and official payment instructions. Keep screenshots and dated copies of the documents you relied on."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "Questions to ask before registering",
+        "headers": [
+          [
+            {
+              "text": "Area"
+            }
+          ],
+          [
+            {
+              "text": "Ask for"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Identity and permission"
+              }
+            ],
+            [
+              {
+                "text": "Legal company, relevant activity, jurisdiction and current register entry or official confirmation."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Total trading costs"
+              }
+            ],
+            [
+              {
+                "text": "Typical spread, opening/closing commission, financing and conversion; do not compare minimum spreads alone."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Client treatment"
+              }
+            ],
+            [
+              {
+                "text": "Account classification, complaint process, custody and terms that actually apply to your entity."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Payments"
+              }
+            ],
+            [
+              {
+                "text": "Official recipient, accepted account holder, full charges and withdrawal conditions in writing."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the "
+          },
+          {
+            "text": "broker research directory",
+            "href": "/reviews"
+          },
+          {
+            "text": " to find disclosures and outstanding questions. Its entries are research profiles, not a verified shortlist of authorised brokers for your country. Independently confirm any provider you investigate."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "payments-and-withdrawals",
+        "text": "Check funding and withdrawals separately"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Read the Product Disclosure Statement, target market determination and current fee schedule. Check the recipient company, supported AUD payment method, account-name rules and the process for returning money before making a deposit."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "An AUD payment does not guarantee an AUD trading account. Compare conversion on deposits, trading results and withdrawals, together with spreads, opening and closing commissions and overnight financing."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "MoneySmart explains that overseas providers without an AFS licence may not offer Australian consumer protections. Keep copies of your account documents and use the firm’s complaints process; check the applicable external dispute route rather than assuming every offshore account has the same recourse."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "demo-practice",
+        "text": "Practise a repeatable process on demo"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Choose one simple practice setup and write the entry, exit and maximum loss before placing an order. Record whether you followed the plan. A profitable demo run does not establish that the strategy, execution or emotional response will be the same with real money."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If your verified provider uses MetaTrader 5, "
+          },
+          {
+            "text": "MetaQuotes’ demo-account instructions",
+            "href": "https://www.metatrader5.com/en/terminal/help/startworking/acc_open"
+          },
+          {
+            "text": " explain the practice mode. The software’s availability does not establish local authorisation for a provider or a live account."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use our "
+          },
+          {
+            "text": "beginner demo checklist",
+            "href": "/insights/best-day-trading-app-for-beginners#what-beginners-should-prioritise-during-a-demo-week"
+          },
+          {
+            "text": " to structure practice. The "
+          },
+          {
+            "text": "platform comparison guide",
+            "href": "/insights/best-platforms-for-day-trading#how-to-compare-the-best-platforms-for-day-trading"
+          },
+          {
+            "text": " explains features; it does not establish local provider or product permission."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Australia has multiple timezones and daylight-saving arrangements. Check the calendar’s selected city or UTC setting and your platform’s server time; a fixed Sydney, Perth or London-opening conversion is not reliable throughout the year."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "risk-budget",
+        "text": "Set a cash loss budget before sizing"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Illustrative budgeting only: on A$1,000, a 1% planned loss budget is A$10. This is a teaching example, not a suitable deposit recommendation or proof that a particular account is available. A stop can slip, so actual losses can exceed the plan."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Trading capital and a broker’s minimum deposit are different decisions. If the smallest permitted position already exceeds your cash limit after costs, remain in simulation. More leverage does not make that position safer."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Our "
+          },
+          {
+            "text": "forex position-size calculator",
+            "href": "/tools/forex-position-size-calculator"
+          },
+          {
+            "text": " supports AUD accounts. Select AUD and supply the requested conversion bid and ask where needed; the estimate depends on those inputs. Compare the converted pip value and costs with your cash loss budget."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Keep essential money outside the account",
+        "content": [
+          {
+            "text": "Never borrow trading capital or use money needed for living expenses. A small planned percentage is not a guarantee against loss, gaps, insolvency or fraud."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "common-mistakes",
+        "text": "Avoid these country-specific shortcuts"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Accepting wholesale classification mainly to obtain more leverage."
+            }
+          ],
+          [
+            {
+              "text": "Checking an ABN while skipping AFS product permissions."
+            }
+          ],
+          [
+            {
+              "text": "Assuming a currency ETF and an OTC margin-FX contract have identical risks."
+            }
+          ],
+          [
+            {
+              "text": "Reading a USD trading result as an identical AUD result."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Keep trade, fee, conversion and payment records. Ask a qualified local tax adviser how your actual instruments and circumstances are treated; this guide supplies no universal tax rate or exemption."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-1",
+        "text": "What licence should an Australian forex provider have?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "MoneySmart says to check an Australian financial services licence. Verify the exact company and relevant product permissions; an ABN or familiar brand name is not sufficient."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-2",
+        "text": "Is a wholesale account better for a beginner?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Not by default. Wholesale classification can remove important protections and external dispute-resolution access. Understand the consequences rather than accepting it mainly for higher leverage."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-3",
+        "text": "Can I start forex trading with A$100?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A provider’s minimum and minimum trade size vary. A small balance does not remove leverage risk. Practise first and check whether the smallest permitted position fits your affordable loss budget."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "your-next-step",
+        "text": "Your next step"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the seven-step checklist to plan your learning in Australia. Resolve provider and payment permissions before real-money funding. Progress means a documented, repeatable process—not a promised income or a deadline for becoming profitable."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For a different jurisdiction, use our "
+          },
+          {
+            "text": "South Africa beginner guide",
+            "href": "/insights/how-to-start-forex-trading-in-south-africa"
+          },
+          {
+            "text": " or the "
+          },
+          {
+            "text": "India guide",
+            "href": "/insights/how-to-start-forex-trading-in-india"
+          },
+          {
+            "text": ". Each country’s permissions need their own checks; one country’s licence or transfer route should not be transplanted to another."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What licence should an Australian forex provider have?",
+        "answer": "MoneySmart says to check an Australian financial services licence. Verify the exact company and relevant product permissions; an ABN or familiar brand name is not sufficient."
+      },
+      {
+        "question": "Is a wholesale account better for a beginner?",
+        "answer": "Not by default. Wholesale classification can remove important protections and external dispute-resolution access. Understand the consequences rather than accepting it mainly for higher leverage."
+      },
+      {
+        "question": "Can I start forex trading with A$100?",
+        "answer": "A provider’s minimum and minimum trade size vary. A small balance does not remove leverage risk. Practise first and check whether the smallest permitted position fits your affordable loss budget."
+      }
+    ]
+  }
+}

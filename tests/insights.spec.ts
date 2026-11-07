@@ -20,8 +20,8 @@ function editorialParts(block: InsightBlock) {
 
 
 test("published guides retain complete copy, evidence links, real image files and matching FAQ records", () => {
-  expect(insightGuides).toHaveLength(15);
-  expect(insightArticles).toHaveLength(16);
+  expect(insightGuides).toHaveLength(24);
+  expect(insightArticles).toHaveLength(25);
   expect(new Set(insightArticles.map(article => article.slug)).size).toBe(insightArticles.length);
   expect(insightImages).toHaveLength(20);
   const slugs = new Set(insightArticles.map(article => article.slug));

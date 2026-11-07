@@ -1,0 +1,687 @@
+{
+  "research": {
+    "country": "India",
+    "slug": "how-to-start-forex-trading-in-india",
+    "status": "restricted-authorised-route",
+    "publishable": true,
+    "offshoreFundingPermission": "LRS-overseas-margin-prohibited",
+    "sourceIds": [
+      "india-rbi-user-faq",
+      "india-rbi-user-lrs",
+      "india-nse-new"
+    ],
+    "preparedAt": "2026-11-07",
+    "missingEvidence": [
+      "Current eligibility, purpose and exposure requirements for a specific authorised domestic product",
+      "Exact exchange or authorised-provider contract specifications for that product",
+      "Any later RBI directions updating the cited FAQs; LRS overseas-margin prohibition is not an unresolved permission"
+    ]
+  },
+  "article": {
+    "slug": "how-to-start-forex-trading-in-india",
+    "title": "How to Start Forex Trading in India: 7 Clear Checks",
+    "seoTitle": "How to Start Forex Trading in India: 7 Clear Checks",
+    "description": "Learn how to start forex trading in India. Check the permitted entity, venue and purpose, study exchange contracts and plan risk before considering funding.",
+    "focusKeyword": "how to start forex trading in india",
+    "format": "guide",
+    "category": "beginner-guides",
+    "topic": "Forex for India beginners",
+    "publishedAt": "2026-11-07",
+    "updatedAt": "2026-11-07",
+    "researchPreparedAt": "2026-11-07",
+    "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
+    "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Learning how to start forex trading in India needs an India-specific route. Do not copy an offshore CFD tutorial and assume it applies to an Indian resident. Establish the authorised entity, permitted venue, product and purpose before thinking about live funding."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "How to start forex trading in India: follow RBI’s authorised-person, permitted-purpose and venue rules. RBI states that overseas margin or margin-call remittances are not allowed under LRS. Study an appropriate authorised route and contract specifications instead of following an offshore CFD funding tutorial.",
+        "ordered": true,
+        "points": [
+          "Identify the exact currency product and intended purpose.",
+          "Check the current RBI rules for residents and authorised entities.",
+          "Verify the execution venue and the exchange member or provider.",
+          "Read the contract size, tick value, expiry and settlement rules.",
+          "Practise with a simulation appropriate to that product.",
+          "Confirm the funding purpose with an authorised bank before transferring.",
+          "Keep contract notes and records, and resolve eligibility questions before trading live."
+        ],
+        "anchors": [
+          {
+            "text": "RBI’s authorised-person",
+            "href": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=3347"
+          }
+        ],
+        "table": {
+          "caption": "Before putting real money at risk in India",
+          "headers": [
+            [
+              {
+                "text": "Check"
+              }
+            ],
+            [
+              {
+                "text": "Practical action"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "Permission"
+                }
+              ],
+              [
+                {
+                  "text": "Verify entity, venue, product and purpose; a trading-app login does not establish these."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Contract"
+                }
+              ],
+              [
+                {
+                  "text": "Use the relevant exchange’s own lot, tick, expiry and settlement specifications."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Remittance"
+                }
+              ],
+              [
+                {
+                  "text": "Do not infer margin-funding permission from a general transfer allowance."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "callout",
+        "title": "Overseas margin is not LRS-eligible",
+        "content": [
+          {
+            "text": "RBI’s cited Forex Transactions FAQ says LRS remittances for overseas margins or margin calls are not allowed. Follow the authorised entity, permitted purpose and venue requirements; a broker’s willingness to accept a payment does not establish compliance."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "assetId": "laptop",
+        "role": "featured",
+        "alt": "How to start forex trading in India: illustrative laptop for researching authorised products and practising safely",
+        "caption": "Illustrative research equipment; device access does not establish permission to trade a product."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "local-rules",
+        "text": "How to start forex trading in India: check the local route"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "RBI’s "
+          },
+          {
+            "text": "Forex Transactions FAQ",
+            "href": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=3347"
+          },
+          {
+            "text": ", cited as updated on 28 August 2024, says resident persons may undertake forex transactions only with authorised persons and for permitted purposes under FEMA. Electronic transactions must use the permitted authorised-platform or recognised-exchange route."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The same FAQ directly answers overseas margin remittances: margins or margin calls to overseas exchanges or counterparties are not allowed under the Liberalised Remittance Scheme. The "
+          },
+          {
+            "text": "RBI’s LRS FAQ",
+            "href": "https://www.rbi.org.in/commonperson/English/Scripts/FAQs.aspx?Id=1834"
+          },
+          {
+            "text": " also lists remittances for trading foreign exchange abroad among prohibited purposes."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A general remittance limit does not override those exclusions. A broker accepting Indian customers, an offshore wallet or cryptocurrency payment option does not establish FEMA or LRS compliance. Do not use another payment method to treat a prohibited purpose as permitted."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The "
+          },
+          {
+            "text": "NSE currency-derivatives overview",
+            "href": "https://www.nseindia.com/static/products-services/about-currency-derivatives"
+          },
+          {
+            "text": " is an exchange reference for learning contract types. It does not mean every resident may use every product for every purpose. Verify current eligibility, exposure and purpose requirements with an authorised bank and the relevant exchange or provider."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "country-check",
+        "text": "Check venue and purpose, not just the currency symbol"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The same currency symbol can appear in different legal products. Establish the permitted entity, execution venue and purpose before analysing a chart. For INR-related contracts, ask specifically about applicable underlying-exposure requirements; do not treat an old pair list or a broker login as eligibility."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "account-preparation",
+        "text": "What to prepare before opening an account"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Prepare information, not a large deposit. Requirements depend on the lawful provider and product; check its current document list before sending sensitive records."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "A reliable device and internet connection, plus a secure email address."
+            }
+          ],
+          [
+            {
+              "text": "Government-issued identity and address evidence accepted by the provider, if required."
+            }
+          ],
+          [
+            {
+              "text": "Payment and contact details in your own name; no borrowed identity or third-party wallet."
+            }
+          ],
+          [
+            {
+              "text": "A written risk budget that excludes rent, food, family commitments and debt payments."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "forex-basics",
+        "text": "Understand the product and its costs"
+      },
+      {
+        "type": "table",
+        "label": "Read the actual exchange contract",
+        "headers": [
+          [
+            {
+              "text": "Item"
+            }
+          ],
+          [
+            {
+              "text": "Why it matters"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Permitted purpose"
+              }
+            ],
+            [
+              {
+                "text": "Eligibility and product availability need current RBI and exchange verification."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Contract size"
+              }
+            ],
+            [
+              {
+                "text": "The exchange defines the quantity; do not assume an offshore FX lot."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Tick and price"
+              }
+            ],
+            [
+              {
+                "text": "Convert a quoted price change into the contract’s cash effect."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Expiry and settlement"
+              }
+            ],
+            [
+              {
+                "text": "Understand the final date, settlement method and any obligations."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Margin and costs"
+              }
+            ],
+            [
+              {
+                "text": "A margin deposit is not the maximum possible loss; include actual charges."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use exchange educational material to learn order entry and settlement. Price exposure is a contract calculation, not simply the amount of cash initially paid. Do not open an offshore demo and mistake its trading rules for the rules of a permitted domestic product."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "provider-comparison",
+        "text": "Compare evidence before choosing a provider"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ask who issues the contract and handles your money, not just which app you will install. Match the account agreement, licence claim and official payment instructions. Keep screenshots and dated copies of the documents you relied on."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "Questions to ask before registering",
+        "headers": [
+          [
+            {
+              "text": "Area"
+            }
+          ],
+          [
+            {
+              "text": "Ask for"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Identity and permission"
+              }
+            ],
+            [
+              {
+                "text": "Legal company, relevant activity, jurisdiction and current register entry or official confirmation."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Total trading costs"
+              }
+            ],
+            [
+              {
+                "text": "Typical spread, opening/closing commission, financing and conversion; do not compare minimum spreads alone."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Client treatment"
+              }
+            ],
+            [
+              {
+                "text": "Account classification, complaint process, custody and terms that actually apply to your entity."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Payments"
+              }
+            ],
+            [
+              {
+                "text": "Official recipient, accepted account holder, full charges and withdrawal conditions in writing."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the appropriate authorised bank or recognised exchange’s official references to check the entity and product. This article does not recommend an offshore CFD provider for Indian residents."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "payments-and-withdrawals",
+        "text": "Check funding and withdrawals separately"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "RBI’s cited FAQ rules out LRS remittances for overseas margin or margin calls. Do not plan an offshore CFD deposit by borrowing the general wording of an overseas-investment allowance."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For a permitted domestic route, obtain current bank and exchange-member instructions, settlement terms and charges. Use the actual contract notes and documents rather than importing the spread, leverage or lot rules from an overseas platform."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Confirm the current RBI FAQs and any later applicable directions before acting. This guide states the cited restriction; it does not provide personal legal advice, a list of approved offshore brokers or a tax rate."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "demo-practice",
+        "text": "Practise a repeatable process on demo"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Choose one simple practice setup and write the entry, exit and maximum loss before placing an order. Record whether you followed the plan. A profitable demo run does not establish that the strategy, execution or emotional response will be the same with real money."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use our "
+          },
+          {
+            "text": "beginner demo checklist",
+            "href": "/insights/best-day-trading-app-for-beginners#what-beginners-should-prioritise-during-a-demo-week"
+          },
+          {
+            "text": " to structure practice. The "
+          },
+          {
+            "text": "platform comparison guide",
+            "href": "/insights/best-platforms-for-day-trading#how-to-compare-the-best-platforms-for-day-trading"
+          },
+          {
+            "text": " explains features; it does not establish local provider or product permission."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Keep exchange contract specifications beside your practice journal. Expiry, settlement method and tick value can matter as much as a chart signal. A generic 100,000-unit FX lot is not a safe default for an exchange contract."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "risk-budget",
+        "text": "Set a cash loss budget before sizing"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Illustrative budgeting only: on INR 50,000, a 1% planned loss budget is INR 500. This is a teaching example, not a suitable deposit recommendation or proof that a particular account is available. A stop can slip, so actual losses can exceed the plan."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Trading capital and a broker’s minimum deposit are different decisions. If the smallest permitted position already exceeds your cash limit after costs, remain in simulation. More leverage does not make that position safer."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Our "
+          },
+          {
+            "text": "USD position-sizing example",
+            "href": "/tools/forex-position-size-calculator"
+          },
+          {
+            "text": " illustrates the calculation. For a different account currency, confirm the correct converted pip value. The tool does not establish local eligibility or the specifications of an Indian exchange contract."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Keep essential money outside the account",
+        "content": [
+          {
+            "text": "Never borrow trading capital or use money needed for living expenses. A small planned percentage is not a guarantee against loss, gaps, insolvency or fraud."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "common-mistakes",
+        "text": "Avoid these country-specific shortcuts"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Following an offshore CFD onboarding tutorial as if it establishes Indian permission."
+            }
+          ],
+          [
+            {
+              "text": "Assuming a general remittance facility authorises margin funding."
+            }
+          ],
+          [
+            {
+              "text": "Using an old currency-pair list without checking current purpose requirements."
+            }
+          ],
+          [
+            {
+              "text": "Applying an OTC lot convention to a different exchange contract."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Keep trade, fee, conversion and payment records. Ask a qualified local tax adviser how your actual instruments and circumstances are treated; this guide supplies no universal tax rate or exemption."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-1",
+        "text": "Does access to MT4 or MT5 establish permission in India?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "No. An app does not establish the permitted entity, product, execution venue or purpose. Check current RBI and exchange requirements before using real funds."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-2",
+        "text": "Can LRS fund an overseas forex margin account?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "RBI’s Forex Transactions FAQ says remittances for margins or margin calls to overseas exchanges or counterparties are not allowed under LRS. A general remittance allowance does not override that restriction."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-3",
+        "text": "Can I use a standard offshore forex lot in my calculation?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the actual permitted contract’s specifications. Exchange contract size, tick value, expiry and settlement can differ from an OTC forex product; a generic lot assumption can misstate exposure."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "your-next-step",
+        "text": "Your next step"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the seven-step checklist to plan your learning in India. Resolve provider and payment permissions before real-money funding. Progress means a documented, repeatable process—not a promised income or a deadline for becoming profitable."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For a different jurisdiction, use our "
+          },
+          {
+            "text": "South Africa beginner guide",
+            "href": "/insights/how-to-start-forex-trading-in-south-africa"
+          },
+          {
+            "text": " or the "
+          },
+          {
+            "text": "Australia guide",
+            "href": "/insights/how-to-start-forex-trading-in-australia"
+          },
+          {
+            "text": ". Each country’s permissions need their own checks; one country’s licence or transfer route should not be transplanted to another."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does access to MT4 or MT5 establish permission in India?",
+        "answer": "No. An app does not establish the permitted entity, product, execution venue or purpose. Check current RBI and exchange requirements before using real funds."
+      },
+      {
+        "question": "Can LRS fund an overseas forex margin account?",
+        "answer": "RBI’s Forex Transactions FAQ says remittances for margins or margin calls to overseas exchanges or counterparties are not allowed under LRS. A general remittance allowance does not override that restriction."
+      },
+      {
+        "question": "Can I use a standard offshore forex lot in my calculation?",
+        "answer": "Use the actual permitted contract’s specifications. Exchange contract size, tick value, expiry and settlement can differ from an OTC forex product; a generic lot assumption can misstate exposure."
+      }
+    ]
+  }
+}

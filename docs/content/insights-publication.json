@@ -71,6 +71,31 @@
       "sourceLedger": "south-africa-forex-guide-source-checks-2026-11-06.json",
       "shortUrl": "/how-to-start-forex-trading-in-south-africa/",
       "canonicalPath": "/insights/how-to-start-forex-trading-in-south-africa"
+    },
+    {
+      "updatedAt": "2026-11-07T13:24:17.926272+00:00",
+      "authorization": "User requested nine country guides using the South Africa template and explicitly required uncertainty to be raised rather than invented.",
+      "scope": [
+        "how-to-start-forex-trading-in-kenya",
+        "how-to-start-forex-trading-in-nigeria",
+        "how-to-start-forex-trading-in-uganda",
+        "how-to-start-forex-trading-in-ghana",
+        "how-to-start-forex-trading-in-zambia",
+        "how-to-start-forex-trading-in-zimbabwe",
+        "how-to-start-forex-trading-in-botswana",
+        "how-to-start-forex-trading-in-australia",
+        "how-to-start-forex-trading-in-india"
+      ],
+      "editorialDecisions": [
+        "All nine reuse the South Africa renderer with a short intro, seven ordered Quick answer steps, summary tables, three brief matching FAQs, factual David Odoi profile and credited images.",
+        "The owner supplied additional dated primary-source research. India states the cited RBI LRS overseas-margin prohibition and authorised-route checks; no offshore provider is recommended.",
+        "Nigeria, Uganda, Ghana, Zambia, Zimbabwe and Botswana are education/verification guides with an early explicit notice that offshore leveraged-account funding permission is unverified. General licensing, capital mobility and allowances are not presented as permission.",
+        "Sources were retrieved where available. Owner-supplied RBI, BOU, BOZ and RBZ quotations are labelled separately in the evidence ledger where automated retrieval failed.",
+        "No invented broker endorsement, payment support, minimum deposit, tax rate, profit claim or author credential. Inapplicable or older reporting rules are not used as funding permission.",
+        "All nine receive canonical routes, short redirects, sitemap entries, country navigation and contextual country links."
+      ],
+      "sourceLedger": "country-guide-source-checks-2026-11-07.json",
+      "researchHandoff": "country-guides-research-handoff.md"
     }
   ]
 }

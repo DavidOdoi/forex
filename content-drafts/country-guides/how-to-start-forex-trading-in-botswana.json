@@ -1,0 +1,721 @@
+{
+  "research": {
+    "country": "Botswana",
+    "slug": "how-to-start-forex-trading-in-botswana",
+    "status": "education-only",
+    "publishable": true,
+    "offshoreFundingPermission": "not-established",
+    "sourceIds": [
+      "botswana-nbfira",
+      "botswana-capital",
+      "botswana-fx"
+    ],
+    "preparedAt": "2026-11-07",
+    "missingEvidence": [
+      "Current product/provider permission for resident retail margin forex or CFDs",
+      "Current lawful offshore margin-funding and withdrawal route",
+      "Relevant exceptions and whether older guidance is superseded"
+    ]
+  },
+  "article": {
+    "slug": "how-to-start-forex-trading-in-botswana",
+    "title": "How to Start Forex Trading in Botswana: 7 Clear Checks",
+    "seoTitle": "How to Start Forex Trading in Botswana: 7 Clear Checks",
+    "description": "Learn how to start forex trading in Botswana. Check product permissions, practise on demo, compare pula conversion costs and plan risk before depositing.",
+    "focusKeyword": "how to start forex trading in botswana",
+    "format": "guide",
+    "category": "beginner-guides",
+    "topic": "Forex for Botswana beginners",
+    "publishedAt": "2026-11-07",
+    "updatedAt": "2026-11-07",
+    "researchPreparedAt": "2026-11-07",
+    "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
+    "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Learning how to start forex trading in Botswana means understanding the difference between currency exchange and a leveraged investment contract. Verify the exact product and provider before funding. A bank’s exchange-rate quote or an overseas licence does not answer every retail trading question."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "How to start forex trading in Botswana: practise first, check the exact product and provider, and ask your bank about funding. General capital-market listings and interbank FX information do not establish a resident’s permission to fund an offshore leveraged account.",
+        "ordered": true,
+        "points": [
+          "Learn the difference between buying currency and a leveraged price contract.",
+          "Identify the provider’s exact entity and the product it offers.",
+          "Ask NBFIRA and your bank which permissions and transfer rules apply.",
+          "Practise orders and risk controls using simulation.",
+          "Compare BWP conversion and the amount actually credited.",
+          "Calculate size from a cash loss budget and the correct pip value.",
+          "Retain records and resolve product and funding questions before depositing."
+        ],
+        "anchors": [
+          {
+            "text": "NBFIRA",
+            "href": "https://www.nbfira.org.bw/"
+          }
+        ],
+        "table": {
+          "caption": "Before putting real money at risk in Botswana",
+          "headers": [
+            [
+              {
+                "text": "Check"
+              }
+            ],
+            [
+              {
+                "text": "Practical action"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "Investment service"
+                }
+              ],
+              [
+                {
+                  "text": "Confirm the exact product permission, not just the company’s name."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "FX market"
+                }
+              ],
+              [
+                {
+                  "text": "Do not mistake an interbank market description for retail broker approval."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Costs"
+                }
+              ],
+              [
+                {
+                  "text": "Calculate the pula result after entry and exit conversions."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "callout",
+        "title": "Offshore funding permission is not verified",
+        "content": [
+          {
+            "text": "We have not verified that residents may fund overseas leveraged forex or CFD accounts in Botswana. This guide covers education and verification checks. Confirm the current product and transfer requirements with the relevant regulator, your bank and a qualified local adviser before depositing."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "featured",
+        "alt": "How to start forex trading in Botswana: historical EUR/USD candlestick chart used to explain demo practice",
+        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "local-rules",
+        "text": "How to start forex trading in Botswana: check the local route"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The "
+          },
+          {
+            "text": "Non-Bank Financial Institutions Regulatory Authority",
+            "href": "https://www.nbfira.org.bw/"
+          },
+          {
+            "text": " publishes information about regulated entities, including a "
+          },
+          {
+            "text": "capital-markets category",
+            "href": "https://www.nbfira.org.bw/list-of-regulated-entities/cm-licensed-entities/"
+          },
+          {
+            "text": ". Verify the actual activity covered instead of assuming every listed firm may offer every product."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The "
+          },
+          {
+            "text": "Bank of Botswana’s foreign-exchange market page",
+            "href": "https://www.bankofbotswana.bw/content/foreign-exchange-markets"
+          },
+          {
+            "text": " describes another part of the financial system. It is not a retail CFD broker approval or a statement of permission for an individual offshore margin transfer."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "We have not verified an official rule specifically permitting residents to fund overseas leveraged forex or CFD accounts. Seek a current, product-specific answer from the relevant authority, your bank or a qualified local professional."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Do not infer approval from a foreign licence or from an absence of warnings. Match the legal company, scope of service, agreement and payment instructions, and establish what protections actually apply."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "country-check",
+        "text": "Separate the Pula exchange-rate discussion from a CFD account"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A currency-market explanation can help you understand exchange rates, but the contract with an online provider is a separate legal and commercial relationship. Verify who owes you money and what permission covers that service before considering advertised spreads."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "account-preparation",
+        "text": "What to prepare before opening an account"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Prepare information, not a large deposit. Requirements depend on the lawful provider and product; check its current document list before sending sensitive records."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "A reliable device and internet connection, plus a secure email address."
+            }
+          ],
+          [
+            {
+              "text": "Government-issued identity and address evidence accepted by the provider, if required."
+            }
+          ],
+          [
+            {
+              "text": "Payment and contact details in your own name; no borrowed identity or third-party wallet."
+            }
+          ],
+          [
+            {
+              "text": "A written risk budget that excludes rent, food, family commitments and debt payments."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "forex-basics",
+        "text": "Understand the product and its costs"
+      },
+      {
+        "type": "table",
+        "label": "A short forex glossary",
+        "headers": [
+          [
+            {
+              "text": "Term"
+            }
+          ],
+          [
+            {
+              "text": "What to understand before practising"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Currency pair"
+              }
+            ],
+            [
+              {
+                "text": "The price of a base currency in a quote currency; EUR/USD is dollars per euro."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Pip and position size"
+              }
+            ],
+            [
+              {
+                "text": "For EUR/USD, a pip commonly means 0.0001; cash exposure depends on the units traded."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Spread and commission"
+              }
+            ],
+            [
+              {
+                "text": "The buy-sell price gap and any separate fees, potentially charged on both sides."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Leverage and margin"
+              }
+            ],
+            [
+              {
+                "text": "A small deposit can support a larger exposure; losses follow the exposure."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Financing"
+              }
+            ],
+            [
+              {
+                "text": "Holding a position overnight may add a charge or credit under the account terms."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Protective order"
+              }
+            ],
+            [
+              {
+                "text": "A stop is an instruction, not a guarantee of execution at that exact price."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Hypothetical example: buying 1,000 euros at EUR/USD 1.1000 and closing at 1.1010 produces US$1 gross profit. The opposite ten-pip move produces US$1 gross loss. Costs and account-currency conversion change the net result. This is classroom arithmetic, not an available-product or trade recommendation."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "provider-comparison",
+        "text": "Compare evidence before choosing a provider"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ask who issues the contract and handles your money, not just which app you will install. Match the account agreement, licence claim and official payment instructions. Keep screenshots and dated copies of the documents you relied on."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "Questions to ask before registering",
+        "headers": [
+          [
+            {
+              "text": "Area"
+            }
+          ],
+          [
+            {
+              "text": "Ask for"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Identity and permission"
+              }
+            ],
+            [
+              {
+                "text": "Legal company, relevant activity, jurisdiction and current register entry or official confirmation."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Total trading costs"
+              }
+            ],
+            [
+              {
+                "text": "Typical spread, opening/closing commission, financing and conversion; do not compare minimum spreads alone."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Client treatment"
+              }
+            ],
+            [
+              {
+                "text": "Account classification, complaint process, custody and terms that actually apply to your entity."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Payments"
+              }
+            ],
+            [
+              {
+                "text": "Official recipient, accepted account holder, full charges and withdrawal conditions in writing."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the "
+          },
+          {
+            "text": "broker research directory",
+            "href": "/reviews"
+          },
+          {
+            "text": " to find disclosures and outstanding questions. Its entries are research profiles, not a verified shortlist of authorised brokers for your country. Independently confirm any provider you investigate."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "payments-and-withdrawals",
+        "text": "Check funding and withdrawals separately"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ask your bank about the proposed recipient, jurisdiction and margin-funding purpose. Do not assume a bank card’s technical ability to make a payment establishes permission for the investment itself."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Compare pula paid, foreign currency credited, intermediary fees and the rate used to convert a withdrawal back to BWP. An account denominated in another currency creates a reporting and conversion issue even if the traded pair never includes pula."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Confirm the official deposit and withdrawal instructions in writing. Use a payment account in your own name, and keep records that identify the actual trading company rather than only a local salesperson."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "demo-practice",
+        "text": "Practise a repeatable process on demo"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Choose one simple practice setup and write the entry, exit and maximum loss before placing an order. Record whether you followed the plan. A profitable demo run does not establish that the strategy, execution or emotional response will be the same with real money."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If your verified provider uses MetaTrader 5, "
+          },
+          {
+            "text": "MetaQuotes’ demo-account instructions",
+            "href": "https://www.metatrader5.com/en/terminal/help/startworking/acc_open"
+          },
+          {
+            "text": " explain the practice mode. The software’s availability does not establish local authorisation for a provider or a live account."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use our "
+          },
+          {
+            "text": "beginner demo checklist",
+            "href": "/insights/best-day-trading-app-for-beginners#what-beginners-should-prioritise-during-a-demo-week"
+          },
+          {
+            "text": " to structure practice. The "
+          },
+          {
+            "text": "platform comparison guide",
+            "href": "/insights/best-platforms-for-day-trading#how-to-compare-the-best-platforms-for-day-trading"
+          },
+          {
+            "text": " explains features; it does not establish local provider or product permission."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Keep your trading journal in the actual account currency and your household budget in BWP. Reconcile the two using real transaction records instead of applying today’s exchange rate to every historical payment."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "risk-budget",
+        "text": "Set a cash loss budget before sizing"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Illustrative budgeting only: on BWP 10,000, a 1% planned loss budget is BWP 100. This is a teaching example, not a suitable deposit recommendation or proof that a particular account is available. A stop can slip, so actual losses can exceed the plan."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Trading capital and a broker’s minimum deposit are different decisions. If the smallest permitted position already exceeds your cash limit after costs, remain in simulation. More leverage does not make that position safer."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Our "
+          },
+          {
+            "text": "forex position-size calculator",
+            "href": "/tools/forex-position-size-calculator"
+          },
+          {
+            "text": " supports a USD teaching example and selected currencies, but not BWP accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget."
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Keep essential money outside the account",
+        "content": [
+          {
+            "text": "Never borrow trading capital or use money needed for living expenses. A small planned percentage is not a guarantee against loss, gaps, insolvency or fraud."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "common-mistakes",
+        "text": "Avoid these country-specific shortcuts"
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Treating a general financial-services listing as permission for every derivative."
+            }
+          ],
+          [
+            {
+              "text": "Using an interbank-market page as a retail broker endorsement."
+            }
+          ],
+          [
+            {
+              "text": "Ignoring BWP conversion when measuring a foreign-currency balance."
+            }
+          ],
+          [
+            {
+              "text": "Assuming no visible warning means a provider is approved."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Keep trade, fee, conversion and payment records. Ask a qualified local tax adviser how your actual instruments and circumstances are treated; this guide supplies no universal tax rate or exemption."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-1",
+        "text": "Does a general NBFIRA listing cover every forex product?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Check the specific activity and legal entity. A listing alone does not establish permission for every leveraged contract or the rules governing your proposed offshore funding."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-2",
+        "text": "Must I trade a pair containing pula?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "A trading account may offer other currency pairs, subject to permission and product availability. Your BWP household exposure can still be affected by account-currency conversion and payment costs."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-3",
+        "text": "What should I ask before using a bank card?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ask about the true payment purpose, recipient, applicable requirements and return route. Technical card acceptance does not independently verify the provider or the investment’s regulatory status."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "your-next-step",
+        "text": "Your next step"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the seven-step checklist to plan your learning in Botswana. Resolve provider and payment permissions before real-money funding. Progress means a documented, repeatable process—not a promised income or a deadline for becoming profitable."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "For a different jurisdiction, use our "
+          },
+          {
+            "text": "South Africa beginner guide",
+            "href": "/insights/how-to-start-forex-trading-in-south-africa"
+          },
+          {
+            "text": " or the "
+          },
+          {
+            "text": "Zambia guide",
+            "href": "/insights/how-to-start-forex-trading-in-zambia"
+          },
+          {
+            "text": ". Each country’s permissions need their own checks; one country’s licence or transfer route should not be transplanted to another."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does a general NBFIRA listing cover every forex product?",
+        "answer": "Check the specific activity and legal entity. A listing alone does not establish permission for every leveraged contract or the rules governing your proposed offshore funding."
+      },
+      {
+        "question": "Must I trade a pair containing pula?",
+        "answer": "A trading account may offer other currency pairs, subject to permission and product availability. Your BWP household exposure can still be affected by account-currency conversion and payment costs."
+      },
+      {
+        "question": "What should I ask before using a bank card?",
+        "answer": "Ask about the true payment purpose, recipient, applicable requirements and return route. Technical card acceptance does not independently verify the provider or the investment’s regulatory status."
+      }
+    ]
+  }
+}

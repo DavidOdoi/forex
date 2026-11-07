@@ -19,6 +19,15 @@ Objective checks: PASS. All published guides use a short intro followed immediat
 | ethereum-gas-fees-explained | 797 | 34 | 45 | 2 | 3 | 60 | 27 | 45 | 0.427% | PASS |
 | crypto-wallet-security-guide | 891 | 46 | 40 | 3 | 3 | 61 | 28 | 46 | 0.378% | PASS |
 | how-to-start-forex-trading-in-south-africa | 1798 | 49 | 29 | 3 | 3 | 57 | 42 | 49 | 0.177% | PASS |
+| how-to-start-forex-trading-in-kenya | 1535 | 42 | 35 | 2 | 3 | 50 | 35 | 48 | 0.21% | PASS |
+| how-to-start-forex-trading-in-nigeria | 1561 | 46 | 40 | 1 | 3 | 53 | 37 | 48 | 0.206% | PASS |
+| how-to-start-forex-trading-in-uganda | 1551 | 45 | 40 | 1 | 3 | 52 | 36 | 48 | 0.207% | PASS |
+| how-to-start-forex-trading-in-ghana | 1551 | 45 | 40 | 1 | 3 | 51 | 35 | 48 | 0.207% | PASS |
+| how-to-start-forex-trading-in-zambia | 1532 | 43 | 41 | 2 | 3 | 52 | 36 | 48 | 0.21% | PASS |
+| how-to-start-forex-trading-in-zimbabwe | 1542 | 43 | 44 | 1 | 3 | 54 | 38 | 48 | 0.209% | PASS |
+| how-to-start-forex-trading-in-botswana | 1548 | 43 | 40 | 1 | 3 | 54 | 38 | 48 | 0.208% | PASS |
+| how-to-start-forex-trading-in-australia | 1488 | 41 | 40 | 3 | 3 | 54 | 39 | 48 | 0.217% | PASS |
+| how-to-start-forex-trading-in-india | 1516 | 41 | 43 | 1 | 3 | 51 | 35 | 44 | 0.211% | PASS |
 
 Includes title, headings, intro, quick answer and bullets, callouts, tables, image captions/credits, FAQs, author bio and disclaimer. Excludes navigation, UI bylines, related links, alt attributes, URLs and duplicate JSON-LD.
 
