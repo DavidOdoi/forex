@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { siteOrigin } from "@/lib/site";
+import { indexable, siteOrigin } from "@/lib/site";
 import { type CalculatorDefinition, toolPath } from "./catalog";
 
 // Publication is explicitly authorised on the confirmed origin. Draft broker
 // review guards remain separate; preview deployments stay out of search.
-export const calculatorsIndexable = process.env.VERCEL_ENV !== "preview";
+export const calculatorsIndexable = indexable;
 export function calculatorMetadata(tool: CalculatorDefinition): Metadata {
   const url = new URL(toolPath(tool), siteOrigin).href;
   return {

@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: canonical("/best-brokers"),
+  robots: { index: false, follow: true },
 };
 import { PageHero } from "@/components/site-header";
 import { BrokerCard } from "@/components/broker-card";

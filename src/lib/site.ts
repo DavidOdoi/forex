@@ -1,25 +1,27 @@
-// A public origin is optional until the production domain is confirmed.
-const configuredUrl = process.env.SITE_URL;
+// The user confirmed this production origin and added it to Search Console.
+// SITE_URL can override it for a future custom-domain migration.
+const configuredUrl = process.env.SITE_URL?.trim() || "https://devinforex-five.vercel.app";
 if (
   configuredUrl &&
   (new URL(configuredUrl).protocol !== "https:" ||
     new URL(configuredUrl).pathname !== "/")
 )
   throw new Error("SITE_URL must be an HTTPS origin without a path");
-export const siteUrl = configuredUrl ? new URL(configuredUrl).origin : null;
-// Confirmed by the user; deployment configuration can override this origin.
-export const siteOrigin = siteUrl ?? "https://devinforex-five.vercel.app";
+export const siteUrl = new URL(configuredUrl).origin;
+export const siteOrigin = siteUrl;
+// Only ready canonical pages belong in the sitemap. The comparison preview,
+// illustrative finder, author placeholder and review drafts keep noindex.
 export const publicPaths = [
   "/",
-  "/best-brokers",
   "/reviews",
   "/tools",
   "/insights",
   "/about",
-  "/find-my-broker",
 ];
-export const indexable =
-  Boolean(siteUrl) && process.env.VERCEL_ENV !== "preview";
+export function deploymentAllowsIndexing(environment: string | undefined): boolean {
+  return environment !== "preview" && environment !== "development";
+}
+export const indexable = deploymentAllowsIndexing(process.env.VERCEL_ENV);
 export function canonical(path: string) {
   return { canonical: new URL(path, siteOrigin).href };
 }

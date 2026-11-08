@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { siteOrigin } from "@/lib/site";
+import { indexable, siteOrigin } from "@/lib/site";
 import { davidOdoi } from "@/lib/authors";
 import { articleWordCount, featuredImage, type InsightArticle } from "./catalog";
 
 // The user has explicitly authorised these guides for publication on the
 // confirmed production origin. Broker-review publication guards are separate.
-export const insightsIndexable = process.env.VERCEL_ENV !== "preview";
+export const insightsIndexable = indexable;
 export function insightUrl(slug: string) {
   return new URL(`/insights/${slug}`, siteOrigin).href;
 }

@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: canonical("/find-my-broker"),
+  robots: { index: false, follow: true },
 };
 import Page from "@/components/find-my-broker-content";
 export default Page;

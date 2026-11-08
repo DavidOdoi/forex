@@ -5,6 +5,7 @@ import { calculators, toolPath } from "../src/lib/calculators/catalog";
 import { calculatorsIndexable } from "../src/lib/calculators/seo";
 import { hubPaths } from "../src/lib/metals/content";
 import { metalsIndexable } from "../src/lib/metals/seo";
+import { indexable, publicPaths } from "../src/lib/site";
 
 const routes = [
   "/",
@@ -215,7 +216,7 @@ test("sitemap, robots, exported favicon and custom 404", async ({
   expect(await robots.text()).toContain("Allow: /");
   const xml = await (await request.get("/sitemap.xml")).text();
   const expectedPaths = new Set([
-    ...(process.env.SITE_URL && process.env.VERCEL_ENV !== "preview" ? routes : []),
+    ...(indexable ? publicPaths : []),
     ...(insightsIndexable ? ["/insights", ...insightArticles.map(article => `/insights/${article.slug}`)] : []),
     ...(calculatorsIndexable ? ["/tools", ...calculators.map(toolPath)] : []),
     ...(metalsIndexable ? hubPaths : []),
