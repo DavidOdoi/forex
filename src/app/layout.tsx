@@ -16,7 +16,15 @@ export const metadata: Metadata = {
     "Explore forex broker research, account terms and trading risks. Research is in preparation.",
   openGraph: { type: "website" },
   twitter: { card: "summary_large_image" },
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico?v=20261108", type: "image/x-icon", sizes: "16x16 32x32 48x48" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+      { url: "/favicon-192x192.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/favicon.ico?v=20261108",
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
+  },
   robots: { index: indexable, follow: indexable },
 };
 export default function RootLayout({
