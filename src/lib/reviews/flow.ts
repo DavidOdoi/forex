@@ -85,7 +85,7 @@ export function reviewQuickFacts(review: BrokerReview): QuickFact[] {
   const segregated = checkedField(review, "client-money-arrangements");
   add("Segregated client funds", segregated ? "Yes · provider-reported" : undefined, segregated?.sourceIds, segregated ? "yes" : "unknown");
   const restrictions = checkedField(review, "country-availability");
-  const excludesUS = restrictions && ((review.jurisdiction === "Global" && review.broker.slug === "exness") || (review.jurisdiction === "Kenya" && ["exness", "fxpesa", "xm"].includes(review.broker.slug)));
+  const excludesUS = restrictions && ((review.jurisdiction === "Global" && ["exness", "4xc", "aaafx"].includes(review.broker.slug)) || (review.jurisdiction === "Kenya" && ["exness", "fxpesa", "xm"].includes(review.broker.slug)));
   add(review.broker.slug === "xm" ? "Accepts US citizens" : "Accepts US residents", excludesUS ? "No" : undefined, excludesUS ? restrictions.sourceIds : [], excludesUS ? "no" : "unknown");
   const demo = checkedField(review, "demo-account");
   add("Demo account", demo ? "Available; virtual funds" : undefined, demo?.sourceIds, demo ? "yes" : "unknown");
@@ -93,10 +93,18 @@ export function reviewQuickFacts(review: BrokerReview): QuickFact[] {
   add("Mobile trading", mobile ? "Documented; not tested" : undefined, mobile?.sourceIds, mobile ? "yes" : "unknown");
   const licence = checkedField(review, "licence-number");
   const regulation = checkedField(review, "regulation-and-entity");
-  add("Regulation", review.jurisdiction === "Global" && regulation ? "Entity-specific; see safety" : licence ? (licence.sourceIds.includes("cma") ? `CMA · ${licence.value}` : "Provider report · see safety") : undefined, review.jurisdiction === "Global" ? regulation?.sourceIds : licence?.sourceIds);
+  add("Regulation", review.jurisdiction === "Global" && regulation ? (reviewedRegulatoryNotices(review).length ? "Regulatory notices; see above" : "Entity-specific; see safety") : licence ? (licence.sourceIds.includes("cma") ? `CMA · ${licence.value}` : "Provider report · see safety") : undefined, review.jurisdiction === "Global" ? regulation?.sourceIds : licence?.sourceIds);
   return result;
 }
+export function reviewedRegulatoryNotices(review: BrokerReview) {
+  return (review.regulatoryNotices ?? []).filter(notice => verifiedSources(notice.sourceIds, review));
+}
 export function verdictSentences(review: BrokerReview): string[] {
+  if (reviewedRegulatoryNotices(review).length) return [
+    `Read the official regulator notices for ${review.broker.name} before considering funding.`,
+    "They concern the jurisdictions and named companies stated; they do not establish worldwide authorisation.",
+    "Account costs, resident eligibility and client protections remain unverified in this profile.",
+  ];
   if (review.providerType && review.providerType !== "retail") return [
     `The supplied directory classifies ${review.broker.name} as ${providerLabels[review.providerType]}; this remains an unverified research lead.`,
     "Service access, counterparty eligibility and commercial terms have not been established.",

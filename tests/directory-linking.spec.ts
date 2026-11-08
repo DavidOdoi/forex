@@ -69,7 +69,7 @@ test("institutional, interbank and introducing entries retain clear source and a
 test("ordinary retail profiles reuse the five actions, cost explanation, scope and related links", async ({ page }) => {
   await page.goto("/reviews/aaafx");
   await expect(page.locator("main.br-review")).toHaveCount(1);
-  await expect(page.getByRole("complementary", { name: "Review verdict" })).toContainText("Research for AAAFx is incomplete");
+  await expect(page.getByRole("complementary", { name: "Review verdict" })).toContainText("a full trading-cost and suitability verdict is pending");
   await expect(page.locator("[data-account-cta]")).toHaveCount(5);
   await expect(page.locator("[data-illustrative-cost]")).toContainText("Not a measured AAAFx quote");
   await expect(page.locator("[data-illustrative-cost]")).not.toContainText("Exness");

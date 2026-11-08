@@ -4,7 +4,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronDown, CircleHelp, Cl
 import type { BrokerReview, ReviewField } from "@/lib/reviews/types";
 import { providerLabels, type ResearchEntry } from "@/lib/reviews/research-types";
 import { reviewDigest } from "@/lib/reviews/digest";
-import { checkedField, reviewAccounts, reviewQuickFacts, verdictSentences, flowFaqs } from "@/lib/reviews/flow";
+import { checkedField, reviewAccounts, reviewQuickFacts, verdictSentences, flowFaqs, reviewedRegulatoryNotices } from "@/lib/reviews/flow";
 import { accountOpeningHref, scoreValue } from "@/lib/reviews/template";
 import { isReviewPublished } from "@/lib/reviews/publication";
 import { EditorialAccountability, ResearchComparisons, RelatedResearch } from "./editorial-extras";
@@ -46,6 +46,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
   const introduction = reviewIntroduction(review);
   const openingChecks = reviewOpeningChecks(review);
   const faqs = flowFaqs(review);
+  const notices = reviewedRegulatoryNotices(review);
   const score = scoreValue(review.overallScore, review);
   const section = (id: string) => digest.sections.find(s => s.id === id)!;
   const fees = section("fees"), safety = section("safety"), funding = section("deposit-and-withdrawal"), opening = section("account-opening");
@@ -74,6 +75,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
         <div className="br-topline"><nav aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/reviews">Broker reviews</Link><span>/</span><span>{review.broker.name}</span></nav><ReaderDisclosure affiliate={Boolean(accountOpeningHref(review)) && review.accountOpening.isAffiliate} officialLink={Boolean(accountOpeningHref(review)) && !review.accountOpening.isAffiliate} /></div>
         <p className="br-eyebrow">{retail ? "Global broker research" : "Global provider research"}</p>
         <h1>{reviewHeading(review)}</h1>{!retail && <p className="br-provider-note">Directory classification: {providerLabels[review.providerType!]}. Verification is pending; retail account access is not assumed.</p>}
+        {notices.length > 0 && <aside className="br-regulatory-notices" aria-labelledby="regulatory-notices-heading"><h2 id="regulatory-notices-heading">Regulatory notices: read before funding</h2>{notices.map(notice => <section key={notice.title}><h3>{notice.title}</h3><p>{notice.summary}</p>{notice.sourceIds.map(id => { const source = review.sources.find(source => source.id === id)!; return <a key={id} href={source.url} target="_blank" rel="noopener noreferrer">{source.title}<ArrowUpRight size={17} aria-hidden="true" /></a>; })}</section>)}</aside>}
         <div className="br-intro">{introduction.map((paragraph, index) => <p key={index}>{paragraph.map((part, partIndex) => part.href ? <a key={partIndex} href={part.href}>{part.text}</a> : part.text)}</p>)}</div>
         <div className={platformImage ? "br-opening-grid" : undefined}>
         <aside className="br-verdict-box" aria-label="Review verdict">

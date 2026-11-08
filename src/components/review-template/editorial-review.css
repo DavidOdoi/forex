@@ -13,6 +13,12 @@
 .br-review :is(section, [id^="source-"]) { scroll-margin-top: calc(var(--br-header-height, 76px) + 30px); }
 .br-review :is(h1, h2, h3, p, figure, blockquote, ol, ul, dl, dd) { margin: 0; }
 .br-review a { text-underline-offset: 4px; }
+.br-regulatory-notices { margin: 22px 0; padding: 25px; border: 1px solid #dfbf7e; border-left: 5px solid #b07920; border-radius: 12px; background: #fff9ed; overflow-wrap: anywhere; }
+.br-regulatory-notices h2 { font-size: 24px; line-height: 1.35; font-weight: 700; }
+.br-regulatory-notices section { margin-top: 20px; }
+.br-regulatory-notices h3 { font-size: 19px; font-weight: 700; }
+.br-regulatory-notices p { margin-top: 7px; font-size: 18px; }
+.br-regulatory-notices a { display: inline-flex; align-items: center; gap: 7px; margin-top: 8px; font-size: 18px; font-weight: 600; text-decoration: underline; }
 .br-review :is(a, button, summary, select):focus-visible { outline: 3px solid #000; outline-offset: 5px; border-radius: 3px; }
 .br-container { width: min(1192px, calc(100% - 64px)); margin-inline: auto; }
 .br-hero { padding: 25px 0 58px; background: #fff; border-bottom: 1px solid var(--br-line); }

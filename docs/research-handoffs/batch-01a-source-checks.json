@@ -1,0 +1,104 @@
+{
+  "checkedAt": "2026-11-08T12:51:51.250574+00:00",
+  "batch": 1,
+  "part": "1a",
+  "inputResponseSha256": "cce3f8ec626250ca6c5b041267a6fd3116214315a0af27f0ff650338c4500e22",
+  "receivedBrokers": [
+    "4XC",
+    "AAAFx",
+    "AAFX Trading"
+  ],
+  "sources": [
+    {
+      "id": "4xc-home",
+      "url": "https://4xc.com/",
+      "retrievedAt": "2026-11-08T12:42:36+00:00",
+      "httpStatus": 200,
+      "sha256": "63f99d1eeb18271f1df036862d5ed3a202a00e44136477de66bc42e11a3d85ff",
+      "verification": "retrieved primary page",
+      "claimScope": "Separate entities; licence numbers are broker claims.",
+      "shortExcerpt": "4xCube Ltd and 4XC (Seychelles) Ltd are separate and independent legal entities."
+    },
+    {
+      "id": "4xc-legal",
+      "url": "https://4xc.com/ck/legal/",
+      "retrievedAt": "2026-11-08T12:42:38+00:00",
+      "httpStatus": 200,
+      "sha256": "7e2b054b0f21d1d2ead1975436f6de7f1766c6ecbc54750e5689cabb543f3d34",
+      "verification": "retrieved primary page",
+      "claimScope": "Cook Islands entity disclosure, exclusions and platform links.",
+      "shortExcerpt": "Money-Changing License number MC03/2018"
+    },
+    {
+      "id": "4xc-seychelles-legal",
+      "url": "https://4xc.com/sc/legal/",
+      "retrievedAt": "2026-11-08T12:44:14+00:00",
+      "httpStatus": 200,
+      "sha256": "0a457b2da25947328f944204f1af7a894f2d6eefccb051a66bcc21224719342c",
+      "verification": "retrieved primary page",
+      "claimScope": "Seychelles entity disclosure, exclusions and MT5 link. SD139 is provider-reported.",
+      "shortExcerpt": "licensed by the Financial Services Authority (FSA) under License number SD139"
+    },
+    {
+      "id": "cook-money-changing",
+      "url": "https://www.fsc.gov.ck/public/content.aspx?cn=MoneyChanging",
+      "retrievedAt": "2026-11-08T12:44:17+00:00",
+      "httpStatus": 200,
+      "sha256": "cfec6d4adda7103634803bf8acc08dd073598890bf41759993cabfed14f77e88",
+      "verification": "retrieved primary page",
+      "claimScope": "Regulator entry in money-changing category; no CFD permission inferred or licence number independently confirmed.",
+      "shortExcerpt": "Licensed money-changing businesses: * 4xCube Limited"
+    },
+    {
+      "id": "seychelles-register",
+      "url": "https://fsaseychelles.sc/regulated-entities/capital-markets",
+      "retrievedAt": "2026-11-08T12:42:38+00:00",
+      "httpStatus": 200,
+      "sha256": "d7a0421f764605a6fcf3f444f67e64539d6f9ed4d709dd544d73f92f67b46f8c",
+      "verification": "retrieved primary page",
+      "claimScope": "Regulator securities-dealer category identifies the company and 4XC trade name. SD139 not displayed in the retrieved entry.",
+      "shortExcerpt": "4XC (Seychelles) Ltd"
+    },
+    {
+      "id": "aaafx-rendered-faq",
+      "url": "https://aaafx.com/global/faq",
+      "retrievedAt": "2026-11-08T12:44:23.095990+00:00",
+      "httpStatus": 200,
+      "sha256": "9ecc2ae537e85e789db8f778f1388471a329f35cac76ad940df27104f71ec85b",
+      "verification": "browser-rendered primary page",
+      "claimScope": "Current global company, incorporation identifier and broker licence claim. Independent register confirmation pending.",
+      "shortExcerpt": "We are registered in the Comoros Union, License no. BFX2025097"
+    },
+    {
+      "id": "aafx-cftc",
+      "url": "https://www.cftc.gov/REDlist/node/220641",
+      "retrievedAt": "2026-11-08T12:42:37+00:00",
+      "httpStatus": 200,
+      "sha256": "389b5a440b55a037e36bf6a35e60d2f62826038a008c08f71b9058d88631aebf",
+      "verification": "retrieved primary page",
+      "claimScope": "US RED List and explicit caveat; no violation finding or worldwide registration conclusion.",
+      "shortExcerpt": "RED List date: 04/25/2017"
+    },
+    {
+      "id": "aafx-sfc",
+      "url": "https://www.sfc.hk/en/alert-list/1853",
+      "retrievedAt": "2026-11-08T12:42:38+00:00",
+      "httpStatus": 200,
+      "sha256": "cdc29b27eb273ebb8a4ad4a6c8210b905024fc1605e68864afab36103763e825",
+      "verification": "retrieved primary page",
+      "claimScope": "Hong Kong unlicensed-entity entry and actual add/update dates.",
+      "shortExcerpt": "Add date: 29 Mar 2017 Last Update Date: 19 Sep 2022"
+    }
+  ],
+  "excludedOrCorrectedClaims": [
+    "SFC date 5 July 2024 in the response is replaced by actual entry dates: added 29 March 2017; last updated 19 September 2022.",
+    "AAAFx Greek HCMC and South African FSP claims came from secondary sources and were not independently confirmed or applied to Comoros.",
+    "AAAFx raw HTML was an app shell; the browser-rendered FAQ including collapsed answers was inspected. BFX2025097 remains a broker claim.",
+    "AAFX broker regulation page was access-denied; SVG IBC number and current account terms were not promoted to verified findings.",
+    "No account fee/minimum, compensation, segregation, withdrawal test, Trustpilot rating or general offshore funding permission was established.",
+    "Commercial review sites in the response are research leads, not the evidence used for these public findings.",
+    "The source model Global scope means global overview only; CFTC and SFC statements remain explicitly limited to US and Hong Kong contexts.",
+    "Three profiles remain unfinished and unrated, with existing noindex and account-link guards."
+  ],
+  "inputCopyNormalization": "LF line endings; inputResponseSha256 hashes the uploaded bytes."
+}

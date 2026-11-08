@@ -1,0 +1,91 @@
+{
+  "batch": 1,
+  "preparedAt": "2026-11-08",
+  "sourceCsv": "data/forex-broker-directory-2026-11-02.csv",
+  "selection": "First 10 rows with Provider type = Forex / forex CFDs, preserving original CSV order",
+  "status": "partial research received; three profiles updated within primary-source scope",
+  "brokers": [
+    {
+      "retailPosition": 1,
+      "name": "4XC",
+      "websiteLead": "https://4xc.com/",
+      "researchStatus": "partial primary-source findings added; account-level commercial research pending"
+    },
+    {
+      "retailPosition": 2,
+      "name": "AAAFx",
+      "websiteLead": "https://aaafx.com/",
+      "researchStatus": "partial primary-source findings added; account-level commercial research pending"
+    },
+    {
+      "retailPosition": 3,
+      "name": "AAFX Trading",
+      "websiteLead": "https://www.aafxtrading.com/",
+      "researchStatus": "partial primary-source findings added; account-level commercial research pending"
+    },
+    {
+      "retailPosition": 4,
+      "name": "AccentForex",
+      "websiteLead": "https://accentforex.com/",
+      "researchStatus": "awaiting research"
+    },
+    {
+      "retailPosition": 5,
+      "name": "ACCM",
+      "websiteLead": "https://www.accmfx.com/",
+      "researchStatus": "awaiting research"
+    },
+    {
+      "retailPosition": 6,
+      "name": "Accuindex",
+      "websiteLead": "https://www.accuindex.com/",
+      "researchStatus": "awaiting research"
+    },
+    {
+      "retailPosition": 7,
+      "name": "ActivTrades",
+      "websiteLead": "https://activtrades.com/",
+      "researchStatus": "awaiting research"
+    },
+    {
+      "retailPosition": 8,
+      "name": "ACY Securities",
+      "websiteLead": "https://acy.com/en/",
+      "researchStatus": "awaiting research"
+    },
+    {
+      "retailPosition": 9,
+      "name": "Admirals",
+      "websiteLead": "https://admiralmarkets.com/",
+      "researchStatus": "awaiting research"
+    },
+    {
+      "retailPosition": 10,
+      "name": "AdroFx",
+      "websiteLead": "https://adrofx.club/",
+      "researchStatus": "awaiting research"
+    }
+  ],
+  "nextRetailPositions": [
+    11,
+    20
+  ],
+  "batchComplete": false,
+  "receivedBrokerPositions": [
+    1,
+    2,
+    3
+  ],
+  "nextRequestedPositions": [
+    4,
+    5,
+    6
+  ],
+  "remainingAccountResearchPositions": [
+    1,
+    2,
+    3
+  ],
+  "primarySourceLedger": "batch-01a-source-checks.json",
+  "lastUpdatedAt": "2026-11-08"
+}
