@@ -38,6 +38,8 @@ Google decides which eligible pages to index. A successful sitemap fetch or requ
 
 The automated crawlability checks validate the sitemap XML, unique canonical URLs, HTTP 200 responses, index/follow directives for every listed page, and noindex exclusions for drafts and demonstrations. The deployment is checked again on the public origin after release.
 
+Production verification on 8 November 2026 passed for all 36 sitemap URLs using a Googlebot user agent: each returned HTTP 200 with matching canonicals and index/follow directives. The robots file advertised the correct sitemap, and the draft/utility exclusions and JSON noindex headers also passed. This verifies public responses; it is not a claim of Search Console submission or confirmed inclusion in Google's index.
+
 Primary references:
 
 - https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap

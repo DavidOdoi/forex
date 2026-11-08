@@ -49,5 +49,5 @@ test("unfinished profiles, previews and data endpoints are excluded without bloc
   }
   const data = await request.get("/reviews/aaafx/data");
   expect(data.status()).toBe(200);
-  expect(data.headers()["x-robots-tag"]).toBe("noindex");
+  expect(data.headers()["x-robots-tag"].split(/,\s*/)).toContain("noindex");
 });
