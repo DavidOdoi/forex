@@ -13,7 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
   if (indexable) {
     const reviews = researchEntries.flatMap(entry => reviewCountries(entry.slug).map(country => getReview(entry.slug, country)!.review));
-    entries.push(...publicPaths.map(path => ({ url: new URL(path, siteOrigin).href })), ...reviewSitemapEntries(reviews));
+    const published = reviewSitemapEntries(reviews);
+    entries.push(...publicPaths.filter(path => path !== "/reviews" || published.length > 0).map(path => ({ url: new URL(path, siteOrigin).href })), ...published);
   }
   if (insightsIndexable) {
     entries.push({ url: new URL("/insights", siteOrigin).href }, ...insightArticles.map(article => ({ url: insightUrl(article.slug), lastModified: article.updatedAt })));

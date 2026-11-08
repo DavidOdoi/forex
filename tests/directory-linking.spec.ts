@@ -32,19 +32,16 @@ test("all CSV identities have the shared template and valid, reciprocal research
   }
 });
 
-test("the full A-Z directory exposes all 325 links in initial HTML without JavaScript", async ({ browser }) => {
+test("the public directory does not expose draft links or data without an explicit preview action", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
     await page.goto("http://127.0.0.1:3100/reviews");
-    const links = page.locator('nav[aria-label="All broker and provider research"] a');
-    await expect(links).toHaveCount(325);
-    const destinations = await links.evaluateAll(nodes => nodes.map(node => node.getAttribute("href")).sort());
-    expect(destinations).toEqual(researchEntries.map(entry => `/reviews/${entry.slug}`).sort());
-    await page.getByText("Browse the complete directory", { exact: true }).click();
-    await expect(page.getByRole("navigation", { name: "Provider index letters" })).toBeVisible();
-    await page.locator('nav[aria-label="All broker and provider research"] a[href="/reviews/advanced-markets"]').click();
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Advanced Markets Research Profile: Services, Access & Safety");
+    await expect(page.locator('a[href^="/reviews/"]')).toHaveCount(0);
+    const html = await page.content();
+    for (const entry of researchEntries) expect(html).not.toContain(`/reviews/${entry.slug}`);
+    await expect(page.getByRole("button", { name: "Preview unpublished research", exact: true })).toBeVisible();
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
   } finally { await context.close(); }
 });
 
@@ -59,7 +56,7 @@ test("institutional, interbank and introducing entries retain clear source and a
     await expect(page.locator("#deposit-and-withdrawal")).toContainText("settlement timelines require verification");
     await expect(page.locator("[data-illustrative-cost]")).toHaveCount(0);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
-    await expect(page.locator('.br-related a[href^="/reviews/"]')).toHaveCount(3);
+    await expect(page.locator('.br-related a[href^="/reviews/"]')).toHaveCount(0);
     const json = (await (await request.get(`/reviews/${entry.slug}/data`)).json()).review;
     expect(json.accountOpening.url).toBeNull();
     expect(json.keyData.every((field: { status: string }) => field.status !== "verified")).toBe(true);
@@ -74,13 +71,14 @@ test("ordinary retail profiles reuse the five actions, cost explanation, scope a
   await expect(page.locator("[data-illustrative-cost]")).toContainText("Not a measured AAAFx quote");
   await expect(page.locator("[data-illustrative-cost]")).not.toContainText("Exness");
   await expect(page.locator("#platforms")).toBeAttached();
-  await expect(page.locator(".br-related a")).toHaveCount(5);
+  await expect(page.locator(".br-related a")).toHaveCount(2);
   await expect(page.locator(".br-accountability a")).toHaveText("David Odoi");
 });
 
 test("provider filters and the expanded directory remain usable on mobile", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 900 });
   await page.goto("/reviews");
+  await page.getByRole("button", { name: "Preview unpublished research", exact: true }).click();
   await page.getByLabel("Directory type", { exact: true }).selectOption("institutional");
   await expect(page.getByRole("status")).toContainText("14 entries");
   await expect(page.locator("article")).toHaveCount(14);

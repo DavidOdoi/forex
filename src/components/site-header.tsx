@@ -6,14 +6,13 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { BrandLogo } from "./brand-logo";
 import styles from "./site-header.module.css";
 
-const menu = [
+const baseMenu = [
   { label: "Compare brokers", to: "/best-brokers", items: [
     { label: "Overview", href: "/best-brokers" }, { label: "For beginners", href: "/find-my-broker" },
-    { label: "Account cost example", href: "/reviews/exness#fees" }, { label: "Broker directory", href: "/reviews" },
+    { label: "Account cost calculator", href: "/tools/forex-calculator" }, { label: "Broker directory", href: "/reviews" },
   ] },
   { label: "Broker reviews", to: "/reviews", items: [
-    { label: "Exness", href: "/reviews/exness" }, { label: "XM", href: "/reviews/xm" },
-    { label: "IC Markets", href: "/reviews/ic-markets" }, { label: "Pepperstone", href: "/reviews/pepperstone" },
+    { label: "Review publication status", href: "/reviews" }, { label: "How we research", href: "/about#research-methodology" },
   ] },
   { label: "Tools", to: "/tools", items: [
     { label: "Forex calculator", href: "/tools/forex-calculator" },
@@ -32,7 +31,8 @@ const menu = [
   ] },
 ] as const;
 
-export function SiteHeader() {
+export function SiteHeader({ publishedReviewLinks = [] }: { publishedReviewLinks?: { label: string; href: string }[] }) {
+  const menu = baseMenu.map(group => group.label === "Broker reviews" && publishedReviewLinks.length ? { ...group, items: publishedReviewLinks } : group);
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);

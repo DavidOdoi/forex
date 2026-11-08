@@ -21,6 +21,8 @@ export interface ResearchEntry {
   collectionStatuses: string[];
 }
 export interface ReviewDirectoryEntry {
+  href?: string;
+  published?: boolean;
   slug: string;
   name: string;
   providerType: ProviderType;

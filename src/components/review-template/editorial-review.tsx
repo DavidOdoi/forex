@@ -11,6 +11,7 @@ import { EditorialAccountability, ResearchComparisons, RelatedResearch } from ".
 import { reviewHeading } from "@/lib/reviews/seo";
 import { reviewPlatformImage } from "@/lib/reviews/media";
 import { reviewFocusKeyword, reviewIntroduction, reviewOpeningChecks } from "@/lib/reviews/opening";
+import { publishedReviewHref } from "@/lib/reviews/visibility";
 import { Finding } from "./finding";
 import { AccountOpeningCta } from "./account-cta";
 import { ReaderContents, ReaderDisclosure, ReaderMarket } from "./reader-controls";
@@ -71,7 +72,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
   return <main className="br-review" id="review-main">
     <header className="br-hero" id="key-data">
       <div className="br-container">
-        {demo && <p className="br-demo-banner">Template demonstration · <Link href="/reviews/exness">View the Exness research article</Link></p>}
+        {demo && <p className="br-demo-banner">Template demonstration{publishedReviewHref("exness") && <> · <Link href={publishedReviewHref("exness")!}>View the Exness research article</Link></>}</p>}
         <div className="br-topline"><nav aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/reviews">Broker reviews</Link><span>/</span><span>{review.broker.name}</span></nav><ReaderDisclosure affiliate={Boolean(accountOpeningHref(review)) && review.accountOpening.isAffiliate} officialLink={Boolean(accountOpeningHref(review)) && !review.accountOpening.isAffiliate} /></div>
         <p className="br-eyebrow">{retail ? "Global broker research" : "Global provider research"}</p>
         <h1>{reviewHeading(review)}</h1>{!retail && <p className="br-provider-note">Directory classification: {providerLabels[review.providerType!]}. Verification is pending; retail account access is not assumed.</p>}

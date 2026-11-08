@@ -14,6 +14,7 @@ test("review template is linked, clearly labelled and excluded from indexing", a
   request,
 }) => {
   await page.goto("/reviews");
+  await page.getByRole("button", { name: "Preview unpublished research", exact: true }).click();
   await page.getByRole("link", { name: "Preview review template" }).click();
   await expect(page).toHaveURL(/\/reviews\/template\?blank=1$/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(

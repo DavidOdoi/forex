@@ -16,7 +16,7 @@ The robots file allows crawling and advertises the canonical sitemap. Crawling m
 
 The confirmed production origin is the default even when Vercel's optional `SITE_URL` variable is unset. Previously that omission caused the homepage, About page and Reviews directory to send `noindex, nofollow` and kept them out of the sitemap. `SITE_URL` still supports a future custom domain.
 
-The sitemap includes ready canonical pages: Home, About, the Reviews directory, the Insights library and its published articles, the tools hub and four calculators, and both gold dashboards. Article and dashboard modification dates use their recorded editorial dates rather than a new timestamp on every deployment.
+The sitemap includes ready canonical pages: Home, About, the Insights library and its published articles, the tools hub and four calculators, and both gold dashboards. The Reviews directory joins the sitemap once it contains an approved review. Article and dashboard modification dates use their recorded editorial dates rather than a new timestamp on every deployment.
 
 Unfinished broker profiles, review/template demonstrations, the unfinished comparison and finder demonstrations, the author placeholder and image-credit utility page remain noindex and outside the sitemap. JSON data endpoints receive an `X-Robots-Tag: noindex` header. These pages and endpoints remain accessible through the website.
 
@@ -39,6 +39,8 @@ Google decides which eligible pages to index. A successful sitemap fetch or requ
 The automated crawlability checks validate the sitemap XML, unique canonical URLs, HTTP 200 responses, index/follow directives for every listed page, and noindex exclusions for drafts and demonstrations. The deployment is checked again on the public origin after release.
 
 Production verification on 8 November 2026 passed for all 36 sitemap URLs using a Googlebot user agent: each returned HTTP 200 with matching canonicals and index/follow directives. The robots file advertised the correct sitemap, and the draft/utility exclusions and JSON noindex headers also passed. This verifies public responses; it is not a claim of Search Console submission or confirmed inclusion in Google's index.
+
+The owner's subsequent request to limit unfinished-review discovery adds a publication gate to the empty Reviews directory. The resulting sitemap has 35 eligible URLs. See [unpublished review controls](unpublished-reviews.md) for that later policy and the on-demand preview workflow.
 
 Primary references:
 

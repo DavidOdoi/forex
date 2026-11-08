@@ -25,6 +25,7 @@ import hero from "@/assets/hero-fx-light.jpg";
 import { brokers, brokerResearchNotice } from "@/lib/brokers";
 import { BrokerCard } from "@/components/broker-card";
 import { MarketTicker } from "@/components/market-ticker";
+import { publishedReviewHref } from "@/lib/reviews/visibility";
 
 export default function Index() {
   return (
@@ -77,7 +78,7 @@ export default function Index() {
         <p className="mt-4 text-muted-foreground">{brokerResearchNotice}</p>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {brokers.map((b) => (
-            <BrokerCard key={b.slug} b={b} />
+            <BrokerCard key={b.slug} b={b} reviewHref={publishedReviewHref(b.slug)} />
           ))}
         </div>
       </section>

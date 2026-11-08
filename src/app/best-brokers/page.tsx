@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 import { PageHero } from "@/components/site-header";
 import { BrokerCard } from "@/components/broker-card";
 import { brokers, brokerResearchNotice } from "@/lib/brokers";
+import { publishedReviewHref } from "@/lib/reviews/visibility";
 
 export default function Page() {
   return (
@@ -36,7 +37,7 @@ export default function Page() {
       />
       <section className="mx-auto grid max-w-7xl gap-6 px-6 pb-12 md:grid-cols-2">
         {brokers.map((b) => (
-          <BrokerCard key={b.slug} b={b} />
+          <BrokerCard key={b.slug} b={b} reviewHref={publishedReviewHref(b.slug)} />
         ))}
       </section>
       <section id="comparison" className="scroll-mt-32 mx-auto max-w-7xl overflow-x-auto px-6 pb-28">

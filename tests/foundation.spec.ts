@@ -6,6 +6,7 @@ import { calculatorsIndexable } from "../src/lib/calculators/seo";
 import { hubPaths } from "../src/lib/metals/content";
 import { metalsIndexable } from "../src/lib/metals/seo";
 import { indexable, publicPaths } from "../src/lib/site";
+import { publishedReviews } from "../src/lib/reviews/visibility";
 
 const routes = [
   "/",
@@ -30,7 +31,7 @@ test("all seven exported pages render with their metadata and assets", async ({
     await expect(page.locator("h1")).toHaveCount(1);
     if (route === "/reviews") {
       await expect(page.getByRole("main")).toContainText("We have not carried out hands-on testing or published broker ratings");
-      await expect(page.getByRole("searchbox", { name: "Search broker reviews" })).toBeVisible();
+      await expect(page.getByRole("button", { name: "Preview unpublished research", exact: true })).toBeVisible();
       await expect(page.getByRole("main")).not.toContainText("We open real accounts, deposit real money and test withdrawals");
     }
     await expect(page).toHaveTitle(/Devin Forex/);
@@ -89,7 +90,8 @@ test("desktop navigation, dropdowns, comparison table and original broker cards"
       page.getByRole("heading", { name, exact: true }),
     ).toBeVisible();
   const outbound = page.locator('article a[href^="/reviews/"]');
-  await expect(outbound).toHaveCount(4);
+  await expect(outbound).toHaveCount(0);
+  await expect(page.locator("article").getByText("Review in preparation", { exact: true })).toHaveCount(4);
   await expect(
     page.locator("article").getByText("Not rated", { exact: true }),
   ).toHaveCount(4);
@@ -216,7 +218,7 @@ test("sitemap, robots, exported favicon and custom 404", async ({
   expect(await robots.text()).toContain("Allow: /");
   const xml = await (await request.get("/sitemap.xml")).text();
   const expectedPaths = new Set([
-    ...(indexable ? publicPaths : []),
+    ...(indexable ? publicPaths.filter(path => path !== "/reviews" || publishedReviews().length > 0) : []),
     ...(insightsIndexable ? ["/insights", ...insightArticles.map(article => `/insights/${article.slug}`)] : []),
     ...(calculatorsIndexable ? ["/tools", ...calculators.map(toolPath)] : []),
     ...(metalsIndexable ? hubPaths : []),

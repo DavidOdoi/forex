@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { deploymentAllowsIndexing, indexable, publicPaths, siteOrigin } from "../src/lib/site";
+import { publishedReviews } from "../src/lib/reviews/visibility";
 
 test("the confirmed public domain is indexable without requiring a redundant environment variable", () => {
   expect(siteOrigin).toBe(new URL(process.env.SITE_URL?.trim() || "https://devinforex-five.vercel.app").origin);
@@ -24,7 +25,7 @@ test("robots advertises the canonical sitemap and every sitemap URL is unique, c
   expect(xml).toContain('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"');
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1].replaceAll("&amp;", "&"));
   expect(new Set(urls).size).toBe(urls.length);
-  if (indexable) for (const path of publicPaths) expect(urls).toContain(new URL(path, siteOrigin).href);
+  if (indexable) for (const path of publicPaths.filter(path => path !== "/reviews" || publishedReviews().length > 0)) expect(urls).toContain(new URL(path, siteOrigin).href);
   for (const url of urls) {
     const parsed = new URL(url);
     expect(parsed.origin).toBe(siteOrigin);
@@ -42,7 +43,7 @@ test("robots advertises the canonical sitemap and every sitemap URL is unique, c
 
 test("unfinished profiles, previews and data endpoints are excluded without blocking noindex discovery", async ({ request, page }) => {
   const xml = await (await request.get("/sitemap.xml")).text();
-  for (const path of ["/reviews/exness", "/reviews/aaafx", "/reviews/aafx-trading", "/reviews/template", "/best-brokers", "/find-my-broker", "/authors/david-odoi", "/insights/image-credits"]) {
+  for (const path of ["/reviews", "/reviews/exness", "/reviews/aaafx", "/reviews/aafx-trading", "/reviews/template", "/best-brokers", "/find-my-broker", "/authors/david-odoi", "/insights/image-credits"]) {
     expect(xml).not.toContain(`<loc>${siteOrigin}${path}</loc>`);
     await page.goto(path);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);

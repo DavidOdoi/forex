@@ -42,9 +42,9 @@ test("publication requires accountability, approval, dates and matching core evi
 test("only approved canonical articles can be indexable or enter the review sitemap", () => {
   const draft = getReview("exness")!.review;
   const ready = publicationFixture();
-  expect(reviewMetadata(draft, true).robots).toEqual({ index: false, follow: true });
+  expect(reviewMetadata(draft, true).robots).toEqual({ index: false, follow: false });
   expect(reviewMetadata(ready, true).robots).toEqual({ index: true, follow: true });
-  expect(reviewMetadata(ready, false).robots).toEqual({ index: false, follow: true });
+  expect(reviewMetadata(ready, false).robots).toEqual({ index: false, follow: false });
   expect(reviewMetadata(ready).alternates?.canonical).toMatch(/\/reviews\/exness$/);
   const demo = structuredClone(ready); demo.status = "template";
   const entries = reviewSitemapEntries([draft, demo, ready, structuredClone(ready)]);
@@ -133,7 +133,7 @@ test("draft and demonstration responses remain noindex while crawlers can read t
   expect(await (await request.get("/robots.txt")).text()).toContain("Allow: /");
   for (const path of ["/reviews/exness", "/reviews/template", "/templates/exness-review.html"]) {
     const response = await page.goto(path);
-    expect(response?.headers()["x-robots-tag"]).toBeUndefined();
+    expect(response?.headers()["x-robots-tag"]).toBe("noindex, nofollow");
     await expect(page.locator('meta[name="robots"]')).toHaveCount(1);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/reviews\/exness$/);
@@ -147,7 +147,7 @@ test("draft and demonstration responses remain noindex while crawlers can read t
 test("specific menu and contextual links lead to existing content and section targets", async ({ page, request }) => {
   await page.goto("/reviews/exness");
   await expect(page.locator('#fees a[href="/tools/forex-position-size-calculator"]')).toHaveText("Size your position");
-  await expect(page.locator('#alternatives a[href="/reviews/pepperstone?country=Australia"]')).toHaveCount(1);
+  await expect(page.locator('#alternatives a[href^="/reviews/"]')).toHaveCount(0);
   const destinations = await page.locator('nav[aria-label="Main navigation"] a[href*="#"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")!));
   await expect(page.locator('nav[aria-label="Main navigation"] a[href="/tools/forex-position-size-calculator"]')).toHaveCount(1);
   expect((await page.request.get("/tools/forex-position-size-calculator")).status()).toBe(200);

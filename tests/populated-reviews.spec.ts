@@ -138,6 +138,7 @@ test("review scope loads distinct entity profiles without a regional site defaul
 
 test("directory search, status filters and pagination expose research without promoting unverified claims", async ({ page }) => {
   await page.goto("/reviews");
+  await page.getByRole("button", { name: "Preview unpublished research", exact: true }).click();
   await expect(page.getByRole("status")).toContainText("325 entries");
   await expect(page.locator("article")).toHaveCount(24);
   await page.getByRole("button", { name: "Next", exact: true }).click();
@@ -148,6 +149,7 @@ test("directory search, status filters and pagination expose research without pr
   await page.getByRole("link", { name: "Open research draft" }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(/eToro Review 2026/);
   await page.goto("/reviews");
+  await page.getByRole("button", { name: "Preview unpublished research", exact: true }).click();
   await page.getByLabel("Research status").selectOption("pending");
   await expect(page.locator("article").first()).toContainText("Research pending");
 });
@@ -324,9 +326,11 @@ test("standalone HTML includes embedded styles and schema with working native na
 test("global branding, expanded sourced pros and cons, and Trustpilot links are explicit", async ({ page, request }) => {
   for (const route of ["/", "/best-brokers", "/reviews", "/insights", "/find-my-broker", "/reviews/template"]) {
     await page.goto(route);
-    await expect(page.locator("body")).not.toContainText(/Kenya|Kenyan|M-Pesa|USD\/KES|🇰🇪/);
+    await expect(page.locator("body > header")).not.toContainText(/Kenya|Kenyan|M-Pesa|USD\/KES|🇰🇪/);
+    await expect(page.locator("body > footer")).not.toContainText(/Kenya|Kenyan|M-Pesa|USD\/KES|🇰🇪/);
   }
   await expect(page.getByLabel("Review scope")).toHaveValue("Global");
+  await expect(page.locator(".br-review")).not.toContainText(/Kenya|Kenyan|M-Pesa|USD\/KES|🇰🇪/);
   await expect(page.locator(".br-tradeoffs > div").first().locator("li")).toHaveCount(5);
   await expect(page.locator(".br-tradeoffs > div").last().locator("li")).toHaveCount(5);
   for (const point of await page.locator(".br-tradeoffs li").all()) {

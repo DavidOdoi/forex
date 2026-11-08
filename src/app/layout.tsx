@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { indexable, siteOrigin } from "@/lib/site";
+import { publishedReviewLinks } from "@/lib/reviews/visibility";
 import "@fontsource/manrope/latin-400.css";
 import "@fontsource/manrope/latin-500.css";
 import "@fontsource/manrope/latin-600.css";
@@ -33,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body id="site-top">
-        <SiteHeader />
+        <SiteHeader publishedReviewLinks={publishedReviewLinks()} />
         {children}
         <SiteFooter />
       </body>

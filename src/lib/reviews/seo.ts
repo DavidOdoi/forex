@@ -37,7 +37,7 @@ export function reviewMetadata(review: BrokerReview, deploymentIndexable = index
   const images = image ? [{ url: new URL(image.src, siteOrigin).href, width: image.width, height: image.height, alt: image.alt }] : undefined;
   return {
     title: { absolute: title }, description, alternates: { canonical: url },
-    robots: { index: published && deploymentIndexable, follow: true },
+    robots: { index: published && deploymentIndexable, follow: published && deploymentIndexable },
     openGraph: { title, description, type: "article", url, siteName: "Devin Forex", ...(images ? { images } : {}) },
     twitter: { card: "summary_large_image", title, description, ...(images ? { images } : {}) },
   };

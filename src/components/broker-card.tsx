@@ -1,7 +1,7 @@
 import type { Broker } from "@/lib/brokers";
 import Link from "next/link";
 
-export function BrokerCard({ b }: { b: Broker }) {
+export function BrokerCard({ b, reviewHref }: { b: Broker; reviewHref?: string }) {
   return (
     <article className="group rounded-2xl border bg-card p-8 transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow">
       <div className="flex items-start justify-between">
@@ -28,12 +28,12 @@ export function BrokerCard({ b }: { b: Broker }) {
           <dd className="mt-1 text-base font-semibold">{b.lev}</dd>
         </div>
       </dl>
-      <Link
-        href={`/reviews/${b.slug}`}
+      {reviewHref ? <Link
+        href={reviewHref}
         className="mt-6 block rounded-full bg-gold py-4 text-center font-semibold text-primary-foreground transition group-hover:scale-[1.02]"
       >
         Read the {b.name} review →
-      </Link>
+      </Link> : <p className="mt-6 rounded-full border py-4 text-center font-semibold text-muted-foreground">Review in preparation</p>}
     </article>
   );
 }
