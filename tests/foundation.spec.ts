@@ -142,11 +142,11 @@ test("mobile navigation and all exported pages fit responsive viewports", async 
   });
 });
 
-test("the tools hub links to all four working calculators and retains existing fragment targets", async ({
+test("the tools hub links to all five working calculators and retains existing fragment targets", async ({
   page,
 }) => {
   await page.goto("/tools");
-  await expect(page.locator("[data-tool-card]")).toHaveCount(4);
+  await expect(page.locator("[data-tool-card]")).toHaveCount(5);
   for (const tool of calculators) await expect(page.getByRole("main").getByRole("link", { name: tool.heading, exact: true })).toHaveAttribute("href", toolPath(tool));
   for (const id of ["pip-calculator", "position-size", "profit-calculator"]) await expect(page.locator(`#${id}`)).toHaveCount(1);
   await page.getByRole("main").getByRole("link", { name: "Forex Trading Profit Calculator", exact: true }).click();

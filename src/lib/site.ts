@@ -17,6 +17,8 @@ export const publicPaths = [
   "/tools",
   "/insights",
   "/about",
+  "/best-prop-firm-forex-eas",
+  "/prop-firm-consistency-calculator",
 ];
 export function deploymentAllowsIndexing(environment: string | undefined): boolean {
   return environment !== "preview" && environment !== "development";

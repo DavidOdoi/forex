@@ -49,7 +49,7 @@ test("public sitemap pages advertise no draft broker URLs and crawling remains a
   const xml = await (await request.get("/sitemap.xml")).text();
   expect(xml).not.toContain(`<loc>${siteOrigin}/reviews</loc>`);
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
-  expect(urls).toHaveLength(35);
+  expect(urls).toHaveLength(37);
   for (const url of urls) {
     const response = await request.get(new URL(url).pathname);
     const html = await response.text();

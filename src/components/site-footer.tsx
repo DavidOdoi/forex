@@ -15,6 +15,7 @@ const linkGroups = [
   {
     title: "Keep learning",
     links: [
+      { label: "Prop firms for EAs", href: "/best-prop-firm-forex-eas" },
       { label: "Beginner guides", href: "/insights#beginner-guides" },
       { label: "Strategies & risk", href: "/insights#strategies" },
       { label: "Platforms & technology", href: "/insights#market-guides" },
@@ -27,6 +28,7 @@ const linkGroups = [
       { label: "Position size", href: "/tools/forex-position-size-calculator" },
       { label: "Profit calculator", href: "/tools/forex-profit-calculator" },
       { label: "Compounding", href: "/tools/forex-compounding-calculator" },
+      { label: "Prop firm consistency", href: "/prop-firm-consistency-calculator" },
       { label: "Gold price", href: "/gold-price" },
       { label: "Gold & silver prices", href: "/gold-silver-prices" },
     ],
