@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { comparisonImage } from "@/lib/prop-firms/image";
 import { firms } from "@/lib/prop-firms/firms";
 import { comparisonTitle, comparisonHeading, comparisonDescription, comparisonFaqs, propPaths } from "@/lib/prop-firms/content";
 import { propMetadata, propSchema } from "@/lib/prop-firms/seo";
@@ -8,7 +10,13 @@ const sections = [["compared","Quick comparison"],["reviewed","Firm reviews"],["
 export default function Page() {
   return <main className={styles.page}><div className={styles.container}>
     <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/insights">Trading insights</Link><span>/</span><span aria-current="page">Prop firms for EAs</span></nav>
-    <header className={styles.hero}><span className={styles.eyebrow}>Automation · Programme rules · Official sources</span><h1>{comparisonHeading}</h1><p>FTMO, The5ers, E8 Markets, eligible FundedNext accounts and FXIFY Two Phase Classic allow EAs under specific conditions. The right choice depends on your bot, platform and account size. Compare the verified rules below before paying—not every programme permits the same automation.</p></header>
+    <header className={`${styles.hero} ${styles.comparisonHero}`}><div><span className={styles.eyebrow}>Automation · Programme rules · Official sources</span><h1>{comparisonHeading}</h1><p>FTMO, The5ers, E8 Markets, eligible FundedNext accounts and FXIFY Two Phase Classic allow EAs under specific conditions. The right choice depends on your bot, platform and account size. Compare the verified rules below before paying—not every programme permits the same automation.</p></div>
+      <figure className={styles.featuredImage}>
+        <div className={styles.imageLabel}><span aria-hidden="true">●</span> MetaTrader 5 · Chart example</div>
+        <a href={comparisonImage.sourceUrl} rel="noopener noreferrer" aria-label="View the original MetaTrader 5 chart and source details"><Image src={comparisonImage.src} width={comparisonImage.width} height={comparisonImage.height} alt={comparisonImage.alt} unoptimized loading="eager" fetchPriority="high" /></a>
+        <figcaption>Historical EUR/USD chart; not EA results.<br /><a href={comparisonImage.sourceUrl} rel="noopener noreferrer">{comparisonImage.creator} · Wikimedia Commons</a> · <a href={comparisonImage.licenseUrl} rel="license noopener noreferrer">{comparisonImage.license}</a>. Converted to WebP.</figcaption>
+      </figure>
+    </header>
     <section id="compared" aria-labelledby="comparison-heading"><h2 id="comparison-heading">Best Forex Prop Firms That Allow EAs Compared</h2>
       <p className={styles.scrollHint}>Quick answer · Official rules checked 9 November 2026. Scroll the table on small screens.</p>
       <div className={styles.tableWrap} role="region" aria-label="EA prop firm comparison" tabIndex={0}><table className={styles.comparison}><caption>Selected programmes, not blanket firm-wide permissions. Fees use different account sizes and exclude add-ons; verify checkout totals.</caption><thead><tr>{["Prop firm","EA allowed?","Trading platforms","Key restrictions","Challenge fee","Best for"].map(heading => <th key={heading} scope="col">{heading}</th>)}</tr></thead><tbody>{firms.map(firm => <tr key={firm.id}><th scope="row"><a href={`#${firm.id}`}>{firm.name}</a><br /><span className={styles.policy}>{firm.scope}</span></th><td>{firm.allowed}</td><td>{firm.platforms}</td><td>{firm.restriction}</td><td><a href={firm.pricingUrl} rel="noopener noreferrer">{firm.fee}</a></td><td>{firm.bestFor}</td></tr>)}</tbody></table></div>

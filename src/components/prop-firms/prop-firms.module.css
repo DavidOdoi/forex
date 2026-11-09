@@ -4,6 +4,16 @@
 .page a:not(.button) { color:inherit; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:4px; }
 .page a:hover { text-decoration-thickness:2px; }
 .hero { max-width:1040px; margin-bottom:26px; }
+.comparisonHero { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr); gap:40px; align-items:center; max-width:none; }
+.comparisonHero > div { min-width:0; }
+.hero.comparisonHero h1 { font-size:clamp(32px,4.2vw,52px); }
+.featuredImage { width:100%; max-width:380px; justify-self:end; border:1px solid #d8d8d8; border-radius:16px; overflow:hidden; background:#fff; margin:0; box-shadow:0 14px 35px #00000005; }
+.imageLabel { padding:11px 16px; border-bottom:1px solid #ddd; background:#f7f7f7; font-size:11px; text-transform:uppercase; letter-spacing:.08em; font-weight:800; }
+.imageLabel span { color:#937021; margin-right:7px; }
+.featuredImage > a { display:block; padding:14px; }
+.featuredImage img { display:block; width:100%; height:auto; }
+.featuredImage figcaption { border-top:1px solid #e5e5e5; padding:12px 16px; font-size:14px; line-height:1.7; }
+@media(max-width:850px) { .comparisonHero { grid-template-columns:1fr; gap:20px; } .featuredImage { width:100%; max-width:420px; justify-self:center; } }
 .eyebrow { font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.13em; }
 .hero h1 { font-size:clamp(32px,4.7vw,58px); line-height:1.12; letter-spacing:-.045em; font-weight:800; margin:12px 0 22px; text-wrap:balance; }
 .hero p { max-width:840px; margin:12px 0; }
