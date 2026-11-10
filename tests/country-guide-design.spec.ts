@@ -1,6 +1,29 @@
 import { test, expect } from "@playwright/test";
 
 const path = "/forex-brokers/sri-lanka";
+test("country guide retains the original site header and uses the existing article body typography", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/insights/common-mistakes-in-funded-trading-accounts");
+  const articleFont = await page.locator(".insight-content p").first().evaluate(node => {
+    const style = getComputedStyle(node);
+    return { family: style.fontFamily, size: style.fontSize, lineHeight: style.lineHeight };
+  });
+  const headerAppearance = await page.locator("body>header").evaluate(node => {
+    const style = getComputedStyle(node);
+    return { background: style.backgroundColor, height: node.getBoundingClientRect().height };
+  });
+  await page.goto(path);
+  const header = page.locator("body>header");
+  await expect(header.getByRole("img", { name: "Devin Forex", exact: true })).toBeVisible();
+  expect(await header.evaluate(node => ({ background: getComputedStyle(node).backgroundColor, height: node.getBoundingClientRect().height }))).toEqual(headerAppearance);
+  for (const selector of [".cg-direct-answer", ".cg-candidate-body>p", ".cg-checks .cg-evidence>p", "#methodology .cg-method-grid p"]) {
+    expect(await page.locator(selector).first().evaluate(node => {
+      const style = getComputedStyle(node);
+      return { family: style.fontFamily, size: style.fontSize, lineHeight: style.lineHeight };
+    }), selector).toEqual(articleFont);
+  }
+});
+
 test("section navigation stays beneath the header, updates its location and lands on visible headings", async ({ page }) => {
   const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
   await page.emulateMedia({ reducedMotion: "reduce" }); await page.setViewportSize({ width: 1440, height: 1000 }); await page.goto(path);

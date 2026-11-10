@@ -39,7 +39,6 @@ export function SiteHeader({ reviewLinks = [] }: { reviewLinks?: { label: string
   const menu = baseMenu.map(group => group.label === "Broker reviews" && reviewLinks.length ? { ...group, items: reviewLinks } : group);
   const pathname = usePathname();
   const countryResearch = pathname === "/forex-brokers" || pathname.startsWith("/forex-brokers/");
-  const countryTemplate = pathname.startsWith("/forex-brokers/");
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileGroup, setMobileGroup] = useState<string | null>(null);
@@ -83,9 +82,9 @@ export function SiteHeader({ reviewLinks = [] }: { reviewLinks?: { label: string
       event.preventDefault(); first.focus();
     }
   }
-  return <header className={`${styles.header} ${countryTemplate ? styles.countryTemplate : ""}`}>
+  return <header className={styles.header}>
     <div className={styles.bar}>
-      <Link href="/" className={styles.brand} aria-label="Devin Forex home">{countryTemplate ? <span className={styles.wordmark}>DEVIN<span>FOREX</span></span> : <BrandLogo className={styles.logo} priority />}</Link>
+      <Link href="/" className={styles.brand} aria-label="Devin Forex home"><BrandLogo className={styles.logo} priority /></Link>
       <nav className={styles.desktopNav} aria-label="Main navigation">
         {menu.map((item, index) => <div className={styles.menuGroup} key={item.label}
           onPointerEnter={event => { if (event.pointerType === "mouse") setOpenMenu(item.label); }}
