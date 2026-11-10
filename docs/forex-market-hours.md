@@ -61,3 +61,11 @@ Validation on 10 November 2026: type checks, ESLint, production build and `git d
 - `package.json`, `package-lock.json`: pinned Temporal dependency and integrity-checked lock entries.
 - `tests/market-hours-time.spec.ts`, `tests/market-hours.spec.ts`: deterministic calculation and browser checks.
 - `docs/forex-market-hours.md`: implementation contract, source-check status and validation record.
+
+## Reference UI update
+
+The supplied visual reference is implemented with a pale-green market-week summary beside the timezone panel, four separate countdown tiles, panoramic city banners, green borders and badges for active sessions, compact session-window rows, a current-local-time display and a linked three-step usage strip. On small screens the panels stack and the session cards form two columns. Searchable IANA selection, reset/persistence, future-date planning, accessibility, shared clock cleanup and all existing calculation conventions are retained. The summary labels its countdown as the **market-week** boundary, rather than incorrectly describing it as an individual session closing. Open-session counts come from the shared calculations, with no live-liquidity claim.
+
+`public/images/market-hours/city-sessions.png` is an original AI-generated decorative four-band city atlas, ordered Sydney, Tokyo, London and New York. It is not a verified documentary photograph. `next/image` delivers an optimized, locally served variant reused by all four cards; fixed aspect ratios reserve banner space. The images are decorative and do not repeat the visible session names to screen readers.
+
+The UI update passed type checks, lint and production build, plus **41 calculation, feature-browser, foundation and navigation tests**. The feature browser checks include panel placement, image loading, active-card states, countdown tiles, local-time display and guide-link navigation. Responsive screenshots at 320, 390, 768 and 1440 pixels showed no page overflow or console errors; desktop and mobile captures were visually inspected.

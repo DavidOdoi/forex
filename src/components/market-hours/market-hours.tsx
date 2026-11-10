@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
-import { Clock3, Globe2, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { CalendarDays, ChartNoAxesColumnIncreasing, Clock3, Globe2, Target } from "lucide-react";
 import { sessions, windowChoices } from "@/lib/market-hours/config";
 import { HOUR, availability, countdown, dateAt, formatTime, intersect, isDate, isTimezone, offset, offsetChanges, overlaps, plan, selectedWindows, sessionState, sessionWindows, wallTime, weeklyStatus, type Interval } from "@/lib/market-hours/time";
 import { useClock, useClockDate } from "./clock";
@@ -13,24 +14,54 @@ export function browserTimezone(): string {
 function WindowTime({ window, zone }: { window: Interval; zone: string }) {
   return <><time dateTime={new Date(window.start).toISOString()}>{formatTime(window.start, zone)}</time><span className={styles.to}>to</span><time dateTime={new Date(window.end).toISOString()}>{formatTime(window.end, zone)}</time></>;
 }
-function LiveClock({ zone }: { zone: string }) {
+function useSessionClock() {
   const now = useClock();
   const utcDay = now === null ? null : dateAt(now, "UTC");
   const windows = useMemo(() => utcDay ? sessionWindows({ start: Date.parse(`${utcDay}T00:00:00Z`) - 24 * HOUR, end: Date.parse(`${utcDay}T00:00:00Z`) + 9 * 24 * HOUR }) : [], [utcDay]);
-  if (now === null) return <section className={styles.loading} aria-label="Live clock loading"><Clock3 aria-hidden="true" /><h2>Live forex market hours</h2><p>Loading your clock. Reference hours and methodology are available below; JavaScript is needed for live status.</p></section>;
-  const market = weeklyStatus(now);
-  return <section aria-labelledby="live-heading" className={styles.live}>
-    <div className={styles.market}>
-      <div><p className={styles.eyebrow} id="live-heading">Conventional forex week</p><h2 data-weekly-status>{market.open ? "Market week open" : "Market week closed"}</h2><p>Broker and instrument hours can differ.</p></div>
-      <div className={styles.marketEvent}><strong>{market.open ? "Closes" : "Reopens"} <time dateTime={new Date(market.next).toISOString()}>{formatTime(market.next, zone)}</time></strong><p aria-live="off" data-market-countdown>In {countdown(now, market.next)}</p><small>Calculated from your device clock · {zone}</small></div>
+  return { now, windows };
+}
+function MarketSummary({ zone }: { zone: string }) {
+  const { now, windows } = useSessionClock();
+  const market = now === null ? null : weeklyStatus(now);
+  const active = now === null ? 0 : sessions.filter(s => sessionState(windows, s.id, now).open).length;
+  const remaining = now !== null && market ? countdown(now, market.next) : null;
+  const tiles = remaining ? remaining.split(" ") : ["—d", "—h", "—m", "—s"];
+  if (tiles.length === 3) tiles.unshift("0d");
+  return <section className={styles.market} aria-label="Market week status" data-market-open={market?.open}>
+    <div className={styles.marketStatus}>
+      <p className={styles.eyebrow}>Market week status</p>
+      <h2 data-weekly-status={market ? "" : undefined}>{market ? market.open ? "Market week open" : "Market week closed" : "Loading market clock…"}</h2>
+      <p>{market ? market.open ? `Conventional trading week is open. ${active} ${active === 1 ? "session is" : "sessions are"} active.` : "The conventional forex week is on its weekend break." : "Live status starts when your browser clock is available."}</p>
+      <small>Broker and instrument hours can differ.</small>
     </div>
-    <div className={styles.cards}>{sessions.map(session => {
-      const status = sessionState(windows, session.id, now);
-      return <article className={styles.card} key={session.id} data-session-card={session.id}>
-        <div className={styles.cardHeading}><h3>{session.name}</h3><span className={status.open ? styles.open : styles.closed}>{status.open ? "Open" : "Closed"}</span></div>
-        <p className={styles.zone}>{session.zone} · {offset(now, session.zone)}</p>
-        <p className={styles.small}>{status.open ? "Current window" : "Next window"} in {zone}</p>
-        {status.occurrence ? <><div className={styles.dates}><WindowTime window={status.occurrence} zone={zone} /></div><p className={styles.countdown} aria-live="off">{status.open ? "Closes" : "Opens"} in {countdown(now, status.next!)}</p>{status.occurrence.clipped && <p className={styles.small}>Adjusted to the weekly market boundary.</p>}</> : <p>No upcoming window found.</p>}
+    <div className={styles.marketEvent}>
+      <CalendarDays size={20} aria-hidden="true" />
+      <div><p>{market?.open ? "Market week closes" : market ? "Market week reopens" : "Next market-week boundary"}</p><strong>{market ? <time dateTime={new Date(market.next).toISOString()}>{formatTime(market.next, zone)}</time> : "Checking your local time…"}</strong>
+        <div className={styles.countdownTiles} aria-live="off" data-market-countdown aria-label={remaining ? `In ${remaining}` : "Loading countdown"}>{tiles.map((tile, i) => <span key={i}>{tile}<span className={styles.srOnly}>{["ays", "ours", "inutes", "econds"][i]}</span></span>)}</div>
+      </div>
+    </div>
+  </section>;
+}
+function CompactWindowTime({ window, zone }: { window: Interval; zone: string }) {
+  const sameDay = dateAt(window.start, zone) === dateAt(window.end, zone);
+  const sameOffset = offset(window.start, zone) === offset(window.end, zone);
+  const start = formatTime(window.start, zone).replace(/ \(UTC[^)]+\)$/, "");
+  const end = sameDay ? wallTime(window.end, zone) : formatTime(window.end, zone).replace(/ \(UTC[^)]+\)$/, "");
+  return <><time dateTime={new Date(window.start).toISOString()}>{start}{!sameOffset && ` (${offset(window.start, zone)})`}</time><span aria-label="to"> → </span><time dateTime={new Date(window.end).toISOString()}>{end} ({offset(window.end, zone)})</time></>;
+}
+function LiveSessions({ zone }: { zone: string }) {
+  const { now, windows } = useSessionClock();
+  return <section aria-labelledby="live-sessions" id="session-status" className={styles.live}>
+    <header className={styles.sessionIntro}><h2 id="live-sessions">Forex trading sessions</h2><p>Four major regional windows across a conventional five-day trading week.</p></header>
+    <div className={styles.cards}>{sessions.map((session, i) => {
+      const status = now === null ? null : sessionState(windows, session.id, now);
+      return <article className={styles.card} key={session.id} data-session-card={session.id} data-open={status?.open}>
+        <div className={styles.cityBanner} aria-hidden="true"><Image className={styles.cityImage} src="/images/market-hours/city-sessions.png" width={1254} height={1254} sizes="(max-width: 600px) 320px, 384px" alt="" style={{ top: `${-i * 100}%` }} /></div>
+        <div className={styles.cardBody}>
+          <div className={styles.cardHeading}><div><h3>{session.name}</h3><p className={styles.zone}>{session.zone}{now !== null && ` · ${offset(now, session.zone)}`}</p></div><span className={status?.open ? styles.open : styles.closed}>{status ? status.open ? "Open" : "Closed" : "Loading"}</span></div>
+          <div className={styles.cardWindow}><CalendarDays size={15} aria-hidden="true" /><div><p>{status?.open ? "Current window" : "Next window"} in {zone}</p><div className={styles.dates}>{status?.occurrence ? <CompactWindowTime window={status.occurrence} zone={zone} /> : "Waiting for your browser clock…"}</div>{status?.occurrence?.clipped && <p className={styles.boundaryNote}>Weekly market boundary applied.</p>}</div></div>
+          <p className={styles.countdown} aria-live="off"><Clock3 size={15} aria-hidden="true" />{status?.next !== undefined && now !== null ? `${status.open ? "Closes" : "Opens"} in ${countdown(now, status.next)}` : "Calculated from your device clock"}</p>
+        </div>
       </article>;
     })}</div>
   </section>;
@@ -40,9 +71,17 @@ function NowMarker({ day }: { day: Interval }) {
   if (now === null || now < day.start || now >= day.end) return null;
   return <span className={styles.nowMarker} style={{ left: `${(now - day.start) / (day.end - day.start) * 100}%` }} aria-hidden="true"><span>Now</span></span>;
 }
-function TimezoneOffset({ zone }: { zone: string }) {
+function CurrentLocalTime({ zone }: { zone: string }) {
   const now = useClock();
-  return <p className={styles.small}>{now === null ? "The reference schedule below uses session-local times." : `${offset(now, zone)} now · Future offsets appear beside each result.`}</p>;
+  return <p className={styles.localTime} aria-live="off">Current local time: {now === null ? "waiting for your clock…" : <time dateTime={new Date(now).toISOString()}>{new Intl.DateTimeFormat("en-GB", { timeZone: zone, dateStyle: "medium", timeStyle: "medium" }).format(now)} ({offset(now, zone)})</time>}</p>;
+}
+function HowToUse() {
+  const steps = [
+    { title: "Select your timezone", detail: "See session times in your local time.", icon: Globe2, href: "#timezone-settings" },
+    { title: "Check session status", detail: "Know which regional windows are open.", icon: ChartNoAxesColumnIncreasing, href: "#session-status" },
+    { title: "Plan your trades", detail: "Compare session windows with your availability.", icon: CalendarDays, href: "#session-planner" },
+  ];
+  return <section className={styles.howTo} aria-labelledby="how-to-title"><h2 id="how-to-title"><Target size={21} aria-hidden="true" />How to use this tool</h2><ol>{steps.map((step, i) => <li key={step.title}><a href={step.href}><span className={styles.stepIcon}><step.icon size={24} aria-hidden="true" /></span><span><strong>{i + 1}. {step.title}</strong><span>{step.detail}</span></span></a></li>)}</ol></section>;
 }
 function Timeline({ result, zone }: { result: ReturnType<typeof plan>; zone: string }) {
   const { day, windows, allOverlaps } = result;
@@ -128,12 +167,18 @@ export function MarketHours() {
     try { localStorage.setItem(storageKey, next); } catch { setMessage(`Showing times in ${next}. Preference storage is unavailable.`); }
   }
   return <div className={styles.tool}>
-    <section className={styles.timezone} aria-label="Timezone settings">
-      <div><p className={styles.eyebrow}><Globe2 size={16} aria-hidden="true" />Your timezone</p><strong data-selected-zone>{today ? zone : "Detecting timezone…"}</strong><TimezoneOffset zone={zone} /></div>
-      <form onSubmit={e => { e.preventDefault(); choose(draftZone.trim()); }}><label htmlFor="timezone-search">Search timezones</label><div className={styles.zoneControls}><input id="timezone-search" list="market-timezones" value={draftZone} onChange={e => setDraftZone(e.target.value)} autoComplete="off" spellCheck={false} aria-describedby="timezone-help" /><datalist id="market-timezones">{zones.map(z => <option key={z} value={z} />)}</datalist><button type="submit">Apply <ArrowRight size={16} aria-hidden="true" /></button></div><button className={styles.textButton} type="button" onClick={() => choose(browserTimezone())}>Use my timezone</button></form>
-      <p id="timezone-help" className={styles.small} role="status">{message || "Live status starts after your browser clock is available."}</p>
-    </section>
-    <LiveClock zone={zone} />
+    <div className={styles.dashboard}>
+      <MarketSummary zone={zone} />
+      <section id="timezone-settings" className={styles.timezone} aria-label="Timezone settings">
+        <h2><Globe2 size={18} aria-hidden="true" />Your timezone</h2>
+        <form onSubmit={e => { e.preventDefault(); choose(draftZone.trim()); }}><label className={styles.srOnly} htmlFor="timezone-search">Search timezones</label><div className={styles.zoneControls}><input id="timezone-search" list="market-timezones" value={draftZone} onChange={e => setDraftZone(e.target.value)} autoComplete="off" spellCheck={false} aria-describedby="timezone-help" /><datalist id="market-timezones">{zones.map(z => <option key={z} value={z} />)}</datalist><button type="submit">Apply</button></div></form>
+        <CurrentLocalTime zone={zone} />
+        <div className={styles.zoneActions}><span data-selected-zone>{today ? zone : "Detecting timezone…"}</span><button className={styles.textButton} type="button" onClick={() => choose(browserTimezone())}>Use my timezone</button></div>
+        <p id="timezone-help" className={styles.preferenceMessage} role="status">{message || "Live status starts after your browser clock is available."}</p>
+      </section>
+      <LiveSessions zone={zone} />
+      <HowToUse />
+    </div>
     {today ? <Planner zone={zone} initialDate={today} /> : <section className={styles.loading}><h2>Plan a forex session</h2><p>Enable JavaScript to choose a date, convert timezones and compare your availability.</p></section>}
   </div>;
 }

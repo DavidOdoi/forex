@@ -169,3 +169,32 @@ test("mobile and desktop layouts, keyboard controls and site discovery work with
     expect(errors).toEqual([]);
   } finally { await context.close(); }
 });
+
+test("reference layout pairs market status with timezone controls, loads city banners and highlights active sessions", async ({ browser }) => {
+  const context = await browser.newContext({ timezoneId: "Africa/Nairobi", viewport: { width: 1440, height: 1100 } });
+  const page = await context.newPage();
+  try {
+    await page.clock.setFixedTime(new Date("2026-01-20T12:00:00Z"));
+    await page.goto(route);
+    await expect(page.locator('[data-session-card="london"]')).toHaveAttribute("data-open", "true");
+    await expect(page.locator('[data-session-card="new-york"]')).toHaveAttribute("data-open", "false");
+    const market = await page.getByRole("region", { name: "Market week status", exact: true }).boundingBox();
+    const timezone = await page.getByRole("region", { name: "Timezone settings", exact: true }).boundingBox();
+    expect(market).not.toBeNull(); expect(timezone).not.toBeNull();
+    expect(market!.y).toBe(timezone!.y);
+    expect(market!.x + market!.width).toBeLessThan(timezone!.x);
+    await expect.poll(() => page.locator("[data-session-card] img").evaluateAll(images => images.filter(image => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0).length)).toBe(4);
+    await expect(page.locator("[data-market-countdown] > span")).toHaveCount(4);
+    await expect(page.getByRole("region", { name: "How to use this tool" }).getByRole("link")).toHaveCount(3);
+    await expect(page.getByText("Current local time:", { exact: false })).toContainText("15:00:00");
+    await page.locator('[class*="dashboard"]').screenshot({ path: "test-results/market-hours-dashboard.png" });
+    await page.getByRole("link", { name: /3\. Plan your trades/ }).click();
+    await expect(page).toHaveURL(new RegExp(route + "#session-planner$"));
+    await expect(page.getByLabel("Planning date")).toBeInViewport();
+    await page.screenshot({ path: "test-results/market-hours-reference-desktop.png", fullPage: true });
+    await page.setViewportSize({ width: 390, height: 960 });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.screenshot({ path: "test-results/market-hours-reference-mobile.png", fullPage: true });
+  } finally { await context.close(); }
+});

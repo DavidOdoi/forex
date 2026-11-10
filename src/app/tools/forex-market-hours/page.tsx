@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight, Info } from "lucide-react";
 import { MarketHours } from "@/components/market-hours/market-hours";
 import { sessions, weeklyMarket, scheduleReview } from "@/lib/market-hours/config";
 import { canonical, indexable, siteOrigin } from "@/lib/site";
@@ -32,7 +33,8 @@ const schema = { "@context": "https://schema.org", "@graph": [
 export default function Page() {
   return <main className={styles.page}><div className={styles.container}>
     <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/tools">Trading tools</Link><span aria-hidden="true">/</span><span aria-current="page">Forex market hours</span></nav>
-    <header className={styles.hero}><p className={styles.eyebrow}>Devin Forex tools · Free · No sign-up</p><h1>Forex Market Hours: Live Session Clock &amp; Trading Planner</h1><p>See which forex sessions are open now, view times in your timezone, and plan upcoming trading windows.</p><aside className={styles.notice}><strong>{scheduleReview.status}.</strong> This clock uses regional trading windows, not centralized exchange hours. <a href="#methodology">Read the assumptions.</a></aside></header>
+    <header className={styles.hero}><p className={styles.eyebrow}>Devin Forex tools · Free · No sign-up</p><h1>Forex Market Hours: Live Session Clock &amp; Trading Planner</h1><p>See which forex sessions are open now, view times in your timezone, and plan upcoming trading windows.</p></header>
+    <aside className={styles.notice}><Info size={16} aria-hidden="true" /><span><strong>{scheduleReview.status}.</strong> This clock uses regional trading windows, not centralized exchange hours.</span><a href="#methodology">Read the assumptions <ArrowRight size={14} aria-hidden="true" /></a></aside>
     <MarketHours />
     <article className={styles.education} aria-label="Session hours and methodology">
       <section id="session-conventions"><h2>Forex trading sessions explained</h2><p>Forex trading is decentralized. Sydney, Tokyo, London and New York are useful regional labels, with no single official opening bell. This tool adopts the following local-clock windows consistently. Each listed weekday is the session’s opening date in that city.</p>
