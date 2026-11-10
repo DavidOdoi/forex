@@ -3,6 +3,7 @@ import type { BrokerReview, ReviewField } from "./types";
 import { internationalEntities } from "./international";
 import { davidOdoi } from "../authors";
 import { applyBatchResearch } from "./batch-research";
+import { applyXmResearch } from "./xm";
 
 // Global is an editorial overview, not a licensing jurisdiction or an allowlist
 // of residents. Entity permissions remain separately identified below.
@@ -37,6 +38,7 @@ export function globalReview(name: string, slug: string): BrokerReview {
   customerUrl.searchParams.set("query", review.broker.website ? new URL(review.broker.website).hostname.replace(/^www\./, "") : name);
   review.customerReviews = { publisher: "Trustpilot", url: customerUrl.href, rating: null, reviewCount: null, checkedAt: null };
   applyBatchResearch(review);
+  applyXmResearch(review);
   if (slug !== "exness") return review;
 
   review.broker.website = "https://www.exness.com/";

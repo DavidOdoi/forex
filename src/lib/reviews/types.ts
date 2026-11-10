@@ -63,7 +63,24 @@ export interface AccountOpeningLink {
   checkedAt: string | null;
   isAffiliate: boolean;
 }
+export interface SourcedAccountComparison {
+  name: string;
+  category: string;
+  spread: string;
+  commission: string;
+  minimum: string;
+  platforms?: string;
+  roundTripCommission?: string;
+  legalEntity: string;
+  jurisdiction: string;
+  checkedAt: string;
+  sourceIds: string[];
+}
 export interface BrokerReview {
+  accountComparisons?: SourcedAccountComparison[];
+  quickFactFields?: { label: string; fieldId: string; state: "text" | "yes" | "no" }[];
+  verdictEvidence?: { sentences: string[]; sourceIds: string[]; legalEntity: string; jurisdiction: string; checkedAt: string };
+
   schemaVersion: 1;
   status: "template" | "draft" | "published";
   broker: { name: string; slug: string; website: string | null };
@@ -86,5 +103,5 @@ export interface BrokerReview {
   sources: ReviewSource[];
   regulatoryNotices?: { title: string; summary: string; sourceIds: string[] }[];
   entities?: { country: string; name: string; regulator: string | null; licence: string | null; sourceId: string; note?: string; identitySourceId?: string }[];
-  customerReviews?: { publisher: "Trustpilot"; url: string; rating: number | null; reviewCount: number | null; checkedAt: string | null };
+  customerReviews?: { publisher: "Trustpilot"; url: string; rating: number | null; reviewCount: number | null; checkedAt: string | null; researchNote?: string };
 }

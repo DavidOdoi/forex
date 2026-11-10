@@ -1,6 +1,6 @@
 import type { BrokerReview, ReviewField, ReviewSectionId } from "./types";
 import type { ResearchEntry } from "./research-types";
-import { fieldValue, isValidSource, verifiedSources } from "./template";
+import { fieldValue, isValidSource, verifiedSources, verifiedVerdictSentences } from "./template";
 
 export interface DigestSection {
   id: ReviewSectionId;
@@ -123,7 +123,7 @@ export function reviewDigest(review: BrokerReview, research?: ResearchEntry) {
     "pepperstone/Kenya": ["forex-spread-and-commission", "platform-and-availability"],
     "xm/Kenya": ["minimum-deposit", "regulation-and-entity"],
   };
-  const checkedLead = leadRequirements[key]?.every(id => get(id)) ? leads[key] : undefined;
+  const checkedLead = verifiedVerdictSentences(review) ? verifiedVerdictSentences(review)!.join(" ") : leadRequirements[key]?.every(id => get(id)) ? leads[key] : undefined;
   const lead = checkedLead ?? (review.jurisdiction === "Global"
     ? `A global overview of ${review.broker.name} account conditions, group disclosures and research. Terms and eligibility depend on the actual contracting entity and your location.`
     : sourceMap.length

@@ -17,6 +17,12 @@ export function reviewIntroduction(review: BrokerReview): IntroPart[][] {
     [text("This Exness review examines whether the broker’s forex and CFD accounts fit your needs. Your decision depends on "), link("total trading costs", "#fees"), text(", your country’s "), link("contracting entity", "#safety"), text(" and how you deposit or withdraw.")],
     [text("Compare "), link("five account types", "#account-opening"), text(", minimum-deposit rules and platforms, then use the cost calculator to understand spread and commission. Findings come from linked public documents; live execution and withdrawals have not been tested.")],
   ];
+  const comparedAccounts = reviewAccounts(review);
+  const minimum = checkedField(review, "minimum-deposit");
+  if (retail && review.accountComparisons && comparedAccounts.length && minimum) return [
+    [text(`This ${name} review compares `), link(comparedAccounts.map(account => account.name).join(", ") + " accounts", "#account-opening"), text(`. Minimum deposit: ${minimum.value} These published terms apply to the named entity, not every regional company.`)],
+    [text("Compare "), link("trading costs", "#fees"), text(", "), link("withdrawal conditions", "#deposit-and-withdrawal"), text(" and "), link("the legal entity", "#safety"), text(" before funding. Findings come from dated public documents; live execution, app usability and withdrawals were not tested.")],
+  ];
   if (!retail) return [
     [text(`This ${name} research profile examines service access, pricing and counterparty checks${scope}. The directory classification is a research lead; it does not establish professional-client eligibility or access to retail trading accounts.`)],
     [text("Start with "), link("access requirements", "#account-opening"), text(", "), link("commercial pricing", "#fees"), text(" and "), link("the contracting company", "#safety"), text(". Review the linked evidence and settlement questions before approaching a provider; unverified terms remain clearly identified.")],

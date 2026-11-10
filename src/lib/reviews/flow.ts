@@ -1,6 +1,6 @@
 import type { BrokerReview, ReviewField } from "./types";
 import { reviewDigest, wordCount } from "./digest";
-import { fieldValue, isValidSource, verifiedSources } from "./template";
+import { fieldValue, isValidSource, verifiedSources, verifiedVerdictSentences } from "./template";
 import { providerLabels } from "./research-types";
 
 export interface AccountRow {
@@ -22,7 +22,7 @@ export interface QuickFact {
   sourceIds: string[];
 }
 export function checkedField(review: BrokerReview, id: string): ReviewField | undefined {
-  return [...review.keyData, ...review.chapters.flatMap(c => c.panels.flatMap(p => p.fields))].find(f =>
+  return [...review.keyData, ...review.benchmarks, ...review.chapters.flatMap(c => c.panels.flatMap(p => p.fields))].find(f =>
     f.id === id && f.status === "verified" && f.jurisdiction === review.jurisdiction && fieldValue(f, review) === f.value);
 }
 function checkedSourceAt(review: BrokerReview, id: string, checkedAt = "2026-11-03") {
@@ -30,6 +30,11 @@ function checkedSourceAt(review: BrokerReview, id: string, checkedAt = "2026-11-
   return source && isValidSource(source) && source.jurisdiction === review.jurisdiction && source.checkedAt === checkedAt;
 }
 export function reviewAccounts(review: BrokerReview): AccountRow[] {
+  if (review.accountComparisons) return review.accountComparisons.filter(account => {
+    if (account.jurisdiction !== review.jurisdiction) return false;
+    const value = [account.name, account.category, account.spread, account.commission, account.minimum, account.platforms, account.roundTripCommission].filter(Boolean).join(" ");
+    return fieldValue({ id: "account-comparison", label: account.name, value, status: "verified", sourceIds: account.sourceIds, legalEntity: account.legalEntity, jurisdiction: account.jurisdiction, checkedAt: account.checkedAt }, review) === value;
+  }).map(account => ({ ...account, minimumSourceIds: account.sourceIds, platformSourceIds: account.platforms ? account.sourceIds : [] }));
   const deposit = checkedField(review, "minimum-deposit");
   const checkedDeposit = deposit?.checkedAt === "2026-11-06" && deposit.sourceIds.includes("global-minimum-deposit");
   const minimumSourceIds = checkedDeposit ? deposit.sourceIds : [];
@@ -66,6 +71,10 @@ export function reviewAccounts(review: BrokerReview): AccountRow[] {
   return [];
 }
 export function reviewQuickFacts(review: BrokerReview): QuickFact[] {
+  if (review.quickFactFields) return review.quickFactFields.map(definition => {
+    const field = checkedField(review, definition.fieldId);
+    return { label: definition.label, value: field?.value ?? "Not verified", state: field ? definition.state : "unknown", sourceIds: field?.sourceIds ?? [] };
+  });
   if (review.providerType && review.providerType !== "retail") return ["Client category", "Minimum commitment", "Service pricing", "Contracting entity", "Regulatory permissions", "Platform access", "Country eligibility", "Funding arrangements", "Settlement terms"].map(label => ({ label, value: "Not verified", state: "unknown" as const, sourceIds: [] }));
   const digest = reviewDigest(review);
   const accounts = reviewAccounts(review);
@@ -100,6 +109,8 @@ export function reviewedRegulatoryNotices(review: BrokerReview) {
   return (review.regulatoryNotices ?? []).filter(notice => verifiedSources(notice.sourceIds, review));
 }
 export function verdictSentences(review: BrokerReview): string[] {
+  const summary = verifiedVerdictSentences(review);
+  if (summary) return summary;
   if (reviewedRegulatoryNotices(review).length) return [
     `Read the official regulator notices for ${review.broker.name} before considering funding.`,
     "They concern the jurisdictions and named companies stated; they do not establish worldwide authorisation.",

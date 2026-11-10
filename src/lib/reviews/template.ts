@@ -362,3 +362,10 @@ export function accountOpeningHref(review: BrokerReview): string | null {
   );
   return display === link.url ? link.url : null;
 }
+
+export function verifiedVerdictSentences(review: BrokerReview): string[] | undefined {
+  const summary = review.verdictEvidence;
+  if (!summary || summary.jurisdiction !== review.jurisdiction) return undefined;
+  const value = summary.sentences.join(" ");
+  return fieldValue({ id: "review-summary", label: "Review summary", value, status: "verified", sourceIds: summary.sourceIds, legalEntity: summary.legalEntity, jurisdiction: summary.jurisdiction, checkedAt: summary.checkedAt }, review) === value ? summary.sentences : undefined;
+}
