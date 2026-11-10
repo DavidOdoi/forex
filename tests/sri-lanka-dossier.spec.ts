@@ -110,10 +110,10 @@ test("new provenance, quotations and legal sections remain readable and keyboard
     await page.setViewportSize({ width, height: 1000 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${width}px`).toBe(true);
   }
-  await page.locator(".cg-dossier-note").screenshot({ path: "test-results/sri-lanka-dossier-status-desktop.png", style: "body>header{visibility:hidden}" });
-  await page.locator("#investment-rules-2026").screenshot({ path: "test-results/sri-lanka-2026-regulation-desktop.png", style: "body>header{visibility:hidden}" });
+  await page.locator(".cg-dossier-note").screenshot({ path: "test-results/sri-lanka-dossier-status-desktop.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
+  await page.locator("#investment-rules-2026").screenshot({ path: "test-results/sri-lanka-2026-regulation-desktop.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
   await page.setViewportSize({ width: 390, height: 1000 });
-  await page.locator("#funding").screenshot({ path: "test-results/sri-lanka-dossier-funding-mobile.png", style: "body>header{visibility:hidden}" });
+  await page.locator("#funding").screenshot({ path: "test-results/sri-lanka-dossier-funding-mobile.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
   const faq = page.locator(".cg-faq summary").filter({ hasText: "Did the 2026 regulation" }); await faq.focus(); await page.keyboard.press("Enter");
   await expect(faq.locator("..")).toHaveAttribute("open", ""); expect(errors).toEqual([]);
 });

@@ -14,7 +14,7 @@ export function applySriLankaDossier(country: CountryGuide, registry: GuideRegis
   }
   country.suppliedResearch = structuredClone(sriLankaDossier);
   country.description = "Forex brokers in Sri Lanka: reported CBSL restrictions, card-payment rules and the 2026 investment regulations. Legal review is pending; no brokers are recommended.";
-  country.directAnswer = "We do not recommend a ‘best’ forex broker for Sri Lankan residents. Supplied research reports a CBSL forex warning, a bank-card payment restriction and later investment regulations requiring legal interpretation. A lawful retail trading route has not been established here.";
+  country.directAnswer = "We do not rank or recommend forex brokers for Sri Lankan residents. The reported CBSL warning, card-payment restriction and later investment rules require qualified legal review; resident eligibility and local authorization remain unresolved.";
   country.legalSummary = reported("The supplied dossier reports a CBSL warning covering forex trading, related outward remittances, receipt of profits and encouragement of those transactions. It also reports DFE restrictions on Sri Lankan bank-issued cards. Gazette 2493/36 introduced later investment rules in June 2026, but their interaction with forex/CFDs remains unresolved. These are reported findings, not our independent source checks or legal advice.", [notice, faq, gazette]);
   country.legalSources = [notice, faq, gazette, order, "dfe-regulations-index", "dfe-residency"];
   country.sourceIds = [notice, faq, gazette, order, "dfe-regulations-index", "dfe-residency", "dfe-contact", fsa, "cbsl-current-notices", "dfe-guidance", "google-helpful-content", "google-reviews"];

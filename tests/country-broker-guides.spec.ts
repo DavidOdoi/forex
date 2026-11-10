@@ -231,14 +231,14 @@ test("country guide is keyboard-accessible and readable on phone, tablet and des
   await expect(page.locator(".cg-faq details").first()).toHaveAttribute("open", "");
   expect(await faq.evaluate(node => getComputedStyle(node).outlineStyle)).toBe("solid");
   expect(await faq.evaluate(node => getComputedStyle(node).animationName)).toBe("none");
-  await page.locator(".cg-hero").screenshot({ path: "test-results/sri-lanka-hero-desktop.png", style: "body>header{visibility:hidden}" });
+  await page.locator(".cg-hero").screenshot({ path: "test-results/sri-lanka-hero-desktop.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
   await page.setViewportSize({ width: 390, height: 1000 });
   const contents = page.locator(".cg-mobile-contents summary"); await contents.focus(); await page.keyboard.press("Enter");
   await expect(page.locator('.cg-mobile-contents a[href="#legal-status"]')).toBeVisible();
   await page.locator('.cg-mobile-contents a[href="#legal-status"]').click();
   expect(new URL(page.url()).hash).toBe("#legal-status");
-  await page.locator(".cg-legal-summary").screenshot({ path: "test-results/sri-lanka-legal-mobile.png", style: "body>header{visibility:hidden}" });
-  await page.locator(".cg-checks").screenshot({ path: "test-results/sri-lanka-checks-mobile.png", style: "body>header{visibility:hidden}" });
+  await page.locator(".cg-legal-summary").screenshot({ path: "test-results/sri-lanka-legal-mobile.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
+  await page.locator(".cg-checks").screenshot({ path: "test-results/sri-lanka-checks-mobile.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
   expect(errors).toEqual([]);
 });
 
