@@ -10,6 +10,12 @@
   line-height: 1.75;
 }
 .br-review *, .br-review *::before, .br-review *::after { box-sizing: border-box; }
+.br-supplied-research { margin: 20px 0; padding: 18px 20px; border: 1px solid #dfd9c9; border-radius: 10px; background: #faf8f1; font: inherit; }
+.br-supplied-research p { margin-top: 8px !important; }
+.br-review[data-research-origin="supplied-dossier"] .review-citations { display: inline-flex; flex-wrap: wrap; max-width: 100%; white-space: normal; }
+.br-review[data-research-origin="supplied-dossier"] .br-tradeoffs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.br-review[data-research-origin="supplied-dossier"] .br-tradeoffs > div { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 650px) { .br-review[data-research-origin="supplied-dossier"] .br-tradeoffs { grid-template-columns: 1fr; } }
 .br-review :is(section, [id^="source-"]) { scroll-margin-top: calc(var(--br-header-height, 76px) + 30px); }
 .br-review :is(h1, h2, h3, p, figure, blockquote, ol, ul, dl, dd) { margin: 0; }
 .br-review a { text-underline-offset: 4px; }

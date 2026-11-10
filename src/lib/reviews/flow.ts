@@ -1,6 +1,6 @@
 import type { BrokerReview, ReviewField } from "./types";
 import { reviewDigest, wordCount } from "./digest";
-import { fieldValue, isValidSource, verifiedSources, verifiedVerdictSentences } from "./template";
+import { fieldValue, hasDisplayableField, isValidSource, verifiedSources, verifiedVerdictSentences } from "./template";
 import { providerLabels } from "./research-types";
 
 export interface AccountRow {
@@ -23,7 +23,7 @@ export interface QuickFact {
 }
 export function checkedField(review: BrokerReview, id: string): ReviewField | undefined {
   return [...review.keyData, ...review.benchmarks, ...review.chapters.flatMap(c => c.panels.flatMap(p => p.fields))].find(f =>
-    f.id === id && f.status === "verified" && f.jurisdiction === review.jurisdiction && fieldValue(f, review) === f.value);
+    f.id === id && f.jurisdiction === review.jurisdiction && hasDisplayableField(f, review));
 }
 function checkedSourceAt(review: BrokerReview, id: string, checkedAt = "2026-11-03") {
   const source = review.sources.find(s => s.id === id);
@@ -33,7 +33,7 @@ export function reviewAccounts(review: BrokerReview): AccountRow[] {
   if (review.accountComparisons) return review.accountComparisons.filter(account => {
     if (account.jurisdiction !== review.jurisdiction) return false;
     const value = [account.name, account.category, account.spread, account.commission, account.minimum, account.platforms, account.roundTripCommission].filter(Boolean).join(" ");
-    return fieldValue({ id: "account-comparison", label: account.name, value, status: "verified", sourceIds: account.sourceIds, legalEntity: account.legalEntity, jurisdiction: account.jurisdiction, checkedAt: account.checkedAt }, review) === value;
+    return fieldValue({ id: "account-comparison", label: account.name, value, status: account.evidenceStatus ?? "verified", sourceIds: account.sourceIds, legalEntity: account.legalEntity, jurisdiction: account.jurisdiction, checkedAt: account.checkedAt }, review) === value;
   }).map(account => ({ ...account, minimumSourceIds: account.sourceIds, platformSourceIds: account.platforms ? account.sourceIds : [] }));
   const deposit = checkedField(review, "minimum-deposit");
   const checkedDeposit = deposit?.checkedAt === "2026-11-06" && deposit.sourceIds.includes("global-minimum-deposit");

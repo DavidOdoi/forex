@@ -13,6 +13,10 @@ export function reviewIntroduction(review: BrokerReview): IntroPart[][] {
   const name = review.broker.name;
   const scope = review.jurisdiction && review.jurisdiction !== "Global" ? ` in ${review.jurisdiction}` : "";
   const retail = !review.providerType || review.providerType === "retail";
+  if (review.suppliedResearch && review.broker.slug === "ic-markets") return [
+    [text("This IC Markets review compares "), link("Seychelles accounts", "#account-opening"), text(" with Australia, Cyprus, Bahamas and Cayman disclosures.")],
+    [text("Compare "), link("costs", "#fees"), text(", "), link("withdrawals", "#deposit-and-withdrawal"), text(" and "), link("entity protections", "#safety"), text(". Unresolved conflicts; no live tests.")],
+  ];
   if (name && review.broker.slug === "exness" && review.jurisdiction === "Global" && reviewAccounts(review).length) return [
     [text("This Exness review examines whether the broker’s forex and CFD accounts fit your needs. Your decision depends on "), link("total trading costs", "#fees"), text(", your country’s "), link("contracting entity", "#safety"), text(" and how you deposit or withdraw.")],
     [text("Compare "), link("five account types", "#account-opening"), text(", minimum-deposit rules and platforms, then use the cost calculator to understand spread and commission. Findings come from linked public documents; live execution and withdrawals have not been tested.")],

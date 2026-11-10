@@ -5,6 +5,7 @@ import { internationalEntities, internationalReview } from "./international";
 import { fieldValue } from "./template";
 import { globalReview, GLOBAL_SCOPE } from "./global";
 import { davidOdoi } from "../authors";
+import { applyIcMarketsResearch } from "./ic-markets";
 
 export const researchEntries: ResearchEntry[] = raw.entries.map(entry => ({ ...entry, providerType: Object.hasOwn(providerLabels, entry.providerType) ? entry.providerType as ProviderType : "other" }));
 export const researchInventory = { total: raw.inputEntries, retail: raw.retailEntries, separate: raw.separateProviderEntries };
@@ -51,6 +52,7 @@ export function getReview(slug: string, requestedCountry?: string) {
   if (requestedCountry && !countries.includes(requestedCountry)) return null;
   const profile = internationalEntities.find(e => e.slug === slug && e.country === country);
   const review = profile ? internationalReview(research.name, profile) : globalReview(research.name, research.slug);
+  applyIcMarketsResearch(review);
   review.providerType = research.providerType;
   review.author ??= { ...davidOdoi };
   review.relatedResearch = relatedReviewLinks(slug, country);

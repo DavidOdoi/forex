@@ -1,6 +1,6 @@
 import type { BrokerReview, ReviewField, ReviewSectionId } from "./types";
 import type { ResearchEntry } from "./research-types";
-import { fieldValue, isValidSource, verifiedSources, verifiedVerdictSentences } from "./template";
+import { hasDisplayableField, isValidSource, verifiedSources, verifiedVerdictSentences } from "./template";
 
 export interface DigestSection {
   id: ReviewSectionId;
@@ -96,7 +96,7 @@ export function reviewDigest(review: BrokerReview, research?: ResearchEntry) {
   const key = `${review.broker.slug}/${review.jurisdiction}`;
   const fields = [...review.keyData, ...review.chapters.flatMap(c => c.panels.flatMap(p => p.fields))];
   const get = (id: string): ReviewField | undefined => {
-    const field = fields.find(f => f.id === id && f.status === "verified" && fieldValue(f, review) === f.value);
+    const field = fields.find(f => f.id === id && hasDisplayableField(f, review));
     if (!field) return undefined;
     const text = field.checkedAt === "2026-11-03" ? concise[key]?.[id] : undefined;
     return { ...field, value: text ?? field.value };

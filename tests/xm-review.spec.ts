@@ -52,7 +52,7 @@ test("XM Global terms do not leak into its Cyprus profile or another broker", ()
   expect(regional.sources.some(source => source.id === "xm-accounts")).toBe(false);
   for (const slug of ["exness","pepperstone","ic-markets"]) {
     const review = getReview(slug)!.review;
-    expect(review.accountComparisons).toBeUndefined();
+    expect(review.accountComparisons?.some(account => account.sourceIds.some(id => id.startsWith("xm-"))) ?? false).toBe(false);
     expect(review.sources.some(source => source.id.startsWith("xm-"))).toBe(false);
   }
 });

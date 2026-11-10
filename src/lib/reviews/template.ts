@@ -286,8 +286,10 @@ export function verifiedSources(ids: string[], review: BrokerReview): boolean {
   );
 }
 export function fieldValue(field: ReviewField, review: BrokerReview): string {
+  const supplied = field.status === "supplied-research" && review.suppliedResearch?.reportedResearchDate === field.checkedAt && field.sourceIds.every(id => review.sources.find(source => source.id === id)?.evidenceOrigin === "user-supplied-dossier");
+  const independentlyRecorded = field.status === "verified" && !field.sourceIds.some(id => review.sources.find(source => source.id === id)?.evidenceOrigin === "user-supplied-dossier");
   const proven =
-    field.status === "verified" &&
+    (independentlyRecorded || supplied) &&
     field.value?.trim() &&
     field.legalEntity?.trim() &&
     field.jurisdiction?.trim() &&
@@ -307,6 +309,9 @@ export function fieldValue(field: ReviewField, review: BrokerReview): string {
     : field.status === "not-researched"
       ? "Not researched"
       : "Needs verification";
+}
+export function hasDisplayableField(field: ReviewField, review: BrokerReview): boolean {
+  return (field.status === "verified" || field.status === "supplied-research") && Boolean(field.value?.trim()) && fieldValue(field, review) === field.value;
 }
 export function scoreValue(
   score: BrokerReview["overallScore"],
@@ -367,5 +372,5 @@ export function verifiedVerdictSentences(review: BrokerReview): string[] | undef
   const summary = review.verdictEvidence;
   if (!summary || summary.jurisdiction !== review.jurisdiction) return undefined;
   const value = summary.sentences.join(" ");
-  return fieldValue({ id: "review-summary", label: "Review summary", value, status: "verified", sourceIds: summary.sourceIds, legalEntity: summary.legalEntity, jurisdiction: summary.jurisdiction, checkedAt: summary.checkedAt }, review) === value ? summary.sentences : undefined;
+  return fieldValue({ id: "review-summary", label: "Review summary", value, status: summary.evidenceStatus ?? "verified", sourceIds: summary.sourceIds, legalEntity: summary.legalEntity, jurisdiction: summary.jurisdiction, checkedAt: summary.checkedAt }, review) === value ? summary.sentences : undefined;
 }

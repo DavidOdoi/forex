@@ -1,9 +1,9 @@
 import type { BrokerReview, ReviewField } from "@/lib/reviews/types";
-import { fieldValue } from "@/lib/reviews/template";
+import { fieldValue, hasDisplayableField } from "@/lib/reviews/template";
 
 export function Finding({ field, review }: { field: ReviewField; review: BrokerReview }) {
   const value = fieldValue(field, review);
-  const supported = field.status === "verified" && value === field.value;
+  const supported = hasDisplayableField(field, review);
   return (
     <>
       {value}

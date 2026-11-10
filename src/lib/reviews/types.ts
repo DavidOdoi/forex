@@ -1,6 +1,7 @@
 export type EvidenceStatus =
   | "not-researched"
   | "needs-verification"
+  | "supplied-research"
   | "verified";
 export type ReviewSectionId =
   | "fees"
@@ -11,6 +12,7 @@ export type ReviewSectionId =
   | "web-platform"
   | "product-selection";
 export interface ReviewSource {
+  evidenceOrigin?: "user-supplied-dossier";
   id: string;
   title: string;
   url: string;
@@ -64,6 +66,7 @@ export interface AccountOpeningLink {
   isAffiliate: boolean;
 }
 export interface SourcedAccountComparison {
+  evidenceStatus?: EvidenceStatus;
   name: string;
   category: string;
   spread: string;
@@ -77,9 +80,10 @@ export interface SourcedAccountComparison {
   sourceIds: string[];
 }
 export interface BrokerReview {
+  suppliedResearch?: { title: string; reportedResearchDate: string; independentRecheck: "blocked"; note: string; archivePath: string; reportedFindings: { topic: string; findings: string[]; sourceIds: string[] }[] };
   accountComparisons?: SourcedAccountComparison[];
   quickFactFields?: { label: string; fieldId: string; state: "text" | "yes" | "no" }[];
-  verdictEvidence?: { sentences: string[]; sourceIds: string[]; legalEntity: string; jurisdiction: string; checkedAt: string };
+  verdictEvidence?: { sentences: string[]; sourceIds: string[]; legalEntity: string; jurisdiction: string; checkedAt: string; evidenceStatus?: EvidenceStatus };
 
   schemaVersion: 1;
   status: "template" | "draft" | "published";

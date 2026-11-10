@@ -6,6 +6,7 @@ import { siteOrigin } from "../site";
 // the publication record; an editor must actually perform and record the review.
 export function publicationBlockers(review: BrokerReview): string[] {
   const issues: string[] = [];
+  if (review.suppliedResearch) issues.push("Supplied-dossier findings require primary-source rechecks before publication.");
   if (review.status !== "published") issues.push("Draft: editorial publication is pending.");
   if (!review.author?.name.trim() || !review.author.bio?.trim() || !review.author.profileUrl?.trim())
     issues.push("Author biography and accountability profile need completion.");
