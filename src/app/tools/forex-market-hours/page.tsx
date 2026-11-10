@@ -1,0 +1,50 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { MarketHours } from "@/components/market-hours/market-hours";
+import { sessions, weeklyMarket, scheduleReview } from "@/lib/market-hours/config";
+import { canonical, indexable, siteOrigin } from "@/lib/site";
+import styles from "@/components/market-hours/market-hours.module.css";
+
+const path = "/tools/forex-market-hours";
+const title = "Forex Market Hours: Live Clock & Session Planner | DEVIN FOREX";
+const description = "See conventional forex session hours in your timezone. Check the market week, explore overlaps and plan a future session around your available trading hours.";
+export const metadata: Metadata = {
+  title: { absolute: title }, description, alternates: canonical(path),
+  robots: { index: indexable, follow: true },
+  openGraph: { title, description, type: "website", url: siteOrigin + path, siteName: "Devin Forex" },
+  twitter: { card: "summary", title, description },
+};
+const faqs = [
+  ["Is the forex market open right now?", "The live clock checks your device time against our conventional Sunday 17:00 to Friday 17:00 New York trading week. It is a calculated status, not a connection to your broker. Check broker and instrument schedules before trading."],
+  ["Why do forex session times change in my timezone?", "Sessions follow their own local clocks. Sydney, London and New York change UTC offsets on different dates; Tokyo does not currently observe daylight saving. Your timezone may change too, so converted times can shift even when the session-local opening hour stays the same."],
+  ["When do the London and New York sessions overlap?", "With our conventions, London runs 08:00–17:00 London time and New York runs 08:00–17:00 New York time on local weekdays. Their intersection is usually four hours, extending to five in US–UK DST mismatch weeks. Choose a date to see the exact window in your timezone; weekly closure still applies."],
+  ["Are forex session hours the same as my broker’s trading hours?", "No. These are illustrative regional trading windows, not broker operating hours or stock-exchange schedules. Holidays, maintenance, product rules and broker cutoffs can change actual availability. This tool does not maintain a holiday calendar."],
+  ["Does this tool show live prices or live market liquidity?", "No. The clock uses timezone calculations and your device clock. An overlap means two configured time intervals intersect; it does not measure volume, spreads, liquidity, execution quality or potential profit."],
+];
+const schema = { "@context": "https://schema.org", "@graph": [
+  { "@type": "WebPage", "@id": `${siteOrigin}${path}#page`, url: siteOrigin + path, name: title, description, inLanguage: "en", publisher: { "@type": "Organization", name: "Devin Forex", url: siteOrigin } },
+  { "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${siteOrigin}/` },
+    { "@type": "ListItem", position: 2, name: "Trading tools", item: `${siteOrigin}/tools` },
+    { "@type": "ListItem", position: 3, name: "Forex market hours", item: siteOrigin + path },
+  ] },
+] };
+export default function Page() {
+  return <main className={styles.page}><div className={styles.container}>
+    <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/tools">Trading tools</Link><span aria-hidden="true">/</span><span aria-current="page">Forex market hours</span></nav>
+    <header className={styles.hero}><p className={styles.eyebrow}>Devin Forex tools · Free · No sign-up</p><h1>Forex Market Hours: Live Session Clock &amp; Trading Planner</h1><p>See which forex sessions are open now, view times in your timezone, and plan upcoming trading windows.</p><aside className={styles.notice}><strong>{scheduleReview.status}.</strong> This clock uses regional trading windows, not centralized exchange hours. <a href="#methodology">Read the assumptions.</a></aside></header>
+    <MarketHours />
+    <article className={styles.education} aria-label="Session hours and methodology">
+      <section id="session-conventions"><h2>Forex trading sessions explained</h2><p>Forex trading is decentralized. Sydney, Tokyo, London and New York are useful regional labels, with no single official opening bell. This tool adopts the following local-clock windows consistently. Each listed weekday is the session’s opening date in that city.</p>
+        <div className={styles.tableScroll} role="region" aria-label="Session-local reference schedule" tabIndex={0}><table><caption>Reference schedule · proposed conventions, subject to editorial approval</caption><thead><tr><th scope="col">Session / timezone</th><th scope="col">Local window</th><th scope="col">Local opening days</th></tr></thead><tbody>{sessions.map(s => <tr key={s.id}><th scope="row">{s.name}<small>{s.zone}</small></th><td>{s.start}–{s.end}</td><td>Monday–Friday</td></tr>)}</tbody></table></div>
+        <p>These windows are nine local-clock hours, not an assumption that every session must last eight hours. Converted dates can cross midnight in your timezone. At the start or end of the market week, a session is shortened to the configured weekly boundary.</p>
+      </section>
+      <section><h2>Forex session overlaps</h2><p>An overlap is the intersection of session windows: it begins at the later opening and ends at the earlier closing. If those boundaries meet without leaving positive time, there is no overlap. The planner lists every pair that intersects your chosen calendar day.</p><p>London–New York is usually a four-hour window under these conventions; the weeks between their different DST transitions can extend it to five. Tokyo–London overlaps for one hour in the UK winter and two in summer. Neither case says anything about measured liquidity or a profitable trading opportunity.</p></section>
+      <section><h2>How daylight saving changes forex hours</h2><p>We convert IANA timezones for each occurrence’s actual date. We never reuse a fixed year-round UTC offset. The US, UK and Australia change clocks on different dates; Tokyo currently has no DST. A visitor in Kathmandu sees its 45-minute offset preserved.</p><p>The timeline measures real elapsed time between local day boundaries. A 23-hour or 25-hour day therefore has a shorter or longer time range, with UTC offsets on the axis. Repeated hours remain distinct instants. A historical date skipped completely by a timezone change has no intervals.</p><p>Planner warnings compare equivalent session-local weekdays with the week anchored to today. A different timezone alone does not trigger a DST warning. For ambiguous availability times, we select the earlier occurrence; nonexistent times move forward by the gap. The resolved dates are displayed.</p></section>
+      <section><h2>Forex market opening, closing and weekend break</h2><p>Our separate weekly convention runs from Sunday {weeklyMarket.time} to Friday {weeklyMarket.time} in {weeklyMarket.zone}. The opening instant is included and the closing instant is excluded: [start, end). Every session, overlap and availability match is restricted to that week.</p><p>This is a planning convention requiring editorial approval, not a universal promise that all forex products accept trades at precisely those instants. Broker cutoffs may differ by minutes or more. Holidays and maintenance are not modeled. Check the actual schedule for your broker, account and instrument.</p></section>
+      <section id="methodology"><h2>How this tool calculates session times</h2><p>A shared calculation layer creates local weekday occurrences, converts them to absolute instants using Temporal and the runtime’s IANA timezone data, then intersects them with the weekly market window. The live cards, countdowns, timeline, overlaps and planner all use that layer.</p><p>The selected date means “intervals intersecting this calendar day in the selected timezone.” Full occurrences appear in the results; timeline bars are clipped to the day. Optional overnight availability also checks sessions occurring after midnight on the following day. The clock follows your device time and refreshes when a background tab resumes. Keep your device clock and browser timezone data current.</p><p><strong>Source status:</strong> the following reference pages were attempted during implementation, but the environment’s network policy blocked retrieval. They were not verified or used as confirmed evidence for these exact local windows. The configuration above remains provisional pending an editor’s source check and approval. The broker reference describes that provider’s hours, not a universal market rule.</p><ul>{scheduleReview.references.map(s => <li key={s.url}><a href={s.url} rel="noopener noreferrer">{s.title}</a> — suggested reference; retrieval blocked.</li>)}</ul><p>No live price, broker-status or trading-volume feed is connected to this clock. An open session guarantees neither availability, spreads, liquidity, execution quality nor profit. No author credentials, independent review or holiday-aware functionality are claimed.</p><p>Found a schedule problem? Follow our <Link href="/about#corrections">corrections process</Link>, including the date, timezone, session and a primary-source link. Our <Link href="/about#contact">contact page</Link> explains the current contact-channel status.</p></section>
+      <section><h2>Frequently asked questions</h2>{faqs.map(([q, a]) => <details key={q}><summary>{q}</summary><p>{a}</p></details>)}</section>
+      <aside className={styles.related} aria-label="Related trading tools"><Link href="/tools/forex-position-size-calculator">Position size calculator</Link><Link href="/tools/forex-profit-calculator">Profit calculator</Link><Link href="/tools">All trading tools</Link></aside>
+    </article>
+  </div><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} /></main>;
+}
