@@ -71,3 +71,22 @@
   .drawer { padding: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .header * { transition: none; } }
+
+/* Compact dark navigation used only by the country detail template. */
+.countryTemplate { background:#1e293b; color:#fff; border-bottom:0; }
+.countryTemplate .bar { width:min(100%,1312px); min-height:72px; padding:8px 32px; gap:28px; }
+.countryTemplate .brand { width:auto; margin-right:88px; text-decoration:none; }
+.wordmark { display:block; font-size:25px; font-weight:850; line-height:1.2; letter-spacing:-1.2px; white-space:nowrap; color:#fff; }
+.wordmark>span { color:#ffbb00; }
+.countryTemplate .desktopNav { gap:9px; margin-right:auto; }
+.countryTemplate .menuTop>a { font-size:14px; font-weight:750; padding:10px 4px 10px 8px; }
+.countryTemplate .menuTop button { color:#fff; width:26px; }
+.countryTemplate .menuTop:hover,.countryTemplate .menuTop:focus-within { background:#334155; }
+.countryTemplate .dropdown { color:#111; }
+.countryTemplate .mobileTrigger { color:#fff; background:transparent; border-color:#66758a; }
+@media(max-width:1199px){
+ .countryTemplate .bar { min-height:64px; padding:8px 20px; }
+ .countryTemplate .brand { margin-right:auto; }
+ .wordmark { font-size:23px; }
+}
+@media(max-width:700px){.countryTemplate .bar {padding-inline:16px;}}
