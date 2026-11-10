@@ -1,0 +1,1341 @@
+{
+  "id": "sri-lanka-dossier-2026-11-10",
+  "countrySlug": "sri-lanka",
+  "title": "Sri Lanka country-guide research dossier",
+  "reportedResearchDate": "2026-11-10",
+  "independentRecheck": "pending",
+  "archivePath": "docs/country-guides/research/sri-lanka-dossier-2026-11-10.md",
+  "originalSha256": "725778013e45cef752bbb10763ac0f70c8df0664c5bcaf051a41a242d4dcb342",
+  "reportedFindings": [
+    {
+      "id": "L1",
+      "claim": "CBSL warns against forex trading, related remittances and profits.",
+      "scope": "“Person in, or resident in Sri Lanka”; online forex transactions.",
+      "quote": "“not permitted to undertake forex trading transactions or remit funds outside Sri Lanka…”",
+      "sourceIds": [
+        "cbsl-2019-notice"
+      ],
+      "sourceDescription": "CBSL. `https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/press/notices/notice_20191021_unauthorized_foreign_exchange_trading_e.pdf` — October 2019 filename; body undated.  [cbsl.gov](https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/press/notices/notice_20191021_unauthorized_foreign_exchange_trading_e.pdf)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulator notice. Product taxonomy and interaction with subsequent rules unresolved."
+    },
+    {
+      "id": "L2",
+      "claim": "Notice also addresses promotion and reported losses.",
+      "scope": "Parties encouraging the specified transactions.",
+      "quote": "“CBSL may take actions against both parties who encourage the public…”",
+      "sourceIds": [
+        "cbsl-2019-notice"
+      ],
+      "sourceDescription": "Same CBSL document as L1.  [cbsl.gov](https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/press/notices/notice_20191021_unauthorized_foreign_exchange_trading_e.pdf)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulator notice. Application to an offshore publisher/affiliate requires legal review."
+    },
+    {
+      "id": "L3",
+      "claim": "Sri Lankan bank-issued cards cannot be used for forex trading.",
+      "scope": "EFTCs issued by banks in Sri Lanka.",
+      "quote": "“EFTCs shall not be used… Dealings in foreign exchange (Forex Trading)”",
+      "sourceIds": [
+        "dfe-current-transactions"
+      ],
+      "sourceDescription": "DFE. `https://www.dfe.lk/web/index.php?option=com_content&view=article&id=402&Itemid=742&lang=en` — displayed update 19 October 2026.  [dfe](https://www.dfe.lk/web/index.php?option=com_content&view=article&id=402&Itemid=742&lang=en)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulator guidance, FAQ 30. Does not establish permission for other channels."
+    },
+    {
+      "id": "L4",
+      "claim": "Ordinary documented foreign payments are distinct.",
+      "scope": "Residents; goods, services, education and medical expenses.",
+      "quote": "“Residents may remit funds for the services obtained from a non-resident by producing required documents.”",
+      "sourceIds": [
+        "dfe-current-transactions"
+      ],
+      "sourceDescription": "Same DFE FAQ as L3, questions 1–4.  [dfe](https://www.dfe.lk/web/index.php?option=com_content&view=article&id=402&Itemid=742&lang=en)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulator guidance. Not a permission for speculative brokerage deposits."
+    },
+    {
+      "id": "L5",
+      "claim": "2026 rules replaced 2021 overseas-capital regulations.",
+      "scope": "Overseas investments by residents.",
+      "quote": "“is hereby rescinded, without prejudice to anything done thereunder.”",
+      "sourceIds": [
+        "gazette-2493-36"
+      ],
+      "sourceDescription": "Government Gazette, hosted by DFE. `https://www.dfe.lk/web/images/rdevelopment/1e053526afc012cd3d06e03a8270234c-2493-36-E.pdf` — 18 June 2026; effective 20 June 2026.  [dfe](https://www.dfe.lk/web/images/rdevelopment/1e053526afc012cd3d06e03a8270234c-2493-36-E.pdf)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulation, paragraph 2.1. Does not expressly repeal the forex notice."
+    },
+    {
+      "id": "L6",
+      "claim": "Rupee-conversion category restricts individual investments.",
+      "scope": "Resident individuals excluding emigrants and non-nationals; paragraph 3.",
+      "quote": "“only in overseas Employee Share Ownership Plans or Employees Share Option Schemes.”",
+      "sourceIds": [
+        "gazette-2493-36"
+      ],
+      "sourceDescription": "Same Gazette as L5, paragraph 3.2.1.  [dfe](https://www.dfe.lk/web/images/rdevelopment/1e053526afc012cd3d06e03a8270234c-2493-36-E.pdf)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulation. Do not generalize beyond its funding/category scope."
+    },
+    {
+      "id": "L7",
+      "claim": "Existing foreign-assets/foreign-exchange provision needs interpretation.",
+      "scope": "“Any resident”; qualifying overseas assets/investments.",
+      "quote": "“utilizing any foreign assets or foreign exchange held in a bank account…”",
+      "sourceIds": [
+        "gazette-2493-36"
+      ],
+      "sourceDescription": "Same Gazette as L5, paragraphs 4.1–4.4.  [dfe](https://www.dfe.lk/web/images/rdevelopment/1e053526afc012cd3d06e03a8270234c-2493-36-E.pdf)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulation. Does not expressly mention leveraged forex/CFDs; directions and other laws remain relevant."
+    },
+    {
+      "id": "L8",
+      "claim": "Applicable section 22 orders retain effect.",
+      "scope": "Overseas investments and current restrictions.",
+      "quote": "“shall have effect during the period of such Order…”",
+      "sourceIds": [
+        "dfe-regulations-index",
+        "gazette-2493-36"
+      ],
+      "sourceDescription": "Same Gazette as L5, paragraph 2.2. DFE index: `https://www.dfe.lk/web/index.php?option=com_rdevelopment&task=gazettes&Itemid=678` — displayed update 19 October 2026.  [dfe](https://www.dfe.lk/web/images/rdevelopment/1e053526afc012cd3d06e03a8270234c-2493-36-E.pdf)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulation plus official index. Gazette 2493/38’s operative English text not accessed."
+    },
+    {
+      "id": "L9",
+      "claim": "Residency extends beyond passport nationality.",
+      "scope": "Resident/non-resident categories.",
+      "quote": "“Sri Lankan citizens who live in foreign countries on student visas”",
+      "sourceIds": [
+        "dfe-residency"
+      ],
+      "sourceDescription": "DFE. `https://www.dfe.lk/web/index.php?option=com_content&view=category&id=81&lang=en` — displayed update 19 October 2026.  [dfe](https://www.dfe.lk/web/index.php?option=com_content&view=category&id=81&lang=en)",
+      "evidenceType": "regulator_document",
+      "limitations": "Official summary. Underlying residency order and amendments not accessed."
+    },
+    {
+      "id": "L10",
+      "claim": "Foreign licensing is not automatic host-country permission.",
+      "scope": "Seychelles securities dealers offering services elsewhere.",
+      "quote": "“must hold the required exemption, cross border agreement or relevant approval…”",
+      "sourceIds": [
+        "fsa-cross-border-2021"
+      ],
+      "sourceDescription": "Seychelles FSA. `https://fsaseychelles.sc/media/regupdates/Communiqu_No._1_of_2021_-_Awareness_of_Securities_Dealers_Businesses_copy_7.pdf` — 29 January 2021.  [fsaseychelles](https://fsaseychelles.sc/media/regupdates/Communiqu_No._1_of_2021_-_Awareness_of_Securities_Dealers_Businesses_copy_7.pdf)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulator document. Does not determine a particular broker’s Sri Lankan status."
+    },
+    {
+      "id": "L11",
+      "claim": "Enforcement is not guaranteed client recovery.",
+      "scope": "Seychelles FSA jurisdiction.",
+      "quote": "“does not extend to the remedy of any disgorgement, recuperation of funds or similar matters.”",
+      "sourceIds": [
+        "fsa-cross-border-2021"
+      ],
+      "sourceDescription": "Same FSA communiqué as L10.  [fsaseychelles](https://fsaseychelles.sc/media/regupdates/Communiqu_No._1_of_2021_-_Awareness_of_Securities_Dealers_Businesses_copy_7.pdf)",
+      "evidenceType": "regulator_document",
+      "limitations": "Regulator document. Do not promise recovery or compensation."
+    },
+    {
+      "id": "L12",
+      "claim": "Official clarification contact.",
+      "scope": "DFE enquiries.",
+      "quote": "“Tel +94 112 477 255”",
+      "sourceIds": [
+        "dfe-contact"
+      ],
+      "sourceDescription": "DFE. `https://www.dfe.lk/web/index.php?option=com_content&view=article&id=106&Itemid=480&lang=en` — displayed update 19 October 2026.  [dfe](https://www.dfe.lk/web/index.php?option=com_content&view=article&id=106&Itemid=480&lang=en)",
+      "evidenceType": "regulator_document",
+      "limitations": "Official contact page. Email is JavaScript-obfuscated in retrieved text; do not claim it was read there."
+    },
+    {
+      "id": "B1",
+      "claim": "Exness SC is listed as a securities dealer.",
+      "scope": "Exness (SC) Ltd, Seychelles.",
+      "quote": "“Business Name: Exness (SC) Ltd”; “Type: Securities Dealer”",
+      "sourceIds": [
+        "fsa-exness-sc"
+      ],
+      "sourceDescription": "Seychelles FSA. `https://fsaseychelles.sc/search-business/exness-sc-ltd` — undated.  [fsaseychelles](https://fsaseychelles.sc/search-business/exness-sc-ltd)",
+      "evidenceType": "official_register",
+      "limitations": "Official register entry. Licence number not displayed in retrieved entry."
+    },
+    {
+      "id": "B2",
+      "claim": "Exness states SD025 and distinguishes retail entities.",
+      "scope": "Exness group entities separately.",
+      "quote": "“Exness (SC) Ltd… license number SD025”; UK/Cyprus “does not offer services to retail clients.”",
+      "sourceIds": [
+        "exness-regulation"
+      ],
+      "sourceDescription": "Exness. `https://www.exness.com/regulation/` — undated.  [exness](https://www.exness.com/regulation/)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker statement. No Sri Lankan entity allocation established."
+    },
+    {
+      "id": "B3",
+      "claim": "Standard pricing and spread variability.",
+      "scope": "Exness website-level Standard offering.",
+      "quote": "“From 0.2 pips”; “No commission”; “Spreads may fluctuate and widen…”",
+      "sourceIds": [
+        "exness-standard"
+      ],
+      "sourceDescription": "Exness. `https://www.exness.com/standard-accounts/` — undated.  [exness](https://www.exness.com/standard-accounts/)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker statement. Minimum deposit not extracted; not country-specific."
+    },
+    {
+      "id": "B4",
+      "claim": "Platforms/protection claims are conditional research evidence.",
+      "scope": "Multi-entity Exness site.",
+      "quote": "“Swap-free trading is available if you have Swap-free status…”",
+      "sourceIds": [
+        "exness-platforms"
+      ],
+      "sourceDescription": "Exness. `https://www.exness.com/trading-platforms/` — undated.  [exness](https://www.exness.com/trading-platforms/)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker statement. Protection exclusions and contract applicability not established."
+    },
+    {
+      "id": "B5",
+      "claim": "Separate agreements/procedures exist.",
+      "scope": "SC, B.V., VG separately.",
+      "quote": "“Complaints Procedure for Clients”",
+      "sourceIds": [
+        "exness-legal-index"
+      ],
+      "sourceDescription": "Exness. `https://www.exness.com/legal-documents/` — page includes 16 June 2025 announcement.  [exness](https://www.exness.com/legal-documents/)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker legal index. Index access is not access to underlying agreements."
+    },
+    {
+      "id": "B6",
+      "claim": "XM Global claims Belize licence 8557558.",
+      "scope": "XM Global Limited, Belize.",
+      "quote": "“under the Securities Industry Act 2021 (license number 8557558)”",
+      "sourceIds": [
+        "xm-regulation"
+      ],
+      "sourceDescription": "XM. `https://www.xm.com/regulation` — undated.  [xm](https://www.xm.com/regulation)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker statement. Direct Belize register confirmation not established."
+    },
+    {
+      "id": "B7",
+      "claim": "A separate XM company appears on Seychelles register.",
+      "scope": "XM (SC) Limited.",
+      "quote": "“Business Name: XM (SC) Limited”; “Trade Name: XMGlobal”",
+      "sourceIds": [
+        "fsa-xm-sc"
+      ],
+      "sourceDescription": "Seychelles FSA. `https://fsaseychelles.sc/search-business/jupiter-global-markets-ltd` — undated.  [fsaseychelles](https://fsaseychelles.sc/search-business/jupiter-global-markets-ltd)",
+      "evidenceType": "official_register",
+      "limitations": "Official register. Different company; no resident allocation or licence number established."
+    },
+    {
+      "id": "B8",
+      "claim": "XM publishes minimum deposits and NBP claim.",
+      "scope": "Page footer: XM Global Limited.",
+      "quote": "“Minimum Deposit $5”; “All accounts offer negative balance protection”",
+      "sourceIds": [
+        "xm-account-types"
+      ],
+      "sourceDescription": "XM. `https://www.xm.com/account-types` — undated.  [xm](https://www.xm.com/account-types)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker statement. Contractual exclusions and Sri Lankan eligibility unverified."
+    },
+    {
+      "id": "B9",
+      "claim": "XM accessible bonus PDF uses a different licence number.",
+      "scope": "XM Global Limited, bonus agreement only.",
+      "quote": "“License Number: 000261/309”; bonus “cannot be withdrawn.”",
+      "sourceIds": [
+        "xm-bonus-terms"
+      ],
+      "sourceDescription": "XM. `https://www.xm.com/assets/pdf/new/terms/XMGlobal-Terms-and-Conditions-Bonus-Programs.pdf` — undated.  [xm](https://www.xm.com/assets/pdf/new/terms/XMGlobal-Terms-and-Conditions-Bonus-Programs.pdf)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker document. Number/address discrepancy; not full trading contract."
+    },
+    {
+      "id": "B10",
+      "claim": "Raw Trading is officially listed.",
+      "scope": "Raw Trading Ltd, Seychelles.",
+      "quote": "“Type: Securities Dealer”; “IC Markets Global and IC MARKETS (SC)”",
+      "sourceIds": [
+        "fsa-raw-trading"
+      ],
+      "sourceDescription": "Seychelles FSA. `https://fsaseychelles.sc/search-business/raw-trading-ltd` — undated.  [fsaseychelles](https://fsaseychelles.sc/search-business/raw-trading-ltd)",
+      "evidenceType": "official_register",
+      "limitations": "Official register. Number SD018 not displayed in retrieved entry."
+    },
+    {
+      "id": "B11",
+      "claim": "IC claims SD018, segregation, and warns of losses exceeding deposits.",
+      "scope": "Raw Trading Ltd.",
+      "quote": "“License NO SD018”; “losses may exceed the amount you have deposited.”",
+      "sourceIds": [
+        "ic-global-regulation"
+      ],
+      "sourceDescription": "IC Markets Global. `https://www.icmarkets.com/global/en/company/regulation` — undated.  [icmarkets](https://www.icmarkets.com/global/en/company/regulation)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker statement. Do not infer unconditional NBP."
+    },
+    {
+      "id": "B12",
+      "claim": "Account pricing differs materially by account/platform.",
+      "scope": "Raw Trading Ltd account catalogue.",
+      "quote": "Raw Spread: “$3.5($7.0 per lot round turn)”; Standard: “0.8” pips.",
+      "sourceIds": [
+        "ic-global-accounts"
+      ],
+      "sourceDescription": "IC Markets Global. `https://www.icmarkets.com/global/en/trading-accounts/overview` — undated.  [icmarkets](https://www.icmarkets.com/global/en/trading-accounts/overview)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker statement. Floors not averages; Pro products marked early access."
+    },
+    {
+      "id": "B13",
+      "claim": "Funding charges may include third-party bank costs.",
+      "scope": "Raw Trading Ltd.",
+      "quote": "“may incur fees, such as intermediary fees”",
+      "sourceIds": [
+        "ic-global-funding"
+      ],
+      "sourceDescription": "IC Markets Global. `https://www.icmarkets.com/global/en/trading-accounts/funding` — undated.  [icmarkets](https://www.icmarkets.com/global/en/trading-accounts/funding)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker statement. No Sri Lankan payment permission inferred."
+    },
+    {
+      "id": "B14",
+      "claim": "Pepperstone Markets appears in official Bahamas register.",
+      "scope": "Pepperstone Markets Limited.",
+      "quote": "“Managing Capital Market Instruments and trading CFD’s”",
+      "sourceIds": [
+        "scb-october-2026"
+      ],
+      "sourceDescription": "SCB. `https://scb.gov.bs/wp-content/uploads/2026/11/SIA-Firms-as-at-31-October-2026-1.pdf` — register as at 31 October 2026.  [scb.gov](https://scb.gov.bs/wp-content/uploads/2026/11/SIA-Firms-as-at-31-October-2026-1.pdf)",
+      "evidenceType": "official_register",
+      "limitations": "Official register. Identified entry accessed; licence number not shown in retrieved entry."
+    },
+    {
+      "id": "B15",
+      "claim": "Pepperstone states SIA-F217 and entity-specific contracts.",
+      "scope": "Pepperstone Markets Limited, Bahamas.",
+      "quote": "“legal documents vary by Pepperstone entity and applicable regulation”",
+      "sourceIds": [
+        "pepperstone-legal"
+      ],
+      "sourceDescription": "Pepperstone. `https://pepperstone.com/en/about-us/policies/legal` — undated.  [pepperstone](https://pepperstone.com/en/about-us/policies/legal)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker legal index. Operative client terms/complaints notice not accessed."
+    },
+    {
+      "id": "B16",
+      "claim": "Pricing page contains mixed or conflicting details.",
+      "scope": "Footer: Pepperstone Markets Limited; page also references other jurisdictions.",
+      "quote": "“minimum you can add is $10”; overview “Min deposit $0”",
+      "sourceIds": [
+        "pepperstone-accounts"
+      ],
+      "sourceDescription": "Pepperstone. `https://pepperstone.com/en/trading/trading-accounts/` — no overall revision date; includes dated historical data.  [pepperstone](https://pepperstone.com/en/trading/trading-accounts/)",
+      "evidenceType": "broker_statement",
+      "limitations": "Broker statement. TradingView and minimum-funding descriptions need reconciliation."
+    }
+  ],
+  "brokerResearch": [
+    {
+      "brokerSlug": "exness",
+      "name": "Exness",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Explicit Sri Lankan acceptance or exclusion",
+          "value": "Not established. The accessed international disclosures list selected restricted jurisdictions but do not affirmatively establish Sri Lankan eligibility. Absence from a list is not acceptance evidence.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contracting entity for Sri Lankan residents",
+          "value": "Not established. Exness publishes separate legal documents for Exness (SC) Ltd, Exness B.V., and Exness (VG) Ltd. Do not assign Sri Lankan residents to one without explicit evidence.  [exness](https://www.exness.com/legal-documents/)",
+          "sourceIds": [
+            "exness-legal-index"
+          ]
+        },
+        {
+          "field": "Identified research entity",
+          "value": "Exness (SC) Ltd, Seychelles. Exness states securities-dealer licence SD025.  [exness](https://www.exness.com/regulation/)",
+          "sourceIds": [
+            "exness-regulation"
+          ]
+        },
+        {
+          "field": "Official register",
+          "value": "Seychelles FSA has a direct entry for Exness (SC) Ltd as a securities dealer, with exness.com as its website. The retrieved entry does not display SD025; that number remains broker-stated in this dossier.  [fsaseychelles](https://fsaseychelles.sc/search-business/exness-sc-ltd)",
+          "sourceIds": [
+            "fsa-exness-sc"
+          ]
+        },
+        {
+          "field": "Sri Lankan authorization",
+          "value": "Not established. The Seychelles entry is not evidence of Sri Lankan authorization.",
+          "sourceIds": []
+        },
+        {
+          "field": "Accounts and pricing",
+          "value": "Exness’s Standard account page advertises spreads from 0.2 pips and no commission. The minimum-deposit value was not populated in the retrieved table: not established. These are website-level terms, not verified Sri Lankan or contract-specific terms.  [exness](https://www.exness.com/standard-accounts/)",
+          "sourceIds": [
+            "exness-standard"
+          ]
+        },
+        {
+          "field": "Platforms",
+          "value": "Exness advertises Exness Trade, Exness Terminal, and MetaTrader-related offerings. Sri Lankan/entity-specific availability remains unverified.  [exness](https://www.exness.com/trading-platforms/)",
+          "sourceIds": [
+            "exness-platforms"
+          ]
+        },
+        {
+          "field": "Charges and protections",
+          "value": "The platform page advertises negative balance protection and conditional swap-free status. Contractual exclusions, instrument-level swaps, administrative charges, and enforceable terms for a Sri Lankan client are not established.  [exness](https://www.exness.com/trading-platforms/)",
+          "sourceIds": [
+            "exness-platforms"
+          ]
+        },
+        {
+          "field": "Complaints and jurisdiction",
+          "value": "An Exness (SC) complaints procedure is listed, but its operative document was not accessed. Seychelles FSA is the identified supervisor for the SC research entity; contractual forum and escalation eligibility remain unverified.  [exness](https://www.exness.com/legal-documents/)",
+          "sourceIds": [
+            "exness-legal-index"
+          ]
+        }
+      ],
+      "unresolvedNotes": [
+        "Sri Lankan resident eligibility, serving entity and local authorization are not established.",
+        "SD025 is broker-stated; the reported FSA entry establishes identity/type, not that number.",
+        "Eden Island address in the FSA entry versus Providence in a broker footer requires reconciliation.",
+        "Exness UK and Cyprus companies say they do not serve retail clients; do not transfer their protections."
+      ]
+    },
+    {
+      "brokerSlug": "xm",
+      "name": "XM",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Explicit Sri Lankan acceptance or exclusion",
+          "value": "Not established. XM’s restricted-region wording and local-law disclaimer do not affirmatively establish Sri Lankan eligibility.  [xm](https://www.xm.com/regulation)",
+          "sourceIds": [
+            "xm-regulation"
+          ]
+        },
+        {
+          "field": "Contracting entity for Sri Lankan residents",
+          "value": "Not established.",
+          "sourceIds": []
+        },
+        {
+          "field": "Identified research entity",
+          "value": "XM Global Limited, Belize. The current accessed regulation page states FSC licence 8557558.  [xm](https://www.xm.com/regulation)",
+          "sourceIds": [
+            "xm-regulation"
+          ]
+        },
+        {
+          "field": "Official register",
+          "value": "A direct Belize FSC entry for XM Global Limited was not established in this research. Do not label its Belize licence regulator-confirmed on this evidence alone.",
+          "sourceIds": []
+        },
+        {
+          "field": "Separate entity found",
+          "value": "Seychelles FSA lists XM (SC) Limited, trade name XMGlobal, with xm.com as its website. That is a different legal company; it must not be merged with XM Global Limited in Belize.  [fsaseychelles](https://fsaseychelles.sc/search-business/jupiter-global-markets-ltd)",
+          "sourceIds": [
+            "fsa-xm-sc"
+          ]
+        },
+        {
+          "field": "Sri Lankan authorization",
+          "value": "Not established for either identified company.",
+          "sourceIds": []
+        },
+        {
+          "field": "Accounts/minimum deposits",
+          "value": "The page carrying the XM Global Limited footer lists Standard: $5; Ultra Low: $5; Shares: $10,000. These are broker statements, not confirmed Sri Lankan offerings.  [xm](https://www.xm.com/account-types)",
+          "sourceIds": [
+            "xm-account-types"
+          ]
+        },
+        {
+          "field": "Spreads/commissions",
+          "value": "Account-specific verified rates were not available in the accessed content: not established.",
+          "sourceIds": []
+        },
+        {
+          "field": "Platforms",
+          "value": "The accessed regulation page lists MT4, MT5, and XM App. Resident/entity-specific availability is not established.  [xm](https://www.xm.com/regulation)",
+          "sourceIds": [
+            "xm-regulation"
+          ]
+        },
+        {
+          "field": "Protections",
+          "value": "Account page states negative balance protection for all listed accounts. Contractual exclusions, segregation terms, compensation eligibility, and enforceability remain unverified.  [xm](https://www.xm.com/account-types)",
+          "sourceIds": [
+            "xm-account-types"
+          ]
+        },
+        {
+          "field": "Charges/limitations",
+          "value": "Bonus terms state that bonuses cannot be withdrawn and may be reduced proportionately on withdrawals; some conduct can trigger cancellation and account action. Sri Lankan bonus eligibility is not established.  [xm](https://www.xm.com/assets/pdf/new/terms/XMGlobal-Terms-and-Conditions-Bonus-Programs.pdf)",
+          "sourceIds": [
+            "xm-bonus-terms"
+          ]
+        },
+        {
+          "field": "Complaints/jurisdiction",
+          "value": "The bonus terms specify Belize law for that bonus agreement. This must not be generalized to the full trading-client agreement; its dispute forum and complaint procedure remain unverified.  [xm](https://www.xm.com/assets/pdf/new/terms/XMGlobal-Terms-and-Conditions-Bonus-Programs.pdf)",
+          "sourceIds": [
+            "xm-bonus-terms"
+          ]
+        }
+      ],
+      "unresolvedNotes": [
+        "XM Global Limited, Belize, must remain separate from XM (SC) Limited, Seychelles.",
+        "8557558 on the reported regulation page conflicts with 000261/309 in an undated bonus PDF. No equivalence, current status or wrongdoing is inferred.",
+        "No direct Belize register entry or Sri Lankan entity allocation was established.",
+        "Bonus-agreement Belize law is not proof of the full trading agreement’s forum."
+      ]
+    },
+    {
+      "brokerSlug": "ic-markets",
+      "name": "IC Markets Global",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Explicit Sri Lankan acceptance or exclusion",
+          "value": "Not established. Its restriction clause also excludes countries where distribution or use would contravene local law.  [icmarkets](https://www.icmarkets.com/global/en/company/regulation)",
+          "sourceIds": [
+            "ic-global-regulation"
+          ]
+        },
+        {
+          "field": "Contracting entity for Sri Lankan residents",
+          "value": "Not established.",
+          "sourceIds": []
+        },
+        {
+          "field": "Identified research entity",
+          "value": "Raw Trading Ltd, Seychelles, registration 8419879-1; broker-stated licence SD018. The international site identifies IC and IC Markets Global as its trading names.  [icmarkets](https://www.icmarkets.com/global/en/company/regulation)",
+          "sourceIds": [
+            "ic-global-regulation"
+          ]
+        },
+        {
+          "field": "Official register",
+          "value": "Seychelles FSA directly lists Raw Trading Ltd as a securities dealer and identifies IC Markets Global / IC MARKETS (SC). The retrieved entry does not display SD018.  [fsaseychelles](https://fsaseychelles.sc/search-business/raw-trading-ltd)",
+          "sourceIds": [
+            "fsa-raw-trading"
+          ]
+        },
+        {
+          "field": "Sri Lankan authorization",
+          "value": "Not established.",
+          "sourceIds": []
+        },
+        {
+          "field": "Platforms",
+          "value": "Account page advertises MetaTrader; a separate Raw Spread offering supports cTrader and TradingView. No Sri Lankan entitlement established.  [icmarkets](https://www.icmarkets.com/global/en/trading-accounts/overview)",
+          "sourceIds": [
+            "ic-global-accounts"
+          ]
+        },
+        {
+          "field": "Account-specific terms",
+          "value": "See table below.",
+          "sourceIds": []
+        },
+        {
+          "field": "Other charges",
+          "value": "Broker says it charges no additional deposit/withdrawal fees but warns of intermediary bank charges. Overnight financing and a complete non-trading fee schedule were not established here. This is not evidence that those funding methods are lawful or available in Sri Lanka.  [icmarkets](https://www.icmarkets.com/global/en/trading-accounts/funding)",
+          "sourceIds": [
+            "ic-global-funding"
+          ]
+        },
+        {
+          "field": "Protections/limitations",
+          "value": "Broker states client-money segregation. Its risk disclosure says losses may exceed deposits in some cases and leverage can change dynamically. Do not claim unconditional negative balance protection.  [icmarkets](https://www.icmarkets.com/global/en/company/regulation)",
+          "sourceIds": [
+            "ic-global-regulation"
+          ]
+        },
+        {
+          "field": "Complaints/jurisdiction",
+          "value": "Seychelles FSA is the identified supervisor. The operative client agreement, contractual dispute forum, complaint deadlines, and recovery options were not verified.",
+          "sourceIds": []
+        }
+      ],
+      "unresolvedNotes": [
+        "No Sri Lankan eligibility or serving-entity entitlement was established.",
+        "SD018 is broker-stated and absent from the reported FSA entry.",
+        "Raw Pro and Raw Pro+ are early-access products, not confirmed ordinary live options.",
+        "cTrader commission uses USD notional. Do not convert it silently into a per-lot round trip or infer side/round-trip terms not stated in this dossier.",
+        "Risk wording reports possible losses exceeding deposits; unconditional negative balance protection is not established."
+      ],
+      "advertisedAccounts": [
+        {
+          "account": "Standard / MetaTrader",
+          "minimum": "$0",
+          "spreadFloor": "0.8 pips",
+          "commission": "$0 per lot per side",
+          "sourceIds": [
+            "ic-global-accounts"
+          ]
+        },
+        {
+          "account": "Raw Spread / MetaTrader",
+          "minimum": "$0",
+          "spreadFloor": "0.0 pips",
+          "commission": "$3.50 per lot per side; $7 round turn",
+          "sourceIds": [
+            "ic-global-accounts"
+          ]
+        },
+        {
+          "account": "Raw Spread / cTrader",
+          "minimum": "$0",
+          "spreadFloor": "0 pips",
+          "commission": "$3 per USD 100,000",
+          "sourceIds": [
+            "ic-global-accounts"
+          ]
+        },
+        {
+          "account": "Raw Pro",
+          "minimum": "$5,000",
+          "spreadFloor": "0.0 pips",
+          "commission": "$1.50 per lot per side",
+          "sourceIds": [
+            "ic-global-accounts"
+          ]
+        },
+        {
+          "account": "Raw Pro+",
+          "minimum": "$100,000",
+          "spreadFloor": "0.0 pips",
+          "commission": "$1 per lot per side",
+          "sourceIds": [
+            "ic-global-accounts"
+          ]
+        }
+      ]
+    },
+    {
+      "brokerSlug": "pepperstone",
+      "name": "Pepperstone",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Explicit Sri Lankan acceptance or exclusion",
+          "value": "Not established from the accessed primary documents.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contracting entity for Sri Lankan residents",
+          "value": "Not established.",
+          "sourceIds": []
+        },
+        {
+          "field": "Identified research entity",
+          "value": "Pepperstone Markets Limited, Bahamas; registration 177174 B; broker-stated licence SIA-F217.  [pepperstone](https://pepperstone.com/en/about-us/policies/legal)",
+          "sourceIds": [
+            "pepperstone-legal"
+          ]
+        },
+        {
+          "field": "Official register",
+          "value": "SCB’s register as at 31 October 2026 lists Pepperstone Markets Limited and activities including dealing, arranging, managing capital-market instruments, and trading CFDs. The retrieved entry does not display SIA-F217.  [scb.gov](https://scb.gov.bs/wp-content/uploads/2026/11/SIA-Firms-as-at-31-October-2026-1.pdf)",
+          "sourceIds": [
+            "scb-october-2026"
+          ]
+        },
+        {
+          "field": "Sri Lankan authorization",
+          "value": "Not established.",
+          "sourceIds": []
+        },
+        {
+          "field": "Accounts/platforms",
+          "value": "Accessed account page describes Standard and Razor, Pepperstone platform/app, MT4, MT5, cTrader, and TradingView. It contains contradictory TradingView availability statements.  [pepperstone](https://pepperstone.com/en/trading/trading-accounts/)",
+          "sourceIds": [
+            "pepperstone-accounts"
+          ]
+        },
+        {
+          "field": "Pricing",
+          "value": "Razor advertises forex spreads from 0.0 and commission from $3.50 per lot per side; Standard says no commission except share CFDs, with overnight funding separate. Treat as broker-advertised information pending contract/platform confirmation.  [pepperstone](https://pepperstone.com/en/trading/trading-accounts/)",
+          "sourceIds": [
+            "pepperstone-accounts"
+          ]
+        },
+        {
+          "field": "Minimum deposit",
+          "value": "Same page says $0 in an overview but says the minimum amount added when funding is $10/local equivalent. These may describe different concepts, but require clarification.  [pepperstone](https://pepperstone.com/en/trading/trading-accounts/)",
+          "sourceIds": [
+            "pepperstone-accounts"
+          ]
+        },
+        {
+          "field": "Other charges",
+          "value": "Page states no inactivity or market-data fees, while identifying overnight funding. The complete entity-specific schedule remains unverified.  [pepperstone](https://pepperstone.com/en/trading/trading-accounts/)",
+          "sourceIds": [
+            "pepperstone-accounts"
+          ]
+        },
+        {
+          "field": "Protections",
+          "value": "Page warns stop-loss mechanisms are not guaranteed and slippage can occur. Compensation-scheme coverage, segregation terms, and negative-balance rules for the relevant contract are not established.  [pepperstone](https://pepperstone.com/en/trading/trading-accounts/)",
+          "sourceIds": [
+            "pepperstone-accounts"
+          ]
+        },
+        {
+          "field": "Complaints/jurisdiction",
+          "value": "Legal page lists a complaints notice and client terms for Pepperstone Markets Limited. Their operative texts were not accessed; dispute forum and complaint eligibility remain unverified.  [pepperstone](https://pepperstone.com/en/about-us/policies/legal)",
+          "sourceIds": [
+            "pepperstone-legal"
+          ]
+        }
+      ],
+      "unresolvedNotes": [
+        "Sri Lankan acceptance, serving entity and local authorization were not established.",
+        "SIA-F217 is broker-stated; the dated SCB entry does not display that number.",
+        "The account page reports both $0 minimum deposit and $10/local-equivalent minimum funding; clarify the distinction.",
+        "TradingView availability statements conflict.",
+        "The page mixes ASIC/FCA/CySEC/SCB references; a Bahamas footer does not make every row Bahamas-contract-specific."
+      ]
+    }
+  ],
+  "accessFailures": [
+    {
+      "subject": "Live Devin Forex page not inspected by the contributor",
+      "url": "https://devinforex-five.vercel.app/forex-brokers/sri-lanka",
+      "consequence": "The dossier does not audit or approve the live implementation."
+    },
+    {
+      "subject": "Section 22 order, Gazette 2493/38",
+      "url": "https://documents.gov.lk/view/extra-gazettes/2026/6/2493-38_E.pdf",
+      "consequence": "Operative English PDF was not accessed by the contributor."
+    },
+    {
+      "subject": "Pepperstone regulation page",
+      "url": "https://pepperstone.com/en/about-us/regulation/",
+      "consequence": "Contributor instead reports the legal index and dated SCB register; no full client-contract review."
+    },
+    {
+      "subject": "XM Global Limited direct Belize FSC entry",
+      "url": null,
+      "consequence": "No direct entry established; licence remains broker-stated."
+    },
+    {
+      "subject": "Gazette 2213/40 residency order and amendments",
+      "url": null,
+      "consequence": "Underlying order was not accessed; the DFE summary is not an individual legal classification."
+    },
+    {
+      "subject": "Full operative client, protection and complaints agreements",
+      "url": null,
+      "consequence": "Contractual forum, exclusions, deadlines and recovery rights remain unresolved."
+    }
+  ],
+  "legalReviewQuestions": [
+    "How do Gazette 2493/36, the current section 22 order, and implementing directions interact with CBSL’s forex notice?",
+    "Does paragraph 4 cover leveraged currency derivatives or CFDs, and under what product classifications and conditions?",
+    "Does the answer differ for currency CFDs, non-currency CFDs, futures, options, ordinary securities, or genuine commercial hedging?",
+    "What rules apply to existing foreign assets, foreign-currency accounts, previously authorized investments, and special permissions?",
+    "How should “in, or resident in Sri Lanka” apply to temporary visitors, overseas students, non-nationals, dual citizens, and emigrants?",
+    "What authorization, exemption, or approval would an offshore entity need to target or serve the relevant residents?",
+    "Does an informational broker comparison constitute encouragement in a particular context? How does the answer change with rankings, affiliate links, paid placements, or account-opening content?",
+    "Which complaint, litigation, arbitration, compensation, or insurance routes actually apply under the exact client contract?",
+    "What obligations arise for Devin Forex based on its own business location, target audience, affiliate contracts, and editorial conduct?"
+  ],
+  "ownerEvidenceNeeded": [
+    "Affiliate agreements: Executed agreement, contracting affiliate entity, active status, effective date.",
+    "Sri Lanka country-targeting permission: Written program approval addressing Sri Lankan traffic and permitted promotional activities.",
+    "Approved promotional wording: Required risk warnings, prohibited claims, creative-approval rules.",
+    "Actual broker-entity allocation: Dated written compliance confirmation identifying the entity and resident category; this still does not establish Sri Lankan legality.",
+    "Firsthand testing: Genuine records identifying tester, date, entity, platform, methodology, and limitations. No live testing is recommended as a way around unresolved restrictions.",
+    "Editorial methodology: Documented criteria, conflict controls, source-review procedure, correction process.",
+    "Authors/reviewers: Real identities, relevant qualifications, scope of review, consent to attribution.",
+    "Legal approval: Written qualified advice addressing the current instruments and the proposed page’s content/promotional scope.",
+    "Implementation evidence: Repository or screenshots showing that restricted-country controls actually suppress commercial links."
+  ],
+  "reportedSources": [
+    {
+      "id": "cbsl-2019-notice",
+      "title": "CBSL notice on unauthorized foreign exchange trading",
+      "publisher": "Central Bank of Sri Lanka",
+      "url": "https://www.cbsl.gov.lk/sites/default/files/cbslweb_documents/press/notices/notice_20191021_unauthorized_foreign_exchange_trading_e.pdf",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "blocked",
+      "note": "The dossier reports access on 10 November 2026. Our separate retrieval attempt was blocked; this is not our independent verification.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      },
+      "dateNote": "Filename indicates 21 October 2019; the dossier reports an undated PDF body. Publication metadata is not independently established."
+    },
+    {
+      "id": "dfe-current-transactions",
+      "title": "DFE current-transactions FAQ — question 30 on cards",
+      "publisher": "Department of Foreign Exchange, Sri Lanka",
+      "url": "https://www.dfe.lk/web/index.php?option=com_content&view=article&id=402&Itemid=742&lang=en",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "blocked",
+      "note": "The dossier reports access on 10 November 2026. Our separate retrieval attempt was blocked; this is not our independent verification.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      },
+      "reportedUpdatedAt": "2026-10-19"
+    },
+    {
+      "id": "gazette-2493-36",
+      "title": "Gazette 2493/36 — overseas-investment regulations",
+      "publisher": "Government of Sri Lanka / DFE",
+      "url": "https://www.dfe.lk/web/images/rdevelopment/1e053526afc012cd3d06e03a8270234c-2493-36-E.pdf",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": "2026-06-18",
+      "publicationDateStatus": "supplied",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "blocked",
+      "note": "The dossier reports access on 10 November 2026. Our separate retrieval attempt was blocked; this is not our independent verification.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      },
+      "dateNote": "Dossier-reported document date: 18 June 2026; reported effective date: 20 June 2026. The effect on forex/CFDs is unresolved."
+    },
+    {
+      "id": "fsa-cross-border-2021",
+      "title": "FSA communiqué — cross-border approvals and enforcement limits",
+      "publisher": "Seychelles Financial Services Authority",
+      "url": "https://fsaseychelles.sc/media/regupdates/Communiqu_No._1_of_2021_-_Awareness_of_Securities_Dealers_Businesses_copy_7.pdf",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": "2021-01-29",
+      "publicationDateStatus": "supplied",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "blocked",
+      "note": "The dossier reports access on 10 November 2026. Our separate retrieval attempt was blocked; this is not our independent verification.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "exness-legal-index",
+      "title": "Exness legal documents index",
+      "publisher": "Exness",
+      "url": "https://www.exness.com/legal-documents/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      },
+      "dateNote": "A 16 June 2025 announcement is not a verified revision date for the whole index or underlying agreements."
+    },
+    {
+      "id": "exness-regulation",
+      "title": "Exness entity and regulation disclosures",
+      "publisher": "Exness",
+      "url": "https://www.exness.com/regulation/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "fsa-exness-sc",
+      "title": "FSA register — Exness (SC) Ltd",
+      "publisher": "Seychelles Financial Services Authority",
+      "url": "https://fsaseychelles.sc/search-business/exness-sc-ltd",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "exness-standard",
+      "title": "Exness Standard account overview",
+      "publisher": "Exness",
+      "url": "https://www.exness.com/standard-accounts/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "exness-platforms",
+      "title": "Exness trading platforms",
+      "publisher": "Exness",
+      "url": "https://www.exness.com/trading-platforms/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "xm-regulation",
+      "title": "XM regulation disclosures",
+      "publisher": "XM",
+      "url": "https://www.xm.com/regulation",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "fsa-xm-sc",
+      "title": "FSA register — XM (SC) Limited, legacy URL",
+      "publisher": "Seychelles Financial Services Authority",
+      "url": "https://fsaseychelles.sc/search-business/jupiter-global-markets-ltd",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "xm-account-types",
+      "title": "XM account types",
+      "publisher": "XM",
+      "url": "https://www.xm.com/account-types",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "xm-bonus-terms",
+      "title": "XM Global bonus-programme terms",
+      "publisher": "XM",
+      "url": "https://www.xm.com/assets/pdf/new/terms/XMGlobal-Terms-and-Conditions-Bonus-Programs.pdf",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "ic-global-regulation",
+      "title": "IC Markets Global regulation and risk disclosures",
+      "publisher": "IC Markets Global",
+      "url": "https://www.icmarkets.com/global/en/company/regulation",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "fsa-raw-trading",
+      "title": "FSA register — Raw Trading Ltd",
+      "publisher": "Seychelles Financial Services Authority",
+      "url": "https://fsaseychelles.sc/search-business/raw-trading-ltd",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "ic-global-accounts",
+      "title": "IC Markets Global account overview",
+      "publisher": "IC Markets Global",
+      "url": "https://www.icmarkets.com/global/en/trading-accounts/overview",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "ic-global-funding",
+      "title": "IC Markets Global funding disclosures",
+      "publisher": "IC Markets Global",
+      "url": "https://www.icmarkets.com/global/en/trading-accounts/funding",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "pepperstone-legal",
+      "title": "Pepperstone entity-specific legal index",
+      "publisher": "Pepperstone",
+      "url": "https://pepperstone.com/en/about-us/policies/legal",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "scb-october-2026",
+      "title": "SCB register — firms as at 31 October 2026",
+      "publisher": "Securities Commission of The Bahamas",
+      "url": "https://scb.gov.bs/wp-content/uploads/2026/11/SIA-Firms-as-at-31-October-2026-1.pdf",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      },
+      "dateNote": "Register as at 31 October 2026, according to the dossier; publication date not established."
+    },
+    {
+      "id": "pepperstone-accounts",
+      "title": "Pepperstone trading accounts",
+      "publisher": "Pepperstone",
+      "url": "https://pepperstone.com/en/trading/trading-accounts/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "dfe-regulations-index",
+      "title": "DFE regulations and gazettes index",
+      "publisher": "Department of Foreign Exchange, Sri Lanka",
+      "url": "https://www.dfe.lk/web/index.php?option=com_rdevelopment&task=gazettes&Itemid=678",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      },
+      "reportedUpdatedAt": "2026-10-19"
+    },
+    {
+      "id": "dfe-residency",
+      "title": "DFE residency summary",
+      "publisher": "Department of Foreign Exchange, Sri Lanka",
+      "url": "https://www.dfe.lk/web/index.php?option=com_content&view=category&id=81&lang=en",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      },
+      "reportedUpdatedAt": "2026-10-19"
+    },
+    {
+      "id": "dfe-contact",
+      "title": "DFE official contact page",
+      "publisher": "Department of Foreign Exchange, Sri Lanka",
+      "url": "https://www.dfe.lk/web/index.php?option=com_content&view=article&id=106&Itemid=480&lang=en",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The supplied dossier reports accessing this source on 10 November 2026; no independent source check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      },
+      "reportedUpdatedAt": "2026-10-19"
+    },
+    {
+      "id": "gazette-2493-38",
+      "title": "Gazette 2493/38 — section 22 order, unaccessed lead",
+      "publisher": "Government of Sri Lanka",
+      "url": "https://documents.gov.lk/view/extra-gazettes/2026/6/2493-38_E.pdf",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The contributor reports an unsuccessful retrieval. Operative contents were not accessed or verified in the supplied dossier, and no independent check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "not_accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    },
+    {
+      "id": "pepperstone-regulation-unaccessed",
+      "title": "Pepperstone regulation page — unaccessed lead",
+      "publisher": "Pepperstone",
+      "url": "https://pepperstone.com/en/about-us/regulation/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "sri-lanka",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "The contributor reports an unsuccessful retrieval. Operative contents were not accessed or verified in the supplied dossier, and no independent check is recorded here.",
+      "reportedAccess": {
+        "date": "2026-11-10",
+        "outcome": "not_accessed",
+        "dossierId": "sri-lanka-dossier-2026-11-10"
+      }
+    }
+  ]
+}

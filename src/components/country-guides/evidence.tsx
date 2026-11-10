@@ -1,5 +1,5 @@
 import type { Claim, GuideRegistry } from "@/lib/country-guides/types";
-import { claimVerified, httpsUrl, verificationLabels } from "@/lib/country-guides/evidence";
+import { claimVerified, httpsUrl, validDate, verificationLabels } from "@/lib/country-guides/evidence";
 
 export function EvidenceCitations({ ids, registry }: { ids: string[]; registry: GuideRegistry }) {
   return <span className="cg-citations">{ids.map(id => {
@@ -11,8 +11,15 @@ export function EvidenceClaim({ claim, registry, asOf, countrySlug, entityId, na
   const scopeMatches = claim.scope.countrySlug === countrySlug && claim.scope.entityId === entityId;
   const verified = claimVerified(claim, countrySlug, entityId, registry, asOf);
   const display = scopeMatches && (verified || narrative);
+  const reported = claim.sourceIds.some(id => {
+    const source = registry.sources.find(source => source.id === id);
+    return source?.scope.countrySlug === countrySlug && source.scope.entityId === entityId && source.reportedAccess?.outcome === "accessed" && validDate(source.reportedAccess.date) && source.reportedAccess.date <= asOf;
+  });
+  const quotationSource = registry.sources.find(source => source.id === claim.reportedQuote?.sourceId);
+  const quotation = narrative && display && claim.reportedQuote && claim.sourceIds.includes(claim.reportedQuote.sourceId) && quotationSource?.scope.countrySlug === countrySlug && quotationSource.scope.entityId === entityId && quotationSource.reportedAccess?.outcome === "accessed" && validDate(quotationSource.reportedAccess.date) && quotationSource.reportedAccess.date <= asOf ? claim.reportedQuote : null;
   return <div className="cg-evidence" data-verification={verified ? claim.verification : "unverified"}>
     <p>{display && claim.value !== null ? String(claim.value).replace(/_/g, " ") : "Unknown — not verified"}</p>
-    <div className="cg-evidence-meta"><span>{verified ? verificationLabels[claim.verification] : narrative && claim.sourceIds.length ? "Supplied reference · not independently verified" : "Research status · not independently verified"}</span><EvidenceCitations ids={scopeMatches ? claim.sourceIds : []} registry={registry} /></div>
+    <div className="cg-evidence-meta"><span>{verified ? verificationLabels[claim.verification] : reported && narrative ? "Dossier-reported · independent check pending" : narrative && claim.sourceIds.length ? "Supplied reference · not independently verified" : "Research status · not independently verified"}</span><EvidenceCitations ids={scopeMatches ? claim.sourceIds : []} registry={registry} /></div>
+    {quotation && <figure className="cg-reported-quote"><blockquote>{quotation.text}</blockquote><figcaption>{quotation.locator}. Quotation supplied by the dossier; wording not independently checked. <EvidenceCitations ids={[quotation.sourceId]} registry={registry} /></figcaption></figure>}
   </div>;
 }

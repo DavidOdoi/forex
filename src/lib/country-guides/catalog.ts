@@ -1,5 +1,6 @@
 import { davidOdoi } from "../authors";
 import type { Claim, CountryGuide, GuideRegistry, GuideSource } from "./types";
+import { applySriLankaDossier } from "./sri-lanka-dossier";
 
 const countrySlug = "sri-lanka";
 const noticeId = "cbsl-2019-notice";
@@ -68,5 +69,6 @@ export const sriLankaGuide: CountryGuide = {
   sourceIds: [noticeId, "cbsl-current-notices", "dfe-guidance", "google-helpful-content", "google-reviews"],
 };
 // Add only individually researched guides, never name-swapped placeholders.
+applySriLankaDossier(sriLankaGuide, countryRegistry);
 export const countryGuides: CountryGuide[] = [sriLankaGuide];
 export function getCountryGuide(slug: string) { return countryGuides.find(country => country.slug === slug); }

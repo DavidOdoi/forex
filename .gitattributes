@@ -1,2 +1,5 @@
 # Preserve the uploaded CSV bytes, including its original CRLF endings.
 data/forex-broker-directory-2026-11-02.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve the supplied evidence archive's bytes and Markdown hard line breaks.
+docs/country-guides/research/sri-lanka-dossier-2026-11-10.md -text whitespace=cr-at-eol,-blank-at-eol

@@ -7,10 +7,23 @@ export type GuideSource = {
   scope: Scope; publishedAt: string | null; publicationDateStatus: "supplied" | "verified" | "unknown";
   checkedAt: string | null; verification: "unverified" | "checked";
   access: "blocked" | "not_attempted" | "retrieved"; note: string;
+  dateNote?: string;
+  reportedUpdatedAt?: string;
+  reportedAccess?: { date: string; outcome: "accessed" | "not_accessed" | "not_established"; dossierId: string };
 };
 export type Claim<T = string> = {
   value: T | null; sourceIds: string[]; checkedAt: string | null;
   verification: Verification; scope: Scope; note: string;
+  reportedQuote?: { text: string; sourceId: string; locator: string };
+};
+export type SuppliedCountryResearch = {
+  id: string; countrySlug: string; title: string; reportedResearchDate: string;
+  independentRecheck: "pending"; archivePath: string; originalSha256: string;
+  reportedSources: GuideSource[];
+  reportedFindings: { id: string; claim: string; scope: string; quote: string; sourceIds: string[]; sourceDescription: string; evidenceType: "regulator_document" | "official_register" | "broker_statement"; limitations: string }[];
+  brokerResearch: { brokerSlug: string; name: string; residentEligibility: "not_established"; servingEntity: "not_established"; localAuthorization: "not_established"; reportedFields: { field: string; value: string; sourceIds: string[] }[]; unresolvedNotes: string[]; advertisedAccounts?: { account: string; minimum: string; spreadFloor: string; commission: string; sourceIds: string[] }[] }[];
+  accessFailures: { subject: string; url: string | null; consequence: string }[];
+  legalReviewQuestions: string[]; ownerEvidenceNeeded: string[];
 };
 export type GuidePerson = { id: string; name: string; profileUrl: string; roles: ("author" | "editor" | "legal_reviewer")[] };
 export type HumanApproval = {
@@ -37,6 +50,7 @@ export type CountrySection = {
   paragraphs: Claim[]; points?: string[];
 };
 export type CountryGuide = {
+  suppliedResearch?: SuppliedCountryResearch;
   name: string; slug: string; locale: string; currency: Claim;
   title: string; description: string; audience: string; directAnswer: string;
   legalStatus: LegalStatus; legalSummary: Claim; legalSources: string[];

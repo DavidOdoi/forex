@@ -11,7 +11,7 @@ export function validDate(value: string | null | undefined): value is string {
 export function httpsUrl(value: string): URL | null {
   try { const url = new URL(value); return url.protocol === "https:" && !url.username && !url.password ? url : null; } catch { return null; }
 }
-export function checkedSource(source: GuideSource | undefined, asOf: string): source is GuideSource {
+export function checkedSource(source: GuideSource | undefined, asOf: string): source is GuideSource & { verification: "checked"; access: "retrieved"; checkedAt: string } {
   return Boolean(source && validDate(asOf) && source.verification === "checked" && source.access === "retrieved" && validDate(source.checkedAt) && source.checkedAt <= asOf && source.title.trim() && source.publisher.trim() && httpsUrl(source.url) && (!source.publishedAt || validDate(source.publishedAt) && source.publishedAt <= source.checkedAt));
 }
 export function claimVerified(claim: Claim<unknown>, countrySlug: string | null, entityId: string | null, registry: GuideRegistry, asOf: string, allowed: Verification[] = ["desk_verified", "broker_stated", "regulator_confirmed", "firsthand_tested"]): boolean {

@@ -25,7 +25,7 @@ No external page was successfully consulted. Fresh HTTPS requests to all five re
 4. Google people-first guidance: `https://developers.google.com/search/docs/fundamentals/creating-helpful-content`
 5. Google review guidance: `https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews`
 
-The 21 October 2019 date and description of the notice are attributed to the supplied brief/reference filename, not an independent reading. `publicationDateStatus` is `supplied`; `checkedAt` remains null. The page explicitly states that the notice's exact text, current application, definitions, exceptions and later official changes are unresolved. It makes no current-law determination and no Google endorsement or certification claim.
+The initial 21 October 2019 filename-based label was corrected after the subsequent supplied dossier described an undated PDF body. For that notice, `publishedAt` is now null and `publicationDateStatus` is `unknown`; `checkedAt` remains null. The filename clue remains explicitly distinguished from a confirmed publication date. The page explicitly states that the notice's exact text, current application, definitions, exceptions and later official changes are unresolved. It makes no current-law determination and no Google endorsement or certification claim.
 
 Before publication, a suitably qualified human must read the original notice, identify current CBSL/DFE guidance and subsequent official changes, establish the relevant resident/product/transaction scope, and record a substantive legal review. Desk research and document access are different from legal approval. A broker accepting a registration must never be treated as proof of permission or local authorization.
 
@@ -74,3 +74,9 @@ The UI renders no comparison or CTA for Sri Lanka's present state. It does not r
 Synthetic records in `tests/fixtures/country-guide.ts` exist only to test future states. They are not research, real approvals, licences or agreements, and must never be copied into production data.
 
 See `validation.md` for the actual implementation check results and release state.
+
+## Supplied research updates
+
+The subsequent user-supplied dossier is archived and structured in the [dossier update record](dossier-update-2026-11-10.md). Its 28 ledger findings and four broker research packets are reported research, not independent checks or country eligibility. `reportedAccess` and `reportedUpdatedAt` are contributor metadata; they never populate `checkedAt` or legal/editorial review dates. Public quotations identify their dossier provenance and require a matching country/entity, cited source and reported access record.
+
+The live draft remains informational and unapproved. The owner separately authorized the earlier push of commit `d872f47` to the production branch; that deployment authorization does not establish legal, editorial or commercial approval. The research update keeps the same draft/noindex/commercial-off posture.
