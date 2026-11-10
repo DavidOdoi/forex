@@ -1,0 +1,8 @@
+import { ImageResponse } from "next/og";
+import { triangleKinds, patterns, historicalPoints, toScreen } from "@/lib/education/triangles";
+export const alt = "Ascending, descending and symmetrical triangles — original illustrative examples, not historical data";
+export const size = { width: 1200, height: 630 };
+export const contentType = "image/png";
+export default function TriangleSocialImage() {
+  return new ImageResponse(<div style={{ display: "flex", flexDirection: "column", padding: "42px 48px", background: "#f6f8f4", color: "#152c25", width: "100%", height: "100%", fontFamily: "sans-serif" }}><div style={{ fontSize: 20, letterSpacing: 3 }}>DEVIN FOREX / THE CHART-READING LAB</div><div style={{ fontSize: 48, fontWeight: 700, marginTop: 18 }}>Triangle chart patterns</div><div style={{ display: "flex", gap: 20, marginTop: 30 }}>{triangleKinds.map(kind => <div key={kind} style={{ display: "flex", flexDirection: "column", width: 352, background: "white", padding: 20, border: "1px solid #dce4de", borderRadius: 12 }}><div style={{ fontSize: 26, fontWeight: 700 }}>{patterns[kind].name}</div><svg width="310" height="190" viewBox="0 30 420 250"><path d={historicalPoints(kind).map((p, i) => { const s = toScreen(p); return `${i ? "L" : "M"}${s.x},${s.y}`; }).join(" ")} fill="none" stroke="#175a46" strokeWidth="4" /><path d="M54 43 V245 H390" fill="none" stroke="#9daaa1" strokeWidth="2" /></svg><div style={{ fontSize: 17 }}>{`${patterns[kind].upper} / ${patterns[kind].lower.toLowerCase()}`}</div></div>)}</div><div style={{ fontSize: 20, marginTop: 24 }}>Illustrative example—not historical market data. Either direction can break.</div><div style={{ fontSize: 16, marginTop: 12 }}>Educational draft · source verification pending</div></div>, size);
+}
