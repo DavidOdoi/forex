@@ -12,7 +12,7 @@ const baseMenu = [
     { label: "Account cost calculator", href: "/tools/forex-calculator" }, { label: "Broker directory", href: "/reviews" },
   ] },
   { label: "Broker reviews", to: "/reviews", items: [
-    { label: "Review publication status", href: "/reviews" }, { label: "How we research", href: "/about#research-methodology" },
+    { label: "All broker reviews", href: "/reviews" }, { label: "How we research", href: "/about#research-methodology" },
   ] },
   { label: "Tools", to: "/tools", items: [
     { label: "Forex calculator", href: "/tools/forex-calculator" },
@@ -33,8 +33,8 @@ const baseMenu = [
   ] },
 ] as const;
 
-export function SiteHeader({ publishedReviewLinks = [] }: { publishedReviewLinks?: { label: string; href: string }[] }) {
-  const menu = baseMenu.map(group => group.label === "Broker reviews" && publishedReviewLinks.length ? { ...group, items: publishedReviewLinks } : group);
+export function SiteHeader({ reviewLinks = [] }: { reviewLinks?: { label: string; href: string }[] }) {
+  const menu = baseMenu.map(group => group.label === "Broker reviews" && reviewLinks.length ? { ...group, items: reviewLinks } : group);
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);

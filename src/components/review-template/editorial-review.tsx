@@ -1,3 +1,4 @@
+import { isSelectedReviewSlug } from "@/lib/reviews/selection";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronDown, CircleHelp, Clock3, Globe2, ShieldCheck, Star, X } from "lucide-react";
@@ -92,7 +93,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
         </figure>}
         {platformImage && openingActions}
         </div>
-        <div className="br-meta"><span><Globe2 size={18} />{review.jurisdiction === "Global" ? "Global overview" : review.jurisdiction ?? "Country not verified"}</span><span><Clock3 size={18} />{checked ? `Latest source check ${dateLabel}` : "Source checks pending"}</span><span className="br-status">{!isReviewPublished(review) ? "Draft · editorial check pending" : "Published review"}</span></div>
+        <div className="br-meta"><span><Globe2 size={18} />{review.jurisdiction === "Global" ? "Global overview" : review.jurisdiction ?? "Country not verified"}</span><span><Clock3 size={18} />{checked ? `Latest source check ${dateLabel}` : "Source checks pending"}</span><span className="br-status">{!isReviewPublished(review) ? isSelectedReviewSlug(review.broker.slug) ? "Source-based review · Checks outstanding" : "Draft · editorial check pending" : "Published review"}</span></div>
         {review.author && <EditorialAccountability review={review} />}
         <section className="br-quick-section" aria-label="Broker quick facts"><h2>{review.broker.name} at a glance</h2><dl className="br-quick-grid">{facts.map(fact => <div key={fact.label}><dt>{fact.label}</dt><dd>{fact.state === "yes" ? <Check className="br-yes" size={22} aria-label="Yes" /> : fact.state === "no" ? <X className="br-no" size={22} aria-label="No" /> : fact.state === "unknown" ? <CircleHelp size={19} aria-label="Unverified" /> : null}<span>{fact.value}</span>{fact.sourceIds.length > 0 && <Citations ids={fact.sourceIds} review={review} />}</dd></div>)}</dl></section>
       </div>

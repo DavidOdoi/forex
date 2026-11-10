@@ -9,13 +9,11 @@ import {
   accountOpeningHref,
 } from "../src/lib/reviews/template";
 
-test("review template is linked, clearly labelled and excluded from indexing", async ({
+test("saved review template stays labelled and noindex without a public bulk preview link", async ({
   page,
   request,
 }) => {
-  await page.goto("/reviews");
-  await page.getByRole("button", { name: "Preview unpublished research", exact: true }).click();
-  await page.getByRole("link", { name: "Preview review template" }).click();
+  await page.goto("/reviews/template?blank=1");
   await expect(page).toHaveURL(/\/reviews\/template\?blank=1$/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Example Broker review",

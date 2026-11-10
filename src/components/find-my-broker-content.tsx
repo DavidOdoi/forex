@@ -12,7 +12,7 @@ const questions = [
   { key: "demo", q: "Do you want to compare demo accounts?" },
 ] as const;
 
-export default function Page({ publishedLinks = {} }: { publishedLinks?: Record<string, string> }) {
+export default function Page({ reviewLinks = {} }: { reviewLinks?: Record<string, string> }) {
   const [answers, setAnswers] = useState<boolean[]>([]);
   const heading = useRef<HTMLHeadingElement>(null);
   const previousStep = useRef(0);
@@ -75,7 +75,7 @@ export default function Page({ publishedLinks = {} }: { publishedLinks?: Record<
             <p className="mb-6 text-lg leading-relaxed text-black">
               {brokerResearchNotice}
             </p>
-            {ranked[0] && <BrokerCard b={ranked[0]} reviewHref={publishedLinks[ranked[0].slug]} />}
+            {ranked[0] && <BrokerCard b={ranked[0]} reviewHref={reviewLinks[ranked[0].slug]} />}
             <Link href="/reviews" className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full border border-black px-6 py-3 text-base font-semibold">Browse all broker research <ArrowRight size={17} aria-hidden="true" /></Link>
             <button
               type="button"

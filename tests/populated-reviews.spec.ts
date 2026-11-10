@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { isSelectedReviewSlug } from "../src/lib/reviews/selection";
 import { getReview, researchEntries, directoryEntries, reviewCountries } from "../src/lib/reviews/catalog";
 import { curatedReview, reviewedFields } from "../src/lib/reviews/curated";
 import { fieldValue } from "../src/lib/reviews/template";
@@ -47,7 +48,7 @@ test("short summaries keep critical charge exceptions and respect the evidence g
 
 test("every broker and country review stays under 1800 words, including collapsed text", async ({ request }) => {
   test.setTimeout(120_000);
-  const paths = researchEntries.flatMap(e => {
+  const paths = researchEntries.filter(entry => isSelectedReviewSlug(entry.slug)).flatMap(e => {
     const countries = reviewCountries(e.slug);
     return countries.length ? countries.map(country => `/reviews/${e.slug}?country=${encodeURIComponent(country)}`) : [`/reviews/${e.slug}`];
   });
@@ -73,9 +74,9 @@ test("every broker and country review stays under 1800 words, including collapse
 });
 
 test("review has useful internal and external links, country canonical metadata and truthful schema", async ({ page, request }) => {
-  await page.goto("/reviews/etoro?country=Singapore");
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/reviews\/etoro\?country=Singapore$/);
-  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /eToro Review 2026:.*Singapore/);
+  await page.goto("/reviews/pepperstone?country=Australia");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/reviews\/pepperstone\?country=Australia$/);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /Pepperstone Review 2026:.*Australia/);
   const schema = await page.locator('script[type="application/ld+json"]').textContent();
   const graph = JSON.parse(schema!)["@graph"];
   expect(graph.map((item: { "@type": string }) => item["@type"])).toEqual(["BreadcrumbList", "FAQPage"]);
@@ -83,7 +84,7 @@ test("review has useful internal and external links, country canonical metadata 
   const main = page.getByRole("main");
   for (const href of ["/reviews", "/tools", "/best-brokers", "/about#research-methodology"])
     await expect(main.locator(`a[href="${href}"]:visible`).first()).toBeVisible();
-  await expect(main.locator('a[href="https://www.etoro.com/customer-service/regulation-license/"]').first()).toBeVisible();
+  await expect(main.locator('a[href="https://pepperstone.com/en-au/about-us/policies/legal"]').first()).toBeVisible();
   const response = await request.get("/about");
   expect(await response.text()).toContain('id="research-methodology"');
 });
@@ -130,28 +131,21 @@ test("review scope loads distinct entity profiles without a regional site defaul
   await expect(page.getByLabel("Review scope")).toHaveValue("Global");
   await expect(page.locator("#safety")).toContainText("Pepperstone Group Limited");
   await expect(page.getByRole("main")).not.toContainText(/Kenya|CMA licence 128/);
-  await page.goto("/reviews/etoro?country=Singapore");
-  await expect(page.locator("#safety")).toContainText("CMS101824");
-  expect((await request.get("/reviews/etoro/data?country=Kenya")).status()).toBe(404);
+  await page.goto("/reviews/pepperstone?country=Australia");
+  await expect(page.locator("#safety")).toContainText("414530");
+  expect((await request.get("/reviews/pepperstone/data?country=Kenya")).status()).toBe(404);
   expect((await request.get("/reviews/not-a-real-broker")).status()).toBe(404);
 });
 
-test("directory search, status filters and pagination expose research without promoting unverified claims", async ({ page }) => {
+test("selected directory search makes the four reviews available without a bulk preview", async ({ page }) => {
   await page.goto("/reviews");
-  await page.getByRole("button", { name: "Preview unpublished research", exact: true }).click();
-  await expect(page.getByRole("status")).toContainText("325 entries");
-  await expect(page.locator("article")).toHaveCount(24);
-  await page.getByRole("button", { name: "Next", exact: true }).click();
-  await expect(page.getByRole("status")).toContainText("Page 2");
-  await page.getByRole("searchbox", { name: "Search broker reviews" }).fill("eToro");
-  await expect(page.getByRole("status")).toContainText("1 entry");
-  await expect(page.locator("article")).toContainText("Singapore");
-  await page.getByRole("link", { name: "Open research draft" }).click();
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/eToro Review 2026/);
-  await page.goto("/reviews");
-  await page.getByRole("button", { name: "Preview unpublished research", exact: true }).click();
-  await page.getByLabel("Research status").selectOption("pending");
-  await expect(page.locator("article").first()).toContainText("Research pending");
+  await expect(page.getByRole("status")).toContainText("4 entries");
+  await expect(page.locator("main article")).toHaveCount(4);
+  await page.getByRole("searchbox", { name: "Search broker reviews" }).fill("XM");
+  await expect(page.locator("main article")).toHaveCount(1);
+  await page.getByRole("link", { name: "Read review", exact: true }).click();
+  await expect(page).toHaveURL(/\/reviews\/xm$/);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/XM Review/);
 });
 
 test("populated reviews and directory fit mobile and desktop without browser errors", async ({ page }) => {
@@ -159,7 +153,7 @@ test("populated reviews and directory fit mobile and desktop without browser err
   page.on("pageerror", error => errors.push(error.message));
   for (const width of [320, 390, 1440]) {
     await page.setViewportSize({ width, height: 900 });
-    for (const path of ["/reviews", "/reviews/template", "/reviews/etoro?country=United%20Kingdom", "/reviews/aaafx"]) {
+    for (const path of ["/reviews", "/reviews/template", "/reviews/pepperstone?country=Australia", "/reviews/ic-markets"]) {
       await page.goto(path);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${path} at ${width}px`).toBe(true);
       if (path === "/reviews/template") {

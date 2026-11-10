@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 import Page from "@/components/find-my-broker-content";
-import { publishedReviewEntries } from "@/lib/reviews/visibility";
+import { visibleReviewEntries } from "@/lib/reviews/visibility";
 export default function FindMyBrokerPage() {
-  return <Page publishedLinks={Object.fromEntries(publishedReviewEntries().map(entry => [entry.slug, entry.href!]))} />;
+  return <Page reviewLinks={Object.fromEntries(visibleReviewEntries().map(entry => [entry.slug, entry.href!]))} />;
 }

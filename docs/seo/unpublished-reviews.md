@@ -1,31 +1,23 @@
-# Unpublished broker reviews: discovery and indexing
+# Broker review visibility and indexing
 
-Updated 8 November 2026 at the owner's request to keep unfinished reviews out of Google search.
+Updated 10 November 2026 at the owner's request to keep only Exness, XM, IC Markets and Pepperstone on the public website.
 
-## Public presentation
+## Public selection
 
-Only reviews passing `isReviewPublished` can appear in the public review directory, its A–Z index, shared navigation, broker-card links, related research or comparison links. The current 325 profiles are drafts, so the public directory shows a preparation message. Its metadata and HTTP response remain noindex until at least one approved review exists.
+`src/lib/reviews/selection.ts` declares the four selected brokers. The review directory renders their cards and links without a preview action or JavaScript. The homepage, comparison cards, broker finder and desktop/mobile review menus use the same selection. Each selected review links only to the other selected brokers.
 
-Unpublished research remains available through **Reviews → Preview unpublished research**. The list is requested only after that button is activated; draft entries, template links and their target URLs are not included in the initial public HTML or its serialized props. The response uses no-store caching and noindex. Preview links use nofollow and disable automatic prefetching.
+Website availability is separate from factual completeness and indexing approval. `visibleReviewEntries`, `visibleReviewHref` and `getVisibleReview` support ordinary website navigation; the existing publication guard still controls indexing, approved-review schema and review sitemap entries. No review status, verified field, licence claim, score or editorial approval is fabricated. Evidence dates remain unchanged. The visible accountability label records availability on the site from 10 November 2026 and identifies outstanding verification.
 
-This is an on-demand research preview, not an authenticated or private workspace. Anyone with a direct draft URL can still access it. The preview API also remains public; its indexing directive is not access control.
+## Archived research
 
-## Known draft URLs
+The 325-entry CSV/source catalogue remains in the repository for future research. It is no longer exposed through the public bulk preview. `/api/review-research` returns 410 with no entry list. Other known broker-review URLs, including their JSON downloads and country queries, return **410 Gone** with `noindex, nofollow`. Unknown broker slugs return 404. Shared review templates remain accessible at their saved URLs, with noindex, but are not listed in the public directory.
 
-Draft HTML sends both `noindex, nofollow` metadata and `X-Robots-Tag: noindex, nofollow`. The proxy evaluates the actual review and country scope through the existing publication guard. Template demonstrations and the older template alias receive the same HTTP indexing instruction. Approved reviews retain their normal publication eligibility.
+## Search behaviour
 
-Robots.txt continues allowing crawling so Google can read noindex on URLs it already knows. A robots disallow would prevent that verification and can leave a discovered URL showing without content. No user-agent-specific content, redirects or cloaking is used.
+Only reviews meeting the existing editorial/evidence publication guard enter the review sitemap or receive indexing approval. The selected four remain source-based research with outstanding checks, so their existing noindex instructions remain in place. The review directory is visible to readers and remains noindex while none of its records qualify for editorial indexing approval. This is a search directive, not access control.
 
-Noindex controls eligibility for search results; it cannot erase a URL from Google's knowledge or prevent discovery through outside links. Previously known URLs need to be recrawled before their updated directives are processed. Absolute content privacy would require access control, which is not introduced here.
+Robots.txt allows crawling so Google can read the indexing directives and 410 responses. No user-agent-specific content, hidden keyword text or redirects to unrelated reviews are used. Current sitemap URLs and indexable guides/tools remain unchanged.
 
-## Sitemap and publication
+## Validation
 
-The public sitemap currently has 35 eligible canonical URLs. Draft broker profiles, template demonstrations and the empty review directory are excluded. Published guides, calculators, the homepage, About page and both gold dashboards remain available for search.
-
-When a review has real completion evidence, publication dates and accountable editorial approval, the existing publication check admits it to the public directory, navigation and sitemap on deployment. Country-specific records are checked separately, and a published regional variant links to its own canonical scope rather than to an unfinished global record.
-
-## Verification
-
-Tests cover approved versus unfinished records, missing approval, no draft links in initial HTML, no preview API fetch before a user action, preview browsing and nofollow links, HTTP and HTML indexing signals, regional queries, sitemap exclusions, public-page links and unchanged crawl access for removal directives.
-
-Google's guidance: https://developers.google.com/search/docs/crawling-indexing/block-indexing
+Checks cover four server-rendered cards, direct review URLs and source downloads, homepage/menu/finder discovery, related links restricted to the selection, search and phone layouts. Archived catalogue unit checks remain; public-route tests now exercise the selected brokers and verify retired pages return 410. Existing financial evidence/publication guards are retained.

@@ -37,7 +37,7 @@ export function ReviewDirectory({ entries }: { entries: ReviewDirectoryEntry[] }
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {visible.map(entry => (
           <article key={entry.slug} className="flex min-w-0 flex-col rounded-2xl border bg-card p-6 shadow-sm transition-shadow hover:shadow-md">
-            <span className="text-sm font-semibold text-muted-foreground">{entry.published ? "Published review" : entry.findingCount ? "Checked findings · Draft" : entry.sourceCount ? "Source notes · Draft" : "Research pending"}</span>
+            <span className="text-sm font-semibold text-muted-foreground">{entry.published ? "Published review" : entry.visible ? "Source-based review · Checks outstanding" : entry.findingCount ? "Checked findings · Draft" : entry.sourceCount ? "Source notes · Draft" : "Research pending"}</span>
             <h2 className="mt-3 break-words font-display text-3xl">{entry.name}</h2>
             <p className="mt-2 text-sm font-semibold" title="Directory classification; verification pending">{providerLabels[entry.providerType]}</p>
             <p className="my-4 leading-relaxed text-muted-foreground">{entry.summary}</p>
@@ -45,7 +45,7 @@ export function ReviewDirectory({ entries }: { entries: ReviewDirectoryEntry[] }
               <p className="flex items-start gap-2"><Globe2 size={16} className="mt-1 shrink-0" />{entry.country ?? "Country scope awaiting verification"}</p>
               <p className="flex items-center gap-2"><FileText size={16} />{entry.sourceCount} sources · Not rated</p>
             </div>
-            <Link href={entry.href ?? `/reviews/${entry.slug}`} rel={entry.published ? undefined : "nofollow"} prefetch={entry.published ? undefined : false} className="mt-auto flex items-center justify-between rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground">{entry.published ? "Read review" : "Open research draft"} <ArrowUpRight size={18} /></Link>
+            <Link href={entry.href ?? `/reviews/${entry.slug}`} rel={entry.published ? undefined : "nofollow"} prefetch={entry.published ? undefined : false} className="mt-auto flex items-center justify-between rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground">{entry.visible || entry.published ? "Read review" : "Open research draft"} <ArrowUpRight size={18} /></Link>
           </article>
         ))}
       </div>

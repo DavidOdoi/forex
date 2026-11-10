@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { isSelectedReviewSlug, selectedReviewBrokers } from "../src/lib/reviews/selection";
 import { getReview, researchEntries, researchInventory, relatedReviewLinks } from "../src/lib/reviews/catalog";
 
 test("all CSV identities have the shared template and valid, reciprocal research links", () => {
@@ -32,62 +33,54 @@ test("all CSV identities have the shared template and valid, reciprocal research
   }
 });
 
-test("the public directory does not expose draft links or data without an explicit preview action", async ({ browser }) => {
+
+test("the four selected review cards are crawlable without JavaScript and the bulk archive stays hidden", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
     await page.goto("http://127.0.0.1:3100/reviews");
-    await expect(page.locator('a[href^="/reviews/"]')).toHaveCount(0);
+    await expect(page.locator("main article")).toHaveCount(4);
+    for (const broker of selectedReviewBrokers) await expect(page.locator(`main article a[href="/reviews/${broker.slug}"]`)).toBeVisible();
     const html = await page.content();
-    for (const entry of researchEntries) expect(html).not.toContain(`/reviews/${entry.slug}`);
-    await expect(page.getByRole("button", { name: "Preview unpublished research", exact: true })).toBeVisible();
+    for (const entry of researchEntries.filter(entry => !isSelectedReviewSlug(entry.slug))) expect(html).not.toContain(`/reviews/${entry.slug}`);
+    await expect(page.getByRole("button", { name: "Preview unpublished research", exact: true })).toHaveCount(0);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
   } finally { await context.close(); }
 });
 
-test("institutional, interbank and introducing entries retain clear source and access limitations", async ({ page, request }) => {
+test("institutional, interbank and introducing profiles remain in the source archive, not the public website", async ({ request }) => {
   for (const type of ["institutional", "interbank", "introducing"]) {
     const entry = researchEntries.find(record => record.providerType === type)!;
-    await page.goto(`/reviews/${entry.slug}`);
-    await expect(page.locator("main.br-review")).toHaveCount(1);
-    await expect(page.locator(".br-provider-note")).toContainText("Verification is pending");
-    await expect(page.locator("[data-account-cta]")).toHaveCount(0);
-    await expect(page.locator("#account-opening")).toContainText("minimum commitment");
-    await expect(page.locator("#deposit-and-withdrawal")).toContainText("settlement timelines require verification");
-    await expect(page.locator("[data-illustrative-cost]")).toHaveCount(0);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
-    await expect(page.locator('.br-related a[href^="/reviews/"]')).toHaveCount(0);
-    const json = (await (await request.get(`/reviews/${entry.slug}/data`)).json()).review;
-    expect(json.accountOpening.url).toBeNull();
-    expect(json.keyData.every((field: { status: string }) => field.status !== "verified")).toBe(true);
+    const review = getReview(entry.slug)!.review;
+    expect(review.providerType).toBe(type);
+    expect(review.accountOpening.url).toBeNull();
+    expect((await request.get(`/reviews/${entry.slug}`)).status()).toBe(410);
+    expect((await request.get(`/reviews/${entry.slug}/data`)).status()).toBe(410);
   }
 });
 
-test("ordinary retail profiles reuse the five actions, cost explanation, scope and related links", async ({ page }) => {
-  await page.goto("/reviews/aaafx");
+test("selected retail reviews retain their shared actions, cost explanations and related selected brokers", async ({ page }) => {
+  await page.goto("/reviews/ic-markets");
   await expect(page.locator("main.br-review")).toHaveCount(1);
-  await expect(page.getByRole("complementary", { name: "Review verdict" })).toContainText("a full trading-cost and suitability verdict is pending");
   await expect(page.locator("[data-account-cta]")).toHaveCount(5);
-  await expect(page.locator("[data-illustrative-cost]")).toContainText("Not a measured AAAFx quote");
-  await expect(page.locator("[data-illustrative-cost]")).not.toContainText("Exness");
+  await expect(page.locator("[data-illustrative-cost]")).toContainText("Not a measured IC Markets quote");
   await expect(page.locator("#platforms")).toBeAttached();
-  await expect(page.locator(".br-related a")).toHaveCount(2);
+  await expect(page.locator('.br-related a[href^="/reviews/"]')).toHaveCount(3); // Three other broker profiles; the library uses /reviews#all-providers.
   await expect(page.locator(".br-accountability a")).toHaveText("David Odoi");
+  await expect(page.locator(".br-accountability")).toContainText("Available on site");
 });
 
-test("provider filters and the expanded directory remain usable on mobile", async ({ page }) => {
+test("the smaller directory search and selected review pages fit mobile screens", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 900 });
   await page.goto("/reviews");
-  await page.getByRole("button", { name: "Preview unpublished research", exact: true }).click();
-  await page.getByLabel("Directory type", { exact: true }).selectOption("institutional");
-  await expect(page.getByRole("status")).toContainText("14 entries");
-  await expect(page.locator("article")).toHaveCount(14);
-  await page.getByLabel("Directory type", { exact: true }).selectOption("interbank");
-  await expect(page.getByRole("status")).toContainText("12 entries");
-  await page.getByLabel("Directory type", { exact: true }).selectOption("retail");
-  await expect(page.getByRole("status")).toContainText("298 entries");
-  await page.getByText("Browse the complete directory", { exact: true }).click();
+  await expect(page.getByRole("status")).toContainText("4 entries");
+  await page.getByRole("searchbox", { name: "Search broker reviews" }).fill("XM");
+  await expect(page.locator("main article")).toHaveCount(1);
+  await page.getByRole("searchbox", { name: "Search broker reviews" }).fill("");
+  await page.getByText("Browse the four broker reviews", { exact: true }).click();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.goto("/reviews/advanced-markets");
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  for (const broker of selectedReviewBrokers) {
+    await page.goto(`/reviews/${broker.slug}`);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), broker.slug).toBe(true);
+  }
 });

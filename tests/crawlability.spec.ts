@@ -45,10 +45,13 @@ test("unfinished profiles, previews and data endpoints are excluded without bloc
   const xml = await (await request.get("/sitemap.xml")).text();
   for (const path of ["/reviews", "/reviews/exness", "/reviews/aaafx", "/reviews/aafx-trading", "/reviews/template", "/best-brokers", "/find-my-broker", "/authors/david-odoi", "/insights/image-credits"]) {
     expect(xml).not.toContain(`<loc>${siteOrigin}${path}</loc>`);
-    await page.goto(path);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+    const response = await page.goto(path);
+    if (["/reviews/aaafx", "/reviews/aafx-trading"].includes(path)) {
+      expect(response?.status()).toBe(410);
+      expect(response?.headers()["x-robots-tag"]).toContain("noindex");
+    } else await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
   }
   const data = await request.get("/reviews/aaafx/data");
-  expect(data.status()).toBe(200);
+  expect(data.status()).toBe(410);
   expect(data.headers()["x-robots-tag"].split(/,\s*/)).toContain("noindex");
 });

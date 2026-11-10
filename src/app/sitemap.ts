@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { publicPaths, siteOrigin, indexable } from "@/lib/site";
-import { getReview, researchEntries, reviewCountries } from "@/lib/reviews/catalog";
+import { publishedReviews } from "@/lib/reviews/visibility";
 import { reviewSitemapEntries } from "@/lib/reviews/seo";
 import { insightArticles } from "@/lib/insights/catalog";
 import { insightUrl, insightsIndexable } from "@/lib/insights/seo";
@@ -12,7 +12,7 @@ import { metalsIndexable } from "@/lib/metals/seo";
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
   if (indexable) {
-    const reviews = researchEntries.flatMap(entry => reviewCountries(entry.slug).map(country => getReview(entry.slug, country)!.review));
+    const reviews = publishedReviews();
     const published = reviewSitemapEntries(reviews);
     entries.push(...publicPaths.filter(path => path !== "/reviews" || published.length > 0).map(path => ({ url: new URL(path, siteOrigin).href })), ...published);
   }

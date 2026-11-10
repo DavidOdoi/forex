@@ -51,7 +51,7 @@ test("retail, country and institutional pages render the shared opening and matc
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
-    for (const [slug, country] of [["aaafx", undefined], ["etoro", undefined], ["adss", undefined], ["etoro", "Singapore"], ["advanced-markets", undefined]] as const) {
+    for (const [slug, country] of [["exness", undefined], ["xm", undefined], ["ic-markets", undefined], ["pepperstone", "Australia"]] as const) {
       await page.goto(`http://127.0.0.1:3100/reviews/${slug}${country ? `?country=${country}` : ""}`);
       const { review } = getReview(slug, country)!;
       await expect(page.locator(".br-intro p")).toHaveCount(2);
@@ -69,19 +69,19 @@ test("retail, country and institutional pages render the shared opening and matc
         await expect(page.locator('.br-opening-image figcaption')).toContainText(`Image: ${review.broker.name}`);
       }
       await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
-      if (slug !== "advanced-markets") await expect(page.locator('[data-illustrative-cost]')).toContainText(`Not a measured ${review.broker.name} quote`);
+      if (slug !== "exness") await expect(page.locator('[data-illustrative-cost]')).toContainText(`Not a measured ${review.broker.name} quote`);
     }
   } finally { await context.close(); }
 });
 
 test("new image and plain-text openings fit phones and retain the broker-specific cost calculator", async ({ page }) => {
-  for (const slug of ['etoro', 'afterprime', 'aaafx', 'advanced-markets']) for (const width of [320, 390, 1440]) {
+  for (const slug of ['exness', 'xm', 'ic-markets', 'pepperstone']) for (const width of [320, 390, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(`/reviews/${slug}`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${slug}/${width}`).toBe(true);
     await expect(page.locator('.br-intro p')).toHaveCount(2);
   }
-  await page.goto('/reviews/etoro#fees');
+  await page.goto('/reviews/ic-markets#fees');
   await page.getByLabel('Standard lots', { exact: true }).fill('2');
   await expect(page.locator('[data-roundtrip-result]')).toContainText('US$20 / 1.0 pip');
 });

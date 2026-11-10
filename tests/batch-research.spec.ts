@@ -45,24 +45,14 @@ test("partial batch findings keep account figures, ratings and funding unverifie
   expect(verdictSentences(aaf)[0]).not.toContain("official regulator notices");
 });
 
-test("the three updated profiles show dated evidence and a prominent jurisdiction-specific warning", async ({ page, request }) => {
+
+test("the archived partial batch is no longer publicly served", async ({ request }) => {
   for (const slug of ["4xc", "aaafx", "aafx-trading"]) {
-    await page.goto(`/reviews/${slug}`);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
-    await expect(page.locator("#review-faq details")).toHaveCount(3);
-    await expect(page.locator(".br-meta")).toContainText("8 Nov 2026");
-    const data = (await (await request.get(`/reviews/${slug}/data`)).json()).review;
-    expect(data.publication.updatedAt).toBe("2026-11-08");
-  }
-  const notices = page.getByRole("complementary", { name: "Regulatory notices: read before funding" });
-  await expect(notices).toContainText("25 April 2017");
-  await expect(notices).toContainText("not mean the CFTC or a court has concluded");
-  await expect(notices.locator('a[href="https://www.cftc.gov/REDlist/node/220641"]')).toBeVisible();
-  await expect(notices.locator('a[href="https://www.sfc.hk/en/alert-list/1853"]')).toBeVisible();
-  await expect(page.getByRole("complementary", { name: "Review verdict", exact: true })).toContainText("official regulator notices");
-  for (const width of [320, 390, 1440]) {
-    await page.setViewportSize({ width, height: 900 });
-    await page.goto("/reviews/aafx-trading");
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    expect(getReview(slug)!.review.status).toBe("draft");
+    for (const suffix of ["", "/data"]) {
+      const response = await request.get(`/reviews/${slug}${suffix}`);
+      expect(response.status()).toBe(410);
+      expect(response.headers()["x-robots-tag"]).toContain("noindex");
+    }
   }
 });

@@ -23,6 +23,7 @@ export interface ResearchEntry {
 export interface ReviewDirectoryEntry {
   href?: string;
   published?: boolean;
+  visible?: boolean;
   slug: string;
   name: string;
   providerType: ProviderType;

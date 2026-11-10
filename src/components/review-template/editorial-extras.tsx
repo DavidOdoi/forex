@@ -2,19 +2,20 @@ import Link from "next/link";
 import type { BrokerReview } from "@/lib/reviews/types";
 import { isReviewPublished } from "@/lib/reviews/publication";
 import { internationalEntities } from "@/lib/reviews/international";
-import { isPublishedReviewHref } from "@/lib/reviews/visibility";
+import { isPublishedReviewHref, isVisibleReviewHref } from "@/lib/reviews/visibility";
+import { isSelectedReviewSlug, reviewAvailabilityDate } from "@/lib/reviews/selection";
 
 export function EditorialAccountability({ review }: { review: BrokerReview }) {
   const date = (value: string | null | undefined) => value ? new Date(`${value}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }) : "Not published";
   return <aside className="br-accountability" aria-label="Editorial accountability">
     <p>{review.author ? <>By {review.author.profileUrl ? <Link href={review.author.profileUrl}>{review.author.name}</Link> : review.author.name}</> : "Author not assigned"} · {review.factChecker ? `Reviewed by ${review.factChecker.name}` : "Reviewer not assigned"}</p>
-    <p>Published: {isReviewPublished(review) ? date(review.publication?.publishedAt) : "Not published"}{review.publication?.updatedAt && <> · Substantive update: <time dateTime={review.publication.updatedAt}>{date(review.publication.updatedAt)}</time></>}</p>
-    {!isReviewPublished(review) && <details><summary>Editorial status</summary><p>Draft; editorial approval pending.</p></details>}
+    <p>{isReviewPublished(review) ? `Published: ${date(review.publication?.publishedAt)}` : isSelectedReviewSlug(review.broker.slug) ? `Available on site: ${date(reviewAvailabilityDate)}` : "Not published"}{review.publication?.updatedAt && <> · Substantive update: <time dateTime={review.publication.updatedAt}>{date(review.publication.updatedAt)}</time></>}</p>
+    {!isReviewPublished(review) && <details><summary>Verification status</summary><p>Source-based research. Independent editorial verification remains outstanding; unverified terms are identified in the review.</p></details>}
   </aside>;
 }
 
 export function RelatedResearch({ review }: { review: BrokerReview }) {
-  return <section className="br-related" aria-label="Related provider research"><div><h2>Related research</h2></div>{review.relatedResearch?.filter(entry => isPublishedReviewHref(entry.href)).map(entry => <Link key={entry.slug} href={entry.href}><span>{entry.name}{entry.href.includes("?country=") ? ` · ${review.jurisdiction}` : ""}</span><span aria-hidden="true">↗</span></Link>)}<Link href="/reviews#all-providers">Broker review library ↗</Link>{(!review.providerType || review.providerType === "retail") && <Link href="/tools">Trading calculators ↗</Link>}</section>;
+  return <section className="br-related" aria-label="Related provider research"><div><h2>Related research</h2></div>{review.relatedResearch?.filter(entry => isVisibleReviewHref(entry.href)).map(entry => <Link key={entry.slug} href={entry.href}><span>{entry.name}{entry.href.includes("?country=") ? ` · ${review.jurisdiction}` : ""}</span><span aria-hidden="true">↗</span></Link>)}<Link href="/reviews#all-providers">Broker review library ↗</Link>{(!review.providerType || review.providerType === "retail") && <Link href="/tools">Trading calculators ↗</Link>}</section>;
 }
 
 export function ResearchComparisons() {

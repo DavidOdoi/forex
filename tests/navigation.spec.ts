@@ -64,8 +64,8 @@ test("broker finder handles all answer combinations, going back, review links an
     }
     await expect(page.getByRole("heading", { name: "Illustrative match", exact: true })).toBeVisible();
     const review = page.locator('main article a[href^="/reviews/"]');
-    await expect(review).toHaveCount(0);
-    await expect(page.locator("main article")).toContainText("Review in preparation");
+    await expect(review).toHaveCount(1);
+    expect((await request.get((await review.getAttribute("href"))!)).status()).toBe(200);
     expect((await request.get("/reviews")).status()).toBe(200);
     await expect(page.getByRole("link", { name: "Browse all broker research", exact: true })).toHaveAttribute("href", "/reviews");
     await page.getByRole("button", { name: "Start again", exact: true }).click();
