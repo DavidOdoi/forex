@@ -16,6 +16,7 @@ export const publicPaths = [
   "/reviews",
   "/tools",
   "/tools/forex-market-hours",
+  "/tools/forex-multi-target-calculator",
   "/insights",
   "/about",
   "/best-prop-firm-forex-eas",

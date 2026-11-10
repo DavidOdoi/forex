@@ -20,6 +20,7 @@ const baseMenu = [
     { label: "Position size calculator", href: "/tools/forex-position-size-calculator" },
     { label: "Compounding calculator", href: "/tools/forex-compounding-calculator" },
     { label: "Forex market hours", href: "/tools/forex-market-hours" },
+    { label: "Multi target calculator", href: "/tools/forex-multi-target-calculator" },
     { label: "Prop firm consistency", href: "/prop-firm-consistency-calculator" },
     { label: "Gold price today", href: "/gold-price" },
     { label: "Gold & silver prices", href: "/gold-silver-prices" },

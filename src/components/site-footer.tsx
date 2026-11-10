@@ -25,6 +25,7 @@ const linkGroups = [
     title: "Trading tools",
     links: [
       { label: "Forex market hours", href: "/tools/forex-market-hours" },
+      { label: "Multi target calculator", href: "/tools/forex-multi-target-calculator" },
       { label: "Forex calculator", href: "/tools/forex-calculator" },
       { label: "Position size", href: "/tools/forex-position-size-calculator" },
       { label: "Profit calculator", href: "/tools/forex-profit-calculator" },
