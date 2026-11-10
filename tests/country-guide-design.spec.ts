@@ -16,7 +16,7 @@ test("country guide retains the original site header and uses the existing artic
   const header = page.locator("body>header");
   await expect(header.getByRole("img", { name: "Devin Forex", exact: true })).toBeVisible();
   expect(await header.evaluate(node => ({ background: getComputedStyle(node).backgroundColor, height: node.getBoundingClientRect().height }))).toEqual(headerAppearance);
-  for (const selector of [".cg-direct-answer", ".cg-candidate-body>p", ".cg-checks .cg-evidence>p", "#methodology .cg-method-grid p"]) {
+  for (const selector of [".cg-direct-answer", ".cg-reader-grid p", ".cg-checks .cg-evidence>p", "#methodology .cg-method-grid p"]) {
     expect(await page.locator(selector).first().evaluate(node => {
       const style = getComputedStyle(node);
       return { family: style.fontFamily, size: style.fontSize, lineHeight: style.lineHeight };
@@ -38,7 +38,7 @@ test("section navigation stays beneath the header, updates its location and land
   const sources = nav.getByRole("link", { name: "Sources & corrections", exact: true }); await sources.focus(); await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/#country-sources$/); await expect(sources).toHaveAttribute("aria-current", "location");
   await page.locator(".cg-broker-toplist a").nth(3).click(); await expect(page).toHaveURL(/#research-pepperstone$/);
-  await expect(page.locator("#research-pepperstone")).toContainText("Resident eligibility");
+  await expect(page.locator("#research-pepperstone")).toContainText("Not established");
   const shortlist = page.getByRole("region", { name: "Brokers in this research" });
   const brokerTab = shortlist.getByRole("tab", { name: "Brokers", exact: true });
   await brokerTab.focus(); await page.keyboard.press("ArrowRight");
@@ -70,7 +70,7 @@ test("phone section controls scroll, support keyboard selection and preserve the
   await page.setViewportSize({ width: 390, height: 1000 });
   await expect(page.locator(".cg-list-note")).toContainText("No brokers are recommended");
   await expect(page.locator(".cg-broker-toplist li")).toHaveCount(4);
-  await expect(page.locator(".cg-candidate-detail")).toHaveCount(4);
+  await expect(page.locator(".cg-research-table tbody tr")).toHaveCount(4);
   await expect(page.locator(".cg-overview")).toContainText("not ranked recommendations");
   await expect(page.locator(".cg-broker-toplist")).not.toContainText(/FX score|tested with real money|best overall/);
   expect(await page.locator(".cg-article").evaluate(node => getComputedStyle(node).fontFamily)).toContain("Manrope");
@@ -94,4 +94,27 @@ test("reference template broker identities work without JavaScript and do not ex
     await expect(page.locator('main a[rel~="sponsored"]')).toHaveCount(0);
     await expect(page.locator("main")).not.toContainText("USD 100,000");
   } finally { await context.close(); }
+});
+
+
+test("answer-first guide exposes the research table, concise FAQs and expandable citations", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 1000 }); await page.emulateMedia({ reducedMotion: "reduce" }); await page.goto(path);
+  await expect(page.locator(".cg-hero>.cg-direct-answer")).toContainText("We do not rank or recommend");
+  await expect(page.locator(".cg-hero .cg-list-note")).toContainText("Pending legal review");
+  const table = page.getByRole("region", { name: "Sri Lanka research candidate status", exact: true });
+  await expect(table.locator("thead th")).toHaveCount(6); await expect(table.locator("tbody tr")).toHaveCount(4);
+  await expect(page.locator(".cg-reader-grid>section")).toHaveCount(4);
+  await expect(page.locator(".cg-faq details")).toHaveCount(3);
+  await table.evaluate(node => node.scrollTo(0, 0));
+  await page.locator(".cg-research-snapshot").screenshot({ path: "test-results/country-research-table-mobile.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.locator(".cg-research-snapshot").screenshot({ path: "test-results/country-research-table-desktop.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
+  await page.locator(".cg-reader-checks").screenshot({ path: "test-results/country-reader-checks-desktop.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
+  await page.setViewportSize({ width: 390, height: 1000 });
+  await table.focus(); await page.keyboard.press("ArrowRight"); await expect.poll(() => table.evaluate(node => node.scrollLeft)).toBeGreaterThan(0);
+  const disclosure = page.locator(".cg-source-disclosure"); await expect(disclosure).not.toHaveAttribute("open");
+  const citation = page.locator('#local-rules a[href="#source-cbsl-2019-notice"]').first();
+  await citation.click(); await expect(page).toHaveURL(/#source-cbsl-2019-notice$/);
+  await expect(disclosure).toHaveAttribute("open", ""); await expect(page.locator("#source-cbsl-2019-notice h3")).toBeVisible();
+  const summary = disclosure.locator(":scope>summary"); await summary.focus(); await page.keyboard.press("Enter"); await expect(disclosure).not.toHaveAttribute("open");
 });

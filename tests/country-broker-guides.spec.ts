@@ -200,7 +200,7 @@ test("Sri Lanka renders legal-first content, sources and honest schema without J
     await expect(page.locator(".cg-broker-card")).toHaveCount(0);
     await expect(page.locator("body>header").getByRole("link", { name: "Find my broker", exact: true, includeHidden: true })).toHaveCount(0);
     await expect(page.locator('main a[rel~="sponsored"]')).toHaveCount(0);
-    await expect(page.locator(".cg-faq details")).toHaveCount(11);
+    await expect(page.locator(".cg-faq details")).toHaveCount(3);
     await expect(page.locator(".cg-sources li")).toHaveCount(12);
     await expect(page.locator(".cg-byline")).toContainText("Legal review: not yet recorded");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", siteOrigin + path);
