@@ -10,6 +10,7 @@ const baseMenu = [
   { label: "Compare brokers", to: "/best-brokers", items: [
     { label: "Overview", href: "/best-brokers" }, { label: "For beginners", href: "/find-my-broker" },
     { label: "Account cost calculator", href: "/tools/forex-calculator" }, { label: "Broker directory", href: "/reviews" },
+    { label: "Country research guides", href: "/forex-brokers" },
   ] },
   { label: "Broker reviews", to: "/reviews", items: [
     { label: "All broker reviews", href: "/reviews" }, { label: "How we research", href: "/about#research-methodology" },
@@ -37,6 +38,7 @@ const baseMenu = [
 export function SiteHeader({ reviewLinks = [] }: { reviewLinks?: { label: string; href: string }[] }) {
   const menu = baseMenu.map(group => group.label === "Broker reviews" && reviewLinks.length ? { ...group, items: reviewLinks } : group);
   const pathname = usePathname();
+  const countryResearch = pathname === "/forex-brokers" || pathname.startsWith("/forex-brokers/");
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileGroup, setMobileGroup] = useState<string | null>(null);
@@ -99,7 +101,7 @@ export function SiteHeader({ reviewLinks = [] }: { reviewLinks?: { label: string
         </div>)}
       </nav>
       <div className={styles.headerActions}>
-        <Link className={styles.findBroker} href="/find-my-broker">Find my broker <ArrowRight size={17} aria-hidden="true" /></Link>
+        {!countryResearch && <Link className={styles.findBroker} href="/find-my-broker">Find my broker <ArrowRight size={17} aria-hidden="true" /></Link>}
         <button ref={trigger} className={styles.mobileTrigger} type="button" aria-label="Open navigation" aria-haspopup="dialog" aria-expanded={mobileOpen} aria-controls="mobile-navigation-drawer" onClick={openDrawer}><Menu size={25} aria-hidden="true" /></button>
       </div>
     </div>
@@ -116,7 +118,7 @@ export function SiteHeader({ reviewLinks = [] }: { reviewLinks?: { label: string
           <div className={styles.mobileSubmenu} id={`mobile-submenu-${index}`} hidden={mobileGroup !== item.label}>{item.items.map(link => <Link href={link.href} key={link.label} onClick={closeDrawer}>{link.label}<ArrowRight size={15} aria-hidden="true" /></Link>)}</div>
         </div>)}
       </nav>
-      <div className={styles.drawerBottom}><p>Ready to explore your options?</p><Link className={styles.findBroker} href="/find-my-broker" onClick={closeDrawer}>Find my broker <ArrowRight size={18} aria-hidden="true" /></Link></div>
+      <div className={styles.drawerBottom}><p>{countryResearch ? "Check country-specific permissions first." : "Ready to explore your options?"}</p><Link className={styles.findBroker} href={countryResearch ? "/forex-brokers" : "/find-my-broker"} onClick={closeDrawer}>{countryResearch ? "Country research" : "Find my broker"} <ArrowRight size={18} aria-hidden="true" /></Link></div>
     </dialog>
   </header>;
 }
