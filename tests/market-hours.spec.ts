@@ -158,6 +158,11 @@ test("mobile and desktop layouts, keyboard controls and site discovery work with
       await page.setViewportSize({ width, height: 960 });
       await expect(page.getByLabel("Planning date")).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+      const inconsistentBodyText = await page.locator("main p, main small, main label, main input, main select, main button, main td, main th, main caption, main summary, main li, main time").evaluateAll(elements => elements.filter(element => {
+        const style = getComputedStyle(element);
+        return style.fontSize !== "18px" || !style.fontFamily.includes("Manrope");
+      }).map(element => `${element.tagName}: ${element.textContent?.trim().slice(0, 50)}`));
+      expect(inconsistentBodyText, `Body text at ${width}px should use 18px Manrope`).toEqual([]);
       await page.screenshot({ path: `test-results/market-hours-${width}.png`, fullPage: true });
     }
     await page.getByLabel("Search timezones").focus(); await page.keyboard.press("ControlOrMeta+A"); await page.keyboard.type("UTC"); await page.keyboard.press("Enter");
