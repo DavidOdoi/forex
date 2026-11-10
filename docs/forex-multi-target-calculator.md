@@ -96,4 +96,6 @@ The implementation passed type checks, lint, production build and **44 tests**: 
 
 After completing assumption columns in CSV and copying input snapshots, type checks, lint and production build passed again, and all **21 feature-specific calculation/browser tests** were rerun successfully. Existing unrelated suites were not repeated after those localized changes.
 
-The feature is local on `feat/forex-multi-target-calculator`. It has not been pushed or deployed; the current brief requires approval before deployment or external-service changes.
+The feature was committed and pushed to `feat/forex-multi-target-calculator` after the user authorized the GitHub push. It has not been merged into `main` or deployed; deployment requires approval.
+
+The follow-up typography change removes the larger font sizes from form legends and the inline gross-result amount. All visible non-heading main-page text now inherits the same 18px Manrope body size, including labels, notes, badges, results, table text and emphasized values. The responsive browser check traverses text nodes rather than sampling a limited set of tags, with separate checks for input/select/textarea controls. Heading sizes and semantic emphasis remain distinct. Production build (including TypeScript validation), lint, whitespace checks and the focused responsive typography/browser test passed at 320, 390, 768 and 1440 pixels after this change.

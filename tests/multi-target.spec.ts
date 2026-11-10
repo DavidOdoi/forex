@@ -151,7 +151,16 @@ test("mobile, desktop, keyboard and typography remain usable without hydration o
     for (const width of [320,390,768,1440]) {
       await page.setViewportSize({ width, height: 1000 });
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-      expect(await page.locator("main p, main label, main input, main select, main small, main td").evaluateAll(elements => elements.every(element => getComputedStyle(element).fontSize === "18px" && getComputedStyle(element).fontFamily.includes("Manrope")))).toBe(true);
+      const inconsistentText = await page.locator("main").evaluate(root => {
+        const elements = new Set<Element>(root.querySelectorAll("input,select,textarea"));
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+          const parent = node.parentElement;
+          if (node.textContent?.trim() && parent && !parent.closest("h1,h2,h3,h4,h5,h6,script,style,noscript")) elements.add(parent);
+        }
+        return [...elements].filter(element => element.getClientRects().length > 0 && (getComputedStyle(element).fontSize !== "18px" || !getComputedStyle(element).fontFamily.includes("Manrope"))).map(element => `${element.tagName}: ${element.textContent?.trim().slice(0, 50)}`);
+      });
+      expect(inconsistentText, `Every visible non-heading text node at ${width}px should use 18px Manrope`).toEqual([]);
     }
     await page.getByLabel("Entry price", { exact: true }).focus();
     expect(await page.getByLabel("Entry price", { exact: true }).evaluate(el => getComputedStyle(el).outlineStyle)).not.toBe("none");

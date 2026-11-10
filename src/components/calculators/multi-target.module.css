@@ -1,4 +1,4 @@
-.page { --multi-line: #dce4dd; --multi-green: #176638; background: #fff; color: #152019; font: 18px/1.65 "Manrope",system-ui,sans-serif; }
+.page { --multi-body-size: 18px; --multi-line: #dce4dd; --multi-green: #176638; background: #fff; color: #152019; font: var(--multi-body-size)/1.65 "Manrope",system-ui,sans-serif; }
 .page * { box-sizing: border-box; }
 .page :is(h1,h2,h3,h4) { font-family: inherit; color: #142019; font-weight: 700; line-height: 1.25; letter-spacing: -.035em; }
 .page h1 { font-size: clamp(32px,4vw,50px); margin: 12px 0 18px; }
@@ -11,7 +11,7 @@
 .container { width: min(100%,1280px); padding: 24px 30px 70px; margin: auto; }
 .breadcrumb { display: flex; flex-wrap: wrap; gap: 9px; }
 .hero { padding: 24px 0 26px; max-width: 1040px; }
-.eyebrow { font-size: 18px; font-weight: 700; color: #3d6649; }
+.eyebrow { font-size: inherit; font-weight: 700; color: #3d6649; }
 .notice,.note,.validNote,.warning { padding: 18px 22px; border: 1px solid var(--multi-line); border-radius: 10px; background: #f5f8f5; }
 .notice { border-left: 4px solid #8b6a2d; }
 .note { margin: 18px 0; }
@@ -27,7 +27,7 @@
 .page .primaryButton { background: #175c33; color: #fff; padding: 14px 24px; }
 .page .primaryButton:hover { background: #104426; color: #fff; }
 .editor > fieldset { padding: 24px; margin: 12px 0 26px; border: 1px solid var(--multi-line); border-radius: 12px; min-width: 0; }
-.editor legend { padding: 0 10px; font-weight: 700; font-size: 21px; }
+.editor legend { padding: 0 10px; font-weight: 700; font-size: inherit; }
 .fieldGrid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
 .field { min-width: 0; display: flex; flex-direction: column; gap: 8px; margin: 8px 0; }
 .field label { font-weight: 600; }
@@ -45,7 +45,7 @@
 .results { margin-top: 38px; scroll-margin-top: 130px; }
 .resultHeadline { padding: 26px 30px; border: 1px solid #cfdfd1; border-radius: 12px; background: linear-gradient(110deg,#f5fbf5,#e6f5eb); margin-bottom: 22px; }
 .resultHeadline h2 { margin: 0 0 18px; }
-.resultHeadline [data-total-gross] { display: inline-block; font-size: 28px; }
+.resultHeadline [data-total-gross] { display: inline-block; font-size: inherit; }
 .metrics { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin: 26px 0; }
 .metrics > div { min-width: 0; padding: 20px; border: 1px solid var(--multi-line); border-radius: 10px; }
 .metrics dt { color: #46594c; margin-bottom: 12px; }
