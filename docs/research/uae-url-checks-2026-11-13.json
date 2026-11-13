@@ -1,0 +1,158 @@
+{
+  "scope": "Public URL availability and official entry/registration destination checks, not completed current-law review, product permission or resident-account allocation.",
+  "sources": [
+    {
+      "url": "https://pepperstone.com/en-ae/",
+      "status": 200,
+      "resolved": "https://pepperstone.com/en-ae",
+      "account_or_regulator_links": [
+        {
+          "url": "https://pepperstone.com/en-ae/intermediate-licence-selection",
+          "label": "Join now"
+        },
+        {
+          "url": "https://pepperstone.com/en-ae/intermediate-licence-selection",
+          "label": "Join now"
+        },
+        {
+          "url": "https://pepperstone.com/en-ae/intermediate-licence-selection",
+          "label": "Join now"
+        }
+      ]
+    },
+    {
+      "url": "https://www.etoro.com/",
+      "status": 200,
+      "resolved": "https://www.etoro.com/",
+      "account_or_regulator_links": [
+        {
+          "url": "https://www.etoro.com/accounts/sign-up",
+          "label": "Start Investing"
+        },
+        {
+          "url": "https://www.etoro.com/accounts/sign-up/",
+          "label": "Start investing"
+        },
+        {
+          "url": "https://www.etoro.com/accounts/sign-up/",
+          "label": "Start investing"
+        },
+        {
+          "url": "https://www.etoro.com/accounts/sign-up/",
+          "label": "Start investing"
+        },
+        {
+          "url": "https://www.etoro.com/accounts/sign-up/",
+          "label": "Start investing"
+        },
+        {
+          "url": "https://www.etoro.com/accounts/sign-up/",
+          "label": "Start here"
+        },
+        {
+          "url": "https://www.etoro.com/customer-service/how-to-open-etoro-account/",
+          "label": "Open an Account"
+        },
+        {
+          "url": "https://www.etoro.com/customer-service/how-to-open-etoro-account/",
+          "label": "Open an Account"
+        }
+      ]
+    },
+    {
+      "url": "https://capital.com/en-ae",
+      "status": 200,
+      "resolved": "https://capital.com/en-ae",
+      "account_or_regulator_links": []
+    },
+    {
+      "url": "https://www.dfsa.ae/public-register/firms",
+      "status": 200,
+      "resolved": "https://www.dfsa.ae/public-register/firms",
+      "account_or_regulator_links": []
+    },
+    {
+      "url": "https://www.adgm.com/public-registers",
+      "status": 200,
+      "resolved": "https://www.adgm.com/public-registers",
+      "account_or_regulator_links": []
+    },
+    {
+      "url": "https://www.dfsa.ae/public-register/firms/ig-limited",
+      "status": 200,
+      "resolved": "https://www.dfsa.ae/public-register/firms/ig-limited",
+      "account_or_regulator_links": []
+    },
+    {
+      "url": "https://www.dfsa.ae/public-register/firms/pepperstone-financial-services-difc-limited",
+      "status": 200,
+      "resolved": "https://www.dfsa.ae/public-register/firms/pepperstone-financial-services-difc-limited",
+      "account_or_regulator_links": []
+    },
+    {
+      "url": "https://www.adgm.com/public-registers/fsra/firms/financial-firms/etoro-me-ltd-220073",
+      "status": 200,
+      "resolved": "https://www.adgm.com/public-registers/fsra/firms/financial-firms/etoro-me-ltd-220073",
+      "account_or_regulator_links": []
+    },
+    {
+      "url": "https://pepperstone.com/en-ae/about-us/policies/legal",
+      "status": 200,
+      "resolved": "https://pepperstone.com/en-ae/about-us/policies/legal",
+      "account_or_regulator_links": [
+        {
+          "url": "https://pepperstone.com/en-ae/intermediate-licence-selection",
+          "label": "Join now"
+        },
+        {
+          "url": "https://pepperstone.com/en-ae/intermediate-licence-selection",
+          "label": "Join now"
+        }
+      ]
+    },
+    {
+      "url": "https://help.capital.com/hc/en-us/articles/360016569340-Who-is-your-regulator",
+      "status": 200,
+      "resolved": "https://help.capital.com/hc/en-us/articles/360016569340-Who-is-your-regulator",
+      "account_or_regulator_links": []
+    },
+    {
+      "url": "https://www.exness.com/regulation/",
+      "status": 200,
+      "resolved": "https://www.exness.com/regulation/",
+      "account_or_regulator_links": []
+    },
+    {
+      "url": "https://www.dfsa.ae/public-register/firms/saxo-bank-dubai-limited",
+      "status": 200,
+      "resolved": "https://www.dfsa.ae/public-register/firms/saxo-bank-dubai-limited",
+      "account_or_regulator_links": []
+    },
+    {
+      "url": "https://tax.gov.ae/",
+      "status": 200,
+      "resolved": "https://tax.gov.ae/ar/default.aspx",
+      "account_or_regulator_links": []
+    }
+  ],
+  "accounts": [
+    {
+      "url": "https://pepperstone.com/en-ae/intermediate-licence-selection",
+      "status": 200,
+      "resolved": "https://pepperstone.com/en-ae/intermediate-licence-selection"
+    },
+    {
+      "url": "https://www.etoro.com/accounts/sign-up",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://capital.com/en-ae",
+      "status": 200,
+      "resolved": "https://capital.com/en-ae"
+    },
+    {
+      "url": "https://www.ig.com/ae",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

@@ -15,6 +15,7 @@ import { indonesiaGuide, registerIndonesiaSources } from "./indonesia";
 import { nigeriaGuide, registerNigeriaSources } from "./nigeria";
 import { ghanaGuide, registerGhanaSources } from "./ghana";
 import { tanzaniaGuide, registerTanzaniaSources } from "./tanzania";
+import { unitedArabEmiratesGuide, registerUnitedArabEmiratesSources } from "./united-arab-emirates";
 export { malaysiaGuide } from "./malaysia";
 
 const countrySlug = "sri-lanka";
@@ -99,5 +100,6 @@ registerIndonesiaSources(countryRegistry);
 registerNigeriaSources(countryRegistry);
 registerGhanaSources(countryRegistry);
 registerTanzaniaSources(countryRegistry);
-export const countryGuides: CountryGuide[] = [sriLankaGuide, malaysiaGuide, ugandaGuide, unitedKingdomGuide, netherlandsGuide, singaporeGuide, southAfricaGuide, vietnamGuide, indiaGuide, philippinesGuide, pakistanGuide, indonesiaGuide, nigeriaGuide, ghanaGuide, tanzaniaGuide];
+registerUnitedArabEmiratesSources(countryRegistry);
+export const countryGuides: CountryGuide[] = [sriLankaGuide, malaysiaGuide, ugandaGuide, unitedKingdomGuide, netherlandsGuide, singaporeGuide, southAfricaGuide, vietnamGuide, indiaGuide, philippinesGuide, pakistanGuide, indonesiaGuide, nigeriaGuide, ghanaGuide, tanzaniaGuide, unitedArabEmiratesGuide];
 export function getCountryGuide(slug: string) { return countryGuides.find(country => country.slug === slug); }

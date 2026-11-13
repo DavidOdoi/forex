@@ -109,3 +109,5 @@ Nigeria retains its eight supplied brands and three FAQs; see `nigeria-update-20
 Ghana retains six supplied brands; see `ghana-update-2026-11-13.md`. Do not describe the BoG interbank list as retail CFD approval or treat a localised marketing page/restricted-country omission as verified resident acceptance. Orbex's official information link has an automated retrieval limitation, not a verified direct application destination.
 
 Tanzania retains eight supplied brands; see `tanzania-update-2026-11-13.md`. Preserve the verified BoT circular's authorised-dealer addressee and scope. Do not extrapolate it into a definitive ruling on every individual's CFD activity, or treat community payment references as confirmed Tanzanian onboarding/mobile-money support.
+
+The UAE guide retains five supplied brands; see `uae-update-2026-11-13.md`. Keep promotion/introduction permission separate from the trading-product issuer. Local group presence and a public record lead do not establish every retail product or account allocation. Exness's claimed local dealing reference remains unconfirmed. Do not imply blanket tax exemption or independent certification of swap-free accounts.
