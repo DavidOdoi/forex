@@ -24,7 +24,7 @@ const labels: Record<string, string> = {
   "regulation-and-entity": "Entity & permission", "contracting-legal-entity": "Customer agreement", "negative-balance-protection": "Balance protection", "client-money-arrangements": "Client funds",
   "deposit-methods-and-charges": "Deposit methods", "withdrawal-methods-and-charges": "Withdrawal charges", "withdrawal-fee": "Withdrawal charges", "published-processing-times": "Published timings", "withdrawal-requirements": "Payment rules",
   "identity-and-address-requirements": "Verification", "demo-account": "Demo account", "retail-and-professional-accounts": "Account choices",
-  "supported-mobile-platforms": "Mobile trading", "platform-and-availability": "Web platform", "real-stocks-and-etfs": "Asset ownership", "leverage-by-product-and-region": "Leverage", "product-restrictions": "Restrictions", "cfds-and-underlying-markets": "Available markets",
+  "education-and-research": "Education & research", "supported-mobile-platforms": "Mobile trading", "platform-and-availability": "Web platform", "real-stocks-and-etfs": "Asset ownership", "leverage-by-product-and-region": "Leverage", "product-restrictions": "Restrictions", "cfds-and-underlying-markets": "Available markets",
 };
 
 function Citations({ ids, review }: { ids: string[]; review: BrokerReview }) {
@@ -53,9 +53,20 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
   const section = (id: string) => digest.sections.find(s => s.id === id)!;
   const fees = section("fees"), safety = section("safety"), funding = section("deposit-and-withdrawal"), opening = section("account-opening");
   const platformFields = [...section("mobile-app").fields, ...section("web-platform").fields];
+  const education = checkedField(review, "education-and-research");
+  if (education) platformFields.push(education);
   const markets = checkedField(review, "cfds-and-underlying-markets");
   const comparedLeverage = review.accountComparisons?.length ? checkedField(review, "leverage-by-product-and-region") : undefined;
   const detailedExness = review.broker.slug === "exness" && review.jurisdiction === "Global" && accounts.length > 0;
+  const costExamples: Record<string, { spread: string; commission: string }> = {
+    "fusion-markets": { spread: "0.1", commission: "2.25" },
+    "fp-markets": { spread: "0.1", commission: "3" },
+    ig: { spread: "0.6", commission: "0" },
+    xm: { spread: "0.8", commission: "0" },
+    "capital-com": { spread: "0.7", commission: "0" },
+    "hantec-markets": { spread: "0.5", commission: "1" },
+  };
+  const costExample = costExamples[review.broker.slug];
   const platformImage = reviewPlatformImage(review);
   const hasPlatforms = accounts.some(account => account.platforms);
   const safetyFields = safety.fields.filter(field => !(detailedExness || review.suppliedResearch) || field.id !== "contracting-legal-entity");
@@ -117,7 +128,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
         </section>
         {retail && <AccountOpeningCta review={review} placement="after-account-opening" compact />}
 
-        <section className="br-section" id="fees"><h2>{retail ? "Trading fees, spreads and commissions" : "Service pricing and charges"}</h2><p className="br-answer">{fees.fields.length ? "Add opening/closing commission to spread costs, then applicable swaps and external charges." : retail ? "A complete fee schedule for this country and entity has not yet been verified. Do not substitute costs from another group company." : "Commercial pricing and service charges have not been verified. Retail spreads and commissions are not assigned to this provider profile."}</p>{feeFields.length > 0 && <FactTable fields={feeFields} review={review} caption="Trading costs and exceptions" />}{retail && <RoundTripCost key={review.broker.slug} brokerName={review.broker.name} initialSpread={["fusion-markets", "fp-markets"].includes(review.broker.slug) ? "0.1" : review.broker.slug === "ig" ? "0.6" : undefined} initialCommission={review.broker.slug === "fusion-markets" ? "2.25" : review.broker.slug === "fp-markets" ? "3" : review.broker.slug === "ig" ? "0" : undefined} />}{review.suppliedResearch && <p className="br-table-note">cTrader/TradingView use USD notional: illustrative EUR100,000 at 1.3000/1.3100 costs US$3.90 + US$3.93 = US$7.83. The per-lot calculator above excludes changing notional.</p>}{feeSource && <a className="br-text-link" href={feeSource.url} target="_blank" rel="noopener noreferrer">Check the published fee schedule<ArrowUpRight size={17} /></a>}</section>
+        <section className="br-section" id="fees"><h2>{retail ? "Trading fees, spreads and commissions" : "Service pricing and charges"}</h2><p className="br-answer">{fees.fields.length ? "Add opening/closing commission to spread costs, then applicable swaps and external charges." : retail ? "A complete fee schedule for this country and entity has not yet been verified. Do not substitute costs from another group company." : "Commercial pricing and service charges have not been verified. Retail spreads and commissions are not assigned to this provider profile."}</p>{feeFields.length > 0 && <FactTable fields={feeFields} review={review} caption="Trading costs and exceptions" />}{retail && <RoundTripCost key={review.broker.slug} brokerName={review.broker.name} initialSpread={costExample?.spread} initialCommission={costExample?.commission} />}{review.suppliedResearch && <p className="br-table-note">cTrader/TradingView use USD notional: illustrative EUR100,000 at 1.3000/1.3100 costs US$3.90 + US$3.93 = US$7.83. The per-lot calculator above excludes changing notional.</p>}{feeSource && <a className="br-text-link" href={feeSource.url} target="_blank" rel="noopener noreferrer">Check the published fee schedule<ArrowUpRight size={17} /></a>}</section>
 
         <section className="br-section" id="deposit-and-withdrawal"><h2>{retail ? "Deposit and withdrawal methods" : "Funding and settlement arrangements"}</h2>{payments && <aside className="br-callout" aria-label="Withdrawal timing note"><Clock3 size={23} /><div><h3>Automatic processing ≠ instant arrival</h3><ol className="br-payment-stages"><li><strong>Request:</strong> available 24/7.</li><li><strong>Broker:</strong> automatic, or non-instant processing described as within 24 hours.</li><li><strong>Receipt:</strong> receiving-provider settlement can take longer.</li></ol><a href={review.sources.find(source => source.id === payments.sourceIds[0])?.url} target="_blank" rel="noopener noreferrer">Exness withdrawal processing conditions</a></div></aside>}{fundingFields.length ? <FactTable fields={fundingFields} review={review} caption="Funding methods, fees and conditions" /> : <p className="br-empty">{retail ? "Regional payment methods, charges and settlement times still need verification." : "Funding channels, counterparty arrangements and settlement timelines require verification."}</p>}{detailedExness && <div className="br-withdrawal-check"><h3>Before your first withdrawal</h3><ul><li>Complete the verification requested in your Personal Area.</li><li>Check method limits, currency and receiving-provider fees.</li><li>Use an account in your name; save the transaction reference.</li></ul></div>}</section>
 

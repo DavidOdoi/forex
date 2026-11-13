@@ -9,6 +9,8 @@ import { applyIcMarketsResearch } from "./ic-markets";
 import { applyFusionMarketsResearch } from "./fusion-markets";
 import { applyIgResearch } from "./ig";
 import { applyFpMarketsResearch } from "./fp-markets";
+import { applyCapitalComResearch } from "./capital-com";
+import { applyHantecMarketsResearch } from "./hantec-markets";
 
 export const researchEntries: ResearchEntry[] = raw.entries.map(entry => ({ ...entry, providerType: Object.hasOwn(providerLabels, entry.providerType) ? entry.providerType as ProviderType : "other" }));
 export const researchInventory = { total: raw.inputEntries, retail: raw.retailEntries, separate: raw.separateProviderEntries };
@@ -59,6 +61,8 @@ export function getReview(slug: string, requestedCountry?: string) {
   applyFusionMarketsResearch(review);
   applyIgResearch(review);
   applyFpMarketsResearch(review);
+  applyCapitalComResearch(review);
+  applyHantecMarketsResearch(review);
   review.providerType = research.providerType;
   review.author ??= { ...davidOdoi };
   review.relatedResearch = relatedReviewLinks(slug, country);

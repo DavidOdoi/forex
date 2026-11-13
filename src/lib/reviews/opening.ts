@@ -25,6 +25,10 @@ export function reviewIntroduction(review: BrokerReview): IntroPart[][] {
     [text("This Fusion Markets review compares "), link("Zero and Classic accounts", "#account-opening"), text(". We examine published costs, funding rules and entity-specific protections to help you decide what to check before applying.")],
     [text("Compare "), link("fees", "#fees"), text(", "), link("withdrawal conditions", "#deposit-and-withdrawal"), text(" and "), link("legal entities", "#safety"), text(". This is document-based research; we have not tested live trading, apps or withdrawals.")],
   ];
+  if (review.broker.slug === "xm" && review.jurisdiction === "Global" && reviewAccounts(review).length) return [
+    [text("This XM review compares XM Global’s "), link("Standard, Ultra Low and Shares accounts", "#account-opening"), text(". Its Belize-route conditions are not a worldwide offer.")],
+    [text("Check "), link("fees", "#fees"), text(", "), link("withdrawals", "#deposit-and-withdrawal"), text(" and "), link("legal entities", "#safety"), text(". XM promotes education and research; neither guarantees results. We have not tested live trading or withdrawals.")],
+  ];
   const comparedAccounts = reviewAccounts(review);
   const minimum = checkedField(review, "minimum-deposit");
   if (retail && review.accountComparisons && comparedAccounts.length && minimum) return [

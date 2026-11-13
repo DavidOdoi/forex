@@ -18,11 +18,16 @@ export function applyXmResearch(review: BrokerReview) {
   source("xm-regulation", "XM Global legal entity", "regulation");
   source("xm-licences", "XM group entity disclosures", "landing/regulation");
   source("xm-agreement", "XM Global public client agreement", "assets/pdf/new/terms/XMGlobal-Client-Agreement-Terms-and-Conditions-of-Business.pdf");
+  const refreshedAt = "2026-11-13";
+  review.sources.push(
+    { id: "xm-independent-2026", title: "ForexBrokers.com XM account and platform assessment", url: "https://www.forexbrokers.com/reviews/xm", publisher: "ForexBrokers.com", checkedAt: refreshedAt, legalEntity: entityScope, jurisdiction: "Global" },
+    { id: "xm-learning", title: "XM learning resources", url: "https://www.xm.com/", publisher: "XM", checkedAt: refreshedAt, legalEntity: entityScope, jurisdiction: "Global" },
+  );
   const allFields = (): ReviewField[] => [...review.keyData, ...review.benchmarks, ...review.chapters.flatMap(chapter => chapter.panels.flatMap(panel => panel.fields))];
-  const set = (id: string, value: string, sourceIds: string[]) => {
+  const set = (id: string, value: string, sourceIds: string[], fieldCheckedAt = checkedAt) => {
     let fields = allFields().filter(field => field.id === id);
     if (!fields.length) { const field: ReviewField = { id, label: id.replaceAll("-", " "), value: null, sourceIds: [], status: "not-researched", legalEntity: null, jurisdiction: null, checkedAt: null }; review.keyData.push(field); fields = [field]; }
-    fields.forEach(field => Object.assign(field, { value, sourceIds, status: "verified", legalEntity: entityScope, jurisdiction: "Global", checkedAt }));
+    fields.forEach(field => Object.assign(field, { value, sourceIds, status: "verified", legalEntity: entityScope, jurisdiction: "Global", checkedAt: fieldCheckedAt }));
   };
   set("minimum-deposit", "XM Global: Standard/Ultra Low $5; Shares $10,000 equivalent.", ["xm-accounts"]);
   set("minimum-deposit-by-account", "$5 equivalent for Standard and Ultra Low; $10,000 for Shares. Payment-method minimums can differ; these are not recommended trading budgets.", ["xm-accounts", "xm-payments"]);
@@ -69,6 +74,9 @@ export function applyXmResearch(review: BrokerReview) {
   set("leverage-summary", "XM Global: up to 1:1000; equity and instrument limits.", ["xm-conditions", "xm-accounts"]);
   set("cfds-and-underlying-markets", "XM Global lists forex and CFDs on metals, indices, energies, commodities, stocks and crypto. Separate Shares access is documented on MT5. Product availability differs by account and jurisdiction; CFDs do not confer underlying ownership.", ["xm-platforms", "xm-accounts"]);
   set("product-restrictions", "Turbo Stocks are a Standard/MT5 product with daily closing and specific leverage. Account and entity restrictions must be checked separately; do not transfer these terms to Cyprus or other regional offerings.", ["xm-platforms"]);
+  set("forex-spread-and-commission", "ForexBrokers.com reports EUR/USD averages of 2.0 pips (Standard) and 1.1 (Ultra Low), plus a US$3.50/lot/side Zero example. These are publisher findings, not our measurements or current quotes. Zero availability is entity-dependent; the table shows XM Global’s advertised floors.", ["xm-independent-2026"], refreshedAt);
+  set("platform-and-availability", "XM offers MT4/MT5 and proprietary web/mobile trading. ForexBrokers.com reports TradingView-powered charts, not standalone TradingView account integration. Available products and features depend on the entity; no platform was tested here.", ["xm-independent-2026"], refreshedAt);
+  set("education-and-research", "XM advertises free learning resources. ForexBrokers.com describes live education, Reuters news and Trading Central. Education does not guarantee profits.", ["xm-learning", "xm-independent-2026"], refreshedAt);
   review.entities = [
     { name: "XM Global Limited", country: "Belize", regulator: "FSC", licence: "8557558", sourceId: "xm-regulation", note: "Provider-reported; account and funding terms on this page use this entity." },
     { name: "Trading Point of Financial Instruments Limited", country: "Cyprus", regulator: "CySEC", licence: "120/10", sourceId: "xm-licences", note: "Separate entity; do not apply XM Global leverage or funding terms to its retail accounts." },
@@ -91,29 +99,30 @@ export function applyXmResearch(review: BrokerReview) {
     { label: "Regulation", fieldId: "licence-number", state: "text" },
   ];
   review.verdictEvidence = { legalEntity: entityScope, jurisdiction: "Global", checkedAt, sentences: [
-    "XM Global lists Standard and Ultra Low accounts from $5 equivalent, with advertised EUR/USD floors of 1.6 and 0.8 pips respectively.",
-    "Both show no separate commission; eligible Ultra Low instruments can be swap-free.",
-    "Check your entity, leverage and payment terms: these Belize-route conditions are not a worldwide XM offer.",
+    "XM Global is worth comparing for $5-equivalent accounts and spread-only forex pricing.",
+    "Standard/Ultra Low advertise EUR/USD floors of 1.6/0.8 pips; selected Ultra Low instruments are swap-free.",
+    "Confirm your entity and payment terms: these Belize-route conditions are not a worldwide offer.",
   ], sourceIds: ["xm-accounts", "xm-account-help", "xm-regulation"] };
   review.strengths = [
     { title: "Low entry minimum", explanation: "Standard/Ultra Low advertise $5 equivalent; method limits apply.", sourceIds: ["xm-accounts"] },
-    { title: "Two FX pricing choices", explanation: "Published EUR/USD floors differ; neither is a measured average.", sourceIds: ["xm-accounts"] },
+    { title: "Education and research", explanation: "Free learning resources; independent review describes live education and integrated research.", sourceIds: ["xm-learning", "xm-independent-2026"] },
     { title: "Demo and smaller lots", explanation: "Virtual-money demos and Micro variants are documented; Micro is not cents.", sourceIds: ["xm-account-help", "xm-creation"] },
     { title: "Mobile and automated access", explanation: "XM App, MT4/MT5 and EAs are documented, not tested here.", sourceIds: ["xm-platforms"] },
     { title: "No broker funding fee advertised", explanation: "Bank/provider and conversion exceptions still matter.", sourceIds: ["xm-payments"] },
   ];
   review.limitations = [
     { title: "Entity restrictions matter", explanation: "US citizens are excluded; other regions use different agreements.", sourceIds: ["xm-accounts", "xm-regulation"] },
-    { title: "High leverage magnifies losses", explanation: "Equity and instrument limits apply; 1:1000 is not universal.", sourceIds: ["xm-conditions"] },
+    { title: "Standard costs more", explanation: "Its advertised floor and publisher-reported average exceed Ultra Low’s; actual spreads vary.", sourceIds: ["xm-accounts", "xm-independent-2026"] },
     { title: "Swap-free is conditional", explanation: "Ultra Low excludes some instruments; check current symbol information.", sourceIds: ["xm-account-help"] },
     { title: "Dormancy wording conflicts", explanation: "Current help and the public agreement differ; confirm the applicable terms.", sourceIds: ["xm-account-help", "xm-agreement"] },
     { title: "Receipt can take days", explanation: "Cards/bank wires usually take 2–5 business days after execution.", sourceIds: ["xm-payments"] },
   ];
-  review.faqs[1] = { question: "What is the XM minimum deposit?", answer: "XM Global lists $5 equivalent for Standard/Ultra Low and $10,000 for Shares. Payment-method limits differ. These are entry requirements, not recommended trading budgets or universal terms for other entities.", sourceIds: ["xm-accounts", "xm-payments"] };
-  review.faqs[5] = { question: "Are all XM Ultra Low instruments swap-free?", answer: "No. XM Global limits swap-free treatment to selected instruments. Check your account's symbol information in Markets. The Islamic option has separate conditions; neither offer removes every possible overnight charge.", sourceIds: ["xm-account-help", "xm-accounts"] };
-  review.faqs[6] = { question: "How long do XM withdrawals take?", answer: "Receipt can be same-day; cards/wires usually take 2–5 business days after execution. Verification and external settlement affect timing. Automated processing does not guarantee arrival; we did not test withdrawals.", sourceIds: ["xm-payments"] };
+  review.faqs[1] = { question: "Is XM a legitimate and regulated forex broker?", answer: "XM identifies separate Belize and Cyprus companies. Verify your agreement’s company and permissions in the official register. Group licences do not transfer protections or prevent trading losses; these entries were not independently confirmed here.", sourceIds: ["xm-regulation", "xm-licences"] };
+  review.faqs[5] = { question: "What is the minimum deposit for XM?", answer: "XM Global lists US$5 equivalent for Standard/Ultra Low and US$10,000 for Shares. Payment-method limits differ; these entry minimums are not recommended budgets or universal terms for other entities.", sourceIds: ["xm-accounts", "xm-payments"] };
+  review.faqs[6] = { question: "Is XM better than Fusion Markets?", answer: "Neither is universally better. XM offers spread-only accounts and education; compare total spread, both commission sides, financing and protections. Your country, entity and strategy determine suitability.", sourceIds: ["xm-learning", "xm-independent-2026"] };
   review.customerReviews = { publisher: "Trustpilot", url: "https://www.trustpilot.com/review/xm.com", rating: null, reviewCount: null, checkedAt: null,
-    researchNote: "Research supplied on 10 November 2026 reported an unavailable rating. A current numeric TrustScore and review count have not been independently confirmed here; use the live profile for the latest status." };
+    researchNote: "Trustpilot feedback is separate from publisher ratings. No current numeric TrustScore or count is confirmed here; use the live profile." };
   review.accountOpening = { url: "https://www.xm.com/goto/profile/en", status: "verified", sourceIds: ["xm-accounts"], legalEntity: entityScope, jurisdiction: "Global", checkedAt, isAffiliate: false };
-  review.publication = { publishedAt: null, updatedAt: checkedAt, approvedAt: null, approvedBy: null };
+  review.verdict = review.verdictEvidence.sentences.join(" ");
+  review.publication = { publishedAt: null, updatedAt: refreshedAt, approvedAt: null, approvedBy: null };
 }
