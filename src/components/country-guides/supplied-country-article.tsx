@@ -6,10 +6,10 @@ import { CountrySectionNav } from "./section-nav";
 // Deliberately small Markdown subset for supplied editorial copy. Raw HTML,
 // images, arbitrary protocols and executable content are never interpreted.
 function inline(text: string): ReactNode {
-  const tokens = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+  const tokens = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\((?:[^()]|\([^()]*\))+\))/g);
   return tokens.map((token, i) => {
     if (token.startsWith("**")) return <strong key={i}>{token.slice(2, -2)}</strong>;
-    const link = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    const link = token.match(/^\[([^\]]+)\]\(((?:[^()]|\([^()]*\))+)\)$/);
     if (link && (/^https:\/\//.test(link[2]) || /^\/(?!\/)/.test(link[2]))) {
       const signup = /^open (?:an? )?.*account$/i.test(link[1]);
       return link[2].startsWith("/") ? <Link key={i} href={link[2]}>{link[1]}</Link> : <a key={i} href={link[2]} className={signup ? "cg-signup-link" : undefined} target="_blank" rel={signup ? "nofollow noopener noreferrer" : "noopener noreferrer"}>{link[1]}</a>;

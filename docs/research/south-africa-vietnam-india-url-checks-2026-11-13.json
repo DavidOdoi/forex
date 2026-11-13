@@ -1,0 +1,122 @@
+{
+  "scope": "Public URL availability and redirects only. No entity-register match, current-law verification, professional review or account test is inferred.",
+  "south_africa": [
+    {
+      "url": "https://www.ig.com/za",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://pepperstone.com/za/",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.fsca.co.za/FSB-Search/",
+      "status": 200,
+      "resolved": "https://www.fsca.co.za/FSB-Search/"
+    },
+    {
+      "url": "https://www.fsca.co.za/_api/cr3ad_noticedocumentses(174fb265-fed8-f011-8544-7ced8d771bb0)/cr3ad_document/$value",
+      "status": 200,
+      "resolved": "https://www.fsca.co.za/_api/cr3ad_noticedocumentses(174fb265-fed8-f011-8544-7ced8d771bb0)/cr3ad_document/$value"
+    },
+    {
+      "url": "https://www.fsca.co.za/_api/cr3ad_noticedocumentses(b24d8fc1-379f-f111-b8dc-70a8a57fc5ff)/cr3ad_document/$value",
+      "status": 200,
+      "resolved": "https://www.fsca.co.za/_api/cr3ad_noticedocumentses(b24d8fc1-379f-f111-b8dc-70a8a57fc5ff)/cr3ad_document/$value"
+    },
+    {
+      "url": "https://www.fsca.co.za/_api/cr3ad_noticedocumentses(4cab0b96-379f-f111-b8dc-70a8a57fc5ff)/cr3ad_document/$value",
+      "status": 200,
+      "resolved": "https://www.fsca.co.za/_api/cr3ad_noticedocumentses(4cab0b96-379f-f111-b8dc-70a8a57fc5ff)/cr3ad_document/$value"
+    },
+    {
+      "url": "https://www.fsca.co.za/_api/cr3ad_documentsofconsultationses(aa3dfa13-0dd2-f011-bbd3-7ced8d771a24)/cr3ad_document/$value",
+      "status": 200,
+      "resolved": "https://www.fsca.co.za/_api/cr3ad_documentsofconsultationses(aa3dfa13-0dd2-f011-bbd3-7ced8d771a24)/cr3ad_document/$value"
+    },
+    {
+      "url": "https://www.ig.com/za/forex",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://blackbull.com/en/support/restricted-countries/",
+      "status": 200,
+      "resolved": "https://blackbull.com/en/support/restricted-countries/"
+    },
+    {
+      "url": "https://pepperstone.com/en-za/",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "vietnam": [
+    {
+      "url": "https://www.ig.com/en",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://pepperstone.com/",
+      "status": 200,
+      "resolved": "https://pepperstone.com/en-au"
+    },
+    {
+      "url": "https://www.sbv.gov.vn/en/web/sbv_portal/home",
+      "status": 200,
+      "resolved": "https://www.sbv.gov.vn/en/web/sbv_portal/home"
+    },
+    {
+      "url": "https://sbv.gov.vn/vi/w/sbv239143",
+      "status": 200,
+      "resolved": "https://sbv.gov.vn/vi/w/sbv239143"
+    },
+    {
+      "url": "https://vbpl.vn/tw/Pages/ivbpqen-toanvan.aspx?ItemID=1450",
+      "status": 200,
+      "resolved": "https://vbpl.vn/"
+    },
+    {
+      "url": "https://sbv.gov.vn/vi/w/sbvwebapp01sbv073512",
+      "status": 200,
+      "resolved": "https://sbv.gov.vn/vi/w/sbvwebapp01sbv073512"
+    }
+  ],
+  "india": [
+    {
+      "url": "https://www.ig.com/en-in",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://pepperstone.com/en-in/",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.rbi.org.in/",
+      "status": 200,
+      "resolved": "https://www.rbi.org.in/"
+    },
+    {
+      "url": "https://www.rbi.org.in/commonman/english/Scripts/FAQs.aspx?Id=3347",
+      "status": 200,
+      "resolved": "https://www.rbi.org.in/commonman/english/Scripts/FAQs.aspx?Id=3347"
+    },
+    {
+      "url": "https://website.rbi.org.in/en/web/rbi/-/press-releases/rbi-cautions-against-unauthorised-forex-trading-platforms-53216",
+      "status": 200,
+      "resolved": "https://www.rbi.org.in/"
+    },
+    {
+      "url": "https://rbi.org.in/scripts/FS_RTI_Diclosure_Logs.aspx?fn=6",
+      "status": 200,
+      "resolved": "https://rbi.org.in/scripts/FS_RTI_Diclosure_Logs.aspx?fn=6"
+    },
+    {
+      "url": "https://www.rbi.org.in/commonperson/English/Scripts/FAQs.aspx?Id=1834",
+      "status": 200,
+      "resolved": "https://www.rbi.org.in/commonperson/English/Scripts/FAQs.aspx?Id=1834"
+    }
+  ],
+  "india_warning_correction": {
+    "url": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=53216",
+    "status": 200,
+    "resolved": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=53216"
+  }
+}
