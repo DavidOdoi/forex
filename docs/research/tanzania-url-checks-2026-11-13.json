@@ -1,0 +1,67 @@
+{
+  "scope": "URL availability and limited public-document reading, not legal approval or broker/company mapping.",
+  "checks": [
+    {
+      "url": "https://justmarkets.com/",
+      "status": 200,
+      "resolved": "https://justmarkets.com/",
+      "signup_candidates": [
+        {
+          "url": "https://justmarkets.com/registration/trader",
+          "label": "Register"
+        },
+        {
+          "url": "https://justmarkets.com/registration/trader",
+          "label": "Register"
+        },
+        {
+          "url": "https://justmarkets.com/registration/trader",
+          "label": "Register"
+        },
+        {
+          "url": "https://justmarkets.com/registration/trader",
+          "label": "Register"
+        }
+      ]
+    },
+    {
+      "url": "https://www.bot.go.tz/",
+      "status": 200,
+      "resolved": "https://www.bot.go.tz/"
+    },
+    {
+      "url": "https://www.cmsa.go.tz/",
+      "status": 200,
+      "resolved": "https://www.cmsa.go.tz/"
+    },
+    {
+      "url": "https://portal.cmsa.go.tz/register-of-licensees",
+      "status": 200,
+      "resolved": "https://portal.cmsa.go.tz/register-of-licensees"
+    },
+    {
+      "url": "https://www.bot.go.tz/Publications/Acts%2C%20Regulations%2C%20Circulars%2C%20Guidelines/Circulars/en/2026012919162497.pdf",
+      "status": 200,
+      "resolved": "https://www.bot.go.tz/Publications/Acts%2C%20Regulations%2C%20Circulars%2C%20Guidelines/Circulars/en/2026012919162497.pdf",
+      "text_excerpt": " \n \n \n \n \n \n \n2 Mirambo Street, P. O. Box 2939, 11884 Dar es Salaam \u2013 Tanzania,  \n                 Email:  info@bot.go.tz Website: www.bot.go.tz, Telephone: +255 22 223 2000/3000/3215/3565 \n \n \n \n \nOn reply please quote: \nRef. No: IA.248/301/01/643                        22nd December 2025 \nTo. All Foreign Exchange Authorized Dealers \nRE: DIRECTIVES ON FOREIGN EXCHANGE OPERATIONS \nReference is made to the captioned subject.  \n2.      The Bank of Tanzania wishes to inform all foreign exchange dealers that Directive (i) \non Circular No.IA.248/301/01/124 dated 31 May 2023 , which states that  \u201cAll Foreign \nexchange transactions exceeding USD 1,000,000.00 per transaction in the retail market \nshall at all times be traded within the interbank foreign exchange market prevailing quoted \nprices. All transactions of a single customer in a day shall be su mmed up for the purpose \nof determining this amount.\u201d is hereby revoked.  \n3. All other provisions of Circular No.IA.248/301/01/124 remain valid and in full force \nas follows: \n(i) Trading of foreign exchange with international foreign currency brokers who \nare not licensed in the United Republic of Tanzania is strictly prohibited.  \n(ii) At all times, foreign exchange dealers are required to strictly observe the \nprocedures for Know Your Customer (KYC) in their undertakings.  \n(iii) The limit for the foreign exchange Net Open Position (NOP) shall be ten per \ncent (10%) of Core Capital and shall always be observed.  \n(iv) All Letters of Credit (LCs) for transit cargoes shall be funded by foreign \nexchange mobilized from respective destination countries.  \n4.  All foreign exchange authorized dealers are reminded to continue adhering to all \napplicable regulatory requirements governing foreign exchange operations, and to \nensure full compliance with the Foreign Exchange Act, 1992 and related regulations. \n5. This Circular shall take effect from 1st January 2026. \n \nEmmanuel M. Tutuba \nGOVERNOR \nTHE UNITED REPUBLIC OF TANZANIA \nBANK OF TANZANIA \n \n"
+    },
+    {
+      "url": "https://www.bot.go.tz/DFDI/FinancialConsumerAlert?lang=en",
+      "status": 200,
+      "resolved": "https://www.bot.go.tz/DFDI/FinancialConsumerAlert?lang=en"
+    }
+  ],
+  "registration": [
+    {
+      "url": "https://justmarkets.com/registration/trader",
+      "status": 200,
+      "resolved": "https://justmarkets.com/register/trader"
+    },
+    {
+      "url": "https://my.exness.com/accounts/sign-up?lng=en",
+      "status": 200,
+      "resolved": "https://my.exness.com/accounts/sign-up?lng=en"
+    }
+  ],
+  "circular_sha256": "b54fd89a25a42423dac6ae85bfdb683cbeacd29c4f543c3b87162cc52c65820d"
+}

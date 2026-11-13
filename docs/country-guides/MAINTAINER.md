@@ -107,3 +107,5 @@ Pakistan and Indonesia reuse the same supplied-article template; see `pakistan-i
 Nigeria retains its eight supplied brands and three FAQs; see `nigeria-update-2026-11-13.md`. SEC operator registration, CBN/wholesale FX rules, foreign licensing and an actual resident account/funding route remain separate checks. Official registration links do not establish Nigerian authorisation.
 
 Ghana retains six supplied brands; see `ghana-update-2026-11-13.md`. Do not describe the BoG interbank list as retail CFD approval or treat a localised marketing page/restricted-country omission as verified resident acceptance. Orbex's official information link has an automated retrieval limitation, not a verified direct application destination.
+
+Tanzania retains eight supplied brands; see `tanzania-update-2026-11-13.md`. Preserve the verified BoT circular's authorised-dealer addressee and scope. Do not extrapolate it into a definitive ruling on every individual's CFD activity, or treat community payment references as confirmed Tanzanian onboarding/mobile-money support.
