@@ -19,8 +19,8 @@ export function ResearchShortlist({ brokers, checks }: { brokers: ResearchBroker
       }}>{label}</button>)}
     </div>
     <div role="tabpanel" id="cg-shortlist-panel-0" aria-labelledby="cg-shortlist-tab-0" hidden={selected !== 0}>
-      <ol className="cg-shortlist-brokers">{brokers.map((broker, i) => <li key={broker.slug}><a href={`#research-${broker.slug}`}><span>{i + 1}</span><BrokerMark broker={broker} /><span><strong>{broker.name}</strong><small>Not rated</small></span><ChevronRight size={15} aria-hidden="true" /></a></li>)}</ol>
-      <p>Research subjects, listed in dossier order. No ranking or recommendation.</p>
+      <ol className="cg-shortlist-brokers">{brokers.map((broker, i) => <li key={broker.slug}><a href={`#research-${broker.slug}`}><span>{i + 1}</span><BrokerMark broker={broker} /><span><strong>{broker.name}</strong><small>Research candidate</small></span><ChevronRight size={15} aria-hidden="true" /></a></li>)}</ol>
+      <p>Unranked research subjects.</p>
     </div>
     <div role="tabpanel" id="cg-shortlist-panel-1" aria-labelledby="cg-shortlist-tab-1" hidden={selected !== 1}>
       <ul className="cg-shortlist-checks">{checks.map(check => <li key={check.id}><a href={`#${check.id}`}>{check.title}<ChevronRight size={15} aria-hidden="true" /></a></li>)}</ul>

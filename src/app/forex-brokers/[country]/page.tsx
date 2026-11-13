@@ -4,6 +4,7 @@ import { countryGuides, countryRegistry, getCountryGuide } from "@/lib/country-g
 import { countryAffiliates } from "@/lib/country-guides/affiliate-agreements";
 import { countryGuideMetadata, countryGuideStructuredData, evaluationDate } from "@/lib/country-guides/seo";
 import "../country-guides.css";
+import "../country-reader.css";
 
 // Evaluate date-sensitive agreement expiry on the server for each request.
 // Essential research still arrives as HTML; no client-side data fetch is used.

@@ -12,8 +12,8 @@ This is separate from the existing “how to start trading” Insights articles.
 - Existing author record: David Odoi, linked to the existing profile; no legal or other qualifications assumed.
 - Country page and library are noindex, follow. Neither enters the sitemap while the only guide is a draft.
 - The shared header omits its broker-finder prompt on country-research routes and uses a research link in the mobile drawer. General site navigation remains available.
-- No account-opening, funding or circumvention instructions. Links in the guide lead to the identified official references, supplied editorial guidance, the author and the existing methodology/corrections pages.
-- Unknown values remain unknown. The currency claim is null and is not displayed or used in a calculation.
+- No account-opening, funding or circumvention instructions. Links lead to official references, the author, methodology/corrections, relevant educational tools and the four existing global reviews. Review links are reading resources, not Sri Lankan eligibility or local-authorization evidence.
+- Unknown values remain unknown. The currency claim is null; no exchange rate, conversion quote or country-specific account-currency entitlement is invented. The reader checklist asks about LKR/account-currency conversion charges.
 
 ## Research attempt and actual evidence
 
@@ -45,7 +45,7 @@ UI components under `src/components/country-guides` consume this data without ha
 ## Adding another country responsibly
 
 1. Research that country's actual legal and funding position first. Preserve exact URLs, publisher, scope, publication-date provenance, access results and actual check dates. Record unknowns explicitly.
-2. Add one `CountryGuide` with its own direct answer, legal summary, five independent questions, useful sections and FAQs. Do not duplicate Sri Lanka prose by swapping the country name. Add only researched routes; unknown slugs return 404.
+2. Add one `CountryGuide` with its own direct answer, legal summary, five independent questions, useful sections and three concise FAQs. Keep the complete main content at or below 1,700 words, including closed disclosures. Do not duplicate Sri Lanka prose by swapping the country name. Optional intro and SEO-title claims must match the country scope. Add only researched routes; unknown slugs return 404.
 3. Link a genuine existing author record. Add a real editor/legal reviewer only when a real accountable person is documented; roles and professional qualifications are not inferred from an author name.
 4. Keep the guide draft/pending and commercial links false while review is incomplete. Entering an affiliate URL, a review date or `publicationStatus: approved` alone cannot unlock the page.
 5. Where justified, add the exact entity and licence evidence separately from its broker's master identity. Document resident acceptance, local authorization, trading permission and funding permission as independent, scoped claims.

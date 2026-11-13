@@ -48,11 +48,13 @@ export type CountryBrokerMapping = {
 export type CountrySection = {
   id: string; title: string; eyebrow: string;
   paragraphs: Claim[]; points?: string[];
+  table?: { headers: string[]; rows: string[][]; caption: string };
 };
 export type CountryGuide = {
   suppliedResearch?: SuppliedCountryResearch;
   name: string; slug: string; locale: string; currency: Claim;
   title: string; description: string; audience: string; directAnswer: string;
+  intro?: Claim; seoTitle?: Claim;
   legalStatus: LegalStatus; legalSummary: Claim; legalSources: string[];
   legalReviewedAt: string | null; legalReviewReference: string | null;
   humanApprovalReference: string | null; publishedAt: string | null; updatedAt: string | null;

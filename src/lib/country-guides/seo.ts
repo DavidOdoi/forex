@@ -7,7 +7,8 @@ import type { CountryGuide, GuideRegistry } from "./types";
 export const countryGuidePath = (slug: string) => `/forex-brokers/${slug}`;
 export const evaluationDate = () => new Date().toISOString().slice(0, 10);
 export function countryGuideMetadata(country: CountryGuide, registry: GuideRegistry, asOf: string): Metadata {
-  const title = `Forex Brokers in ${country.name}: Rules & Risks | Devin Forex`;
+  const heading = country.seoTitle?.scope.countrySlug === country.slug && country.seoTitle.scope.entityId === null ? country.seoTitle.value : null;
+  const title = `${heading ?? `Forex Brokers in ${country.name}: Rules & Risks`} | Devin Forex`;
   const url = siteOrigin + countryGuidePath(country.slug);
   return {
     title: { absolute: title }, description: country.description, alternates: { canonical: url },

@@ -144,12 +144,12 @@ test("a scoped firsthand finding needs its checked record and is never inferred 
   fixture.mapping.strengths = [{ ...fixture.mapping.platforms, value: "Synthetic firsthand observation — fixture only", sourceIds: [record.id], verification: "firsthand_tested", checkedAt: "2026-11-01" }];
   const props = { ...fixture, asOf: testAsOf };
   const withRecord = renderToStaticMarkup(createElement(CountryGuideContent, props));
-  expect(withRecord).toContain("1 scoped record(s)");
+  expect(withRecord).toContain("1 scoped record");
   expect(withRecord).toContain("Synthetic firsthand observation");
   record.verification = "unverified";
   const withoutRecord = renderToStaticMarkup(createElement(CountryGuideContent, props));
   expect(withoutRecord).not.toContain("Synthetic firsthand observation");
-  expect(withoutRecord).toContain("None claimed");
+  expect(withoutRecord).toContain("No live-account, deposit, withdrawal or execution tests were performed");
 });
 
 test("approved informational guides can be indexable without commercial links, with truthful publication metadata", () => {
@@ -178,6 +178,7 @@ test("country components reuse different data without Sri Lanka prose or unverif
   fixture.country.legalStatus = "restricted"; fixture.registry.approvals[0].legalStatus = "restricted";
   const restricted = renderToStaticMarkup(createElement(CountryGuideContent, props));
   expect(restricted).toContain("Synthetic Fixture Entity"); expect(restricted).not.toContain("Sri Lanka");
+  expect(JSON.stringify(countryGuideMetadata(fixture.country, fixture.registry, testAsOf).title)).not.toContain("Sri Lanka");
   expect(restricted).not.toContain("tracking.example.test"); expect(restricted).not.toContain('rel="sponsored');
   fixture.country.legalReviewedAt = "2026-11-10"; fixture.country.legalReviewReference = null;
   const unreviewed = renderToStaticMarkup(createElement(CountryGuideContent, props));
@@ -191,9 +192,9 @@ test("Sri Lanka renders legal-first content, sources and honest schema without J
     const response = await page.goto(path); expect(response!.status()).toBe(200);
     await expect(page.locator("h1")).toHaveCount(1); await expect(page.locator("h1")).toHaveText(sriLankaGuide.title);
     await expect(page.locator("h1")).not.toContainText("Best");
-    await expect(page.locator(".cg-legal-summary")).toContainText("21 October 2019");
+    await expect(page.locator("#local-rules")).toContainText("21 October 2019");
     await expect(page.locator(".cg-legal-summary")).toContainText("not our independent source checks");
-    await expect(page.locator(".cg-legal-summary")).toContainText("undated PDF body");
+    await expect(page.locator("#local-rules")).toContainText("PDF body is described as undated");
     await expect(page.locator(".cg-status-card")).toContainText("Commercial broker links are disabled");
     await expect(page.locator(".cg-checks>li")).toHaveCount(5);
     await expect(page.locator("#broker-comparison")).toHaveCount(0);
@@ -201,8 +202,8 @@ test("Sri Lanka renders legal-first content, sources and honest schema without J
     await expect(page.locator("body>header").getByRole("link", { name: "Find my broker", exact: true, includeHidden: true })).toHaveCount(0);
     await expect(page.locator('main a[rel~="sponsored"]')).toHaveCount(0);
     await expect(page.locator(".cg-faq details")).toHaveCount(3);
-    await expect(page.locator(".cg-sources li")).toHaveCount(12);
-    await expect(page.locator(".cg-byline")).toContainText("Legal review: not yet recorded");
+    await expect(page.locator(".cg-sources li")).toHaveCount(10);
+    await expect(page.locator("#methodology")).toContainText("Legal review: not yet recorded");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", siteOrigin + path);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
     const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());
@@ -233,11 +234,11 @@ test("country guide is keyboard-accessible and readable on phone, tablet and des
   expect(await faq.evaluate(node => getComputedStyle(node).animationName)).toBe("none");
   await page.locator(".cg-hero").screenshot({ path: "test-results/sri-lanka-hero-desktop.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
   await page.setViewportSize({ width: 390, height: 1000 });
-  const contents = page.locator(".cg-mobile-contents summary"); await contents.focus(); await page.keyboard.press("Enter");
-  await expect(page.locator('.cg-mobile-contents a[href="#legal-status"]')).toBeVisible();
-  await page.locator('.cg-mobile-contents a[href="#legal-status"]').click();
+  const localRules = page.getByRole("navigation", { name: "Guide sections", exact: true }).getByRole("link", { name: "Local rules", exact: true });
+  await localRules.focus(); await page.keyboard.press("Enter");
   expect(new URL(page.url()).hash).toBe("#legal-status");
   await page.locator(".cg-legal-summary").screenshot({ path: "test-results/sri-lanka-legal-mobile.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
+  await page.locator(".cg-check-disclosure>summary").click();
   await page.locator(".cg-checks").screenshot({ path: "test-results/sri-lanka-checks-mobile.png", style: "body>header,.cg-section-nav{visibility:hidden}" });
   expect(errors).toEqual([]);
 });

@@ -3,7 +3,7 @@ import type { Claim, CountryGuide, GuideRegistry, SuppliedCountryResearch } from
 
 export const sriLankaDossier = dossierData as SuppliedCountryResearch;
 const notice = "cbsl-2019-notice", faq = "dfe-current-transactions", gazette = "gazette-2493-36", order = "gazette-2493-38", fsa = "fsa-cross-border-2021";
-const reported = (value: string, sourceIds: string[] = [], quote?: Claim["reportedQuote"]): Claim => ({ value, sourceIds, checkedAt: null, verification: "unverified", scope: { countrySlug: "sri-lanka", entityId: null }, note: "Adapted from the supplied 10 November 2026 dossier. Source access is contributor-reported; no independent recheck or legal approval is recorded.", ...(quote ? { reportedQuote: quote } : {}) });
+const reported = (value: string, sourceIds: string[] = [], quote?: Claim["reportedQuote"]): Claim => ({ value, sourceIds, checkedAt: null, verification: "unverified", scope: { countrySlug: "sri-lanka", entityId: null }, note: "Reported research or editorial reading guidance. No independent recheck or legal approval is recorded; the complete supplied dossier is preserved separately.", ...(quote ? { reportedQuote: quote } : {}) });
 
 export function applySriLankaDossier(country: CountryGuide, registry: GuideRegistry) {
   if (country.slug !== sriLankaDossier.countrySlug) return;
@@ -13,60 +13,62 @@ export function applySriLankaDossier(country: CountryGuide, registry: GuideRegis
     else registry.sources[index] = structuredClone(source);
   }
   country.suppliedResearch = structuredClone(sriLankaDossier);
-  country.description = "Forex brokers in Sri Lanka: reported CBSL restrictions, card-payment rules and the 2026 investment regulations. Legal review is pending; no brokers are recommended.";
-  country.directAnswer = "We do not rank or recommend forex brokers for Sri Lankan residents. The reported CBSL warning, card-payment restriction and later investment rules require qualified legal review; resident eligibility and local authorization remain unresolved.";
-  country.legalSummary = reported("The supplied dossier reports a CBSL warning covering forex trading, related outward remittances, receipt of profits and encouragement of those transactions. It also reports DFE restrictions on Sri Lankan bank-issued cards. Gazette 2493/36 introduced later investment rules in June 2026, but their interaction with forex/CFDs remains unresolved. These are reported findings, not our independent source checks or legal advice.", [notice, faq, gazette]);
+  country.title = "Forex Brokers in Sri Lanka: Costs, Rules & Key Checks";
+  country.seoTitle = reported("Forex Brokers in Sri Lanka: Key Checks");
+  country.intro = reported("This guide to forex brokers in Sri Lanka compares the questions to ask about eligibility, costs, funding and platform access.");
+  country.description = "Forex brokers in Sri Lanka: compare four research candidates, account costs, platform checks and reported local rules before making a decision.";
+  country.directAnswer = "No Sri Lanka-specific broker recommendation is verified here. Compare the four research candidates below; resident eligibility, the serving entity and local trading/funding permission still need confirmation.";
+  country.legalSummary = reported("The supplied research identifies a CBSL forex warning and restrictions on Sri Lankan bank-issued cards. Their interaction with the June 2026 investment rules remains unresolved; these are not our independent source checks or a current legal determination.", [notice, faq, gazette]);
   country.legalSources = [notice, faq, gazette, order, "dfe-regulations-index", "dfe-residency"];
-  country.sourceIds = [notice, faq, gazette, order, "dfe-regulations-index", "dfe-residency", "dfe-contact", fsa, "cbsl-current-notices", "dfe-guidance", "google-helpful-content", "google-reviews"];
+  country.sourceIds = [notice, faq, gazette, order, "dfe-regulations-index", "dfe-residency", "dfe-contact", fsa, "cbsl-current-notices", "dfe-guidance"];
   country.questions = [
-    { question: "Will a broker accept a registration?", answer: reported("The dossier did not establish explicit Sri Lankan resident acceptance for Exness, XM, IC Markets or Pepperstone. An omitted restricted-country entry is not affirmative acceptance evidence."), status: "unknown" },
-    { question: "Which company would serve the resident?", answer: reported("No Sri Lankan serving-entity allocation was established for any of the four research candidates. Foreign research entities and similarly named companies must not be assigned to a resident without evidence."), status: "unknown" },
-    { question: "Is that exact entity locally authorized?", answer: reported("No Sri Lankan authorization was established for the candidates. The dossier cites the Seychelles FSA's distinction between its licences and approvals needed to offer services in another jurisdiction.", [fsa]), status: "unknown" },
-    { question: "Are trading and funding lawful for this resident?", answer: reported("Reported restrictions must be read alongside the 2026 regulations, applicable section 22 orders and implementing directions. The full product- and resident-specific position still needs qualified legal review.", [notice, faq, gazette, order]), status: "pending_review" },
-    { question: "May Devin Forex target this country commercially?", answer: reported("No executed affiliate agreement, Sri Lanka targeting permission or qualified approval of this page's promotional scope has been supplied. The reported warning also addresses encouragement of the specified transactions.", [notice]), status: "unknown" },
+    { question: "Will a broker accept a registration?", answer: reported("Explicit Sri Lankan resident acceptance is not established for the four research candidates."), status: "unknown" },
+    { question: "Which company would serve the resident?", answer: reported("Confirm the exact contracting company; a group name does not establish the serving entity."), status: "unknown" },
+    { question: "Is that exact entity locally authorized?", answer: reported("No Sri Lankan authorization is established. A foreign licence does not establish local permission.", [fsa]), status: "unknown" },
+    { question: "Are trading and funding lawful for this resident?", answer: reported("The resident, product, transaction and 2026 instruments need qualified legal interpretation.", [notice, gazette, order]), status: "pending_review" },
+    { question: "May Devin Forex target this country commercially?", answer: reported("No country-targeting agreement or qualified promotional approval is recorded.", [notice]), status: "unknown" },
   ];
   country.sections = [
-    { id: "local-rules", eyebrow: "Historical warning · reported wording", title: "What the CBSL notice is reported to say", paragraphs: [
-      reported("The dossier says the notice addresses a ‘person in, or resident in Sri Lanka,’ not merely citizenship. It quotes a warning about forex transactions, related remittances and receipt of income or profits. We have not independently rechecked the original wording.", [notice], { sourceId: notice, locator: "Operative warning, as reproduced in the dossier", text: "Accordingly, any other person in, or resident in Sri Lanka is not permitted to undertake forex trading transactions or remit funds outside Sri Lanka for such transactions and receive income or profit earned from forex trading." }),
-      reported("The report also says CBSL had not granted authorized dealers permission to facilitate forex trading for the specified persons. It identifies authorized dealers here as licensed commercial banks. That historical statement is not a complete current product-by-product legal determination.", [notice]),
-      reported("The warning is also reported to address parties encouraging these transactions. Its application to a publisher, affiliate comparison or particular promotion requires legal assessment; this research is not that approval.", [notice], { sourceId: notice, locator: "Encouragement warning, as reproduced in the dossier", text: "CBSL may take actions against both parties who encourage the public to engage in such forex transactions and persons who engage themselves in such transactions, in terms of FEA." }),
-      reported("The dossier describes the PDF body as undated. The supplied filename indicates 21 October 2019; this is not an independently established publication date.", [notice]),
+    { id: "local-rules", eyebrow: "Read the local context", title: "What the CBSL warning is reported to say", paragraphs: [
+      reported("The dossier reproduces this historical warning. Its PDF body is described as undated; the filename suggests 21 October 2019, not a confirmed publication date.", [notice], { sourceId: notice, locator: "Historical warning, reproduced by the dossier", text: "Accordingly, any other person in, or resident in Sri Lanka is not permitted to undertake forex trading transactions or remit funds outside Sri Lanka for such transactions and receive income or profit earned from forex trading." }),
     ] },
-    { id: "investment-rules-2026", eyebrow: "A later instrument needs interpretation", title: "The reported June 2026 regulation: what remains unresolved", paragraphs: [
-      reported("The dossier identifies Gazette 2493/36, dated 18 June 2026 and effective 20 June 2026. It reports that the regulation rescinds the 2021 overseas-capital regulations with saving provisions, while preserving applicable section 22 orders.", [gazette]),
-      reported("Its account distinguishes paragraph 3's rupee-conversion categories, including the resident-individual employee-share provisions, from paragraph 4's treatment of existing foreign assets or foreign exchange. The regulation does not expressly name retail forex or CFDs in the reported text. We have not established that these provisions authorize those products or provide a lawful funding route.", [gazette]),
-      reported("The operative English text of section 22 order Gazette 2493/38 was not accessed by the contributor. Implementing directions, saving provisions and other applicable laws also matter. Neither ‘nothing changed after 2019’ nor ‘the 2026 regulation legalized offshore forex trading’ is established by this report.", [gazette, order, "dfe-regulations-index"]),
+    { id: "investment-rules-2026", eyebrow: "Later rules need interpretation", title: "What changed in the reported 2026 investment rules?", paragraphs: [
+      reported("The dossier dates Gazette 2493/36 to 18 June 2026, effective 20 June 2026. It distinguishes rupee-conversion investments from use of existing foreign assets; it does not establish retail forex/CFD permission.", [gazette]),
+      reported("The operative English text of order 2493/38 was not accessed by the contributor. Residency definitions, implementing directions and other applicable restrictions still need qualified review.", [order, "dfe-residency", "dfe-regulations-index"]),
     ] },
-    { id: "funding", eyebrow: "A specific payment-channel restriction", title: "What the reported card-payment rule does not authorize", paragraphs: [
-      reported("The dossier reports that DFE current-transactions FAQ 30 lists forex trading among prohibited uses of electronic fund transfer cards issued by banks in Sri Lanka. The FAQ's displayed update is reported as 19 October 2026; it is not our source-check date.", [faq], { sourceId: faq, locator: "Current-transactions FAQ, question 30; excerpt reported by the dossier", text: "EFTCs shall not be used … Dealings in foreign exchange (Forex Trading)" }),
-      reported("This reported rule concerns that particular payment channel. It does not establish that another channel makes trading lawful. The guide provides no account-opening, funding or routing instructions.", [faq]),
-      reported("The same FAQ is reported to discuss ordinary documented foreign payments, including goods, services, education and medical expenses. Those permissions are distinct from speculative forex or CFD activity; it would be inaccurate to describe every currency exchange or foreign payment as prohibited.", [faq]),
+    { id: "costs-and-accounts", eyebrow: "Look beyond the headline spread", title: "Forex brokers in Sri Lanka: compare the total cost", paragraphs: [
+      reported("No Sri Lankan account fee schedule is verified here. Use this checklist with the exact entity’s current terms."),
+    ], table: { caption: "Costs to compare before judging an account", headers: ["Cost", "What to check"], rows: [
+      ["Spread", "Typical spread as well as the advertised minimum."],
+      ["Commission", "Per-side or round-trip units and contract size."],
+      ["Overnight charges", "Swaps, covered instruments and swap-free administration fees."],
+      ["Conversion & payments", "LKR/account-currency conversion, intermediary and withdrawal charges."],
+      ["Minimum deposit", "An entry requirement, separate from a suitable risk budget."],
+    ] } },
+    { id: "platforms-and-accounts", eyebrow: "Choose the questions that fit you", title: "Platforms, account types and swap-free conditions", paragraphs: [],
+      table: { caption: "Match your needs to documented account terms", headers: ["Your priority", "Ask the exact serving entity"], rows: [
+        ["New to trading", "What demo eligibility, order controls and learning support are documented?"],
+        ["MT4, MT5 or EAs", "Which platform, instruments and automated strategies are supported?"],
+        ["Swap-free account", "Who qualifies, which instruments are covered, and what other charges apply?"],
+      ] } },
+    { id: "funding", eyebrow: "Sri Lanka-specific payment context", title: "Deposits, withdrawals and card restrictions", paragraphs: [
+      reported("DFE FAQ 30 is reported to prohibit forex trading through electronic fund transfer cards issued by Sri Lankan banks. This does not establish that another channel is lawful.", [faq]),
+      reported("Ask for current written clarification covering your resident category, product and transaction. Then check the permitted method’s conversion, bank charges and withdrawal terms.", ["dfe-contact"]),
     ] },
-    { id: "residency", eyebrow: "Scope is more than nationality", title: "Why residency and product definitions matter", paragraphs: [
-      reported("The dossier describes a DFE summary with resident categories extending beyond passport nationality, and says the 2026 regulation refers to a section 31 residency order in Gazette 2213/40, as amended. The underlying residency order and amendments were not accessed by the contributor.", ["dfe-residency", gazette]),
-      reported("Do not determine a person's legal classification from an IP address, passport or broker dropdown. The scope of ‘in, or resident in Sri Lanka,’ different derivative products, special permissions and existing investments must be addressed in qualified review.", [notice, "dfe-residency", gazette]),
+    { id: "checking-claims", eyebrow: "Pause before trusting a promise", title: "Red flags in broker marketing", paragraphs: [], points: [
+      "An unverifiable company or licence number.",
+      "Guaranteed returns or pressure to deposit immediately.",
+      "Personal payment details or unclear withdrawal conditions.",
+      "A foreign group licence presented as Sri Lankan authorization.",
     ] },
-    { id: "availability", eyebrow: "Research candidates, not a shortlist", title: "What the four broker candidates still do not establish", paragraphs: [
-      reported("The supplied dossier examines Exness, XM, IC Markets and Pepperstone as research candidates. It does not establish Sri Lankan resident eligibility, the actual serving entity or local authorization for any of them. No recommendation or approved entity mapping follows from those descriptions."),
-      reported("Foreign registers and broker disclosures are separate evidence types. A company-name match is not confirmation of a licence number omitted from the retrieved entry, and neither establishes Sri Lankan permission. Source discrepancies and unverified client agreements remain in the research record.", [fsa]),
-    ], points: ["No ranked or commercial comparison is approved.", "No advertised global deposit, spread, platform or protection is presented as a Sri Lankan account entitlement.", "Do not merge similarly named companies, group licences or terms from different contracts."] },
-    { id: "protection", eyebrow: "Authorization and remedies are separate", title: "What a foreign licence cannot establish on its own", paragraphs: [
-      reported("The dossier quotes the Seychelles FSA as requiring relevant host-jurisdiction approval, exemption or cross-border arrangements when a securities dealer offers services elsewhere. This does not determine any named candidate's Sri Lankan authorization.", [fsa], { sourceId: fsa, locator: "Cross-border-services passage, excerpt reported by the dossier", text: "must hold the required exemption, cross border agreement or relevant approval" }),
-      reported("The same communiqué is reported to distinguish regulatory enforcement from recovery of client funds. A foreign licence therefore must not be presented as a guarantee of recovery or compensation. The operative client agreements, complaint procedures, forums and exclusions were not verified in this dossier.", [fsa]),
-    ] },
-    { id: "checking-claims", eyebrow: "Verify before relying on marketing", title: "How to question promises and seek clarification", paragraphs: [
-      reported("The report describes warnings about guaranteed high returns, pressure and misleading credibility claims. Treat a testimonial, copied licence image, accessible website or affiliate relationship as something to check—not proof of local permission.", [notice, fsa]),
-      reported("Use the official DFE contact page to confirm current contact channels and request written clarification for the resident category, product and transaction concerned. The dossier's contact details have not been independently rechecked here; no phone or email channel is endorsed by this guide.", ["dfe-contact"]),
-    ] },
-    { id: "legal-review-questions", eyebrow: "Outstanding qualified review", title: "Questions the research cannot approve", paragraphs: [reported("The contributor identifies these legal questions. They remain unresolved rather than becoming a permission to trade, fund or promote an account.", [notice, gazette, order, "dfe-residency"])], points: sriLankaDossier.legalReviewQuestions },
-    { id: "owner-evidence", eyebrow: "Private records are not public research", title: "What still needs genuine owner-supplied evidence", paragraphs: [reported("The dossier did not inspect private agreements, genuine testing records or human approvals. Research access dates cannot replace legalReviewedAt or an editorial approval.")], points: ["Executed, active affiliate agreements and written Sri Lanka country-targeting permission.", "Dated compliance confirmation of the actual serving entity and resident category; this alone is not local legal permission.", "Qualified legal advice addressing current instruments and the proposed page's informational or promotional scope.", "Real author/reviewer identities, relevant qualifications, consent and recorded review scope.", "Genuine records for any firsthand assertion. No account or deposit test is proposed as a way around unresolved restrictions."] },
   ];
   country.faqs = [
-    { question: "Is forex trading legal in Sri Lanka?", answer: reported("The supplied research reports a CBSL forex warning and bank-card payment restrictions. Later investment regulations need qualified interpretation; they do not establish a lawful retail forex/CFD route here. The current position for a particular resident, product and transaction remains unresolved. Seek current written clarification before acting.", [notice, faq, gazette, order]) },
-    { question: "Which forex brokers accept traders from Sri Lanka?", answer: reported("The supplied dossier examines Exness, XM, IC Markets and Pepperstone, but establishes neither explicit Sri Lankan resident acceptance nor the serving entity or local authorization for any of them. A country dropdown or accessible registration page is not sufficient evidence. They remain research candidates, not recommendations.") },
-    { question: "How can I verify whether a forex broker is authorized?", answer: reported("Identify the exact legal entity in the proposed client agreement. Check its registration directly with the relevant regulator, then seek confirmation of the permissions needed to serve your resident category in Sri Lanka. A foreign licence alone does not establish local authorization or lawful trading and funding.", [fsa, "dfe-contact", notice]) },
+    { question: "Is forex trading legal in Sri Lanka?", answer: reported("The reported CBSL warning, card restrictions and later investment rules do not establish a lawful retail forex/CFD route here. Obtain current qualified clarification for your resident category, product and transaction.", [notice, faq, gazette]) },
+    { question: "Which forex brokers accept traders from Sri Lanka?", answer: reported("The dossier covers Exness, XM, IC Markets and Pepperstone, but confirms neither resident acceptance nor the serving entity and local authorization. They remain research candidates, not recommendations.") },
+    { question: "How can I verify whether a forex broker is authorized?", answer: reported("Identify the legal company in the proposed agreement. Check its regulator’s register and the permissions required to serve your resident category. A foreign licence alone does not establish Sri Lankan authorization.", [fsa, "dfe-contact"]) },
   ];
-  // A research packet is not a review or a country-eligibility/affiliate record.
+  // The complete research ledger and owner/legal questions remain in the
+  // supplied record. Shorter public copy does not create approval or eligibility.
   country.legalStatus = "pending_review"; country.publicationStatus = "draft";
   country.commercialLinksAllowed = false; country.legalReviewedAt = null;
   country.legalReviewReference = null; country.humanApprovalReference = null;

@@ -57,7 +57,8 @@ test("retired broker URLs are gone while only the selected four can appear in pu
   const xml = await (await request.get("/sitemap.xml")).text();
   expect(xml).not.toContain(`<loc>${siteOrigin}/reviews</loc>`);
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
-  expect(urls).toHaveLength(37);
+  expect(urls).toHaveLength(38);
+  expect(urls).toContain(`${siteOrigin}/tools/forex-market-hours`);
   for (const url of urls) {
     const response = await request.get(new URL(url).pathname);
     const html = await response.text();
