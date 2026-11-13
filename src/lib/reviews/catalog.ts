@@ -7,6 +7,7 @@ import { globalReview, GLOBAL_SCOPE } from "./global";
 import { davidOdoi } from "../authors";
 import { applyIcMarketsResearch } from "./ic-markets";
 import { applyFusionMarketsResearch } from "./fusion-markets";
+import { applyIgResearch } from "./ig";
 
 export const researchEntries: ResearchEntry[] = raw.entries.map(entry => ({ ...entry, providerType: Object.hasOwn(providerLabels, entry.providerType) ? entry.providerType as ProviderType : "other" }));
 export const researchInventory = { total: raw.inputEntries, retail: raw.retailEntries, separate: raw.separateProviderEntries };
@@ -55,6 +56,7 @@ export function getReview(slug: string, requestedCountry?: string) {
   const review = profile ? internationalReview(research.name, profile) : globalReview(research.name, research.slug);
   applyIcMarketsResearch(review);
   applyFusionMarketsResearch(review);
+  applyIgResearch(review);
   review.providerType = research.providerType;
   review.author ??= { ...davidOdoi };
   review.relatedResearch = relatedReviewLinks(slug, country);
