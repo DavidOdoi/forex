@@ -1,0 +1,11 @@
+# Nigeria supplied guide
+
+Route `/forex-brokers/nigeria` reuses the supplied-article template with eight brands in source order: Fusion Markets, Pepperstone, XM, IC Markets, Tickmill, Hantec Markets, HFM and AvaTrade. Original archived at `research/nigeria-supplied-2026-11-13.md`; edited copy/metadata in `src/data/country-guides/nigeria-article.json`. The original ends during the closing list, but all eight profiles and three FAQ topics were supplied.
+
+Three tables, exactly three FAQs, eight unpaid official account buttons and contextual internal links are populated, with no image or new design. Hantec's pre-registration link and HFM's actual registration domain were extracted from their official sites; their destinations, XM and Tickmill resolved successfully. Existing checked public flows are used for the other brands. No tracking agreement, Nigerian company allocation, local approval, tested ranking or account performance is invented.
+
+The article separates Nigerian SEC operator/activity permissions, CBN banking/FX context and actual offshore account/funding requirements. It does not treat the wholesale FX Code, historical campaign or affiliate country list as blanket retail funding permission. Unlinked notice dates, specific allegations, third-party rankings and broker-specific test fees are not repeated as independently established findings. No universal compensation or negative-balance guarantee is asserted. The eight application links remain reference destinations, not local authorisation claims.
+
+SEC operator/home, CBN home and the supplied FX Code URL retrieved. Availability/redirect checks are recorded separately from substantive legal verification in `../research/nigeria-url-checks-2026-11-13.json`. Dates of independent review/approval remain null. Draft/noindex/follow and sitemap exclusion are preserved.
+
+Validation: TypeScript, scoped ESLint and production build passed. Browser checks passed: one H1 and source heading order, title/description lengths, canonical/Open Graph URLs, three tables, exact three FAQ disclosures/schema entries, eight qualified buttons, live internal destinations, section targets, no images/errors, 18px paragraphs, white background, no document overflow at 320/390/1440px. Full main text including navigation and closed FAQs: 1,627 words.

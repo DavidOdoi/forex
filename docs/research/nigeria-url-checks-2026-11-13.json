@@ -1,0 +1,131 @@
+{
+  "scope": "Public URL availability and redirect checks, not legal review, resident eligibility or company/product authorisation.",
+  "supplied": [
+    {
+      "url": "https://www.sec.gov.ng/for-investors/find-a-registered-operator/",
+      "status": 200,
+      "resolved": "https://www.sec.gov.ng/for-investors/find-a-registered-operator/"
+    }
+  ],
+  "additional": [
+    {
+      "url": "https://www.sec.gov.ng/",
+      "status": 200,
+      "resolved": "https://www.sec.gov.ng/",
+      "links": [
+        {
+          "href": "https://www.sec.gov.ng/for-investors/find-a-registered-operator/",
+          "label": "Find a Registered Operator"
+        },
+        {
+          "href": "https://www.sec.gov.ng/for-businesses/register-a-company/",
+          "label": "Register a Company"
+        },
+        {
+          "href": "https://www.sec.gov.ng/fintech-and-innovation-hub-finport/registered-fintech-operators/",
+          "label": "Registered FinTech Operators"
+        }
+      ]
+    },
+    {
+      "url": "https://www.cbn.gov.ng/",
+      "status": 200,
+      "resolved": "https://www.cbn.gov.ng/",
+      "links": []
+    },
+    {
+      "url": "https://www.cbn.gov.ng/Out/2025/CCD/Nigeria%20FX%20Code%20.pdf",
+      "status": 200,
+      "resolved": "https://www.cbn.gov.ng/Out/2025/CCD/Nigeria%20FX%20Code%20.pdf",
+      "links": []
+    },
+    {
+      "url": "https://hmarkets.com/",
+      "status": 200,
+      "resolved": "https://hmarkets.com/",
+      "links": [
+        {
+          "href": "https://hmarkets.com/live-account-pre-registration/",
+          "label": "Open account"
+        },
+        {
+          "href": "https://hmarkets.com/live-account-pre-registration/",
+          "label": "Start trading"
+        },
+        {
+          "href": "https://hmarkets.com/live-account-pre-registration/",
+          "label": "Start trading"
+        },
+        {
+          "href": "https://hmarkets.com/live-account-pre-registration/",
+          "label": "Open account"
+        },
+        {
+          "href": "https://hmarkets.com/live-account-pre-registration/",
+          "label": "Open account"
+        },
+        {
+          "href": "https://hmarkets.com/live-account-pre-registration/",
+          "label": "Open account"
+        },
+        {
+          "href": "https://hmarkets.com/live-account-pre-registration/",
+          "label": "Open account"
+        },
+        {
+          "href": "https://hmarkets.com/live-account-pre-registration/",
+          "label": "Open account"
+        },
+        {
+          "href": "https://hmarkets.com/live-account-pre-registration/",
+          "label": "Open account"
+        }
+      ]
+    },
+    {
+      "url": "https://www.hfm.com/",
+      "status": 200,
+      "resolved": "https://www.hfm.com/int/",
+      "links": [
+        {
+          "href": "https://register.hfm.com/int/en/new-live-account",
+          "label": "Register"
+        },
+        {
+          "href": "https://register.hfm.com/int/en/new-live-account",
+          "label": "Register"
+        },
+        {
+          "href": "https://register.hfm.com/int/en/new-live-account",
+          "label": "Register"
+        },
+        {
+          "href": "https://register.hfm.com/int/en/new-demo-account",
+          "label": "Free Demo Account"
+        }
+      ]
+    }
+  ],
+  "registration": [
+    {
+      "url": "https://hmarkets.com/live-account-pre-registration/",
+      "status": 200,
+      "resolved": "https://hmarkets.com/live-account-pre-registration/"
+    },
+    {
+      "url": "https://register.hfm.com/int/en/new-live-account",
+      "status": 200,
+      "resolved": "https://register.hfm.com/int/en/new-live-account"
+    },
+    {
+      "url": "https://my.tickmill.com/sign-up",
+      "status": 200,
+      "resolved": "https://my.tickmill.com/sign-up"
+    },
+    {
+      "url": "https://www.xm.com/goto/profile/en",
+      "status": 200,
+      "resolved": "https://www.xm.com/register/profile-account"
+    }
+  ]
+}

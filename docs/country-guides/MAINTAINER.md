@@ -103,3 +103,5 @@ The next supplied pages are South Africa, Vietnam and India; see `south-africa-v
 The Philippines guide preserves seven brands and three FAQs; see `philippines-update-2026-11-13.md`. Blocked sources use `unavailable: true`. Do not publish the draft's unlinked broker-warning allegations or dates as verified findings, or infer GCash/Maya support from a logo.
 
 Pakistan and Indonesia reuse the same supplied-article template; see `pakistan-indonesia-update-2026-11-13.md`. Pakistan's source stops mid-first-broker section: retain its five domestic-market research names, SBP restrictions and missing-signup status until `pakistan-manual-follow-up.md` is answered. Indonesia retains four candidates; historical promotions, affiliate country lists and comparison rankings do not establish current resident acceptance or domestic authorisation.
+
+Nigeria retains its eight supplied brands and three FAQs; see `nigeria-update-2026-11-13.md`. SEC operator registration, CBN/wholesale FX rules, foreign licensing and an actual resident account/funding route remain separate checks. Official registration links do not establish Nigerian authorisation.
