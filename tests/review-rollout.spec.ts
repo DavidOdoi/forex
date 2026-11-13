@@ -44,7 +44,7 @@ test("all broker scopes have their own opening and three honest FAQ answers with
   const wrongScope = structuredClone(getReview("etoro")!.review);
   wrongScope.jurisdiction = "Singapore";
   expect(reviewPlatformImage(wrongScope)).toBeUndefined();
-  expect(reviewMediaAssets).toHaveLength(5);
+  expect(reviewMediaAssets).toHaveLength(6);
 });
 
 test("retail, country and institutional pages render the shared opening and matching FAQ data without JavaScript", async ({ browser }) => {

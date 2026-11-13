@@ -34,12 +34,12 @@ test("all CSV identities have the shared template and valid, reciprocal research
 });
 
 
-test("the four selected review cards are crawlable without JavaScript and the bulk archive stays hidden", async ({ browser }) => {
+test("the selected review cards are crawlable without JavaScript and the bulk archive stays hidden", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
     await page.goto("http://127.0.0.1:3100/reviews");
-    await expect(page.locator("main article")).toHaveCount(4);
+    await expect(page.locator("main article")).toHaveCount(selectedReviewBrokers.length);
     for (const broker of selectedReviewBrokers) await expect(page.locator(`main article a[href="/reviews/${broker.slug}"]`)).toBeVisible();
     const html = await page.content();
     for (const entry of researchEntries.filter(entry => !isSelectedReviewSlug(entry.slug))) expect(html).not.toContain(`/reviews/${entry.slug}`);
@@ -65,7 +65,7 @@ test("selected retail reviews retain their shared actions, cost explanations and
   await expect(page.locator("[data-account-cta]")).toHaveCount(5);
   await expect(page.locator("[data-illustrative-cost]")).toContainText("Not a measured IC Markets quote");
   await expect(page.locator("#platforms")).toBeAttached();
-  await expect(page.locator('.br-related a[href^="/reviews/"]')).toHaveCount(3); // Three other broker profiles; the library uses /reviews#all-providers.
+  await expect(page.locator('.br-related a[href^="/reviews/"]')).toHaveCount(selectedReviewBrokers.length - 1); // Other selected profiles; the library uses /reviews#all-providers.
   await expect(page.locator(".br-accountability a")).toHaveText("David Odoi");
   await expect(page.locator(".br-accountability")).toContainText("Available on site");
 });
@@ -73,11 +73,11 @@ test("selected retail reviews retain their shared actions, cost explanations and
 test("the smaller directory search and selected review pages fit mobile screens", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 900 });
   await page.goto("/reviews");
-  await expect(page.getByRole("status")).toContainText("4 entries");
+  await expect(page.getByRole("status")).toContainText(`${selectedReviewBrokers.length} entries`);
   await page.getByRole("searchbox", { name: "Search broker reviews" }).fill("XM");
   await expect(page.locator("main article")).toHaveCount(1);
   await page.getByRole("searchbox", { name: "Search broker reviews" }).fill("");
-  await page.getByText("Browse the four broker reviews", { exact: true }).click();
+  await page.getByText("Browse the selected broker reviews", { exact: true }).click();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   for (const broker of selectedReviewBrokers) {
     await page.goto(`/reviews/${broker.slug}`);

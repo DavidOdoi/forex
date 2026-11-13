@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { isSelectedReviewSlug } from "../src/lib/reviews/selection";
+import { isSelectedReviewSlug, selectedReviewBrokers } from "../src/lib/reviews/selection";
 import { getReview, researchEntries, directoryEntries, reviewCountries } from "../src/lib/reviews/catalog";
 import { curatedReview, reviewedFields } from "../src/lib/reviews/curated";
 import { fieldValue } from "../src/lib/reviews/template";
@@ -137,10 +137,10 @@ test("review scope loads distinct entity profiles without a regional site defaul
   expect((await request.get("/reviews/not-a-real-broker")).status()).toBe(404);
 });
 
-test("selected directory search makes the four reviews available without a bulk preview", async ({ page }) => {
+test("selected directory search makes the selected reviews available without a bulk preview", async ({ page }) => {
   await page.goto("/reviews");
-  await expect(page.getByRole("status")).toContainText("4 entries");
-  await expect(page.locator("main article")).toHaveCount(4);
+  await expect(page.getByRole("status")).toContainText(`${selectedReviewBrokers.length} entries`);
+  await expect(page.locator("main article")).toHaveCount(selectedReviewBrokers.length);
   await page.getByRole("searchbox", { name: "Search broker reviews" }).fill("XM");
   await expect(page.locator("main article")).toHaveCount(1);
   await page.getByRole("link", { name: "Read review", exact: true }).click();

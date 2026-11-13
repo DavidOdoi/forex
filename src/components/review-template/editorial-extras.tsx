@@ -3,13 +3,13 @@ import type { BrokerReview } from "@/lib/reviews/types";
 import { isReviewPublished } from "@/lib/reviews/publication";
 import { internationalEntities } from "@/lib/reviews/international";
 import { isPublishedReviewHref, isVisibleReviewHref } from "@/lib/reviews/visibility";
-import { isSelectedReviewSlug, reviewAvailabilityDate } from "@/lib/reviews/selection";
+import { isSelectedReviewSlug, reviewAvailabilityDate, reviewAvailabilityDates } from "@/lib/reviews/selection";
 
 export function EditorialAccountability({ review }: { review: BrokerReview }) {
   const date = (value: string | null | undefined) => value ? new Date(`${value}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }) : "Not published";
   return <aside className="br-accountability" aria-label="Editorial accountability">
     <p>{review.author ? <>By {review.author.profileUrl ? <Link href={review.author.profileUrl}>{review.author.name}</Link> : review.author.name}</> : "Author not assigned"} · {review.factChecker ? `Reviewed by ${review.factChecker.name}` : "Reviewer not assigned"}</p>
-    <p>{isReviewPublished(review) ? `Published: ${date(review.publication?.publishedAt)}` : isSelectedReviewSlug(review.broker.slug) ? `Available on site: ${date(reviewAvailabilityDate)}` : "Not published"}{review.publication?.updatedAt && <> · Substantive update: <time dateTime={review.publication.updatedAt}>{date(review.publication.updatedAt)}</time></>}</p>
+    <p>{isReviewPublished(review) ? `Published: ${date(review.publication?.publishedAt)}` : isSelectedReviewSlug(review.broker.slug) ? `Available on site: ${date(reviewAvailabilityDates[review.broker.slug] ?? reviewAvailabilityDate)}` : "Not published"}{review.publication?.updatedAt && <> · Substantive update: <time dateTime={review.publication.updatedAt}>{date(review.publication.updatedAt)}</time></>}</p>
     {!isReviewPublished(review) && <details><summary>Verification status</summary><p>Source-based research. Independent editorial verification remains outstanding; unverified terms are identified in the review.</p></details>}
   </aside>;
 }

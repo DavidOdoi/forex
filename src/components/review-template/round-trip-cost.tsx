@@ -6,11 +6,11 @@ import { calculatePip, range } from "@/lib/calculators/forex";
 
 const money = (value: number) => `US$${value.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
 
-export function RoundTripCost({ brokerName = "Exness" }: { brokerName?: string }) {
+export function RoundTripCost({ brokerName = "Exness", initialSpread = "0.3", initialCommission = "3.5" }: { brokerName?: string; initialSpread?: string; initialCommission?: string }) {
   const id = useId();
   const [lots, setLots] = useState("1");
-  const [spread, setSpread] = useState("0.3");
-  const [commission, setCommission] = useState("3.5");
+  const [spread, setSpread] = useState(initialSpread);
+  const [commission, setCommission] = useState(initialCommission);
   let result: { spread: number; commission: number; total: number; pips: number } | undefined;
   let error = "";
   try {
@@ -35,6 +35,6 @@ export function RoundTripCost({ brokerName = "Exness" }: { brokerName?: string }
       {result ? <dl><div><dt>Spread cost</dt><dd>{money(result.spread)}</dd></div><div><dt>Open + close commission</dt><dd>{money(result.commission)}</dd></div><div><dt>Round-trip total</dt><dd><strong>{money(result.total)} / {result.pips.toFixed(1)} {Number(result.pips.toFixed(1)) === 1 ? "pip" : "pips"}</strong></dd></div></dl> : <p className="br-cost-error">{error}</p>}
     </div>
     <p id={`${id}-note`}>Spread × pip value + 2 × commission × lots. Excludes price movement, swaps, slippage and conversion. Cent lots use different units. <Link href="/tools/forex-position-size-calculator">Size your position</Link>.</p>
-    <noscript><p>The example above is fixed without JavaScript: 1 standard lot, 0.3 pips and US$3.50/lot/side.</p></noscript>
+    <noscript><p>The example above is fixed without JavaScript: 1 standard lot, {initialSpread} pips and {money(Number(initialCommission))}/lot/side.</p></noscript>
   </figure>;
 }

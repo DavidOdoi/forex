@@ -79,7 +79,7 @@ const leads: Record<string, string> = {
 };
 
 const sectionDefinitions: { id: ReviewSectionId; title: string; kicker: string; fields: string[] }[] = [
-  { id: "fees", title: "What does trading cost?", kicker: "01 / FEES", fields: ["forex-spread-and-commission", "overnight-financing", "inactivity-fee"] },
+  { id: "fees", title: "What does trading cost?", kicker: "01 / FEES", fields: ["forex-spread-and-commission", "platform-commission", "overnight-financing", "inactivity-fee"] },
   { id: "safety", title: "Who holds your account?", kicker: "02 / REGULATION & ENTITY", fields: ["regulation-and-entity", "contracting-legal-entity", "negative-balance-protection", "client-money-arrangements"] },
   { id: "deposit-and-withdrawal", title: "Moving your money", kicker: "03 / DEPOSITS & WITHDRAWALS", fields: ["deposit-methods-and-charges", "withdrawal-methods-and-charges", "withdrawal-fee", "published-processing-times", "withdrawal-requirements"] },
   { id: "account-opening", title: "Before you open an account", kicker: "04 / GETTING STARTED", fields: ["identity-and-address-requirements", "demo-account", "retail-and-professional-accounts"] },

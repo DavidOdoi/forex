@@ -71,5 +71,19 @@
     "height": 576,
     "sourceUrl": "https://www.adss.com/",
     "evidenceSourceId": null
+  },
+  {
+    "slug": "fusion-markets",
+    "scopes": [
+      "Global"
+    ],
+    "src": "/images/reviews/fusion-markets-tradingview-preview.webp",
+    "title": "Fusion Markets TradingView platform preview",
+    "width": 658,
+    "height": 388,
+    "alt": "Fusion Markets review: official TradingView illustration showing desktop and mobile forex charts",
+    "sourceUrl": "https://fusionmarkets.com/Platforms/TradingView",
+    "publisherHost": "fusionmarkets.com",
+    "evidenceSourceId": "fusion-tradingview"
   }
 ]

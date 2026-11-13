@@ -21,6 +21,10 @@ export function reviewIntroduction(review: BrokerReview): IntroPart[][] {
     [text("This Exness review examines whether the broker’s forex and CFD accounts fit your needs. Your decision depends on "), link("total trading costs", "#fees"), text(", your country’s "), link("contracting entity", "#safety"), text(" and how you deposit or withdraw.")],
     [text("Compare "), link("five account types", "#account-opening"), text(", minimum-deposit rules and platforms, then use the cost calculator to understand spread and commission. Findings come from linked public documents; live execution and withdrawals have not been tested.")],
   ];
+  if (review.broker.slug === "fusion-markets" && review.jurisdiction === "Global" && reviewAccounts(review).length) return [
+    [text("This Fusion Markets review compares "), link("Zero and Classic accounts", "#account-opening"), text(". We examine published costs, funding rules and entity-specific protections to help you decide what to check before applying.")],
+    [text("Compare "), link("fees", "#fees"), text(", "), link("withdrawal conditions", "#deposit-and-withdrawal"), text(" and "), link("legal entities", "#safety"), text(". This is document-based research; we have not tested live trading, apps or withdrawals.")],
+  ];
   const comparedAccounts = reviewAccounts(review);
   const minimum = checkedField(review, "minimum-deposit");
   if (retail && review.accountComparisons && comparedAccounts.length && minimum) return [
