@@ -1,0 +1,93 @@
+{
+  "scope": "Availability and official account entry-point checks only; no local authorisation, legal review or resident-account mapping is inferred.",
+  "supplied": [
+    {
+      "url": "https://capital.com/",
+      "status": 200,
+      "resolved": "https://capital.com/en-int",
+      "account_links": []
+    },
+    {
+      "url": "https://www.orbex.com/",
+      "error": "HTTP Error 503: Service Unavailable"
+    },
+    {
+      "url": "https://www.bog.gov.gh/",
+      "status": 200,
+      "resolved": "https://www.bog.gov.gh/",
+      "account_links": []
+    },
+    {
+      "url": "https://sec.gov.gh/",
+      "status": 200,
+      "resolved": "https://sec.gov.gh/",
+      "account_links": []
+    },
+    {
+      "url": "https://www.orbex.com/en/ghanas-top-forex-broker-experience-trading-with-orbex",
+      "error": "HTTP Error 503: Service Unavailable"
+    },
+    {
+      "url": "https://www.bog.gov.gh/notice/list-of-authorised-fx-brokers/",
+      "status": 200,
+      "resolved": "https://www.bog.gov.gh/notice/list-of-authorised-fx-brokers/",
+      "account_links": []
+    },
+    {
+      "url": "https://licensees.sec.gov.gh/licensees/BrokerDealer.php",
+      "status": 200,
+      "resolved": "https://licensees.sec.gov.gh/licensees/BrokerDealer.php",
+      "account_links": []
+    },
+    {
+      "url": "https://sec.gov.gh/directive-to-market-operators-fintech-service-providers-and-persons-owning-and-or-operating-online-investment-and-trading-platforms/",
+      "status": 200,
+      "resolved": "https://sec.gov.gh/directive-to-market-operators-fintech-service-providers-and-persons-owning-and-or-operating-online-investment-and-trading-platforms/",
+      "account_links": []
+    },
+    {
+      "url": "https://sec.gov.gh/public-notice-list-of-entities-operating-without-a-license/",
+      "status": 200,
+      "resolved": "https://sec.gov.gh/public-notice-list-of-entities-operating-without-a-license/",
+      "account_links": []
+    },
+    {
+      "url": "https://help.capital.com/hc/en-us/articles/27040372144274-Is-Capital-com-available-in-my-country",
+      "status": 200,
+      "resolved": "https://help.capital.com/hc/en-us/articles/27040372144274-Is-Capital-com-available-in-my-country",
+      "account_links": [
+        {
+          "href": "https://help.capital.com/hc/en-us/articles/39740226603410-What-is-the-minimum-age-to-start-trading",
+          "label": "What is the minimum age to start trading?"
+        },
+        {
+          "href": "https://help.capital.com/hc/en-us/articles/360016554020-How-do-I-open-an-account",
+          "label": "How do I open an account?"
+        },
+        {
+          "href": "https://help.capital.com/hc/en-us/articles/27757311961490-Can-I-open-an-account-for-my-child",
+          "label": "Can I open an account for my child?"
+        }
+      ]
+    }
+  ],
+  "account_destinations": [
+    {
+      "url": "https://help.capital.com/hc/en-us/articles/360016554020-How-do-I-open-an-account",
+      "status": 200,
+      "resolved": "https://help.capital.com/hc/en-us/articles/360016554020-How-do-I-open-an-account",
+      "title": [
+        "How do I open an account? &ndash; Capital.com "
+      ],
+      "links": []
+    },
+    {
+      "url": "https://my.orbex.com/en/register",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://my.orbex.com/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ]
+}
