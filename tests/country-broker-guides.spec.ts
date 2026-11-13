@@ -15,7 +15,7 @@ import { approvedCountryFixture, testAsOf } from "./fixtures/country-guide";
 
 const path = "/forex-brokers/sri-lanka";
 test("individually researched country drafts keep Sri Lanka's original source scope and evidence status intact", () => {
-  expect(countryGuides.map(country => country.slug)).toEqual(["sri-lanka", "malaysia", "uganda", "united-kingdom", "netherlands", "singapore", "south-africa", "vietnam", "india", "philippines"]);
+  expect(countryGuides.map(country => country.slug)).toEqual(["sri-lanka", "malaysia", "uganda", "united-kingdom", "netherlands", "singapore", "south-africa", "vietnam", "india", "philippines", "pakistan", "indonesia"]);
   expect(sriLankaGuide).toMatchObject({ legalStatus: "pending_review", publicationStatus: "draft", commercialLinksAllowed: false, legalReviewedAt: null, legalReviewReference: null, humanApprovalReference: null, publishedAt: null, updatedAt: null, reviewerReference: null });
   expect(sriLankaGuide.brokerEntityMappings).toEqual([]); expect(countryAffiliates).toEqual({ agreements: [], geoApprovals: [] });
   expect(countryRegistry.approvals).toEqual([]); expect(countryRegistry.entities).toEqual([]);

@@ -1,0 +1,242 @@
+{
+  "scope": "URL availability/redirect checks only unless a limited public-text excerpt is explicitly recorded; no professional review or resident/company permission is inferred.",
+  "original_checks": [
+    {
+      "url": "https://www.tickmill.com/",
+      "status": 200,
+      "resolved": "https://www.tickmill.com/",
+      "signup_candidates": [
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Start trading"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Start trading"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://www.tickmill.com/trading-platforms/mobile-app",
+          "label": "Start trading on the go"
+        }
+      ]
+    },
+    {
+      "url": "https://www.sec.gov.ph/investor-education-and-information/advisories/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.sec.gov.ph/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.bsp.gov.ph/",
+      "status": 200,
+      "resolved": "https://www.bsp.gov.ph/SitePages/Default.aspx",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://www.secp.gov.pk/data-and-statistics/capital-markets/",
+      "status": 200,
+      "resolved": "https://www.secp.gov.pk/data-and-statistics/capital-markets/",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://pmex.com.pk/broker/",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ],
+  "additional": [
+    {
+      "url": "https://www.tickmill.com/",
+      "status": 200,
+      "resolved": "https://www.tickmill.com/",
+      "links": [
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Start trading"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Start trading"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        }
+      ],
+      "title": [
+        "Trade with Tickmill | Multi-Asset Class Broker | CFDs on Forex, Stocks, Commodities, Indices and more | Tickmill"
+      ]
+    },
+    {
+      "url": "https://www.sbp.org.pk/epd/2022/FECL8.htm",
+      "status": 200,
+      "resolved": "https://www.sbp.org.pk/circulars/epd-circular-letter-no-08-of-2022",
+      "links": [],
+      "title": [
+        "State Bank of Pakistan"
+      ]
+    },
+    {
+      "url": "https://pmex.com.pk/broker/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.secp.gov.pk/data-and-statistics/capital-markets/",
+      "status": 200,
+      "resolved": "https://www.secp.gov.pk/data-and-statistics/capital-markets/",
+      "links": [
+        {
+          "href": "https://www.secp.gov.pk/company-formation/services-of-registered-intermediaries/",
+          "label": "Online Company Formation"
+        },
+        {
+          "href": "https://www.secp.gov.pk/company-formation/online-company-formation/",
+          "label": "Services of Registered Intermediaries"
+        },
+        {
+          "href": "https://www.secp.gov.pk/company-formation/services-of-registered-intermediaries/",
+          "label": "Online Company Formation"
+        },
+        {
+          "href": "https://www.secp.gov.pk/company-formation/online-company-formation/",
+          "label": "Services of Registered Intermediaries"
+        },
+        {
+          "href": "https://www.secp.gov.pk/islamic-finance/register-of-shariah-advisors/",
+          "label": "Register of Shariah Advisors"
+        },
+        {
+          "href": "https://www.secp.gov.pk/islamic-finance/register-of-shariah-advisors/",
+          "label": "Register of Shariah Advisors"
+        },
+        {
+          "href": "https://www.secp.gov.pk/document/bankers-to-the-issue-valid-license-register-till-june-02-2023/?wpdmdl=48034&refresh=6af70f478f2951794576199",
+          "label": "Download"
+        },
+        {
+          "href": "https://www.secp.gov.pk/document/securities-broker-valid-license-register-till-june-02-2023/?wpdmdl=48039&refresh=6af70f4790c5b1794576199",
+          "label": "Download"
+        },
+        {
+          "href": "https://www.secp.gov.pk/document/consultant-to-the-issue-valid-license-register-till-june-02-2023-2/?wpdmdl=48058&refresh=6af70f4791b5b1794576199",
+          "label": "Download"
+        },
+        {
+          "href": "https://www.secp.gov.pk/document/debt-securities-trustee-valid-license-register-till-june-02-2023-2/?wpdmdl=48060&refresh=6af70f479287f1794576199",
+          "label": "Download"
+        },
+        {
+          "href": "https://www.secp.gov.pk/document/futures-brokers-at-pmex-valid-license-register-till-june-02-2023-2/?wpdmdl=48061&refresh=6af70f479376e1794576199",
+          "label": "Download"
+        },
+        {
+          "href": "https://www.secp.gov.pk/document/securities-broker-valid-license-register-till-june-02-2023-2/?wpdmdl=48062&refresh=6af70f47945eb1794576199",
+          "label": "Download"
+        },
+        {
+          "href": "https://www.secp.gov.pk/document/underwriters-valid-license-register-till-june-02-2023-3/?wpdmdl=48104&refresh=6af70f4795c721794576199",
+          "label": "Download"
+        },
+        {
+          "href": "https://www.secp.gov.pk/document/consultant-to-the-issue-valid-license-register-till-july-03-2023/?wpdmdl=48371&refresh=6af70f4796db81794576199",
+          "label": "Download"
+        },
+        {
+          "href": "https://www.secp.gov.pk/document/debt-securities-trustee-valid-license-register-till-july-03-2023/?wpdmdl=48373&refresh=6af70f4797c4f1794576199",
+          "label": "Download"
+        }
+      ],
+      "title": [
+        "Capital Markets \u2013 Data &amp; Statistics | SECP"
+      ]
+    }
+  ],
+  "indonesia": [
+    {
+      "url": "https://ceklegalitas.bappebti.go.id/",
+      "status": 200,
+      "resolved": "https://ceklegalitas.bappebti.go.id/",
+      "indonesia_excerpts": [
+        "yang dialihkan dari Bappebti ke OJK meliputi Aset Keuangan Digital (AKD) termasuk aset kripto serta derivatif keuangan di pasar modal . Sementara itu, pengalihan ke Bank Indonesia meliputi derivatif keuangan dengan underlying yang meliputi instrumen di Pasar Uang dan Pasar Valuta Asing (PUVA) --> Pialang Berjangka Lihat daftar lengkap Calon Pedagang Fisik Aset Kripto Lihat daftar lengkap Pedagang Fisik Emas Digital Lihat daft"
+      ]
+    },
+    {
+      "url": "https://www.bi.go.id/",
+      "error": "HTTP Error 503: Service Unavailable"
+    },
+    {
+      "url": "https://www.ojk.go.id/",
+      "status": 200,
+      "resolved": "https://www.ojk.go.id/",
+      "indonesia_excerpts": []
+    },
+    {
+      "url": "https://brokerchooser.com/best-brokers/best-forex-brokers/indonesia",
+      "error": "IncompleteRead(447298 bytes read)"
+    },
+    {
+      "url": "https://fusionmarkets.com/FAQ",
+      "status": 200,
+      "resolved": "https://fusionmarkets.com/FAQ",
+      "indonesia_excerpts": [
+        "-07-09T07:32:02.761Z\\\",\\\"updatedAt\\\":\\\"2024-07-09T07:34:49.551Z\\\"}}}},\\\"link\\\":{\\\"id\\\":69,\\\"url\\\":\\\"/es\\\",\\\"target\\\":null,\\\"title\\\":\\\"es\\\"}},{\\\"id\\\":5,\\\"title\\\":\\\"bahasa Indonesia\\\",\\\"locale\\\":\\\"id\\\",\\\"image\\\":{\\\"id\\\":20,\\\"width\\\":24,\\\"height\\\":24,\\\"altText\\\":\\\"language logo\\\",\\\"image\\\":{\\\"data\\\":{\\\"id\\\":37,\\\"attributes\\\":{\\\"name\\\":\\\"Id_1_4ad9e58272.webp\\\",\\\"alternativeText\\\":\\\"language icon\\\",\\\"caption\\\":null,\\\"width\\\":600,\\",
+        "-09T07:32:02.761Z\\\",\\\"updatedAt\\\":\\\"2024-07-09T07:34:49.551Z\\\"}}}},\\\"link\\\":{\\\"id\\\":1013,\\\"url\\\":\\\"/es\\\",\\\"target\\\":null,\\\"title\\\":\\\"es\\\"}},{\\\"id\\\":41,\\\"title\\\":\\\"bahasa Indonesia\\\",\\\"locale\\\":\\\"id\\\",\\\"image\\\":{\\\"id\\\":2681,\\\"width\\\":24,\\\"height\\\":24,\\\"altText\\\":\\\"language logo\\\",\\\"image\\\":{\\\"data\\\":{\\\"id\\\":37,\\\"attributes\\\":{\\\"name\\\":\\\"Id_1_4ad9e58272.webp\\\",\\\"alternativeText\\\":\\\"language icon\\\",\\\"caption\\\":null,\\\"width\\\":600",
+        "-09T07:32:02.761Z\\\",\\\"updatedAt\\\":\\\"2024-07-09T07:34:49.551Z\\\"}}}},\\\"link\\\":{\\\"id\\\":1175,\\\"url\\\":\\\"/es\\\",\\\"target\\\":null,\\\"title\\\":\\\"es\\\"}},{\\\"id\\\":53,\\\"title\\\":\\\"bahasa Indonesia\\\",\\\"locale\\\":\\\"id\\\",\\\"image\\\":{\\\"id\\\":2749,\\\"width\\\":24,\\\"height\\\":24,\\\"altText\\\":\\\"language logo\\\",\\\"image\\\":{\\\"data\\\":{\\\"id\\\":37,\\\"attributes\\\":{\\\"name\\\":\\\"Id_1_4ad9e58272.webp\\\",\\\"alternativeText\\\":\\\"language icon\\\",\\\"caption\\\":null,\\\"width\\\":600",
+        "-09T07:32:02.761Z\\\",\\\"updatedAt\\\":\\\"2024-07-09T07:34:49.551Z\\\"}}}},\\\"link\\\":{\\\"id\\\":1285,\\\"url\\\":\\\"/es\\\",\\\"target\\\":null,\\\"title\\\":\\\"es\\\"}},{\\\"id\\\":59,\\\"title\\\":\\\"bahasa Indonesia\\\",\\\"locale\\\":\\\"id\\\",\\\"image\\\":{\\\"id\\\":2763,\\\"width\\\":24,\\\"height\\\":24,\\\"altText\\\":\\\"language logo\\\",\\\"image\\\":{\\\"data\\\":{\\\"id\\\":37,\\\"attributes\\\":{\\\"name\\\":\\\"Id_1_4ad9e58272.webp\\\",\\\"alternativeText\\\":\\\"language icon\\\",\\\"caption\\\":null,\\\"width\\\":600",
+        "7-09T07:32:02.761Z\\\",\\\"updatedAt\\\":\\\"2024-07-09T07:34:49.551Z\\\"}}}},\\\"link\\\":{\\\"id\\\":842,\\\"url\\\":\\\"/es\\\",\\\"target\\\":null,\\\"title\\\":\\\"es\\\"}},{\\\"id\\\":29,\\\"title\\\":\\\"bahasa Indonesia\\\",\\\"locale\\\":\\\"id\\\",\\\"image\\\":{\\\"id\\\":2533,\\\"width\\\":24,\\\"height\\\":24,\\\"altText\\\":\\\"language logo\\\",\\\"image\\\":{\\\"data\\\":{\\\"id\\\":37,\\\"attributes\\\":{\\\"name\\\":\\\"Id_1_4ad9e58272.webp\\\",\\\"alternativeText\\\":\\\"language icon\\\",\\\"caption\\\":null,\\\"width\\\":600"
+      ]
+    },
+    {
+      "url": "https://partnership.pepperstone.com/en/affiliates-program/",
+      "status": 200,
+      "resolved": "https://partnership.pepperstone.com/en/affiliates-program/",
+      "indonesia_excerpts": [
+        "lic, Denmark, Dominican Republic, Ecuador, Egypt, El Salvador, Estonia, Finland, France, Germany, Ghana, Greece, Guatemala, Honduras, Hong Kong, Hungary, Iceland, India, Indonesia, Ireland, Israel, Italy, Jamaica, Jordan, Kenya, Kuwait, Latvia, Lesotho, Lithuania, Luxembourg, Macao, Madagascar, Malaysia, Malta, Mauritania, Mauritius, Mexico, Moldova, Mongolia, Montenegro, Morocco, Namibia, Nigeria, Norway, Oman, Pakistan, Pan",
+        "lic, Denmark, Dominican Republic, Ecuador, Egypt, El Salvador, Estonia, Finland, France, Germany, Ghana, Greece, Guatemala, Honduras, Hong Kong, Hungary, Iceland, India, Indonesia, Ireland, Israel, Italy, Jamaica, Jordan, Kenya, Kuwait, Latvia, Lesotho, Lithuania, Luxembourg, Macao, Madagascar, Malaysia, Malta, Mauritania, Mauritius, Mexico, Moldova, Mongolia, Montenegro, Morocco, Namibia, Nigeria, Norway, Oman, Pakistan, Pan"
+      ]
+    },
+    {
+      "url": "https://www.xtb.com/int/help-center/trading-account-2-1/which-countries-do-you-accept-clients-from",
+      "status": 200,
+      "resolved": "https://www.xtb.com/int/help-center/trading-account-2-1/which-countries-do-you-accept-clients-from",
+      "indonesia_excerpts": []
+    }
+  ]
+}
