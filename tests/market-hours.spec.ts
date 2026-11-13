@@ -21,8 +21,10 @@ test("initial HTML contains the reference schedule, methodology and canonical me
       await expect(row).toContainText(`${s.start}–${s.end}`);
       await expect(row).toContainText("Monday–Friday");
     }
-    await expect(page.locator("main")).toContainText("editorial approval required");
-    await expect(page.locator("#methodology")).toContainText("were not verified");
+    await expect(page.locator("main")).toContainText("Source-checked session conventions");
+    await expect(page.locator("#methodology")).toContainText("Sources checked 10 November 2026");
+    await expect(page.locator("#methodology a")).toHaveCount(5);
+    await expect(page.locator("#methodology")).not.toContainText("retrieval blocked");
     await expect(page.locator("[data-weekly-status]")).toHaveCount(0);
     const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"];
     expect(graph.map((entry: { "@type": string }) => entry["@type"])).toEqual(["WebPage", "BreadcrumbList"]);

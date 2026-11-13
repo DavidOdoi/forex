@@ -7,7 +7,7 @@ const iso = (value: number) => new Date(value).toISOString();
 const def = (id: string) => sessions.find(s => s.id === id)!;
 
 test("weekday schedule uses each city's local clock and nine-hour conventions", () => {
-  const expected = { sydney: ["2026-01-19T21:00:00.000Z", "2026-01-20T06:00:00.000Z"], tokyo: ["2026-01-20T00:00:00.000Z", "2026-01-20T09:00:00.000Z"], london: ["2026-01-20T08:00:00.000Z", "2026-01-20T17:00:00.000Z"], "new-york": ["2026-01-20T13:00:00.000Z", "2026-01-20T22:00:00.000Z"] };
+  const expected = { sydney: ["2026-01-19T20:00:00.000Z", "2026-01-20T05:00:00.000Z"], tokyo: ["2026-01-20T00:00:00.000Z", "2026-01-20T09:00:00.000Z"], london: ["2026-01-20T08:00:00.000Z", "2026-01-20T17:00:00.000Z"], "new-york": ["2026-01-20T13:00:00.000Z", "2026-01-20T22:00:00.000Z"] };
   for (const session of sessions) {
     const w = sessionOccurrence(session, "2026-01-20")!;
     expect([iso(w.start), iso(w.end)]).toEqual(expected[session.id]);
@@ -50,7 +50,7 @@ test("weekly boundary clips Sydney's Monday occurrence instead of showing it ope
   expect(windows).toHaveLength(1);
   expect(iso(windows[0].start)).toBe("2026-01-18T22:00:00.000Z");
   const raw = sessionOccurrence(def("sydney"), "2026-01-19")!;
-  expect(iso(raw.start)).toBe("2026-01-18T21:00:00.000Z");
+  expect(iso(raw.start)).toBe("2026-01-18T20:00:00.000Z");
 });
 test("midnight-crossing local windows retain opening-date weekday semantics", () => {
   const overnight: SessionDefinition = { id: "overnight", name: "Example", zone: "Asia/Tokyo", start: "22:00", end: "06:00", weekdays: [1,2,3,4,5] };

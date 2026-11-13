@@ -6,11 +6,11 @@ The server-rendered page provides the methodology, session-local reference table
 
 ## Schedule contract
 
-`src/lib/market-hours/config.ts` is the single schedule configuration. These are **provisional editorial conventions requiring approval**, not verified broker or exchange hours:
+`src/lib/market-hours/config.ts` is the single schedule configuration. These are **source-checked conventional session windows**, not broker or exchange operating permissions:
 
 | Session | IANA timezone | Local opening days | Local window |
 | --- | --- | --- | --- |
-| Sydney | Australia/Sydney | Monday–Friday | 08:00–17:00 |
+| Sydney | Australia/Sydney | Monday–Friday | 07:00–16:00 |
 | Tokyo | Asia/Tokyo | Monday–Friday | 09:00–18:00 |
 | London | Europe/London | Monday–Friday | 08:00–17:00 |
 | New York | America/New_York | Monday–Friday | 08:00–17:00 |
@@ -27,12 +27,15 @@ One external clock store drives subscribers. Only live cards, the timezone-offse
 
 ## Source-check record
 
-On 10 November 2026, HTTPS retrieval was attempted for:
+The initial implementation's retrieval attempts were blocked. Subsequent public-page checks in the approved draft on 10 November 2026 succeeded for:
 
 - https://www.babypips.com/learn/forex/forex-trading-sessions
-- https://www.oanda.com/us-en/trading/hours-of-operation/
+- https://www.babypips.com/tools/forex-market-hours
+- https://help.oanda.com/us/en/faqs/hours-of-operation.htm
 
-Both attempts failed at the environment proxy with `CONNECT tunnel failed, response 403`; no source content was retrieved or consulted. They are listed on the page only as **suggested, unverified references**, not citations proving the configured hours. Editorial approval remains outstanding for all four local schedules and the weekly boundary. A broker-specific source cannot establish a universal market cutoff. No review date or verified-author status is invented.
+All three returned HTTP 200. The BabyPips session table lists Sydney 07:00–16:00, Tokyo 09:00–18:00, London 08:00–17:00 and New York 08:00–17:00 in the cities' own timezones. Sydney now follows that documented convention instead of the initially proposed 08:00–17:00 window. The market-hours FAQ states the retail week is “between Sunday at 5:00 pm ET and Friday at 5:00 pm ET.” OANDA supports the broker-specific holiday/instrument limitations; it does not establish a universal market cutoff.
+
+The checked session HTML SHA-256 is `cea44c63cf816ce4a4b5cea80f3ce57d56691de235f5fb24fd73699047423ad1`; the OANDA help HTML SHA-256 is `9074be7cf2c770618eaada65d647c8a98cebaa0e40ad12aacc220f2aef9c90ad`. Local research captures remain under ignored `research-output/market-hours-2026-11-10/`. These are source-check dates, not an invented independent editorial credential or an automatic “updated today” label. Other providers may adopt different session conventions.
 
 ## Validation
 
@@ -48,9 +51,9 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test tests/
 
 The pure calculation tests use injected instants. Browser tests use Playwright's controlled clock and cover server HTML, hydration, timezone persistence, invalid input/storage, ignored query parameters, overnight availability, DST warnings, short/long timeline days, weekly boundaries, background resume, timer cleanup, keyboard controls, responsive overflow and site integration. They capture screenshots under ignored `test-results/market-hours-*.png`. Playwright starts the production server on port 3100; build first and do not run a dev server against the same `.next` directory concurrently.
 
-No live prices, trading-volume data, measured liquidity, holiday calendar or broker-status feed is part of this feature. Calendar export and shareable/saved planner scenarios were not added; only the timezone preference is saved. Reporting follows the existing corrections page, whose contact channel remains unconfirmed. No deployment or external-service modification is performed.
+No live prices, trading-volume data, measured liquidity, holiday calendar or broker-status feed is part of this feature. Calendar export and shareable/saved planner scenarios were not added; only the timezone preference is saved. Reporting follows the existing corrections page, whose contact channel remains unconfirmed. The initial implementation did not deploy; the owner authorized production publication on 13 November 2026 with “publish it.”
 
-Validation on 10 November 2026: type checks, ESLint, production build and `git diff --check` passed. The command above executed **53 passing tests, zero failures**, including 23 pure calculation tests, seven feature browser tests and 23 existing foundation/navigation/calculator checks. Screenshots were captured at 320, 390, 768 and 1440 pixels; the 390-pixel capture was visually inspected. There were no page-overflow or browser-console failures in the responsive check. Editorial verification remains unresolved as described above; these software checks do not approve the session conventions.
+Initial validation on 10 November 2026: type checks, ESLint, production build and `git diff --check` passed. The command above executed **53 passing tests, zero failures**, including 23 pure calculation tests, seven feature browser tests and 23 existing foundation/navigation/calculator checks. Screenshots were captured at 320, 390, 768 and 1440 pixels; the 390-pixel capture was visually inspected. There were no page-overflow or browser-console failures in the responsive check. The later source-check resolution is recorded above; software checks alone do not establish source accuracy.
 
 ## Changed files
 
@@ -71,3 +74,9 @@ The supplied visual reference is implemented with a pale-green market-week summa
 The UI update passed type checks, lint and production build, plus **41 calculation, feature-browser, foundation and navigation tests**. The feature browser checks include panel placement, image loading, active-card states, countdown tiles, local-time display and guide-link navigation. Responsive screenshots at 320, 390, 768 and 1440 pixels showed no page overflow or console errors; desktop and mobile captures were visually inspected.
 
 The subsequent typography update standardizes all main-page body copy, hints, labels, inputs, buttons, dates, table text and FAQs to **18px Manrope** through `--hours-body-size`. Headings and the countdown display retain their hierarchy. Type checks, lint, production build and all eight feature browser tests passed. The responsive test checks actual computed family and size throughout the page at 320, 390, 768 and 1440 pixels, together with overflow and console errors.
+
+## Publication integration — 13 November 2026
+
+The production branch contained a newer market-hours design and unrelated broker/country-guide improvements. Publication retains that current layout, uniform typography and existing calculation interfaces. It applies the approved draft's checked session/source disclosures and updates Sydney's convention consistently across calculations, cards, reference tables and tests. It does not replace the newer site with the older draft.
+
+Pre-publication checks passed: ESLint, the production build including TypeScript, `git diff --check`, and **44 calculation, market-hours browser, foundation, navigation and crawlability tests**. These include exact weekly/session boundaries, DST conversions, overnight availability, persisted timezone controls, mobile layout, the current city-banner design, uniform 18px typography, canonical metadata and sitemap integration.
