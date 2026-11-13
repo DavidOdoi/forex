@@ -3,7 +3,7 @@ import type { Claim, CountryGuide, GuideRegistry } from "./types";
 type ArticleInput = {
   name: string; slug: string; locale: string; title: string; seoTitle: string;
   description: string; directAnswer: string; legalSummary: string; markdown: string;
-  sources: { id: string; title: string; publisher: string; url: string }[];
+  sources: { id: string; title: string; publisher: string; url: string; unavailable?: boolean }[];
 };
 
 // A country-specific supplied article, never a country-name substitution or an
@@ -33,10 +33,11 @@ export function suppliedArticle(input: ArticleInput) {
   };
   function registerSources(registry: GuideRegistry) {
     for (const source of input.sources) {
+      const { unavailable, ...record } = source;
       if (!registry.sources.some(existing => existing.id === source.id)) registry.sources.push({
-        ...source, kind: "regulator", scope, publishedAt: null,
+        ...record, kind: "regulator", scope, publishedAt: null,
         publicationDateStatus: "unknown", checkedAt: null, verification: "unverified",
-        access: "retrieved", note: "Supplied source URL retrieved for availability only; no substantive verification, company-register match or legal approval recorded.",
+        access: unavailable ? "blocked" : "retrieved", note: unavailable ? "Supplied source could not be retrieved; current content, permissions and legal scope remain unchecked." : "Supplied source URL retrieved for availability only; no substantive verification, company-register match or legal approval recorded.",
       });
     }
   }

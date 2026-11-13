@@ -1,0 +1,58 @@
+{
+  "scope": "Availability checks only, not source-content verification or authorisation evidence.",
+  "checks": [
+    {
+      "url": "https://www.tickmill.com/",
+      "status": 200,
+      "resolved": "https://www.tickmill.com/",
+      "signup_candidates": [
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Start trading"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Start trading"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://my.tickmill.com/sign-up",
+          "label": "Create account"
+        },
+        {
+          "href": "https://www.tickmill.com/trading-platforms/mobile-app",
+          "label": "Start trading on the go"
+        }
+      ]
+    },
+    {
+      "url": "https://www.sec.gov.ph/investor-education-and-information/advisories/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.sec.gov.ph/",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.bsp.gov.ph/",
+      "status": 200,
+      "resolved": "https://www.bsp.gov.ph/SitePages/Default.aspx",
+      "signup_candidates": []
+    }
+  ]
+}
