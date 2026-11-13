@@ -1,6 +1,6 @@
-// The user confirmed this production origin and added it to Search Console.
-// SITE_URL can override it for a future custom-domain migration.
-const configuredUrl = process.env.SITE_URL?.trim() || "https://devinforex-five.vercel.app";
+// The owner now publishes on this custom domain. Keep canonical, social,
+// structured-data and sitemap URLs aligned; SITE_URL remains an explicit override.
+const configuredUrl = process.env.SITE_URL?.trim() || "https://www.devinforex.com";
 if (
   configuredUrl &&
   (new URL(configuredUrl).protocol !== "https:" ||

@@ -3,7 +3,7 @@ import { deploymentAllowsIndexing, indexable, publicPaths, siteOrigin } from "..
 import { publishedReviews } from "../src/lib/reviews/visibility";
 
 test("the confirmed public domain is indexable without requiring a redundant environment variable", () => {
-  expect(siteOrigin).toBe(new URL(process.env.SITE_URL?.trim() || "https://devinforex-five.vercel.app").origin);
+  expect(siteOrigin).toBe(new URL(process.env.SITE_URL?.trim() || "https://www.devinforex.com").origin);
   expect(deploymentAllowsIndexing(undefined)).toBe(true);
   expect(deploymentAllowsIndexing("production")).toBe(true);
   expect(deploymentAllowsIndexing("preview")).toBe(false);

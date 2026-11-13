@@ -48,7 +48,7 @@ test("all seven exported pages render with their metadata and assets", async ({
       "content",
       "summary_large_image",
     );
-    expect(new URL((await page.locator('link[rel="canonical"]').getAttribute("href"))!).href).toBe(new URL(route, process.env.SITE_URL ?? "https://devinforex-five.vercel.app").href);
+    expect(new URL((await page.locator('link[rel="canonical"]').getAttribute("href"))!).href).toBe(new URL(route, process.env.SITE_URL ?? "https://www.devinforex.com").href);
     expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
   }
   await page.goto("/");
@@ -225,7 +225,7 @@ test("sitemap, robots, exported favicon and custom 404", async ({
     ...(metalsIndexable ? hubPaths : []),
   ]);
   expect((xml.match(/<loc>/g) ?? []).length).toBe(expectedPaths.size);
-  for (const path of expectedPaths) expect(xml).toContain(new URL(path, process.env.SITE_URL ?? "https://devinforex-five.vercel.app").href);
+  for (const path of expectedPaths) expect(xml).toContain(new URL(path, process.env.SITE_URL ?? "https://www.devinforex.com").href);
   expect((await request.get("/favicon.ico")).status()).toBe(200);
   const notFound = await page.goto("/this-page-does-not-exist");
   expect(notFound?.status()).toBe(404);

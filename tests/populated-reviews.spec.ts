@@ -303,7 +303,7 @@ test("standalone HTML includes embedded styles and schema with working native na
   ]);
   await expect(page.locator('script:not([type="application/ld+json"])')).toHaveCount(0);
   await expect(page.locator('link[rel="stylesheet"]')).toHaveCount(0);
-  await expect(page.locator("#key-data .br-opening-image img")).toHaveAttribute("src", "https://devinforex-five.vercel.app/images/reviews/exness-terminal-preview.webp");
+  await expect(page.locator("#key-data .br-opening-image img")).toHaveAttribute("src", new URL("/images/reviews/exness-terminal-preview.webp", process.env.SITE_URL ?? "https://www.devinforex.com").href);
   const image = await request.get("/images/reviews/exness-terminal-preview.webp");
   expect(image.status()).toBe(200);
   expect(image.headers()["content-type"]).toMatch(/image\/webp/);

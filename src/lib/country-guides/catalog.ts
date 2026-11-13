@@ -3,6 +3,7 @@ import type { Claim, CountryGuide, GuideRegistry, GuideSource } from "./types";
 import { applySriLankaDossier } from "./sri-lanka-dossier";
 import { malaysiaGuide, registerMalaysiaSources } from "./malaysia";
 import { ugandaGuide, registerUgandaSources } from "./uganda";
+import { unitedKingdomGuide, registerUnitedKingdomSources } from "./united-kingdom";
 export { malaysiaGuide } from "./malaysia";
 
 const countrySlug = "sri-lanka";
@@ -75,5 +76,6 @@ export const sriLankaGuide: CountryGuide = {
 applySriLankaDossier(sriLankaGuide, countryRegistry);
 registerMalaysiaSources(countryRegistry);
 registerUgandaSources(countryRegistry);
-export const countryGuides: CountryGuide[] = [sriLankaGuide, malaysiaGuide, ugandaGuide];
+registerUnitedKingdomSources(countryRegistry);
+export const countryGuides: CountryGuide[] = [sriLankaGuide, malaysiaGuide, ugandaGuide, unitedKingdomGuide];
 export function getCountryGuide(slug: string) { return countryGuides.find(country => country.slug === slug); }

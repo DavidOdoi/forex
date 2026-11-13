@@ -1,0 +1,103 @@
+{
+  "scope": "Availability and redirect checks only; no substantive financial/legal verification or entity-register match.",
+  "original": [
+    {
+      "url": "https://register.fca.org.uk/s/?locale=en",
+      "status": 200,
+      "resolved": "https://register.fca.org.uk/s/?locale=en"
+    },
+    {
+      "url": "https://www.fca.org.uk/firms/contract-for-differences",
+      "status": 200,
+      "resolved": "https://www.fca.org.uk/firms/contract-for-differences"
+    },
+    {
+      "url": "https://www.ig.com/uk",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://pepperstone.com/uk/",
+      "status": 200,
+      "resolved": "https://pepperstone.com/en-gb"
+    },
+    {
+      "url": "https://www.oanda.com/en-gb/",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.cmcmarkets.com/en-gb",
+      "status": 200,
+      "resolved": "https://www.cmcmarkets.com/en-gb"
+    },
+    {
+      "url": "https://www.xtb.com/uk",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.fscs.org.uk/",
+      "status": 200,
+      "resolved": "https://www.fscs.org.uk/"
+    },
+    {
+      "url": "https://handbook.fca.org.uk/handbook/cobs22/cobs22s5",
+      "status": 200,
+      "resolved": "https://handbook.fca.org.uk/handbook/cobs22/cobs22s5"
+    },
+    {
+      "url": "https://www.fscs.org.uk/what-we-cover/investments/",
+      "status": 200,
+      "resolved": "https://www.fscs.org.uk/what-we-cover/investments/"
+    }
+  ],
+  "corrections": [
+    {
+      "url": "https://www.oanda.com/uk-en/",
+      "status": 200,
+      "resolved": "https://www.oanda.com/uk-en/",
+      "title": [
+        "Forex Trading | Trade FX &amp; CFD Online | OANDA"
+      ],
+      "uk_mentions": [
+        "            United Kingdom",
+        "            United Kingdom",
+        "            United Kingdom",
+        "this website are the property of their respective owners.   OANDA Europe Limited  is a company registered in England number 7110087, and has its registered office at Dashwood "
+      ]
+    },
+    {
+      "url": "https://www.oanda.com/uk-en/trading/",
+      "status": 200,
+      "resolved": "https://www.oanda.com/uk-en/trading/",
+      "title": [
+        "Online Forex &amp; CFD Trading | Online Trading Platforms | OANDA | Europe Limited"
+      ],
+      "uk_mentions": [
+        "ned by the requirements of the Financial Conduct Authority (FCA) and European Securities and Markets Authority (ESMA). These restrictions do not apply to clie",
+        "etail clients, OANDA offers tiered margin rates governed by FCA requirements, ensuring a balance of capital efficiency (maximising returns while minimising th",
+        "            United Kingdom",
+        "            United Kingdom"
+      ]
+    },
+    {
+      "url": "https://www.xtb.com/en",
+      "status": 200,
+      "resolved": "https://www.xtb.com/en",
+      "title": [
+        "XTB \u2013 Investing, Savings & Trading Platform | XTB"
+      ],
+      "uk_mentions": [
+        ".org\",\"@type\":\"Organization\",\"name\":\"XTB Online Investing - United Kingdom\",\"url\":\"https:\\/\\/www.xtb.com\\/en\",\"logo\":\"https:\\/\\/xas-cdn.xtb.com\\/build\\/twigImages\\/svg-i",
+        "         XTB Limited is authorised and regulated by the UK Financial Conduct Authority (FRN 522157) with its regist",
+        " Level 9, One Canada Square, Canary Wharf, E14 5AA, London, United Kingdom (company number 07227848). "
+      ]
+    },
+    {
+      "url": "https://www.xtb.com/en/legal",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.ig.com/uk/",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ]
+}
