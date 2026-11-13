@@ -55,8 +55,8 @@ export type CountryResearchPresentation = {
   scope: Scope; dossierId: string;
   description: string; caption: string;
   headers: string[]; columnWidths: number[];
-  rows: { slug: string; cells: ResearchFact[]; signupUrl?: string }[];
-  footnote?: string; signupNote?: string;
+  rows: { slug: string; cells: ResearchFact[]; signupUrl?: string; officialUrl?: string }[];
+  footnote?: string; signupNote?: string; websiteNote?: string;
   traderFit?: { title: string; table: NonNullable<CountrySection["table"]> };
 };
 export type CountryGuide = {

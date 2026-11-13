@@ -74,8 +74,8 @@
 .cg-compact .cg-fact-source:hover{text-decoration-color:#000}
 .cg-compact .cg-feature-comparison .cg-review-link{font-size:15px;line-height:1.5;min-height:44px;padding:9px 10px;border:1px solid #b5b5b5;border-radius:7px;text-decoration:none;justify-content:space-between}
 .cg-compact .cg-comparison-footnote{font-size:16px;line-height:1.7;margin-top:15px!important;max-width:1000px}
-.cg-compact .cg-signup-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:16px;line-height:1.5;font-weight:750;min-height:46px;margin-top:10px;padding:10px 13px;border:2px solid #b88a2c;border-radius:7px;text-decoration:none;box-shadow:0 3px 0 #0000000b}
-.cg-compact .cg-signup-link:hover{border-color:#000;box-shadow:0 4px 12px #00000012}
+.cg-compact :is(.cg-signup-link,.cg-website-link){display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:16px;line-height:1.5;font-weight:750;min-height:46px;margin-top:10px;padding:10px 13px;border:2px solid #b88a2c;border-radius:7px;text-decoration:none;box-shadow:0 3px 0 #0000000b}
+.cg-compact :is(.cg-signup-link,.cg-website-link):hover{border-color:#000;box-shadow:0 4px 12px #00000012}
 .cg-compact .cg-cta-note{font-size:16px;line-height:1.7;padding:17px 20px;border:1px solid #d9d9d9;border-left:3px solid #000;border-radius:8px;margin-top:16px!important}
 .cg-compact .cg-status-pill{font-size:12px;border-radius:5px;padding:3px 7px;white-space:normal}
 .cg-compact .cg-reader-grid{gap:14px}
@@ -164,7 +164,7 @@
  .cg-compact .cg-feature-comparison tbody th{position:static;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:20px;border-bottom:2px solid #000}
  .cg-compact .cg-feature-comparison .cg-table-broker{grid-column:1 / -1;flex-direction:row;align-items:center;margin-bottom:6px}
  .cg-compact .cg-feature-comparison .cg-review-link{margin:0;justify-content:center}
- .cg-compact .cg-feature-comparison .cg-signup-link{margin:0;font-size:15px;padding:9px 8px}
+ .cg-compact .cg-feature-comparison :is(.cg-signup-link,.cg-website-link){margin:0;font-size:15px;padding:9px 8px}
  .cg-compact .cg-feature-comparison tbody td{padding:15px 20px;border:0;border-bottom:1px solid #e5e5e5}
  .cg-compact .cg-feature-comparison tbody td:last-child{border-bottom:0}
  .cg-compact .cg-feature-comparison td[data-label]::before{content:attr(data-label);display:block;font-size:14px;font-weight:750;line-height:1.5;margin-bottom:7px;color:#000}

@@ -105,5 +105,6 @@
   "height": 1067,
   "bytes": 195816,
   "sha256": "105e98ce23f973f9b29e7de052682b7c1346033a8b0ace44036e24a71f91c780",
-  "changes": "Proportional resize and WebP conversion, quality 78. No retouching or file crop; CSS uses a responsive banner crop."
+  "changes": "Proportional resize and WebP conversion, quality 78. No retouching or file crop; CSS uses a responsive banner crop.",
+  "usageStatus": "Removed from the unpublished Malaysia draft at the owner’s request; no Malaysia featured image is rendered or included in page share metadata."
 }

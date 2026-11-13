@@ -1,0 +1,1091 @@
+{
+  "id": "malaysia-five-brokers-2026-11-13",
+  "countrySlug": "malaysia",
+  "title": "Malaysia five-broker research dossier",
+  "reportedResearchDate": "2026-11-13",
+  "independentRecheck": "pending",
+  "archivePath": "docs/country-guides/research/malaysia-five-brokers-dossier-2026-11-13.md",
+  "originalSha256": "49fd14f62cb0c16c974e15868e15afcee1ca4f99824eb9d67f7c9e9c8bc24890",
+  "reportedSources": [
+    {
+      "id": "my-r2-s1",
+      "title": "IC Partners — New Client Application & Malaysia Solicitation Notice",
+      "publisher": "IC Partners",
+      "url": "https://icmarketspartners.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s2",
+      "title": "IC Markets Global — Forex Spreads & Commission Rates",
+      "publisher": "IC Markets Global",
+      "url": "https://icmarkets.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s3",
+      "title": "Seychelles FSA — Regulated Capital Markets Entities",
+      "publisher": "Seychelles FSA",
+      "url": "https://fsaseychelles.sc",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s4",
+      "title": "OANDA Global Markets — Country List and Tiers, 21 July 2022",
+      "publisher": "OANDA Global Markets",
+      "url": "https://oanda.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s5",
+      "title": "BVI FSC — OANDA Global Markets Limited",
+      "publisher": "BVI FSC",
+      "url": "https://bvifsc.vg",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s6",
+      "title": "OANDA Global Markets — Trading Account Types",
+      "publisher": "OANDA Global Markets",
+      "url": "https://oanda.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s7",
+      "title": "OANDA Global Markets — Spreads and Margin",
+      "publisher": "OANDA Global Markets",
+      "url": "https://oanda.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s8",
+      "title": "OANDA Global Markets — Commission and Core Spread",
+      "publisher": "OANDA Global Markets",
+      "url": "https://oanda.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s9",
+      "title": "SC Investor Alert Update — 10 March 2022",
+      "publisher": "SC Investor Alert Update",
+      "url": "https://sc.com.my",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s10",
+      "title": "XM Regulation and Legal Documents",
+      "publisher": "XM Regulation and Legal Documents",
+      "url": "https://xm.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s11",
+      "title": "XM Account Types",
+      "publisher": "XM Account Types",
+      "url": "https://xm.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s12",
+      "title": "SC Investor Alert Update — 13 January 2021",
+      "publisher": "SC Investor Alert Update",
+      "url": "https://sc.com.my",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s13",
+      "title": "FBS About and Belize Disclosure",
+      "publisher": "FBS About and Belize Disclosure",
+      "url": "https://fbs.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s14",
+      "title": "FBS Forex Trading Conditions",
+      "publisher": "FBS Forex Trading Conditions",
+      "url": "https://fbs.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s15",
+      "title": "Tickmill Asia Client Agreement — July 2024",
+      "publisher": "Tickmill Asia Client Agreement",
+      "url": "https://tickmill.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s16",
+      "title": "Labuan FSA Surrendered and Revoked List — 19 March 2025",
+      "publisher": "Labuan FSA Surrendered and Revoked List",
+      "url": "https://labuanfsa.gov.my",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s17",
+      "title": "SC Investor Alert Update — 23 November 2020",
+      "publisher": "SC Investor Alert Update",
+      "url": "https://sc.com.my",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s18",
+      "title": "Tickmill Group Licences and Regulation",
+      "publisher": "Tickmill Group Licences and Regulation",
+      "url": "https://tickmill.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s19",
+      "title": "Tickmill Trading Accounts Overview",
+      "publisher": "Tickmill Trading Accounts Overview",
+      "url": "https://tickmill.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s20",
+      "title": "Tickmill Seychelles Client Service Agreement",
+      "publisher": "Tickmill Seychelles Client Service Agreement",
+      "url": "https://www.tickmill.com/files/documents/legal-documents/fsa/client-service-agreement-and-risk-disclosure-statement.pdf",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s21",
+      "title": "IC Markets Swap-Free and Raw Accounts",
+      "publisher": "IC Markets Swap-Free and Raw Accounts",
+      "url": "https://icmarkets.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s22",
+      "title": "IC Markets Global Help Centre",
+      "publisher": "IC Markets Global Help Centre",
+      "url": "https://icmarkets.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s23",
+      "title": "OANDA Global Markets Calculating Margin",
+      "publisher": "OANDA Global Markets Calculating Margin",
+      "url": "https://oanda.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s24",
+      "title": "IC Markets Standard Account",
+      "publisher": "IC Markets Standard Account",
+      "url": "https://icmarkets.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s25",
+      "title": "XM Forex Trading Specs",
+      "publisher": "XM Forex Trading Specs",
+      "url": "https://xm.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s26",
+      "title": "FBS Forex Spreads and Conditions",
+      "publisher": "FBS Forex Spreads and Conditions",
+      "url": "https://fbs.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s27",
+      "title": "Tickmill EURUSD",
+      "publisher": "Tickmill EURUSD",
+      "url": "https://tickmill.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s28",
+      "title": "Tickmill Leverage and Margin",
+      "publisher": "Tickmill Leverage and Margin",
+      "url": "https://tickmill.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s29",
+      "title": "XM MENA and Global Account FAQ",
+      "publisher": "XM MENA and Global Account FAQ",
+      "url": "https://xm.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s30",
+      "title": "OANDA Global Markets Charges",
+      "publisher": "OANDA Global Markets Charges",
+      "url": "https://www.oanda.com/bvi-en/cfds/our-charges/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s31",
+      "title": "IC Markets Deposit Funds",
+      "publisher": "IC Markets Deposit Funds",
+      "url": "https://icmarkets.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s32",
+      "title": "IC Markets Funds Withdrawal",
+      "publisher": "IC Markets Funds Withdrawal",
+      "url": "https://icmarkets.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s33",
+      "title": "OANDA Global Markets Legal Hub",
+      "publisher": "OANDA Global Markets Legal Hub",
+      "url": "https://www.oanda.com/bvi-en/legal/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s34",
+      "title": "investingLive XM Review — October 2026",
+      "publisher": "investingLive XM Review",
+      "url": "https://investinglive.com",
+      "kind": "editorial",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s35",
+      "title": "Tickmill Negative Balance FAQ",
+      "publisher": "Tickmill Negative Balance FAQ",
+      "url": "https://tickmill.com",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s36",
+      "title": "Tickmill Deposit and Withdrawal",
+      "publisher": "Tickmill Deposit and Withdrawal",
+      "url": "https://www.tickmill.com/conditions/deposit-and-withdrawal",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s37",
+      "title": "SC Investor Alert List",
+      "publisher": "SC Investor Alert List",
+      "url": "https://sc.com.my",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s38",
+      "title": "Labuan FSA Money Broking Overview",
+      "publisher": "Labuan FSA Money Broking Overview",
+      "url": "https://labuanfsa.gov.my",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s39",
+      "title": "BNM FEA Rules Part 1 Residents",
+      "publisher": "BNM FEA Rules Part 1 Residents",
+      "url": "https://bnm.gov.my",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s40",
+      "title": "BNM Foreign Exchange Administration Policies",
+      "publisher": "BNM Foreign Exchange Administration Policies",
+      "url": "https://bnm.gov.my",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    },
+    {
+      "id": "my-r2-s41",
+      "title": "HSBC Malaysia Foreign Exchange Policy FAQs",
+      "publisher": "HSBC Malaysia Foreign Exchange Policy FAQs",
+      "url": "https://hsbc.com.my",
+      "kind": "editorial",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "Source ledger supplied separately in chat. Many URLs identify only a homepage, not the cited document; contributor status labels do not establish DEVIN FOREX verification.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-five-brokers-2026-11-13"
+      }
+    }
+  ],
+  "reportedFindings": [
+    {
+      "id": "R1",
+      "claim": "IC Markets\tTechnical: Yes (via global site)\nLocal SC/BNM Permission: No\tRaw Trading Ltd (Seychelles)\tOnboarded as retail/general offshore client; SC sophisticated-investor rules do not govern the offshore contract, and Raw Trading Ltd holds no SC or Labuan FSA permission.\tRegulated by Seychelles FSA (SD018). Website carries a self-directed solicitation disclaimer placing local legal compliance on the user.",
+      "scope": "Malaysia resident retail; contributor offshore allocation",
+      "quote": "No exact supporting quotation was supplied for this allocation.",
+      "sourceIds": [
+        "my-r2-s1"
+      ],
+      "sourceDescription": "IC Markets revised dossier record",
+      "evidenceType": "broker_statement",
+      "limitations": "Preserved as reported. Homepages and global company disclosures do not independently verify the claimed Malaysian allocation."
+    },
+    {
+      "id": "R2",
+      "claim": "OANDA\tTechnical: Yes (via BVI portal)\nLocal SC/BNM Permission: No\tOANDA Global Markets Ltd (British Virgin Islands)\tOnboarded as retail/general offshore client under BVI FSC rules; no SC or Labuan FSA permission.\tRegulated by BVI FSC (SIBA/L/20/1130). SC Investor Alert List (15 Dec 2020) flagged clone entities \"Oanda Malaysia Corporation\" and \"OANDA SDN. BHD.\".",
+      "scope": "Malaysia resident retail; contributor offshore allocation",
+      "quote": "No exact supporting quotation was supplied for this allocation.",
+      "sourceIds": [
+        "my-r2-s4"
+      ],
+      "sourceDescription": "OANDA revised dossier record",
+      "evidenceType": "broker_statement",
+      "limitations": "Preserved as reported. Homepages and global company disclosures do not independently verify the claimed Malaysian allocation."
+    },
+    {
+      "id": "R3",
+      "claim": "XM\tTechnical: Yes (via global site)\nLocal SC/BNM Permission: No\tXM Global Limited (Belize)\tOnboarded as retail/general offshore client under Belize FSC rules; no SC or Labuan FSA permission.\tRegulated by Belize FSC (000261/309 per partner/client terms; 8557558 also cited on XM pages—see Manual Follow-Up). SC Investor Alert List flagged clone \"XM Trading Forex\" (10 Mar 2022) and \"XM Trader Malaysia\" (xmbroker-fx.com).",
+      "scope": "Malaysia resident retail; contributor offshore allocation",
+      "quote": "No exact supporting quotation was supplied for this allocation.",
+      "sourceIds": [
+        "my-r2-s10"
+      ],
+      "sourceDescription": "XM revised dossier record",
+      "evidenceType": "broker_statement",
+      "limitations": "Preserved as reported. Homepages and global company disclosures do not independently verify the claimed Malaysian allocation."
+    },
+    {
+      "id": "R4",
+      "claim": "FBS\tTechnical: Yes (via global site)\nLocal SC/BNM Permission: No\tFBS Markets Inc. (Belize)\tOnboarded as retail/general offshore client under Belize FSC rules; no SC or Labuan FSA permission.\tRegulated by Belize FSC (Certificate of Incorporation 000001317; legacy IFSC ref 000102/460 appears in secondary sources). Not listed as SC CMSL or Labuan licensee.",
+      "scope": "Malaysia resident retail; contributor offshore allocation",
+      "quote": "No exact supporting quotation was supplied for this allocation.",
+      "sourceIds": [
+        "my-r2-s13"
+      ],
+      "sourceDescription": "FBS revised dossier record",
+      "evidenceType": "broker_statement",
+      "limitations": "Preserved as reported. Homepages and global company disclosures do not independently verify the claimed Malaysian allocation."
+    },
+    {
+      "id": "R5",
+      "claim": "Tickmill\tTechnical: Yes (via global site)\nLocal SC/BNM Permission: No\tTickmill Ltd (Seychelles) (Note: Tickmill Asia Ltd in Labuan surrendered its licence on 10 Jan 2025)\tOnboarded as retail/general offshore client under Seychelles FSA (SD008); no active SC or Labuan FSA permission.\tTickmill Asia Ltd (Labuan MB/18/0028 / LL14858) appears on Labuan FSA's Surrendered & Revoked list dated 10/01/2025. SC also placed an unauthorised \"Tickmill\" listing on its Investor Alert List (23 Nov 2020).",
+      "scope": "Malaysia resident retail; contributor offshore allocation",
+      "quote": "No exact supporting quotation was supplied for this allocation.",
+      "sourceIds": [
+        "my-r2-s15"
+      ],
+      "sourceDescription": "Tickmill revised dossier record",
+      "evidenceType": "broker_statement",
+      "limitations": "Preserved as reported. Homepages and global company disclosures do not independently verify the claimed Malaysian allocation."
+    }
+  ],
+  "brokerResearch": [
+    {
+      "brokerSlug": "ic-markets",
+      "name": "IC Markets",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Contributor offshore onboarding and entity assessment",
+          "value": "IC Markets\tTechnical: Yes (via global site)\nLocal SC/BNM Permission: No\tRaw Trading Ltd (Seychelles)\tOnboarded as retail/general offshore client; SC sophisticated-investor rules do not govern the offshore contract, and Raw Trading Ltd holds no SC or Labuan FSA permission.\tRegulated by Seychelles FSA (SD018). Website carries a self-directed solicitation disclaimer placing local legal compliance on the user.",
+          "sourceIds": [
+            "my-r2-s1"
+          ]
+        }
+      ],
+      "unresolvedNotes": [
+        "The contributor claims technical Malaysian acceptance; the public ledger does not supply exact supporting country/entity quotations for every broker.",
+        "Offshore account specifications do not establish Malaysian retail authorization or lawful funding."
+      ]
+    },
+    {
+      "brokerSlug": "oanda",
+      "name": "OANDA",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Contributor offshore onboarding and entity assessment",
+          "value": "OANDA\tTechnical: Yes (via BVI portal)\nLocal SC/BNM Permission: No\tOANDA Global Markets Ltd (British Virgin Islands)\tOnboarded as retail/general offshore client under BVI FSC rules; no SC or Labuan FSA permission.\tRegulated by BVI FSC (SIBA/L/20/1130). SC Investor Alert List (15 Dec 2020) flagged clone entities \"Oanda Malaysia Corporation\" and \"OANDA SDN. BHD.\".",
+          "sourceIds": [
+            "my-r2-s4"
+          ]
+        }
+      ],
+      "unresolvedNotes": [
+        "The contributor claims technical Malaysian acceptance; the public ledger does not supply exact supporting country/entity quotations for every broker.",
+        "Offshore account specifications do not establish Malaysian retail authorization or lawful funding."
+      ]
+    },
+    {
+      "brokerSlug": "xm",
+      "name": "XM",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Contributor offshore onboarding and entity assessment",
+          "value": "XM\tTechnical: Yes (via global site)\nLocal SC/BNM Permission: No\tXM Global Limited (Belize)\tOnboarded as retail/general offshore client under Belize FSC rules; no SC or Labuan FSA permission.\tRegulated by Belize FSC (000261/309 per partner/client terms; 8557558 also cited on XM pages—see Manual Follow-Up). SC Investor Alert List flagged clone \"XM Trading Forex\" (10 Mar 2022) and \"XM Trader Malaysia\" (xmbroker-fx.com).",
+          "sourceIds": [
+            "my-r2-s10"
+          ]
+        }
+      ],
+      "unresolvedNotes": [
+        "The contributor claims technical Malaysian acceptance; the public ledger does not supply exact supporting country/entity quotations for every broker.",
+        "Offshore account specifications do not establish Malaysian retail authorization or lawful funding."
+      ]
+    },
+    {
+      "brokerSlug": "fbs",
+      "name": "FBS",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Contributor offshore onboarding and entity assessment",
+          "value": "FBS\tTechnical: Yes (via global site)\nLocal SC/BNM Permission: No\tFBS Markets Inc. (Belize)\tOnboarded as retail/general offshore client under Belize FSC rules; no SC or Labuan FSA permission.\tRegulated by Belize FSC (Certificate of Incorporation 000001317; legacy IFSC ref 000102/460 appears in secondary sources). Not listed as SC CMSL or Labuan licensee.",
+          "sourceIds": [
+            "my-r2-s13"
+          ]
+        }
+      ],
+      "unresolvedNotes": [
+        "The contributor claims technical Malaysian acceptance; the public ledger does not supply exact supporting country/entity quotations for every broker.",
+        "Offshore account specifications do not establish Malaysian retail authorization or lawful funding."
+      ]
+    },
+    {
+      "brokerSlug": "tickmill",
+      "name": "Tickmill",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Contributor offshore onboarding and entity assessment",
+          "value": "Tickmill\tTechnical: Yes (via global site)\nLocal SC/BNM Permission: No\tTickmill Ltd (Seychelles) (Note: Tickmill Asia Ltd in Labuan surrendered its licence on 10 Jan 2025)\tOnboarded as retail/general offshore client under Seychelles FSA (SD008); no active SC or Labuan FSA permission.\tTickmill Asia Ltd (Labuan MB/18/0028 / LL14858) appears on Labuan FSA's Surrendered & Revoked list dated 10/01/2025. SC also placed an unauthorised \"Tickmill\" listing on its Investor Alert List (23 Nov 2020).",
+          "sourceIds": [
+            "my-r2-s15"
+          ]
+        }
+      ],
+      "unresolvedNotes": [
+        "The contributor claims technical Malaysian acceptance; the public ledger does not supply exact supporting country/entity quotations for every broker.",
+        "Offshore account specifications do not establish Malaysian retail authorization or lawful funding."
+      ]
+    }
+  ],
+  "accessFailures": [
+    {
+      "subject": "The file ends at the source-ledger heading",
+      "url": null,
+      "consequence": "A supplemental 41-source ledger was supplied in chat; most entries use homepages and no manual-follow-up section was included."
+    }
+  ],
+  "legalReviewQuestions": [
+    "Confirm the actual Malaysian contracting company and client class for each broker.",
+    "Confirm current local trading, promotion and funding permissions for the proposed product/resident circumstances."
+  ],
+  "ownerEvidenceNeeded": [
+    "No affiliate programme or tracking links have been supplied."
+  ]
+}

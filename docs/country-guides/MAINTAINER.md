@@ -89,3 +89,5 @@ The follow-up owner request explicitly asks for the brief’s broker comparison 
 ## Featured images and country batches
 
 See [featured-images.md](featured-images.md) for the Sri Lanka photograph, visible licensing/credit, local responsive asset and social/schema image fields. Each new country gets a separately selected relevant image; `media.ts` returns no image for unmapped countries. Three countries per research/implementation batch is recommended so the shared template is populated with individually checked local facts.
+
+The owner's later instruction overrides automatic image selection for **Malaysia, the UK and Netherlands**: add no image; the owner will supply it manually. Malaysia now uses the corrected five-broker list (IC Markets, OANDA, XM, FBS, Tickmill), the same shared template and populated international specifications. See `malaysia-five-brokers-update-2026-11-13.md` and `malaysia-manual-follow-up.md`. Preserve the published Sri Lanka image and four existing global reviews; do not create missing broker review pages merely to fill links.

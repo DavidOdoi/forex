@@ -24,7 +24,7 @@ export function ResearchStatusTable({ brokers, countryName, presentation, regist
           const record = countryBrokerMaster(broker.slug);
           const row = presentation?.rows.find(row => row.slug === broker.slug);
           return <tr key={broker.slug} id={`research-${broker.slug}`}>
-            <th scope="row"><span className="cg-table-broker"><BrokerMark broker={broker} /><strong>{broker.name}</strong></span>{record?.reviewPath && <Link className="cg-review-link" href={record.reviewPath} aria-label={`Read ${broker.name} review`}>Read review<ArrowUpRight size={15} aria-hidden="true" /></Link>}{row?.signupUrl && httpsUrl(row.signupUrl) && <a className="cg-signup-link" href={row.signupUrl} target="_blank" rel="nofollow noopener noreferrer" aria-label={`Official ${broker.name} sign-up`}>Sign up<ArrowUpRight size={15} aria-hidden="true" /></a>}</th>
+            <th scope="row"><span className="cg-table-broker"><BrokerMark broker={broker} /><strong>{broker.name}</strong></span>{record?.reviewPath && <Link className="cg-review-link" href={record.reviewPath} aria-label={`Read ${broker.name} review`}>Read review<ArrowUpRight size={15} aria-hidden="true" /></Link>}{row?.signupUrl && httpsUrl(row.signupUrl) && <a className="cg-signup-link" href={row.signupUrl} target="_blank" rel="nofollow noopener noreferrer" aria-label={`Official ${broker.name} sign-up`}>Sign up<ArrowUpRight size={15} aria-hidden="true" /></a>}{row?.officialUrl && httpsUrl(row.officialUrl) && <a className="cg-website-link" href={row.officialUrl} target="_blank" rel="nofollow noopener noreferrer" aria-label={`Official ${broker.name} website`}>Official site<ArrowUpRight size={15} aria-hidden="true" /></a>}</th>
             {row ? row.cells.map((fact, i) => <td key={headers[i + 1]} data-label={headers[i + 1]}><Fact fact={fact} registry={registry} /></td>) : <><td data-label="Review focus">{record?.readingFocus}</td><td data-label={`${countryName} eligibility`}>Not established</td></>}
           </tr>;
         })}</tbody>
@@ -32,6 +32,7 @@ export function ResearchStatusTable({ brokers, countryName, presentation, regist
     </div>
     {presentation?.footnote && <p className="cg-comparison-footnote">{presentation.signupNote && <strong>Reading the prices: </strong>}{presentation.footnote}</p>}
     {presentation?.signupNote && <p className="cg-cta-note"><strong>Before using a sign-up link: </strong>{presentation.signupNote}</p>}
+    {presentation?.websiteNote && <p className="cg-cta-note">{presentation.websiteNote}</p>}
   </section>;
 }
 

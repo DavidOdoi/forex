@@ -1,0 +1,103 @@
+{
+  "checkedAt": "2026-11-13",
+  "scope": "International broker pages, not Malaysian contracting allocations or legal permissions.",
+  "records": [
+    {
+      "id": "tickmill-accounts",
+      "url": "https://www.tickmill.com/trading/accounts-overview",
+      "finalUrl": "https://www.tickmill.com/trading/accounts-overview",
+      "http": 200,
+      "bytes": 179825,
+      "sha256": "73346b4b56d01b87003e9e7bc57737aac9c8519b3dc13b125d2064a5c1fb9e6e"
+    },
+    {
+      "id": "fbs-home",
+      "url": "https://fbs.com/",
+      "finalUrl": "https://fbs.com/",
+      "http": 200,
+      "bytes": 860069,
+      "sha256": "a8b55a22c6ce21d628608cbd167e127e7f5821f494f4ef4d62f558d5fe720919"
+    },
+    {
+      "id": "fbs-conditions",
+      "url": "https://fbs.com/trading/conditions",
+      "finalUrl": "https://fbs.com/trading/conditions",
+      "http": 200,
+      "bytes": 229215,
+      "sha256": "18552a4055b51be297066665d2afa54a3c88170c5e1a2797821133ed80b31e9f"
+    },
+    {
+      "id": "fbs-about",
+      "url": "https://fbs.com/about",
+      "finalUrl": "https://fbs.com/about",
+      "http": 200,
+      "bytes": 701635,
+      "snippets": [],
+      "sha256": "2ccc275f5974a6355941b6bcdf649b3c3702f08d2ab6f7031bf392d4df640a03"
+    },
+    {
+      "id": "oanda-deposit-help",
+      "url": "https://help.oanda.com/bvi/en/faqs/deposit-funds.htm",
+      "finalUrl": "https://help.oanda.com/secure/bvi/alert?type=PageNotFound",
+      "http": 200,
+      "bytes": 83743,
+      "snippets": [],
+      "sha256": "98185337ff1d7920454ac14d07a1aaac50197aaa9718e5fea6ef03ed1408a201"
+    },
+    {
+      "id": "oanda-accounts",
+      "url": "https://www.oanda.com/bvi-en/cfds/account-comparison/",
+      "finalUrl": "https://www.oanda.com/bvi-en/cfds/account-comparison/",
+      "http": 200,
+      "bytes": 220591,
+      "sha256": "de9d5c15a38a40a44db223264ec49659643340c9d9d576390a7847d59fe6b5af"
+    },
+    {
+      "id": "fbs-legal",
+      "url": "https://fbs.com/legal-documents",
+      "finalUrl": "https://fbs.com/legal-documents",
+      "http": 200,
+      "bytes": 128873,
+      "sha256": "d47ce1718f08b63b4438540e781bac2c46757db1011154841f092a7a315ab5e0"
+    },
+    {
+      "id": "oanda-spreads",
+      "url": "https://www.oanda.com/bvi-en/cfds/spreads-margin/",
+      "finalUrl": "https://www.oanda.com/bvi-en/cfds/spreads-margin/",
+      "http": 200,
+      "bytes": 226880,
+      "sha256": "9791886643ef0cfef2d451fffbafb511149ad0f6d54226f546bfc373e5d1019d"
+    },
+    {
+      "id": "oanda-legal",
+      "url": "https://www.oanda.com/bvi-en/legal/",
+      "finalUrl": "https://www.oanda.com/bvi-en/legal/",
+      "http": 200,
+      "bytes": 165520,
+      "sha256": "0c3d5a4d7d90c0d071fc4d9c2166f5b6e07a25e26ab3e03e1213f8da823ba952"
+    },
+    {
+      "id": "oanda-bvi",
+      "url": "https://www.oanda.com/bvi-en/",
+      "finalUrl": "https://www.oanda.com/bvi-en/",
+      "http": 200,
+      "bytes": 225365,
+      "sha256": "157702eb6ed44c58c231508190c7f3aee9ade59578e20e8529f4eb8358f518c3"
+    },
+    {
+      "id": "oanda-charges",
+      "url": "https://www.oanda.com/bvi-en/cfds/our-charges/",
+      "finalUrl": "https://www.oanda.com/bvi-en/cfds/our-charges/",
+      "http": 200,
+      "bytes": 207087,
+      "sha256": "c44a4f5f7fee2eb24934f796714203f1d2c9ff0a4c50b2de5b9d5816db26217e"
+    }
+  ],
+  "materialNotes": [
+    "OANDA current BVI account comparison lists zero commission across displayed tiers; the dossier premium-core commission is not published as verified.",
+    "OANDA deposit-help URL redirected to an alert/PageNotFound page despite HTTP 200; it is not evidence of a zero minimum.",
+    "FBS primary pages support deposits advertised from USD 5, spreads from 0.7 pips, no trading commission, swap-free availability and MT4/MT5/app advertisements. The exact contracting company remains separately attributed.",
+    "Tickmill account page separates Raw USD 3/lot/side from TradingView Raw USD 3.50/lot/side and lists USD 100 starting deposits.",
+    "IC Markets and XM reuse existing dated primary-source account research. No measured execution rankings, unperiodised average spreads or unconditional Malaysian permission are claimed."
+  ]
+}

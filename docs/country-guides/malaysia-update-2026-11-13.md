@@ -2,6 +2,8 @@
 
 Route: `/forex-brokers/malaysia`.
 
+**Historical initial draft, not published.** The owner subsequently replaced the broker list with IC Markets, OANDA, XM, FBS and Tickmill and requested no images. See `malaysia-five-brokers-update-2026-11-13.md` for the current version.
+
 The owner requested Malaysia, the United Kingdom and the Netherlands using the existing Sri Lanka template, then supplied a **Malaysia-only** Perplexity dossier. Malaysia is implemented from that packet and fresh primary-source checks. UK/Netherlands pages are not invented before their country evidence arrives.
 
 ## Same template, country-specific evidence

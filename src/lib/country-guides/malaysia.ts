@@ -1,4 +1,4 @@
-import data from "@/data/country-guides/malaysia-dossier-2026-11-13.json";
+import data from "@/data/country-guides/malaysia-five-brokers-dossier-2026-11-13.json";
 import type { Claim, CountryGuide, GuideRegistry, GuideSource, SuppliedCountryResearch } from "./types";
 
 export const malaysiaDossier = data as SuppliedCountryResearch;
@@ -18,11 +18,17 @@ export function registerMalaysiaSources(registry: GuideRegistry) {
     checkedSource("my-sc-cfd-index", "SC current CFD documents and superseded archive", "Securities Commission Malaysia", "https://www.sc.com.my/regulation/guidelines/contracts-for-difference"),
     checkedSource(register, "SC licensed and registered persons", "Securities Commission Malaysia", "https://www.sc.com.my/regulation/licensing/licensed-and-registered-persons"),
     checkedSource(fep, "Bank Negara Malaysia foreign-exchange policy", "Bank Negara Malaysia", "https://www.bnm.gov.my/fep"),
-    { id: "my-ic-eu-background", title: "IC Markets EU register — foreign-entity background", publisher: "CySEC", url: "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/80418/", kind: "regulator", scope, publishedAt: null, publicationDateStatus: "unknown", checkedAt: null, verification: "unverified", access: "not_attempted", note: "The earlier EU research is not a Malaysian resident-acceptance or authorization check." },
+    ...[
+      ["my-ic-accounts", "IC Markets Global account specifications", "IC Markets", "https://www.icmarkets.com/global/en/trading-accounts/overview", "2026-11-10"],
+      ["my-xm-accounts", "XM Global account specifications", "XM", "https://www.xm.com/account-types", "2026-11-10"],
+      ["my-oanda-accounts", "OANDA Global Markets account comparison", "OANDA", "https://www.oanda.com/bvi-en/cfds/account-comparison/", date],
+      ["my-oanda-charges", "OANDA Global Markets charges", "OANDA", "https://www.oanda.com/bvi-en/cfds/our-charges/", date],
+      ["my-fbs-home", "FBS advertised deposit and platform range", "FBS", "https://fbs.com/", date],
+      ["my-fbs-conditions", "FBS trading conditions", "FBS", "https://fbs.com/trading/conditions", date],
+      ["my-tickmill-accounts", "Tickmill account comparison", "Tickmill", "https://www.tickmill.com/trading/accounts-overview", date],
+    ].map(([id, title, publisher, url, checkedAt]): GuideSource => ({ ...checkedSource(id, title, publisher, url), kind: "broker", checkedAt, note: "International broker-advertised specifications. Source check does not establish the Malaysian serving entity, local authorization or lawful funding." })),
   ];
   for (const source of sources) {
-    if (source.id === "my-supplied-10") source.title = "Exness regulation disclosures — contributor reference";
-    if (source.id === "my-supplied-7") source.title = "XM legal documents — contributor reference";
     if (!registry.sources.some(existing => existing.id === source.id)) registry.sources.push(source);
   }
 }
@@ -30,69 +36,95 @@ export function registerMalaysiaSources(registry: GuideRegistry) {
 export const malaysiaGuide: CountryGuide = {
   name: "Malaysia", slug: "malaysia", locale: "en-MY",
   currency: { ...editorial("", [fep]), value: null, note: "No live MYR conversion quote or broker base-currency entitlement is displayed." },
-  title: "Forex Brokers in Malaysia: Rules, Eligibility & Checks",
-  seoTitle: editorial("Forex Brokers in Malaysia: Rules & Eligibility"),
-  description: "Forex brokers in Malaysia: check SC CFD eligibility, broker evidence, local permissions and funding rules before choosing an overseas trading account.",
+  title: "Forex Brokers in Malaysia: Fees, Platforms & Key Checks",
+  seoTitle: editorial("Forex Brokers in Malaysia: Fees & Rules"),
+  description: "Compare forex brokers in Malaysia: IC Markets, OANDA, XM, FBS and Tickmill. Review published offshore fees, platforms, minimums and local permission checks.",
   audience: "Malaysian residents researching leveraged forex/CFD accounts, with ordinary retail and sophisticated-investor categories kept separate.",
-  intro: editorial("Forex brokers in Malaysia need to be assessed by client eligibility, product permission and the company behind the account. This guide covers leveraged forex/CFD accounts, rather than currency exchange for travel or business. Compare the evidence for four brokers, then check the SC and Bank Negara Malaysia rules before considering funding."),
-  directAnswer: "The SC’s CFD framework limits offers to sophisticated investors. Exness, XM, IC Markets and Pepperstone are researched below, but none is established here as a locally authorised Malaysian retail forex/CFD option.",
+  intro: editorial("Compare five forex brokers in Malaysia: IC Markets, OANDA, XM, FBS and Tickmill. Review their published international costs, platforms and deposit requirements. Confirm the proposed company, your investor category and local rules before treating an advertised account as a Malaysian option."),
+  directAnswer: "Compare IC Markets and Tickmill for raw pricing, XM and FBS for lower advertised deposits, and OANDA for platform choice. These are offshore terms. The SC’s domestic CFD framework is limited to sophisticated investors; confirm eligibility and lawful funding before acting.",
   legalStatus: "pending_review", publicationStatus: "draft", commercialLinksAllowed: false,
   legalReviewedAt: null, legalReviewReference: null, humanApprovalReference: null,
   publishedAt: null, updatedAt: null, authorReference: "david-odoi", reviewerReference: null,
-  legalSummary: checked("SC paragraph 4.02 limits CFD offers to sophisticated investors. This source check does not establish a permitted offshore retail forex route, an eligible broker or lawful funding for a particular resident.", [guidelines, faq]),
+  legalSummary: checked("SC paragraph 4.02 limits CFD offers to sophisticated investors. Offshore retail eligibility and lawful funding are separate questions; neither is established by this source check.", [guidelines, faq]),
   legalSources: [guidelines, faq, fep],
   brokerEntityMappings: [], comparison: { mode: "none", purpose: null, approvalReference: null },
   suppliedResearch: malaysiaDossier,
-  sourceIds: [guidelines, faq, "my-sc-cfd-index", register, fep, "my-supplied-10", "my-supplied-7", "my-ic-eu-background"],
+  sourceIds: [guidelines, faq, register, fep, "my-ic-accounts", "my-xm-accounts", "my-oanda-accounts", "my-oanda-charges", "my-fbs-home", "my-fbs-conditions", "my-tickmill-accounts"],
   researchPresentation: {
     scope, dossierId: malaysiaDossier.id,
-    description: "These entries compare evidence, not Malaysian account offers. No eligible retail shortlist or Malaysian serving company is established. The global reviews provide background, not proof of local permission.",
-    caption: "Malaysia eligibility research · supplied dossier and source checks, 13 November 2026",
-    headers: ["Broker", "What the sources establish", "Malaysia-specific gap", "Deciding check"],
-    columnWidths: [19, 29, 27, 25],
+    description: "Compare international terms. Confirm the company serving you and local permission; foreign disclosures are not SC retail authorisation.",
+    caption: "Broker-advertised international terms · source snapshots 10–13 November 2026",
+    headers: ["Broker", "Offshore company / scope", "Platforms", "Advertised FX pricing", "Deposit requirements", "Overnight / swap-free", "Before funding", "Research focus"],
+    columnWidths: [16, 13, 12, 16, 13, 11, 9, 10],
     rows: [
-      { slug: "exness", cells: [
-        { text: "The group discloses several foreign companies.", sourceId: "my-supplied-10", anchor: "Exness company disclosures" },
-        { text: "No Malaysian retail contracting company or product permission established." },
-        { text: "Check the exact company and SC product permissions; a portal or Labuan presence is insufficient.", sourceId: register, anchor: "SC register" },
+      { slug: "ic-markets", officialUrl: "https://www.icmarkets.com/global/en/", cells: [
+        { text: "Raw Trading Ltd · Seychelles; confirm allocation", sourceId: "my-ic-accounts" },
+        { text: "MT4, MT5, cTrader, TradingView", sourceId: "my-ic-accounts" },
+        { text: "Standard from 0.8 pips, $0 FX commission; Raw MT from 0.0 + $3.50/lot/side", sourceId: "my-ic-accounts" },
+        { text: "No account minimum advertised; method limits apply", sourceId: "my-ic-accounts" },
+        { text: "Swap-free holding fees can apply", href: "https://www.icmarkets.com/global/en/trading-accounts/swap-free-account" },
+        { text: "Check MY eligibility" },
+        { text: "Standard vs Raw" },
       ] },
-      { slug: "xm", cells: [
-        { text: "Foreign legal documents are available.", sourceId: "my-supplied-7", anchor: "XM legal documents" },
-        { text: "No Malaysian serving entity or explicit retail eligibility established." },
-        { text: "Obtain the Malaysian client agreement; localisation is not an entity allocation." },
+      { slug: "oanda", officialUrl: "https://www.oanda.com/bvi-en/", cells: [
+        { text: "OANDA Global Markets Ltd · BVI", sourceId: "my-oanda-accounts" },
+        { text: "OANDA Mobile, MT5, TradingView", sourceId: "my-oanda-accounts" },
+        { text: "Standard spread-only pricing; $0 commission", sourceId: "my-oanda-accounts" },
+        { text: "Confirm the current payment-method minimum", sourceId: "my-oanda-accounts" },
+        { text: "Financing applies; confirm any swap-free terms", sourceId: "my-oanda-charges" },
+        { text: "Check MY eligibility" },
+        { text: "Platform and tier choice" },
       ] },
-      { slug: "ic-markets", cells: [
-        { text: "Prior research identifies a separately regulated Cyprus company.", sourceId: "my-ic-eu-background", anchor: "IC Markets EU register" },
-        { text: "Cyprus licensing does not establish Malaysian onboarding or local permission." },
-        { text: "Confirm the resident category, proposed company and product." },
+      { slug: "xm", officialUrl: "https://www.xm.com/", cells: [
+        { text: "XM Global Limited · Belize; confirm allocation", sourceId: "my-xm-accounts" },
+        { text: "MT4, MT5, XM App", sourceId: "my-xm-accounts" },
+        { text: "EUR/USD: Standard from 1.6 pips; Ultra Low 0.8; $0 separate commission", sourceId: "my-xm-accounts" },
+        { text: "$5 Standard/Ultra Low; $10,000 Shares", sourceId: "my-xm-accounts" },
+        { text: "Selected instruments and eligibility conditions", href: "https://www.xm.com/help-center/trading-accounts" },
+        { text: "Check MY eligibility" },
+        { text: "Lower entry minimum" },
       ] },
-      { slug: "pepperstone", cells: [
-        { text: "A global review is available; Malaysia-specific terms were not retrieved in the supplied research." },
-        { text: "No Malaysian retail entity allocation or permission established." },
-        { text: "Request explicit resident eligibility and the full legal pack." },
+      { slug: "fbs", officialUrl: "https://fbs.com/", cells: [
+        { text: "FBS Markets Inc. reported; confirm the contract", href: "https://fbs.com/legal-documents" },
+        { text: "MT4, MT5, FBS app", sourceId: "my-fbs-home" },
+        { text: "From 0.7 pips; no trading commission advertised", sourceId: "my-fbs-conditions" },
+        { text: "Deposits advertised from $5; method terms apply", sourceId: "my-fbs-home" },
+        { text: "Swap-free option advertised; check conditions", sourceId: "my-fbs-conditions" },
+        { text: "Check MY eligibility" },
+        { text: "Entry deposit and app" },
+      ] },
+      { slug: "tickmill", officialUrl: "https://www.tickmill.com/", cells: [
+        { text: "Tickmill group disclosure; Seychelles allocation needs confirmation", sourceId: "my-tickmill-accounts" },
+        { text: "MT4, MT5, TradingView, Tickmill Trader", sourceId: "my-tickmill-accounts" },
+        { text: "Classic from 1.6 pips, $0 commission; Raw from 0.0 + $3/lot/side", sourceId: "my-tickmill-accounts" },
+        { text: "$100 starting deposit", sourceId: "my-tickmill-accounts" },
+        { text: "Islamic account advertised; conditions apply", sourceId: "my-tickmill-accounts" },
+        { text: "Check MY eligibility" },
+        { text: "Raw fees" },
       ] },
     ],
-    footnote: "No broker is ranked or recommended for Malaysian retail clients. Fees, leverage and payment options from another country are not Malaysian account terms. The comparison therefore focuses on eligibility evidence.",
-    traderFit: { title: "Start with your investor category", table: {
-      caption: "Eligibility comes before account features", headers: ["Your situation", "First question", "Next check"], rows: [
-        ["Ordinary retail", "Can this product be offered to you?", "SC CFD offers are restricted to sophisticated investors."],
-        ["Potentially sophisticated", "Do you meet the current categories?", "Get the applicable criteria and suitability assessment."],
-        ["Offshore account", "Which company and rules apply?", "Check the contract, product and funding separately."],
-        ["Swap-free priority", "Is the underlying offer permitted?", "Then examine eligibility and replacement holding fees."],
-        ["New learner", "What can you understand before committing funds?", "Learn margin risk and read any demo terms."],
+    footnote: "“From” means a floor, not a measured average. $3.50/lot/side is $7 round trip before spread and other charges. Account-opening and payment minimums differ. Published offshore terms do not establish a Malaysian offer.",
+    websiteNote: "Official-site buttons are unpaid links. Confirm your contracting company, investor category and local trading/funding requirements before registering or depositing. Leverage magnifies losses.",
+    traderFit: { title: "Choose the features that match your needs", table: {
+      caption: "Research starting points, subject to eligibility", headers: ["Priority", "Compare", "Key question"], rows: [
+        ["Raw pricing", "IC Markets / Tickmill", "What is the total spread plus both commission sides?"],
+        ["Lower entry deposit", "XM / FBS", "Does the selected payment method have a higher minimum?"],
+        ["Charting choice", "IC Markets / OANDA", "Does your account support the desired platform?"],
+        ["Swap-free", "XM / FBS / IC Markets", "Which instruments, holding fees and conditions apply?"],
+        ["New to trading", "Compare demo and learning terms", "Understand margin risk before considering a live account."],
       ],
     } },
   },
   questions: [
-    { question: "Will a broker accept a registration?", answer: editorial("Explicit Malaysian retail acceptance is not established for these four brokers."), status: "unknown" },
+    { question: "Will a broker accept a registration?", answer: editorial("The dossier reports technical acceptance; exact current country/entity evidence still needs confirmation."), status: "unknown" },
     { question: "Which company would serve the resident?", answer: editorial("Identify the company named in the proposed client agreement."), status: "unknown" },
     { question: "Is that company authorised for the product?", answer: checked("SC CFD providers require the relevant derivatives licence; a group or foreign licence is insufficient evidence.", [guidelines]), status: "unknown" },
     { question: "Are trading and funding permitted for this resident?", answer: editorial("Obtain advice covering the resident category, product and applicable BNM notices.", [fep, guidelines]), status: "pending_review" },
-    { question: "What protections and complaint route apply?", answer: editorial("Check the exact company’s client-money, loss and complaint terms; compensation does not insure trading losses."), status: "unknown" },
+    { question: "What protections and complaint route apply?", answer: editorial("Check company-specific client-money, loss and complaint terms. Compensation does not insure trading losses."), status: "unknown" },
   ],
   sections: [
     { id: "costs-and-accounts", eyebrow: "Eligibility first, cost second", title: "Compare account costs only after eligibility is clear", paragraphs: [
-      editorial("No Malaysian account prices are established here. Once permission and the serving company are clear, compare the same instrument, trade size and holding period."),
+      editorial("The table uses international published terms. Compare the same instrument, trade size and holding period; the cheapest advertised floor may not mean the lowest total cost."),
     ], table: { caption: "The cost checklist", headers: ["Cost", "What to establish"], rows: [
       ["Spread", "Instrument-specific average and measurement period; a floor is not an average."],
       ["Commission", "Account currency, lot/notional basis and both trade sides."],
@@ -100,15 +132,17 @@ export const malaysiaGuide: CountryGuide = {
       ["Conversion", "MYR/account-currency rate, markup and provider charges."],
       ["Payments", "Method minimums, intermediary charges and withdrawal fees."],
     ] } },
-    { id: "platforms-and-accounts", eyebrow: "Software is a separate check", title: "Platforms and account features do not establish permission", paragraphs: [],
-      table: { caption: "What a feature can—and cannot—show", headers: ["Feature", "Useful for", "Still needs confirmation"], rows: [
-        ["MT4 / MT5", "Understanding software compatibility", "Serving company and resident eligibility"],
-        ["Demo", "Learning simulated order handling", "Demo terms and live-account eligibility"],
-        ["Swap-free", "Examining overnight-charge conditions", "Product permission and all other fees"],
+    { id: "platforms-and-accounts", eyebrow: "Compare both sides", title: "Broker strengths and trade-offs", paragraphs: [],
+      table: { caption: "Published features, not tested performance awards", headers: ["Broker", "Useful feature", "Trade-off to check"], rows: [
+        ["IC Markets", "Standard and Raw pricing", "Raw commission and swap-free holding fees"],
+        ["OANDA", "App, MT5 and TradingView", "Tier conditions, financing and withdrawal charges"],
+        ["XM", "$5 advertised entry minimum", "Account-specific instruments and overnight terms"],
+        ["FBS", "Low advertised deposit and app", "The exact contract and swap-free conditions"],
+        ["Tickmill", "Raw commission from $3/lot/side", "TradingView Raw uses $3.50/lot/side"],
       ] } },
     { id: "funding", eyebrow: "The payment is its own question", title: "MYR funding, payments and withdrawals", paragraphs: [
-      checked("SC’s FAQ says BNM approval may be relevant to a CFD provider depending on the investor type and denomination. Refer to the applicable foreign-exchange notices; a general foreign-investment allowance is not retail CFD permission.", [faq, fep]),
-      editorial("No Malaysian payment method is verified for these brokers. An app’s payment logo or an overseas transfer facility does not establish permission for the proposed transaction."),
+      checked("SC’s FAQ says BNM approval may depend on investor type and denomination. General foreign-investment allowances do not establish retail CFD permission.", [faq, fep]),
+      editorial("Malaysian payment availability and lawful funding remain unconfirmed. An app’s payment logo is not permission."),
     ], table: { caption: "Before a proposed payment", headers: ["Check", "Ask about"], rows: [
       ["Resident circumstances", "Applicable resident category, borrowing and funding-source rules"],
       ["Bank / card", "Permitted purpose, beneficiary, documents and charges"],
@@ -116,9 +150,9 @@ export const malaysiaGuide: CountryGuide = {
       ["Withdrawal", "Own-name/KYC conditions, conversion and processing terms"],
     ] } },
     { id: "local-rules", eyebrow: "Use the current SC documents", title: "What Malaysia’s CFD framework actually says", paragraphs: [
-      checked("The SC’s current CFD page links guidelines revised on 14 June 2024 and FAQs revised on 14 October 2024. Paragraph 4.02 states: “CFD can only be offered exclusively to sophisticated investors.” Eligibility is determined under the SC’s categories, not an assumed deposit size.", [guidelines, faq, "my-sc-cfd-index"]),
-      checked("The June guidelines allow qualifying shares, REIT/ETF units, listed commodity derivatives and indices, subject to their criteria. Currency pairs are not listed in paragraph 3.01. This is not a statement that every currency exchange or investment abroad is prohibited.", [guidelines]),
-      checked("A CFD provider needs the relevant SC derivatives licence. A Labuan or foreign group licence should not be presented as proof of Malaysian retail CFD permission.", [guidelines]),
+      checked("Use SC guidelines revised 14 June 2024 and FAQs revised 14 October 2024. Paragraph 4.02 restricts CFD offers to sophisticated investors, as defined by SC categories.", [guidelines, faq]),
+      checked("Paragraph 3.01 covers qualifying shares, REIT/ETF units, listed commodity derivatives and indices, not currency pairs. This is not a statement that every currency exchange or overseas investment is prohibited.", [guidelines]),
+      checked("Relevant SC derivatives licensing is required. A foreign or Labuan licence does not establish Malaysian retail CFD permission.", [guidelines]),
     ] },
     { id: "checking-claims", eyebrow: "Pause before committing funds", title: "Warning signs in broker claims", paragraphs: [], points: [
       "Guaranteed profits, pressure to deposit or unclear withdrawal conditions.",
@@ -127,8 +161,8 @@ export const malaysiaGuide: CountryGuide = {
     ] },
   ],
   faqs: [
-    { question: "Can ordinary Malaysian retail investors trade CFDs under the SC framework?", answer: checked("SC paragraph 4.02 restricts CFD offers to sophisticated investors. The framework does not establish an ordinary retail forex/CFD route through the four brokers listed here.", [guidelines, faq]) },
-    { question: "Which forex brokers accept Malaysian residents?", answer: editorial("The supplied research does not establish explicit retail acceptance and the serving company for Exness, XM, IC Markets or Pepperstone. A foreign licence, portal or translated page is insufficient.") },
+    { question: "Can ordinary Malaysian retail investors trade CFDs under the SC framework?", answer: checked("SC paragraph 4.02 restricts CFD offers to sophisticated investors. The framework does not establish an ordinary retail forex/CFD route through the five brokers listed here.", [guidelines, faq]) },
+    { question: "Which forex brokers are compared for Malaysia?", answer: editorial("IC Markets, OANDA, XM, FBS and Tickmill. The dossier reports offshore access; confirm the company, current eligibility and local trading/funding rules before acting.") },
     { question: "Does a Labuan licence or an available payment method establish permission?", answer: editorial("No such conclusion follows here. Verify the exact licence, product, investor category and funding rules separately before acting.", [guidelines, fep]) },
   ],
 };
