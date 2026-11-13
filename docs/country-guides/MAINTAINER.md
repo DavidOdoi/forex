@@ -111,3 +111,5 @@ Ghana retains six supplied brands; see `ghana-update-2026-11-13.md`. Do not desc
 Tanzania retains eight supplied brands; see `tanzania-update-2026-11-13.md`. Preserve the verified BoT circular's authorised-dealer addressee and scope. Do not extrapolate it into a definitive ruling on every individual's CFD activity, or treat community payment references as confirmed Tanzanian onboarding/mobile-money support.
 
 The UAE guide retains five supplied brands; see `uae-update-2026-11-13.md`. Keep promotion/introduction permission separate from the trading-product issuer. Local group presence and a public record lead do not establish every retail product or account allocation. Exness's claimed local dealing reference remains unconfirmed. Do not imply blanket tax exemption or independent certification of swap-free accounts.
+
+Ethiopia retains five supplied brands; see `ethiopia-update-2026-11-13.md`. Preserve the NBE outward-investment notice's case-by-case approval condition and the birr-paired P2P notice's scope. A localised website, foreign licence or payment option is not Ethiopian permission to fund offshore leveraged forex/CFDs.

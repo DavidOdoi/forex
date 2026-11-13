@@ -1,0 +1,88 @@
+{
+  "scope": "URL availability, official application destination and limited primary-notice text checks; not completed legal review, current broker permission or individual approval.",
+  "sources": [
+    {
+      "url": "https://www.fpmarkets.com/en-et/",
+      "status": 200,
+      "resolved": "https://www.fpmarkets.com/en-et/",
+      "account_links": [
+        {
+          "url": "https://portal.fpmarkets.com/sc-EN/register",
+          "label": "Register"
+        },
+        {
+          "url": "https://portal.fpmarkets.com/sc-EN/register",
+          "label": "Start trading"
+        },
+        {
+          "url": "https://portal.fpmarkets.com/sc-EN/demo/register",
+          "label": "Try demo"
+        },
+        {
+          "url": "https://portal.fpmarkets.com/sc-EN/register",
+          "label": "Register"
+        },
+        {
+          "url": "https://portal.fpmarkets.com/sc-EN/register",
+          "label": "START TRADING"
+        },
+        {
+          "url": "https://portal.fpmarkets.com/sc-EN/demo/register",
+          "label": "TRY DEMO"
+        },
+        {
+          "url": "https://portal.fpmarkets.com/sc-EN/register",
+          "label": "START TRADING"
+        },
+        {
+          "url": "https://portal.fpmarkets.com/sc-EN/register",
+          "label": "START TRADING"
+        }
+      ]
+    },
+    {
+      "url": "https://nbe.gov.et/",
+      "status": 200,
+      "resolved": "https://nbe.gov.et/"
+    },
+    {
+      "url": "https://ecma.gov.et/",
+      "status": 200,
+      "resolved": "https://ecma.gov.et/"
+    },
+    {
+      "url": "https://nbe.gov.et/fx/",
+      "status": 200,
+      "resolved": "https://nbe.gov.et/fx/"
+    },
+    {
+      "url": "https://nbe.gov.et/nbe_news/public-notice-notice-on-relaxation-of-foreign-exchange-directives-fxd-01-2024/",
+      "status": 200,
+      "resolved": "https://nbe.gov.et/nbe_news/public-notice-notice-on-relaxation-of-foreign-exchange-directives-fxd-01-2024/",
+      "scope_excerpts": [
+        "f Ethiopian origin has been removed. Outbound investment by Ethiopians has been allowed, subject to case-by-case approval by NBE. Without presenting a customs declaration, a person residing in Ethiopia enters into the territory of Ethiopia carrying a foreign currency can convert all foreign currency at an authorized Forex Bureau for the equ"
+      ]
+    },
+    {
+      "url": "https://nbe.gov.et/nbe_news/public-notice-notice-on-illegal-birr-paired-peer-to-peer-p2p-transactions-via-trading-platforms/",
+      "status": 200,
+      "resolved": "https://nbe.gov.et/nbe_news/public-notice-notice-on-illegal-birr-paired-peer-to-peer-p2p-transactions-via-trading-platforms/",
+      "scope_excerpts": [
+        "PUBLIC NOTICE | NOTICE ON ILLEGAL BIRR-PAIRED PEER-TO-PEER (P2P) TRANSACTIONS VIA TRADING PLATFORMS - National Bank of Ethiopia Skip to content Foreign Exchange Reform Consumer Protection Search \u12a0\u121b\u122d\u129b About Us History Vision, Mission and Mandates of NBE NBE\u2019s Strategic Plan Organizational",
+        "ons Statistics News & Events Announcements Contact Us PUBLIC NOTICE | NOTICE ON ILLEGAL BIRR-PAIRED PEER-TO-PEER (P2P) TRANSACTIONS VIA TRADING PLATFORMS February 27, 2026 27 February 2026 | Addis Ababa, Ethiopia The National Bank of Ethiopia would like to inform the public of important regulatory considerations concerning peer to peer (P2P",
+        "f Ethiopia. Any form of Birr denominated P2P trading or exchange involving cryptocurrencies is also prohibited. While global interest in digital and virtual assets continues to grow, the public is advised to exercise caution and make well informed decisions. These markets are often characterized by significant volatility, exposure to fo",
+        ". Until such a framework is formally introduced, Birr paired P2P cryptocurrency transactions remain prohibited. The National Bank of Ethiopia reaffirms its commitment to consumer protection and to maintaining a stable and sound financial system as technological innovation continues to evolve. More News \u12e8\u1263\u1295\u12a9 \u1220\u122b\u1270\u129e\u127d 19\u129b\u12cd\u1295 \u1265\u1214\u122b\u12ca \u12e8\u1230\u1295\u12f0\u1245 \u12d3\u120b\u121b \u1240\u1295"
+      ]
+    },
+    {
+      "url": "https://ecma.gov.et/licensees/",
+      "status": 200,
+      "resolved": "https://ecma.gov.et/licensees/"
+    }
+  ],
+  "application": {
+    "url": "https://portal.fpmarkets.com/sc-EN/register",
+    "status": 200,
+    "resolved": "https://portal.fpmarkets.com/sc-EN/register"
+  }
+}
