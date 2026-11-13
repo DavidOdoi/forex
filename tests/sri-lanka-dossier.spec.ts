@@ -8,6 +8,7 @@ import { countryAffiliates } from "../src/lib/country-guides/affiliate-agreement
 import { checkedSource, claimVerified } from "../src/lib/country-guides/evidence";
 import { comparisonMappings, guideApproved } from "../src/lib/country-guides/publication";
 import { countrySuppliedResearch } from "../src/lib/country-guides/supplied-research";
+import { countryResearchComparison } from "../src/lib/country-guides/research-comparison";
 import { EvidenceClaim } from "../src/components/country-guides/evidence";
 import { CountryGuideContent } from "../src/components/country-guides/country-guide";
 import { approvedCountryFixture, testAsOf } from "./fixtures/country-guide";
@@ -65,9 +66,13 @@ test("dossier provenance and quotations cannot leak to a different country, enti
   const fixture = approvedCountryFixture();
   expect(countrySuppliedResearch(fixture.country, testAsOf)).toBeNull();
   expect(countrySuppliedResearch(sriLankaGuide, "2026-11-09")).toBeNull();
+  expect(countryResearchComparison(fixture.country, testAsOf)).toEqual([]);
+  expect(countryResearchComparison(sriLankaGuide, "2026-11-09")).toEqual([]);
+  const copied = structuredClone(sriLankaGuide); copied.slug = "another-country";
+  expect(countryResearchComparison(copied, testAsOf)).toEqual([]);
   const html = renderToStaticMarkup(createElement(CountryGuideContent, { ...fixture, asOf: testAsOf }));
   expect(html).not.toContain("Supplied research dossier"); expect(html).not.toContain("Gazette 2493");
-  const quote = sriLankaGuide.sections[0].paragraphs.find(claim => claim.reportedQuote)!;
+  const quote = sriLankaGuide.sections.find(section => section.id === "local-rules")!.paragraphs.find(claim => claim.reportedQuote)!;
   const props = { claim: quote, registry: countryRegistry, asOf: testAsOf, countrySlug: "another-country", entityId: null, narrative: true };
   const mismatch = renderToStaticMarkup(createElement(EvidenceClaim, props));
   expect(mismatch).not.toContain(quote.reportedQuote!.text); expect(mismatch).toContain("Unknown — not verified");
@@ -76,7 +81,7 @@ test("dossier provenance and quotations cannot leak to a different country, enti
   expect(missing).not.toContain("cg-reported-quote");
 });
 
-test("updated draft server-renders legal findings, honest dates, quotes and unaccessed-source limitations without commercial broker pages", async ({ browser, request }) => {
+test("updated draft server-renders legal findings, honest dates, quotes and unaccessed-source limitations with explicitly unpaid official sign-up links", async ({ browser, request }) => {
   const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage();
   try {
     const response = await page.goto(path); expect(response!.status()).toBe(200);
@@ -87,7 +92,7 @@ test("updated draft server-renders legal findings, honest dates, quotes and unac
     await expect(page.locator(".cg-reported-quote")).toHaveCount(1);
     await expect(page.locator(".cg-reported-quote").first()).toContainText("wording not independently checked");
     await expect(page.locator("#source-cbsl-2019-notice")).toContainText("Not established");
-    await expect(page.locator("#source-cbsl-2019-notice")).toContainText("Independent check");
+    await expect(page.locator("#source-cbsl-2019-notice")).toContainText("Contributor");
     await expect(page.locator("#source-cbsl-2019-notice")).not.toContainText("21 Oct 2019 (dossier-reported date)");
     await expect(page.locator("#source-gazette-2493-38")).toContainText("Not accessed");
     await expect(page.locator("#legal-review-questions")).toHaveCount(0);
@@ -97,7 +102,9 @@ test("updated draft server-renders legal findings, honest dates, quotes and unac
     await expect(page.locator("#broker-comparison")).toHaveCount(0);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
     const html = await response!.text();
-    for (const marker of ["icmarkets.com/global/en/trading-accounts/funding", "xm.com/account-types", "pepperstone.com/en/trading/trading-accounts/"]) expect(html.includes(marker), marker).toBe(false);
+    expect(html).toContain("xm.com/account-types");
+    expect(html).toContain("pepperstone.com/en/trading/trading-accounts/");
+    await expect(page.locator(".cg-signup-link")).toHaveCount(4);
     const sourceAnchors = await page.locator('main a[href^="#source-"]').evaluateAll(links => links.every(link => document.getElementById(link.getAttribute("href")!.slice(1)))); expect(sourceAnchors).toBe(true);
     const xml = await (await request.get("/sitemap.xml")).text(); expect(xml).not.toContain("/forex-brokers/sri-lanka");
   } finally { await context.close(); }

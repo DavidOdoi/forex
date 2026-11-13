@@ -186,16 +186,16 @@ test("country components reuse different data without Sri Lanka prose or unverif
   expect(unreviewed).not.toContain("Test legal reviewer");
 });
 
-test("Sri Lanka renders legal-first content, sources and honest schema without JavaScript; no commercial URLs leak into the draft", async ({ browser, request }) => {
+test("Sri Lanka renders legal-first content, sources and honest schema without JavaScript; unpaid sign-up destinations do not imply approval or affiliate status", async ({ browser, request }) => {
   const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage();
   try {
     const response = await page.goto(path); expect(response!.status()).toBe(200);
     await expect(page.locator("h1")).toHaveCount(1); await expect(page.locator("h1")).toHaveText(sriLankaGuide.title);
     await expect(page.locator("h1")).not.toContainText("Best");
     await expect(page.locator("#local-rules")).toContainText("21 October 2019");
-    await expect(page.locator(".cg-legal-summary")).toContainText("not our independent source checks");
-    await expect(page.locator("#local-rules")).toContainText("PDF body is described as undated");
-    await expect(page.locator(".cg-status-card")).toContainText("Commercial broker links are disabled");
+    await expect(page.locator(".cg-legal-summary")).toContainText("current application to retail forex/CFDs remains unresolved");
+    await expect(page.locator("#local-rules")).toContainText("PDF body is undated");
+    await expect(page.locator(".cg-status-card")).toContainText("No paid affiliate links are active");
     await expect(page.locator(".cg-checks>li")).toHaveCount(5);
     await expect(page.locator("#broker-comparison")).toHaveCount(0);
     await expect(page.locator(".cg-broker-card")).toHaveCount(0);
@@ -209,8 +209,8 @@ test("Sri Lanka renders legal-first content, sources and honest schema without J
     const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());
     expect(schema).toEqual(countryGuideStructuredData(sriLankaGuide, countryRegistry, testAsOf));
     const external = await page.locator('main a[href^="https:"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")!));
-    for (const href of external) expect(["www.cbsl.gov.lk", "www.dfe.lk", "fsaseychelles.sc", "documents.gov.lk", "developers.google.com"]).toContain(new URL(href).hostname);
-    const html = await response!.text(); expect(html).not.toMatch(/tracking\.example\.test|goto\/profile|register\/profile-account/);
+    for (const href of external) expect(["www.cbsl.gov.lk", "www.dfe.lk", "fsaseychelles.sc", "documents.gov.lk", "developers.google.com", "www.exness.com", "get.exness.help", "my.exness.com", "www.xm.com", "www.icmarkets.com", "secure.ic.com", "pepperstone.com", "secure.pepperstone.com", "scb.gov.bs"]).toContain(new URL(href).hostname);
+    const html = await response!.text(); expect(html).not.toMatch(/tracking\.example\.test|aff_id=/);
     const xml = await (await request.get("/sitemap.xml")).text(); expect(xml).not.toContain(siteOrigin + "/forex-brokers");
     const hrefs = await page.locator('main a[href^="/"]').evaluateAll(nodes => [...new Set(nodes.map(node => node.getAttribute("href")!))]);
     for (const href of hrefs) expect((await request.get(href)).status(), href).toBe(200);

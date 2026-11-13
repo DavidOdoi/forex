@@ -9,7 +9,7 @@ test("country guide retains the site header and uniform 18px article typography"
   const header = await page.locator("body>header").evaluate(node => ({ background: getComputedStyle(node).backgroundColor, height: node.getBoundingClientRect().height }));
   await page.goto(path);
   expect(await page.locator("body>header").evaluate(node => ({ background: getComputedStyle(node).backgroundColor, height: node.getBoundingClientRect().height }))).toEqual(header);
-  for (const selector of [".cg-direct-answer", ".cg-reader-grid p", ".cg-checks .cg-evidence>p", "#methodology .cg-method-grid p", ".cg-decision-table td"]) {
+  for (const selector of [".cg-direct-answer", ".cg-checks .cg-evidence>p", "#methodology .cg-method-grid p", ".cg-decision-table td"]) {
     expect(await page.locator(selector).first().evaluate(node => ({ family: getComputedStyle(node).fontFamily, size: getComputedStyle(node).fontSize, lineHeight: getComputedStyle(node).lineHeight })),selector).toEqual(articleFont);
   }
 });
@@ -26,29 +26,50 @@ test("the complete guide stays below 1700 words, including all collapsed FAQs an
   const longest = await page.locator('.cg-article p').evaluateAll(nodes => Math.max(...nodes.map(n => (n.textContent??'').trim().split(/\s+/u).length)));
   expect(longest).toBeLessThanOrEqual(120);
   await expect(page.locator('.cg-answer h2')).toHaveText('Quick answer');
-  await expect(page.locator('.cg-direct-answer')).toContainText('No Sri Lanka-specific broker recommendation');
+  await expect(page.locator('.cg-standfirst')).toContainText('LKR conversion costs');
+  await expect(page.locator('.cg-answer-brokers a')).toHaveText(['Exness', 'XM', 'IC Markets', 'Pepperstone']);
+  await expect(page.locator('.cg-direct-answer')).toContainText('Compare Exness, XM, IC Markets and Pepperstone');
   await expect(page.locator('h1')).toContainText('Forex Brokers in Sri Lanka');
   await expect(page).toHaveTitle(/Forex Brokers in Sri Lanka/);
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href',siteOrigin+path);
   await expect(page.locator('meta[name=robots]')).toHaveAttribute('content','noindex, follow');
+  const palette = await page.locator('main').evaluate(main => {
+    const selectors = ['.cg-answer', '.cg-legal-summary', '.cg-method-grid>div', '.cg-status-card', '.cg-check-disclosure>summary', '.cg-research-table caption', '.cg-research-table th', '.cg-decision-table th'];
+    const surface = (node: Element | null): string => {
+      if (!node) return '';
+      const color = getComputedStyle(node).backgroundColor;
+      return color === 'rgba(0, 0, 0, 0)' ? surface(node.parentElement) : color;
+    };
+    return {background: getComputedStyle(main).backgroundColor, panels: selectors.flatMap(selector => Array.from(main.querySelectorAll(selector)).map(surface)), nonBlack: Array.from(main.querySelectorAll('h1,h2,h3,p,a,span,th,td,summary')).filter(node => getComputedStyle(node).color !== 'rgb(0, 0, 0)').map(node => node.textContent?.slice(0,40))};
+  });
+  expect(palette.background).toBe('rgb(255, 255, 255)');
+  expect(palette.panels.every(color => color === 'rgb(255, 255, 255)')).toBe(true);
+  expect(palette.nonBlack).toEqual([]);
 });
 
 test("research rows link to real global reviews while keeping country eligibility separate", async ({ browser, request }) => {
   const context = await browser.newContext({javaScriptEnabled:false});const page=await context.newPage();
   try {
     await page.goto('http://127.0.0.1:3100'+path);
-    const table=page.getByRole('region',{name:'Sri Lanka research candidate status',exact:true});
+    const table=page.getByRole('region',{name:'Sri Lanka broker feature comparison',exact:true});
     await expect(table.locator('tbody tr')).toHaveCount(4);
-    await expect(table.locator('thead th')).toHaveCount(3);
+    await expect(table.locator('thead th')).toHaveCount(8);
     for (const [slug,name] of [['exness','Exness'],['xm','XM'],['ic-markets','IC Markets'],['pepperstone','Pepperstone']]) {
       const row=page.locator('#research-'+slug);
-      await expect(row).toContainText('Not established');
+      await expect(row).toContainText('Not verified');
       await expect(row.getByRole('link',{name:'Read '+name+' review'})).toHaveAttribute('href','/reviews/'+slug);
+      const signup = row.getByRole('link',{name:'Official '+name+' sign-up'});
+      await expect(signup).toHaveAttribute('rel','nofollow noopener noreferrer');
+      await expect(signup).toHaveAttribute('target','_blank');
       expect((await request.get('/reviews/'+slug)).status()).toBe(200);
     }
-    await expect(page.locator('main')).toContainText('They do not confirm Sri Lanka resident eligibility');
-    await expect(page.locator('.cg-decision-table')).toHaveCount(2);
+    await expect(page.locator('main')).toContainText('not confirmed Sri Lanka offers');
+    await expect(page.locator('.cg-decision-table')).toHaveCount(4);
     await expect(page.locator('main a[rel~="sponsored"]')).toHaveCount(0);
+    await expect(page.locator('.cg-cta-note')).toContainText('unpaid official destinations');
+    await expect(page.locator('#research-xm')).toContainText('Standard from 1.6 pips; Ultra Low 0.8');
+    await expect(page.locator('#research-ic-markets')).toContainText('$3.50/lot/side');
+    await expect(page.locator('#research-pepperstone')).toContainText('$0 account / $10 funding wording');
     await expect(page.locator('main')).not.toContainText('USD 100,000');
     await expect(page.locator('#owner-evidence')).toHaveCount(0);
   } finally {await context.close();}
@@ -82,7 +103,7 @@ test("mobile comparison cards and keyboard navigation work without page overflow
   for (const width of [320,390,768,1440]) {
     await page.setViewportSize({width,height:1000});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),String(width)).toBe(true);
-    await expect(page.locator('.cg-reader-grid>section')).toHaveCount(4);
+    await expect(page.locator('#trader-fit tbody tr')).toHaveCount(5);
     await expect(page.locator('.cg-research-table tbody tr')).toHaveCount(4);
     await page.evaluate(()=>scrollTo(0,0));
     await page.screenshot({path:`test-results/country-reader-${width}.png`});
