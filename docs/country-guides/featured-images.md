@@ -20,4 +20,6 @@ Validation: production build, ESLint, TypeScript and all 23 country-guide/dossie
 
 ## Country batches
 
+Malaysia uses *Kuala Lumpur Malaysia Skyline-03.jpg* by **CEphoto, Uwe Aranas**, sourced from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Malaysia_Skyline-03.jpg) on 13 November 2026 under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). The delivered `malaysia-kuala-lumpur-skyline.webp` is 1600 × 1067 pixels and 195,816 bytes. Proportional resize, WebP conversion and responsive display cropping are recorded in `docs/research/country-featured-image-malaysia-2026-11-13.json`; visible attribution/source/licence and descriptive alt text use the same shared image component. The licence applies to the photograph/derivative, not the page text or code.
+
 Use **three countries per research/implementation batch**. Reuse the layout while independently verifying each country's resident eligibility, contracting companies, regulation, funding rules and supporting sources. Each country also needs its own relevant image/credit. Keep the three-FAQ and 1,700-word requirements unless the owner changes them. This batch size is a practical review choice, not a Google ranking rule.

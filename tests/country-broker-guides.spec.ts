@@ -14,14 +14,15 @@ import { siteOrigin } from "../src/lib/site";
 import { approvedCountryFixture, testAsOf } from "./fixtures/country-guide";
 
 const path = "/forex-brokers/sri-lanka";
-test("Sri Lanka remains a single legal-first draft with unknown country eligibility and no fabricated review or broker data", () => {
-  expect(countryGuides.map(country => country.slug)).toEqual(["sri-lanka"]);
+test("individually researched country drafts keep Sri Lanka's original source scope and evidence status intact", () => {
+  expect(countryGuides.map(country => country.slug)).toEqual(["sri-lanka", "malaysia"]);
   expect(sriLankaGuide).toMatchObject({ legalStatus: "pending_review", publicationStatus: "draft", commercialLinksAllowed: false, legalReviewedAt: null, legalReviewReference: null, humanApprovalReference: null, publishedAt: null, updatedAt: null, reviewerReference: null });
   expect(sriLankaGuide.brokerEntityMappings).toEqual([]); expect(countryAffiliates).toEqual({ agreements: [], geoApprovals: [] });
   expect(countryRegistry.approvals).toEqual([]); expect(countryRegistry.entities).toEqual([]);
-  expect(countryRegistry.sources).toHaveLength(29);
-  expect(new Set(countryRegistry.sources.map(source => source.id)).size).toBe(29);
-  expect(countryRegistry.sources.every(source => source.checkedAt === null && ["blocked", "not_attempted"].includes(source.access) && source.verification === "unverified")).toBe(true);
+  const sriLankaSources = countryRegistry.sources.filter(source => source.scope.countrySlug === "sri-lanka");
+  expect(sriLankaSources).toHaveLength(29);
+  expect(new Set(countryRegistry.sources.map(source => source.id)).size).toBe(countryRegistry.sources.length);
+  expect(sriLankaSources.every(source => source.checkedAt === null && ["blocked", "not_attempted"].includes(source.access) && source.verification === "unverified")).toBe(true);
   expect(countryRegistry.sources[0]).toMatchObject({ publishedAt: null, publicationDateStatus: "unknown" });
   expect(guideApproved(sriLankaGuide, countryRegistry, testAsOf)).toBe(false); expect(comparisonMappings(sriLankaGuide, countryRegistry, testAsOf)).toEqual([]);
   expect(countryGuideSitemapEntries(testAsOf)).toEqual([]);

@@ -1,0 +1,637 @@
+{
+  "id": "malaysia-dossier-2026-11-13",
+  "countrySlug": "malaysia",
+  "title": "Malaysia country-guide research dossier",
+  "reportedResearchDate": "2026-11-13",
+  "independentRecheck": "pending",
+  "archivePath": "docs/country-guides/research/malaysia-dossier-2026-11-13.md",
+  "originalSha256": "245d6eef88f95f92f5cc82cbb404206cae2f6d696a07b8b58b277c0f37791ac8",
+  "reportedSources": [
+    {
+      "id": "my-supplied-1",
+      "title": "Supplied regulator reference 1",
+      "publisher": "Securities Commission Malaysia",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=d9cfb760-4acf-45bf-96de-a4281e86f991",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-2",
+      "title": "Supplied regulator reference 2",
+      "publisher": "Securities Commission Malaysia",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=51c97330-3721-4d50-9f28-374f582d3164",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-3",
+      "title": "Supplied regulator reference 3",
+      "publisher": "Securities Commission Malaysia",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=b0c3467c-43b7-47c4-b703-e0c198a7e9d4",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-4",
+      "title": "Supplied broker disclosure 4",
+      "publisher": "Exness",
+      "url": "https://my.exness.com/cnf/config-pa-en.js",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-5",
+      "title": "Supplied broker disclosure 5",
+      "publisher": "Exness",
+      "url": "https://www.exness.com/privacy-policy/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-6",
+      "title": "Supplied broker disclosure 6",
+      "publisher": "Exness",
+      "url": "https://my.exness.com/cdn/media/docs/risk_disclosure_and_warning_notice.pdf",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-7",
+      "title": "Supplied broker disclosure 7",
+      "publisher": "XM",
+      "url": "https://www.xm.com/legal-documents",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-8",
+      "title": "Supplied broker disclosure 8",
+      "publisher": "XM",
+      "url": "https://www.xm.com/assets/pdf/new/terms/XM-Client-Agreement-Terms-and-Conditions-of-Business.pdf?v8",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-9",
+      "title": "Supplied broker disclosure 9",
+      "publisher": "XM",
+      "url": "https://www.xm.com/my/research-portal",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-10",
+      "title": "Supplied broker disclosure 10",
+      "publisher": "Exness",
+      "url": "https://www.exness.com/regulation/",
+      "kind": "broker",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-11",
+      "title": "Supplied regulator reference 11",
+      "publisher": "Securities Commission Malaysia",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=9b218a7d-9ce0-47e6-a2e1-2ee38bad11b1",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    },
+    {
+      "id": "my-supplied-12",
+      "title": "Supplied regulator reference 12",
+      "publisher": "Securities Commission Malaysia",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=c8b45c99-da0e-4c2a-b392-08a94e7c4c1c",
+      "kind": "regulator",
+      "scope": {
+        "countrySlug": "malaysia",
+        "entityId": null
+      },
+      "publishedAt": null,
+      "publicationDateStatus": "unknown",
+      "checkedAt": null,
+      "verification": "unverified",
+      "access": "not_attempted",
+      "note": "User-supplied reference. Contributor status labels do not establish an independent check; see the correction/source-check audit.",
+      "reportedAccess": {
+        "date": "2026-11-13",
+        "outcome": "accessed",
+        "dossierId": "malaysia-dossier-2026-11-13"
+      }
+    }
+  ],
+  "reportedFindings": [
+    {
+      "id": "M1",
+      "claim": "CFDs are leveraged derivatives; providers need an SC derivatives or CFD-restricted derivatives licence.",
+      "scope": "Malaysia / all CFD providers / retail and sophisticated investors",
+      "quote": "“Entities who wish to offer CFD will be required to hold either a licence for dealing in derivatives or dealing in derivatives restricted to CFD…”",
+      "sourceIds": [
+        "my-supplied-1"
+      ],
+      "sourceDescription": "CFD definition and licensing",
+      "evidenceType": "regulator_document",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M2",
+      "claim": "Malaysian CFDs may be offered only to sophisticated investors, not retail investors.",
+      "scope": "Malaysia / all CFD providers / ordinary retail residents",
+      "quote": "“Currently, CFD can only be traded by sophisticated investors…”",
+      "sourceIds": [
+        "my-supplied-1"
+      ],
+      "sourceDescription": "Retail exclusion",
+      "evidenceType": "regulator_document",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M3",
+      "claim": "The CFD Guidelines expressly prohibit offering CFDs to retail investors.",
+      "scope": "Malaysia / all CFD providers / retail investors",
+      "quote": "“The (name of CFD) is not allowed to be offered to retail investors.”",
+      "sourceIds": [
+        "my-supplied-2"
+      ],
+      "sourceDescription": "Retail exclusion in Guidelines",
+      "evidenceType": "regulator_document",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M4",
+      "claim": "Malaysian CFDs are limited to qualifying shares and equity indices.",
+      "scope": "Malaysia / all CFD providers / sophisticated investors",
+      "quote": "“CFD offered in Malaysia are only allowed to be based on shares and indices…”",
+      "sourceIds": [
+        "my-supplied-1"
+      ],
+      "sourceDescription": "Permitted underlyings",
+      "evidenceType": "regulator_document",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M5",
+      "claim": "BNM approval may be required based on client residence and CFD currency.",
+      "scope": "Malaysia / CFD providers / resident or non-resident clients",
+      "quote": "“A CFD provider may require approval from Bank Negara Malaysia (BNM) depending on their targeted investor types…”",
+      "sourceIds": [
+        "my-supplied-1"
+      ],
+      "sourceDescription": "BNM approval trigger",
+      "evidenceType": "regulator_document",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M6",
+      "claim": "A first-time Malaysian CFD investor must be assessed for suitability.",
+      "scope": "Malaysia / CFD providers / first-time investors",
+      "quote": "“A CFD provider must conduct a suitability assessment on an investor who wishes to invest in CFD for the first time in Malaysia.”",
+      "sourceIds": [
+        "my-supplied-1"
+      ],
+      "sourceDescription": "Suitability assessment",
+      "evidenceType": "regulator_document",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M7",
+      "claim": "Residents without domestic MYR borrowing may invest in foreign-currency assets onshore or abroad without an amount limit; this is not CFD-product permission.",
+      "scope": "Malaysia / residents / investors",
+      "quote": "“Residents without domestic MYR borrowing are free to undertake any amount of investment in FCY asset onshore or abroad.”",
+      "sourceIds": [
+        "my-supplied-3"
+      ],
+      "sourceDescription": "Resident FX investment",
+      "evidenceType": "regulator_document",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M8",
+      "claim": "Exness identifies its Labuan entity as licensed by LFSA for Investment Banking Business, licence 210141BI.",
+      "scope": "Malaysia / Exness Investment Bank Ltd / unspecified",
+      "quote": "“Exness Investment Bank Ltd holds a license to carry on Investment Banking Business from the Labuan Financial Services Authority…”",
+      "sourceIds": [
+        "my-supplied-4"
+      ],
+      "sourceDescription": "Exness Labuan entity",
+      "evidenceType": "broker_statement",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M9",
+      "claim": "Exness says certain entities do not serve residents of specified jurisdictions; Malaysia is not expressly named in the retrieved wording.",
+      "scope": "Malaysia / Exness entities / retail clients",
+      "quote": "“The entities above do not offer services to residents of certain jurisdictions including the USA, Canada, Iran, North Korea, Europe, the United Kingdom, Russia, Belarus and others.”",
+      "sourceIds": [
+        "my-supplied-5"
+      ],
+      "sourceDescription": "Exness global restrictions",
+      "evidenceType": "broker_statement",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M10",
+      "claim": "Exness places responsibility on clients for activity in countries where it is restricted or prohibited.",
+      "scope": "Malaysia / Exness clients / retail clients",
+      "quote": "“Clients assume responsibility for trading and non-trading operations performed within countries where they are restricted or prohibited by law.”",
+      "sourceIds": [
+        "my-supplied-6"
+      ],
+      "sourceDescription": "Exness risk allocation",
+      "evidenceType": "broker_statement",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M11",
+      "claim": "XM’s global restricted-regions notice does not expressly name Malaysia, but it does not establish Malaysian acceptance.",
+      "scope": "Malaysia / XM / retail clients",
+      "quote": "“We do not provide our service to citizens of the United States of America, Canada, Israel and the Islamic Republic of Iran (and other sanctioned countries).”",
+      "sourceIds": [
+        "my-supplied-7"
+      ],
+      "sourceDescription": "XM restricted regions",
+      "evidenceType": "broker_statement",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M12",
+      "claim": "XM’s global legal documents identify a Cyprus entity, but this does not establish Malaysian contracting.",
+      "scope": "Malaysia / XM / retail clients",
+      "quote": "“Our Online Trading Facility is NOT available where it is illegal to access and/or use…”",
+      "sourceIds": [
+        "my-supplied-8"
+      ],
+      "sourceDescription": "XM contracting entity ambiguity",
+      "evidenceType": "broker_statement",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M13",
+      "claim": "XM maintains a Malay-language Malaysia portal, which is not evidence of regulatory permission or contracting eligibility.",
+      "scope": "Malaysia / XM / retail clients",
+      "quote": "“Kawasan Terhad: Kami tidak menyediakan perkhidmatan kami kepada warganegara Amerika Syarikat, Kanada, Israel dan Republik Islam Iran…”",
+      "sourceIds": [
+        "my-supplied-9"
+      ],
+      "sourceDescription": "XM Malaysia localisation",
+      "evidenceType": "broker_statement",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M14",
+      "claim": "No Malaysia-specific contracting entity, eligibility statement, or permission evidence was retrieved.",
+      "scope": "Malaysia / IC Markets / retail residents",
+      "quote": "Not applicable",
+      "sourceIds": [],
+      "sourceDescription": "IC Markets Malaysia eligibility",
+      "evidenceType": "broker_statement",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    },
+    {
+      "id": "M15",
+      "claim": "No Malaysia-specific contracting entity, eligibility statement, or permission evidence was retrieved.",
+      "scope": "Malaysia / Pepperstone / retail residents",
+      "quote": "Not applicable",
+      "sourceIds": [],
+      "sourceDescription": "Pepperstone Malaysia eligibility",
+      "evidenceType": "broker_statement",
+      "limitations": "Contributor-reported assessment, not DEVIN FOREX verification or approval. Superseded references and geographic inferences are addressed in the independent source-check report."
+    }
+  ],
+  "brokerResearch": [
+    {
+      "brokerSlug": "exness",
+      "name": "Exness",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Contributor acceptance assessment",
+          "value": "**Not established.** Exness’s Malaysia-specific domain and Labuan entity indicate local operational presence, but neither establishes that an Exness entity is authorised to offer retail leveraged forex/CFDs to Malaysian residents under the SC framework.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor contracting-company assessment",
+          "value": "**Not established for Malaysian retail clients.** Exness discloses multiple international entities, including Exness (SC) Ltd (Seychelles, FSA licence SD025), Exness B.V. (Curaçao, CBCS licence 0003LSI), Exness (VG) Ltd (BVI, FSC licence SIBA/L/20/1133), and Exness Investment Bank Ltd (Labuan, LFSA licence 210141BI).",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor register assessment",
+          "value": "Broker-stated. Exness lists these licences and says its entities do not serve certain jurisdictions, including the USA, Iran, North Korea, Europe, the UK, Russia and Belarus; Malaysia is not named in the retrieved restriction wording.  [exness](https://www.exness.com/regulation/)",
+          "sourceIds": [
+            "my-supplied-10"
+          ]
+        },
+        {
+          "field": "Contributor Malaysia connection",
+          "value": "Exness operates `my.exness.com`, and its Labuan entity is located in Labuan, Malaysia. However, its Labuan licence is for Investment Banking Business, not an SC CFD-dealing licence.  [my.exness](https://my.exness.com/cnf/config-pa-en.js)",
+          "sourceIds": [
+            "my-supplied-4"
+          ]
+        },
+        {
+          "field": "Contributor shortlist decision",
+          "value": "**No — exclude pending entity/product permission**",
+          "sourceIds": []
+        }
+      ],
+      "unresolvedNotes": [
+        "No locally authorised Malaysian retail forex/CFD route or serving-entity allocation is established by this packet.",
+        "Portal hostnames, translated pages and foreign group licences are not country acceptance or product-permission evidence."
+      ]
+    },
+    {
+      "brokerSlug": "xm",
+      "name": "XM",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Contributor acceptance assessment",
+          "value": "**Not established.** XM maintains a Malaysia-localised site and its public restricted-regions notice does not name Malaysia, but omission is not acceptance evidence.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor contracting-company assessment",
+          "value": "**Not established for Malaysian residents.** XM’s global legal documents identify Trading Point of Financial Instruments Ltd, a Cyprus investment firm regulated by CySEC under licence 120/10, but this does not establish that this Cyprus entity contracts with Malaysian residents.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor register assessment",
+          "value": "Broker-stated. XM says it does not serve citizens of the USA, Canada, Israel, Iran “and other sanctioned countries,” and that users must observe local restrictions.  [xm](https://www.xm.com/legal-documents)",
+          "sourceIds": [
+            "my-supplied-7"
+          ]
+        },
+        {
+          "field": "Contributor Malaysia connection",
+          "value": "XM has a Malaysia-specific research portal at `xm.com/my/`, but this is marketing/localisation evidence, not a contracting-entity or regulatory-permission record.  [xm](https://www.xm.com/my/research-portal)",
+          "sourceIds": [
+            "my-supplied-9"
+          ]
+        },
+        {
+          "field": "Contributor shortlist decision",
+          "value": "**No — exclude pending entity/onboarding verification**",
+          "sourceIds": []
+        }
+      ],
+      "unresolvedNotes": [
+        "No locally authorised Malaysian retail forex/CFD route or serving-entity allocation is established by this packet.",
+        "Portal hostnames, translated pages and foreign group licences are not country acceptance or product-permission evidence."
+      ]
+    },
+    {
+      "brokerSlug": "ic-markets",
+      "name": "IC Markets",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Contributor acceptance assessment",
+          "value": "**Not established.** The existing IC Markets EU research establishes CySEC licensing and EU account terms, but not Malaysian onboarding.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor contracting-company assessment",
+          "value": "**Not established for Malaysia.** IC Markets (EU) Ltd is the known CySEC-licensed entity (licence 362/18), but no Malaysia-specific contract, legal notice, or onboarding evidence was retrieved in this pass.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor register assessment",
+          "value": "Regulator-confirmed for the Cyprus entity through the prior direct CySEC register check supplied in the brief; no Malaysia-specific evidence retrieved.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor Malaysia connection",
+          "value": "None retrieved in this research pass.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor shortlist decision",
+          "value": "**No — exclude pending Malaysia onboarding/entity verification**",
+          "sourceIds": []
+        }
+      ],
+      "unresolvedNotes": [
+        "No locally authorised Malaysian retail forex/CFD route or serving-entity allocation is established by this packet.",
+        "Portal hostnames, translated pages and foreign group licences are not country acceptance or product-permission evidence."
+      ]
+    },
+    {
+      "brokerSlug": "pepperstone",
+      "name": "Pepperstone",
+      "residentEligibility": "not_established",
+      "servingEntity": "not_established",
+      "localAuthorization": "not_established",
+      "reportedFields": [
+        {
+          "field": "Contributor acceptance assessment",
+          "value": "**Not established.** No Malaysia-specific contracting entity, restricted-country list, or local permission evidence was retrieved.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor contracting-company assessment",
+          "value": "**Not established for Malaysia.**",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor register assessment",
+          "value": "Not established in this pass.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor Malaysia connection",
+          "value": "None retrieved in this research pass.",
+          "sourceIds": []
+        },
+        {
+          "field": "Contributor shortlist decision",
+          "value": "**No — exclude pending Malaysia onboarding/entity verification**",
+          "sourceIds": []
+        }
+      ],
+      "unresolvedNotes": [
+        "No locally authorised Malaysian retail forex/CFD route or serving-entity allocation is established by this packet.",
+        "Portal hostnames, translated pages and foreign group licences are not country acceptance or product-permission evidence."
+      ]
+    }
+  ],
+  "accessFailures": [
+    {
+      "subject": "Malaysia-specific IC Markets terms were not retrieved by the contributor",
+      "url": null,
+      "consequence": "No Malaysian entity or retail eligibility is established."
+    },
+    {
+      "subject": "Malaysia-specific Pepperstone terms were not retrieved by the contributor",
+      "url": null,
+      "consequence": "No Malaysian entity or retail eligibility is established."
+    }
+  ],
+  "legalReviewQuestions": [
+    "Does Exness identify a specific contracting entity and product permissions for Malaysian retail residents, rather than merely operating a Malaysia-localised site and maintaining a Labuan investment-banking entity?\r",
+    "Does XM identify the exact entity that would contract with a Malaysian resident, and does that entity have a documented permission or legal basis relevant to leveraged forex/CFD services for that resident class?\r",
+    "Does IC Markets identify a Malaysia-specific contracting entity or confirm that IC Markets (EU) Ltd accepts Malaysian retail residents?\r",
+    "Does Pepperstone identify a Malaysia-specific contracting entity or confirm Malaysian retail onboarding?\r",
+    "What are the exact current categories and thresholds in the SC’s Guidelines on Categories of Sophisticated Investors, including whether a “sophisticated investor” can access offshore forex/CFD products and under what conditions?\r",
+    "Does BNM publish a current, directly applicable notice on resident payments or remittances for forex/CFD trading with an offshore broker, beyond the general foreign-currency investment framework?\r",
+    "Are there any current SC enforcement, investor-alert, or unauthorised-entity notices specifically naming Exness, XM, IC Markets, or Pepperstone in relation to Malaysian clients?\r"
+  ],
+  "ownerEvidenceNeeded": []
+}

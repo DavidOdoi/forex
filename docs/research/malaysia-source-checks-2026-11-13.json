@@ -1,0 +1,85 @@
+{
+  "checkedAt": "2026-11-13",
+  "scope": "Source-text verification; no legal/editorial approval or Malaysian serving-entity allocation.",
+  "records": [
+    {
+      "id": "sc-cfd-current",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=df2998ba-ba87-4864-a449-b23ae25cb108",
+      "retrievedAt": "2026-11-13",
+      "bytes": 448062,
+      "sha256": "ed32b86b0c86f3c441c8c7e9362640ff4c6194f18bcf2f7823092a0b16dcbfdb",
+      "pages": 37
+    },
+    {
+      "id": "sc-cfd-faq-current",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=7bf6ca56-24a1-4af9-9fe7-ddfa430214cc",
+      "retrievedAt": "2026-11-13",
+      "bytes": 188877,
+      "sha256": "426af265c41439bf5f7fa8e35a7e102253f158ab6d811a0cc3c967881db56279",
+      "pages": 6
+    },
+    {
+      "id": "sc-cfd-current-page",
+      "url": "https://www.sc.com.my/regulation/guidelines/contracts-for-difference",
+      "retrievedAt": "2026-11-13",
+      "bytes": 83058,
+      "sha256": "f052bc85face08d0eb433b27bb05982ffce7f84163049d5b46e3be08a02b87a7"
+    },
+    {
+      "id": "sc-public-register",
+      "url": "https://www.sc.com.my/regulation/licensing/licensed-and-registered-persons",
+      "retrievedAt": "2026-11-13",
+      "bytes": 83949,
+      "sha256": "8101a26efcf4eca87846ad1d7d099de8c5447f930465229ea0734d35780b33ba"
+    },
+    {
+      "id": "bnm-fep-current-page",
+      "url": "https://www.bnm.gov.my/fep",
+      "retrievedAt": "2026-11-13",
+      "bytes": 229083,
+      "sha256": "ea33c286ead36fe1237148e66856d2d9ad323dde433c4ec04b2fc8ab06152143"
+    },
+    {
+      "id": "sc-cfd-guidelines",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=51c97330-3721-4d50-9f28-374f582d3164",
+      "retrievedAt": "2026-11-13",
+      "bytes": 449004,
+      "sha256": "c3944974d4aa560b27aa698ac8e1dc27d62108ee1c5a0f2228115e2bcf2d4c06",
+      "pages": 42
+    },
+    {
+      "id": "sc-sophisticated-lead",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=9b218a7d-9ce0-47e6-a2e1-2ee38bad11b1",
+      "retrievedAt": "2026-11-13",
+      "bytes": 1687046,
+      "sha256": "f5d745554d1ffa4a6e564791b1a6dd5017acd562f052aaefb0f44b5ffe845da1",
+      "pages": 148
+    },
+    {
+      "id": "bnm-slides",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=b0c3467c-43b7-47c4-b703-e0c198a7e9d4",
+      "retrievedAt": "2026-11-13",
+      "bytes": 858776,
+      "sha256": "7586d51205c67a9091b00c8da1e5b3125c6a95de21cb51d8525ce33b5fb17eb7",
+      "pages": 67
+    },
+    {
+      "id": "sc-compensation",
+      "url": "https://www.sc.com.my/api/documentms/download.ashx?id=c8b45c99-da0e-4c2a-b392-08a94e7c4c1c",
+      "retrievedAt": "2026-11-13",
+      "bytes": 4439066,
+      "sha256": "4e81dde1d74b1eae0b4e0b7ff2af80a030f171ea42aad8b724e8a3fd3d061ab6",
+      "pages": 34
+    }
+  ],
+  "corrections": [
+    "The current SC index links CFD Guidelines revised 14 June 2024 (R3-2024), not the supplied archived 2020 guideline.",
+    "The current FAQ is revised 14 October 2024; the supplied FAQ was revised 5 February 2024 and appears in the superseded archive.",
+    "Current paragraph 3.01 includes qualifying REIT/ETF units and listed commodity derivatives, as well as shares and indices. The supplied shares/indices-only claim is outdated.",
+    "The supposed sophisticated-investor glossary is a 2009 debt-securities/sukuk guide. Its thresholds were not used as current eligibility criteria.",
+    "The supposed BNM material is an SC Practical Guide on Venture Capital and Private Equity, May 2025. The cited RM50 million is explicitly corporate-group scope and was not used as a personal funding allowance.",
+    "The compensation source is an SC 2018 annual-report section. It was not used to establish current coverage for any of the four brokers.",
+    "my.exness.com is a general client portal, not evidence that a website or account is Malaysia-specific.",
+    "No foreign entity is assigned to Malaysian residents; no absence of a country from a restriction list is treated as acceptance."
+  ]
+}

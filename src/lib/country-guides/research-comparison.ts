@@ -1,7 +1,7 @@
-import type { CountryGuide } from "./types";
+import type { CountryGuide, CountryResearchPresentation, ResearchFact } from "./types";
 import { countrySuppliedResearch } from "./supplied-research";
 
-export type ResearchFact = { text: string; sourceId?: string; href?: string; anchor?: string };
+export type { ResearchFact } from "./types";
 export type ResearchComparisonRow = {
   slug: string;
   signupUrl: string;
@@ -68,4 +68,23 @@ export function countryResearchComparison(country: CountryGuide, asOf: string) {
   const dossier = countrySuppliedResearch(country, asOf);
   if (country.slug !== "sri-lanka" || dossier?.id !== "sri-lanka-dossier-2026-11-10") return [];
   return rows.filter(row => dossier.brokerResearch.some(broker => broker.brokerSlug === row.slug));
+}
+
+export function countryResearchPresentation(country: CountryGuide, asOf: string): CountryResearchPresentation | null {
+  const dossier = countrySuppliedResearch(country, asOf);
+  if (!dossier) return null;
+  const presentation = country.researchPresentation;
+  if (presentation?.scope.countrySlug === country.slug && presentation.scope.entityId === null && presentation.dossierId === dossier.id && presentation.headers.length > 1 && presentation.columnWidths.length === presentation.headers.length && presentation.rows.length && presentation.rows.every(row => row.cells.length === presentation.headers.length - 1 && dossier.brokerResearch.some(broker => broker.brokerSlug === row.slug))) return presentation;
+  const comparison = countryResearchComparison(country, asOf);
+  if (!comparison.length) return null;
+  return {
+    scope: { countrySlug: country.slug, entityId: null }, dossierId: dossier.id,
+    description: `These are international account examples, not confirmed ${country.name} offers. A foreign licence does not establish local authorization or the company that would serve you.`,
+    caption: "Broker-advertised terms · research snapshots from 4–10 November 2026",
+    headers: ["Broker", "Research entity / regulation", "Platforms", "Advertised FX pricing", "Account minimum (USD)", "Swap-free terms", `${country.name} funding`, "Research focus"],
+    columnWidths: [16, 13, 12, 16, 13, 11, 9, 10],
+    rows: comparison.map(row => ({ slug: row.slug, signupUrl: row.signupUrl, cells: [row.regulation, row.platforms, row.pricing, row.minimum, row.swapFree, row.funding, row.focus] })),
+    footnote: "“From” is an advertised floor, not a typical EUR/USD cost. Spreads vary. $3.50/lot/side costs $7 to open and close one lot, before spread and other fees.",
+    signupNote: "these are unpaid official destinations, not proof of Sri Lankan eligibility or lawful trading/funding. Confirm local requirements first. Leveraged forex/CFDs can produce substantial losses.",
+  };
 }

@@ -60,7 +60,8 @@
 .cg-compact .cg-table-broker .cg-broker-mark{width:48px;height:38px;border-radius:8px}
 .cg-compact .cg-table-detail{display:block;font-size:15px;line-height:1.65;color:#000;margin-top:8px;max-width:175px}
 .cg-compact .cg-review-link{display:inline-flex;align-items:center;gap:6px;font-size:16px;font-weight:700;margin-top:9px}
-.cg-compact .cg-feature-comparison table{min-width:1180px;table-layout:fixed;line-height:1.7}
+.cg-compact .cg-feature-comparison table{min-width:var(--cg-comparison-min,1180px);table-layout:fixed;line-height:1.7}
+.cg-compact .cg-feature-comparison[data-columns="4"]{--cg-comparison-min:700px}
 .cg-compact .cg-feature-comparison :is(th,td){padding:18px 13px;border-right:1px solid #e8e8e8;overflow-wrap:anywhere}
 .cg-compact .cg-feature-comparison thead th{font-size:16px;border-bottom:2px solid #000;line-height:1.5}
 .cg-compact .cg-feature-comparison :is(th,td):last-child{border-right:0}

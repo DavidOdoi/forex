@@ -50,8 +50,18 @@ export type CountrySection = {
   paragraphs: Claim[]; points?: string[];
   table?: { headers: string[]; rows: string[][]; caption: string };
 };
+export type ResearchFact = { text: string; sourceId?: string; href?: string; anchor?: string };
+export type CountryResearchPresentation = {
+  scope: Scope; dossierId: string;
+  description: string; caption: string;
+  headers: string[]; columnWidths: number[];
+  rows: { slug: string; cells: ResearchFact[]; signupUrl?: string }[];
+  footnote?: string; signupNote?: string;
+  traderFit?: { title: string; table: NonNullable<CountrySection["table"]> };
+};
 export type CountryGuide = {
   suppliedResearch?: SuppliedCountryResearch;
+  researchPresentation?: CountryResearchPresentation;
   name: string; slug: string; locale: string; currency: Claim;
   title: string; description: string; audience: string; directAnswer: string;
   intro?: Claim; seoTitle?: Claim;

@@ -1,6 +1,8 @@
 import { davidOdoi } from "../authors";
 import type { Claim, CountryGuide, GuideRegistry, GuideSource } from "./types";
 import { applySriLankaDossier } from "./sri-lanka-dossier";
+import { malaysiaGuide, registerMalaysiaSources } from "./malaysia";
+export { malaysiaGuide } from "./malaysia";
 
 const countrySlug = "sri-lanka";
 const noticeId = "cbsl-2019-notice";
@@ -70,5 +72,6 @@ export const sriLankaGuide: CountryGuide = {
 };
 // Add only individually researched guides, never name-swapped placeholders.
 applySriLankaDossier(sriLankaGuide, countryRegistry);
-export const countryGuides: CountryGuide[] = [sriLankaGuide];
+registerMalaysiaSources(countryRegistry);
+export const countryGuides: CountryGuide[] = [sriLankaGuide, malaysiaGuide];
 export function getCountryGuide(slug: string) { return countryGuides.find(country => country.slug === slug); }
