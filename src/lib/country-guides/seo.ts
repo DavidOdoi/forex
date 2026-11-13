@@ -25,6 +25,7 @@ export function countryGuideStructuredData(country: CountryGuide, registry: Guid
   const image = countryFeaturedImage(country);
   const author = registry.people.find(person => person.id === country.authorReference && person.roles.includes("author"));
   return { "@context": "https://schema.org", "@graph": [
+    ...(country.articleMarkdown ? [{ "@type": "FAQPage", "@id": url + "#faqs", mainEntity: country.faqs.map(faq => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer.value } })) }] : []),
     {
       "@type": approved && author ? "Article" : "WebPage", "@id": url + "#guide", url,
       name: country.title, headline: country.title, description: country.description, inLanguage: country.locale,

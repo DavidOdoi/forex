@@ -60,6 +60,8 @@ export type CountryResearchPresentation = {
   traderFit?: { title: string; table: NonNullable<CountrySection["table"]> };
 };
 export type CountryGuide = {
+  /** Supplied article order, rendered with the existing country reader styles. */
+  articleMarkdown?: string;
   suppliedResearch?: SuppliedCountryResearch;
   researchPresentation?: CountryResearchPresentation;
   name: string; slug: string; locale: string; currency: Claim;

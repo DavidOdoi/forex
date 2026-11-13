@@ -1,4 +1,10 @@
 /* Reader-facing country guides. The country library and site chrome keep their styles. */
+.cg-supplied .cg-standfirst p+p{margin-top:14px}
+.cg-supplied .cg-article :is(p,li){font-size:18px;line-height:1.7}
+.cg-supplied .cg-section>h3{margin:24px 0 12px}
+.cg-supplied .cg-section>p{margin:14px 0}
+.cg-supplied .cg-sidebar nav>a{font-size:16px;min-height:44px;align-items:center}
+.cg-supplied .cg-faq details>p{margin:14px 0}
 .cg-compact{--cg-ink:#000;--cg-muted:#000;--cg-teal:#000;--cg-line:#dedede;--cg-paper:#fff;background:#fff;color:#000}
 .cg-compact .cg-container{width:min(1240px,100%);padding:0 28px}
 .cg-compact .cg-heading-band{background:#fff;border-bottom:0}

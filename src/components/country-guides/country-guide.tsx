@@ -14,9 +14,11 @@ import { countryResearchPresentation } from "@/lib/country-guides/research-compa
 import { countryBrokerMaster } from "@/lib/country-guides/broker-master";
 import { countrySuppliedResearch } from "@/lib/country-guides/supplied-research";
 import { countryFeaturedImage } from "@/lib/country-guides/media";
+import { SuppliedCountryArticle } from "./supplied-country-article";
 
 export const legalStatusLabels = { pending_review: "Pending legal review", restricted: "Restricted", unclear: "Legal position unclear", permitted: "Permitted within reviewed scope" };
 export function CountryGuideContent({ country, registry, affiliates, asOf }: { country: CountryGuide; registry: GuideRegistry; affiliates: AffiliateRegistry; asOf: string }) {
+  if (country.articleMarkdown) return <SuppliedCountryArticle country={country} registry={registry} />;
   const approved = guideApproved(country, registry, asOf);
   const dossier = countrySuppliedResearch(country, asOf);
   const comparisons = comparisonMappings(country, registry, asOf);

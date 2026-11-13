@@ -2,6 +2,7 @@ import { davidOdoi } from "../authors";
 import type { Claim, CountryGuide, GuideRegistry, GuideSource } from "./types";
 import { applySriLankaDossier } from "./sri-lanka-dossier";
 import { malaysiaGuide, registerMalaysiaSources } from "./malaysia";
+import { ugandaGuide, registerUgandaSources } from "./uganda";
 export { malaysiaGuide } from "./malaysia";
 
 const countrySlug = "sri-lanka";
@@ -73,5 +74,6 @@ export const sriLankaGuide: CountryGuide = {
 // Add only individually researched guides, never name-swapped placeholders.
 applySriLankaDossier(sriLankaGuide, countryRegistry);
 registerMalaysiaSources(countryRegistry);
-export const countryGuides: CountryGuide[] = [sriLankaGuide, malaysiaGuide];
+registerUgandaSources(countryRegistry);
+export const countryGuides: CountryGuide[] = [sriLankaGuide, malaysiaGuide, ugandaGuide];
 export function getCountryGuide(slug: string) { return countryGuides.find(country => country.slug === slug); }
