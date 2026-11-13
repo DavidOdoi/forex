@@ -209,7 +209,7 @@ test("Sri Lanka renders legal-first content, sources and honest schema without J
     const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());
     expect(schema).toEqual(countryGuideStructuredData(sriLankaGuide, countryRegistry, testAsOf));
     const external = await page.locator('main a[href^="https:"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")!));
-    for (const href of external) expect(["www.cbsl.gov.lk", "www.dfe.lk", "fsaseychelles.sc", "documents.gov.lk", "developers.google.com", "www.exness.com", "get.exness.help", "my.exness.com", "www.xm.com", "www.icmarkets.com", "secure.ic.com", "pepperstone.com", "secure.pepperstone.com", "scb.gov.bs"]).toContain(new URL(href).hostname);
+    for (const href of external) expect(["www.cbsl.gov.lk", "www.dfe.lk", "fsaseychelles.sc", "documents.gov.lk", "developers.google.com", "www.exness.com", "get.exness.help", "my.exness.com", "www.xm.com", "www.icmarkets.com", "secure.ic.com", "pepperstone.com", "secure.pepperstone.com", "scb.gov.bs", "commons.wikimedia.org", "creativecommons.org"]).toContain(new URL(href).hostname);
     const html = await response!.text(); expect(html).not.toMatch(/tracking\.example\.test|aff_id=/);
     const xml = await (await request.get("/sitemap.xml")).text(); expect(xml).not.toContain(siteOrigin + "/forex-brokers");
     const hrefs = await page.locator('main a[href^="/"]').evaluateAll(nodes => [...new Set(nodes.map(node => node.getAttribute("href")!))]);

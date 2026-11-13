@@ -33,6 +33,12 @@ test("the complete guide stays below 1700 words, including all collapsed FAQs an
   await expect(page).toHaveTitle(/Forex Brokers in Sri Lanka/);
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href',siteOrigin+path);
   await expect(page.locator('meta[name=robots]')).toHaveAttribute('content','noindex, follow');
+  const featured = page.getByRole('img', {name: 'Colombo skyline viewed from Port City in Sri Lanka in January 2022'});
+  await featured.scrollIntoViewIfNeeded();
+  await expect.poll(() => featured.evaluate(node => (node as HTMLImageElement).complete && (node as HTMLImageElement).naturalWidth > 0)).toBe(true);
+  await expect(page.locator('.cg-featured-image figcaption')).toContainText('XKillSwitchXxx');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', siteOrigin+'/images/countries/sri-lanka-colombo-skyline.webp');
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content','summary_large_image');
   const palette = await page.locator('main').evaluate(main => {
     const selectors = ['.cg-answer', '.cg-legal-summary', '.cg-method-grid>div', '.cg-status-card', '.cg-check-disclosure>summary', '.cg-research-table caption', '.cg-research-table th', '.cg-decision-table th'];
     const surface = (node: Element | null): string => {
@@ -107,6 +113,7 @@ test("mobile comparison cards and keyboard navigation work without page overflow
     await expect(page.locator('.cg-research-table tbody tr')).toHaveCount(4);
     await page.evaluate(()=>scrollTo(0,0));
     await page.screenshot({path:`test-results/country-reader-${width}.png`});
+    await page.locator('.cg-featured-image').screenshot({path:`test-results/country-featured-${width}.png`,style:'body>header,.cg-section-nav{visibility:hidden}'});
   }
   await page.setViewportSize({width:390,height:1000});
   expect(await page.locator('.cg-research-table tbody tr').first().evaluate(n=>getComputedStyle(n).display)).toBe('block');

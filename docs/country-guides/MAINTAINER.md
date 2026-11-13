@@ -85,3 +85,7 @@ The live draft remains informational and unapproved. The owner separately author
 ## Comparison and official links — 13 November 2026
 
 The follow-up owner request explicitly asks for the brief’s broker comparison and other tables, a stronger introduction, broker names in the Quick answer, pure-white surfaces and pure-black text. The owner confirmed no affiliate links are available and requested official sign-up URLs instead. See `research-comparison.ts` for the scoped comparison adapter, `comparison-update-2026-11-13.md` for source/link provenance, and `perplexity-comparison-research.md` for remaining questions. Exactly three FAQs and the 1,700-word limit still apply.
+
+## Featured images and country batches
+
+See [featured-images.md](featured-images.md) for the Sri Lanka photograph, visible licensing/credit, local responsive asset and social/schema image fields. Each new country gets a separately selected relevant image; `media.ts` returns no image for unmapped countries. Three countries per research/implementation batch is recommended so the shared template is populated with individually checked local facts.
