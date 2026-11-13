@@ -11,7 +11,8 @@ function inline(text: string): ReactNode {
     if (token.startsWith("**")) return <strong key={i}>{token.slice(2, -2)}</strong>;
     const link = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (link && (/^https:\/\//.test(link[2]) || /^\/(?!\/)/.test(link[2]))) {
-      return link[2].startsWith("/") ? <Link key={i} href={link[2]}>{link[1]}</Link> : <a key={i} href={link[2]} target="_blank" rel="noopener noreferrer">{link[1]}</a>;
+      const signup = /^open (?:an? )?.*account$/i.test(link[1]);
+      return link[2].startsWith("/") ? <Link key={i} href={link[2]}>{link[1]}</Link> : <a key={i} href={link[2]} className={signup ? "cg-signup-link" : undefined} target="_blank" rel={signup ? "nofollow noopener noreferrer" : "noopener noreferrer"}>{link[1]}</a>;
     }
     return <Fragment key={i}>{token}</Fragment>;
   });

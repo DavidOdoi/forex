@@ -1,0 +1,851 @@
+{
+  "scope": "Availability/registration destination checks only; not current-law or resident-eligibility verification.",
+  "netherlands": [
+    {
+      "url": "https://www.ig.com/en-nl",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.plus500.com/",
+      "status": 200,
+      "resolved": "https://us.plus500.com/en/",
+      "signup_candidates": [
+        {
+          "href": "https://futures.plus500.com/trade?hl=en&innerTags=_cc_&ga_measurement_id=_ga_QCWHY70E85&ms=True",
+          "label": "Trade Start Trading"
+        },
+        {
+          "href": "https://futures.plus500.com/trade?hl=en&innerTags=_cc_&ga_measurement_id=_ga_QCWHY70E85&IsRealMode=True&ms=True",
+          "label": "Start trading now"
+        },
+        {
+          "href": "https://futures.plus500.com/trade?hl=en&innerTags=_cc_&ga_measurement_id=_ga_QCWHY70E85&IsRealMode=True&ms=True",
+          "label": "Start trading now"
+        }
+      ]
+    },
+    {
+      "url": "https://www.interactivebrokers.com/en/home.php",
+      "status": 200,
+      "resolved": "https://www.interactivebrokers.com/en/home.php",
+      "signup_candidates": [
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://www.interactivebrokers.com/en/home.php",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://www.fca.org.uk/firms/financial-services-register",
+          "label": "[https://www.fca.org.uk/firms/financial-services-register]"
+        }
+      ]
+    },
+    {
+      "url": "https://fusionmarkets.com/",
+      "status": 200,
+      "resolved": "https://fusionmarkets.com/",
+      "signup_candidates": [
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "Create an account"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "Create an account"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "GET A LIVE ACCOUNT"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "TRY A FREE DEMO"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "GET A LIVE ACCOUNT"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "TRY A FREE DEMO"
+        }
+      ]
+    },
+    {
+      "url": "https://pepperstone.com/eu/",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.icmarkets.eu/",
+      "status": 200,
+      "resolved": "https://www.icmarkets.eu/en/",
+      "signup_candidates": [
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/demo",
+          "label": "Try a Free Demo"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/demo",
+          "label": "Try Free Demo"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "Live Accounts"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/demo",
+          "label": "Demo Accounts"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/demo",
+          "label": "Try Free Demo"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/demo",
+          "label": "Try Free Demo"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/demo",
+          "label": "Try Free Demo"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "Start Trading Now"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "BUY"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "SELL"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "BUY"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "SELL"
+        },
+        {
+          "href": "https://www.icmarkets.eu/en/open-trading-account/live",
+          "label": "BUY"
+        }
+      ]
+    },
+    {
+      "url": "https://www.avatrade.com/",
+      "status": 200,
+      "resolved": "https://www.avatrade.com/",
+      "signup_candidates": [
+        {
+          "href": "https://academy.avatrade.com/courses/start-trading-now-quick-dirty/?utm_source=avasite&utm_medium=upper_menu&utm_campaign=dropdown",
+          "label": "Start Trading Now\u2026 Quick & Dirty"
+        }
+      ]
+    },
+    {
+      "url": "https://blackbullmarkets.com/",
+      "status": 200,
+      "resolved": "https://blackbull.com/",
+      "signup_candidates": [
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Join Now"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Quickstart"
+        },
+        {
+          "href": "https://blackbull.com/en/how-to-start-trading/?quickstart",
+          "label": "8. How can I start trading?"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?quickstart",
+          "label": "9. Create Account"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?application=demo",
+          "label": "Demo Trade"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Quickstart"
+        },
+        {
+          "href": "https://blackbull.com/en/how-to-start-trading/?quickstart",
+          "label": "8. How can I start trading?"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?quickstart",
+          "label": "9. Create Account"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?application=demo",
+          "label": "Demo Trade"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Quickstart"
+        },
+        {
+          "href": "https://blackbull.com/en/how-to-start-trading/?quickstart",
+          "label": "8. How can I start trading?"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?quickstart",
+          "label": "9. Create Account"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?application=demo",
+          "label": "Demo Trade"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Join Now"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?application=demo",
+          "label": "or try demo"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "ECN Standard Get started with no minimum deposit Swap Free Available Spreads From(pips) 0."
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Most Popular ECN Prime Trade with tighter spreads Swap Free Available Spreads From(pips) 0"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live",
+          "label": "Open Standard"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live",
+          "label": "Open RAW"
+        }
+      ]
+    },
+    {
+      "url": "https://www.afm.nl/en/sector/registers",
+      "status": 200,
+      "resolved": "https://www.afm.nl/en/sector/registers",
+      "signup_candidates": [
+        {
+          "href": "javascript:void(null);",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/recente-meldingen",
+          "label": "Recent notifications"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters",
+          "label": "License registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/meldingenregisters",
+          "label": "Notification registers"
+        },
+        {
+          "href": "https://www.dnb.nl/openbaar-register/",
+          "label": "Registers DNB"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/afm-update-service",
+          "label": "Update service"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters",
+          "label": "Check je aanbieder"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/recente-meldingen",
+          "label": "Most recent notifications"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters",
+          "label": "Licenses"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/meldingenregisters",
+          "label": "Notifications"
+        },
+        {
+          "href": "https://www.dnb.nl/openbaar-register/",
+          "label": "Registers DNB(opens in a new window)"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/afm-update-service",
+          "label": "Update service"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/meldingenregisters/geplaatst-kapitaal",
+          "label": "issued capital"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/meldingenregisters/substantiele-deelnemingen",
+          "label": "substantial holdings"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/meldingenregisters/bestuurders-commissarissen",
+          "label": "members of the supervisory board registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/afm-update-service",
+          "label": "Register for the register update service"
+        }
+      ]
+    },
+    {
+      "url": "https://www.afm.nl/en/sector/registers/vergunningenregisters/beleggingsondernemingen",
+      "status": 200,
+      "resolved": "https://www.afm.nl/en/sector/registers/vergunningenregisters/beleggingsondernemingen",
+      "signup_candidates": [
+        {
+          "href": "javascript:void(null);",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/recente-meldingen",
+          "label": "Recent notifications"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters",
+          "label": "License registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/meldingenregisters",
+          "label": "Notification registers"
+        },
+        {
+          "href": "https://www.dnb.nl/openbaar-register/",
+          "label": "Registers DNB"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/afm-update-service",
+          "label": "Update service"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters",
+          "label": "Check je aanbieder"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters",
+          "label": "Licenses"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters/beleggingsondernemingen",
+          "label": "Investment firms"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/recente-meldingen",
+          "label": "Most recent notifications"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters",
+          "label": "Licenses"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters/accountantsorganisaties",
+          "label": "Audit firms"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters/auditorganisaties-derde-land",
+          "label": "Third-country audit entities"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters/auditkantoren-andere-lidstaten",
+          "label": "Audit firms from other EU Member States"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters/beleggingsinstellingen",
+          "label": "Collective investment schemes"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters/beleggingsondernemingen",
+          "label": "Investment firms"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters/post-trade-instellingen",
+          "label": "Clearing & settlement"
+        }
+      ]
+    },
+    {
+      "url": "https://www.afm.nl/en/sector/themas/over-het-toezicht-en-beleid-van-de-afm/toezicht-en-beleid/productinterventie",
+      "status": 200,
+      "resolved": "https://www.afm.nl/en/sector/themas/over-het-toezicht-en-beleid-van-de-afm/toezicht-en-beleid/productinterventie",
+      "signup_candidates": [
+        {
+          "href": "javascript:void(null);",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers",
+          "label": "Registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/recente-meldingen",
+          "label": "Recent notifications"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters",
+          "label": "License registers"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/meldingenregisters",
+          "label": "Notification registers"
+        },
+        {
+          "href": "https://www.dnb.nl/openbaar-register/",
+          "label": "Registers DNB"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/afm-update-service",
+          "label": "Update service"
+        },
+        {
+          "href": "https://www.afm.nl/en/sector/registers/vergunningenregisters",
+          "label": "Check je aanbieder"
+        }
+      ]
+    }
+  ],
+  "singapore": [
+    {
+      "url": "https://www.ig.com/sg",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.plus500.com/",
+      "status": 200,
+      "resolved": "https://us.plus500.com/en/",
+      "signup_candidates": [
+        {
+          "href": "https://futures.plus500.com/trade?hl=en&innerTags=_cc_&ga_measurement_id=_ga_QCWHY70E85&ms=True",
+          "label": "Trade Start Trading"
+        },
+        {
+          "href": "https://futures.plus500.com/trade?hl=en&innerTags=_cc_&ga_measurement_id=_ga_QCWHY70E85&IsRealMode=True&ms=True",
+          "label": "Start trading now"
+        },
+        {
+          "href": "https://futures.plus500.com/trade?hl=en&innerTags=_cc_&ga_measurement_id=_ga_QCWHY70E85&IsRealMode=True&ms=True",
+          "label": "Start trading now"
+        }
+      ]
+    },
+    {
+      "url": "https://www.interactivebrokers.com/en/home.php",
+      "status": 200,
+      "resolved": "https://www.interactivebrokers.com/en/home.php",
+      "signup_candidates": [
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://ndcdyn.interactivebrokers.com/Universal/Application?menu=B",
+          "label": "Open Account"
+        },
+        {
+          "href": "https://www.interactivebrokers.com/en/home.php",
+          "label": "Open Account"
+        }
+      ]
+    },
+    {
+      "url": "https://fusionmarkets.com/",
+      "status": 200,
+      "resolved": "https://fusionmarkets.com/",
+      "signup_candidates": [
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "Create an account"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "Create an account"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "GET A LIVE ACCOUNT"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "TRY A FREE DEMO"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "GET A LIVE ACCOUNT"
+        },
+        {
+          "href": "https://hub.fusionmarkets.com/auth/sign-up",
+          "label": "TRY A FREE DEMO"
+        }
+      ]
+    },
+    {
+      "url": "https://pepperstone.com/en-sg/",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.icmarkets.com/",
+      "status": 200,
+      "resolved": "https://www.ic.com/en/",
+      "signup_candidates": [
+        {
+          "href": "https://secure.ic.com/en/Account/Register",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://secure.ic.com/en/Account/Register?type=demo",
+          "label": "Try a Free Demo"
+        },
+        {
+          "href": "https://secure.ic.com/en/Account/Register",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://secure.ic.com/en/Account/Register?type=demo",
+          "label": "Try Free Demo"
+        },
+        {
+          "href": "https://secure.ic.com/en/Account/Register",
+          "label": "Live Accounts"
+        },
+        {
+          "href": "https://secure.ic.com/en/Account/Register?type=demo",
+          "label": "Demo Accounts"
+        },
+        {
+          "href": "https://secure.ic.com/en/Account/Register",
+          "label": "Start Trading"
+        },
+        {
+          "href": "https://secure.ic.com/en/Account/Register?type=demo",
+          "label": "Try Free Demo"
+        }
+      ]
+    },
+    {
+      "url": "https://www.avatrade.com/",
+      "status": 200,
+      "resolved": "https://www.avatrade.com/",
+      "signup_candidates": [
+        {
+          "href": "https://academy.avatrade.com/courses/start-trading-now-quick-dirty/?utm_source=avasite&utm_medium=upper_menu&utm_campaign=dropdown",
+          "label": "Start Trading Now\u2026 Quick & Dirty"
+        }
+      ]
+    },
+    {
+      "url": "https://blackbullmarkets.com/",
+      "status": 200,
+      "resolved": "https://blackbull.com/",
+      "signup_candidates": [
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Join Now"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Quickstart"
+        },
+        {
+          "href": "https://blackbull.com/en/how-to-start-trading/?quickstart",
+          "label": "8. How can I start trading?"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?quickstart",
+          "label": "9. Create Account"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?application=demo",
+          "label": "Demo Trade"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?lang=en",
+          "label": "Quickstart"
+        },
+        {
+          "href": "https://blackbull.com/en/how-to-start-trading/?quickstart",
+          "label": "8. How can I start trading?"
+        },
+        {
+          "href": "https://secure.blackbull.com/auth/register-live?quickstart",
+          "label": "9. Create Account"
+        }
+      ]
+    },
+    {
+      "url": "https://eservices.mas.gov.sg/fid/",
+      "status": 200,
+      "resolved": "https://eservices.mas.gov.sg/fid/",
+      "signup_candidates": [
+        {
+          "href": "https://eservices.mas.gov.sg/fid/institution?category=Registered%20Insurance%20Broker",
+          "label": "Registered Insurance Broker"
+        },
+        {
+          "href": "https://eservices.mas.gov.sg/fid/institution?category=Registered%20Insurance%20Broker",
+          "label": "112"
+        }
+      ]
+    },
+    {
+      "url": "https://www.mas.gov.sg/directories",
+      "status": 200,
+      "resolved": "https://www.mas.gov.sg/directories",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://www.mas.gov.sg/development/foreign-exchange",
+      "status": 200,
+      "resolved": "https://www.mas.gov.sg/development/foreign-exchange",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://www.mas.gov.sg/-/media/MAS/News-and-Publications/Consultation-Papers/Response-to-Feedback-on-Proposed-Regulatory-Requirements-for-Unlisted-Margined-Derivatives-Offered-to-Retail-Investors.pdf",
+      "status": 200,
+      "resolved": "https://www.mas.gov.sg/-/media/MAS/News-and-Publications/Consultation-Papers/Response-to-Feedback-on-Proposed-Regulatory-Requirements-for-Unlisted-Margined-Derivatives-Offered-to-Retail-Investors.pdf",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://www.mas.gov.sg/-/media/mas/resource/publications/consult_papers/2012/28-may-2012-review-of-regulatory-framework-for-unlisted-margined-derivatives.pdf",
+      "status": 200,
+      "resolved": "https://www.mas.gov.sg/-/media/mas/resource/publications/consult_papers/2012/28-may-2012-review-of-regulatory-framework-for-unlisted-margined-derivatives.pdf",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://eservices.mas.gov.sg/fid/institution/detail/1489-IG-ASIA-PTE-LTD",
+      "status": 200,
+      "resolved": "https://eservices.mas.gov.sg/fid/institution/detail/1489-IG-ASIA-PTE-LTD",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://eservices.mas.gov.sg/fid/institution/detail/230005-INTERACTIVE-BROKERS-SINGAPORE-PTE-LTD",
+      "status": 200,
+      "resolved": "https://eservices.mas.gov.sg/fid/institution/detail/230005-INTERACTIVE-BROKERS-SINGAPORE-PTE-LTD",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://www.mas.gov.sg/regulation/regulations/securities-and-futures-financial-and-margin-requirements-for-holders-of-capital-markets-services-licences-regulations",
+      "status": 200,
+      "resolved": "https://www.mas.gov.sg/regulation/regulations/securities-and-futures-financial-and-margin-requirements-for-holders-of-capital-markets-services-licences-regulations",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://www.plus500.com/nl/",
+      "status": 200,
+      "resolved": "https://us.plus500.com/en/",
+      "signup_candidates": [
+        {
+          "href": "https://futures.plus500.com/trade?hl=en&innerTags=_cc_&ga_measurement_id=_ga_QCWHY70E85&ms=True",
+          "label": "Trade Start Trading"
+        },
+        {
+          "href": "https://futures.plus500.com/trade?hl=en&innerTags=_cc_&ga_measurement_id=_ga_QCWHY70E85&IsRealMode=True&ms=True",
+          "label": "Start trading now"
+        },
+        {
+          "href": "https://futures.plus500.com/trade?hl=en&innerTags=_cc_&ga_measurement_id=_ga_QCWHY70E85&IsRealMode=True&ms=True",
+          "label": "Start trading now"
+        }
+      ]
+    },
+    {
+      "url": "https://pepperstone.com/en-eu/",
+      "status": 200,
+      "resolved": "https://pepperstone.com/en-eu/",
+      "signup_candidates": [
+        {
+          "href": "https://secure.pepperstone.com/register?legalEntity=individual&locale=en-eu",
+          "label": "Apply now"
+        }
+      ]
+    },
+    {
+      "url": "https://secure.pepperstone.com/register?locale=en",
+      "status": 200,
+      "resolved": "https://secure.pepperstone.com/register?locale=en",
+      "signup_candidates": []
+    },
+    {
+      "url": "https://www.avatrade.com/registration",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://app.plus500.com/",
+      "status": 200,
+      "resolved": "https://app.plus500.com/",
+      "signup_candidates": []
+    }
+  ],
+  "registration": [
+    {
+      "url": "https://ndcdyn.interactivebrokers.com/Universal/Application",
+      "status": 200,
+      "resolved": "https://ndcdyn.interactivebrokers.com/Universal/Application",
+      "embedded_signup_candidates": []
+    },
+    {
+      "url": "https://hub.fusionmarkets.com/auth/sign-up",
+      "status": 200,
+      "resolved": "https://hub.fusionmarkets.com/auth/sign-up",
+      "embedded_signup_candidates": []
+    },
+    {
+      "url": "https://www.icmarkets.eu/en/open-trading-account/live",
+      "status": 200,
+      "resolved": "https://www.icmarkets.eu/en/open-trading-account/live",
+      "embedded_signup_candidates": []
+    },
+    {
+      "url": "https://secure.blackbull.com/auth/register-live?lang=en",
+      "status": 200,
+      "resolved": "https://secure.blackbull.com/auth/register-live?lang=en",
+      "embedded_signup_candidates": []
+    },
+    {
+      "url": "https://secure.pepperstone.com/register?legalEntity=individual&locale=en-eu",
+      "status": 200,
+      "resolved": "https://secure.pepperstone.com/register?legalEntity=individual&locale=en-eu",
+      "embedded_signup_candidates": []
+    },
+    {
+      "url": "https://secure.ic.com/en/Account/Register",
+      "status": 200,
+      "resolved": "https://secure.ic.com/Account/Register",
+      "embedded_signup_candidates": []
+    },
+    {
+      "url": "https://www.avatrade.com/",
+      "status": 200,
+      "resolved": "https://www.avatrade.com/",
+      "embedded_signup_candidates": []
+    }
+  ]
+}

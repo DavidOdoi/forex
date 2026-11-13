@@ -85,7 +85,7 @@ test("Malaysia server-renders the existing template with five useful tables, acc
     const sitemap = await (await request.get('/sitemap.xml')).text(); expect(sitemap).not.toContain(path);
     const hub = await (await request.get('/forex-brokers')).text(); expect(hub).toContain(path);
     expect((await request.get('/forex-brokers/united-kingdom')).status()).toBe(200);
-    expect((await request.get('/forex-brokers/netherlands')).status()).toBe(404);
+    expect((await request.get('/forex-brokers/netherlands')).status()).toBe(200);
   } finally {await context.close();}
 });
 
