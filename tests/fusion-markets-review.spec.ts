@@ -51,6 +51,6 @@ test("Fusion review stays readable on phones and its illustrative trading-cost t
   await expect(page.locator("[data-roundtrip-result]")).toContainText("US$11");
   await page.getByLabel("Spread (pips)", { exact: true }).fill("0");
   await expect(page.locator("[data-roundtrip-result]")).toContainText("US$9");
-  await expect(page.locator(".br-related").getByRole("link", { name: "Pepperstone", exact: true })).toHaveAttribute("href", "/reviews/pepperstone");
+  await expect(page.locator(".br-related").getByRole("link", { name: "FP Markets", exact: true })).toHaveAttribute("href", "/reviews/fp-markets");
   expect(errors).toEqual([]);
 });

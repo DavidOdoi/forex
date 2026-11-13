@@ -65,7 +65,7 @@ test("selected retail reviews retain their shared actions, cost explanations and
   await expect(page.locator("[data-account-cta]")).toHaveCount(5);
   await expect(page.locator("[data-illustrative-cost]")).toContainText("Not a measured IC Markets quote");
   await expect(page.locator("#platforms")).toBeAttached();
-  await expect(page.locator('.br-related a[href^="/reviews/"]')).toHaveCount(selectedReviewBrokers.length - 1); // Other selected profiles; the library uses /reviews#all-providers.
+  await expect(page.locator('.br-related a[href^="/reviews/"]')).toHaveCount(Math.min(3, selectedReviewBrokers.length - 1)); // Rotating neighbours; the library uses /reviews#all-providers.
   await expect(page.locator(".br-accountability a")).toHaveText("David Odoi");
   await expect(page.locator(".br-accountability")).toContainText("Available on site");
 });

@@ -7,9 +7,10 @@ export const selectedReviewBrokers = [
   { slug: "pepperstone", name: "Pepperstone" },
   { slug: "fusion-markets", name: "Fusion Markets" },
   { slug: "ig", name: "IG" },
+  { slug: "fp-markets", name: "FP Markets" },
 ] as const;
 export const reviewAvailabilityDate = "2026-11-10";
-export const reviewAvailabilityDates: Record<string, string> = { "fusion-markets": "2026-11-13", ig: "2026-11-13" };
+export const reviewAvailabilityDates: Record<string, string> = { "fusion-markets": "2026-11-13", ig: "2026-11-13", "fp-markets": "2026-11-13" };
 export function isSelectedReviewSlug(slug: string): boolean {
   return selectedReviewBrokers.some(broker => broker.slug === slug);
 }

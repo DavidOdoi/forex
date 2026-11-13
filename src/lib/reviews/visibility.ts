@@ -42,7 +42,10 @@ export function getVisibleReview(slug: string, country?: string) {
   if (!isSelectedReviewSlug(slug)) return null;
   const result = getReview(slug, country);
   if (!result) return null;
-  result.review.relatedResearch = selectedReviewBrokers.filter(broker => broker.slug !== slug)
+  // Three rotating neighbours keep the block concise as the library grows,
+  // while giving every selected review incoming links from other reviews.
+  const index = selectedReviewBrokers.findIndex(broker => broker.slug === slug);
+  result.review.relatedResearch = Array.from({ length: Math.min(3, selectedReviewBrokers.length - 1) }, (_, offset) => selectedReviewBrokers[(index + offset + 1) % selectedReviewBrokers.length])
     .map(broker => ({ ...broker, href: reviewHref(broker.slug) }));
   return result;
 }
