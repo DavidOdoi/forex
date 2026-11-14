@@ -65,6 +65,10 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
     xm: { spread: "0.8", commission: "0" },
     "capital-com": { spread: "0.7", commission: "0" },
     "hantec-markets": { spread: "0.5", commission: "1" },
+    plus500: { spread: "1.3", commission: "0" },
+    oanda: { spread: "1.69", commission: "0" },
+    tickmill: { spread: "0.1", commission: "3" },
+    "cmc-markets": { spread: "1.3", commission: "0" },
   };
   const costExample = costExamples[review.broker.slug];
   const platformImage = reviewPlatformImage(review);

@@ -51,7 +51,7 @@ test("retail, country and institutional pages render the shared opening and matc
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
-    for (const [slug, country] of [["exness", undefined], ["xm", undefined], ["ic-markets", undefined], ["pepperstone", "Australia"], ["ig", undefined], ["fp-markets", undefined], ["capital-com", undefined], ["hantec-markets", undefined]] as const) {
+    for (const [slug, country] of [["exness", undefined], ["xm", undefined], ["ic-markets", undefined], ["pepperstone", "Australia"], ["ig", undefined], ["fp-markets", undefined], ["capital-com", undefined], ["hantec-markets", undefined], ["plus500", undefined], ["oanda", undefined]] as const) {
       await page.goto(`http://127.0.0.1:3100/reviews/${slug}${country ? `?country=${country}` : ""}`);
       const { review } = getReview(slug, country)!;
       await expect(page.locator(".br-intro p")).toHaveCount(2);
@@ -75,7 +75,7 @@ test("retail, country and institutional pages render the shared opening and matc
 });
 
 test("new image and plain-text openings fit phones and retain the broker-specific cost calculator", async ({ page }) => {
-  for (const slug of ['exness', 'xm', 'ic-markets', 'pepperstone', 'ig', 'fp-markets', 'capital-com', 'hantec-markets']) for (const width of [320, 390, 1440]) {
+  for (const slug of ['exness', 'xm', 'ic-markets', 'pepperstone', 'ig', 'fp-markets', 'capital-com', 'hantec-markets', 'plus500', 'oanda']) for (const width of [320, 390, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(`/reviews/${slug}`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${slug}/${width}`).toBe(true);
