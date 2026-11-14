@@ -1,3 +1,4 @@
+import { indexable } from "../src/lib/site";
 import { test, expect } from "@playwright/test";
 
 test("Fusion review provides scoped facts, sources and five working signup links without JavaScript", async ({ browser, request }) => {
@@ -27,13 +28,13 @@ test("Fusion review provides scoped facts, sources and five working signup links
     await expect(page.locator(".br-opening-image figcaption")).toContainText("not our live-account test");
     await expect(page.locator(".br-accountability")).toContainText("13 Nov 2026");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://www.devinforex.com/reviews/fusion-markets");
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
     const schema = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
     expect(schema["@graph"].find((item: { "@type": string }) => item["@type"] === "FAQPage").mainEntity).toHaveLength(3);
     expect(JSON.stringify(schema)).not.toMatch(/ratingValue|AggregateRating/);
     const mainText = (await page.locator("main").innerHTML()).replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").trim();
     expect(mainText.split(/\s+/).length).toBeLessThanOrEqual(1800);
-    expect(await (await request.get("/sitemap.xml")).text()).not.toContain("/reviews/fusion-markets");
+    expect(await (await request.get("/sitemap.xml")).text()).toContain("/reviews/fusion-markets");
     expect((await request.get("/reviews/aaafx")).status()).toBe(410);
   } finally { await context.close(); }
 });

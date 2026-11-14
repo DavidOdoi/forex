@@ -37,7 +37,11 @@ export function isPublishedReviewHref(href: string) {
   return url.origin === siteOrigin && publishedReviews().some(review => review.broker.slug === slug && review.jurisdiction === (url.searchParams.get("country") ?? "Global"));
 }
 
-// Website discovery is deliberately separate from editorial/indexing approval.
+// Website discovery and owner-authorised indexing remain separate from
+// independent editorial verification.
+export function visibleReviews(): BrokerReview[] {
+  return selectedReviewBrokers.flatMap(broker => reviewCountries(broker.slug).map(country => getVisibleReview(broker.slug, country)!.review));
+}
 export function getVisibleReview(slug: string, country?: string) {
   if (!isSelectedReviewSlug(slug)) return null;
   const result = getReview(slug, country);

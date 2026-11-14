@@ -1,3 +1,4 @@
+import { indexable } from "../src/lib/site";
 import { test, expect } from "@playwright/test";
 import { isSelectedReviewSlug, selectedReviewBrokers } from "../src/lib/reviews/selection";
 import { getReview, researchEntries, researchInventory, relatedReviewLinks } from "../src/lib/reviews/catalog";
@@ -44,7 +45,7 @@ test("the selected review cards are crawlable without JavaScript and the bulk ar
     const html = await page.content();
     for (const entry of researchEntries.filter(entry => !isSelectedReviewSlug(entry.slug))) expect(html).not.toContain(`/reviews/${entry.slug}`);
     await expect(page.getByRole("button", { name: "Preview unpublished research", exact: true })).toHaveCount(0);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
   } finally { await context.close(); }
 });
 

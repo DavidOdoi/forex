@@ -9,8 +9,8 @@ if (
   throw new Error("SITE_URL must be an HTTPS origin without a path");
 export const siteUrl = new URL(configuredUrl).origin;
 export const siteOrigin = siteUrl;
-// Only ready canonical pages belong in the sitemap. The comparison preview,
-// illustrative finder, author placeholder and review drafts keep noindex.
+// All public canonical content is eligible for production indexing at the
+// owner's request. Redirects, duplicate templates and data endpoints are omitted.
 export const publicPaths = [
   "/",
   "/reviews",
@@ -18,6 +18,12 @@ export const publicPaths = [
   "/tools/forex-market-hours",
   "/insights",
   "/about",
+  "/best-brokers",
+  "/find-my-broker",
+  "/authors/david-odoi",
+  "/forex-brokers",
+  "/insights/triangle-chart-patterns",
+  "/insights/image-credits",
   "/best-prop-firm-forex-eas",
   "/prop-firm-consistency-calculator",
 ];

@@ -1,3 +1,4 @@
+import { indexable } from "../src/lib/site";
 import { test, expect } from "@playwright/test";
 import { getReview, researchEntries, reviewCountries } from "../src/lib/reviews/catalog";
 import { reviewIntroduction, reviewFocusKeyword } from "../src/lib/reviews/opening";
@@ -68,7 +69,7 @@ test("retail, country and institutional pages render the shared opening and matc
         await expect.poll(() => page.locator('.br-opening-image img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth)).toBe(image.width);
         await expect(page.locator('.br-opening-image figcaption')).toContainText(`Image: ${review.broker.name}`);
       }
-      await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
       if (slug !== "exness") await expect(page.locator('[data-illustrative-cost]')).toContainText(`Not a measured ${review.broker.name} quote`);
     }
   } finally { await context.close(); }

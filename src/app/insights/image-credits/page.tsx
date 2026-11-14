@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { canonical } from "@/lib/site";
+import { canonical, indexable } from "@/lib/site";
 import { insightImages } from "@/lib/insights/catalog";
 import "../insights.css";
 
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: { absolute: "Article Image Credits & Licences | Devin Forex" },
   description: "Creator credits, source links, reuse licences and documented format changes for images used in Devin Forex trading guides.",
   alternates: canonical("/insights/image-credits"),
-  robots: { index: false, follow: true },
+  robots: { index: indexable, follow: true },
 };
 export default function InsightImageCredits() {
   return <main className="insights-page"><div className="insight-container">

@@ -6,7 +6,7 @@ import { reviewMetadata } from "../src/lib/reviews/seo";
 import { siteOrigin } from "../src/lib/site";
 import { selectedReviewBrokers, isSelectedReviewSlug } from "../src/lib/reviews/selection";
 
-test("website availability does not fabricate editorial approval or indexing eligibility", () => {
+test("search visibility does not fabricate independent editorial approval", () => {
   expect(publishedReviews()).toEqual([]);
   const draft = getReview("exness")!.review;
   expect(selectPublishedReviewEntries([draft])).toEqual([]);
@@ -22,13 +22,13 @@ test("website availability does not fabricate editorial approval or indexing eli
 });
 
 
-test("exactly four selected reviews are visible without exposing the archived bulk preview", async ({ page, request }) => {
+test("all selected reviews are visible without exposing the archived bulk preview", async ({ page, request }) => {
   expect(researchEntries).toHaveLength(325); // Source archive is preserved.
   expect(visibleReviewEntries().map(entry => entry.slug)).toEqual(selectedReviewBrokers.map(broker => broker.slug));
   await page.goto("/reviews", { waitUntil: "networkidle" });
-  await expect(page.locator("main article")).toHaveCount(4);
+  await expect(page.locator("main article")).toHaveCount(selectedReviewBrokers.length);
   await expect(page.getByRole("button", { name: "Preview unpublished research", exact: true })).toHaveCount(0);
-  await expect(page.getByRole("status")).toContainText("4 entries");
+  await expect(page.getByRole("status")).toContainText(`${selectedReviewBrokers.length} entries`);
   const html = await page.content();
   for (const entry of researchEntries.filter(entry => !isSelectedReviewSlug(entry.slug))) expect(html).not.toContain(`/reviews/${entry.slug}`);
   for (const broker of selectedReviewBrokers) {
@@ -36,7 +36,7 @@ test("exactly four selected reviews are visible without exposing the archived bu
     await expect(link).toHaveAttribute("href", `/reviews/${broker.slug}`);
     const response = await request.get(`/reviews/${broker.slug}`);
     expect(response.status()).toBe(200);
-    expect(response.headers()["x-robots-tag"]).toContain("noindex");
+    expect(response.headers()["x-robots-tag"] ?? "").not.toContain("noindex");
     const data = await (await request.get(`/reviews/${broker.slug}/data`)).json();
     expect(data.review.status).toBe("draft");
     expect(data.review.overallScore).toBeNull();
@@ -53,11 +53,11 @@ test("exactly four selected reviews are visible without exposing the archived bu
   expect((await preview.json()).entries).toBeUndefined();
 });
 
-test("retired broker URLs are gone while only the selected four can appear in public navigation", async ({ request }) => {
+test("retired broker URLs stay gone while all current reviews can be indexed", async ({ request }) => {
   const xml = await (await request.get("/sitemap.xml")).text();
-  expect(xml).not.toContain(`<loc>${siteOrigin}/reviews</loc>`);
+  expect(xml).toContain(`<loc>${siteOrigin}/reviews</loc>`);
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
-  expect(urls).toHaveLength(38);
+  expect(urls.length).toBeGreaterThan(selectedReviewBrokers.length);
   expect(urls).toContain(`${siteOrigin}/tools/forex-market-hours`);
   for (const url of urls) {
     const response = await request.get(new URL(url).pathname);
@@ -65,7 +65,7 @@ test("retired broker URLs are gone while only the selected four can appear in pu
     const links = [...html.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(match => new URL(match[1].replaceAll("&amp;", "&"), siteOrigin));
     for (const link of links.filter(link => link.origin === siteOrigin && /^\/reviews\/[^/]+/.test(link.pathname))) expect(isSelectedReviewSlug(link.pathname.split("/")[2]), url).toBe(true);
   }
-  for (const slug of ["etoro", "4xc", "aaafx", "aafx-trading", "avatrade", "afterprime"]) {
+  for (const slug of ["4xc", "aaafx", "afterprime"]) {
     expect(getVisibleReview(slug)).toBeNull();
     for (const suffix of ["", "/data"]) {
       const response = await request.get(`/reviews/${slug}${suffix}`);

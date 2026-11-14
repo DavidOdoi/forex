@@ -172,21 +172,21 @@ test("all published article URLs render essential content, images, citations and
   } finally { await context.close(); }
 });
 
-test("published guides and the companion reading list enter the sitemap while broker drafts stay excluded", async ({ request, page }) => {
+test("published guides and the companion reading list enter the sitemap alongside all public content", async ({ request, page }) => {
   const sitemap = await (await request.get("/sitemap.xml")).text();
   if (insightsIndexable) {
     for (const article of insightArticles) expect(sitemap).toContain(`${siteOrigin}/insights/${article.slug}`);
     expect(await (await request.get("/robots.txt")).text()).toContain(`Sitemap: ${siteOrigin}/sitemap.xml`);
   }
-  expect(sitemap).not.toContain("/reviews/exness");
-  expect(sitemap).not.toContain("/insights/image-credits");
+  expect(sitemap).toContain("/reviews/exness");
+  expect(sitemap).toContain("/insights/image-credits");
   await page.goto("/insights/best-indicators-for-swing-trading");
   await page.locator('.insight-context-link[href="/insights/best-swing-trading-books"]').click();
   await expect(page).toHaveURL(/\/insights\/best-swing-trading-books$/);
   await expect(page.locator("h1")).toHaveText("Best Swing Trading Books: A Practical Reading List");
   expect((await request.get("/insights/not-a-published-guide")).status()).toBe(404);
   await page.goto("/reviews/exness");
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", insightsIndexable ? "index, follow" : "noindex, follow");
 });
 
 test("guide navigation, tables, image credits and gallery fit desktop and small mobile screens", async ({ page }) => {

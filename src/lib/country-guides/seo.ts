@@ -1,20 +1,20 @@
 import type { Metadata, MetadataRoute } from "next";
 import { indexable, siteOrigin } from "../site";
-import { countryGuides, countryRegistry } from "./catalog";
+import { countryGuides } from "./catalog";
 import { guideApproved } from "./publication";
 import type { CountryGuide, GuideRegistry } from "./types";
 import { countryFeaturedImage } from "./media";
 
 export const countryGuidePath = (slug: string) => `/forex-brokers/${slug}`;
 export const evaluationDate = () => new Date().toISOString().slice(0, 10);
-export function countryGuideMetadata(country: CountryGuide, registry: GuideRegistry, asOf: string): Metadata {
+export function countryGuideMetadata(country: CountryGuide): Metadata {
   const heading = country.seoTitle?.scope.countrySlug === country.slug && country.seoTitle.scope.entityId === null ? country.seoTitle.value : null;
   const title = `${heading ?? `Forex Brokers in ${country.name}: Rules & Risks`} | Devin Forex`;
   const url = siteOrigin + countryGuidePath(country.slug);
   const image = countryFeaturedImage(country);
   return {
     title: { absolute: title }, description: country.description, alternates: { canonical: url },
-    robots: { index: indexable && guideApproved(country, registry, asOf), follow: true },
+    robots: { index: indexable, follow: true },
     openGraph: { type: "website", title, description: country.description, url, siteName: "Devin Forex", ...(image ? { images: [{ url: siteOrigin + image.src, width: image.width, height: image.height, alt: image.alt }] } : {}) },
     twitter: { card: image ? "summary_large_image" : "summary", title, description: country.description, ...(image ? { images: [{ url: siteOrigin + image.src, alt: image.alt }] } : {}) },
   };
@@ -41,8 +41,7 @@ export function countryGuideStructuredData(country: CountryGuide, registry: Guid
     ] },
   ] };
 }
-export function countryGuideSitemapEntries(asOf: string, guides = countryGuides, registry = countryRegistry): MetadataRoute.Sitemap {
+export function countryGuideSitemapEntries(guides = countryGuides): MetadataRoute.Sitemap {
   if (!indexable) return [];
-  const approved = guides.filter(country => guideApproved(country, registry, asOf));
-  return approved.length ? [{ url: siteOrigin + "/forex-brokers" }, ...approved.map(country => ({ url: siteOrigin + countryGuidePath(country.slug), lastModified: country.updatedAt ?? country.publishedAt! }))] : [];
+  return [{ url: siteOrigin + "/forex-brokers" }, ...guides.map(country => ({ url: siteOrigin + countryGuidePath(country.slug), ...(country.updatedAt ?? country.publishedAt ? { lastModified: (country.updatedAt ?? country.publishedAt)! } : {}) }))];
 }

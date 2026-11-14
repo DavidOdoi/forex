@@ -10,7 +10,7 @@ import { approvalRecord, checkedSource, claimVerified, validDate } from "../src/
 import { countryGuideMetadata, countryGuideSitemapEntries, countryGuideStructuredData } from "../src/lib/country-guides/seo";
 import { CountryBrokerComparison } from "../src/components/country-guides/broker-comparison";
 import { CountryGuideContent } from "../src/components/country-guides/country-guide";
-import { siteOrigin } from "../src/lib/site";
+import { indexable, siteOrigin } from "../src/lib/site";
 import { approvedCountryFixture, testAsOf } from "./fixtures/country-guide";
 
 const path = "/forex-brokers/sri-lanka";
@@ -25,7 +25,7 @@ test("individually researched country drafts keep Sri Lanka's original source sc
   expect(sriLankaSources.every(source => source.checkedAt === null && ["blocked", "not_attempted"].includes(source.access) && source.verification === "unverified")).toBe(true);
   expect(countryRegistry.sources[0]).toMatchObject({ publishedAt: null, publicationDateStatus: "unknown" });
   expect(guideApproved(sriLankaGuide, countryRegistry, testAsOf)).toBe(false); expect(comparisonMappings(sriLankaGuide, countryRegistry, testAsOf)).toEqual([]);
-  expect(countryGuideSitemapEntries(testAsOf)).toEqual([]);
+  expect(countryGuideSitemapEntries().map(entry => entry.url)).toContain(siteOrigin + "/forex-brokers");
   expect(countryBrokerMaster("ic-markets")!.name).toBe("IC Markets"); expect(countryBrokerMaster("not-a-broker")).toBeNull();
 });
 
@@ -158,8 +158,8 @@ test("approved informational guides can be indexable without commercial links, w
   country.commercialLinksAllowed = false; country.comparison.mode = "none";
   country.legalStatus = "restricted"; registry.approvals[0].legalStatus = "restricted";
   expect(guideApproved(country, registry, testAsOf)).toBe(true);
-  expect(countryGuideMetadata(country, registry, testAsOf).robots).toMatchObject({ index: true });
-  expect(countryGuideSitemapEntries(testAsOf, [country], registry).map(entry => entry.url)).toContain(siteOrigin + "/forex-brokers/example-country");
+  expect(countryGuideMetadata(country).robots).toMatchObject({ index: true });
+  expect(countryGuideSitemapEntries([country]).map(entry => entry.url)).toContain(siteOrigin + "/forex-brokers/example-country");
   const graph = countryGuideStructuredData(country, registry, testAsOf)["@graph"];
   expect(graph[0]).toMatchObject({ "@type": "Article", datePublished: "2026-11-02", dateModified: "2026-11-02" });
   expect(JSON.stringify(graph)).not.toMatch(/AggregateRating|Review|ratingValue|award/);
@@ -179,7 +179,7 @@ test("country components reuse different data without Sri Lanka prose or unverif
   fixture.country.legalStatus = "restricted"; fixture.registry.approvals[0].legalStatus = "restricted";
   const restricted = renderToStaticMarkup(createElement(CountryGuideContent, props));
   expect(restricted).toContain("Synthetic Fixture Entity"); expect(restricted).not.toContain("Sri Lanka");
-  expect(JSON.stringify(countryGuideMetadata(fixture.country, fixture.registry, testAsOf).title)).not.toContain("Sri Lanka");
+  expect(JSON.stringify(countryGuideMetadata(fixture.country).title)).not.toContain("Sri Lanka");
   expect(restricted).not.toContain("tracking.example.test"); expect(restricted).not.toContain('rel="sponsored');
   fixture.country.legalReviewedAt = "2026-11-10"; fixture.country.legalReviewReference = null;
   const unreviewed = renderToStaticMarkup(createElement(CountryGuideContent, props));
@@ -206,13 +206,13 @@ test("Sri Lanka renders legal-first content, sources and honest schema without J
     await expect(page.locator(".cg-sources li")).toHaveCount(10);
     await expect(page.locator("#methodology")).toContainText("Legal review: not yet recorded");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", siteOrigin + path);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
     const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());
     expect(schema).toEqual(countryGuideStructuredData(sriLankaGuide, countryRegistry, testAsOf));
     const external = await page.locator('main a[href^="https:"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")!));
     for (const href of external) expect(["www.cbsl.gov.lk", "www.dfe.lk", "fsaseychelles.sc", "documents.gov.lk", "developers.google.com", "www.exness.com", "get.exness.help", "my.exness.com", "www.xm.com", "www.icmarkets.com", "secure.ic.com", "pepperstone.com", "secure.pepperstone.com", "scb.gov.bs", "commons.wikimedia.org", "creativecommons.org"]).toContain(new URL(href).hostname);
     const html = await response!.text(); expect(html).not.toMatch(/tracking\.example\.test|aff_id=/);
-    const xml = await (await request.get("/sitemap.xml")).text(); expect(xml).not.toContain(siteOrigin + "/forex-brokers");
+    const xml = await (await request.get("/sitemap.xml")).text(); expect(xml).toContain(siteOrigin + "/forex-brokers");
     const hrefs = await page.locator('main a[href^="/"]').evaluateAll(nodes => [...new Set(nodes.map(node => node.getAttribute("href")!))]);
     for (const href of hrefs) expect((await request.get(href)).status(), href).toBe(200);
     const anchors = await page.locator('main a[href^="#"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")!.slice(1)));

@@ -4,6 +4,7 @@ import { indexable, siteOrigin } from "../site";
 import { verifiedSources } from "./template";
 import { flowFaqs } from "./flow";
 import { isReviewPublished } from "./publication";
+import { isReviewSearchable } from "./search";
 import { reviewPlatformImage } from "./media";
 
 export function reviewHeading(review: BrokerReview): string {
@@ -37,7 +38,7 @@ export function reviewMetadata(review: BrokerReview, deploymentIndexable = index
   const images = image ? [{ url: new URL(image.src, siteOrigin).href, width: image.width, height: image.height, alt: image.alt }] : undefined;
   return {
     title: { absolute: title }, description, alternates: { canonical: url },
-    robots: { index: published && deploymentIndexable, follow: published && deploymentIndexable },
+    robots: { index: isReviewSearchable(review) && deploymentIndexable, follow: isReviewSearchable(review) },
     openGraph: { title, description, type: "article", url, siteName: "Devin Forex", ...(images ? { images } : {}) },
     twitter: { card: "summary_large_image", title, description, ...(images ? { images } : {}) },
   };
@@ -69,7 +70,7 @@ export function reviewStructuredData(review: BrokerReview) {
 }
 
 export function reviewSitemapEntries(reviews: BrokerReview[]) {
-  return [...new Map(reviews.filter(isReviewPublished).map(review => [reviewUrl(review), {
-    url: reviewUrl(review), lastModified: review.publication!.updatedAt!,
+  return [...new Map(reviews.filter(isReviewSearchable).map(review => [reviewUrl(review), {
+    url: reviewUrl(review), ...(review.publication?.updatedAt ? { lastModified: review.publication.updatedAt } : {}),
   }])).values()];
 }

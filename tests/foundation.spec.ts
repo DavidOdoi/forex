@@ -6,7 +6,10 @@ import { calculatorsIndexable } from "../src/lib/calculators/seo";
 import { hubPaths } from "../src/lib/metals/content";
 import { metalsIndexable } from "../src/lib/metals/seo";
 import { indexable, publicPaths } from "../src/lib/site";
-import { publishedReviews } from "../src/lib/reviews/visibility";
+import { visibleReviews } from "../src/lib/reviews/visibility";
+import { reviewUrl } from "../src/lib/reviews/seo";
+import { countryGuides } from "../src/lib/country-guides/catalog";
+import { countryGuidePath } from "../src/lib/country-guides/seo";
 
 const routes = [
   "/",
@@ -219,7 +222,7 @@ test("sitemap, robots, exported favicon and custom 404", async ({
   expect(await robots.text()).toContain("Allow: /");
   const xml = await (await request.get("/sitemap.xml")).text();
   const expectedPaths = new Set([
-    ...(indexable ? publicPaths.filter(path => path !== "/reviews" || publishedReviews().length > 0) : []),
+    ...(indexable ? [...publicPaths, ...visibleReviews().map(reviewUrl), ...countryGuides.map(country => countryGuidePath(country.slug))] : []),
     ...(insightsIndexable ? ["/insights", ...insightArticles.map(article => `/insights/${article.slug}`)] : []),
     ...(calculatorsIndexable ? ["/tools", ...calculators.map(toolPath)] : []),
     ...(metalsIndexable ? hubPaths : []),

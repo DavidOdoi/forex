@@ -3,7 +3,7 @@ import { canonical, indexable } from "@/lib/site";
 import { PageHero } from "@/components/site-header";
 import { ReviewDirectory } from "@/components/review-directory";
 import { ReviewDirectoryIndex } from "@/components/review-directory-index";
-import { publishedReviewEntries, visibleReviewEntries } from "@/lib/reviews/visibility";
+import { visibleReviewEntries } from "@/lib/reviews/visibility";
 
 const entries = visibleReviewEntries();
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: { title: "Forex Broker Reviews — Devin Forex", description: "Explore our selected broker reviews, with linked evidence and transparent verification status.", type: "website" },
   twitter: { card: "summary_large_image", title: "Forex Broker Reviews — Devin Forex", description: "Compare forex broker fees, platforms and entity-specific protections using source-based research." },
   alternates: canonical("/reviews"),
-  robots: { index: indexable && publishedReviewEntries().length > 0, follow: true },
+  robots: { index: indexable, follow: true },
 };
 export default function Page() {
   return <main>

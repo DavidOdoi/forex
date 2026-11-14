@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { canonical } from "@/lib/site";
+import { canonical, indexable } from "@/lib/site";
 export const metadata: Metadata = {
   ...{
     title: { absolute: "Forex Broker Comparisons — Devin Forex" },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: canonical("/best-brokers"),
-  robots: { index: false, follow: true },
+  robots: { index: indexable, follow: true },
 };
 import { PageHero } from "@/components/site-header";
 import { BrokerCard } from "@/components/broker-card";

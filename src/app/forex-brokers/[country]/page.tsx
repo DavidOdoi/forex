@@ -13,7 +13,7 @@ export const dynamicParams = false;
 export function generateStaticParams() { return countryGuides.map(country => ({ country: country.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ country: string }> }) {
   const { country: slug } = await params; const country = getCountryGuide(slug);
-  return country ? countryGuideMetadata(country, countryRegistry, evaluationDate()) : {};
+  return country ? countryGuideMetadata(country) : {};
 }
 export default async function CountryPage({ params }: { params: Promise<{ country: string }> }) {
   const { country: slug } = await params; const country = getCountryGuide(slug);

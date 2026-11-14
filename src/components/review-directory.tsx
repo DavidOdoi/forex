@@ -45,7 +45,7 @@ export function ReviewDirectory({ entries }: { entries: ReviewDirectoryEntry[] }
               <p className="flex items-start gap-2"><Globe2 size={16} className="mt-1 shrink-0" />{entry.country ?? "Country scope awaiting verification"}</p>
               <p className="flex items-center gap-2"><FileText size={16} />{entry.sourceCount} sources · Not rated</p>
             </div>
-            <Link href={entry.href ?? `/reviews/${entry.slug}`} rel={entry.published ? undefined : "nofollow"} prefetch={entry.published ? undefined : false} className="mt-auto flex items-center justify-between rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground">{entry.visible || entry.published ? "Read review" : "Open research draft"} <ArrowUpRight size={18} /></Link>
+            <Link href={entry.href ?? `/reviews/${entry.slug}`} rel={entry.visible || entry.published ? undefined : "nofollow"} prefetch={entry.published ? undefined : false} className="mt-auto flex items-center justify-between rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground">{entry.visible || entry.published ? "Read review" : "Open research draft"} <ArrowUpRight size={18} /></Link>
           </article>
         ))}
       </div>

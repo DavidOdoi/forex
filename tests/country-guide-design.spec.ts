@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { siteOrigin } from "../src/lib/site";
+import { indexable, siteOrigin } from "../src/lib/site";
 
 const path = "/forex-brokers/sri-lanka";
 test("country guide retains the site header and uniform 18px article typography", async ({ page }) => {
@@ -32,7 +32,7 @@ test("the complete guide stays below 1700 words, including all collapsed FAQs an
   await expect(page.locator('h1')).toContainText('Forex Brokers in Sri Lanka');
   await expect(page).toHaveTitle(/Forex Brokers in Sri Lanka/);
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href',siteOrigin+path);
-  await expect(page.locator('meta[name=robots]')).toHaveAttribute('content','noindex, follow');
+  await expect(page.locator('meta[name=robots]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
   const featured = page.getByRole('img', {name: 'Colombo skyline viewed from Port City in Sri Lanka in January 2022'});
   await featured.scrollIntoViewIfNeeded();
   await expect.poll(() => featured.evaluate(node => (node as HTMLImageElement).complete && (node as HTMLImageElement).naturalWidth > 0)).toBe(true);

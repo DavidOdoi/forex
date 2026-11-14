@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteOrigin } from "../site";
+import { indexable, siteOrigin } from "../site";
 
 export const trianglePath = "/insights/triangle-chart-patterns";
 export const triangleTitle = "Triangle Chart Patterns: Types, Examples & Breakouts";
@@ -19,9 +19,8 @@ export const triangleMetadata: Metadata = {
   title: { absolute: "Triangle Chart Patterns: Types & Examples | DEVIN FOREX" },
   description: triangleDescription,
   alternates: { canonical: siteOrigin + trianglePath },
-  // External references could not be consulted in this environment. Keep this
-  // educational build out of search until an editor completes source checks.
-  robots: { index: false, follow: true },
+  // Search eligibility is owner-authorised; verification disclosures remain.
+  robots: { index: indexable, follow: true },
   openGraph: { type: "website", title: triangleTitle, description: triangleDescription, url: siteOrigin + trianglePath, siteName: "Devin Forex", images: [{ url: siteOrigin + trianglePath + "/opengraph-image", width: 1200, height: 630, alt: "Three original illustrative triangle diagrams; not historical data" }] },
   twitter: { card: "summary_large_image", title: triangleTitle, description: triangleDescription, images: [siteOrigin + trianglePath + "/opengraph-image"] },
 };

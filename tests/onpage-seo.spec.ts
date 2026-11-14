@@ -39,12 +39,12 @@ test("publication requires accountability, approval, dates and matching core evi
   expect(isReviewPublished(wrongScope)).toBe(false);
 });
 
-test("only approved canonical articles can be indexable or enter the review sitemap", () => {
+test("public reviews can be indexed without fabricating editorial approval", () => {
   const draft = getReview("exness")!.review;
   const ready = publicationFixture();
-  expect(reviewMetadata(draft, true).robots).toEqual({ index: false, follow: false });
+  expect(reviewMetadata(draft, true).robots).toEqual({ index: true, follow: true });
   expect(reviewMetadata(ready, true).robots).toEqual({ index: true, follow: true });
-  expect(reviewMetadata(ready, false).robots).toEqual({ index: false, follow: false });
+  expect(reviewMetadata(ready, false).robots).toEqual({ index: false, follow: true });
   expect(reviewMetadata(ready).alternates?.canonical).toMatch(/\/reviews\/exness$/);
   const demo = structuredClone(ready); demo.status = "template";
   const entries = reviewSitemapEntries([draft, demo, ready, structuredClone(ready)]);
@@ -129,9 +129,9 @@ test("essential review content is server rendered with valid headings, anchors a
   } finally { await context.close(); }
 });
 
-test("draft and demonstration responses remain noindex while crawlers can read their directives", async ({ page, request }) => {
+test("public reviews allow indexing while duplicate demonstrations retain their canonical exclusions", async ({ page, request }) => {
   expect(await (await request.get("/robots.txt")).text()).toContain("Allow: /");
-  for (const path of ["/reviews/exness", "/reviews/template", "/templates/exness-review.html"]) {
+  for (const path of ["/reviews/template", "/templates/exness-review.html"]) {
     const response = await page.goto(path);
     expect(response?.headers()["x-robots-tag"]).toBe("noindex, nofollow");
     await expect(page.locator('meta[name="robots"]')).toHaveCount(1);

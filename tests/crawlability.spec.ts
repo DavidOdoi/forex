@@ -1,8 +1,28 @@
 import { test, expect } from "@playwright/test";
+import { readdirSync, readFileSync } from "node:fs";
+import { join, relative } from "node:path";
 import { deploymentAllowsIndexing, indexable, publicPaths, siteOrigin } from "../src/lib/site";
-import { publishedReviews } from "../src/lib/reviews/visibility";
+import { visibleReviews } from "../src/lib/reviews/visibility";
+import { reviewUrl, reviewMetadata } from "../src/lib/reviews/seo";
+import { isReviewPublished } from "../src/lib/reviews/publication";
+import { countryGuides, countryRegistry } from "../src/lib/country-guides/catalog";
+import { countryGuidePath, countryGuideMetadata } from "../src/lib/country-guides/seo";
+import { guideApproved } from "../src/lib/country-guides/publication";
+import { insightArticles } from "../src/lib/insights/catalog";
+import { calculators, toolPath } from "../src/lib/calculators/catalog";
+import { hubPaths } from "../src/lib/metals/content";
 
-test("the confirmed public domain is indexable without requiring a redundant environment variable", () => {
+function staticContentPaths(directory = "src/app"): string[] {
+  return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
+    const path = join(directory, entry.name);
+    if (entry.isDirectory()) return staticContentPaths(path);
+    if (entry.name !== "page.tsx" || path.includes("[") || readFileSync(path, "utf8").includes("permanentRedirect(")) return [];
+    const route = "/" + relative("src/app", directory).split("/").filter(part => part && !part.startsWith("(")).join("/");
+    return route === "/reviews/template" ? [] : [route];
+  });
+}
+
+test("the canonical production domain is indexable while preview and development deployments remain excluded", () => {
   expect(siteOrigin).toBe(new URL(process.env.SITE_URL?.trim() || "https://www.devinforex.com").origin);
   expect(deploymentAllowsIndexing(undefined)).toBe(true);
   expect(deploymentAllowsIndexing("production")).toBe(true);
@@ -10,7 +30,22 @@ test("the confirmed public domain is indexable without requiring a redundant env
   expect(deploymentAllowsIndexing("development")).toBe(false);
 });
 
-test("robots advertises the canonical sitemap and every sitemap URL is unique, crawlable and indexable", async ({ request }) => {
+test("owner-authorised indexing preserves factual and editorial verification status", () => {
+  for (const review of visibleReviews()) {
+    expect(isReviewPublished(review)).toBe(false);
+    expect(review.publication?.approvedBy ?? null).toBeNull();
+    expect(review.overallScore).toBeNull();
+    expect(reviewMetadata(review, true).robots).toEqual({ index: true, follow: true });
+    expect(reviewMetadata(review, false).robots).toEqual({ index: false, follow: true });
+  }
+  for (const country of countryGuides) {
+    expect(guideApproved(country, countryRegistry, "2026-11-14")).toBe(false);
+    expect(countryGuideMetadata(country).robots).toEqual({ index: indexable, follow: true });
+  }
+});
+
+test("the complete sitemap covers all public content and every URL is canonical, crawlable and indexable", async ({ request }) => {
+  test.setTimeout(120_000);
   const robots = await request.get("/robots.txt");
   expect(robots.status()).toBe(200);
   expect(robots.headers()["content-type"]).toContain("text/plain");
@@ -25,8 +60,15 @@ test("robots advertises the canonical sitemap and every sitemap URL is unique, c
   expect(xml).toContain('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"');
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1].replaceAll("&amp;", "&"));
   expect(new Set(urls).size).toBe(urls.length);
-  if (indexable) for (const path of publicPaths.filter(path => path !== "/reviews" || publishedReviews().length > 0)) expect(urls).toContain(new URL(path, siteOrigin).href);
-  for (const url of urls) {
+  const expected = new Set([
+    ...staticContentPaths(), ...publicPaths,
+    ...visibleReviews().map(review => reviewUrl(review)),
+    ...countryGuides.map(country => countryGuidePath(country.slug)),
+    ...insightArticles.map(article => `/insights/${article.slug}`),
+    ...calculators.map(toolPath), ...hubPaths,
+  ].map(path => new URL(path, siteOrigin).href));
+  expect(new Set(urls)).toEqual(indexable ? expected : new Set());
+  for (let i = 0; i < urls.length; i += 6) await Promise.all(urls.slice(i, i + 6).map(async url => {
     const parsed = new URL(url);
     expect(parsed.origin).toBe(siteOrigin);
     expect(parsed.hash).toBe("");
@@ -37,21 +79,22 @@ test("robots advertises the canonical sitemap and every sitemap URL is unique, c
     expect(html, url).toMatch(/name="robots" content="index, follow"/);
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
     expect(canonical, url).not.toBeNull();
-    expect(new URL(canonical![1]).href, url).toBe(url);
-  }
+    expect(new URL(canonical![1].replaceAll("&amp;", "&")).href, url).toBe(url);
+  }));
+  console.log(`Indexing audit: ${urls.length} canonical content URLs, all HTTP 200 with index/follow and no blocking response headers.`);
 });
 
-test("unfinished profiles, previews and data endpoints are excluded without blocking noindex discovery", async ({ request, page }) => {
+test("duplicate templates, retired URLs and data responses remain outside the content sitemap", async ({ request }) => {
   const xml = await (await request.get("/sitemap.xml")).text();
-  for (const path of ["/reviews", "/reviews/exness", "/reviews/aaafx", "/reviews/aafx-trading", "/reviews/template", "/best-brokers", "/find-my-broker", "/authors/david-odoi", "/insights/image-credits"]) {
+  for (const path of ["/reviews/aaafx", "/reviews/template", "/templates/exness-review.html", "/reviews/exness/data", "/api/metals"]) {
     expect(xml).not.toContain(`<loc>${siteOrigin}${path}</loc>`);
-    const response = await page.goto(path);
-    if (["/reviews/aaafx", "/reviews/aafx-trading"].includes(path)) {
-      expect(response?.status()).toBe(410);
-      expect(response?.headers()["x-robots-tag"]).toContain("noindex");
-    } else await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+    const response = await request.get(path);
+    expect(response.headers()["x-robots-tag"], path).toContain("noindex");
   }
-  const data = await request.get("/reviews/aaafx/data");
-  expect(data.status()).toBe(410);
-  expect(data.headers()["x-robots-tag"].split(/,\s*/)).toContain("noindex");
+  expect((await request.get("/reviews/aaafx")).status()).toBe(410);
+  for (const path of ["/how-to-start-forex-trading-in-south-africa", "/usdc-vs-ethereum-sending-money"]) {
+    const response = await request.get(path, { maxRedirects: 0 });
+    expect(response.status()).toBe(308);
+    expect(response.headers().location).toContain("/insights/");
+  }
 });

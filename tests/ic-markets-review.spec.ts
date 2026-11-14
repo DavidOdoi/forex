@@ -1,3 +1,4 @@
+import { indexable } from "../src/lib/site";
 import { test, expect } from "@playwright/test";
 import { getReview } from "../src/lib/reviews/catalog";
 import { checkedField, reviewAccounts, reviewQuickFacts, verdictSentences } from "../src/lib/reviews/flow";
@@ -74,7 +75,7 @@ test("full research retains conflicts, funding limits, conversion units, early a
   for (const term of ["Raw Pro", "early-access", "0.01", "0.8", "USDC", "12:00 AEST/AEDT", "2–14", "30 inactive", "Mac", "2FA", "all claimants", "Cayman", "13:05 EAT", "not an exact fetch"]) expect(text).toContain(term);
   for (const section of findings) for (const id of section.sourceIds) expect(review.sources.some(source => source.id === id), id).toBe(true);
 });
-test("updated shared template renders supplied findings and three FAQs without JavaScript, retaining noindex and word cap", async ({ browser, request }) => {
+test("updated shared template renders supplied findings and three FAQs without JavaScript, retaining verification disclosures and word cap", async ({ browser, request }) => {
   const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage();
   try {
     const response = await page.goto("/reviews/ic-markets"); expect(response!.status()).toBe(200);
@@ -93,7 +94,7 @@ test("updated shared template renders supplied findings and three FAQs without J
     await expect(page.locator("#customer-reviews")).toContainText("4.8/5 from 57,517");
     await expect(page.locator(".br-rating")).toHaveText("Not rated");
     await expect(page.locator("#review-faq details")).toHaveCount(3);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, nofollow");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
     await expect(page.getByRole("link", { name: "Open an account with IC Markets", exact: true })).toHaveCount(0);
     const html = await response!.text();
     const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)![1];

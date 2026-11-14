@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { canonical } from "@/lib/site";
+import { canonical, indexable } from "@/lib/site";
 export const metadata: Metadata = {
   ...{
     title: { absolute: "Find My Forex Broker — Devin Forex" },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: canonical("/find-my-broker"),
-  robots: { index: false, follow: true },
+  robots: { index: indexable, follow: true },
 };
 import Page from "@/components/find-my-broker-content";
 import { visibleReviewEntries } from "@/lib/reviews/visibility";

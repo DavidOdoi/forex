@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { boundary, historicalPoints, futurePoints, toScreen, measuredMove, triangleKinds, scenarios, exercises, illustrationLabel } from "../src/lib/education/triangles";
 import { trianglePath, triangleTitle, triangleStructuredData } from "../src/lib/education/triangle-page";
-import { siteOrigin } from "../src/lib/site";
+import { indexable, siteOrigin } from "../src/lib/site";
 
 test("triangle geometry converges, preserves the intended slopes and uses correct price-to-screen mapping", () => {
   for (const kind of triangleKinds) {
@@ -81,13 +81,13 @@ test("initial HTML contains core diagrams, comparison, formulas and honest sourc
     await expect(page.locator(".tp-diagram figcaption")).toHaveCount(11);
     for (const caption of await page.locator(".tp-diagram figcaption").allTextContents()) expect(caption).toBe(illustrationLabel);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", siteOrigin + trianglePath);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
     await expect(page).toHaveTitle("Triangle Chart Patterns: Types & Examples | DEVIN FOREX");
     const schema = JSON.parse(await page.locator('main script[type="application/ld+json"]').innerText());
     expect(schema).toEqual(triangleStructuredData());
     expect(JSON.stringify(schema)).not.toMatch(/datePublished|dateModified|reviewedBy|ratingValue|Person/);
     await expect(page.locator("#faq details")).toHaveCount(9);
-    const sitemap = await (await request.get("/sitemap.xml")).text(); expect(sitemap).not.toContain(siteOrigin + trianglePath);
+    const sitemap = await (await request.get("/sitemap.xml")).text(); expect(sitemap).toContain(siteOrigin + trianglePath);
     const internalLinks = await page.locator('main a[href^="/"]').evaluateAll(links => [...new Set(links.map(link => link.getAttribute("href")!))]);
     for (const href of internalLinks) expect((await request.get(href)).status(), href).toBe(200);
     const ids = await page.locator("main [id]").evaluateAll(nodes => nodes.map(node => node.id)); expect(new Set(ids).size).toBe(ids.length);

@@ -1,3 +1,4 @@
+import { indexable } from "../src/lib/site";
 import { test, expect } from "@playwright/test";
 import { isSelectedReviewSlug, selectedReviewBrokers } from "../src/lib/reviews/selection";
 import { getReview, researchEntries, directoryEntries, reviewCountries } from "../src/lib/reviews/catalog";
@@ -92,7 +93,7 @@ test("review has useful internal and external links, country canonical metadata 
 test("global Exness review retains citations, research and five official account links", async ({ page, request }) => {
   await page.goto("/reviews/exness");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Safety & Account Types");
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
   await expect(page.locator(".br-account-table")).toContainText("US$3.50");
   await expect(page.getByRole("columnheader", { name: "Minimum first deposit" })).toBeVisible();
   const minimums = page.locator(".br-account-table tbody tr td:last-child");

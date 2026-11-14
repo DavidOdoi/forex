@@ -1,3 +1,4 @@
+import { indexable } from "../src/lib/site";
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
@@ -100,13 +101,13 @@ test("updated draft server-renders legal findings, honest dates, quotes and unac
     for (const name of ["Exness", "XM", "IC Markets", "Pepperstone"]) await expect(page.locator("#candidate-research")).toContainText(name);
     await expect(page.locator('main a[rel~="sponsored"]')).toHaveCount(0);
     await expect(page.locator("#broker-comparison")).toHaveCount(0);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
     const html = await response!.text();
     expect(html).toContain("xm.com/account-types");
     expect(html).toContain("pepperstone.com/en/trading/trading-accounts/");
     await expect(page.locator(".cg-signup-link")).toHaveCount(4);
     const sourceAnchors = await page.locator('main a[href^="#source-"]').evaluateAll(links => links.every(link => document.getElementById(link.getAttribute("href")!.slice(1)))); expect(sourceAnchors).toBe(true);
-    const xml = await (await request.get("/sitemap.xml")).text(); expect(xml).not.toContain("/forex-brokers/sri-lanka");
+    const xml = await (await request.get("/sitemap.xml")).text(); expect(xml).toContain("/forex-brokers/sri-lanka");
   } finally { await context.close(); }
 });
 

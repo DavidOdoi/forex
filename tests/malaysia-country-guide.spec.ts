@@ -1,3 +1,4 @@
+import { indexable } from "../src/lib/site";
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
@@ -75,14 +76,14 @@ test("Malaysia server-renders the existing template with five useful tables, acc
     await expect(page.locator('#research-fbs')).toContainText('0.7 pips');
     await expect(page.locator('#research-oanda')).toContainText('$0 commission');
     await expect(page.locator('main a[rel~=sponsored]')).toHaveCount(0);
-    await expect(page.locator('meta[name=robots]')).toHaveAttribute('content','noindex, follow');
+    await expect(page.locator('meta[name=robots]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
     await expect(page.locator('#methodology')).toContainText('No sign-up or affiliate links are active');
     for (const slug of ['xm','ic-markets']) expect((await request.get('/reviews/'+slug)).status()).toBe(200);
     for (const slug of ['oanda','fbs','tickmill']) await expect(page.locator('main a[href="/reviews/'+slug+'"]')).toHaveCount(0);
     await expect(page.locator('.cg-website-link')).toHaveCount(5);
     await expect(page.locator('main img')).toHaveCount(0);
     for (const anchor of await page.locator('main a[href^="#"]').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')!.slice(1)))) expect(await page.locator(`[id="${anchor}"]`).count(),anchor).toBe(1);
-    const sitemap = await (await request.get('/sitemap.xml')).text(); expect(sitemap).not.toContain(path);
+    const sitemap = await (await request.get('/sitemap.xml')).text(); expect(sitemap).toContain(path);
     const hub = await (await request.get('/forex-brokers')).text(); expect(hub).toContain(path);
     expect((await request.get('/forex-brokers/united-kingdom')).status()).toBe(200);
     expect((await request.get('/forex-brokers/netherlands')).status()).toBe(200);

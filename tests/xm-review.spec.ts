@@ -1,3 +1,4 @@
+import { indexable } from "../src/lib/site";
 import { test, expect } from "@playwright/test";
 import { getReview } from "../src/lib/reviews/catalog";
 import { checkedField, reviewAccounts, reviewQuickFacts, verdictSentences } from "../src/lib/reviews/flow";
@@ -77,7 +78,7 @@ test("XM's account table, quick facts, three FAQs and funding conditions render 
     await expect(accountLinks.first()).toHaveAttribute('href','https://www.xm.com/goto/profile/en');
     await expect(page.locator('#customer-reviews a')).toHaveAttribute("href","https://www.trustpilot.com/review/xm.com");
     await expect(page.locator('#customer-reviews')).not.toContainText("3,096");
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content","noindex, nofollow");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
   } finally { await context.close(); }
 });
 
