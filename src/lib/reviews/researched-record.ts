@@ -1,6 +1,6 @@
 import type { BrokerReview, ReviewField } from "./types";
 
-type Source = { id: string; title: string; url: string; publisher?: string };
+type Source = { id: string; title: string; url: string; publisher?: string; evidenceOrigin?: "user-supplied-dossier" };
 
 // Populate the existing template; presentation and evidence guards stay shared.
 export function prepareResearchedRecord(review: BrokerReview, legalEntity: string, checkedAt: string, sources: Source[]) {
@@ -20,5 +20,9 @@ export function prepareResearchedRecord(review: BrokerReview, legalEntity: strin
     matches.forEach(field => Object.assign(field, { ...common, value, status: "verified", sourceIds }));
   };
   review.publication = { publishedAt: null, updatedAt: checkedAt, approvedAt: null, approvedBy: null };
-  return { common, set };
+  const setSupplied = (id: string, value: string, sourceIds: string[]) => {
+    set(id, value, sourceIds);
+    fields().filter(field => field.id === id).forEach(field => { field.status = "supplied-research"; });
+  };
+  return { common, set, setSupplied };
 }

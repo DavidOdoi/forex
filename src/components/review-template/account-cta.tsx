@@ -1,4 +1,5 @@
 import { ArrowUpRight, BadgeInfo, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import type { BrokerReview } from "@/lib/reviews/types";
 import { accountOpeningHref } from "@/lib/reviews/template";
 
@@ -55,6 +56,11 @@ export function AccountOpeningCta({
   const href = accountOpeningHref(review);
   const message = messages[placement];
   const compact = placement === "hero";
+  if (review.accountOpeningBlockReason) return <section className="br-account" id={`open-account-${placement}`} data-account-cta={placement} aria-label={`Broker alternatives: ${placement.replaceAll("-", " ")}`}>
+    <div><p className="br-account-title">Compare alternatives before depositing</p></div>
+    <Link className="br-account-button" href="/reviews">Compare brokers<ArrowUpRight size={17} /></Link>
+    <small>{review.accountOpeningBlockReason}</small>
+  </section>;
   if (readerCompact) return <section className={`br-account ${placement === "after-safety" ? "br-account-dark" : ""} ${placement === "hero" ? "br-account-hero" : ""}`} id={`open-account-${placement}`} data-account-cta={placement} aria-label={`Account opening: ${placement.replaceAll("-", " ")}`}>
     {placement !== "hero" && <div><p className="br-account-title">{placement === "after-safety" ? "Check your entity’s terms" : placement === "after-account-opening" ? "Review the application" : placement === "verdict" ? "Ready to look closer?" : "Compare the account options"}</p></div>}
     {href ? <a className="br-account-button" href={href} target="_blank" rel={review.accountOpening.isAffiliate ? "sponsored nofollow noopener noreferrer" : "noopener noreferrer"} aria-label={`Open an account with ${review.broker.name}`}>Open an account<ArrowUpRight size={17} /></a> : <button className="br-account-button" disabled type="button" aria-label={`Open an account with ${review.broker.name}`} aria-describedby={`reader-account-status-${placement}`}>Open an account<ArrowUpRight size={17} /></button>}

@@ -34,7 +34,7 @@ test("Fusion review provides scoped facts, sources and five working signup links
     const mainText = (await page.locator("main").innerHTML()).replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").trim();
     expect(mainText.split(/\s+/).length).toBeLessThanOrEqual(1800);
     expect(await (await request.get("/sitemap.xml")).text()).not.toContain("/reviews/fusion-markets");
-    expect((await request.get("/reviews/aafx-trading")).status()).toBe(410);
+    expect((await request.get("/reviews/aaafx")).status()).toBe(410);
   } finally { await context.close(); }
 });
 

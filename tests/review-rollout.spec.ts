@@ -51,7 +51,7 @@ test("retail, country and institutional pages render the shared opening and matc
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
-    for (const [slug, country] of [["exness", undefined], ["xm", undefined], ["ic-markets", undefined], ["pepperstone", "Australia"], ["ig", undefined], ["fp-markets", undefined], ["capital-com", undefined], ["hantec-markets", undefined], ["plus500", undefined], ["oanda", undefined]] as const) {
+    for (const [slug, country] of [["exness", undefined], ["xm", undefined], ["ic-markets", undefined], ["pepperstone", "Australia"], ["ig", undefined], ["fp-markets", undefined], ["capital-com", undefined], ["hantec-markets", undefined], ["plus500", undefined], ["oanda", undefined], ["tickmill", undefined], ["cmc-markets", undefined], ["xtb", undefined], ["interactive-brokers", undefined], ["avatrade", undefined], ["blackbull-markets", undefined], ["etoro", undefined], ["aafx-trading", undefined], ["z-forex", undefined], ["trading-com", undefined]] as const) {
       await page.goto(`http://127.0.0.1:3100/reviews/${slug}${country ? `?country=${country}` : ""}`);
       const { review } = getReview(slug, country)!;
       await expect(page.locator(".br-intro p")).toHaveCount(2);
@@ -75,7 +75,7 @@ test("retail, country and institutional pages render the shared opening and matc
 });
 
 test("new image and plain-text openings fit phones and retain the broker-specific cost calculator", async ({ page }) => {
-  for (const slug of ['exness', 'xm', 'ic-markets', 'pepperstone', 'ig', 'fp-markets', 'capital-com', 'hantec-markets', 'plus500', 'oanda']) for (const width of [320, 390, 1440]) {
+  for (const slug of ['exness', 'xm', 'ic-markets', 'pepperstone', 'ig', 'fp-markets', 'capital-com', 'hantec-markets', 'plus500', 'oanda', 'tickmill', 'cmc-markets', 'xtb', 'interactive-brokers', 'avatrade', 'blackbull-markets', 'etoro', 'aafx-trading', 'z-forex', 'trading-com']) for (const width of [320, 390, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(`/reviews/${slug}`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${slug}/${width}`).toBe(true);
@@ -84,4 +84,21 @@ test("new image and plain-text openings fit phones and retain the broker-specifi
   await page.goto('/reviews/ic-markets#fees');
   await page.getByLabel('Standard lots', { exact: true }).fill('2');
   await expect(page.locator('[data-roundtrip-result]')).toContainText('US$20 / 1.0 pip');
+});
+
+
+test("warning-led reviews offer alternatives and IBKR respects per-order commission minimums", async ({ page }) => {
+  for (const slug of ["aafx-trading", "z-forex"]) {
+    await page.goto(`/reviews/${slug}`);
+    await expect(page.locator(".br-regulatory-notices")).toBeVisible();
+    await expect(page.locator(".br-verdict-box")).toContainText("We do not recommend");
+    await expect(page.locator("[data-account-cta] a.br-account-button")).toHaveCount(5);
+    for (const button of await page.locator("[data-account-cta] a.br-account-button").all()) await expect(button).toHaveAttribute("href", "/reviews");
+    await expect(page.locator("[data-account-cta]")).not.toContainText(["Open an account"]);
+  }
+  await page.goto("/reviews/interactive-brokers#fees");
+  await page.getByLabel("Standard lots", { exact: true }).fill("0.01");
+  await expect(page.locator("[data-roundtrip-result]")).toContainText("US$4.02");
+  await page.getByLabel("Standard lots", { exact: true }).fill("2");
+  await expect(page.locator("[data-roundtrip-result]")).toContainText("US$12.8");
 });

@@ -92,6 +92,7 @@ export interface BrokerReview {
   relatedResearch?: { name: string; slug: string; href: string }[];
   jurisdiction: string | null;
   accountOpening: AccountOpeningLink;
+  accountOpeningBlockReason?: string;
   author: { name: string; role: string; profileUrl?: string; bio?: string } | null;
   factChecker: { name: string; role: string; profileUrl?: string } | null;
   publication?: { publishedAt: string | null; updatedAt: string | null; approvedAt: string | null; approvedBy: string | null };

@@ -14,9 +14,17 @@ export const selectedReviewBrokers = [
   { slug: "oanda", name: "OANDA" },
   { slug: "tickmill", name: "Tickmill" },
   { slug: "cmc-markets", name: "CMC Markets" },
+  { slug: "xtb", name: "XTB" },
+  { slug: "interactive-brokers", name: "Interactive Brokers" },
+  { slug: "avatrade", name: "AvaTrade" },
+  { slug: "blackbull-markets", name: "BlackBull Markets" },
+  { slug: "etoro", name: "eToro" },
+  { slug: "aafx-trading", name: "AAFX Trading" },
+  { slug: "z-forex", name: "ZForex" },
+  { slug: "trading-com", name: "Trading.com" },
 ] as const;
 export const reviewAvailabilityDate = "2026-11-10";
-export const reviewAvailabilityDates: Record<string, string> = { "fusion-markets": "2026-11-13", ig: "2026-11-13", "fp-markets": "2026-11-13", "capital-com": "2026-11-13", "hantec-markets": "2026-11-13", plus500: "2026-11-14", oanda: "2026-11-14", tickmill: "2026-11-14", "cmc-markets": "2026-11-14" };
+export const reviewAvailabilityDates: Record<string, string> = { "fusion-markets": "2026-11-13", ig: "2026-11-13", "fp-markets": "2026-11-13", "capital-com": "2026-11-13", "hantec-markets": "2026-11-13", plus500: "2026-11-14", oanda: "2026-11-14", tickmill: "2026-11-14", "cmc-markets": "2026-11-14", xtb: "2026-11-14", "interactive-brokers": "2026-11-14", avatrade: "2026-11-14", "blackbull-markets": "2026-11-14", etoro: "2026-11-14", "aafx-trading": "2026-11-14", "z-forex": "2026-11-14", "trading-com": "2026-11-14" };
 export function isSelectedReviewSlug(slug: string): boolean {
   return selectedReviewBrokers.some(broker => broker.slug === slug);
 }
