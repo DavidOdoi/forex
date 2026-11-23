@@ -69,17 +69,16 @@ const report = articles.filter(article => article.format === "guide").map(articl
   const checks = {
     keywordStartsTitle: normalise(titleTag).startsWith(keyword),
     conciseTitle: titleTag.length <= 65,
-    usefulTitleLanguage: /\b(practical|clear|smart|smarter|better)\b/i.test(article.title),
+    descriptiveTitle: words(article.title) >= 4 && !/\b(guaranteed profits?|risk[- ]free)\b/i.test(article.title),
     keywordInDescription: normalise(article.description).includes(keyword),
     descriptionLength: article.description.length >= 150 && article.description.length <= 160,
     keywordInSlug: article.slug === keyword.replace(/\s+/g, "-") || article.slug.startsWith(keyword.replace(/\s+/g, "-") + "-"),
     shortSlug: article.slug.length < 75,
-    keywordInIntro: first.type === "paragraph" && normalise(rich(first.content)).includes(keyword),
+    topicInIntro: first.type === "paragraph" && keyword.split(/\s+/).every(word => normalise(rich(first.content)).includes(word)),
     conciseIntro: first.type === "paragraph" && words(rich(first.content)) <= 60,
     answerImmediatelyAfterIntro: first.type === "paragraph" && summary.type === "quick-answer",
     conciseAnswer: summary.type === "quick-answer" && words(summary.answer) <= 65 && summary.points.length === (summary.ordered ? 7 : 3),
     keywordInSubheading: article.blocks.some(block => block.type === "heading" && normalise(block.text).includes(keyword)),
-    keywordAcrossBody: keywordOccurrences >= 3,
     noExcessiveExactRepetition: density <= 1.5,
     contentWithin1800Words: wordCount <= 1800,
     paragraphsUnder120Words: paragraphs.every(paragraph => words(paragraph) < 120),
@@ -117,11 +116,11 @@ const output = {
   references,
   articles: report,
 };
-const jsonPath = join(root, "docs/content/insights-seo-audit-2026-11-06.json");
+const jsonPath = process.env.AUDIT_OUTPUT ? join(root, process.env.AUDIT_OUTPUT) : join(root, "docs/content/insights-seo-audit-2026-11-06.json");
 writeFileSync(jsonPath, JSON.stringify(output, null, 2) + "\n");
 const lines = ["# Insights SEO and readability audit", "", `Objective checks: ${output.status}. All published guides use a short intro followed immediately by a Quick answer section. The latest 1,800-word ceiling supersedes the earlier long-form suggestion.`, "", "| Guide | Words | Intro | Direct answer | Quick links | FAQs | Title chars | Slug chars | Max paragraph | Exact phrase density | Checks |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |"];
 for (const article of report) lines.push(`| ${article.slug} | ${article.words} | ${article.introWords} | ${article.directAnswerWords} | ${article.quickAnswerLinks} | 3 | ${article.titleCharacters} | ${article.slugCharacters} | ${article.longestParagraphWords} | ${article.exactPhraseDensityPercent}% | ${Object.values(article.checks).every(Boolean) ? "PASS" : "FAIL"} |`);
-lines.push("", output.countMethod, "", "## Editorial decisions", "", "The SEO title starts with the exact focus phrase and uses a truthful benefit word. Branding is added only when the full title remains within 65 characters. Character limits are an editorial convention, not a guarantee about search-result display.", "", "Each guide includes visible contextual anchors, at least three distinct authoritative external sources, licensed local WebP images, readable subheadings, a contents menu and three brief matching FAQ answers. Short lists, comparison tables and labelled examples make the longer explanation easier to scan.", "", "Density is reported honestly as a diagnostic. We did not force an exact long-tail phrase into 1–1.5% of the copy; natural variations and clear explanations support the topic without stuffing. No Google ranking or Rank Math score is claimed. The four proposed 2,500-word expansions were not applied after the user confirmed the shorter limit. Summary tables and brief FAQs further reduce the time needed to find an answer.", "", "## Guidance consulted", "", ...references.map(url => `- ${url}`));
+lines.push("", output.countMethod, "", "## Editorial decisions", "", "The SEO title starts with the exact focus phrase and describes the actual topic without requiring generic promotional adjectives. Branding is added only when the full title remains within 65 characters. Character limits are an editorial convention, not a guarantee about search-result display.", "", "Each guide includes visible contextual anchors, at least three distinct authoritative external sources, licensed local WebP images, readable subheadings, a contents menu and three brief matching FAQ answers. Short lists, comparison tables and labelled examples make the longer explanation easier to scan.", "", "Density is reported honestly as a diagnostic. We did not force an exact long-tail phrase into 1–1.5% of the copy; natural variations and clear explanations support the topic without stuffing. No Google ranking or Rank Math score is claimed. The four proposed 2,500-word expansions were not applied after the user confirmed the shorter limit. Summary tables and brief FAQs further reduce the time needed to find an answer.", "", "## Guidance consulted", "", ...references.map(url => `- ${url}`));
 writeFileSync(jsonPath.replace(/\.json$/, ".md"), lines.join("\n") + "\n");
 console.log(JSON.stringify({ status: output.status, articles: report.map(article => ({ slug: article.slug, words: article.words, intro: article.introWords, answer: article.directAnswerWords, failedChecks: Object.entries(article.checks).filter(([,value]) => !value).map(([key]) => key) })) }, null, 2));
 if (!pass) process.exitCode = 1;

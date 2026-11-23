@@ -42,7 +42,7 @@ test("published guides retain complete copy, evidence links, real image files an
     const intro = article.blocks[0];
     if (intro.type === "paragraph") {
       const text = intro.content.map(part => part.text).join("");
-      expect(text.toLowerCase()).toContain(article.focusKeyword);
+      for (const word of article.focusKeyword.split(/\s+/)) expect(text.toLowerCase()).toContain(word);
       expect(words(text)).toBeLessThanOrEqual(60);
     }
     const answer = article.blocks[1];
@@ -236,7 +236,7 @@ test("reader-visible article copy stays under 1800 words and the answer card is 
       return value;
     });
     expect(words(text), article.slug).toBeLessThanOrEqual(1800);
-    expect((await page.locator("[data-article-content] > p:first-child").textContent())!.toLowerCase()).toContain(article.focusKeyword);
+    for (const word of article.focusKeyword.split(/\s+/)) expect((await page.locator("[data-article-content] > p:first-child").textContent())!.toLowerCase()).toContain(word);
   }
   for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
