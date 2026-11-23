@@ -1,0 +1,65 @@
+{
+  "pages": 97,
+  "fetch_errors": [],
+  "orphan_pages": [
+    "https://www.devinforex.com/reviews/exness?country=Seychelles",
+    "https://www.devinforex.com/reviews/exness?country=Cura%C3%A7ao",
+    "https://www.devinforex.com/reviews/exness?country=British+Virgin+Islands",
+    "https://www.devinforex.com/reviews/exness?country=Belize",
+    "https://www.devinforex.com/reviews/exness?country=Mauritius",
+    "https://www.devinforex.com/reviews/xm?country=Cyprus",
+    "https://www.devinforex.com/reviews/ic-markets?country=Seychelles",
+    "https://www.devinforex.com/reviews/pepperstone?country=Australia",
+    "https://www.devinforex.com/reviews/etoro?country=United+Kingdom",
+    "https://www.devinforex.com/reviews/etoro?country=Cyprus",
+    "https://www.devinforex.com/reviews/etoro?country=Australia",
+    "https://www.devinforex.com/reviews/etoro?country=United+Arab+Emirates",
+    "https://www.devinforex.com/reviews/etoro?country=Seychelles",
+    "https://www.devinforex.com/reviews/etoro?country=Singapore"
+  ],
+  "unreachable_from_home": [
+    "https://www.devinforex.com/reviews/etoro?country=Australia",
+    "https://www.devinforex.com/reviews/etoro?country=Cyprus",
+    "https://www.devinforex.com/reviews/etoro?country=Seychelles",
+    "https://www.devinforex.com/reviews/etoro?country=Singapore",
+    "https://www.devinforex.com/reviews/etoro?country=United+Arab+Emirates",
+    "https://www.devinforex.com/reviews/etoro?country=United+Kingdom",
+    "https://www.devinforex.com/reviews/exness?country=Belize",
+    "https://www.devinforex.com/reviews/exness?country=British+Virgin+Islands",
+    "https://www.devinforex.com/reviews/exness?country=Cura%C3%A7ao",
+    "https://www.devinforex.com/reviews/exness?country=Mauritius",
+    "https://www.devinforex.com/reviews/exness?country=Seychelles",
+    "https://www.devinforex.com/reviews/ic-markets?country=Seychelles",
+    "https://www.devinforex.com/reviews/pepperstone?country=Australia",
+    "https://www.devinforex.com/reviews/xm?country=Cyprus"
+  ],
+  "navigation_only": [
+    "https://www.devinforex.com/find-my-broker",
+    "https://www.devinforex.com/forex-brokers",
+    "https://www.devinforex.com/reviews/exness?country=Seychelles",
+    "https://www.devinforex.com/reviews/exness?country=Cura%C3%A7ao",
+    "https://www.devinforex.com/reviews/exness?country=British+Virgin+Islands",
+    "https://www.devinforex.com/reviews/exness?country=Belize",
+    "https://www.devinforex.com/reviews/exness?country=Mauritius",
+    "https://www.devinforex.com/reviews/xm?country=Cyprus",
+    "https://www.devinforex.com/reviews/ic-markets?country=Seychelles",
+    "https://www.devinforex.com/reviews/pepperstone?country=Australia",
+    "https://www.devinforex.com/reviews/etoro?country=United+Kingdom",
+    "https://www.devinforex.com/reviews/etoro?country=Cyprus",
+    "https://www.devinforex.com/reviews/etoro?country=Australia",
+    "https://www.devinforex.com/reviews/etoro?country=United+Arab+Emirates",
+    "https://www.devinforex.com/reviews/etoro?country=Seychelles",
+    "https://www.devinforex.com/reviews/etoro?country=Singapore"
+  ],
+  "broken_internal": [],
+  "extra_internal_urls": 1,
+  "bad_anchors": [
+    {
+      "page": "https://www.devinforex.com/tools/forex-market-hours",
+      "anchor": "session-planner",
+      "text": "3 . Plan your trades Compare session windows with your availability."
+    }
+  ],
+  "external_urls": 471,
+  "duplicate_titles": []
+}

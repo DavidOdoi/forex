@@ -1,0 +1,122 @@
+{
+  "pages": 97,
+  "fetch_errors": [],
+  "orphan_pages": [],
+  "unreachable_from_home": [],
+  "navigation_only": [],
+  "broken_internal": [],
+  "extra_internal_urls": 1,
+  "bad_anchors": [],
+  "external_urls": 487,
+  "duplicate_titles": [],
+  "non_indexable": [],
+  "canonical_mismatches": [],
+  "invalid_h1_counts": [],
+  "origin": "https://www.devinforex.com",
+  "checkedAt": "2026-11-23T19:48:32.769702+00:00",
+  "productionCommit": "0f512a3774768d41f38a3816a27aedc3c8eea0e0",
+  "countryGuides": [
+    {
+      "url": "https://www.devinforex.com/forex-brokers/sri-lanka",
+      "wordsIncludingClosedContent": 1681,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/malaysia",
+      "wordsIncludingClosedContent": 1693,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/uganda",
+      "wordsIncludingClosedContent": 1573,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/united-kingdom",
+      "wordsIncludingClosedContent": 1640,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/netherlands",
+      "wordsIncludingClosedContent": 1584,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/singapore",
+      "wordsIncludingClosedContent": 1584,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/south-africa",
+      "wordsIncludingClosedContent": 1536,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/vietnam",
+      "wordsIncludingClosedContent": 1548,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/india",
+      "wordsIncludingClosedContent": 1537,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/philippines",
+      "wordsIncludingClosedContent": 1609,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/pakistan",
+      "wordsIncludingClosedContent": 1453,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/indonesia",
+      "wordsIncludingClosedContent": 1660,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/nigeria",
+      "wordsIncludingClosedContent": 1686,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/ghana",
+      "wordsIncludingClosedContent": 1685,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/tanzania",
+      "wordsIncludingClosedContent": 1660,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/united-arab-emirates",
+      "wordsIncludingClosedContent": 1670,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    },
+    {
+      "url": "https://www.devinforex.com/forex-brokers/ethiopia",
+      "wordsIncludingClosedContent": 1666,
+      "featuredImages": 1,
+      "faqQuestions": 3
+    }
+  ]
+}
