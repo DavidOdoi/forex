@@ -23,8 +23,15 @@ test("every country guide renders its own credited photograph without JavaScript
       await expect(page.locator(".cg-featured-image figcaption a").first()).toHaveAttribute("href", image.sourceUrl);
       await expect(page.locator("meta[property='og:image']")).toHaveAttribute("content", siteOrigin + image.src);
       await expect(page.locator(".cg-faq details")).toHaveCount(3);
-      const text = await page.locator("main").textContent();
-      expect(text!.trim().split(/\s+/u).length, country.slug).toBeLessThanOrEqual(1700);
+      const text = await page.locator("main").evaluate(main => {
+        const copy = main.cloneNode(true) as HTMLElement;
+        copy.querySelectorAll("script,style").forEach(node => node.remove());
+        const walker = document.createTreeWalker(copy, NodeFilter.SHOW_TEXT);
+        const chunks: string[] = [];
+        while (walker.nextNode()) chunks.push(walker.currentNode.textContent ?? "");
+        return chunks.join(" ");
+      });
+      expect(text.trim().split(/\s+/u).length, country.slug).toBeLessThanOrEqual(1700);
       for (const width of [320, 1440]) {
         await page.setViewportSize({ width, height: 1000 });
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${country.slug}: ${width}`).toBe(true);
