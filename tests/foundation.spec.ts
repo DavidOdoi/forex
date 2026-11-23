@@ -5,6 +5,7 @@ import { calculators, toolPath } from "../src/lib/calculators/catalog";
 import { calculatorsIndexable } from "../src/lib/calculators/seo";
 import { hubPaths } from "../src/lib/metals/content";
 import { metalsIndexable } from "../src/lib/metals/seo";
+import { selectedReviewBrokers } from "../src/lib/reviews/selection";
 import { indexable, publicPaths } from "../src/lib/site";
 import { visibleReviews } from "../src/lib/reviews/visibility";
 import { reviewUrl } from "../src/lib/reviews/seo";
@@ -34,7 +35,7 @@ test("all seven exported pages render with their metadata and assets", async ({
     await expect(page.locator("h1")).toHaveCount(1);
     if (route === "/reviews") {
       await expect(page.getByRole("main")).toContainText("We have not carried out hands-on testing or published broker ratings");
-      await expect(page.locator("main article")).toHaveCount(4);
+      await expect(page.locator("main article")).toHaveCount(selectedReviewBrokers.length);
       await expect(page.getByRole("button", { name: "Preview unpublished research", exact: true })).toHaveCount(0);
       await expect(page.getByRole("main")).not.toContainText("We open real accounts, deposit real money and test withdrawals");
     }
@@ -63,7 +64,7 @@ test("all seven exported pages render with their metadata and assets", async ({
       ),
   ).toBe(true);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Trade the world's largest market with the right partner.",
+    "Understand forex before you trade.",
   );
   await expect(page.locator("footer")).toContainText("© 2026 Devin Forex");
   expect(errors).toEqual([]);
@@ -167,7 +168,7 @@ test("broker finder completes the original three questions and restarts", async 
   ).toBeVisible();
   await page.getByRole("button", { name: "Yes", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Are low spreads your top priority?" }),
+    page.getByRole("heading", { name: "Do you want to compare trading costs first?" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "No", exact: true }).click();
   await expect(
@@ -175,7 +176,7 @@ test("broker finder completes the original three questions and restarts", async 
   ).toBeVisible();
   await page.getByRole("button", { name: "Yes", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Illustrative match", exact: true }),
+    page.getByRole("heading", { name: "Your research checklist", exact: true }),
   ).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Exness", exact: true }),
@@ -188,9 +189,9 @@ test("broker finder completes the original three questions and restarts", async 
 
 test("homepage anchors, FAQs and reduced-motion ticker", async ({ page }) => {
   await page.goto("/");
-  const marketBoard = page.getByRole("region", { name: "Markets at a glance", exact: true });
-  await expect(marketBoard).toContainText("Illustrative quotes · not live market data");
-  await expect(marketBoard.getByRole("listitem")).toHaveCount(7);
+  const marketBoard = page.getByRole("region", { name: "Markets and trading tools", exact: true });
+  await expect(marketBoard).toContainText("Price dashboards, trade calculations and guides to using them.");
+  await expect(marketBoard.getByRole("listitem")).toHaveCount(6);
   await marketBoard.getByRole("button", { name: "Pause market ticker", exact: true }).click();
   await expect(page.locator(".ticker")).toHaveCSS("animation-play-state", "paused");
   await marketBoard.getByRole("button", { name: "Play market ticker", exact: true }).click();
@@ -204,7 +205,7 @@ test("homepage anchors, FAQs and reduced-motion ticker", async ({ page }) => {
   await faq.locator("summary").focus();
   await page.keyboard.press("Enter");
   await expect(faq).toHaveAttribute("open", "");
-  await expect(faq.locator("p")).toContainText("Yes, in most countries");
+  await expect(faq.locator("p")).toContainText("Rules depend on your country of residence");
   await page.emulateMedia({ reducedMotion: "reduce" });
   expect(
     await page

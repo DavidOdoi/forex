@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
 import { canonical } from "@/lib/site";
+import Link from "next/link";
 export const metadata: Metadata = {
   ...{
     title: { absolute: "Devin Forex — Broker Research and Comparisons" },
     description:
-      "Explore the questions behind broker regulation, account costs and trading services. Research is in preparation.",
+      "Compare forex broker accounts, check local trading rules and use gold-price dashboards and trading calculators. Read the sources behind each review.",
     openGraph: {
       title: "Devin Forex — Broker Research and Comparisons",
       description:
-        "Broker research and comparisons in preparation. No hands-on testing or ratings are currently published.",
+        "Broker account comparisons, country guides, gold prices and trading calculators, with linked sources and clear limits.",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: "Devin Forex — Broker Research and Comparisons",
       description:
-        "Broker research and comparisons in preparation. No hands-on testing or ratings are currently published.",
+        "Broker account comparisons, country guides, gold prices and trading calculators, with linked sources and clear limits.",
     },
   },
   alternates: canonical("/"),
@@ -41,16 +42,15 @@ export default function Index() {
         <div className="absolute inset-0 -z-10 rounded-[2rem] bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="max-w-3xl py-20">
           <p className="mb-6 inline-block rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary">
-            Broker research · In preparation
+            Broker reviews · Trading guides · Calculators
           </p>
           <h1 className="font-display text-6xl leading-[0.95] md:text-8xl">
-            Trade the world&apos;s <em className="text-gold">largest market</em>{" "}
-            with the right partner.
+            Understand forex <em className="text-gold">before you trade.</em>
           </h1>
           <p className="mt-8 max-w-xl text-lg text-muted-foreground">
-            We are preparing source-based broker profiles covering regulation,
-            costs, platforms and withdrawals. We have not carried out hands-on
-            testing or published broker ratings.
+            Compare account costs, check the company behind a broker and work
+            out your position size. Our reviews link to the documents behind
+            the figures and explain what still needs checking.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
@@ -76,6 +76,7 @@ export default function Index() {
           Broker <em className="text-gold">research</em>
         </h2>
         <p className="mt-4 text-muted-foreground">{brokerResearchNotice}</p>
+        <p className="mt-4 text-base leading-relaxed">Start with <Link className="underline" href="/forex-brokers">forex brokers by country</Link> for local rules, or use the <Link className="underline" href="/find-my-broker">broker research checklist</Link> to decide what to compare.</p>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {brokers.map((b) => (
             <BrokerCard key={b.slug} b={b} reviewHref={visibleReviewHref(b.slug)} />
@@ -85,24 +86,24 @@ export default function Index() {
 
       <section id="how" className="mx-auto max-w-7xl px-6 pb-28">
         <h2 className="font-display text-5xl md:text-6xl">
-          Three steps to your <em className="text-gold">first trade</em>
+          Start with the <em className="text-gold">checks that matter</em>
         </h2>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {[
             [
               "01",
-              "Choose a broker",
-              "Research the legal entity, account terms and restrictions relevant to your country.",
+              "Check local rules",
+              "Confirm the product, provider and funding rules for your country. A foreign licence alone may not cover your account.",
             ],
             [
               "02",
-              "Verify & fund",
-              "Verify your identity and choose a payment method supported for your country and account.",
+              "Practise on a demo",
+              "Learn the platform and order controls with virtual money. Demo results do not establish what you will earn live.",
             ],
             [
               "03",
-              "Start trading",
-              "Practice on a free demo, then go live when you're ready.",
+              "Plan your risk",
+              "Calculate position size, margin and costs before considering a funded account. Keep essential living expenses out of your trading budget.",
             ],
           ].map(([n, t, d]) => (
             <div key={n} className="rounded-2xl glass p-8">
@@ -119,15 +120,15 @@ export default function Index() {
         {[
           [
             "Is forex trading legal?",
-            "Yes, in most countries — always choose a broker regulated in your region.",
+            "Rules depend on your country of residence, the product, the broker’s legal company and how you fund the account. Check the relevant regulator’s current guidance before depositing; an overseas broker accepting your application does not establish permission.",
           ],
           [
             "How much do I need to start?",
-            "Some brokers accept as little as $5–$10. Start small and learn on a demo first.",
+            "An account-opening minimum is different from a sensible risk budget. Check the minimum trade size, margin, fees and how much you could lose. You can learn the controls on a demo before putting money at risk.",
           ],
           [
             "Do you charge anything?",
-            "No. We may earn a commission from brokers when you sign up, at no cost to you.",
+            "The guides and tools are free to read and use. We currently have no active affiliate tracking links. If that changes, paid links will be labelled; the broker’s own account and trading charges still apply.",
           ],
         ].map(([q, a]) => (
           <details key={q} className="border-b py-6">

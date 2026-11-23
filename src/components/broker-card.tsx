@@ -14,6 +14,7 @@ export function BrokerCard({ b, reviewHref }: { b: Broker; reviewHref?: string }
         </div>
         <span className="text-sm text-muted-foreground">Not rated</span>
       </div>
+      <p className="mt-5 text-base leading-relaxed">{b.summary}</p>
       <dl className="mt-8 grid grid-cols-3 gap-4 border-y py-6 text-center">
         <div>
           <dt className="text-xs text-muted-foreground">Spread from</dt>

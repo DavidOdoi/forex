@@ -94,7 +94,7 @@ export function SiteFooter() {
         <div className={styles.disclosures}>
           <section aria-labelledby="footer-risk">
             <h3 id="footer-risk">Understand the risk</h3>
-            <p>Forex and CFDs are complex, leveraged products. You can lose money rapidly.
+            <p>Leveraged forex and CFD trading can produce large losses quickly.
               Understand the risks and only trade with money you can afford to lose.</p>
           </section>
           <section aria-labelledby="footer-transparency">

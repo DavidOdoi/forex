@@ -4,18 +4,18 @@ export const metadata: Metadata = {
   ...{
     title: { absolute: "Find My Forex Broker — Devin Forex" },
     description:
-      "Preview a three-question preference tool using unverified example data. No broker recommendation is provided.",
+      "Answer three questions to find relevant trading guides, cost calculators and broker documents. Start with your needs and check local eligibility separately.",
     openGraph: {
       title: "Find My Broker — Devin Forex",
       description:
-        "A preference-matching demonstration. Broker verification is pending; no recommendations are provided.",
+        "A short checklist linking to account comparisons, cost tools and demo guides. This does not assess personal financial suitability.",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: "Find My Broker — Devin Forex",
       description:
-        "A preference-matching demonstration. Broker verification is pending; no recommendations are provided.",
+        "A short checklist linking to account comparisons, cost tools and demo guides. This does not assess personal financial suitability.",
     },
   },
   alternates: canonical("/find-my-broker"),

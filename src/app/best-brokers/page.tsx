@@ -4,18 +4,18 @@ export const metadata: Metadata = {
   ...{
     title: { absolute: "Forex Broker Comparisons — Devin Forex" },
     description:
-      "A preview of broker comparisons. Source verification is pending; no broker rankings or ratings are published.",
+      "Compare forex broker account documents, pricing structures and regional conditions. Start with your local rules and the company behind the account.",
     openGraph: {
       title: "Forex Broker Comparisons — Devin Forex",
       description:
-        "Broker comparisons in preparation. No hands-on testing or ratings are currently published.",
+        "Compare account conditions using linked broker reviews. No live-account testing or performance rating is claimed.",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: "Forex Broker Comparisons — Devin Forex",
       description:
-        "Broker comparisons in preparation. No hands-on testing or ratings are currently published.",
+        "Compare account conditions using linked broker reviews. No live-account testing or performance rating is claimed.",
     },
   },
   alternates: canonical("/best-brokers"),
@@ -30,7 +30,7 @@ export default function Page() {
   return (
     <main>
       <PageHero
-        eyebrow="Research in preparation"
+        eyebrow="Broker account comparisons"
         title="Explore forex"
         accent="brokers"
         text={brokerResearchNotice}
