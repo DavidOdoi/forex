@@ -179,6 +179,6 @@ export function MarketHours() {
       <LiveSessions zone={zone} />
       <HowToUse />
     </div>
-    {today ? <Planner zone={zone} initialDate={today} /> : <section className={styles.loading}><h2>Plan a forex session</h2><p>Enable JavaScript to choose a date, convert timezones and compare your availability.</p></section>}
+    {today ? <Planner zone={zone} initialDate={today} /> : <section id="session-planner" className={styles.loading}><h2>Plan a forex session</h2><p>Enable JavaScript to choose a date, convert timezones and compare your availability.</p></section>}
   </div>;
 }
