@@ -52,7 +52,7 @@ test("Malaysia server-renders the existing template with five useful tables, acc
   try {
     const response = await page.goto(path); expect(response!.status()).toBe(200);
     const html = await response!.text();
-    const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)![1].replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi," ").replace(/<[^>]+>/g," ");
+    const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)![1].replace(/<aside\b[^>]*\bdata-broker-discovery\b[^>]*>[\s\S]*?<\/aside>/gi, " ").replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi," ").replace(/<[^>]+>/g," ");
     const words = main.trim().split(/\s+/u).length; console.log(`Malaysia guide: ${words} words, including closed content.`);
     expect(words).toBeLessThanOrEqual(1700);
     await expect(page.locator('main')).toHaveClass(/cg-compact/);

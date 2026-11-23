@@ -105,7 +105,7 @@ test("four pages ship distinct metadata, complete educational copy and truthful 
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", siteOrigin + toolPath(tool));
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", calculatorsIndexable ? "index, follow" : "noindex, follow");
     await expect(page.locator("#quick-answer")).toHaveText("Quick answer");
-    expect(await page.locator("#quick-answer").evaluate(node => node.parentElement?.previousElementSibling?.tagName)).toBe("P");
+    expect(await page.locator("#quick-answer").evaluate(node => node.parentElement?.previousElementSibling?.matches("[data-broker-discovery]") && node.parentElement.previousElementSibling.previousElementSibling?.tagName === "P")).toBe(true);
     const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"];
     expect(graph.find((item: { "@type": string }) => item["@type"] === "WebApplication").offers.price).toBe("0");
     expect(JSON.stringify(graph)).not.toMatch(/aggregateRating|ratingValue/);

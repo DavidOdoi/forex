@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { calculators, toolPath, type CalculatorDefinition, type Inline } from "@/lib/calculators/catalog";
@@ -22,6 +23,7 @@ export function CalculatorPage({ tool }: { tool: CalculatorDefinition }) {
         <p className={styles.eyebrow}>Devin Forex tools <span>Free · No sign-up</span></p>
         <h1>{tool.heading}</h1>
         <p className={styles.intro}>{tool.intro}</p>
+        <BrokerRecommendations />
         <section className={styles.quickAnswer} aria-labelledby="quick-answer"><h2 id="quick-answer">Quick answer</h2><p>{tool.quickAnswer}</p></section>
       </header>
       <details className={styles.mobileContents}><summary>On this page <ChevronDown size={17} aria-hidden="true" /></summary><nav aria-label="Calculator page sections">{toc}</nav></details>

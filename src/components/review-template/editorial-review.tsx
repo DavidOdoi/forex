@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import { isSelectedReviewSlug } from "@/lib/reviews/selection";
 import Link from "next/link";
 import Image from "next/image";
@@ -103,6 +104,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
         <h1>{reviewHeading(review)}</h1>{!retail && <p className="br-provider-note">Directory classification: {providerLabels[review.providerType!]}. Verification is pending; retail account access is not assumed.</p>}
         {notices.length > 0 && <aside className="br-regulatory-notices" aria-labelledby="regulatory-notices-heading"><h2 id="regulatory-notices-heading">Regulatory notices: read before funding</h2>{notices.map(notice => <section key={notice.title}><h3>{notice.title}</h3><p>{notice.summary}</p>{notice.sourceIds.map(id => { const source = review.sources.find(source => source.id === id)!; return <a key={id} href={source.url} target="_blank" rel="noopener noreferrer">{source.title}<ArrowUpRight size={17} aria-hidden="true" /></a>; })}</section>)}</aside>}
         <div className="br-intro">{introduction.map((paragraph, index) => <p key={index}>{paragraph.map((part, partIndex) => part.href ? <a key={partIndex} href={part.href}>{part.text}</a> : part.text)}</p>)}</div>
+        <BrokerRecommendations excludeBroker={review.broker.slug} />
         {review.suppliedResearch && <aside className="br-supplied-research" aria-label="Supplied research status"><strong>Supplied dossier · independent recheck pending.</strong><p>{review.suppliedResearch.note}</p></aside>}
         <div className={platformImage ? "br-opening-grid" : undefined}>
         <aside className="br-verdict-box" aria-label="Review verdict">

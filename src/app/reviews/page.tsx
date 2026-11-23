@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import type { Metadata } from "next";
 import { canonical, indexable } from "@/lib/site";
 import { PageHero } from "@/components/site-header";
@@ -18,7 +19,7 @@ export default function Page() {
   return <main>
     <PageHero eyebrow={`${entries.length} BROKERS · SOURCE-BASED RESEARCH`} title="Forex broker reviews."
       accent="Start with the facts."
-      text={`Compare ${entries.map(entry => entry.name).join(", ")}. Each review links to sources and identifies outstanding checks. We have not carried out hands-on testing or published broker ratings.`} />
+      text={`Compare ${entries.map(entry => entry.name).join(", ")}. Each review links to sources and identifies outstanding checks. We have not carried out hands-on testing or published broker ratings.`} ><BrokerRecommendations /></PageHero>
     <section className="mx-auto max-w-7xl space-y-8 px-6 pb-28" aria-label="Selected broker reviews">
       <div className="grid gap-4 sm:grid-cols-3">{[[entries.length, "Broker reviews to explore"], [entries.filter(entry => entry.sourceCount > 0).length, "With linked source material"], ["Global", "With entity-specific research"]].map(([value,label]) => <div key={label} className="rounded-2xl border bg-card p-6"><p className="font-display text-5xl">{value}</p><p className="mt-2 text-muted-foreground">{label}</p></div>)}</div>
       <ReviewDirectory entries={entries} />

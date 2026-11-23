@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
@@ -24,13 +25,14 @@ function DataTable({ headers, rows, label, compact = false }: { headers: RichTex
 }
 
 export function ArticleContent({ article }: { article: InsightArticle }) {
+  const introduction = article.blocks.findIndex(block => block.type === "paragraph");
   const sections = article.blocks.flatMap(block => block.type === "quick-answer"
     ? [{ id: block.id, text: block.title }]
     : block.type === "heading" && block.level === 2 ? [{ id: block.id, text: block.text }] : []);
   return <div className="insight-content" data-article-content>
     {article.blocks.map((block, index) => {
       switch (block.type) {
-        case "paragraph": return <p key={index}><InlineText content={block.content} /></p>;
+        case "paragraph": return <Fragment key={index}><p><InlineText content={block.content} /></p>{index === introduction && <BrokerRecommendations />}</Fragment>;
         case "quick-answer": return <Fragment key={block.id}>
           <section className="insight-answer" data-quick-answer aria-labelledby={block.id}>
             <h2 id={block.id}>{block.title}</h2><p><InlineText content={linkPhrases(block.answer, block.anchors)} /></p>

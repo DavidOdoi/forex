@@ -61,10 +61,11 @@ test("every broker and country review stays under 1800 words, including collapse
       expect(response.status(), path).toBe(200);
       const html = await response.text();
       // Count the full review, including its navigation, closed FAQs, disclosure
-      // dialog and source footer. Shared site chrome is not article content.
+      // dialog and source footer. The shared country-suggestions panel is UI,
+      // not article copy; exclude it as well as the shared site chrome.
       const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1];
       expect(main, `${path} contains the complete review`).toBeDefined();
-      const text = main!.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ");
+      const text = main!.replace(/<aside\b[^>]*\bdata-broker-discovery\b[^>]*>[\s\S]*?<\/aside>/gi, " ").replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ");
       const words = wordCount(text);
       expect(words, path).toBeLessThanOrEqual(1800);
       counts.push({ path, words });

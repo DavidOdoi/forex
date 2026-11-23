@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import type { CountryGuide, GuideRegistry } from "@/lib/country-guides/types";
@@ -40,7 +41,7 @@ export function SuppliedCountryArticle({ country, registry }: { country: Country
   const items = parsed.map(({ id, title }) => ({ id, label: title.replace(/^\d+\. /, "") }));
   const author = registry.people.find(person => person.id === country.authorReference);
   return <main className="cg-page cg-guide cg-compact cg-supplied">
-    <div className="cg-heading-band"><div className="cg-container"><nav className="cg-breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/forex-brokers">Forex brokers by country</Link><span aria-hidden="true">/</span><span aria-current="page">{country.name}</span></nav><header className="cg-hero"><p className="cg-eyebrow">Country broker guide</p><h1>{country.title}</h1><div className="cg-standfirst">{blocks(intro)}</div><div className="cg-byline">{author && <Link href={author.profileUrl}>{author.name}</Link>}<span>Document-based comparison · check current terms</span></div><CountryFeaturedImage country={country} /></header></div></div>
+    <div className="cg-heading-band"><div className="cg-container"><nav className="cg-breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/forex-brokers">Forex brokers by country</Link><span aria-hidden="true">/</span><span aria-current="page">{country.name}</span></nav><header className="cg-hero"><p className="cg-eyebrow">Country broker guide</p><h1>{country.title}</h1><div className="cg-standfirst">{blocks(intro)}</div><BrokerRecommendations /><div className="cg-byline">{author && <Link href={author.profileUrl}>{author.name}</Link>}<span>Document-based comparison · check current terms</span></div><CountryFeaturedImage country={country} /></header></div></div>
     <CountrySectionNav items={items} />
     <div className="cg-container"><div className="cg-reading-layout"><article className="cg-article" aria-label={`${country.name} broker guide`}>
       {parsed.map(section => <section className={`cg-section${section.title === "FAQs" ? " cg-faq" : ""}`} key={section.id} id={section.id}><h2>{section.title}</h2>{section.title === "FAQs" ? country.faqs.map(faq => <details key={faq.question}><summary><h3>{faq.question}</h3><span aria-hidden="true">+</span></summary><p>{inline(faq.answer.value ?? "")}</p></details>) : blocks(section.body)}</section>)}

@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import type { Metadata } from "next";
 import { canonical, indexable } from "@/lib/site";
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default function Page() {
         title="Explore forex"
         accent="brokers"
         text={brokerResearchNotice}
-      />
+      ><BrokerRecommendations /></PageHero>
       <section className="mx-auto grid max-w-7xl gap-6 px-6 pb-12 md:grid-cols-2">
         {brokers.map((b) => (
           <BrokerCard key={b.slug} b={b} reviewHref={visibleReviewHref(b.slug)} />

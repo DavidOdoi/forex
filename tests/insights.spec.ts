@@ -123,7 +123,7 @@ test("all published article URLs render essential content, images, citations and
       await expect(quickAnswer.getByRole("heading", { name: "Quick answer", exact: true })).toHaveCount(1);
       const answerBlock = article.blocks[1];
       await expect(quickAnswer.locator("li")).toHaveCount(answerBlock.type === "quick-answer" ? answerBlock.points.length : 3);
-      expect(await quickAnswer.evaluate(node => node.previousElementSibling === node.parentElement?.firstElementChild && node.previousElementSibling?.tagName === "P")).toBe(true);
+      expect(await quickAnswer.evaluate(node => node.previousElementSibling?.matches("[data-broker-discovery]") && node.previousElementSibling.previousElementSibling === node.parentElement?.firstElementChild)).toBe(true);
       await expect(page).toHaveTitle(insightTitleTag(article));
       expect(await page.locator(".insight-content p").evaluateAll(nodes => nodes.every(node => (node.textContent?.match(/\S+/g) ?? []).length < 120))).toBe(true);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${siteOrigin}/insights/${article.slug}`);
@@ -230,7 +230,7 @@ test("reader-visible article copy stays under 1800 words and the answer card is 
     await page.goto(`/insights/${article.slug}`);
     const text = await page.locator(".insight-article").evaluate(node => {
       let value = (node as HTMLElement).innerText;
-      for (const element of node.querySelectorAll(".insight-kicker, .insight-byline, .insight-toc-mobile, .insight-author-role")) {
+      for (const element of node.querySelectorAll(".insight-kicker, .insight-byline, .insight-toc-mobile, .insight-author-role, [data-broker-discovery]")) {
         value = value.replace((element as HTMLElement).innerText, "");
       }
       return value;

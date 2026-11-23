@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import Link from "next/link";
 import Image from "next/image";
 import { comparisonImage } from "@/lib/prop-firms/image";
@@ -10,7 +11,7 @@ const sections = [["compared","Quick comparison"],["reviewed","Firm reviews"],["
 export default function Page() {
   return <main className={styles.page}><div className={styles.container}>
     <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/insights">Trading insights</Link><span>/</span><span aria-current="page">Prop firms for EAs</span></nav>
-    <header className={`${styles.hero} ${styles.comparisonHero}`}><div><span className={styles.eyebrow}>Automation · Programme rules · Official sources</span><h1>{comparisonHeading}</h1><p>FTMO, The5ers, E8 Markets, eligible FundedNext accounts and FXIFY Two Phase Classic allow EAs under specific conditions. The right choice depends on your bot, platform and account size. Compare the verified rules below before paying—not every programme permits the same automation.</p></div>
+    <header className={`${styles.hero} ${styles.comparisonHero}`}><div><span className={styles.eyebrow}>Automation · Programme rules · Official sources</span><h1>{comparisonHeading}</h1><p>FTMO, The5ers, E8 Markets, eligible FundedNext accounts and FXIFY Two Phase Classic allow EAs under specific conditions. The right choice depends on your bot, platform and account size. Compare the verified rules below before paying—not every programme permits the same automation.</p><BrokerRecommendations /></div>
       <figure className={styles.featuredImage}>
         <div className={styles.imageLabel}><span aria-hidden="true">●</span> MetaTrader 5 · Chart example</div>
         <a href={comparisonImage.sourceUrl} rel="noopener noreferrer" aria-label="View the original MetaTrader 5 chart and source details"><Image src={comparisonImage.src} width={comparisonImage.width} height={comparisonImage.height} alt={comparisonImage.alt} unoptimized loading="eager" fetchPriority="high" /></a>

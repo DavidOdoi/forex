@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Info } from "lucide-react";
@@ -33,7 +34,7 @@ const schema = { "@context": "https://schema.org", "@graph": [
 export default function Page() {
   return <main className={styles.page}><div className={styles.container}>
     <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/tools">Trading tools</Link><span aria-hidden="true">/</span><span aria-current="page">Forex market hours</span></nav>
-    <header className={styles.hero}><p className={styles.eyebrow}>Devin Forex tools · Free · No sign-up</p><h1>Forex Market Hours: Live Session Clock &amp; Trading Planner</h1><p>See which forex sessions are open now, view times in your timezone, and plan upcoming trading windows.</p></header>
+    <header className={styles.hero}><p className={styles.eyebrow}>Devin Forex tools · Free · No sign-up</p><h1>Forex Market Hours: Live Session Clock &amp; Trading Planner</h1><p>See which forex sessions are open now, view times in your timezone, and plan upcoming trading windows.</p><BrokerRecommendations /></header>
     <aside className={styles.notice}><Info size={16} aria-hidden="true" /><span><strong>{scheduleReview.status}.</strong> This clock uses regional trading windows, not centralized exchange hours.</span><a href="#methodology">Read the assumptions <ArrowRight size={14} aria-hidden="true" /></a></aside>
     <MarketHours />
     <article className={styles.education} aria-label="Session hours and methodology">

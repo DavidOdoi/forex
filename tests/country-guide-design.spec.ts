@@ -17,7 +17,7 @@ test("country guide retains the site header and uniform 18px article typography"
 test("the complete guide stays below 1700 words, including all collapsed FAQs and source records", async ({ request, page }) => {
   const response = await request.get(path);expect(response.status()).toBe(200);
   const html = await response.text();
-  const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)![1].replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi," ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi," ").replace(/<[^>]+>/g," ");
+  const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)![1].replace(/<aside\b[^>]*\bdata-broker-discovery\b[^>]*>[\s\S]*?<\/aside>/gi, " ").replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi," ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi," ").replace(/<[^>]+>/g," ");
   const words = main.trim().split(/\s+/u).filter(Boolean).length;
   console.log(`Sri Lanka guide: ${words} words, including closed content.`);
   expect(words).toBeLessThanOrEqual(1700);

@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import Link from "next/link";
 import { PatternDiagram, CompactPatternComparison } from "@/components/education/pattern-diagram";
 import { PatternExplorer, MeasuredMoveCalculator, PatternExercise } from "@/components/education/triangle-interactives";
@@ -15,7 +16,7 @@ export default function TrianglePatternsPage() {
   return <main className="insights-page tp-page" id="triangle-guide">
     <div className="tp-container">
       <nav className="insight-breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/insights">Insights</Link><span aria-hidden="true">/</span><span aria-current="page">Triangle chart patterns</span></nav>
-      <header className="tp-hero"><p className="tp-eyebrow">The chart-reading lab <span>01 / Price structure</span></p><h1>{triangleTitle}</h1><p className="tp-lead">Triangle chart patterns form when price swings narrow between converging boundaries. Compare ascending, descending and symmetrical triangles, then explore how breakouts—and failed breakouts—can develop. <Basis /></p><div className="tp-hero-meta"><span>Original diagrams</span><span>Manual, interactive examples</span><span>No live signals</span></div></header>
+      <header className="tp-hero"><p className="tp-eyebrow">The chart-reading lab <span>01 / Price structure</span></p><h1>{triangleTitle}</h1><p className="tp-lead">Triangle chart patterns form when price swings narrow between converging boundaries. Compare ascending, descending and symmetrical triangles, then explore how breakouts—and failed breakouts—can develop. <Basis /></p><BrokerRecommendations /><div className="tp-hero-meta"><span>Original diagrams</span><span>Manual, interactive examples</span><span>No live signals</span></div></header>
 
       <section className="tp-first-look" aria-labelledby="first-look-title"><div className="tp-section-heading"><div><p className="tp-eyebrow">Start with the shape</p><h2 id="first-look-title">Three triangles. Different boundaries.</h2></div><a href="#explorer">Try the explorer <span aria-hidden="true">↘</span></a></div>
         <CompactPatternComparison />

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { BrandLogo } from "./brand-logo";
 import styles from "./site-header.module.css";
 
@@ -128,11 +128,13 @@ export function PageHero({
   title,
   accent,
   text,
+  children,
 }: {
   eyebrow: string;
   title: string;
   accent: string;
   text: string;
+  children?: ReactNode;
 }) {
   return (
     <section className="mx-auto max-w-7xl px-6 pb-12 pt-20">
@@ -142,7 +144,7 @@ export function PageHero({
       <h1 className="font-display text-5xl leading-none md:text-7xl">
         {title} <em className="text-gold">{accent}</em>
       </h1>
-      <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{text}</p>
+      <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{text}</p>{children}
     </section>
   );
 }

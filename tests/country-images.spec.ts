@@ -25,7 +25,7 @@ test("every country guide renders its own credited photograph without JavaScript
       await expect(page.locator(".cg-faq details")).toHaveCount(3);
       const text = await page.locator("main").evaluate(main => {
         const copy = main.cloneNode(true) as HTMLElement;
-        copy.querySelectorAll("script,style").forEach(node => node.remove());
+        copy.querySelectorAll("script,style,[data-broker-discovery]").forEach(node => node.remove());
         const walker = document.createTreeWalker(copy, NodeFilter.SHOW_TEXT);
         const chunks: string[] = [];
         while (walker.nextNode()) chunks.push(walker.currentNode.textContent ?? "");

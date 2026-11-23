@@ -55,6 +55,13 @@ export default function Page() {
         <p className="mt-4">A correction should identify the page, disputed claim, relevant legal entity and a primary-source URL with its date. Recheck the evidence and record substantive changes separately from source retrieval dates. Drafts stay unpublished until an accountable editor records approval.</p>
         <p className="mt-4">The research workflow uses automated collection and AI-assisted drafting. Financial claims require source checking; no author qualifications or independent approvals are assumed. Author information is available on <a className="underline" href="/authors/david-odoi">David Odoi’s profile</a>.</p>
       </section>
+      <section id="country-suggestions" className="scroll-mt-32 mx-auto max-w-3xl px-6 pb-16 text-base leading-relaxed">
+        <h2 className="font-display text-4xl">Country-based broker suggestions</h2>
+        <p className="mt-4">The broker panel uses Vercel’s approximate IP-country header. It does not request GPS coordinates or send your location to an external geolocation service. The recommendation endpoint does not read or store your raw IP address. VPNs, travel and network routing can make browsing country differ from residence.</p>
+        <p className="mt-4">You can choose your residence manually. That choice is remembered in this browser tab using session storage; select automatic detection to clear it. This feature sets no tracking cookie. General hosting and security processing are separate from this panel.</p>
+        <p className="mt-4">Only brokers with a review in our current library can appear. Country articles supply research shortlists, not proof of personal suitability or eligibility. External account buttons require a dated check of the provider’s regional offer and are removed after 90 days without a new check. Where trading or funding rules need clarification, the panel links to the country guide instead. It makes no ranking, bonus or investment-return promise.</p>
+        <p className="mt-4">There are currently no affiliate tracking links in this panel. Any future paid referrals must be disclosed and marked accordingly. Always check the actual contracting company, residency requirements, fees and risk disclosures with the provider.</p>
+      </section>
       <section id="contact" className="scroll-mt-32 mx-auto max-w-3xl px-6 pb-28 text-center">
         <h2 className="font-display text-4xl">
           Get in <em className="text-gold">touch</em>

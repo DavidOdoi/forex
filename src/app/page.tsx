@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import type { Metadata } from "next";
 import { canonical } from "@/lib/site";
 import Link from "next/link";
@@ -52,6 +53,7 @@ export default function Index() {
             out your position size. Our reviews link to the documents behind
             the figures and explain what still needs checking.
           </p>
+          <BrokerRecommendations />
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="#brokers"

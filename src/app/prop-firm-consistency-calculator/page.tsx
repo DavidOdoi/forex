@@ -1,3 +1,4 @@
+import { BrokerRecommendations } from "@/components/broker-recommendations/broker-recommendations";
 import Link from "next/link";
 import { ConsistencyCalculator } from "@/components/prop-firms/consistency-calculator";
 import { calculatorTitle, calculatorHeading, calculatorDescription, consistencyFaqs, propPaths } from "@/lib/prop-firms/content";
@@ -8,7 +9,7 @@ const sections = [["what-is-consistency", "What the rule means"], ["how-to-use",
 export default function Page() {
   return <main className={styles.page}><div className={styles.container}>
     <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/tools">Trading tools</Link><span>/</span><span aria-current="page">Consistency calculator</span></nav>
-    <header className={styles.hero}><span className={styles.eyebrow}>Free tool · No sign-up · Calculated in your browser</span><h1>{calculatorHeading}</h1></header>
+    <header className={styles.hero}><span className={styles.eyebrow}>Free tool · No sign-up · Calculated in your browser</span><h1>{calculatorHeading}</h1><p>Check how your best trading day compares with total net profit under a chosen consistency rule.</p><BrokerRecommendations /></header>
     <ConsistencyCalculator />
     <div className={styles.byline}><span>By <Link href="/authors/david-odoi">David Odoi</Link></span><span>Formula checked <time dateTime="2026-11-09">9 November 2026</time></span><span>Educational tool · No account connection</span></div>
     <div className={styles.layout}><aside className={styles.contents}><nav aria-label="On this page"><strong>On this page</strong>{sections.map(([id,label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav></aside>
