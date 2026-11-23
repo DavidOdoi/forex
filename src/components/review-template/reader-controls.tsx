@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { ChevronDown, Globe2, Info, X } from "lucide-react";
 
 export function ReaderContents({ links }: { links: { id: string; label: string }[] }) {
@@ -35,7 +36,8 @@ export function ReaderMarket({ current, countries, slug }: { current: string | n
       {!countries.length && <option value="">Country not established</option>}
       {countries.map(country => <option key={country} value={country}>{country === "Global" ? "Global overview" : country}</option>)}
     </select><ChevronDown size={16} aria-hidden="true" /></div>
-    <p>Eligibility and protections depend on your location and entity.</p>
+    <p>Check the company that would hold your account.</p>
+    {countries.length > 1 && <details className="br-scope-links"><summary>Entity source notes</summary><ul>{countries.filter(country => country !== current).map(country => <li key={country}><Link href={`/reviews/${slug}${country === "Global" ? "" : `?country=${encodeURIComponent(country)}`}`}>{country === "Global" ? "Global overview" : country}</Link></li>)}</ul></details>}
   </div>;
 }
 

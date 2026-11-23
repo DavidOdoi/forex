@@ -516,3 +516,8 @@ body:has(.br-review) > header .bg-gold {
 @media (prefers-reduced-motion: reduce) {
   .br-review *, .br-review *::before, .br-review *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+.br-scope-links { margin-top: 12px; font-size: 16px; }
+.br-scope-links summary { cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.br-scope-links ul { display: flex; flex-wrap: wrap; gap: 8px 14px; padding: 10px 0 0; margin: 0; list-style: none; }
+.br-scope-links a { text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }

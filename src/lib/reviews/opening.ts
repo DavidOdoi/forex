@@ -18,22 +18,22 @@ export function reviewIntroduction(review: BrokerReview): IntroPart[][] {
     [text("Compare "), link("costs", "#fees"), text(", "), link("withdrawals", "#deposit-and-withdrawal"), text(" and "), link("entity protections", "#safety"), text(". Unresolved conflicts; no live tests.")],
   ];
   if (name && review.broker.slug === "exness" && review.jurisdiction === "Global" && reviewAccounts(review).length) return [
-    [text("This Exness review examines whether the broker’s forex and CFD accounts fit your needs. Your decision depends on "), link("total trading costs", "#fees"), text(", your country’s "), link("contracting entity", "#safety"), text(" and how you deposit or withdraw.")],
-    [text("Compare "), link("five account types", "#account-opening"), text(", minimum-deposit rules and platforms, then use the cost calculator to understand spread and commission. Findings come from linked public documents; live execution and withdrawals have not been tested.")],
+    [text("This Exness review compares account pricing, platforms and withdrawals. Start with "), link("total trading costs", "#fees"), text(", the "), link("contracting entity", "#safety"), text(" and your country’s funding rules.")],
+    [text("Compare "), link("five account types", "#account-opening"), text(" and use the cost calculator to compare spreads and commission. We reviewed public documents; live execution and withdrawals were not tested.")],
   ];
   if (review.broker.slug === "fusion-markets" && review.jurisdiction === "Global" && reviewAccounts(review).length) return [
     [text("This Fusion Markets review compares "), link("Zero and Classic accounts", "#account-opening"), text(". We examine published costs, funding rules and entity-specific protections to help you decide what to check before applying.")],
-    [text("Compare "), link("fees", "#fees"), text(", "), link("withdrawal conditions", "#deposit-and-withdrawal"), text(" and "), link("legal entities", "#safety"), text(". This is document-based research; we have not tested live trading, apps or withdrawals.")],
+    [text("Compare "), link("fees", "#fees"), text(", "), link("withdrawal conditions", "#deposit-and-withdrawal"), text(" and "), link("legal entities", "#safety"), text(". The figures come from published documents, without funded-account tests.")],
   ];
   if (review.broker.slug === "xm" && review.jurisdiction === "Global" && reviewAccounts(review).length) return [
-    [text("This XM review compares XM Global’s "), link("Standard, Ultra Low and Shares accounts", "#account-opening"), text(". Its Belize-route conditions are not a worldwide offer.")],
-    [text("Check "), link("fees", "#fees"), text(", "), link("withdrawals", "#deposit-and-withdrawal"), text(" and "), link("legal entities", "#safety"), text(". XM promotes education and research; neither guarantees results. We have not tested live trading or withdrawals.")],
+    [text("This XM review covers XM Global’s "), link("Standard, Ultra Low and Shares accounts", "#account-opening"), text(". The Belize terms apply to that company’s accounts.")],
+    [text("Check "), link("fees", "#fees"), text(", "), link("withdrawals", "#deposit-and-withdrawal"), text(" and "), link("legal entities", "#safety"), text(". This is a document review; live trading and withdrawals were not tested.")],
   ];
   const comparedAccounts = reviewAccounts(review);
   const minimum = checkedField(review, "minimum-deposit");
   if (retail && review.accountComparisons && comparedAccounts.length && minimum) return [
-    [text(`This ${name} review compares `), link(comparedAccounts.map(account => account.name).join(", ") + " accounts", "#account-opening"), text(`. Minimum deposit: ${minimum.value} These published terms apply to the named entity, not every regional company.`)],
-    [text("Compare "), link("trading costs", "#fees"), text(", "), link("withdrawal conditions", "#deposit-and-withdrawal"), text(" and "), link("the legal entity", "#safety"), text(" before funding. Findings come from dated public documents; live execution, app usability and withdrawals were not tested.")],
+    [text(`This ${name} review compares `), link(comparedAccounts.map(account => account.name).join(", ") + " accounts", "#account-opening"), text(`. Minimum deposit: ${minimum.value} Check which company’s terms apply to you.`)],
+    [text("Compare "), link("trading costs", "#fees"), text(", "), link("withdrawal conditions", "#deposit-and-withdrawal"), text(" and "), link("the legal entity", "#safety"), text(" before depositing. The figures come from linked documents; we have not tested funded accounts.")],
   ];
   if (!retail) return [
     [text(`This ${name} research profile examines service access, pricing and counterparty checks${scope}. The directory classification is a research lead; it does not establish professional-client eligibility or access to retail trading accounts.`)],
