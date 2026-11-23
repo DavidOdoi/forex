@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowDown, ArrowUpRight, FileText, Info, ShieldAlert } from "lucide-react";
 import type { AffiliateRegistry, CountryGuide, GuideRegistry } from "@/lib/country-guides/types";
 import { approvalRecord, checkedSource, claimVerified, dateLabel, httpsUrl } from "@/lib/country-guides/evidence";
@@ -13,7 +12,7 @@ import { ResearchStatusTable, TraderFitTable } from "./research-overview";
 import { countryResearchPresentation } from "@/lib/country-guides/research-comparison";
 import { countryBrokerMaster } from "@/lib/country-guides/broker-master";
 import { countrySuppliedResearch } from "@/lib/country-guides/supplied-research";
-import { countryFeaturedImage } from "@/lib/country-guides/media";
+import { CountryFeaturedImage } from "./featured-image";
 import { SuppliedCountryArticle } from "./supplied-country-article";
 
 export const legalStatusLabels = { pending_review: "Pending legal review", restricted: "Restricted", unclear: "Legal position unclear", permitted: "Permitted within reviewed scope" };
@@ -26,7 +25,6 @@ export function CountryGuideContent({ country, registry, affiliates, asOf }: { c
   const commercialCount = comparisons.filter(mapping => resolveCountryAffiliateLink(country, mapping, registry, affiliates, asOf)).length;
   const researchPresentation = countryResearchPresentation(country, asOf);
   const officialSignupCount = researchPresentation?.rows.filter(row => row.signupUrl && httpsUrl(row.signupUrl)).length ?? 0;
-  const featuredImage = countryFeaturedImage(country);
   const sources = country.sourceIds.map(id => registry.sources.find(source => source.id === id)).filter(source => source && source.kind !== "affiliate" && httpsUrl(source.url));
   const primaryChecks = sources.filter(source => source?.kind === "regulator" && checkedSource(source, asOf)).length;
   const author = registry.people.find(person => person.id === country.authorReference && person.roles.includes("author"));
@@ -59,7 +57,7 @@ export function CountryGuideContent({ country, registry, affiliates, asOf }: { c
         <section className="cg-answer" aria-labelledby="country-quick-answer"><div className="cg-answer-heading"><h2 id="country-quick-answer">Quick answer</h2><span className="cg-status-pill">{legalStatusLabels[country.legalStatus]}</span></div><p className="cg-direct-answer">{country.directAnswer}</p>{researchBrokers.length > 0 && <ul className="cg-answer-brokers" aria-label="Brokers covered in this comparison">{researchBrokers.map(broker => <li key={broker.slug}><a href={`#research-${broker.slug}`}>{broker.name}<ArrowDown size={15} aria-hidden="true" /></a></li>)}</ul>}</section>
         <div className="cg-byline">{author && <div className="cg-byline-person"><span className="cg-author-initials" aria-hidden="true">{initials}</span><Link href={author.profileUrl}>{author.name}</Link></div>}<span>{dossier ? `Reported research: ${dateLabel(dossier.reportedResearchDate)}` : `${primaryChecks} independent source checks`}</span><span>{approved ? "Approved informational guide" : "Research draft"}</span></div>
         <div className="cg-hero-actions"><a className="cg-primary-action" href={researchBrokers.length ? "#candidate-research" : "#legal-status"}>{researchBrokers.length ? "Compare the brokers" : "Read the local context"}<ArrowDown size={17} aria-hidden="true" /></a>{hasSection("costs-and-accounts") && <a className="cg-secondary-action" href="#costs-and-accounts">Compare total costs</a>}<a className="cg-list-note" href="#methodology">Research & affiliate disclosure</a></div>
-        {featuredImage && <figure className="cg-featured-image"><Image src={featuredImage.src} alt={featuredImage.alt} width={featuredImage.width} height={featuredImage.height} sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 1240px) calc(100vw - 56px), 1184px" /><figcaption>{featuredImage.caption} Photo: {featuredImage.creator} / <a href={featuredImage.sourceUrl} target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> · <a href={featuredImage.licenceUrl} target="_blank" rel="noopener noreferrer">{featuredImage.licence}</a>. Resized and cropped for display.</figcaption></figure>}
+        <CountryFeaturedImage country={country} />
       </header>
     </div></div>
     <CountrySectionNav items={sectionLinks} />

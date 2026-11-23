@@ -81,7 +81,7 @@ test("Malaysia server-renders the existing template with five useful tables, acc
     for (const slug of ['xm','ic-markets']) expect((await request.get('/reviews/'+slug)).status()).toBe(200);
     for (const slug of ['oanda','fbs','tickmill']) await expect(page.locator('main a[href="/reviews/'+slug+'"]')).toHaveCount(0);
     await expect(page.locator('.cg-website-link')).toHaveCount(5);
-    await expect(page.locator('main img')).toHaveCount(0);
+    await expect(page.locator('.cg-featured-image img')).toHaveCount(1);
     for (const anchor of await page.locator('main a[href^="#"]').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')!.slice(1)))) expect(await page.locator(`[id="${anchor}"]`).count(),anchor).toBe(1);
     const sitemap = await (await request.get('/sitemap.xml')).text(); expect(sitemap).toContain(path);
     const hub = await (await request.get('/forex-brokers')).text(); expect(hub).toContain(path);
@@ -96,7 +96,7 @@ test("the existing mobile cards, source disclosure and section navigation work f
   for (const width of [320,390,768,1440]) {
     await page.setViewportSize({width,height:1000});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),String(width)).toBe(true);
-    await expect(page.locator('.cg-featured-image')).toHaveCount(0);
+    await expect(page.locator('.cg-featured-image')).toHaveCount(1);
     expect(await page.locator('main').evaluate(node=>getComputedStyle(node).backgroundColor)).toBe('rgb(255, 255, 255)');
     expect(await page.locator('.cg-direct-answer').evaluate(node=>getComputedStyle(node).fontSize)).toBe('18px');
     const nonBlack=await page.locator('main h1,main h2,main p,main a,main span,main th,main td').evaluateAll(nodes=>nodes.filter(node=>getComputedStyle(node).color!=='rgb(0, 0, 0)').map(node=>node.textContent?.slice(0,30)));

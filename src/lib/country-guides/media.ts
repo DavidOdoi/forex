@@ -1,4 +1,5 @@
 import type { CountryGuide } from "./types";
+import sourcedCountryImages from "@/data/country-guides/featured-images.json";
 
 type CountryFeaturedImage = {
   countrySlug: string;
@@ -11,11 +12,15 @@ type CountryFeaturedImage = {
   sourceUrl: string;
   licence: string;
   licenceUrl: string;
+  sourceTitle?: string;
+  objectPosition?: string;
+  preserveFullFrame?: boolean;
 };
 
 // Each country needs its own relevant, licensed image. Reusing this layout
 // never assigns another country's photograph or evidence to a new guide.
 const countryImages: Record<string, CountryFeaturedImage> = {
+  ...sourcedCountryImages,
   "sri-lanka": {
     countrySlug: "sri-lanka",
     src: "/images/countries/sri-lanka-colombo-skyline.webp",
