@@ -16,7 +16,6 @@ const definitions = [
   ["ic-raw-pro", "Raw Pro early access", "https://www.icmarkets.com/global/en/forex-trading-platform-metatrader/raw-pro", "IC Markets"],
   ["ic-au-accounts", "Australia account overview", "https://www.icmarkets.com.au/en/trading-accounts/overview", "IC Markets Australia"],
   ["ic-au-pds", "Australia CFD PDS", "https://cdn.icmarkets.com.au/uploads/IC-Markets-CFD-PDS.pdf", "IC Markets Australia"],
-  ["ic-au-shares", "Australia underlying-share pricing", "https://www.icmarkets.com.au/en/shares-pricing", "IC Markets Australia"],
   ["ic-eu-accounts", "Cyprus account overview", "https://www.icmarkets.eu/en/trading-accounts/overview", "IC Markets EU"],
   ["ic-eu-faq", "Cyprus account FAQs", "https://www.icmarkets.eu/en/help-resources/faqs", "IC Markets EU"],
   ["ic-eu-costs", "Cyprus costs policy", "https://cdn.icmarkets.eu/uploads/EU-Costs-Charges-Policy.pdf", "IC Markets EU"],
@@ -81,7 +80,7 @@ export function applyIcMarketsResearch(review: BrokerReview) {
   set("retail-and-professional-accounts", "Ordinary Global: Standard/MetaTrader Raw/cTrader Raw. Raw Pro/Pro+/Starter remain announced/early-access, not confirmed ordinary live options.", ["ic-global-accounts", "ic-raw-pro"]);
   set("supported-mobile-platforms", "MetaTrader mobile documented, not tested. OS/2FA unverified; mobile cannot install EAs.", ["ic-global-help", "ic-platforms"]);
   set("platform-and-availability", "Global/AU platform pairings vary by account; EU TradingView is unestablished. Strategy/abuse rules apply. No guaranteed stops; 50% stop-out is a trigger, not guaranteed execution.", ["ic-global-accounts", "ic-platforms", "ic-global-help", "ic-eu-faq"]);
-  set("real-stocks-and-etfs", "Global stock/ETF CFDs do not confer ownership. Separate Australian IC Shares covers actual securities, with different charges.", ["ic-products", "ic-au-shares"]);
+  set("real-stocks-and-etfs", "Global stock/ETF CFDs do not confer ownership. The earlier Australian underlying-share link could not be verified in the current audit; check the live service and its terms separately.", ["ic-products"]);
   set("leverage-by-product-and-region", "Seychelles MetaTrader FX: progressive exposure portions up to 1:5000; cTrader/TradingView: 1:1000. AU/EU retail: 1:30; approved EU professional: 1:500; Bahamas: 1:200. Instrument/higher-margin limits apply.", ["ic-leverage", "ic-global-accounts", "ic-au-accounts", "ic-eu-accounts", "ic-bs-accounts"]);
   set("cfds-and-underlying-markets", "Global lists forex and multi-asset CFDs, including algorithmic synthetic indices. Instrument totals conflict; regional counts/leverage require separate checks.", ["ic-products", "ic-leverage"]);
   set("country-availability", "Global excludes US, Canada, Iran and North Korea; AU/EU/Bahamas have different lists. Cayman restrictions are unresolved. Omitted countries are not proof of acceptance or local permission; no Kenya CMA claim is established by this dossier.", ["ic-global-accounts", "ic-au-accounts", "ic-eu-accounts", "ic-bs-accounts"]);

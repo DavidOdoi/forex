@@ -12,6 +12,18 @@ export function applySriLankaDossier(country: CountryGuide, registry: GuideRegis
     if (index < 0) registry.sources.push(structuredClone(source));
     else registry.sources[index] = structuredClone(source);
   }
+  // Preserve the supplied archive. These two official documents were read
+  // during the later site audit; this does not establish CFD eligibility.
+  for (const id of [gazette, order]) {
+    const source = registry.sources.find(record => record.id === id)!;
+    Object.assign(source, {
+      ...(id === order ? { url: "https://www.dfe.lk/web/images/rdevelopment/f7da0aaf5dc576c2c00b6d9d21909da0-2493-38-E.pdf" } : {}),
+      checkedAt: "2026-11-23", verification: "checked", access: "retrieved",
+      publishedAt: "2026-06-18", publicationDateStatus: "verified",
+      note: "Official English PDF retrieved and read on 23 November 2026. Document identity/date and the cited provisions were checked; resident CFD eligibility and legal approval remain unestablished.",
+    });
+  }
+  const desk = (value: string, sourceIds: string[]): Claim => ({ ...reported(value, sourceIds), checkedAt: "2026-11-23", verification: "desk_verified", note: "Checked against the official document; no individual funding permission or legal opinion is inferred." });
   country.suppliedResearch = structuredClone(sriLankaDossier);
   country.title = "Forex Brokers in Sri Lanka: Costs, Rules & Key Checks";
   country.seoTitle = reported("Forex Brokers in Sri Lanka: Key Checks");
@@ -32,9 +44,9 @@ export function applySriLankaDossier(country: CountryGuide, registry: GuideRegis
     { id: "local-rules", eyebrow: "Read the local context", title: "What the CBSL warning is reported to say", paragraphs: [
       reported("The supplied historical warning says the following. Its PDF body is undated; the filename suggests 21 October 2019, not a confirmed publication date.", [notice], { sourceId: notice, locator: "Historical CBSL warning", text: "Accordingly, any other person in, or resident in Sri Lanka is not permitted to undertake forex trading transactions or remit funds outside Sri Lanka for such transactions and receive income or profit earned from forex trading." }),
     ] },
-    { id: "investment-rules-2026", eyebrow: "Later rules need interpretation", title: "What changed in the reported 2026 investment rules?", paragraphs: [
-      reported("Gazette 2493/36 is reported dated 18 June 2026, effective 20 June 2026. Rupee-conversion investments and existing foreign assets are treated separately; this does not establish CFD permission.", [gazette]),
-      reported("Order 2493/38’s operative English text was not accessed. Residency definitions and implementing directions still need qualified review.", [order, "dfe-residency", "dfe-regulations-index"]),
+    { id: "investment-rules-2026", eyebrow: "Read the scope and dates", title: "The 2026 overseas-investment rules", paragraphs: [
+      desk("Regulations 2493/36 were published on 18 June 2026 and took effect on 20 June. They distinguish rupee-converted investments from existing foreign assets; they do not establish CFD permission.", [gazette]),
+      desk("Order 2493/38, section 1.II, suspends outward-investment-account payments with specified exceptions. Section 4 gives a six-month validity from 20 June 2026. Obtain current advice on the proposed transfer.", [order]),
     ] },
     { id: "costs-and-accounts", eyebrow: "Look beyond the headline spread", title: "Forex brokers in Sri Lanka: compare the total cost", paragraphs: [
       reported("Compare the same instrument and trade size. Headline spreads exclude some costs; minimum deposits are not recommended trading budgets."),
