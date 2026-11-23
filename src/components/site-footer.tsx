@@ -26,7 +26,7 @@ const linkGroups = [
     links: [
       { label: "Forex market hours", href: "/tools/forex-market-hours" },
       { label: "Forex calculator", href: "/tools/forex-calculator" },
-      { label: "Position size", href: "/tools/forex-position-size-calculator" },
+      { label: "Position size", href: "/calculators/forex-lot-size-calculator" },
       { label: "Profit calculator", href: "/tools/forex-profit-calculator" },
       { label: "Compounding", href: "/tools/forex-compounding-calculator" },
       { label: "Prop firm consistency", href: "/prop-firm-consistency-calculator" },

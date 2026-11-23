@@ -18,7 +18,7 @@ const baseMenu = [
   { label: "Tools", to: "/tools", items: [
     { label: "Forex calculator", href: "/tools/forex-calculator" },
     { label: "Profit calculator", href: "/tools/forex-profit-calculator" },
-    { label: "Position size calculator", href: "/tools/forex-position-size-calculator" },
+    { label: "Position size calculator", href: "/calculators/forex-lot-size-calculator" },
     { label: "Compounding calculator", href: "/tools/forex-compounding-calculator" },
     { label: "Forex market hours", href: "/tools/forex-market-hours" },
     { label: "Prop firm consistency", href: "/prop-firm-consistency-calculator" },

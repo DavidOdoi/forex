@@ -163,10 +163,11 @@ test("JPY conversion requires manual bid/ask and changing currencies discards st
 test("sizing supports fixed cash risk, rounding and custom contracts and rejects a zero stop", async ({ page }) => {
   await page.goto("/tools/forex-position-size-calculator");
   await page.getByLabel("Risk input", { exact: true }).selectOption("cash"); await page.getByLabel("Fixed risk amount (USD)", { exact: true }).fill("73");
-  await page.getByText("Contract size & lot increment", { exact: true }).click(); await page.getByLabel("Lot increment", { exact: true }).selectOption("0.1");
+  await page.getByLabel("Stop-loss distance (pips)", { exact: true }).fill("25");
+  await page.getByText("Broker contract & volume limits", { exact: true }).click(); await page.getByLabel("Lot increment", { exact: true }).fill("0.1"); await page.getByLabel("Minimum volume (lots)", { exact: true }).fill("0.1");
   await expect(page.locator("[data-result]")).toHaveText("0.20 lots");
   await page.getByLabel("Base-currency units per lot", { exact: true }).fill("10000"); await expect(page.locator("[data-result]")).toHaveText("2.90 lots");
-  await page.getByLabel("Stop-loss distance (pips)", { exact: true }).fill("0"); await expect(page.locator("[data-result]")).toHaveCount(0); await expect(page.getByRole("status")).toContainText("Stop-loss distance");
+  await page.getByLabel("Stop-loss distance (pips)", { exact: true }).fill("0"); await expect(page.locator("[data-result]")).toHaveCount(0); await expect(page.getByRole("status")).toContainText(/stop-loss distance/i);
 });
 
 test("compounding updates the chart, models losses, paginates full history and downloads numerical CSV", async ({ page }) => {
@@ -200,7 +201,7 @@ test("all tool pages fit small phones through desktop without browser errors", a
       if (path !== "/tools") {
         expect(await page.locator('article p, [data-calculator] p:not([class*="resultEyebrow"]):not([data-result]), article td, article th').evaluateAll(nodes => [...new Set(nodes.map(node => getComputedStyle(node).fontSize))])).toEqual(["18px"]);
         if (width < 800) {
-          const jump = page.getByRole("main").getByRole("link", { name: /View (calculation|scenario result)/, exact: true });
+          const jump = page.getByRole("main").getByRole("link", { name: /View (calculation|scenario result|lot size)/, exact: true });
           await expect(jump).toHaveCSS("color", "rgb(255, 255, 255)");
           await jump.click();
           await expect(page.locator("#calculation-result")).toBeInViewport();

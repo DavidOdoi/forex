@@ -1,8 +1,9 @@
+import { lotSizeDefinition } from "./lot-size-content";
 export type CalculatorKind = "forex" | "profit" | "compounding" | "position";
 export type Inline = { text: string; href?: string }[];
 export type ContentSection = { id: string; title: string; paragraphs: Inline[]; bullets?: Inline[]; formula?: string; table?: { headers: string[]; rows: string[][] } };
 export type CalculatorDefinition = {
-  slug: string; kind: CalculatorKind; keyword: string; title: string; heading: string; description: string;
+  slug: string; path?: string; kind: CalculatorKind; keyword: string; title: string; heading: string; description: string;
   card: string; intro: string; quickAnswer: string; steps: string[]; sections: ContentSection[];
   faqs: { question: string; answer: string }[];
 };
@@ -71,27 +72,8 @@ export const calculators: CalculatorDefinition[] = [
       { question: "Are deposits counted as profit?", answer: "No. Total contributions include starting capital and deposits. Hypothetical gain or loss is shown separately as the ending balance minus those contributions." },
     ],
   },
-  {
-    slug: "forex-position-size-calculator", kind: "position", keyword: "forex position sizing calculator",
-    title: "Forex Position Size Calculator – Free Risk Tool", heading: "Forex Position Size Calculator",
-    description: "Calculate forex position sizes based on account balance, risk percentage, stop-loss distance, and currency pair with our free risk calculator.",
-    card: "Work from cash risk and a stop distance, then round lots down.",
-    intro: "This forex position sizing calculator estimates a trade size from your account balance, chosen risk budget and stop-loss distance. It accounts for the currency pair, account currency and your selected contract size.",
-    quickAnswer: "Divide your cash-risk budget by the stop distance multiplied by the adverse pip value per lot. Round down to the broker’s permitted lot increment. The result is an estimate, not a guaranteed maximum loss.",
-    steps: ["Choose the pair and account currency, then enter your account balance.", "Set a percentage or fixed cash-risk budget and a stop distance in pips.", "Enter any required conversion quote. Confirm units per lot and the broker’s lot increment before reading the rounded size."],
-    sections: [
-      { id: "position-formula", title: "Forex position sizing calculator formula", paragraphs: [text("Percentage risk is balance × risk percentage ÷ 100. A fixed cash amount is used directly. The calculator divides that budget by the loss associated with one lot moving the entered stop distance."), text("The adverse pip value uses the conversion side needed to cover a quote-currency loss. It is not a universal USD 10 constant. The suggested trade lots are rounded down, so the modelled stop loss does not exceed the budget just because of lot rounding.")], formula: "Unrounded lots = cash risk ÷ (stop distance in pips × adverse pip value per lot)" },
-      { id: "sizing-example", title: "A USD 100 risk-budget example", paragraphs: [text("Assume a USD 10,000 balance, 1% chosen risk, EUR/USD, a 25-pip stop and 100,000 units per lot. The cash budget is USD 100 and the pip value per full lot is USD 10. Dividing 100 by (25 × 10) gives 0.40 lots."), text("At a 0.01-lot increment, this example needs no further reduction. Its 40,000 base units equal four mini lots or 40 micro lots. Those are equivalent units, not three extra positions to open.")], table: { headers: ["Measure", "Example value"], rows: [["Chosen cash risk", "USD 100"], ["Standard lots", "0.40"], ["Mini-lot equivalents", "4"], ["Micro-lot equivalents", "40"], ["Base-currency units", "40,000 EUR"], ["Adverse pip value for the position", "USD 4"]] } },
-      { id: "pair-and-contract", title: "Check JPY pips, contract size and lot steps", paragraphs: [text("For JPY-quoted pairs, the pip size is 0.01. Other supported pairs use 0.0001. Entering pipettes as full pips changes the estimated size by a factor of ten, so confirm the convention shown in your terminal."), text("The default contract is 100,000 base units per trade lot. Change it only to match the actual broker specification. Standard, mini and micro equivalents always mean 100,000, 10,000 and 1,000 base units, even if you select a different trade-lot contract."), text("A size below one selected lot increment returns zero and a warning. A mathematically calculated size is not an instruction to change the broker’s minimum or increase the risk budget.")] },
-      { id: "risk-limitations", title: "Planned risk and actual loss can differ", paragraphs: [text("The estimate excludes commission, swaps and slippage. A stop order can fill beyond the requested price during gaps or fast markets. Margin requirements, maximum position limits and existing exposure also need checking before an order."), link("Test exit-price scenarios with the ", "forex trading profit calculator", "/tools/forex-profit-calculator", ", including known round-trip costs."), link("Review our ", "funded-account risk-rule guide", "/insights/common-mistakes-in-funded-trading-accounts", " if a programme also has daily or total loss restrictions. A per-trade calculation does not track those limits."), link("The ", "CFTC’s forex guidance", riskUrl, " explains why leverage and provider checks matter. The percentage you choose is your assumption, not a recommendation from this tool.")] },
-    ],
-    faqs: [
-      { question: "What percentage should I risk per trade?", answer: "There is no universally suitable percentage. Enter your own budget after considering loss capacity, open positions, costs and account rules. This calculator does not recommend a risk level." },
-      { question: "Why is the lot size rounded down?", answer: "Rounding up could exceed the entered risk budget. The tool rounds down to the selected lot increment; confirm that increment and any minimum size with your broker." },
-      { question: "Does the stop loss cap the amount I can lose?", answer: "No. Gaps, slippage and fees can make the final loss larger. The estimated stop loss also does not confirm that your account has enough margin for the position." },
-    ],
-  },
+  lotSizeDefinition,
 ];
 
 export function getCalculator(slug: string) { return calculators.find(tool => tool.slug === slug); }
-export function toolPath(tool: CalculatorDefinition) { return `/tools/${tool.slug}`; }
+export function toolPath(tool: CalculatorDefinition) { return tool.path ?? `/tools/${tool.slug}`; }
