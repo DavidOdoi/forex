@@ -44,12 +44,14 @@ Continue in numerical order, pushing each verified calculator independently. Ori
 | --- | --- | --- | --- |
 | 21 | Forex take profit | `/calculators/forex-take-profit-calculator` | Pushed as `2bd5be8`; 1,792 words, three FAQs, 17 numerical and 21 browser/regression groups passed. |
 | 22 | Forex leverage | `/calculators/forex-leverage-calculator` | Pushed as `0de6449`; 1,617 words, three FAQs, 18 numerical and 14 browser/regression groups passed. |
-| 23 | Forex stop loss | `/calculators/forex-stop-loss-calculator` | Complete; 1,754 words, three FAQs, 17 numerical and 13 browser/regression groups passed. Publication in this commit. |
-| 24 | Forex drawdown | `/calculators/forex-drawdown-calculator` | Next |
-| 25 | Prop firm drawdown | `/calculators/prop-firm-drawdown-calculator` | Queued |
+| 23 | Forex stop loss | `/calculators/forex-stop-loss-calculator` | Pushed as `fe02754`; 1,754 words, three FAQs, 17 numerical and 13 browser/regression groups passed. |
+| 24 | Forex drawdown | `/calculators/forex-drawdown-calculator` | Complete; 1,799 words, three FAQs, complete 128 numerical/service/privacy and 103 browser/crawl groups passed. Publication in this commit. |
+| 25 | Prop firm drawdown | `/calculators/prop-firm-drawdown-calculator` | Next; official FTMO and Topstep pages fetched for source review. |
 | 26 | Prop firm consistency | `/calculators/prop-firm-consistency-calculator` | Queued; inspect/reuse the existing top-level consistency tool and prevent duplicate indexable pages. |
 | 27 | Trading expectancy | `/calculators/trading-expectancy-calculator` | Queued |
 | 28 | Sharpe ratio | `/calculators/sharpe-ratio-calculator` | Queued |
 | 29 | Forex Martingale | `/calculators/forex-martingale-calculator` | Queued; distinct sequential and open-grid modes, no recovery guarantees. |
 
 Every guide: 1,600–1,800 independently counted words, 80–120-word introduction, useful Quick answer, exactly three FAQs, contextual internal and external links, real numerical/UI checks, canonical/indexing/sitemap integration, and disclosed model/data limits. Batch 7's addendum requires citations inside the relevant prose (FTMO/Topstep drawdown rules; Topstep/FundedNext consistency rules; BabyPips expectancy; CFA/Lo Sharpe research), verified before using any programme-specific number.
+
+Batch 7 specifically forbids financial histories in share URLs. The shared cost/scenario form now supports `privateFields` and `serializePrivateSettings`; include `privateDataOmitted: "no"` in new tool defaults, omit all private financial fields from copied settings, and require recipient inputs. CSV file handling currently normalizes equity/balance CSV only; implement a format-specific reader before using the file control for trade logs or return series.

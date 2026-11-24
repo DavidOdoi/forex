@@ -32,12 +32,19 @@ export function restoreTradeScenario(search: string, defaults: TradeScenario) {
   const params = new URLSearchParams(search);
   const values = { ...defaults };
   if (params.has("v") && params.get("v") !== "1") return { values, error: "This shared scenario version is unsupported. Reset to a fresh example." };
-  for (const key of Object.keys(defaults)) if (params.has(key)) values[key] = params.get(key)!.slice(0, ["entries","overrides","orders"].includes(key) ? 4096 : key === "sourceUrl" ? 2048 : ["broker", "entity", "accountType"].includes(key) ? 120 : 65);
+  for (const key of Object.keys(defaults)) if (params.has(key)) values[key] = params.get(key)!.slice(0, ["entries","overrides","orders"].includes(key) ? 4096 : key === "history" ? 65536 : key === "sourceUrl" ? 2048 : ["broker", "entity", "accountType"].includes(key) ? 120 : 65);
   return { values, error: null };
 }
 
 export function serializeTradeScenario(values: TradeScenario) {
   return new URLSearchParams({ v: "1", ...values }).toString();
+}
+
+export function serializePrivateSettings(values: TradeScenario, privateFields: readonly string[]) {
+  const settings = { ...values };
+  for (const name of privateFields) delete settings[name];
+  settings.privateDataOmitted = "yes";
+  return serializeTradeScenario(settings);
 }
 
 export function transferTradeQuery(values: TradeScenario, target: "lot" | "pip" | "margin" | "profit") {

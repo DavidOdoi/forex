@@ -4,6 +4,7 @@ import { calculateCurrency } from "./currency-converter";
 import { calculateMarginCall } from "./margin-call";
 import { leverageWorkbench, leverageFrom, leverageFields, leverageResult } from "./leverage-workbench";
 import { stopLossWorkbench, stopLossFields, stopLossResult } from "./stop-loss-workbench";
+import { drawdownWorkbench, drawdownFields, drawdownResult } from "./drawdown-workbench";
 import { calculateTakeProfit } from "./take-profit";
 import { accountCurrencies, conventionalInstrument, isPair, type AccountCurrency } from "./instruments";
 import { pairCodes, CalculationError } from "./forex";
@@ -11,10 +12,12 @@ import { cash, quantity, decimal } from "./precision";
 import { defaultPipScenario, scenarioInstrument, scenarioRates, type TradeScenario } from "./trade-scenario";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 
-export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss";
-export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "date" | "textarea"; options?: { value: string; label: string }[] };
-export type CostResult = { title: string; value: string; summary: string; metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[]; steps: string[]; warnings: string[]; conversions: ReturnType<typeof resolveConversion>[]; references?: { label: string; href: string }[]; levels?: { label: string; price: string; position: number }[]; bars?: { label: string; value: string; ratio: number }[]; barsCaption?: string };
-export const costDefinitions = {
+export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown";
+export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "date" | "textarea" | "csv"; options?: { value: string; label: string }[] };
+export type CostResult = { title: string; value: string; summary: string; metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[]; steps: string[]; warnings: string[]; conversions: ReturnType<typeof resolveConversion>[]; references?: { label: string; href: string }[]; levels?: { label: string; price: string; position: number }[]; bars?: { label: string; value: string; ratio: number }[]; barsCaption?: string; chart?: { title: string; axisLabel: string; points: { x: number; label: string; value: number; peak: number }[]; caption: string } };
+export type CostDefinition = { path: string; title: string; note: string; defaults: TradeScenario; privateFields?: string[] };
+export const costDefinitions: Record<CostKind, CostDefinition> = {
+  drawdown: drawdownWorkbench,
   stoploss: stopLossWorkbench,
   leverage: leverageWorkbench,
   takeprofit: { path: "/calculators/forex-take-profit-calculator", title: "Profit objective and permitted price-grid workspace", note: "Use executable entry/exit-side prices. Spread is already reflected in those prices and is not deducted again. Conversion quotations are held fixed across the scenario, even when actual account-currency conversion would change with the future price. Starting prices and fees are editable examples.", defaults: { ...defaultPipScenario, volume: "0.2", direction: "buy", entry: "1.1000", targetMode: "pips", targetPips: "50", targetMoney: "150", targetBasis: "gross", multiple: "2", ratioBasis: "gross", stopPrice: "", explicitTarget: "1.1050", priceStep: "0.00001", commission: "0", extraCosts: "0", swap: "0" } },
@@ -27,6 +30,7 @@ const options = (values: readonly string[]) => values.map(value => ({ value, lab
 const choice = (name: string, label: string, rows: string[][], help?: string, advanced = false): CostField => ({ name, label, options: rows.map(([value, label]) => ({ value, label })), help, advanced });
 const number = (name: string, label: string, help?: string, advanced = false): CostField => ({ name, label, help, advanced });
 export function costConversionFrom(kind: CostKind, values: TradeScenario): AccountCurrency {
+  if (kind === "drawdown") return values.account as AccountCurrency;
   if (kind === "margincall") return values.account as AccountCurrency;
   if (kind === "leverage") return leverageFrom(values);
   if (kind === "currency") return values.source as AccountCurrency;
@@ -76,6 +80,7 @@ function commissionFields(values: TradeScenario): CostField[] {
   ];
 }
 export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
+  if (kind === "drawdown") return drawdownFields(values);
   if (kind === "margincall") return marginCallFields(values);
   const fields: CostField[] = kind === "stoploss" ? stopLossFields(values) : kind === "leverage" ? leverageFields(values) : kind === "takeprofit" ? takeProfitFields(values) : kind === "currency" ? currencyFields(values) : kind === "commission" ? commissionFields(values) : [
     { name: "pair", label: "Currency pair", options: options(pairCodes) }, { name: "account", label: "Account currency", options: options(accountCurrencies) },
@@ -127,6 +132,7 @@ export function costResult(kind: CostKind, values: TradeScenario, reference: Exc
   if (kind === "stoploss") return stopLossResult(values, reference);
   if (kind === "leverage") return leverageResult(values, reference);
   if (kind === "takeprofit") return takeProfitResult(values, reference);
+  if (kind === "drawdown") return drawdownResult(values);
   if (kind === "margincall") return marginCallResult(values);
   if (kind === "currency") return currencyResult(values, reference);
   if (kind === "commission") return commissionResult(values, reference);
