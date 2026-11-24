@@ -1,5 +1,6 @@
 import { lotSizeDefinition } from "./lot-size-content";
-export type CalculatorKind = "forex" | "profit" | "compounding" | "position";
+import { pipDefinition } from "./pip-content";
+export type CalculatorKind = "forex" | "profit" | "compounding" | "position" | "pip";
 export type Inline = { text: string; href?: string }[];
 export type ContentSection = { id: string; title: string; paragraphs: Inline[]; bullets?: Inline[]; formula?: string; table?: { headers: string[]; rows: string[][] } };
 export type CalculatorDefinition = {
@@ -73,6 +74,7 @@ export const calculators: CalculatorDefinition[] = [
     ],
   },
   lotSizeDefinition,
+  pipDefinition,
 ];
 
 export function getCalculator(slug: string) { return calculators.find(tool => tool.slug === slug); }

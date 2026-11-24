@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   alternates: canonical("/tools"),
   robots: { index: calculatorsIndexable, follow: true },
 };
-const icons = { forex: Calculator, profit: TrendingUp, compounding: ChartNoAxesCombined, position: Target };
-const legacyIds = { forex: "pip-calculator", profit: "profit-calculator", position: "position-size", compounding: "compounding-calculator" };
+const icons = { forex: Calculator, profit: TrendingUp, compounding: ChartNoAxesCombined, position: Target, pip: Calculator };
+const legacyIds = { forex: "pip-calculator", profit: "profit-calculator", position: "position-size", compounding: "compounding-calculator", pip: "forex-pip-value" };
 export default function Page() {
   return <main className={styles.page}><div className={styles.container}>
     <header className={styles.indexHero}><p className={styles.eyebrow}>Devin Forex tools <span>Free · No sign-up</span></p><h1>Clear numbers.<br /><em>Better questions.</em></h1><p>Free forex calculators for the decisions behind a trade. Explore profit, understand pip values, size a position or model a compounding scenario.</p><BrokerRecommendations /></header>
