@@ -4,8 +4,8 @@ export const spreadDefinition: CalculatorDefinition = {
   "title": "Forex Spread Calculator – Calculate Trading Costs",
   "description": "Forex spread calculator: measure bid/ask costs in pips and money, add commission, and compare wider-spread scenarios with transparent conversion assumptions.",
   "heading": "Forex Spread Calculator",
-  "intro": "A forex spread calculator helps you determine the difference between a currency pair's bid and ask prices and estimate what that difference means for your trading costs. For example, if EUR/USD has a bid price of 1.10000 and an ask price of 1.10012, the spread is 1.2 pips. On a conventional standard lot, that represents a $12 spread cost in a USD account. Use the calculator above to enter the current bid, ask, trading volume, and account currency. You'll see the spread in pips, its monetary equivalent, and how it affects your trading position.",
-  "quickAnswer": "Spread in pips = (ask − bid) ÷ pip size. At EUR/USD 1.10000 bid and 1.10012 ask, the difference is 1.2 pips. One conventional 100,000-unit lot costs USD 12 at that quote; 0.10 lots costs USD 1.20. Add separately charged commission for a standalone cost estimate. If your profit calculation already uses executable entry and exit prices, the spread is embedded: do not deduct it again.",
+  "intro": "A quoted spread of 0.8 or 1.5 pips can be hard to interpret until you see its cost at your trading volume. Enter the bid and ask prices and your lot size to calculate the spread in pips and money, with account-currency conversion where needed.",
+  "quickAnswer": "Spread in pips = (Ask − Bid) ÷ Pip size. If EUR/USD is quoted at 1.10000 / 1.10012, the spread is 1.2 pips. For one conventional standard lot in a USD account, its monetary equivalent is $12. When calculating P&L from actual executable bid and ask prices, do not deduct that spread a second time.",
   "steps": [
     "Choose a forex pair and confirm its contract and pip specifications.",
     "Enter contemporaneous bid and ask prices, plus trade size in lots or base units.",

@@ -4,7 +4,7 @@ import { calculatorArticleWords } from "../src/lib/calculators/editorial";
 import { siteOrigin } from "../src/lib/site";
 const path = "/calculators/forex-profit-calculator";
 test("profit supporting copy and schema render without JS, with one canonical migration", async ({ browser, request }) => {
-  expect(calculatorArticleWords(profitDefinition)).toBeGreaterThanOrEqual(1600); expect(calculatorArticleWords(profitDefinition)).toBeLessThanOrEqual(1800);
+  expect(calculatorArticleWords(profitDefinition)).toBeGreaterThanOrEqual(1500); expect(calculatorArticleWords(profitDefinition)).toBeLessThanOrEqual(1800);
   const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage();
   try {
     await page.goto(`http://127.0.0.1:3100${path}`); await expect(page.locator("h1")).toHaveText("Forex Profit Calculator");

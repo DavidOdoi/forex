@@ -1,0 +1,258 @@
+[
+  {
+    "number": 1,
+    "name": "Forex Lot Size Calculator",
+    "requestedPath": "/calculators/forex-lot-size-calculator",
+    "intro": "Planning a forex trade but unsure how many lots to use? Enter your account size, the amount you’re prepared to risk, and your stop-loss distance. You’ll get an estimated position size in lots and currency units, so you can judge the trade’s exposure before placing an order.",
+    "quickAnswer": "Calculate the money you plan to risk, then divide it by the loss per lot at your stop. Lots = Risk amount ÷ (Stop-loss pips × Pip value per standard lot). For example, with a $100 risk budget, a 25-pip stop, and a $10 pip value per standard lot, the theoretical size is 0.40 lots, before fees and broker lot-step rounding.",
+    "actualPath": "/calculators/forex-lot-size-calculator",
+    "sourceFile": "src/lib/calculators/lot-size-content.ts"
+  },
+  {
+    "number": 2,
+    "name": "Forex Pip Calculator",
+    "requestedPath": "/calculators/forex-pip-calculator",
+    "intro": "How much is one pip worth in your trade? That depends on the currency pair, your position size, and the currency your account uses. Enter those details to convert a pip movement into a monetary amount you can use when reviewing stops, targets, or potential trading costs.",
+    "quickAnswer": "For conventional forex contracts, pip value in the quote currency = Base-currency units × Pip size. On one standard lot of EUR/USD, 100,000 × 0.0001 = $10 per pip. For a 0.10-lot EUR/USD position, it’s $1 per pip. Other account currencies require conversion, and JPY-quoted pairs normally use a 0.01 pip size.",
+    "actualPath": "/calculators/forex-pip-calculator",
+    "sourceFile": "src/lib/calculators/pip-content.ts"
+  },
+  {
+    "number": 3,
+    "name": "Forex Margin Calculator",
+    "requestedPath": "/calculators/forex-margin-calculator",
+    "intro": "Before opening a leveraged trade, check how much collateral your broker may require. Enter the currency pair, lot size, exchange rate, and applicable leverage or margin rate to estimate required margin and see how much of your account would be committed to the position.",
+    "quickAnswer": "Under a simple fixed-leverage model, Required margin = Position notional value ÷ Leverage. A $50,000 position at 1:50 leverage requires $1,000 in margin. This is collateral, not a trading fee or a maximum-loss limit. Broker-specific tiers and margin rules can change the actual requirement.",
+    "actualPath": "/calculators/forex-margin-calculator",
+    "sourceFile": "src/lib/calculators/margin-content.ts"
+  },
+  {
+    "number": 4,
+    "name": "Forex Profit Calculator",
+    "requestedPath": "/calculators/forex-profit-calculator",
+    "intro": "Want to know what a forex trade could earn or lose at a particular exit price? Enter your buy or sell direction, entry, exit, and trade size to see the price movement in pips and its estimated value in your account currency, with optional trading costs.",
+    "quickAnswer": "For an ordinary long forex position, Gross P&L in quote currency = (Exit − Entry) × Base-currency units; reverse the price difference for a short. Buying 0.10 lots of EUR/USD at 1.1000 and closing at 1.1050 gives 50 pips, or $50 gross profit in a USD account, before additional fees.",
+    "actualPath": "/calculators/forex-profit-calculator",
+    "sourceFile": "src/lib/calculators/profit-content.ts"
+  },
+  {
+    "number": 5,
+    "name": "Forex Risk-Reward Ratio Calculator",
+    "requestedPath": "/calculators/forex-risk-reward-calculator",
+    "intro": "Is the potential gain on your next trade large enough relative to the planned loss? Compare your entry, stop loss, and profit target to see the risk-reward ratio in pips and, if you enter a position size, in money. You can then assess the setup against your trading rules.",
+    "quickAnswer": "Reward-to-risk multiple = Distance to target ÷ Distance to stop. If your stop is 25 pips away and your target is 50 pips away, the trade has a 1:2 risk-reward ratio before costs. Under a simple fixed-payoff model, that ratio requires a win rate of about 33.33% to break even before fees.",
+    "actualPath": "/calculators/forex-risk-reward-calculator",
+    "sourceFile": "src/lib/calculators/risk-content.ts"
+  },
+  {
+    "number": 6,
+    "name": "Forex Break-Even Calculator",
+    "requestedPath": "/calculators/forex-break-even-calculator",
+    "intro": "Closing a trade at your original entry price doesn’t always mean you break even. Commissions and overnight financing can leave a small loss even after the market returns to that level. Enter your trade details and costs to estimate the executable price needed for a zero net result.",
+    "quickAnswer": "For a conventional EUR/USD long priced in USD, Break-even exit bid = Executed entry ask + Additional costs ÷ Base units. A one-standard-lot buy at 1.10000 with $7 in additional round-trip costs needs an exit bid of approximately 1.10007. Don’t add spread again if the input prices already reflect bid/ask execution.",
+    "actualPath": "/calculators/forex-break-even-calculator",
+    "sourceFile": "src/lib/calculators/break-even-content.ts"
+  },
+  {
+    "number": 7,
+    "name": "Forex Swap Calculator",
+    "requestedPath": "/calculators/forex-swap-calculator",
+    "intro": "Keeping a currency position open overnight may produce a financing charge or credit. Estimate the effect before planning a multi-day trade by entering your broker’s long or short swap rate, position size, holding period, and rollover schedule. The result depends on the rate unit and broker rules you supply.",
+    "quickAnswer": "For a point-based rate, Swap = Signed swap points × Point size × Base units × Rollover multiplier, converted if needed. One standard EUR/USD lot at −6 points, with a point size of 0.00001, incurs −$6 for one ordinary rollover. A triple-swap event would produce −$18 at that same rate.",
+    "actualPath": "/calculators/forex-swap-calculator",
+    "sourceFile": "src/lib/calculators/swap-content.ts"
+  },
+  {
+    "number": 8,
+    "name": "Forex Lot Size Converter",
+    "requestedPath": "/calculators/forex-lot-size-converter",
+    "intro": "Your platform shows a volume such as 0.03 lots, but what does that represent in actual currency units? Convert between standard, mini, micro, and nano lots to understand your position size or compare different platform formats without mixing up trading volume and money at risk.",
+    "quickAnswer": "For conventional spot forex, 1 standard lot = 100,000 base-currency units. That makes 0.10 lots = 10,000 units and 0.01 lots = 1,000 units. To convert lots to units, multiply by 100,000; to convert units to lots, divide by 100,000. Check broker-specific contract sizes before applying this to other instruments.",
+    "actualPath": "/calculators/forex-lot-size-converter",
+    "sourceFile": "src/lib/calculators/converter-content.ts"
+  },
+  {
+    "number": 9,
+    "name": "Forex Risk of Ruin Calculator",
+    "requestedPath": "/calculators/forex-risk-of-ruin-calculator",
+    "intro": "A strategy can have positive average returns and still suffer a damaging run of losses. Explore that possibility using your estimated win rate, payoff ratio, risk per trade, and a clearly defined account-loss threshold. The simulations show how often that threshold is reached under your assumptions—not what will certainly happen.",
+    "quickAnswer": "In a Monte Carlo model, Estimated ruin frequency = Paths reaching the chosen threshold ÷ Total simulated paths × 100. If 120 of 10,000 simulated trading paths cross your specified drawdown limit, the observed frequency is 1.2%. This is conditional on the model, horizon, and inputs; it is not a known real-world probability.",
+    "actualPath": "/calculators/forex-risk-of-ruin-calculator",
+    "sourceFile": "src/lib/calculators/ruin-content.ts"
+  },
+  {
+    "number": 10,
+    "name": "Kelly Criterion Calculator",
+    "requestedPath": "/calculators/kelly-criterion-calculator",
+    "intro": "How does a trading strategy’s win rate interact with the size of its winners and losers? The Kelly criterion provides a theoretical capital-allocation fraction under a simplified mathematical model. Compare full, half, and quarter Kelly results, and examine how quickly the result changes when the inputs are less favorable.",
+    "quickAnswer": "For fixed binary payoffs, Kelly fraction = Win probability − (Loss probability ÷ Win-to-loss payoff ratio). With a 45% win rate and an average winner twice the average loser, full Kelly is 17.5%, half Kelly 8.75%, and quarter Kelly 4.375%. These are model outputs, not recommended forex risk levels.",
+    "actualPath": "/calculators/kelly-criterion-calculator",
+    "sourceFile": "src/lib/calculators/kelly-content.ts"
+  },
+  {
+    "number": 11,
+    "name": "Fibonacci Retracement Calculator",
+    "requestedPath": "/calculators/fibonacci-calculator",
+    "intro": "Once you’ve identified a meaningful price swing, Fibonacci levels help map possible pullback and extension prices without manual measuring. Enter the swing high and low and select the direction to see the commonly watched ratios. The levels are chart references, not predictions that price will reverse there.",
+    "quickAnswer": "For an upward swing, Retracement price = Swing high − (High − Low) × Ratio. If EUR/USD rises from 1.1000 to 1.1500, its 61.8% retracement is 1.1191. For a downward swing, add the retracement distance to the swing low. The familiar 50% level is a midpoint, not a Fibonacci-derived ratio.",
+    "actualPath": "/calculators/fibonacci-calculator",
+    "sourceFile": "src/lib/calculators/fibonacci-content.ts"
+  },
+  {
+    "number": 12,
+    "name": "Forex Pivot Point Calculator",
+    "requestedPath": "/calculators/forex-pivot-point-calculator",
+    "intro": "Previous-session prices can be turned into reference levels for the next trading period. Enter the completed session’s high, low, and close to calculate pivot points and surrounding support and resistance levels. Switch between methods when needed, and check the formula convention before comparing results with your charting platform.",
+    "quickAnswer": "The traditional central pivot is P = (High + Low + Close) ÷ 3. With a high of 1.1200, low of 1.1100, and close of 1.1150, the pivot is 1.1150. Under the traditional method, R1 = 2P − Low = 1.1200 and S1 = 2P − High = 1.1100. Other pivot methods use different formulas.",
+    "actualPath": "/calculators/forex-pivot-point-calculator",
+    "sourceFile": "src/lib/calculators/pivot-content.ts"
+  },
+  {
+    "number": 13,
+    "name": "Forex Compounding Calculator",
+    "requestedPath": "/calculators/forex-compounding-calculator",
+    "intro": "What happens to a trading account when gains and losses are applied to its changing balance? Compare hypothetical returns over time, including recurring deposits, to see how compounding changes the result. Use realistic scenarios; a smooth growth curve is not a forecast of trading profits.",
+    "quickAnswer": "With a constant periodic return and no cash flows, Final balance = Starting balance × (1 + Return)^Periods. Starting with $1,000 and assuming 2% per month for 12 months produces approximately $1,268.24. Negative months, deposits, withdrawals, and fees change the result and should be modeled separately.",
+    "actualPath": "/tools/forex-compounding-calculator",
+    "note": "User confirmed removal of unsupported withdrawal capability from this introduction.",
+    "sourceFile": "src/lib/calculators/catalog.ts"
+  },
+  {
+    "number": 14,
+    "name": "ATR Position Size Calculator",
+    "requestedPath": "/calculators/atr-position-size-calculator",
+    "intro": "A fixed stop distance can mean different things in quiet and volatile markets. Use Average True Range (ATR) to explore a volatility-based stop, then calculate the trading volume that fits a specified monetary risk budget. The result is a planning estimate, not a guarantee against gaps or slippage.",
+    "quickAnswer": "First calculate Stop distance = ATR in pips × Multiplier. Then Lots = Risk budget ÷ (Stop pips × Pip value per standard lot). With a 25-pip ATR, 2× multiplier, $100 risk budget, and $10 per pip per standard lot, the stop is 50 pips and theoretical size 0.20 lots.",
+    "actualPath": null
+  },
+  {
+    "number": 15,
+    "name": "Forex Hedge Calculator",
+    "requestedPath": "/calculators/forex-hedge-calculator",
+    "intro": "Holding a buy and sell position in the same currency pair can reduce directional exposure, but it doesn’t erase existing profit or loss. Compare the two sides of a proposed hedge to see gross volume, remaining net exposure, and estimated costs or margin under your broker’s rules.",
+    "quickAnswer": "For compatible same-symbol positions, Net lots = Buy lots − Sell lots, while Gross lots = Buy lots + Sell lots. Buying 1.00 lot of EUR/USD and selling 0.60 lots leaves 0.40 lots net long and 1.60 lots gross open volume. Opposite positions may still incur commissions, swap charges, and broker-specific margin requirements.",
+    "actualPath": null
+  },
+  {
+    "number": 16,
+    "name": "Forex Notional Value Calculator",
+    "requestedPath": "/calculators/forex-notional-value-calculator",
+    "intro": "The amount of margin you deposit is usually much smaller than the full currency position you control. See that underlying exposure clearly by converting your lot size into base-currency units and an account-currency value. This helps distinguish trade size from required collateral and planned stop-loss risk.",
+    "quickAnswer": "Base-currency notional = Lots × Contract size. For one conventional standard lot of EUR/USD, that is 100,000 EUR. At EUR/USD 1.1000, the quote-currency notional is $110,000. If permitted leverage is 1:50, a simplified margin estimate is $2,200—not the full exposure or a maximum-loss amount.",
+    "actualPath": null
+  },
+  {
+    "number": 17,
+    "name": "Forex Spread Cost Calculator",
+    "requestedPath": "/calculators/forex-spread-cost-calculator",
+    "intro": "A quoted spread of 0.8 or 1.5 pips can be hard to interpret until you see its cost at your trading volume. Enter the bid and ask prices and your lot size to calculate the spread in pips and money, with account-currency conversion where needed.",
+    "quickAnswer": "Spread in pips = (Ask − Bid) ÷ Pip size. If EUR/USD is quoted at 1.10000 / 1.10012, the spread is 1.2 pips. For one conventional standard lot in a USD account, its monetary equivalent is $12. When calculating P&L from actual executable bid and ask prices, do not deduct that spread a second time.",
+    "actualPath": "/calculators/forex-spread-cost-calculator",
+    "sourceFile": "src/lib/calculators/spread-content.ts"
+  },
+  {
+    "number": 18,
+    "name": "Forex Commission Calculator",
+    "requestedPath": "/calculators/forex-commission-calculator",
+    "intro": "Forex commission schedules can be confusing when one broker quotes a fee “per side” and another uses a “round-turn” figure. Enter the rate and trade volume to compare the actual commission for opening and closing a position, including minimum charges or currency conversion when relevant.",
+    "quickAnswer": "For a proportional per-side rate, Round-turn commission = Lots × Fee per lot per side × 2. A 0.20-lot trade at $3.50 per standard lot per side costs $1.40 for both sides. If the broker already quotes a round-turn rate, multiply it by lots without doubling it.",
+    "actualPath": "/calculators/forex-commission-calculator",
+    "sourceFile": "src/lib/calculators/commission-content.ts"
+  },
+  {
+    "number": 19,
+    "name": "Currency Converter",
+    "requestedPath": "/calculators/currency-converter",
+    "intro": "Converting a deposit, trading profit, or everyday payment requires more than choosing two currencies. Enter an amount and a verified or manually supplied rate to see the reference conversion, then compare any provider markup or transaction fees with the amount you would actually receive.",
+    "quickAnswer": "Converted amount = Source amount × Target-currency units per source unit. At a hypothetical rate of 1 USD = 3,700 UGX, $100 = UGX 370,000 before fees. A bank, broker, or mobile-money provider may use a different executable rate; always check the rate direction, timestamp, and charges.",
+    "actualPath": "/calculators/currency-converter",
+    "sourceFile": "src/lib/calculators/currency-content.ts"
+  },
+  {
+    "number": 20,
+    "name": "Forex Margin Call & Stop-Out Calculator",
+    "requestedPath": "/calculators/forex-margin-call-calculator",
+    "intro": "How close is your trading account to a margin warning or stop-out? Enter current equity, used margin, and the thresholds for your specific broker account to see your margin level and the remaining equity distance to each boundary. Broker rules vary, so the displayed thresholds are conditional estimates.",
+    "quickAnswer": "Margin level (%) = Equity ÷ Used margin × 100. If equity is $2,000 and used margin is $1,000, margin level is 200%. With an illustrative 100% margin-call and 50% stop-out setting, the corresponding fixed-margin equity thresholds are $1,000 and $500. They are not exact liquidation prices.",
+    "actualPath": "/calculators/forex-margin-call-calculator",
+    "sourceFile": "src/lib/calculators/margin-call-content.ts"
+  },
+  {
+    "number": 21,
+    "name": "Forex Take Profit Calculator",
+    "requestedPath": "/calculators/forex-take-profit-calculator",
+    "intro": "Already have an entry price and a profit objective? Turn that objective into a take-profit level using a pip distance, target monetary gain, or reward-to-risk multiple. Compare the resulting target with your trade size and costs before submitting an order.",
+    "quickAnswer": "For a buy, Take-profit price = Entry + Target pips × Pip size; for a sell, subtract the same distance. A EUR/USD buy entered at 1.1000 with a 40-pip target produces a take-profit price of 1.1040. Whether the trade reaches that level—and its exact realized profit—remains uncertain.",
+    "actualPath": "/calculators/forex-take-profit-calculator",
+    "sourceFile": "src/lib/calculators/take-profit-content.ts"
+  },
+  {
+    "number": 22,
+    "name": "Forex Leverage Calculator",
+    "requestedPath": "/calculators/forex-leverage-calculator",
+    "intro": "A broker may offer 1:50 or 1:100 leverage, but that doesn't tell you how much exposure your current trade actually creates. Enter your position value and account equity to calculate effective leverage, then compare the broker's permitted leverage with the estimated margin requirement.",
+    "quickAnswer": "Effective leverage = Position notional value ÷ Account equity. A $50,000 position in an account with $5,000 equity uses 10:1 effective leverage. At a broker-permitted 1:50 ratio, a simplified margin calculation requires $1,000. Changing the permitted ratio alone does not change the P&L of an unchanged position.",
+    "actualPath": "/calculators/forex-leverage-calculator",
+    "sourceFile": "src/lib/calculators/leverage-content.ts"
+  },
+  {
+    "number": 23,
+    "name": "Forex Stop Loss Calculator",
+    "requestedPath": "/calculators/forex-stop-loss-calculator",
+    "intro": "Before opening a position, work out the price at which you intend to exit if the market moves against you. Enter the trade direction, entry price, stop distance, and lot size to estimate both the stop-loss level and the monetary loss at that price.",
+    "quickAnswer": "For a buy, Stop price = Entry − Stop pips × Pip size; for a sell, add the distance instead. Buying EUR/USD at 1.1000 with a 30-pip stop gives 1.0970. At 0.20 lots, the modeled gross loss is $60 in a USD account. Slippage and fees can make the actual loss larger.",
+    "actualPath": "/calculators/forex-stop-loss-calculator",
+    "sourceFile": "src/lib/calculators/stop-loss-content.ts"
+  },
+  {
+    "number": 24,
+    "name": "Forex Drawdown Calculator",
+    "requestedPath": "/calculators/forex-drawdown-calculator",
+    "intro": "An account can finish above its starting balance and still have suffered a painful decline along the way. Use a peak and current value—or an ordered equity history—to measure drawdown, identify the worst observed decline, and see how much recovery would be needed.",
+    "quickAnswer": "Drawdown (%) = (Previous equity peak − Current equity) ÷ Previous peak × 100. A fall from $12,000 to $9,000 is a 25% drawdown. Returning to $12,000 from $9,000 requires a 33.33% gain, not 25%. Maximum drawdown requires an ordered equity series, not just the first and last balances.",
+    "actualPath": "/calculators/forex-drawdown-calculator",
+    "sourceFile": "src/lib/calculators/drawdown-content.ts"
+  },
+  {
+    "number": 25,
+    "name": "Prop Firm Drawdown Calculator",
+    "requestedPath": "/calculators/prop-firm-drawdown-calculator",
+    "intro": "Prop trading programs can have daily limits, static account floors, or thresholds that trail profitable highs. Enter the exact rules for your program alongside your current account figures to see which limit is closest. The firm's latest dashboard and rulebook remain the authority on account compliance.",
+    "quickAnswer": "For a static overall loss rule, Equity floor = Starting balance − Allowed loss. A hypothetical $100,000 account with a $10,000 static loss allowance has a floor of $90,000. If current equity is $96,000, the distance to that floor is $6,000. Daily and trailing rules need separate calculations.",
+    "actualPath": "/calculators/prop-firm-drawdown-calculator",
+    "sourceFile": "src/lib/calculators/prop-drawdown-content.ts"
+  },
+  {
+    "number": 26,
+    "name": "Prop Firm Consistency Rule Calculator",
+    "requestedPath": "/calculators/prop-firm-consistency-calculator",
+    "intro": "One unusually profitable day can affect challenge progress or payout eligibility at firms with consistency rules. Enter your best qualifying day, net profit, and the percentage specified by your program to see the current ratio. Make sure the figures belong to the correct trading or payout period.",
+    "quickAnswer": "Under a common largest-day rule, Consistency (%) = Largest profitable day ÷ Eligible net profit × 100. A $600 best day against $3,000 in eligible net profit gives 20%. This passes a rule allowing no more than 20%, but firm-specific formulas, profit targets, and payout conditions may differ.",
+    "actualPath": "/calculators/prop-firm-consistency-calculator",
+    "sourceFile": "src/lib/calculators/consistency-content.ts"
+  },
+  {
+    "number": 27,
+    "name": "Trading Expectancy Calculator",
+    "requestedPath": "/calculators/trading-expectancy-calculator",
+    "intro": "A high win rate doesn't necessarily mean a trading strategy is profitable. Look at how often trades win and how much the average winner earns compared with the average loser. Use summary statistics or your trading history to calculate the average net result per trade.",
+    "quickAnswer": "For a two-outcome strategy, Expectancy = Win rate × Average win − Loss rate × Average loss. With a 40% win rate, $300 average win, and $100 average loss, expectancy is +$60 per trade before any additional costs. Breakeven trades require their own probability rather than being counted as losses.",
+    "actualPath": null
+  },
+  {
+    "number": 28,
+    "name": "Sharpe Ratio Calculator",
+    "requestedPath": "/calculators/sharpe-ratio-calculator",
+    "intro": "Two trading strategies can earn similar returns while experiencing very different levels of volatility. Compare risk-adjusted performance by supplying a consistent series of returns and an appropriate risk-free benchmark. The Sharpe ratio is useful context, but it cannot capture every form of downside risk.",
+    "quickAnswer": "Sharpe ratio = (Average return − Matching risk-free return) ÷ Return standard deviation. An illustrative strategy with 14% annual average return, 2% annual risk-free return, and 10% annual volatility has a Sharpe ratio of 1.20. Annualizing daily or monthly Sharpe values requires additional assumptions about return behavior.",
+    "actualPath": null
+  },
+  {
+    "number": 29,
+    "name": "Forex Martingale Calculator",
+    "requestedPath": "/calculators/forex-martingale-calculator",
+    "intro": "Doubling trade size after each loss sounds simple until you calculate the exposure after several losing levels. Explore the progression of lots, cumulative losses, and margin pressure in sequential trades or an open-position grid. The tool shows what the strategy could demand from your account—not a guaranteed recovery path.",
+    "quickAnswer": "Lot at level n = Starting lot × Multiplier^(n − 1). Starting at 0.01 lots and doubling gives 0.01, 0.02, 0.04, 0.08, 0.16, 0.32 across six levels, totaling 0.63 lots. That total represents simultaneous exposure only when all six positions remain open; otherwise, it is cumulative traded volume.",
+    "actualPath": null
+  }
+]

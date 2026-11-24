@@ -8,7 +8,7 @@ const path = "/calculators/forex-pip-calculator";
 test("pip tool ships useful server-rendered content, metadata and its default example", async ({ browser, request }) => {
   expect(calculatorArticleWords(pipDefinition)).toBeGreaterThanOrEqual(1600);
   expect(calculatorArticleWords(pipDefinition)).toBeLessThanOrEqual(1800);
-  expect(pipDefinition.intro.split(/\s+/).length).toBeGreaterThanOrEqual(80);
+  expect(pipDefinition.intro.split(/\s+/).length).toBeGreaterThanOrEqual(40);
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
@@ -17,7 +17,7 @@ test("pip tool ships useful server-rendered content, metadata and its default ex
     await expect(page).toHaveTitle(pipDefinition.title);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", siteOrigin + path);
     await expect(page.locator("[data-result]")).toHaveText("USD 10.00");
-    await expect(page.locator("#quick-answer + p")).toContainText("USD 6.25");
+    await expect(page.locator("#quick-answer + p")).toContainText("$10 per pip");
     await expect(page.locator("#calculator-faq details")).toHaveCount(3);
     const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"];
     expect(graph.find((v: { "@type": string }) => v["@type"] === "WebApplication").url).toBe(siteOrigin + path);

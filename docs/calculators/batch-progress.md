@@ -47,7 +47,7 @@ Continue in numerical order, pushing each verified calculator independently. Ori
 | 23 | Forex stop loss | `/calculators/forex-stop-loss-calculator` | Pushed as `fe02754`; 1,754 words, three FAQs, 17 numerical and 13 browser/regression groups passed. |
 | 24 | Forex drawdown | `/calculators/forex-drawdown-calculator` | Pushed as `dfcd3ad`; 1,799 words, three FAQs, complete 128 numerical/service/privacy and 103 browser/crawl groups passed. |
 | 25 | Prop firm drawdown | `/calculators/prop-firm-drawdown-calculator` | Pushed as `36febd6`; 1,711 words, three FAQs; 17 numerical/privacy and eight browser/regression groups passed. |
-| 26 | Prop firm consistency | `/calculators/prop-firm-consistency-calculator` | Complete; 1,704 words, three FAQs; shared prior core upgraded, old URL redirects and leaves sitemap. Numerical and browser verification recorded in the consistency audit; publication in this commit. |
+| 26 | Prop firm consistency | `/calculators/prop-firm-consistency-calculator` | Pushed as `c21e62c`; 1,704 words at implementation, three FAQs; shared prior core upgraded, old URL redirects and leaves sitemap. Verification recorded in the consistency audit. |
 | 27 | Trading expectancy | `/calculators/trading-expectancy-calculator` | Queued |
 | 28 | Sharpe ratio | `/calculators/sharpe-ratio-calculator` | Queued |
 | 29 | Forex Martingale | `/calculators/forex-martingale-calculator` | Queued; distinct sequential and open-grid modes, no recovery guarantees. |
@@ -55,3 +55,9 @@ Continue in numerical order, pushing each verified calculator independently. Ori
 Every guide: 1,600–1,800 independently counted words, 80–120-word introduction, useful Quick answer, exactly three FAQs, contextual internal and external links, real numerical/UI checks, canonical/indexing/sitemap integration, and disclosed model/data limits. Batch 7's addendum requires citations inside the relevant prose (FTMO/Topstep drawdown rules; Topstep/FundedNext consistency rules; BabyPips expectancy; CFA/Lo Sharpe research), verified before using any programme-specific number.
 
 Batch 7 specifically forbids financial histories in share URLs. The shared cost/scenario form now supports `privateFields` and `serializePrivateSettings`; include `privateDataOmitted: "no"` in new tool defaults, omit all private financial fields from copied settings, and require recipient inputs. CSV file handling currently normalizes equity/balance CSV only; implement a format-specific reader before using the file control for trade logs or return series.
+
+## Owner copy-only update
+
+The later 29-entry introduction/Quick answer rewrite supersedes the earlier 80–120-word intro target. Exact replacements were applied to 23 existing matching pages, with the owner-approved removal of unsupported withdrawals from the compounding intro. Six requested dedicated routes are absent: ATR position size, hedge, notional value, expectancy, Sharpe and Martingale. No pages or engines were created by this copy edit. Supporting articles, metadata and links remain unchanged; implementation-time total-word counts above are historical. See `docs/audits/2026-11-24/calculator-intro-rewrites.md` and `tests/fixtures/calculator-intro-rewrites.json`.
+
+The original tools 27–29 task is paused for this copy update. Early tool 27 drafts are preserved outside git in `/workspace/task-drafts/expectancy-paused/`; do not inadvertently publish them as finished. Use the new supplied intro/Quick answer copy when those tools are completed later.

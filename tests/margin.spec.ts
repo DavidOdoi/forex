@@ -15,7 +15,7 @@ test("margin tool publishes readable supporting content, truthful schema and a c
     await expect(page.locator("[data-result]")).toHaveText("USD 2,200.00");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", siteOrigin + path);
     await expect(page.locator("#calculator-faq details")).toHaveCount(3);
-    await expect(page.locator("#quick-answer + p")).toContainText("USD 440");
+    await expect(page.locator("#quick-answer + p")).toContainText("$1,000");
     expect(await (await request.get("/sitemap.xml")).text()).toContain(siteOrigin + path);
     const alias = await request.get("/tools/forex-margin-calculator", { maxRedirects: 0 });
     expect(alias.status()).toBe(308); expect(alias.headers().location).toBe(path);

@@ -21,6 +21,6 @@ test("available-margin warnings, proportional bars and saved scenarios fit phone
   for (const width of [320, 390, 1440]) { await page.setViewportSize({ width, height: 1000 }); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true); }
 });
 test("leverage content, canonical, sitemap and three FAQs render without JavaScript", async ({ browser, request }) => {
-  expect(calculatorArticleWords(leverageDefinition)).toBeGreaterThanOrEqual(1600); expect(calculatorArticleWords(leverageDefinition)).toBeLessThanOrEqual(1800);
+  expect(calculatorArticleWords(leverageDefinition)).toBeGreaterThanOrEqual(1500); expect(calculatorArticleWords(leverageDefinition)).toBeLessThanOrEqual(1800);
   const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage(); try { await page.goto("http://127.0.0.1:3100" + path); await expect(page.locator("h1")).toHaveCount(1); await expect(page.locator("[data-result]")).toHaveText("10:1"); await expect(page.locator("#calculator-faq details")).toHaveCount(3); await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://www.devinforex.com" + path); expect(await (await request.get("/sitemap.xml")).text()).toContain(path); } finally { await context.close(); }
 });
