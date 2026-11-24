@@ -100,7 +100,7 @@
 .insight-broker-shortlist a{font-weight:600}
 .insights-page a.insight-account-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:12px 18px;border:1px solid #111;border-radius:9px;background:#111;color:#fff;font-size:18px;font-weight:700;line-height:1.4;text-align:center;text-decoration:none;box-shadow:0 3px 0 #d5aa55}
 .insights-page a.insight-account-button:hover{background:#2b2b2b;color:#fff;text-decoration:none}
-.insight-account-button>span{color:#e3ba69;font-size:23px}
+.insight-account-button>svg{color:#e3ba69;flex-shrink:0}
 .insight-table .insight-account-button{display:flex;margin-top:12px;min-width:150px}
 .insight-broker-action{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:24px 0 36px;padding:24px;border:1px solid #d7bd88;border-radius:14px;background:#fff}
 .insight-broker-action>div{flex:1;min-width:0}

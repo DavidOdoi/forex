@@ -2,13 +2,14 @@ import { BrokerRecommendations } from "@/components/broker-recommendations/broke
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { getInsightImage, type InsightArticle, type InsightInfographic, type RichText } from "@/lib/insights/catalog";
 import { linkPhrases } from "@/lib/insights/link-phrases.mjs";
 
 function InlineText({ content }: { content: RichText }) {
   return content.map((part, index) => part.href
     ? part.intent === "signup" && part.href.startsWith("https://")
-      ? <a key={index} className="insight-account-button" href={part.href} target="_blank" rel="nofollow noopener noreferrer">{part.text}<span aria-hidden="true">↗</span></a>
+      ? <a key={index} className="insight-account-button" href={part.href} target="_blank" rel="nofollow noopener noreferrer">{part.text}<ArrowUpRight size={20} aria-hidden="true" /></a>
       : part.href.startsWith("#")
       ? <a key={index} href={part.href} className="insight-context-link insight-section-link">{part.text}</a>
       : part.href.startsWith("/")
@@ -73,7 +74,7 @@ export function ArticleContent({ article }: { article: InsightArticle }) {
         case "infographic": return <EducationalInfographic key={block.id} block={block} />;
         case "broker-cta": return <aside key={block.broker} className="insight-broker-action" data-broker-signup={block.broker} aria-label={`${block.broker} account information`}>
           <div><strong>{block.broker}</strong><p>{block.note}</p></div>
-          <a className="insight-account-button" href={block.signupUrl} target="_blank" rel="nofollow noopener noreferrer">Open {block.broker} account<span aria-hidden="true">↗</span></a>
+          <a className="insight-account-button" href={block.signupUrl} target="_blank" rel="nofollow noopener noreferrer">Open {block.broker} account<ArrowUpRight size={20} aria-hidden="true" /></a>
         </aside>;
         case "image": {
           const image = getInsightImage(block.assetId);
