@@ -7,6 +7,7 @@ import type { ProfitInputs } from "./profit";
 import type { RiskRewardInputs } from "./risk-reward";
 import type { BreakEvenInputs } from "./break-even";
 import type { SwapInputs } from "./swap";
+import type { LotConverterInputs } from "./lot-converter";
 
 export const defaultPipScenario = {
   pair: "EUR/USD", account: "USD", volumeMode: "lots", volume: "1", pips: "1", movementEnabled: "no", start: "1.10000", end: "1.10500",
@@ -25,6 +26,7 @@ export const defaultProfitScenario = {
 export const defaultRiskScenario = { ...defaultProfitScenario, volume: "1", stop: "1.0980", target: "1.1040", probability: "", target2: "", target3: "" };
 export const defaultBreakEvenScenario = { ...defaultProfitScenario, volume: "1", commission: "7", exitCosts: "0", entriesEnabled: "no", entries: "0.5,1.1000\n0.5,1.1020" };
 export const defaultSwapScenario = { ...defaultPipScenario, direction:"buy",swapRate:"-6",swapUnit:"points",pointSize:"0.00001",moneyCurrency:"quote",price:"1.1000",dayBasis:"365",holdingMode:"counts",normal:"1",triple:"1",open:"2026-11-23T16:00",close:"2026-11-25T18:00",zone:"America/New_York",cutoff:"17:00",tripleDay:"3",overrides:"" };
+export const defaultConverterScenario = {...defaultPipScenario,inputUnit:"standard",volume:"0.35",pipEnabled:"yes",gridEnabled:"no",minimum:"0.01",step:"0.01",maximum:""};
 
 export function restoreTradeScenario(search: string, defaults: TradeScenario) {
   const params = new URLSearchParams(search);
@@ -75,6 +77,12 @@ export function breakEvenScenarioInputs(values: TradeScenario, reference: Exchan
 export function swapScenarioInputs(values: TradeScenario,reference: ExchangeRate[]=[]):SwapInputs{
   const instrument=scenarioInstrument(values);
   return {instrument,account:values.account as AccountCurrency,direction:values.direction as "buy"|"sell",volume:values.volume,volumeMode:values.volumeMode as "lots"|"units",rate:values.swapRate,unit:values.swapUnit as SwapInputs["unit"],pointSize:values.pointSize,moneyCurrency:values.moneyCurrency as "quote"|"account",price:values.price,dayBasis:values.dayBasis as "360"|"365",mode:values.holdingMode as "counts"|"dates",normal:values.normal,triple:values.triple,open:values.open,close:values.close,zone:values.zone,cutoff:values.cutoff,tripleDay:values.tripleDay,overrides:values.overrides,rates:scenarioRates(values,values.swapUnit==="money"&&values.moneyCurrency==="account"?values.account as AccountCurrency:instrument.quote,reference)};
+}
+
+export function converterScenarioInputs(values:TradeScenario,reference:ExchangeRate[]=[]):LotConverterInputs{
+  const instrument=scenarioInstrument(values);
+  if(!["yes","no"].includes(values.pipEnabled)||!["yes","no"].includes(values.gridEnabled))throw new CalculationError("Choose valid pip-value and volume-grid settings.");
+  return {instrument,account:values.account as AccountCurrency,volume:values.volume,inputUnit:values.inputUnit as LotConverterInputs["inputUnit"],pipEnabled:values.pipEnabled==="yes",rates:values.pipEnabled==="yes"?scenarioRates(values,instrument.quote,reference):[],...(values.gridEnabled==="yes"?{grid:{minimum:values.minimum,step:values.step,...(values.maximum.trim()?{maximum:values.maximum}:{})}}:{})};
 }
 
 export function scenarioInstrument(values: TradeScenario) {

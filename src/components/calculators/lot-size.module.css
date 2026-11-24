@@ -55,3 +55,5 @@
 .connected a svg { flex-shrink:0; }
 
 .workspace textarea { width:100%; min-height:120px; padding:12px; border:1px solid #c9c9c9; border-radius:8px; color:#000; background:#fff; font:inherit; line-height:1.6; resize:vertical; }
+
+.smallTable .wideTable { min-width:480px; }

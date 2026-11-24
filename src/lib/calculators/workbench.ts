@@ -1,16 +1,18 @@
 import { calculatePip } from "./pip";
-import { pipScenarioInputs, marginScenarioInputs, profitScenarioInputs, riskScenarioInputs, defaultRiskScenario, defaultBreakEvenScenario, breakEvenScenarioInputs, defaultSwapScenario, swapScenarioInputs, defaultMarginScenario, defaultPipScenario, defaultProfitScenario, type TradeScenario } from "./trade-scenario";
+import { pipScenarioInputs, marginScenarioInputs, profitScenarioInputs, riskScenarioInputs, defaultRiskScenario, defaultBreakEvenScenario, breakEvenScenarioInputs, defaultSwapScenario, swapScenarioInputs, defaultConverterScenario, converterScenarioInputs, defaultMarginScenario, defaultPipScenario, defaultProfitScenario, type TradeScenario } from "./trade-scenario";
 import { cash, quantity, D } from "./precision";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 import { calculateMargin } from "./margin";
 import { calculateProfit } from "./profit";
+import { convertLots } from "./lot-converter";
+import { resolveConversion as currencyConversion } from "./exchange-rates";
 import { calculateSwap } from "./swap";
 import { calculateBreakEven } from "./break-even";
 import { calculateRiskReward } from "./risk-reward";
 
-export type WorkbenchKind = "pip" | "margin" | "profit" | "risk" | "breakeven" | "swap";
-export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario, profit: defaultProfitScenario, risk: defaultRiskScenario, breakeven: defaultBreakEvenScenario, swap: defaultSwapScenario };
-export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator", profit: "/calculators/forex-profit-calculator", risk: "/calculators/forex-risk-reward-calculator", breakeven: "/calculators/forex-break-even-calculator", swap: "/calculators/forex-swap-calculator" };
+export type WorkbenchKind = "pip" | "margin" | "profit" | "risk" | "breakeven" | "swap" | "converter";
+export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario, profit: defaultProfitScenario, risk: defaultRiskScenario, breakeven: defaultBreakEvenScenario, swap: defaultSwapScenario, converter: defaultConverterScenario };
+export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator", profit: "/calculators/forex-profit-calculator", risk: "/calculators/forex-risk-reward-calculator", breakeven: "/calculators/forex-break-even-calculator", swap: "/calculators/forex-swap-calculator", converter: "/calculators/forex-lot-size-converter" };
 export type WorkbenchOutput = {
   title: string; value: string; summary: string; conversion: ReturnType<typeof resolveConversion>;
   metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[];
@@ -24,6 +26,17 @@ const exposureMoney = (value: Parameters<typeof cash>[0], currency: string) => {
 };
 
 export function workbenchResult(kind: WorkbenchKind, values: TradeScenario, rates: ExchangeRate[] = []): WorkbenchOutput {
+  if (kind === "converter") {
+    const input=converterScenarioInputs(values,rates);const r=convertLots(input);
+    const q=(v:Parameters<typeof quantity>[0])=>new D(v).isZero()||!new D(v).toDecimalPlaces(8).isZero()?quantity(v):new D(v).toExponential(6);
+    const rows=[["Configured platform lots",q(r.lots)],["Conventional standard lots",q(r.standard)],["Mini-lot equivalents",q(r.mini)],["Micro-lot equivalents",q(r.micro)],["Nano-lot equivalents",q(r.nano)]];
+    return {title:"Exact converted base-currency volume",value:`${q(r.units)} ${input.instrument.base}`,summary:`${values.volume} ${values.inputUnit} input · ${values.contract} base units per configured lot`,conversion:r.pip?.conversion??currencyConversion(input.account,input.account,[]),transfer:{...values,volumeMode:"units",volume:r.units.toString(),entry:"",price:""},
+      metrics:[...(r.pip?[["Estimated account pip value",exposureMoney(r.pip.pipValue,input.account)]]:[]),...(r.grid?[["Entered volume-grid check",r.grid.compatible?"Compatible with entered limits":"Incompatible with entered limits"]]:[])],
+      tables:[{title:"Volume equivalents · unchanged exposure",headers:["Volume convention","Equivalent quantity"],rows},...(r.grid?[{title:"Entered grid alternatives · different volumes",headers:["Alternative","Configured lots","Base units"],rows:[["At or below input",r.grid.lower===null?"No positive permitted amount":q(r.grid.lower),r.grid.lower===null?"—":q(r.grid.lower.mul(values.contract))],["At or above input",r.grid.upper===null?"None within maximum":q(r.grid.upper),r.grid.upper===null?"—":q(r.grid.upper.mul(values.contract))]]}]:[])],
+      steps:[`Converted quantity = ${q(r.units)} ${input.instrument.base} base units.`,`${q(r.units)} ÷ 100,000 = ${q(r.standard)} conventional standard lots.`,`${q(r.units)} ÷ ${values.contract} = ${q(r.lots)} configured platform lots.`,...(r.pip?[`${q(r.units)} × ${values.pipSize} pip size × ${quantity(r.pip.conversion.factor,12)} conversion = ${exposureMoney(r.pip.pipValue,input.account)} per pip.`]:[])],
+      warnings:[...(r.pipError?[`Volume conversion remains valid. Pip value is unavailable: ${r.pipError}`]:[]),"Conventional standard/mini/micro/nano equivalents are 100,000/10,000/1,000/100 base units. Editing platform contract size does not change those reference definitions.",...(r.grid?["Grid rules are entered assumptions, not verified broker permissions. The step is anchored at the entered minimum. Alternatives change exposure and are never substituted for your exact input."]:[]),"Units are not a deposit, margin requirement or maximum loss. The converter supports ordinary forex conventions and at most 1,000,000,000,000 base units. Verify other instruments separately."],
+    };
+  }
   if (kind === "swap") {
     const input = swapScenarioInputs(values, rates); const r = calculateSwap(input);
     return { title: r.total.lt(0) ? "Estimated financing charge" : r.total.gt(0) ? "Estimated financing credit" : "Estimated financing adjustment", value: cash(r.total, input.account), summary: `${input.direction === "buy" ? "Buy / long" : "Sell / short"} · ${quantity(r.units)} ${input.instrument.base} · ${quantity(r.financingDays)} financing-day multiplier`, conversion:r.conversion,
