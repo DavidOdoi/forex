@@ -10,8 +10,8 @@ export type MarginInputs = {
   snapshot?: { equity: Numeric; used: Numeric }; rates: ExchangeRate[];
 };
 
-export function marginAccountState(equityValue: Numeric, usedValue: Numeric) {
-  const equity = decimal(equityValue, "account equity", "0", "1000000000000");
+export function marginAccountState(equityValue: Numeric, usedValue: Numeric, options: { allowNegativeEquity?: boolean } = {}) {
+  const equity = decimal(equityValue, "account equity", options.allowNegativeEquity ? "-1000000000000" : "0", "1000000000000");
   const used = decimal(usedValue, "used margin", "0", "100000000000000000000000000000000000000000000000000");
   return { equity, used, free: equity.sub(used), level: used.isZero() ? null : equity.div(used).mul(100), insufficient: used.gt(equity) };
 }

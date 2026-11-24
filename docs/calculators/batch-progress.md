@@ -17,7 +17,7 @@ The Uganda mobile-money comparison was completed, tested (12 browser checks plus
 | 9 | Forex risk of ruin | Published and verified (`704be86`); supporting article: 1,773 words. |
 | 10 | Kelly criterion | Published and verified (`2a0dc57`); supporting article: 1,735 words. |
 | 11 | Fibonacci | Published and verified (`0dc6fd9`); supporting article: 1,743 words. |
-| 12 | Forex pivot points | Implemented and checked; publication in this commit. Supporting article: 1,791 words. |
+| 12 | Forex pivot points | Pushed as `33c47b3`; later notation/link edits leave 1,757 supporting words. |
 
 Original owner-supplied specifications and editorial drafts are retained in the execution workspace at `/workspace/calculator-briefs/batch-1.md`, `/workspace/calculator-briefs/batch-2.md` and `/workspace/calculator-briefs/batch-3.md`. Public implementation and verification notes are recorded in the calculator audit documents.
 
@@ -33,8 +33,8 @@ Owner-supplied brief: `/workspace/calculator-briefs/batch-5.md`. Complete, verif
 | --- | --- | --- |
 | 17 | Forex spread cost | Pushed as `b3e0d89`; 1,759 words, three FAQs, six numerical groups and eighteen browser/regression groups passed. |
 | 18 | Forex commission | Pushed as `90a76bd`; 1,683 words, three FAQs, eight commission numerical groups plus six spread regression groups, and nine browser/regression groups passed. |
-| 19 | Currency converter | Complete; 1,715 words, three FAQs, 36 numerical/service regression groups and eighteen browser/regression groups passed. Publication in this commit. |
-| 20 | Margin call and stop-out | Next |
+| 19 | Currency converter | Pushed as `f71a821`; 1,715 words, three FAQs, 36 numerical/service regression groups and eighteen browser/regression groups passed. |
+| 20 | Margin call and stop-out | Complete; 1,794 words, three FAQs, full suite of 104 numerical/service groups and 86 browser/crawl regressions passed. Publication in this commit. |
 
 ## Batches 6–8 received
 
@@ -42,7 +42,7 @@ Continue in numerical order, pushing each verified calculator independently. Ori
 
 | # | Calculator | Intended canonical path | Status |
 | --- | --- | --- | --- |
-| 21 | Forex take profit | `/calculators/forex-take-profit-calculator` | Queued |
+| 21 | Forex take profit | `/calculators/forex-take-profit-calculator` | Next after Batch 5 push |
 | 22 | Forex leverage | `/calculators/forex-leverage-calculator` | Queued |
 | 23 | Forex stop loss | `/calculators/forex-stop-loss-calculator` | Queued |
 | 24 | Forex drawdown | `/calculators/forex-drawdown-calculator` | Queued |
