@@ -22,9 +22,10 @@ function blockText(block, withImageCredits = true) {
     case "list": return block.items.map(rich).join(" ");
     case "heading": return block.text;
     case "table": return [...block.headers, ...block.rows.flat()].map(rich).join(" ");
+    case "infographic": return [block.kicker, block.title, ...block.items.flatMap(item => [item.label, item.value, item.detail]), rich(block.note), rich(block.sources)].join(" ");
     case "image": {
       const image = images.get(block.assetId);
-      return withImageCredits ? `${block.caption} ${image.creator} Source ${image.license}` : "";
+      return withImageCredits ? `${block.caption}${image.presentation === "illustration" && block.role !== "featured" ? " View full-size diagram" : ""} ${image.creator} Source ${image.license}` : "";
     }
     default: throw new Error(`Unsupported content block: ${block.type}`);
   }
@@ -38,6 +39,7 @@ function inlineParts(block) {
   if (block.type === "paragraph" || block.type === "callout") return block.content;
   if (block.type === "list") return block.items.flat();
   if (block.type === "table") return [...block.headers, ...block.rows.flat()].flat();
+  if (block.type === "infographic") return [...block.note, ...block.sources];
   return [];
 }
 function validInternalLink(href, current) {

@@ -8712,10 +8712,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "candlestick-anatomy",
         "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
+        "alt": "Bullish and bearish candlesticks labelled with their open, close, high and low prices",
+        "caption": "Open, close, high, low."
       },
       {
         "type": "heading",
@@ -9126,10 +9126,40 @@
         "text": "Match the Kenyan company before comparing brand names"
       },
       {
-        "type": "paragraph",
-        "content": [
+        "type": "infographic",
+        "id": "kenya-learning-visual",
+        "title": "Three details that must match",
+        "kicker": "Kenya · provider check",
+        "variant": "checklist",
+        "items": [
           {
-            "text": "A group may use different entities for different residents. Save the agreement identifying who holds your account, executes the contract and handles complaints. Do not accept a salesperson’s reassurance as a substitute for this written information."
+            "label": "Your agreement",
+            "value": "Legal entity",
+            "detail": "Save the exact company name that holds your account."
+          },
+          {
+            "label": "CMA register",
+            "value": "Licence scope",
+            "detail": "Check the company and the service it is licensed to provide."
+          },
+          {
+            "label": "Your account",
+            "value": "Contract terms",
+            "detail": "Identify who executes trades and handles complaints."
+          }
+        ],
+        "note": [
+          {
+            "text": "Match the written agreement to the register. A familiar brand name or a salesperson’s reassurance is not enough."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Further reading: "
+          },
+          {
+            "text": "CMA licensed online forex brokers",
+            "href": "https://licensees.cma.or.ke/licenses/5/"
           }
         ]
       },
@@ -9460,13 +9490,6 @@
             "text": "Keep your trading plan in one time standard. Kenya uses East Africa Time, while platform clocks can differ; do not assume a chart’s midnight or a broker’s daily financing cutoff is midnight in Nairobi."
           }
         ]
-      },
-      {
-        "type": "image",
-        "assetId": "mt5-chart",
-        "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
       },
       {
         "type": "heading",
@@ -9834,10 +9857,40 @@
         "text": "Separate a naira payment from regulatory permission"
       },
       {
-        "type": "paragraph",
-        "content": [
+        "type": "infographic",
+        "id": "nigeria-learning-visual",
+        "title": "Trace the money and the contract",
+        "kicker": "Nigeria · payment-route check",
+        "variant": "flow",
+        "items": [
           {
-            "text": "A local recipient or a payment processor may make a transfer look domestic while the trading contract is with an overseas company. Ask who receives the money, where the account is held and which company must repay a withdrawal. Keep all three answers together."
+            "label": "Before depositing",
+            "value": "Recipient",
+            "detail": "Who actually receives your money?"
+          },
+          {
+            "label": "Before trading",
+            "value": "Account location",
+            "detail": "Where is your trading account held?"
+          },
+          {
+            "label": "Before withdrawing",
+            "value": "Responsible company",
+            "detail": "Which legal entity owes the withdrawal?"
+          }
+        ],
+        "note": [
+          {
+            "text": "A local payment recipient does not establish permission for an offshore leveraged account. Keep the three answers together."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Further reading: "
+          },
+          {
+            "text": "SEC Nigeria operator register",
+            "href": "https://sec.gov.ng/for-investors/find-a-registered-operator/"
           }
         ]
       },
@@ -10168,13 +10221,6 @@
             "text": "Nigeria’s local time is not necessarily the trading server’s time. Record the timezone beside economic-calendar events and financing cutoffs so that a different platform clock does not change the meaning of your journal."
           }
         ]
-      },
-      {
-        "type": "image",
-        "assetId": "mt5-chart",
-        "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
       },
       {
         "type": "heading",
@@ -10542,10 +10588,40 @@
         "text": "Follow the contract beyond the local introducer"
       },
       {
-        "type": "paragraph",
-        "content": [
+        "type": "infographic",
+        "id": "uganda-learning-visual",
+        "title": "Know who is doing each job",
+        "kicker": "Uganda · service check",
+        "variant": "checklist",
+        "items": [
           {
-            "text": "A trainer, local agent or community group may be different from the company issuing trades. A promise that someone else will handle the account adds a separate management question. Verify that arrangement instead of assuming the broker’s claimed licence covers the agent."
+            "label": "Introducer",
+            "value": "Trainer or agent",
+            "detail": "The person introducing you may not issue the trading contract."
+          },
+          {
+            "label": "Trading contract",
+            "value": "Issuing company",
+            "detail": "Verify the entity responsible for trades and your account."
+          },
+          {
+            "label": "Account access",
+            "value": "Account manager",
+            "detail": "Permission to manage your account is a separate question."
+          }
+        ],
+        "note": [
+          {
+            "text": "Do not assume a broker’s claimed licence also covers a local agent or an account-management service."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Further reading: "
+          },
+          {
+            "text": "CMA Uganda licensed firms",
+            "href": "https://cmauganda.co.ug/cma-licensed-firms/"
           }
         ]
       },
@@ -10876,13 +10952,6 @@
             "text": "Uganda uses East Africa Time. Your economic calendar or server may show another timezone; confirm it before recording entries, news announcements or overnight-cost cutoffs."
           }
         ]
-      },
-      {
-        "type": "image",
-        "assetId": "mt5-chart",
-        "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
       },
       {
         "type": "heading",
@@ -11250,10 +11319,45 @@
         "text": "Read the scope of a foreign-exchange notice"
       },
       {
-        "type": "paragraph",
-        "content": [
+        "type": "infographic",
+        "id": "ghana-learning-visual",
+        "title": "Describe the service before asking for guidance",
+        "kicker": "Ghana · four questions to prepare",
+        "variant": "checklist",
+        "items": [
           {
-            "text": "A rule about exchanging currency or pricing local goods does not automatically answer a question about an OTC investment contract. Describe the proposed service precisely when requesting guidance: own-account trading, leverage, offshore counterparty and intended transfer purpose."
+            "label": "Product",
+            "value": "Currency or CFD?",
+            "detail": "Are you exchanging money or trading a price-difference contract?"
+          },
+          {
+            "label": "Exposure",
+            "value": "Leveraged?",
+            "detail": "Will a small deposit control a larger position?"
+          },
+          {
+            "label": "Counterparty",
+            "value": "Which entity?",
+            "detail": "Name the company and the country issuing the contract."
+          },
+          {
+            "label": "Payment",
+            "value": "What purpose?",
+            "detail": "Describe the intended transfer and own-account trading."
+          }
+        ],
+        "note": [
+          {
+            "text": "A notice about currency exchange does not automatically answer an offshore CFD question."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Further reading: "
+          },
+          {
+            "text": "Bank of Ghana FX-broker notice",
+            "href": "https://www.bog.gov.gh/news/authorised-fx-brokers-and-cross-border-payments-and-financial-services/"
           }
         ]
       },
@@ -11584,13 +11688,6 @@
             "text": "Use an economic calendar with its timezone visible. Ghana’s local clock and a platform’s server clock may differ, particularly when overseas markets change daylight-saving time."
           }
         ]
-      },
-      {
-        "type": "image",
-        "assetId": "mt5-chart",
-        "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
       },
       {
         "type": "heading",
@@ -12301,23 +12398,46 @@
         ]
       },
       {
-        "type": "image",
-        "assetId": "mt5-chart",
-        "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
-      },
-      {
         "type": "heading",
         "level": 2,
         "id": "risk-budget",
         "text": "Set a cash loss budget before sizing"
       },
       {
-        "type": "paragraph",
-        "content": [
+        "type": "infographic",
+        "id": "zambia-learning-visual",
+        "title": "Turn a percentage into a cash limit",
+        "kicker": "Zambia · hypothetical budgeting",
+        "variant": "equation",
+        "items": [
           {
-            "text": "Illustrative budgeting only: on ZMW 10,000, a 1% planned loss budget is ZMW 100. This is a teaching example, not a suitable deposit recommendation or proof that a particular account is available. A stop can slip, so actual losses can exceed the plan."
+            "label": "Example capital",
+            "value": "ZMW 10,000",
+            "detail": "Teaching amount, not a suggested deposit."
+          },
+          {
+            "label": "Example planned risk",
+            "value": "1%",
+            "detail": "Illustrative percentage, not personal advice."
+          },
+          {
+            "label": "Planned loss budget",
+            "value": "ZMW 100",
+            "detail": "Include trading fees when sizing."
+          }
+        ],
+        "note": [
+          {
+            "text": "ZMW 10,000 × 1% = ZMW 100. Slippage can push losses beyond this budget. No broker or account availability is implied."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Further reading: "
+          },
+          {
+            "text": "MoneySmart: forex risks",
+            "href": "https://moneysmart.gov.au/complex-investment-products/forex-trading"
           }
         ]
       },
@@ -12673,10 +12793,40 @@
         "text": "Track three currencies, not one advertised balance"
       },
       {
-        "type": "paragraph",
-        "content": [
+        "type": "infographic",
+        "id": "zimbabwe-learning-visual",
+        "title": "Confirm all three currencies",
+        "kicker": "Zimbabwe · conversion checklist",
+        "variant": "flow",
+        "items": [
           {
-            "text": "The money you deposit, the currency your account reports and the currency you receive on withdrawal may differ. Ask for each explicitly. A platform displaying a USD balance does not by itself establish local payment permission or what can be withdrawn."
+            "label": "Money going in",
+            "value": "Deposit currency",
+            "detail": "What currency leaves your payment account?"
+          },
+          {
+            "label": "Inside the platform",
+            "value": "Account currency",
+            "detail": "In what currency is your balance reported?"
+          },
+          {
+            "label": "Money coming back",
+            "value": "Withdrawal currency",
+            "detail": "What currency will you receive, and what conversion applies?"
+          }
+        ],
+        "note": [
+          {
+            "text": "A displayed USD balance does not establish payment permission or the amount and currency you can withdraw. Confirm these separately."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Further reading: "
+          },
+          {
+            "text": "RBZ foreign-exchange guidelines",
+            "href": "https://www.rbz.co.zw/documents/Regulations_Acts/2025/Guidelines_to_Authorised_Dealers_and_their_Clients_on_Foreign_Exchange_Transactions_8_Aug_2025_FXD4.pdf"
           }
         ]
       },
@@ -13007,13 +13157,6 @@
             "text": "Use the account’s stated base currency for your journal. The example below is deliberately in USD as a mathematical illustration; it does not claim that every Zimbabwean resident can fund a USD margin account."
           }
         ]
-      },
-      {
-        "type": "image",
-        "assetId": "mt5-chart",
-        "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
       },
       {
         "type": "heading",
@@ -13525,6 +13668,39 @@
         ]
       },
       {
+        "type": "infographic",
+        "id": "botswana-learning-visual",
+        "title": "Read a currency pair in two parts",
+        "kicker": "Botswana · understand the quote",
+        "variant": "quote",
+        "items": [
+          {
+            "label": "EUR / USD",
+            "value": "EUR = base",
+            "detail": "The currency being priced: one euro."
+          },
+          {
+            "label": "EUR / USD",
+            "value": "USD = quote",
+            "detail": "The currency used to express that price: US dollars."
+          }
+        ],
+        "note": [
+          {
+            "text": "EUR/USD 1.1000 means US$1.10 per euro in this example. It is not a live rate or a quote for pula. The pair differs from your account currency."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Further reading: "
+          },
+          {
+            "text": "MoneySmart forex-trading guide",
+            "href": "https://moneysmart.gov.au/complex-investment-products/forex-trading"
+          }
+        ]
+      },
+      {
         "type": "paragraph",
         "content": [
           {
@@ -13715,13 +13891,6 @@
             "text": "Keep your trading journal in the actual account currency and your household budget in BWP. Reconcile the two using real transaction records instead of applying today’s exchange rate to every historical payment."
           }
         ]
-      },
-      {
-        "type": "image",
-        "assetId": "mt5-chart",
-        "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
       },
       {
         "type": "heading",
@@ -14094,17 +14263,35 @@
         "text": "Keep retail and wholesale treatment separate"
       },
       {
-        "type": "paragraph",
-        "content": [
+        "type": "infographic",
+        "id": "australia-learning-visual",
+        "title": "Understand the client classification",
+        "kicker": "Australia · CFD protections",
+        "variant": "comparison",
+        "items": [
           {
-            "text": "MoneySmart warns that "
+            "label": "Retail client",
+            "value": "Check protections",
+            "detail": "Read the applicable retail CFD protections and dispute-resolution arrangements."
           },
           {
-            "text": "wholesale CFD clients can lose protections",
+            "label": "Wholesale client",
+            "value": "Check what changes",
+            "detail": "MoneySmart warns that wholesale clients can lose protections, including negative-balance protection and access to external dispute resolution."
+          }
+        ],
+        "note": [
+          {
+            "text": "Higher advertised leverage is not a reason to accept a classification you do not understand. Confirm the Australian legal entity and your client terms."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Further reading: "
+          },
+          {
+            "text": "MoneySmart’s CFD guidance",
             "href": "https://moneysmart.gov.au/complex-investment-products/contracts-for-difference-cfds"
-          },
-          {
-            "text": ", including features such as negative-balance protection and access to external dispute resolution. Higher advertised leverage is not a reason to accept a classification you do not understand."
           }
         ]
       },
@@ -14435,13 +14622,6 @@
             "text": "Australia has multiple timezones and daylight-saving arrangements. Check the calendar’s selected city or UTC setting and your platform’s server time; a fixed Sydney, Perth or London-opening conversion is not reliable throughout the year."
           }
         ]
-      },
-      {
-        "type": "image",
-        "assetId": "mt5-chart",
-        "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
       },
       {
         "type": "heading",
@@ -14809,10 +14989,40 @@
         "text": "Check venue and purpose, not just the currency symbol"
       },
       {
-        "type": "paragraph",
-        "content": [
+        "type": "infographic",
+        "id": "india-learning-visual",
+        "title": "Check three things before a chart",
+        "kicker": "India · eligibility checks",
+        "variant": "checklist",
+        "items": [
           {
-            "text": "The same currency symbol can appear in different legal products. Establish the permitted entity, execution venue and purpose before analysing a chart. For INR-related contracts, ask specifically about applicable underlying-exposure requirements; do not treat an old pair list or a broker login as eligibility."
+            "label": "Who",
+            "value": "Authorised entity",
+            "detail": "Identify the person or company permitted to provide the service."
+          },
+          {
+            "label": "Where",
+            "value": "Permitted venue",
+            "detail": "Check the execution platform or recognised exchange."
+          },
+          {
+            "label": "Why",
+            "value": "Permitted purpose",
+            "detail": "Check the purpose and any underlying-exposure requirements."
+          }
+        ],
+        "note": [
+          {
+            "text": "A currency symbol, broker login or access to MT4/MT5 does not establish eligibility. LRS does not permit remitting overseas forex margin."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Further reading: "
+          },
+          {
+            "text": "RBI Forex Transactions FAQ",
+            "href": "https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=3347"
           }
         ]
       },
@@ -15109,13 +15319,6 @@
             "text": "Keep exchange contract specifications beside your practice journal. Expiry, settlement method and tick value can matter as much as a chart signal. A generic 100,000-unit FX lot is not a safe default for an exchange contract."
           }
         ]
-      },
-      {
-        "type": "image",
-        "assetId": "mt5-chart",
-        "role": "inline-1",
-        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD chart, not live prices."
       },
       {
         "type": "heading",

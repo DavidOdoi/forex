@@ -494,5 +494,22 @@
     "objectPosition": "center 35%",
     "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/98/Trezor_-_Hard_Wallet-_Cold_Storage_for_Cryptocurrency.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/98/Trezor_-_Hard_Wallet-_Cold_Storage_for_Cryptocurrency.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  {
+    "id": "candlestick-anatomy",
+    "title": "Candlestick chart scheme 03-en.svg",
+    "src": "/images/insights/candlestick-anatomy-open-high-low-close.png",
+    "width": 1280,
+    "height": 854,
+    "creator": "Probe-meteo.com",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Candlestick_chart_scheme_03-en.svg",
+    "modifications": "Source-provided PNG rendering stored unchanged. No retouching or cropping; educational illustration, not a trading signal.",
+    "sourceRetrievedAt": "2026-11-24",
+    "sha256": "8f611153f3b20cbd0830b30b4291ad78ae9455f3c452152abd5f9475375b4f78",
+    "presentation": "illustration",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Candlestick_chart_scheme_03-en.svg/1280px-Candlestick_chart_scheme_03-en.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Candlestick_chart_scheme_03-en.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   }
 ]

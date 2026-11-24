@@ -14,6 +14,7 @@ function editorialParts(block: InsightBlock) {
   if (block.type === "paragraph" || block.type === "callout") return block.content;
   if (block.type === "list") return block.items.flat();
   if (block.type === "table") return [...block.headers, ...block.rows.flat()].flat();
+  if (block.type === "infographic") return [...block.note, ...block.sources];
   if (block.type === "quick-answer") return [...linkPhrases(block.answer, block.anchors), ...block.points.flatMap(point => linkPhrases(point, block.anchors)), ...(block.table ? [...block.table.headers, ...block.table.rows.flat()].flat() : [])];
   return [];
 }
@@ -82,7 +83,7 @@ test("published guides retain complete copy, evidence links, real image files an
   }
 });
 
-test("country guides have distinct local covers and retain the educational chart in the demo section", () => {
+test("country guides have distinct covers and contextual educational visuals instead of the repeated chart", () => {
   expect(forexCountryGuides).toHaveLength(10);
   const covers = forexCountryGuides.map(article => featuredImage(article)!);
   expect(new Set(covers.map(image => image.src)).size).toBe(10);
@@ -92,10 +93,18 @@ test("country guides have distinct local covers and retain the educational chart
     expect(image.id).toBe(`country-${country}`);
     expect(image.presentation).toBe("photo");
     expect(image.alt.toLowerCase()).toContain(country.replaceAll("-", " "));
-    const chartIndex = article.blocks.findIndex(block => block.type === "image" && block.assetId === "mt5-chart");
-    expect(chartIndex).toBeGreaterThan(2);
-    const previousHeading = article.blocks.slice(0, chartIndex).findLast(block => block.type === "heading" && block.level === 2);
-    expect(previousHeading?.type === "heading" && previousHeading.text.toLowerCase()).toContain("demo");
+    expect(article.blocks.some(block => block.type === "image" && block.assetId === "mt5-chart")).toBe(false);
+    if (country === "south-africa") {
+      expect(article.blocks.some(block => block.type === "image" && block.assetId === "candlestick-anatomy")).toBe(true);
+    } else {
+      const visual = article.blocks.find(block => block.type === "infographic");
+      expect(visual?.type).toBe("infographic");
+      if (visual?.type === "infographic") {
+        expect(visual.id).toContain(country);
+        expect(visual.items.length).toBeGreaterThanOrEqual(2);
+        expect(visual.sources.some(part => part.href)).toBe(true);
+      }
+    }
   }
   expect(featuredImage(insightGuides.find(article => article.slug === "how-to-send-usdc")!)?.id).toBe("usdc-logo");
   expect(featuredImage(insightGuides.find(article => article.slug === "crypto-wallet-security-guide")!)?.id).toBe("hardware-wallet");
@@ -155,6 +164,8 @@ test("South Africa guide is published with seven steps, real links and no editor
   await expect(page.locator('.insight-disclaimer')).toContainText('No affiliate links are used');
   await expect(page.locator('a[href="https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=financial-services-providers"]').first()).toBeVisible();
   await expect(page.locator('.insight-content .insight-context-link[href="/reviews"]')).toHaveCount(2);
+  await expect(page.locator('.insight-diagram-full-size')).toHaveAttribute("href", "/images/insights/candlestick-anatomy-open-high-low-close.png");
+  await expect(page.locator('.insight-diagram-full-size')).toHaveAttribute("target", "_blank");
   await page.goto('/insights');
   await expect(page.locator(`[data-insight-card] h3 a[href="/insights/${slug}"]`)).toBeVisible();
 });
@@ -186,6 +197,14 @@ test("all published article URLs render essential content, images, citations and
       await expect(quickAnswer.locator("thead th")).toHaveCount(2);
       await expect(page.locator("figure.insight-figure img")).toHaveCount(article.blocks.filter(block => block.type === "image").length);
       await expect(page.locator("figure .insight-image-credit")).toHaveCount(article.blocks.filter(block => block.type === "image").length);
+      const learningVisuals = article.blocks.filter(block => block.type === "infographic");
+      await expect(page.locator("[data-learning-visual]")).toHaveCount(learningVisuals.length);
+      for (const visual of learningVisuals) {
+        const panel = page.locator(`[data-learning-visual="${visual.id}"]`);
+        await expect(panel.getByRole("heading", { name: visual.title, exact: true })).toHaveCount(1);
+        await expect(panel.locator("ol > li")).toHaveCount(visual.items.length);
+        for (const source of visual.sources.filter(part => part.href)) await expect(panel.getByRole("link", { name: source.text, exact: true })).toHaveAttribute("href", source.href!);
+      }
       await page.locator("figure img").evaluateAll(images => images.forEach(image => { (image as HTMLImageElement).loading = "eager"; }));
       await expect.poll(() => page.locator("figure img").evaluateAll(images => images.every(image => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0))).toBe(true);
       const graph = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"];
@@ -270,6 +289,14 @@ test("guide navigation, tables, image credits and gallery fit desktop and small 
   await page.goto("/insights");
   await page.locator('[data-insight-card] h3 a[href="/insights/auto-trading"]').click();
   await expect(page.locator("h1")).toHaveText(insightGuides.find(article => article.slug === "auto-trading")!.title);
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    for (const country of ["zambia", "kenya", "botswana", "australia"]) {
+      await page.goto(`/insights/how-to-start-forex-trading-in-${country}`);
+      await page.locator("[data-learning-visual]").scrollIntoViewIfNeeded();
+      await page.screenshot({ path: `test-results/${country}-learning-visual-${width}.png` });
+    }
+  }
   expect(errors).toEqual([]);
 });
 

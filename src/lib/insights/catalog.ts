@@ -3,7 +3,18 @@ import imageData from "@/data/insights/images.json";
 
 export type RichText = { text: string; href?: string }[];
 export type InsightSummaryTable = { caption: string; headers: RichText[]; rows: RichText[][] };
+export type InsightInfographic = {
+  type: "infographic";
+  id: string;
+  title: string;
+  kicker: string;
+  variant: "checklist" | "flow" | "equation" | "comparison" | "quote";
+  items: { label: string; value: string; detail: string }[];
+  note: RichText;
+  sources: RichText;
+};
 export type InsightBlock =
+  | InsightInfographic
   | { type: "paragraph"; content: RichText }
   | { type: "quick-answer"; id: string; title: string; answer: string; points: string[]; ordered?: boolean; anchors?: { text: string; href: string }[]; table?: InsightSummaryTable }
   | { type: "callout"; title: string; content: RichText }
@@ -80,9 +91,10 @@ export function articleText(article: InsightArticle) {
       case "list": return block.items.map(rich).join("\n");
       case "heading": return block.text;
       case "table": return [...block.headers, ...block.rows.flat()].map(rich).join(" ");
+      case "infographic": return [block.kicker, block.title, ...block.items.flatMap(item => [item.label, item.value, item.detail]), rich(block.note), rich(block.sources)].join("\n");
       case "image": {
         const image = getInsightImage(block.assetId);
-        return `${block.caption} ${image.creator} Source ${image.license}`;
+        return `${block.caption}${image.presentation === "illustration" && block.role !== "featured" ? " View full-size diagram" : ""} ${image.creator} Source ${image.license}`;
       }
     }
   }), "About the author", article.authorBio, "Disclaimer", article.disclaimer].join("\n\n");
