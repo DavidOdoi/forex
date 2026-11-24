@@ -1,3 +1,4 @@
+import { propDrawdownWorkbench, propDrawdownFields, propDrawdownResult } from "./prop-drawdown-workbench";
 import { calculateSpread } from "./spread";
 import { calculateCommission } from "./commission";
 import { calculateCurrency } from "./currency-converter";
@@ -12,11 +13,12 @@ import { cash, quantity, decimal } from "./precision";
 import { defaultPipScenario, scenarioInstrument, scenarioRates, type TradeScenario } from "./trade-scenario";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 
-export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown";
+export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown";
 export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "date" | "textarea" | "csv"; options?: { value: string; label: string }[] };
 export type CostResult = { title: string; value: string; summary: string; metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[]; steps: string[]; warnings: string[]; conversions: ReturnType<typeof resolveConversion>[]; references?: { label: string; href: string }[]; levels?: { label: string; price: string; position: number }[]; bars?: { label: string; value: string; ratio: number }[]; barsCaption?: string; chart?: { title: string; axisLabel: string; points: { x: number; label: string; value: number; peak: number }[]; caption: string } };
 export type CostDefinition = { path: string; title: string; note: string; defaults: TradeScenario; privateFields?: string[] };
 export const costDefinitions: Record<CostKind, CostDefinition> = {
+  propdrawdown: propDrawdownWorkbench,
   drawdown: drawdownWorkbench,
   stoploss: stopLossWorkbench,
   leverage: leverageWorkbench,
@@ -30,7 +32,7 @@ const options = (values: readonly string[]) => values.map(value => ({ value, lab
 const choice = (name: string, label: string, rows: string[][], help?: string, advanced = false): CostField => ({ name, label, options: rows.map(([value, label]) => ({ value, label })), help, advanced });
 const number = (name: string, label: string, help?: string, advanced = false): CostField => ({ name, label, help, advanced });
 export function costConversionFrom(kind: CostKind, values: TradeScenario): AccountCurrency {
-  if (kind === "drawdown") return values.account as AccountCurrency;
+  if (kind === "drawdown" || kind === "propdrawdown") return values.account as AccountCurrency;
   if (kind === "margincall") return values.account as AccountCurrency;
   if (kind === "leverage") return leverageFrom(values);
   if (kind === "currency") return values.source as AccountCurrency;
@@ -80,6 +82,7 @@ function commissionFields(values: TradeScenario): CostField[] {
   ];
 }
 export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
+  if (kind === "propdrawdown") return propDrawdownFields(values);
   if (kind === "drawdown") return drawdownFields(values);
   if (kind === "margincall") return marginCallFields(values);
   const fields: CostField[] = kind === "stoploss" ? stopLossFields(values) : kind === "leverage" ? leverageFields(values) : kind === "takeprofit" ? takeProfitFields(values) : kind === "currency" ? currencyFields(values) : kind === "commission" ? commissionFields(values) : [
@@ -132,6 +135,7 @@ export function costResult(kind: CostKind, values: TradeScenario, reference: Exc
   if (kind === "stoploss") return stopLossResult(values, reference);
   if (kind === "leverage") return leverageResult(values, reference);
   if (kind === "takeprofit") return takeProfitResult(values, reference);
+  if (kind === "propdrawdown") return propDrawdownResult(values);
   if (kind === "drawdown") return drawdownResult(values);
   if (kind === "margincall") return marginCallResult(values);
   if (kind === "currency") return currencyResult(values, reference);
