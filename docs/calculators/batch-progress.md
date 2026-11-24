@@ -32,9 +32,9 @@ Owner-supplied brief: `/workspace/calculator-briefs/batch-5.md`. Complete, verif
 | # | Calculator | Status |
 | --- | --- | --- |
 | 17 | Forex spread cost | Pushed as `b3e0d89`; 1,759 words, three FAQs, six numerical groups and eighteen browser/regression groups passed. |
-| 18 | Forex commission | Complete; 1,683 words, three FAQs, eight commission numerical groups plus six spread regression groups, and nine browser/regression groups passed. Publication in this commit. |
-| 19 | Currency converter | Next |
-| 20 | Margin call and stop-out | Queued |
+| 18 | Forex commission | Pushed as `90a76bd`; 1,683 words, three FAQs, eight commission numerical groups plus six spread regression groups, and nine browser/regression groups passed. |
+| 19 | Currency converter | Complete; 1,715 words, three FAQs, 36 numerical/service regression groups and eighteen browser/regression groups passed. Publication in this commit. |
+| 20 | Margin call and stop-out | Next |
 
 ## Batches 6–8 received
 

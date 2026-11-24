@@ -1,15 +1,17 @@
 import { calculateSpread } from "./spread";
 import { calculateCommission } from "./commission";
+import { calculateCurrency } from "./currency-converter";
 import { accountCurrencies, conventionalInstrument, isPair, type AccountCurrency } from "./instruments";
 import { pairCodes, CalculationError } from "./forex";
 import { cash, quantity } from "./precision";
 import { defaultPipScenario, scenarioInstrument, scenarioRates, type TradeScenario } from "./trade-scenario";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 
-export type CostKind = "spread" | "commission";
-export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "textarea"; options?: { value: string; label: string }[] };
+export type CostKind = "spread" | "commission" | "currency";
+export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "date" | "textarea"; options?: { value: string; label: string }[] };
 export type CostResult = { title: string; value: string; summary: string; metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[]; steps: string[]; warnings: string[]; conversions: ReturnType<typeof resolveConversion>[] };
 export const costDefinitions = {
+  currency: { path: "/calculators/currency-converter", title: "Currency conversion, provider rates and fees", note: "The starting USD/UGX rate is a manual illustration, not a current quote. Sell-source conversions use direct bid or inverse ask when both sides are entered. Dated references are informational, not executable retail rates; currency and historical coverage vary.", defaults: { ...defaultPipScenario, source: "USD", account: "UGX", amount: "100", rateDirection: "direct", rate: "3700", providerMode: "reference", providerRate: "", reduction: "0", feeBasis: "target", feePercent: "0", fixedFee: "0", reportedReceived: "", historyDate: "2025-01-20" } },
   commission: { path: "/calculators/forex-commission-calculator", title: "Commission schedule and executed-order workspace", note: "Rates below are hypothetical fee assumptions, not a broker schedule. Select the fee basis and denomination. Each custom row represents one executed order; partial fills inside one order do not automatically create separate minimum charges.", defaults: { ...defaultPipScenario, volume: "0.2", feeCurrency: "USD", commissionMode: "lot-side", entryRate: "3.5", exitRate: "", minimumFee: "0", feeLotUnits: "100000", billing: "split", notionalBasis: "quote", entryPrice: "1.1000", exitPrice: "1.1050", scope: "roundtrip", ordersEnabled: "no", orders: "entry,1,1.1000\nexit,0.4,1.1050\nexit,0.6,1.1080", feeDecimals: "", paid: "0", repetitions: "1", pipEnabled: "yes", pipRate: "" } },
   spread: { path: "/calculators/forex-spread-cost-calculator", title: "Spread and transaction-cost workspace", note: "Enter a bid and ask from the same instrument and observation time. Starting quotes are hypothetical examples, not a live broker feed. A separate closing spread models half the opening plus half the closing spread around reference midpoints.", defaults: { ...defaultPipScenario, quoteBid: "1.10000", quoteAsk: "1.10012", quoteTime: "", commission: "0", closingSpread: "", treatment: "standalone" } },
 };
@@ -17,8 +19,17 @@ const options = (values: readonly string[]) => values.map(value => ({ value, lab
 const choice = (name: string, label: string, rows: string[][], help?: string, advanced = false): CostField => ({ name, label, options: rows.map(([value, label]) => ({ value, label })), help, advanced });
 const number = (name: string, label: string, help?: string, advanced = false): CostField => ({ name, label, help, advanced });
 export function costConversionFrom(kind: CostKind, values: TradeScenario): AccountCurrency {
+  if (kind === "currency") return values.source as AccountCurrency;
   const quote = isPair(values.pair) ? conventionalInstrument(values.pair).quote : "USD";
   return kind === "commission" ? (values.feeCurrency !== values.account ? values.feeCurrency as AccountCurrency : values.pipEnabled === "yes" ? quote : values.account as AccountCurrency) : quote;
+}
+function currencyFields(v: TradeScenario): CostField[] {
+  return [number("amount", "Amount to convert"), { name: "source", label: "Source currency", options: options(accountCurrencies) }, { name: "account", label: "Target currency", options: options(accountCurrencies) },
+    choice("providerMode", "Provider comparison", [["reference", "Use selected conversion quote"], ["rate", "Enter actual provider rate"], ["reduction", "Reduce target units received by a percentage"]]),
+    ...(v.providerMode === "rate" ? [number("providerRate", `Provider rate · ${v.account} per 1 ${v.source}`, "Use the rate for this transaction direction, not the reciprocal of a different retail quote.")] : v.providerMode === "reduction" ? [number("reduction", "Reduction in target units received (%)", "A stated scenario haircut to the selected rate; not an estimate of an unknown provider markup.")] : []),
+    choice("feeBasis", "Separate fees charged in", [["source", `Source currency · ${v.source} before conversion`], ["target", `Target currency · ${v.account} after conversion`]]), number("feePercent", "Separate percentage fee (%)"), number("fixedFee", `Fixed fee · ${v.feeBasis === "source" ? v.source : v.account}`, "Percentage fee is calculated first on the amount in the selected fee currency, then the fixed fee is added."),
+    number("reportedReceived", "Actually credited target amount (optional)", "For comparing an observed transaction with the estimate; no payment is initiated.", true),
+  ];
 }
 function commissionFields(values: TradeScenario): CostField[] {
   return [
@@ -39,7 +50,7 @@ function commissionFields(values: TradeScenario): CostField[] {
   ];
 }
 export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
-  const fields: CostField[] = kind === "commission" ? commissionFields(values) : [
+  const fields: CostField[] = kind === "currency" ? currencyFields(values) : kind === "commission" ? commissionFields(values) : [
     { name: "pair", label: "Currency pair", options: options(pairCodes) }, { name: "account", label: "Account currency", options: options(accountCurrencies) },
     choice("volumeMode", "Trade size unit", [["lots", "Configured lots"], ["units", "Base-currency units"]]), number("volume", "Trade size", "One conventional standard lot is 100,000 base-currency units; change contract size below if needed."),
     number("quoteBid", "Market bid"), number("quoteAsk", "Market ask"),
@@ -52,7 +63,8 @@ export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
   ];
   const from = costConversionFrom(kind, values);
   if (from !== values.account) {
-    fields.push(choice("rateSource", "Conversion rate source", [["manual", "Manual conversion quote"], ["daily", "Dated daily reference · not live"]], "This source converts costs; it does not supply the market bid or ask."));
+    fields.push(choice("rateSource", "Conversion rate source", [["manual", "Manual conversion quote"], ["daily", "Dated daily reference · not live"], ...(kind === "currency" ? [["historical", "Historical daily reference · choose date"]] : [])], kind === "currency" ? "Daily mode requests the previous completed UTC day. Observation dates and supported currencies vary by source." : "This source converts costs; it does not supply the market bid or ask."));
+    if (kind === "currency" && values.rateSource === "historical") fields.push({ name: "historyDate", label: "Requested historical reference date", type: "date", help: "The original observation can be earlier on weekends or holidays. Future dates are rejected; no current-rate substitution is made." });
     if (values.rateSource === "manual") {
       fields.push(choice("rateDirection", "Conversion quotation", [["direct", `${from}/${values.account}`], ["inverse", `${values.account}/${from}`], ["cross", "Two-leg cross conversion"]]));
       if (values.rateDirection === "cross") fields.push({ name: "crossCurrency", label: "Intermediate currency", options: options(accountCurrencies.filter(code => code !== from && code !== values.account)) });
@@ -74,13 +86,15 @@ export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
 export function changeCostField(_kind: CostKind, values: TradeScenario, name: string, value: string): TradeScenario {
   const next = { ...values, [name]: value };
   if (name === "pair" && isPair(value)) { const spec = conventionalInstrument(value); Object.assign(next, { contract: spec.contractSize, pipSize: spec.pipSize, precision: String(spec.pricePrecision), quoteBid: "", quoteAsk: "", quoteTime: "" }); }
-  if (["pair", "account", "feeCurrency", "rateDirection", "crossCurrency", "bidAsk"].includes(name)) Object.assign(next, { rate: "", bid: "", ask: "", crossRate: "", crossBid: "", crossAsk: "", pipRate: "" });
+  if (["pair", "account", "source", "feeCurrency", "rateDirection", "crossCurrency", "bidAsk"].includes(name)) Object.assign(next, { rate: "", bid: "", ask: "", crossRate: "", crossBid: "", crossAsk: "", pipRate: "" });
+  if (_kind === "currency" && ["source", "account"].includes(name)) Object.assign(next, { providerRate: "", providerMode: "reference", feePercent: "0", fixedFee: "0", reportedReceived: "" });
   if (name === "pair") Object.assign(next, { entryPrice: "", exitPrice: "" });
   const from = costConversionFrom(_kind, next);
   if (next.crossCurrency === from || next.crossCurrency === next.account) next.crossCurrency = accountCurrencies.find(code => code !== from && code !== next.account)!;
   return next;
 }
 export function costResult(kind: CostKind, values: TradeScenario, reference: ExchangeRate[] = []): CostResult {
+  if (kind === "currency") return currencyResult(values, reference);
   if (kind === "commission") return commissionResult(values, reference);
   if (kind !== "spread") throw new CalculationError("Choose a supported cost tool.");
   if (values.quoteTime && (!/^\d{4}-\d\d-\d\dT\d\d:\d\d$/.test(values.quoteTime) || !Number.isFinite(Date.parse(values.quoteTime + "Z")) || new Date(values.quoteTime + "Z").toISOString().slice(0, 16) !== values.quoteTime)) throw new CalculationError("Enter a valid quote observation time in UTC.");
@@ -91,6 +105,19 @@ export function costResult(kind: CostKind, values: TradeScenario, reference: Exc
     tables: [{ title: "Hypothetical spread sensitivity · unchanged volume and commission", headers: ["Quote multiple", "Spread", "Spread equivalent", "Additional combined cost"], rows: r.scenarios.map(row => [`${quantity(row.multiplier)}×`, `${quantity(row.pips)} pips`, cash(row.cost, values.account), cash(row.combined, values.account)]) }],
     steps: [`Spread = (${r.ask} − ${r.bid}) ÷ ${r.pipSize} = ${quantity(r.pips)} pips.`, `Quote-currency spread cost = ${r.difference} × ${quantity(r.units)} = ${cash(r.quoteCost, instrument.quote)}.`, ...r.conversion.steps, `Midpoint round-trip allocation = (opening ${quantity(r.pips)} + closing ${quantity(r.closePips)}) ÷ 2 = ${quantity(r.modeledPips)} pips.`, values.treatment === "embedded" ? "Spread is already in supplied executable fills: additional spread deduction is zero. The headline adds only the separately entered commission." : "Standalone headline adds the modeled spread and the entered total round-turn commission. It is a cost estimate, not trade P&L."],
     warnings: ["Market bid and ask are manual inputs, not a live or historical broker feed. Conversion references do not verify these prices.", "A quoted unchanged-market round trip costs one full spread; different opening/closing spreads use the explicitly stated midpoint model. Actual fills, slippage, financing and other fees can differ.", ...(values.treatment === "embedded" ? ["Spread equivalents remain informational. Do not deduct them again from a profit/loss result that already uses executable entry and exit prices."] : []), ...(r.conversion.stale ? ["The daily conversion reference is more than four days old. Verify a current rate before using this estimate."] : [])], conversions: [r.conversion] };
+}
+
+export function reverseCurrencyScenario(v: TradeScenario): TradeScenario {
+  return { ...v, source: v.account, account: v.source, rateDirection: v.rateDirection === "direct" ? "inverse" : v.rateDirection === "inverse" ? "direct" : "cross", ...(v.rateDirection === "cross" ? { rate: "", bid: "", ask: "", crossRate: "", crossBid: "", crossAsk: "" } : {}), providerMode: "reference", providerRate: "", reduction: "0", feePercent: "0", fixedFee: "0", reportedReceived: "" };
+}
+function currencyResult(v: TradeScenario, reference: ExchangeRate[]): CostResult {
+  const rates = scenarioRates({ ...v, rateSource: v.rateSource === "historical" ? "daily" : v.rateSource }, v.source as AccountCurrency, reference);
+  const r = calculateCurrency({ from: v.source as AccountCurrency, to: v.account as AccountCurrency, amount: v.amount, rates, mode: v.rateSource as "manual" | "daily" | "historical", historyDate: v.historyDate, providerMode: v.providerMode as "reference" | "rate" | "reduction", providerRate: v.providerRate, reduction: v.reduction, feeBasis: v.feeBasis as "source" | "target", feePercent: v.feePercent, fixedFee: v.fixedFee, ...(v.reportedReceived.trim() ? { reportedReceived: v.reportedReceived } : {}) });
+  return { title: "Estimated target amount after entered fees", value: cash(r.net, v.account), summary: `${cash(r.amount, v.source)} → ${v.account} · ${v.rateSource === "manual" ? "manual reference, not live pricing" : r.date ? `historical date requested: ${r.date}` : "dated daily reference; not live pricing"}`,
+    metrics: [["Selected rate · target units per source unit", quantity(r.conversion.factor, 12)], ["Mathematical inverse · source units per target unit", quantity(r.inverse, 12)], ["Reference amount before provider adjustments", cash(r.referenceGross, v.account)], ["Provider rate · target units per source unit", quantity(r.providerFactor, 12)], ["Provider amount before separate fees", cash(r.providerGross, v.account)], ["Separate fee", cash(r.fee, v.feeBasis === "source" ? v.source : v.account)], ["Reference less net amount", cash(r.difference, v.account)], ["Net effective rate", r.effectiveRate ? quantity(r.effectiveRate, 12) : "Undefined for a zero source amount"], ...(r.reportedRate ? [["Observed credited effective rate", quantity(r.reportedRate, 12)]] : [])],
+    tables: [{ title: "Conversion path and provenance", headers: ["Step", "Quotation", "Observation / source"], rows: r.conversion.identity ? [["No currency exchange", "1", "Same source and target currency"]] : r.conversion.rates.map((rate, i) => [String(i + 1), `${rate.base}/${rate.quote}: ${rate.bid !== undefined ? `${rate.bid} bid; ${rate.ask} ask` : rate.rate}`, rate.asOf ?? "Manual; no verified observation date"]) }],
+    steps: [...r.conversion.steps, `Reference amount = ${r.amount} × ${r.conversion.factor} = ${cash(r.referenceGross, v.account)}.`, `Provider amount = ${r.amount} × ${r.providerFactor} = ${cash(r.providerGross, v.account)}.`, v.feeBasis === "source" ? `Subtract ${v.feePercent}% of the source amount plus ${v.fixedFee} ${v.source}, then convert the remaining source funds.` : `Subtract ${v.feePercent}% of the provider target amount plus ${v.fixedFee} ${v.account} after conversion.`, "Amounts are not rounded between calculation steps. Display rounding does not impose a payment provider’s actual billing rules."],
+    warnings: ["Manual examples, daily references and historical observations are not live or guaranteed retail execution prices. An inverse rate is mathematical; an actual provider may quote different buying and selling prices.", "Provider comparison and fees are entered assumptions. Do not add the same embedded rate markup twice or assume a zero-fee offer uses a midpoint rate.", ...(r.date ? ["Historical mode shows the observations actually returned on or before the requested date. Weekends, holidays and provider coverage can produce earlier or different dates across the conversion legs."] : []), ...(r.conversion.stale ? [r.date ? "A historical observation is more than four days before the requested date; check its suitability for the transaction." : "A daily observation is more than four days old. Verify its date before relying on the estimate."] : []), "A conversion estimate does not establish lawful broker funding, payment availability or tax treatment. Confirm applicable rules and the provider’s final quote before transferring funds."], conversions: [r.conversion] };
 }
 
 function commissionResult(v: TradeScenario, reference: ExchangeRate[]): CostResult {

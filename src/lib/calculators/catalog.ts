@@ -1,6 +1,7 @@
 import { lotSizeDefinition } from "./lot-size-content";
 import { spreadDefinition } from "./spread-content";
 import { commissionDefinition } from "./commission-content";
+import { currencyDefinition } from "./currency-content";
 import { pipDefinition } from "./pip-content";
 import { pivotDefinition } from "./pivot-content";
 import { fibonacciDefinition } from "./fibonacci-content";
@@ -12,7 +13,7 @@ import { breakEvenDefinition } from "./break-even-content";
 import { riskDefinition } from "./risk-content";
 import { profitDefinition } from "./profit-content";
 import { marginDefinition } from "./margin-content";
-export type CalculatorKind = "forex" | "profit" | "compounding" | "position" | "pip" | "margin" | "risk" | "breakeven" | "swap" | "converter" | "ruin" | "kelly" | "fibonacci" | "pivot" | "spread" | "commission";
+export type CalculatorKind = "forex" | "profit" | "compounding" | "position" | "pip" | "margin" | "risk" | "breakeven" | "swap" | "converter" | "ruin" | "kelly" | "fibonacci" | "pivot" | "spread" | "commission" | "currency";
 export type Inline = { text: string; href?: string }[];
 export type ContentSection = { id: string; title: string; paragraphs: Inline[]; bullets?: Inline[]; formula?: string; table?: { headers: string[]; rows: string[][] } };
 export type CalculatorDefinition = {
@@ -27,6 +28,7 @@ const riskUrl = "https://www.cftc.gov/LearnAndProtect/forexfrauds";
 export const calculators: CalculatorDefinition[] = [
   spreadDefinition,
   commissionDefinition,
+  currencyDefinition,
   {
     slug: "forex-calculator", kind: "forex", keyword: "forex calculator",
     title: "Free Forex Calculator – Profit, Pips & Position Size", heading: "Forex Calculator",

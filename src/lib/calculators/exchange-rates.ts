@@ -10,6 +10,14 @@ export type ExchangeRate = {
 export type RateSnapshot = { rates: ExchangeRate[]; retrievedAt: string; provider: "Frankfurter"; sourceUrl: string; cached?: boolean };
 export const REFERENCE_MAX_AGE = 4 * 86400000;
 
+export function referenceRequestDate(value: string | null, now = Date.now()) {
+  const latest = new Date(now - 86400000).toISOString().slice(0, 10);
+  if (value === null) return latest;
+  const timestamp = Date.parse(value);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(timestamp) || new Date(timestamp).toISOString().slice(0, 10) !== value || value < "1999-01-04" || value > latest) throw new CalculationError("Choose a valid reference date from 1999-01-04 through the previous completed UTC day. Coverage varies by currency and provider.");
+  return value;
+}
+
 function edges(rate: ExchangeRate, now: number, valuation: "liability" | "asset") {
   if (!isAccountCurrency(rate.base) || !isAccountCurrency(rate.quote) || rate.base === rate.quote) throw new CalculationError("The conversion quote must connect two different supported currencies.");
   const paired = rate.bid !== undefined || rate.ask !== undefined;
