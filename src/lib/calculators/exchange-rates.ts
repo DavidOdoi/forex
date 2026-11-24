@@ -10,7 +10,7 @@ export type ExchangeRate = {
 export type RateSnapshot = { rates: ExchangeRate[]; retrievedAt: string; provider: "Frankfurter"; sourceUrl: string; cached?: boolean };
 export const REFERENCE_MAX_AGE = 4 * 86400000;
 
-function edges(rate: ExchangeRate, now: number) {
+function edges(rate: ExchangeRate, now: number, valuation: "liability" | "asset") {
   if (!isAccountCurrency(rate.base) || !isAccountCurrency(rate.quote) || rate.base === rate.quote) throw new CalculationError("The conversion quote must connect two different supported currencies.");
   const paired = rate.bid !== undefined || rate.ask !== undefined;
   const bid = decimal(paired ? rate.bid ?? "" : rate.rate ?? "", "conversion bid/rate", "0.000000000001", "1000000000");
@@ -22,18 +22,20 @@ function edges(rate: ExchangeRate, now: number) {
     if (!Number.isFinite(timestamp) || timestamp > now + 60000) throw new CalculationError("The reference-rate date is missing or invalid.");
     stale = now - timestamp > REFERENCE_MAX_AGE;
   } else if (rate.source !== "manual") throw new CalculationError("Choose a supported conversion-rate source.");
-  // Liability conversion: buy quote-currency funds to cover the planned loss.
-  // Direct uses ask; inverse uses 1/bid. Reference rates have no bid/ask spread.
+  const direct = valuation === "asset" ? bid : ask;
+  const inverse = valuation === "asset" ? ask : bid;
+  // Sell proceeds at direct bid / inverse ask; cover a liability at
+  // direct ask / inverse bid. Single reference rates have no spread.
   return [
-    { from: rate.base, to: rate.quote, factor: ask, label: `${rate.base}/${rate.quote} × ${ask.toString()}`, rate, stale },
-    { from: rate.quote, to: rate.base, factor: new D(1).div(bid), label: `${rate.base}/${rate.quote} ÷ ${bid.toString()}`, rate, stale },
+    { from: rate.base, to: rate.quote, factor: direct, label: `${rate.base}/${rate.quote} × ${direct.toString()}`, rate, stale },
+    { from: rate.quote, to: rate.base, factor: new D(1).div(inverse), label: `${rate.base}/${rate.quote} ÷ ${inverse.toString()}`, rate, stale },
   ];
 }
 
-export function resolveConversion(from: AccountCurrency, to: AccountCurrency, rates: ExchangeRate[], now = Date.now()) {
+export function resolveConversion(from: AccountCurrency, to: AccountCurrency, rates: ExchangeRate[], now = Date.now(), valuation: "liability" | "asset" = "liability") {
   if (!isAccountCurrency(from) || !isAccountCurrency(to)) throw new CalculationError("Choose supported currencies.");
   if (from === to) return { factor: new D(1), steps: [] as string[], rates: [] as ExchangeRate[], stale: false, identity: true };
-  const links = rates.flatMap(rate => edges(rate, now));
+  const links = rates.flatMap(rate => edges(rate, now, valuation));
   const queue: { at: AccountCurrency; factor: Decimal; steps: string[]; rates: ExchangeRate[]; stale: boolean; visited: AccountCurrency[] }[] = [{ at: from, factor: new D(1), steps: [], rates: [], stale: false, visited: [from] }];
   while (queue.length) {
     const path = queue.shift()!;

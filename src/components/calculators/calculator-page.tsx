@@ -17,7 +17,7 @@ function InlineText({ content }: { content: Inline }) {
 export function CalculatorPage({ tool }: { tool: CalculatorDefinition }) {
   const contents = [{ id: "calculator", title: "Calculator" }, { id: "how-to-use", title: "How to use it" }, ...tool.sections.map(section => ({ id: section.id, title: section.title })), { id: "calculator-faq", title: "Frequently asked questions" }];
   const toc = contents.map(section => <a key={section.id} href={`#${section.id}`}>{section.title}</a>);
-  return <main className={`${styles.page}${["position", "pip", "margin"].includes(tool.kind) ? ` ${lotStyles.page}` : ""}`}>
+  return <main className={`${styles.page}${["position", "pip", "margin", "profit"].includes(tool.kind) ? ` ${lotStyles.page}` : ""}`}>
     <div className={styles.container}>
       <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/tools">Trading tools</Link><span aria-hidden="true">/</span><span aria-current="page">{tool.heading}</span></nav>
       <header className={styles.hero}>
@@ -30,7 +30,7 @@ export function CalculatorPage({ tool }: { tool: CalculatorDefinition }) {
       <details className={styles.mobileContents}><summary>On this page <ChevronDown size={17} aria-hidden="true" /></summary><nav aria-label="Calculator page sections">{toc}</nav></details>
       <section id="calculator" className={styles.calculatorSection} aria-labelledby="calculator-title">
         <div className={styles.sectionHeading}><h2 id="calculator-title">{tool.kind === "compounding" ? "Build your scenario" : "Calculate your trade"}</h2><span>Calculated in your browser</span></div>
-        {tool.kind === "compounding" ? <CompoundingCalculator /> : tool.kind === "position" ? <LotSizeCalculator /> : tool.kind === "pip" || tool.kind === "margin" ? <TradeWorkbench kind={tool.kind} /> : <TradingCalculator initialMode="profit" tabbed={tool.kind === "forex"} />}
+        {tool.kind === "compounding" ? <CompoundingCalculator /> : tool.kind === "position" ? <LotSizeCalculator /> : tool.kind === "pip" || tool.kind === "margin" || tool.kind === "profit" ? <TradeWorkbench kind={tool.kind} /> : <TradingCalculator initialMode="profit" tabbed={tool.kind === "forex"} />}
       </section>
       <div className={styles.educationLayout}>
         <aside className={styles.contents}><nav aria-label="Calculator page sections"><strong>On this page</strong>{toc}</nav></aside>

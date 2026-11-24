@@ -1,12 +1,13 @@
 import { calculatePip } from "./pip";
-import { pipScenarioInputs, marginScenarioInputs, defaultMarginScenario, defaultPipScenario, type TradeScenario } from "./trade-scenario";
+import { pipScenarioInputs, marginScenarioInputs, profitScenarioInputs, defaultMarginScenario, defaultPipScenario, defaultProfitScenario, type TradeScenario } from "./trade-scenario";
 import { cash, quantity, D } from "./precision";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 import { calculateMargin } from "./margin";
+import { calculateProfit } from "./profit";
 
-export type WorkbenchKind = "pip" | "margin";
-export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario };
-export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator" };
+export type WorkbenchKind = "pip" | "margin" | "profit";
+export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario, profit: defaultProfitScenario };
+export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator", profit: "/calculators/forex-profit-calculator" };
 export type WorkbenchOutput = {
   title: string; value: string; summary: string; conversion: ReturnType<typeof resolveConversion>;
   metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[];
@@ -19,6 +20,19 @@ const exposureMoney = (value: Parameters<typeof cash>[0], currency: string) => {
 };
 
 export function workbenchResult(kind: WorkbenchKind, values: TradeScenario, rates: ExchangeRate[] = []): WorkbenchOutput {
+  if (kind === "profit") {
+    const input = profitScenarioInputs(values, rates);
+    const r = calculateProfit(input);
+    const money = (v: Parameters<typeof cash>[0]) => cash(v, input.account);
+    return {
+      title: r.net.gt(0) ? "Estimated net profit" : r.net.lt(0) ? "Estimated net loss" : "Estimated net P&L: flat",
+      value: money(r.net), summary: `${input.direction === "buy" ? "Buy / long" : "Sell / short"} · ${quantity(r.units)} ${input.instrument.base} · ${quantity(r.pips)} directional pips`, conversion: r.conversion,
+      metrics: [["Gross P&L", money(r.gross)], ["Net separately entered costs", money(r.costs)], ["Gross quote-currency P&L", cash(r.quote, input.instrument.quote)], ["Pip value: proceeds / liability", `${money(r.creditPip)} / ${money(r.debitPip)}`], ...(r.returnPercent === null ? [] : [["Return on reference equity", `${quantity(r.returnPercent, 4)}%`]])],
+      tables: [{ title: "Cost breakdown", headers: ["Component", "Account amount"], rows: [["Commission charge", money(r.commission)], ["Extra spread charge", money(r.spread)], ["Extra slippage allowance", money(r.slippage)], ["Signed financing: + credit / − charge", money(r.swap)]] }, { title: "Exit-price scenarios · fixed conversion and costs", headers: ["Exit price", "Directional pips", "Net P&L"], rows: r.scenarios.map(row => [quantity(row.price, input.instrument.pricePrecision), quantity(row.pips), money(row.net)]) }, { title: "Direction and optional exit checks", headers: ["Scenario", "Exit price", "Net P&L"], rows: [["Opposite direction · same costs", quantity(r.exit, input.instrument.pricePrecision), money(r.otherSide.net)], ...(r.stop ? [["Stop-price scenario", quantity(r.stop.price, input.instrument.pricePrecision), money(r.stop.net)]] : []), ...(r.target ? [["Target-price scenario", quantity(r.target.price, input.instrument.pricePrecision), money(r.target.net)]] : [])] }],
+      steps: [`${input.direction === "buy" ? `(${values.exit} − ${values.entry})` : `(${values.entry} − ${values.exit})`} × ${quantity(r.units)} = ${cash(r.quote, input.instrument.quote)} gross.`, r.conversion.identity ? "Quote and account currencies match: conversion factor 1." : `Gross conversion factor ${quantity(r.conversion.factor, 12)}: ${r.conversion.steps.join(" → ")}.`, `${money(r.gross)} gross − ${money(r.costs)} net costs = ${money(r.net)} net P&L.`, ...(r.returnPercent === null ? [] : [`${money(r.net)} ÷ ${money(r.equity!)} × 100 = ${quantity(r.returnPercent, 4)}% of reference equity.`])],
+      warnings: [input.priceMode === "fills" ? "Executable entry and exit fills already reflect spread. The separate spread allowance is not deducted in this mode." : "Mid-price mode deducts one entered total spread allowance. It is a model, not an executable quote.", "Leave extra slippage at zero when actual fills already include it. Positive swap is a credit; negative swap is a charge.", "Scenario rows hold conversion rates and costs constant. Financing can differ by direction or holding period. Stop and target rows do not validate order placement or guarantee execution.", "For an exact historical check, enter the applicable closing conversion and statement charges. Daily reference rates are not historical broker fills or conversion quotes."],
+    };
+  }
   if (kind === "margin") {
     const input = marginScenarioInputs(values, rates);
     const result = calculateMargin(input);

@@ -3,6 +3,7 @@ import { conventionalInstrument, isPair, isAccountCurrency, type AccountCurrency
 import type { ExchangeRate } from "./exchange-rates";
 import type { PipInputs } from "./pip";
 import type { MarginInputs } from "./margin";
+import type { ProfitInputs } from "./profit";
 
 export const defaultPipScenario = {
   pair: "EUR/USD", account: "USD", volumeMode: "lots", volume: "1", pips: "1", movementEnabled: "no", start: "1.10000", end: "1.10500",
@@ -13,6 +14,10 @@ export type TradeScenario = Record<string, string>;
 export const defaultMarginScenario = {
   ...defaultPipScenario, price: "1.1000", marginMode: "leverage", leverage: "50", marginPercent: "2",
   snapshotEnabled: "yes", equity: "10000", usedMargin: "0",
+};
+export const defaultProfitScenario = {
+  ...defaultPipScenario, direction: "buy", entry: "1.1000", exit: "1.1050", volume: "0.2", priceMode: "fills",
+  spreadPips: "0", slippagePips: "0", commission: "0", commissionBasis: "total", swap: "0", costCurrency: "account", equity: "", stop: "", target: "",
 };
 
 export function restoreTradeScenario(search: string, defaults: TradeScenario) {
@@ -27,7 +32,7 @@ export function serializeTradeScenario(values: TradeScenario) {
   return new URLSearchParams({ v: "1", ...values }).toString();
 }
 
-export function transferTradeQuery(values: TradeScenario, target: "lot" | "pip" | "margin") {
+export function transferTradeQuery(values: TradeScenario, target: "lot" | "pip" | "margin" | "profit") {
   const keys = ["pair", "account", "contract", "pipSize", "precision", "rateSource", "rateDirection", "rate", "bidAsk", "bid", "ask", "crossCurrency", "crossRate", "crossBid", "crossAsk"];
   const params = new URLSearchParams({ v: "1" });
   for (const key of keys) if (values[key] !== undefined) params.set(key, values[key]);
@@ -35,8 +40,15 @@ export function transferTradeQuery(values: TradeScenario, target: "lot" | "pip" 
   if (target === "lot" && values.snapshotEnabled === "yes") params.set("equity", values.equity);
   // A pip-value scenario has no notional price. Require one instead of
   // transferring a hidden illustrative start price as though it were entered.
-  if (target === "margin") params.set("price", values.price ?? "");
+  if (target === "margin") params.set("price", values.price ?? values.entry ?? "");
+  if (target === "profit") params.set("entry", values.entry ?? values.price ?? "");
   return params.toString();
+}
+
+export function profitScenarioInputs(values: TradeScenario, reference: ExchangeRate[] = []): ProfitInputs {
+  const instrument = scenarioInstrument(values);
+  if (!["lots", "units"].includes(values.volumeMode)) throw new CalculationError("Choose lots or units.");
+  return { instrument, account: values.account as AccountCurrency, volume: values.volume, volumeMode: values.volumeMode as "lots" | "units", direction: values.direction as "buy" | "sell", entry: values.entry, exit: values.exit, priceMode: values.priceMode as "fills" | "mid", spreadPips: values.spreadPips, slippagePips: values.slippagePips, commission: values.commission, commissionBasis: values.commissionBasis as ProfitInputs["commissionBasis"], swap: values.swap, costCurrency: values.costCurrency as "account" | "quote", ...(values.equity.trim() ? { equity: values.equity } : {}), ...(values.stop.trim() ? { stop: values.stop } : {}), ...(values.target.trim() ? { target: values.target } : {}), rates: scenarioRates(values, instrument.quote, reference) };
 }
 
 export function scenarioInstrument(values: TradeScenario) {
