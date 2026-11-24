@@ -6,6 +6,7 @@ import type { MarginInputs } from "./margin";
 import type { ProfitInputs } from "./profit";
 import type { RiskRewardInputs } from "./risk-reward";
 import type { BreakEvenInputs } from "./break-even";
+import type { SwapInputs } from "./swap";
 
 export const defaultPipScenario = {
   pair: "EUR/USD", account: "USD", volumeMode: "lots", volume: "1", pips: "1", movementEnabled: "no", start: "1.10000", end: "1.10500",
@@ -23,12 +24,13 @@ export const defaultProfitScenario = {
 };
 export const defaultRiskScenario = { ...defaultProfitScenario, volume: "1", stop: "1.0980", target: "1.1040", probability: "", target2: "", target3: "" };
 export const defaultBreakEvenScenario = { ...defaultProfitScenario, volume: "1", commission: "7", exitCosts: "0", entriesEnabled: "no", entries: "0.5,1.1000\n0.5,1.1020" };
+export const defaultSwapScenario = { ...defaultPipScenario, direction:"buy",swapRate:"-6",swapUnit:"points",pointSize:"0.00001",moneyCurrency:"quote",price:"1.1000",dayBasis:"365",holdingMode:"counts",normal:"1",triple:"1",open:"2026-11-23T16:00",close:"2026-11-25T18:00",zone:"America/New_York",cutoff:"17:00",tripleDay:"3",overrides:"" };
 
 export function restoreTradeScenario(search: string, defaults: TradeScenario) {
   const params = new URLSearchParams(search);
   const values = { ...defaults };
   if (params.has("v") && params.get("v") !== "1") return { values, error: "This shared scenario version is unsupported. Reset to a fresh example." };
-  for (const key of Object.keys(defaults)) if (params.has(key)) values[key] = params.get(key)!.slice(0, key === "entries" ? 4096 : 65);
+  for (const key of Object.keys(defaults)) if (params.has(key)) values[key] = params.get(key)!.slice(0, ["entries","overrides"].includes(key) ? 4096 : 65);
   return { values, error: null };
 }
 
@@ -68,6 +70,11 @@ export function breakEvenScenarioInputs(values: TradeScenario, reference: Exchan
     return { volume: parts[0], price: parts[1] };
   }) : [{ volume: values.volume, price: values.entry }];
   return { instrument, account: values.account as AccountCurrency, direction: values.direction as "buy" | "sell", volumeMode: values.volumeMode as "lots" | "units", entries, commission: values.commission, exitCosts: values.exitCosts, swap: values.swap, costCurrency: values.costCurrency as "account" | "quote", priceMode: values.priceMode as "fills" | "mid", spreadPips: values.spreadPips, rates: scenarioRates(values, instrument.quote, reference) };
+}
+
+export function swapScenarioInputs(values: TradeScenario,reference: ExchangeRate[]=[]):SwapInputs{
+  const instrument=scenarioInstrument(values);
+  return {instrument,account:values.account as AccountCurrency,direction:values.direction as "buy"|"sell",volume:values.volume,volumeMode:values.volumeMode as "lots"|"units",rate:values.swapRate,unit:values.swapUnit as SwapInputs["unit"],pointSize:values.pointSize,moneyCurrency:values.moneyCurrency as "quote"|"account",price:values.price,dayBasis:values.dayBasis as "360"|"365",mode:values.holdingMode as "counts"|"dates",normal:values.normal,triple:values.triple,open:values.open,close:values.close,zone:values.zone,cutoff:values.cutoff,tripleDay:values.tripleDay,overrides:values.overrides,rates:scenarioRates(values,values.swapUnit==="money"&&values.moneyCurrency==="account"?values.account as AccountCurrency:instrument.quote,reference)};
 }
 
 export function scenarioInstrument(values: TradeScenario) {

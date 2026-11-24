@@ -1,15 +1,16 @@
 import { calculatePip } from "./pip";
-import { pipScenarioInputs, marginScenarioInputs, profitScenarioInputs, riskScenarioInputs, defaultRiskScenario, defaultBreakEvenScenario, breakEvenScenarioInputs, defaultMarginScenario, defaultPipScenario, defaultProfitScenario, type TradeScenario } from "./trade-scenario";
+import { pipScenarioInputs, marginScenarioInputs, profitScenarioInputs, riskScenarioInputs, defaultRiskScenario, defaultBreakEvenScenario, breakEvenScenarioInputs, defaultSwapScenario, swapScenarioInputs, defaultMarginScenario, defaultPipScenario, defaultProfitScenario, type TradeScenario } from "./trade-scenario";
 import { cash, quantity, D } from "./precision";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 import { calculateMargin } from "./margin";
 import { calculateProfit } from "./profit";
+import { calculateSwap } from "./swap";
 import { calculateBreakEven } from "./break-even";
 import { calculateRiskReward } from "./risk-reward";
 
-export type WorkbenchKind = "pip" | "margin" | "profit" | "risk" | "breakeven";
-export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario, profit: defaultProfitScenario, risk: defaultRiskScenario, breakeven: defaultBreakEvenScenario };
-export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator", profit: "/calculators/forex-profit-calculator", risk: "/calculators/forex-risk-reward-calculator", breakeven: "/calculators/forex-break-even-calculator" };
+export type WorkbenchKind = "pip" | "margin" | "profit" | "risk" | "breakeven" | "swap";
+export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario, profit: defaultProfitScenario, risk: defaultRiskScenario, breakeven: defaultBreakEvenScenario, swap: defaultSwapScenario };
+export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator", profit: "/calculators/forex-profit-calculator", risk: "/calculators/forex-risk-reward-calculator", breakeven: "/calculators/forex-break-even-calculator", swap: "/calculators/forex-swap-calculator" };
 export type WorkbenchOutput = {
   title: string; value: string; summary: string; conversion: ReturnType<typeof resolveConversion>;
   metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[];
@@ -23,6 +24,16 @@ const exposureMoney = (value: Parameters<typeof cash>[0], currency: string) => {
 };
 
 export function workbenchResult(kind: WorkbenchKind, values: TradeScenario, rates: ExchangeRate[] = []): WorkbenchOutput {
+  if (kind === "swap") {
+    const input = swapScenarioInputs(values, rates); const r = calculateSwap(input);
+    return { title: r.total.lt(0) ? "Estimated financing charge" : r.total.gt(0) ? "Estimated financing credit" : "Estimated financing adjustment", value: cash(r.total, input.account), summary: `${input.direction === "buy" ? "Buy / long" : "Sell / short"} · ${quantity(r.units)} ${input.instrument.base} · ${quantity(r.financingDays)} financing-day multiplier`, conversion:r.conversion,
+      transfer:{...values,entry:"",price:""},
+      metrics:[["Ordinary one-day adjustment",cash(r.ordinaryAccount,input.account)], ["Total in rate currency",cash(r.nativeTotal,r.from)], ["Signed pip equivalent",r.pipEquivalent===null?"Not available without quote-currency valuation":`${quantity(r.pipEquivalent,6)} pips`], ["Rate assumption",`${values.swapRate} ${values.swapUnit} · manually entered`]],
+      tables:[{title:"Configured rollover timeline",headers:["Event / date","UTC cutoff","Multiplier","Native adjustment"],rows:r.events.map(event=>[event.label,event.utc,String(event.multiplier),cash(r.ordinary.mul(event.multiplier),r.from)])}],
+      steps:[`Ordinary native adjustment = ${cash(r.ordinary,r.from)} under the selected ${values.swapUnit} convention.`,`${cash(r.ordinary,r.from)} × ${quantity(r.financingDays)} = ${cash(r.nativeTotal,r.from)} total.`,r.conversion.identity?"Rate and account currencies match: no conversion.":`Convert using ${r.conversion.steps.join(" → ")}: ${cash(r.total,input.account)}.`],
+      warnings:["Starting rates and schedules are illustrative, not verified broker terms. Enter the current signed rate for the selected direction and contract. This estimate holds that rate constant.","Date mode includes cutoffs strictly after opening and at or before closing, in the selected timezone. Check your broker’s exact boundary rule. Weekend multipliers default to zero unless configured as a triple day or overridden.","No holiday calendar is connected. Use dated overrides for a confirmed schedule; zero skips a date. Calendar mode is limited to 366 local days.","Annual mode uses simple quote-currency notional × signed annual percent / selected 360-or-365 basis. It excludes broker markups or alternative financing bases unless already reflected in your entered rate.","Financing credits do not remove price risk. Total trade P&L also includes fills, spread, commission and execution effects."],
+    };
+  }
   if (kind === "breakeven") {
     const input = breakEvenScenarioInputs(values, rates);
     const r = calculateBreakEven(input);
