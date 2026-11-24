@@ -46,3 +46,10 @@
  .smallTable table { font-size:16px; }
  .smallTable :is(th,td) { padding:11px 5px; }
 }
+.allocation { margin:24px 0; font-size:18px; }
+.allocationTrack { height:16px; background:#eee; border:1px solid #ddd; border-radius:999px; overflow:hidden; }
+.allocationTrack>span { display:block; height:100%; background:#111; }
+.allocation figcaption { margin-top:12px; line-height:1.6; overflow-wrap:anywhere; }
+.connected { display:grid; gap:12px; margin-top:22px; font-size:18px; }
+.connected a { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px; border:1px solid #ddd; border-radius:8px; text-decoration:none; }
+.connected a svg { flex-shrink:0; }

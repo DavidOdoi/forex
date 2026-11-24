@@ -7,8 +7,8 @@ The Uganda mobile-money comparison was completed, tested (12 browser checks plus
 | # | Calculator | Status |
 | --- | --- | --- |
 | 1 | Forex lot size | Published and verified earlier (`53cf466`) |
-| 2 | Forex pip | Implemented and checked; publication in this commit. Supporting article: 1,786 words. |
-| 3 | Forex margin | Queued |
+| 2 | Forex pip | Published and verified (`6a1b9c6`); supporting article: 1,786 words. |
+| 3 | Forex margin | Implemented and checked; publication in this commit. Supporting article: 1,770 words. |
 | 4 | Forex profit | Queued; consolidate the existing tool into its requested canonical route |
 | 5 | Forex risk-reward ratio | Queued |
 | 6 | Forex break-even price | Queued |

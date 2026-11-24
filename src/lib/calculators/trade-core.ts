@@ -20,6 +20,11 @@ export function checkedAccount(value: string): AccountCurrency {
   return value;
 }
 
+export function checkedLeverage(value: Numeric) {
+  const raw = String(value).trim().replace(/^1\s*:\s*/, "");
+  return decimal(raw, "leverage", "1", "10000");
+}
+
 export function tradePrice(value: Numeric, label: string, instrument: FxInstrument) {
   const price = decimal(value, label, "0", "1000000000", true);
   if (price.decimalPlaces() > instrument.pricePrecision) throw new CalculationError(`${label} supports at most ${instrument.pricePrecision} decimal places under this specification.`);

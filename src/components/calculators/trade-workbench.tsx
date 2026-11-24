@@ -5,7 +5,7 @@ import { ArrowRight, Copy, Link2, RotateCcw } from "lucide-react";
 import { accountCurrencies, conventionalInstrument, isPair } from "@/lib/calculators/instruments";
 import { pairCodes } from "@/lib/calculators/forex";
 import { workbenchDefaults, workbenchPaths, workbenchResult, type WorkbenchKind } from "@/lib/calculators/workbench";
-import { restoreTradeScenario, serializeTradeScenario, type TradeScenario } from "@/lib/calculators/trade-scenario";
+import { restoreTradeScenario, serializeTradeScenario, transferTradeQuery, type TradeScenario } from "@/lib/calculators/trade-scenario";
 import type { RateSnapshot } from "@/lib/calculators/exchange-rates";
 import styles from "./calculator.module.css";
 import shared from "./lot-size.module.css";
@@ -29,7 +29,7 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
   const [copyStatus, setCopyStatus] = useState("");
   const [copyFallback, setCopyFallback] = useState("");
   const spec = conventionalInstrument(isPair(values.pair) ? values.pair : "EUR/USD");
-  const from = spec.quote;
+  const from = kind === "margin" && spec.base === values.account ? spec.base : spec.quote;
   const needsConversion = from !== values.account;
   const update = (patch: TradeScenario) => { setValues(old => ({ ...old, ...patch })); setCopyStatus(""); setCopyFallback(""); };
   const set = (name: string, value: string) => update({ [name]: value });
@@ -66,21 +66,25 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
   };
 
   return <div className={`${styles.workspace} ${shared.workspace}`} data-trade-workbench={kind}>
-    <div className={shared.topline}><span>Forex pip-value workspace</span><span>Conventional FX examples · editable assumptions</span></div>
-    <a href="#calculation-result" className={shared.mobileResult}><span><strong>{result?.value ?? "Check inputs"}</strong>Per pip at this volume</span><span>View result <ArrowRight size={18} aria-hidden="true" /></span></a>
+    <div className={shared.topline}><span>{kind === "pip" ? "Forex pip-value workspace" : "Forex margin workspace"}</span><span>Conventional FX examples · editable assumptions</span></div>
+    <a href="#calculation-result" className={shared.mobileResult}><span><strong>{result?.value ?? "Check inputs"}</strong>{kind === "pip" ? "Per pip at this volume" : "Estimated required margin"}</span><span>View result <ArrowRight size={18} aria-hidden="true" /></span></a>
     <div className={styles.calculatorGrid}>
-      <form className={styles.inputForm} onSubmit={event => event.preventDefault()} aria-label="Forex pip calculator inputs">
+      <form className={styles.inputForm} onSubmit={event => event.preventDefault()} aria-label={`Forex ${kind} calculator inputs`}>
         <div className={styles.formHeading}><h3>Your trade assumptions</h3><button type="button" className={styles.reset} onClick={reset}><RotateCcw size={15} aria-hidden="true" />Reset</button></div>
-        <p className={styles.inputNote}>Change volume, currency or pip convention to see the effect. No broker account or live quote is required.</p>
+        <p className={styles.inputNote}>{kind === "pip" ? "Change volume, currency or pip convention to see the effect. No broker account or live quote is required." : "Estimate collateral from volume, leverage and conversion assumptions. Add your equity and existing used margin to check the account effect."}</p>
         {restoreError && <p className={shared.notice}>{restoreError}</p>}
         <div className={styles.fieldGrid}>
-          {select("pair", "Currency pair", pairCodes.map(code => <option key={code}>{code}</option>), pair => { if (isPair(pair)) { const next = conventionalInstrument(pair); update({ pair, contract: next.contractSize, pipSize: next.pipSize, precision: String(next.pricePrecision), crossCurrency: crossFor(next.quote, values.account), ...clearRates }); } })}
-          {select("account", "Account currency", currencies, account => update({ account, crossCurrency: crossFor(from, account), ...clearRates }))}
+          {select("pair", "Currency pair", pairCodes.map(code => <option key={code}>{code}</option>), pair => { if (isPair(pair)) { const next = conventionalInstrument(pair); update({ pair, contract: next.contractSize, pipSize: next.pipSize, precision: String(next.pricePrecision), crossCurrency: crossFor(next.quote, values.account), ...(kind === "margin" ? { price: "" } : {}), ...clearRates }); } })}
+          {select("account", "Account currency", currencies, account => update({ account, crossCurrency: crossFor(kind === "margin" && spec.base === account ? spec.base : spec.quote, account), ...clearRates }))}
           {select("volumeMode", "Trade-size input", <><option value="lots">Configured lots</option><option value="units">Base-currency units</option></>)}
           {field("volume", values.volumeMode === "units" ? `Trade size (${spec.base} units)` : "Trade size (lots)")}
-          {field("pips", "Number of pips to value", "Magnitude of a move, not a net profit estimate.")}
+          {kind === "pip" ? field("pips", "Number of pips to value", "Magnitude of a move, not a net profit estimate.") : <>
+            {select("marginMode", "Margin requirement input", <><option value="leverage">Leverage ratio</option><option value="percent">Margin percentage</option></>)}
+            {values.marginMode === "leverage" ? field("leverage", "Leverage (X in 1:X)", "50 means 1:50. Use the leverage permitted for your actual account.") : field("marginPercent", "Margin requirement (%)", "2 means 2% of notional, equivalent to 1:50.")}
+            {spec.base !== values.account && field("price", `${values.pair} notional reference price`, `Enter ${spec.quote} per 1 ${spec.base}. The starting price is an editable example, not a market quote.`)}
+          </>}
         </div>
-        {needsConversion && <fieldset className={styles.conversion}><legend>Convert {from} pip value to {values.account}</legend>
+        {needsConversion && <fieldset className={styles.conversion}><legend>Convert {from} amounts to {values.account}</legend>
           {select("rateSource", "Conversion-rate source", <><option value="manual">Manual rate</option><option value="daily">Daily reference · not live</option></>, value => { set("rateSource", value); if (value === "daily") setReference(old => ({ ...old, state: "loading" })); })}
           {values.rateSource === "manual" ? <>
             <div className={shared.rateSettings}>{select("rateDirection", "Conversion route", <><option value="direct">Direct: {from}/{values.account}</option><option value="inverse">Inverse: {values.account}/{from}</option><option value="cross">Cross via another currency</option></>, rateDirection => update({ rateDirection, crossCurrency: crossFor(from, values.account), ...clearRates }))}
@@ -88,29 +92,41 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
               <label className={shared.checkbox}><input type="checkbox" checked={values.bidAsk === "yes"} onChange={e => set("bidAsk", e.target.checked ? "yes" : "no")} />Enter bid and ask</label>
             </div>
             {values.rateDirection === "cross" ? <>{rateLeg(from, values.crossCurrency)}{rateLeg(values.crossCurrency, values.account, true)}</> : values.rateDirection === "direct" ? rateLeg(from, values.account) : rateLeg(values.account, from)}
-            <p className={shared.note}>Your rate is not verified or timestamped. Bid/ask inputs use a midpoint for this neutral exposure estimate.</p>
+            <p className={shared.note}>Your rate is not verified or timestamped. {kind === "pip" ? "Bid/ask inputs use a midpoint for this neutral exposure estimate." : "Bid/ask inputs use a conservative funding conversion: direct ask or inverse 1/bid. Broker margin conversion can differ."}</p>
           </> : <><p className={shared.note}>Frankfurter daily reference rates, not live prices or broker bid/ask quotes. Unsupported currencies require manual input.</p>{reference.state === "error" && <p className={shared.notice}>{reference.error}{reference.data ? " Using the previously loaded dated snapshot." : ""}</p>}<button type="button" className={shared.textButton} onClick={() => { setReference(old => ({ ...old, state: "loading" })); setRefresh(v => v + 1); }}>Refresh reference rates</button></>}
         </fieldset>}
-        <details className={styles.settings}><summary>Calculate a move between two prices</summary><div className={shared.settingsBody}>
+        {kind === "pip" && <details className={styles.settings}><summary>Calculate a move between two prices</summary><div className={shared.settingsBody}>
           <label className={shared.checkbox}><input type="checkbox" checked={values.movementEnabled === "yes"} onChange={e => set("movementEnabled", e.target.checked ? "yes" : "no")} />Show signed price movement in pips</label>
           {values.movementEnabled === "yes" && <div className={styles.fieldGrid}>{field("start", "Start price", "Editable example, not a market quote.")}{field("end", "End price")}</div>}
+        </div></details>}
+        {kind === "margin" && <details className={styles.settings} open><summary>Account equity and existing margin</summary><div className={shared.settingsBody}>
+          <label className={shared.checkbox}><input type="checkbox" checked={values.snapshotEnabled === "yes"} onChange={e => set("snapshotEnabled", e.target.checked ? "yes" : "no")} />Estimate free margin and margin level</label>
+          {values.snapshotEnabled === "yes" && <div className={styles.fieldGrid}>{field("equity", `Account equity (${values.account})`, "Equity includes current floating P&L; it is not necessarily your balance.")}{field("usedMargin", `Existing used margin (${values.account})`, "Before this proposed position.")}</div>}
+        </div></details>}
+        <details className={styles.settings}><summary>{kind === "pip" ? "Contract and pip assumptions" : "Contract and price assumptions"}</summary><div className={shared.settingsBody}>
+          <p className={shared.note}>No broker profile is verified here. The defaults are conventional forex examples; use your broker’s actual specification. {kind === "pip" ? "A pip and its smallest quoted point can differ." : "This uses one flat margin requirement; broker tiers, hedges and netting can change the result."}</p>
+          <div className={styles.fieldGrid}>{field("contract", "Base units per configured lot")}{kind === "pip" && field("pipSize", "Pip size")}{field("precision", "Price decimal places")}</div>
         </div></details>
-        <details className={styles.settings}><summary>Contract and pip assumptions</summary><div className={shared.settingsBody}>
-          <p className={shared.note}>No broker profile is verified here. The defaults are conventional forex examples; use your broker’s actual specification. A pip and its smallest quoted point can differ.</p>
-          <div className={styles.fieldGrid}>{field("contract", "Base units per configured lot")}{field("pipSize", "Pip size")}{field("precision", "Price decimal places")}</div>
-        </div></details>
-        <a className={styles.viewResult} href="#calculation-result">View pip value <ArrowRight size={18} aria-hidden="true" /></a>
+        <a className={styles.viewResult} href="#calculation-result">{kind === "pip" ? "View pip value" : "View margin estimate"} <ArrowRight size={18} aria-hidden="true" /></a>
       </form>
-      <aside id="calculation-result" className={`${styles.result} ${shared.result}`} aria-label="Pip calculator results">
-        <p className={styles.resultEyebrow}><span />Pip value and movement</p>
+      <aside id="calculation-result" className={`${styles.result} ${shared.result}`} aria-label={`${kind === "pip" ? "Pip" : "Margin"} calculator results`}>
+        <p className={styles.resultEyebrow}><span />{kind === "pip" ? "Pip value and movement" : "Collateral and available equity"}</p>
         <div role="status" aria-live="polite" aria-atomic="true">{error ? <div className={styles.validation}><h3>Check your inputs</h3><p>{error}</p><p>No estimate is shown until the required inputs are valid.</p></div> : result && <><h3>{result.title}</h3><p className={styles.resultValue} data-result>{result.value}</p><p className={styles.resultSummary}>{result.summary}</p></>}</div>
         {result && <>
           <dl className={styles.metrics}>{result.metrics.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+          {result.marginVisual && <figure className={shared.allocation} aria-label="Estimated margin allocation" data-margin-allocation>
+            <div className={shared.allocationTrack} role="img" aria-label={`${result.marginVisual.used} used margin; ${result.marginVisual.available} free margin`}><span style={{ width: `${result.marginVisual.usedPercent}%` }} /></div>
+            <figcaption>{result.marginVisual.used} used · {result.marginVisual.available} free{result.marginVisual.deficit ? " · margin deficit" : ""}</figcaption>
+          </figure>}
           {result.tables.map(table => <div className={shared.smallTable} key={table.title} role="region" aria-label={table.title} tabIndex={0}><table><caption>{table.title}</caption><thead><tr>{table.headers.map(header => <th key={header} scope="col">{header}</th>)}</tr></thead><tbody>{table.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => j === 0 ? <th key={j} scope="row">{cell}</th> : <td key={j}>{cell}</td>)}</tr>)}</tbody></table></div>)}
           <details className={styles.breakdown} open><summary>Calculation breakdown</summary><ol>{result.steps.map(step => <li key={step}>{step}</li>)}</ol></details>
           {!result.conversion.identity && <div className={shared.rateDisclosure}><strong>{values.rateSource === "manual" ? "Manual conversion · not live" : result.conversion.stale || reference.data?.cached || reference.state === "error" ? "Stale / cached daily reference" : "Dated daily reference · not live"}</strong><p>{values.rateSource === "manual" ? "No verified market timestamp." : `${[...new Set(result.conversion.rates.map(rate => rate.asOf?.slice(0, 10)))].join(" / ")} UTC. Retrieved ${reference.data?.retrievedAt.replace("T", " ")} UTC.`}</p>{result.conversion.stale && <p className={shared.notice}>The rate is more than four days old. Refresh or enter a suitable manual rate.</p>}{values.rateSource === "daily" && <a href="https://frankfurter.dev/" rel="noopener noreferrer">Frankfurter reference-rate source</a>}</div>}
           {result.warnings.map(note => <p className={shared.notice} key={note}>{note}</p>)}
           <div className={shared.actions}><button type="button" onClick={() => copy(false)}><Copy size={16} aria-hidden="true" />Copy results</button><button type="button" onClick={() => copy(true)}><Link2 size={16} aria-hidden="true" />Copy scenario link</button></div>
+          <nav className={shared.connected} aria-label="Continue with these trade inputs">
+            <a href={`/calculators/forex-lot-size-calculator?${transferTradeQuery(values, "lot")}`}>Reuse pair and account inputs in lot sizing <ArrowRight size={17} aria-hidden="true" /></a>
+            <a href={`${kind === "pip" ? workbenchPaths.margin : workbenchPaths.pip}?${transferTradeQuery(values, kind === "pip" ? "margin" : "pip")}`}>{kind === "pip" ? "Use this volume in the margin calculator" : "Check this volume’s pip value"}<ArrowRight size={17} aria-hidden="true" /></a>
+          </nav>
           {copyStatus && <p className={shared.copyStatus} role="status">{copyStatus}</p>}
           {copyFallback && <div className={shared.copyFallback}><label htmlFor="trade-copy-output">Copy text</label><textarea id="trade-copy-output" readOnly value={copyFallback} onFocus={e => e.target.select()} /></div>}
           <p className={shared.note}>Shared URLs include entered values. Reference rates may change between visits.</p>
