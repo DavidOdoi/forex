@@ -95,3 +95,16 @@
  .insight-infographic-equation .insight-infographic-step{display:none}
  .insight-infographic-equation .insight-infographic-items>li{padding:14px}
 }
+.insight-broker-shortlist{margin:24px 0;padding:18px 20px;border:1px solid #ddd;border-radius:12px;background:#fff;font-size:18px}
+.insight-broker-shortlist>div{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:10px}
+.insight-broker-shortlist a{font-weight:600}
+.insights-page a.insight-account-button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:12px 18px;border:1px solid #111;border-radius:9px;background:#111;color:#fff;font-size:18px;font-weight:700;line-height:1.4;text-align:center;text-decoration:none;box-shadow:0 3px 0 #d5aa55}
+.insights-page a.insight-account-button:hover{background:#2b2b2b;color:#fff;text-decoration:none}
+.insight-account-button>span{color:#e3ba69;font-size:23px}
+.insight-table .insight-account-button{display:flex;margin-top:12px;min-width:150px}
+.insight-broker-action{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:24px 0 36px;padding:24px;border:1px solid #d7bd88;border-radius:14px;background:#fff}
+.insight-broker-action>div{flex:1;min-width:0}
+.insight-broker-action strong{font-size:21px;color:#000}
+.insight-content .insight-broker-action p{font-size:18px;line-height:1.6;margin:8px 0 0}
+.insight-broker-action .insight-account-button{flex-shrink:0;max-width:100%}
+@media(max-width:700px){.insight-broker-action{align-items:stretch;flex-direction:column;padding:20px;gap:18px}.insight-broker-action .insight-account-button{width:100%}}

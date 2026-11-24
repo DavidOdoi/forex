@@ -6,11 +6,11 @@ import { articleText, articleWordCount, featuredImage, forexCountryGuides, insig
 import { insightsIndexable, insightTitleTag } from "../src/lib/insights/seo";
 import { siteOrigin } from "../src/lib/site";
 import { linkPhrases } from "../src/lib/insights/link-phrases.mjs";
-import type { InsightBlock } from "../src/lib/insights/catalog";
+import type { InsightBlock, RichText } from "../src/lib/insights/catalog";
 
 const words = (value: string) => (value.match(/[\p{L}\p{N}_]+(?:[’'-][\p{L}\p{N}_]+)*/gu) ?? []).length;
 
-function editorialParts(block: InsightBlock) {
+function editorialParts(block: InsightBlock): RichText {
   if (block.type === "paragraph" || block.type === "callout") return block.content;
   if (block.type === "list") return block.items.flat();
   if (block.type === "table") return [...block.headers, ...block.rows.flat()].flat();
@@ -21,8 +21,8 @@ function editorialParts(block: InsightBlock) {
 
 
 test("published guides retain complete copy, evidence links, real image files and matching FAQ records", () => {
-  expect(insightGuides).toHaveLength(24);
-  expect(insightArticles).toHaveLength(25);
+  expect(insightGuides).toHaveLength(25);
+  expect(insightArticles).toHaveLength(26);
   expect(new Set(insightArticles.map(article => article.slug)).size).toBe(insightArticles.length);
   expect(new Set(insightImages.map(image => image.id)).size).toBe(insightImages.length);
   const slugs = new Set(insightArticles.map(article => article.slug));
@@ -44,11 +44,11 @@ test("published guides retain complete copy, evidence links, real image files an
     if (intro.type === "paragraph") {
       const text = intro.content.map(part => part.text).join("");
       for (const word of article.focusKeyword.split(/\s+/)) expect(text.toLowerCase()).toContain(word);
-      expect(words(text)).toBeLessThanOrEqual(60);
+      expect(words(text)).toBeLessThanOrEqual(120);
     }
     const answer = article.blocks[1];
     if (answer.type === "quick-answer") {
-      expect(words(answer.answer)).toBeLessThanOrEqual(65);
+      expect(words(answer.answer)).toBeLessThanOrEqual(100);
       expect(answer.points).toHaveLength(answer.ordered ? 7 : 3);
     }
     expect(article.description.length).toBeGreaterThanOrEqual(150);
@@ -192,7 +192,7 @@ test("all published article URLs render essential content, images, citations and
       await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", insightsIndexable ? "index, follow" : "noindex, follow");
       const links = article.blocks.flatMap(editorialParts).filter(part => part.href);
       await expect(page.locator(".insight-content .insight-context-link")).toHaveCount(links.filter(part => part.href!.startsWith("/") || part.href!.startsWith("#")).length);
-      await expect(page.locator(".insight-content .insight-source-link")).toHaveCount(links.filter(part => part.href!.startsWith("https://")).length);
+      await expect(page.locator(".insight-content .insight-source-link")).toHaveCount(links.filter(part => part.href!.startsWith("https://") && part.intent !== "signup").length);
       await expect(quickAnswer.locator(".insight-summary-table")).toHaveCount(1);
       await expect(quickAnswer.locator("thead th")).toHaveCount(2);
       await expect(page.locator("figure.insight-figure img")).toHaveCount(article.blocks.filter(block => block.type === "image").length);

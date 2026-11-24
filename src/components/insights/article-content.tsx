@@ -7,7 +7,9 @@ import { linkPhrases } from "@/lib/insights/link-phrases.mjs";
 
 function InlineText({ content }: { content: RichText }) {
   return content.map((part, index) => part.href
-    ? part.href.startsWith("#")
+    ? part.intent === "signup" && part.href.startsWith("https://")
+      ? <a key={index} className="insight-account-button" href={part.href} target="_blank" rel="nofollow noopener noreferrer">{part.text}<span aria-hidden="true">↗</span></a>
+      : part.href.startsWith("#")
       ? <a key={index} href={part.href} className="insight-context-link insight-section-link">{part.text}</a>
       : part.href.startsWith("/")
       ? <Link key={index} href={part.href} className="insight-context-link">{part.text}</Link>
@@ -40,13 +42,16 @@ function EducationalInfographic({ block }: { block: InsightInfographic }) {
 
 export function ArticleContent({ article }: { article: InsightArticle }) {
   const introduction = article.blocks.findIndex(block => block.type === "paragraph");
+  const brokerActions = article.blocks.filter(block => block.type === "broker-cta");
   const sections = article.blocks.flatMap(block => block.type === "quick-answer"
     ? [{ id: block.id, text: block.title }]
     : block.type === "heading" && block.level === 2 ? [{ id: block.id, text: block.text }] : []);
   return <div className="insight-content" data-article-content>
     {article.blocks.map((block, index) => {
       switch (block.type) {
-        case "paragraph": return <Fragment key={index}><p><InlineText content={block.content} /></p>{index === introduction && <BrokerRecommendations />}</Fragment>;
+        case "paragraph": return <Fragment key={index}><p><InlineText content={block.content} /></p>{index === introduction && (brokerActions.length
+          ? <nav className="insight-broker-shortlist" data-broker-discovery aria-label="Brokers compared in this guide"><strong>In this comparison</strong><div>{brokerActions.map(action => <a key={action.broker} href={`#${action.sectionId}`}>{action.broker}</a>)}</div></nav>
+          : <BrokerRecommendations />)}</Fragment>;
         case "quick-answer": return <Fragment key={block.id}>
           <section className="insight-answer" data-quick-answer aria-labelledby={block.id}>
             <h2 id={block.id}>{block.title}</h2><p><InlineText content={linkPhrases(block.answer, block.anchors)} /></p>
@@ -66,6 +71,10 @@ export function ArticleContent({ article }: { article: InsightArticle }) {
           : <h3 key={block.id} id={block.id}>{block.text}</h3>;
         case "table": return <DataTable key={index} headers={block.headers} rows={block.rows} label={block.label} />;
         case "infographic": return <EducationalInfographic key={block.id} block={block} />;
+        case "broker-cta": return <aside key={block.broker} className="insight-broker-action" data-broker-signup={block.broker} aria-label={`${block.broker} account information`}>
+          <div><strong>{block.broker}</strong><p>{block.note}</p></div>
+          <a className="insight-account-button" href={block.signupUrl} target="_blank" rel="nofollow noopener noreferrer">Open {block.broker} account<span aria-hidden="true">↗</span></a>
+        </aside>;
         case "image": {
           const image = getInsightImage(block.assetId);
           const zoomable = image.presentation === "illustration" && block.role !== "featured";

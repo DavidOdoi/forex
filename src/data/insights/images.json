@@ -511,5 +511,41 @@
     "presentation": "illustration",
     "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Candlestick_chart_scheme_03-en.svg/1280px-Candlestick_chart_scheme_03-en.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Candlestick_chart_scheme_03-en.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  {
+    "id": "uganda-mobile-money-outlet",
+    "title": "Mobile money outlet.jpg",
+    "src": "/images/insights/uganda-mtn-mobile-money-outlet.jpg",
+    "width": 1280,
+    "height": 960,
+    "creator": "Ndiwulira",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mobile_money_outlet.jpg",
+    "modifications": "Source-provided thumbnail stored unchanged; responsive display crops may apply. Editorial illustration, with no broker endorsement implied.",
+    "sourceRetrievedAt": "2026-11-24",
+    "sha256": "a5b01ab443f2d1480f4b3aa1237a6627d148e12b554d4bd79b7085ffffc89008",
+    "presentation": "photo",
+    "objectPosition": "center 45%",
+    "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Mobile_money_outlet.jpg/1280px-Mobile_money_outlet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Mobile_money_outlet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+  },
+  {
+    "id": "uganda-wallet-agent",
+    "title": "Mobile money agent with MTN and Airtel.jpg",
+    "src": "/images/insights/uganda-mtn-airtel-money-agent.jpg",
+    "width": 750,
+    "height": 1000,
+    "creator": "Emolot",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mobile_money_agent_with_MTN_and_Airtel.jpg",
+    "modifications": "Source-provided thumbnail stored unchanged; responsive display crops may apply. Editorial illustration, with no broker endorsement implied.",
+    "sourceRetrievedAt": "2026-11-24",
+    "sha256": "71ba211d3cbcbccfef27baa6345f351233fc6454f05c10d38506ae3648759c1d",
+    "presentation": "photo",
+    "objectPosition": "center 43%",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Mobile_money_agent_with_MTN_and_Airtel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Mobile_money_agent_with_MTN_and_Airtel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
   }
 ]

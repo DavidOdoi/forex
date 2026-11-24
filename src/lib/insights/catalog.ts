@@ -1,7 +1,7 @@
 import articleData from "@/data/insights/articles.json";
 import imageData from "@/data/insights/images.json";
 
-export type RichText = { text: string; href?: string }[];
+export type RichText = { text: string; href?: string; intent?: "signup" }[];
 export type InsightSummaryTable = { caption: string; headers: RichText[]; rows: RichText[][] };
 export type InsightInfographic = {
   type: "infographic";
@@ -14,6 +14,7 @@ export type InsightInfographic = {
   sources: RichText;
 };
 export type InsightBlock =
+  | { type: "broker-cta"; broker: string; sectionId: string; signupUrl: string; note: string }
   | InsightInfographic
   | { type: "paragraph"; content: RichText }
   | { type: "quick-answer"; id: string; title: string; answer: string; points: string[]; ordered?: boolean; anchors?: { text: string; href: string }[]; table?: InsightSummaryTable }
@@ -92,6 +93,7 @@ export function articleText(article: InsightArticle) {
       case "heading": return block.text;
       case "table": return [...block.headers, ...block.rows.flat()].map(rich).join(" ");
       case "infographic": return [block.kicker, block.title, ...block.items.flatMap(item => [item.label, item.value, item.detail]), rich(block.note), rich(block.sources)].join("\n");
+      case "broker-cta": return `${block.broker} ${block.note} Open ${block.broker} account`;
       case "image": {
         const image = getInsightImage(block.assetId);
         return `${block.caption}${image.presentation === "illustration" && block.role !== "featured" ? " View full-size diagram" : ""} ${image.creator} Source ${image.license}`;

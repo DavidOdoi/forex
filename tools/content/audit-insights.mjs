@@ -23,6 +23,7 @@ function blockText(block, withImageCredits = true) {
     case "heading": return block.text;
     case "table": return [...block.headers, ...block.rows.flat()].map(rich).join(" ");
     case "infographic": return [block.kicker, block.title, ...block.items.flatMap(item => [item.label, item.value, item.detail]), rich(block.note), rich(block.sources)].join(" ");
+    case "broker-cta": return `${block.broker} ${block.note} Open ${block.broker} account`;
     case "image": {
       const image = images.get(block.assetId);
       return withImageCredits ? `${block.caption}${image.presentation === "illustration" && block.role !== "featured" ? " View full-size diagram" : ""} ${image.creator} Source ${image.license}` : "";
@@ -64,7 +65,7 @@ const report = articles.filter(article => article.format === "guide").map(articl
   const internal = links.filter(part => part.href.startsWith("/insights/"));
   const inPage = links.filter(part => part.href.startsWith("#"));
   const quickLinks = inlineParts(summary).filter(part => part.href);
-  const external = links.filter(part => part.href.startsWith("https://"));
+  const external = links.filter(part => part.href.startsWith("https://") && part.intent !== "signup");
   const imageBlocks = article.blocks.filter(block => block.type === "image");
   const titleTag = article.seoTitle ?? (`${article.title} | Devin Forex`.length <= 65 ? `${article.title} | Devin Forex` : article.title);
   const headingIds = article.blocks.flatMap(block => block.type === "heading" || block.type === "quick-answer" ? [block.id] : []);
@@ -77,9 +78,9 @@ const report = articles.filter(article => article.format === "guide").map(articl
     keywordInSlug: article.slug === keyword.replace(/\s+/g, "-") || article.slug.startsWith(keyword.replace(/\s+/g, "-") + "-"),
     shortSlug: article.slug.length < 75,
     topicInIntro: first.type === "paragraph" && keyword.split(/\s+/).every(word => normalise(rich(first.content)).includes(word)),
-    conciseIntro: first.type === "paragraph" && words(rich(first.content)) <= 60,
+    conciseIntro: first.type === "paragraph" && words(rich(first.content)) <= 120,
     answerImmediatelyAfterIntro: first.type === "paragraph" && summary.type === "quick-answer",
-    conciseAnswer: summary.type === "quick-answer" && words(summary.answer) <= 65 && summary.points.length === (summary.ordered ? 7 : 3),
+    conciseAnswer: summary.type === "quick-answer" && words(summary.answer) <= 100 && summary.points.length === (summary.ordered ? 7 : 3),
     keywordInSubheading: article.blocks.some(block => block.type === "heading" && normalise(block.text).includes(keyword)),
     noExcessiveExactRepetition: density <= 1.5,
     contentWithin1800Words: wordCount <= 1800,

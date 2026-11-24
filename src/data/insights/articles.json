@@ -10874,6 +10874,21 @@
         "type": "paragraph",
         "content": [
           {
+            "text": "Compare network evidence and withdrawal limitations in our "
+          },
+          {
+            "text": "Uganda mobile-money broker guide",
+            "href": "/insights/best-forex-brokers-accepting-mobile-money-in-uganda"
+          },
+          {
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
             "text": "A mobile-money deposit route does not establish a provider’s legal status. Ask whether the specific Ugandan account can withdraw through the same method and whether the receiving details belong to the verified company or its documented payment processor."
           }
         ]
@@ -15503,6 +15518,882 @@
       {
         "question": "Can I use a standard offshore forex lot in my calculation?",
         "answer": "Use the actual permitted contract’s specifications. Exchange contract size, tick value, expiry and settlement can differ from an OTC forex product; a generic lot assumption can misstate exposure."
+      }
+    ]
+  },
+  {
+    "slug": "best-forex-brokers-accepting-mobile-money-in-uganda",
+    "title": "Best Forex Brokers Accepting Mobile Money in Uganda (2026)",
+    "seoTitle": "Best Forex Brokers Accepting Mobile Money in Uganda (2026)",
+    "description": "Best forex brokers accepting mobile money in Uganda: compare Deriv, Exness, HFM and FXCM, MTN/Airtel deposits, withdrawal limits, fees and account requirements.",
+    "focusKeyword": "best forex brokers accepting mobile money in uganda",
+    "format": "guide",
+    "category": "beginner-guides",
+    "topic": "Uganda · mobile-money broker comparison",
+    "publishedAt": "2026-11-24",
+    "updatedAt": "2026-11-24",
+    "researchPreparedAt": "2026-11-24",
+    "authorBio": "David Odoi writes educational guides for Devin Forex using cited public documentation and clearly labelled examples. This comparison does not report a funded Ugandan account or a withdrawal test.",
+    "disclaimer": "Educational information, not personal financial or legal advice. Leveraged forex and CFDs can cause substantial losses, potentially beyond deposits under some terms. Verify the exact company, resident eligibility, payment availability and funding requirements. Official signup links currently have no affiliate tracking.",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Finding the best forex brokers accepting mobile money in Uganda starts with two practical questions: can your MTN or Airtel wallet fund the account, and can you withdraw through it? This guide compares Deriv, Exness, HFM and FXCM Markets by the strength of their payment evidence, published limits and withdrawal arrangements. Some details are confirmed on official payment pages; others must be checked inside a verified Ugandan account. Compare the full route and costs before registering, because a convenient deposit method is only one part of choosing a broker."
+          }
+        ]
+      },
+      {
+        "type": "quick-answer",
+        "id": "quick-answer",
+        "title": "Quick answer",
+        "answer": "Compare Deriv, Exness, HFM and FXCM Markets, but their evidence differs. FXCM explicitly confirms MTN deposits in Uganda and excludes mobile-money withdrawals. Deriv lists MTN and Airtel deposits and withdrawals generally; Uganda eligibility still needs checking. Exness and HFM should remain account-check candidates until the wallet appears in the relevant menus. For someone relying on mobile money for both directions, the decisive question is the withdrawal route, not simply whether a deposit button is available.",
+        "points": [
+          "Check MTN and Airtel separately; support for one network does not establish the other.",
+          "Read the Deposit and Withdrawal menus separately, including fees and limits.",
+          "Confirm the contracting company, Ugandan eligibility and funding requirements before sending money."
+        ],
+        "anchors": [
+          {
+            "text": "Deriv",
+            "href": "#deriv"
+          },
+          {
+            "text": "Exness",
+            "href": "#exness"
+          },
+          {
+            "text": "HFM",
+            "href": "#hfm"
+          },
+          {
+            "text": "FXCM Markets",
+            "href": "#fxcm"
+          }
+        ],
+        "table": {
+          "caption": "The four-broker shortlist at a glance",
+          "headers": [
+            [
+              {
+                "text": "Broker"
+              }
+            ],
+            [
+              {
+                "text": "Payment conclusion"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "text": "Deriv"
+                }
+              ],
+              [
+                {
+                  "text": "MTN and Airtel listed generally; confirm your Uganda account."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "Exness"
+                }
+              ],
+              [
+                {
+                  "text": "Available methods depend on registered region and verification."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "HFM"
+                }
+              ],
+              [
+                {
+                  "text": "Confirm the exact network and both payment directions in your account."
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "text": "FXCM Markets"
+                }
+              ],
+              [
+                {
+                  "text": "Uganda MTN deposits confirmed; mobile-money withdrawals unavailable."
+                }
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "image",
+        "assetId": "uganda-mobile-money-outlet",
+        "role": "featured",
+        "alt": "MTN mobile-money outlet in Uganda with customers and a shopkeeper",
+        "caption": "An MTN mobile-money outlet in Uganda. Wallet availability at a broker is a separate check."
+      },
+      {
+        "type": "callout",
+        "title": "Check permission as well as the payment method",
+        "content": [
+          {
+            "text": "A wallet option or offshore licence does not establish local authorisation or lawful funding. Check current guidance from "
+          },
+          {
+            "text": "CMA Uganda",
+            "href": "https://cmauganda.co.ug/cma-licensed-firms/"
+          },
+          {
+            "text": ", your bank or payment provider and the account’s legal entity. No live deposits or withdrawals were tested for this guide."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "mobile-money-comparison",
+        "text": "Best forex brokers accepting mobile money in Uganda: comparison"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Deriv leads this shortlist for the two networks shown on its general payment page. FXCM has the clearest Uganda-specific MTN documentation, but its withdrawal limitation matters. Exness and HFM require account-level confirmation before being treated as wallet matches."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "Compare mobile-money evidence, minimums and withdrawals",
+        "headers": [
+          [
+            {
+              "text": "Broker and account link"
+            }
+          ],
+          [
+            {
+              "text": "Methods and minimum"
+            }
+          ],
+          [
+            {
+              "text": "Withdrawal check"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Deriv",
+                "href": "#deriv"
+              },
+              {
+                "text": " "
+              },
+              {
+                "text": "Open Deriv account",
+                "href": "https://home.deriv.com/dashboard/signup",
+                "intent": "signup"
+              }
+            ],
+            [
+              {
+                "text": "MTN/Airtel: published US$5 minimum; general limits"
+              }
+            ],
+            [
+              {
+                "text": "Listed generally; verify Uganda eligibility."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Exness",
+                "href": "#exness"
+              },
+              {
+                "text": " "
+              },
+              {
+                "text": "Open Exness account",
+                "href": "https://my.exness.com/accounts/sign-up?lng=en",
+                "intent": "signup"
+              }
+            ],
+            [
+              {
+                "text": "Region, verification and payment-method dependent"
+              }
+            ],
+            [
+              {
+                "text": "Only methods displayed in Withdrawal are available."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "HFM",
+                "href": "#hfm"
+              },
+              {
+                "text": " "
+              },
+              {
+                "text": "Open HFM account",
+                "href": "https://register.hfm.com/int/en/new-live-account",
+                "intent": "signup"
+              }
+            ],
+            [
+              {
+                "text": "Confirm network, account and transaction minimum"
+              }
+            ],
+            [
+              {
+                "text": "Obtain the supported method and current conditions."
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "FXCM Markets",
+                "href": "#fxcm"
+              },
+              {
+                "text": " "
+              },
+              {
+                "text": "Open FXCM Markets account",
+                "href": "https://www.fxcm.com/markets/open-account/",
+                "intent": "signup"
+              }
+            ],
+            [
+              {
+                "text": "MTN Uganda; US$50 equivalent minimum"
+              }
+            ],
+            [
+              {
+                "text": "No African mobile-money withdrawals."
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Link disclosure: These official signup links currently contain no affiliate tracking. An application does not confirm resident eligibility, payment availability or funding permission."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "deriv",
+        "text": "Deriv: MTN and Airtel appear on its payment page"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The "
+          },
+          {
+            "text": "Deriv payment-methods page",
+            "href": "https://deriv.com/payment-methods"
+          },
+          {
+            "text": " lists both networks, with the following general published USD limits. These are method limits, not proof that every Ugandan account can use them."
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "Deriv published wallet limits",
+        "headers": [
+          [
+            {
+              "text": "Network"
+            }
+          ],
+          [
+            {
+              "text": "Deposit"
+            }
+          ],
+          [
+            {
+              "text": "Withdrawal"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "MTN"
+              }
+            ],
+            [
+              {
+                "text": "US$5–150"
+              }
+            ],
+            [
+              {
+                "text": "US$5–750"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Airtel"
+              }
+            ],
+            [
+              {
+                "text": "US$5–150"
+              }
+            ],
+            [
+              {
+                "text": "US$5–750"
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Deriv labels processing as instant. Treat that as its published processing description, not a promise about every transfer or receipt time. Check your cashier after registration and verification. Deriv P2P is a separate peer-to-peer service, with different participants and conditions."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Useful: both network names and deposit/withdrawal ranges are published."
+            }
+          ],
+          [
+            {
+              "text": "Check: Uganda eligibility, conversion charges and the exact contracting company."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "broker-cta",
+        "broker": "Deriv",
+        "sectionId": "deriv",
+        "signupUrl": "https://home.deriv.com/dashboard/signup",
+        "note": "Check that your chosen network appears for both deposits and withdrawals before funding."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "exness",
+        "text": "Exness: check the methods in your Personal Area"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The "
+          },
+          {
+            "text": "Exness payment eligibility guidance",
+            "href": "https://get.exness.help/hc/en-us/articles/11865031701532-Available-payment-methods"
+          },
+          {
+            "text": " says availability depends on registered region, verification and the provider. Only the methods displayed in the selected Deposit or Withdrawal tab are available for that transaction."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Look for MTN or Airtel in both tabs and read the displayed minimum, maximum, fees and processing time. Avoid treating a reported US$10 starting figure as a universal wallet minimum. The "
+          },
+          {
+            "text": "Exness review",
+            "href": "/reviews/exness"
+          },
+          {
+            "text": " explains its account and platform choices."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Useful: the account interface shows transaction-specific terms."
+            }
+          ],
+          [
+            {
+              "text": "Check: a payment method can be available for one direction and missing from the other."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "broker-cta",
+        "broker": "Exness",
+        "sectionId": "exness",
+        "signupUrl": "https://my.exness.com/accounts/sign-up?lng=en",
+        "note": "Confirm MTN or Airtel inside your verified Personal Area; neither network is promised for every Ugandan account."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "hfm",
+        "text": "HFM: confirm the wallet before choosing the account"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "HFM’s official site",
+            "href": "https://www.hfm.com/int/en/"
+          },
+          {
+            "text": " provides its account and platform information. Its payment methods can depend on country and company. The public sources used here do not establish a current Uganda-specific MTN/Airtel deposit-and-withdrawal arrangement."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ask support or check the verified account menus for the network, transaction limits, conversion costs and withdrawal route. A low account minimum does not remove a payment provider’s own minimum. Compare spreads, commissions and holding costs as well."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Useful: account choices and MetaTrader support can be compared after the payment check."
+            }
+          ],
+          [
+            {
+              "text": "Check: obtain the actual wallet terms rather than relying on a regional broker list."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "broker-cta",
+        "broker": "HFM",
+        "sectionId": "hfm",
+        "signupUrl": "https://register.hfm.com/int/en/new-live-account",
+        "note": "Check the supported Uganda payment methods and withdrawal conditions before making a deposit."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "fxcm",
+        "text": "FXCM Markets: Uganda MTN deposits, with a withdrawal restriction"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The "
+          },
+          {
+            "text": "FXCM Mobile Money (Africa) FAQ",
+            "href": "https://www.fxcm.com/markets/help/c/accounts/deposits-withdrawals/mobile-money-africa-faqs/"
+          },
+          {
+            "text": " names Uganda and MTN. It identifies Stratos Global LLC as the provider and states:"
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "label": "FXCM published Uganda mobile-money conditions",
+        "headers": [
+          [
+            {
+              "text": "Item"
+            }
+          ],
+          [
+            {
+              "text": "Published condition"
+            }
+          ]
+        ],
+        "rows": [
+          [
+            [
+              {
+                "text": "Network and currency"
+              }
+            ],
+            [
+              {
+                "text": "MTN; UGX deposits converted to USD"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Minimum"
+              }
+            ],
+            [
+              {
+                "text": "US$50 equivalent"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Maximum transaction"
+              }
+            ],
+            [
+              {
+                "text": "UGX 3,500,000"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Crediting"
+              }
+            ],
+            [
+              {
+                "text": "Typically 1–2 hours after receipt"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Fees"
+              }
+            ],
+            [
+              {
+                "text": "Operator service fees may apply"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "text": "Wallet withdrawals"
+              }
+            ],
+            [
+              {
+                "text": "Not available; choose another supported withdrawal method"
+              }
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "FXCM’s disclosure says Stratos Global LLC is not required to hold a financial-services licence in St Vincent and the Grenadines. Do not assume another FXCM group company’s protections apply. Its risk warning says losses can exceed deposits."
+          }
+        ]
+      },
+      {
+        "type": "broker-cta",
+        "broker": "FXCM Markets",
+        "sectionId": "fxcm",
+        "signupUrl": "https://www.fxcm.com/markets/open-account/",
+        "note": "No mobile-money withdrawals. Confirm an alternative withdrawal method and read Stratos Global LLC’s entity and risk disclosures."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "payment-checks",
+        "text": "Check the whole payment route before depositing"
+      },
+      {
+        "type": "infographic",
+        "id": "uganda-wallet-payment-route",
+        "title": "A working deposit is only half the route",
+        "kicker": "MTN / Airtel · account checks",
+        "variant": "flow",
+        "items": [
+          {
+            "label": "Money in",
+            "value": "Deposit method",
+            "detail": "Confirm the network, limit, fee and currency conversion."
+          },
+          {
+            "label": "Trading account",
+            "value": "Exact company",
+            "detail": "Check the contract and permissions for your circumstances."
+          },
+          {
+            "label": "Money out",
+            "value": "Withdrawal method",
+            "detail": "Confirm the available route before sending the deposit."
+          }
+        ],
+        "note": [
+          {
+            "text": "FXCM’s published mobile-money service supports deposits only. At other brokers, check both menus separately."
+          }
+        ],
+        "sources": [
+          {
+            "text": "Payment evidence: "
+          },
+          {
+            "text": "FXCM’s official FAQ",
+            "href": "https://www.fxcm.com/markets/help/c/accounts/deposits-withdrawals/mobile-money-africa-faqs/"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use the broader "
+          },
+          {
+            "text": "Uganda broker comparison",
+            "href": "/forex-brokers/uganda"
+          },
+          {
+            "text": " for company and platform questions, and our "
+          },
+          {
+            "text": "Uganda beginner guide",
+            "href": "/insights/how-to-start-forex-trading-in-uganda"
+          },
+          {
+            "text": " for local verification and risk preparation."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "assetId": "uganda-wallet-agent",
+        "role": "inline-1",
+        "alt": "Mobile-money agent in Uganda beside MTN and Airtel signs",
+        "caption": "MTN and Airtel branding at a Ugandan agent. The photo illustrates wallet services and implies no broker endorsement."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "deposit-steps",
+        "text": "How to use a supported MTN or Airtel deposit method"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Follow these steps only after confirming resident eligibility and applicable funding requirements. A broker showing a payment option does not settle those questions."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          [
+            {
+              "text": "Use the official signup page and give accurate residence details."
+            }
+          ],
+          [
+            {
+              "text": "Complete the required verification and confirm the wallet ownership rules."
+            }
+          ],
+          [
+            {
+              "text": "Choose MTN or Airtel only if it appears in the official deposit interface."
+            }
+          ],
+          [
+            {
+              "text": "Review the amount, exchange rate, operator fees and transaction limits."
+            }
+          ],
+          [
+            {
+              "text": "Approve the payment through the provider’s official instructions. Never share your wallet PIN."
+            }
+          ],
+          [
+            {
+              "text": "Keep the reference and confirm the credited amount. Resolve missing payments through official support."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Never send trading funds to a personal number supplied through an unsolicited WhatsApp message. A successful small withdrawal is useful evidence about that transaction, not a guarantee of future processing or broker safety."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "costs-and-risk",
+        "text": "Compare costs and risk beyond the wallet"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Use a "
+          },
+          {
+            "text": "demo platform checklist",
+            "href": "/insights/best-day-trading-app-for-beginners"
+          },
+          {
+            "text": " to assess order entry and usability before committing money. Payment convenience does not replace a trading plan or a check of the company’s terms."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "Add up operator charges, currency conversion, spreads, commission, swaps and withdrawal costs."
+            }
+          ],
+          [
+            {
+              "text": "Check who holds the account and where a complaint can be made. A group logo is not the contract."
+            }
+          ],
+          [
+            {
+              "text": "Practise first and use the "
+            },
+            {
+              "text": "forex lot-size calculator",
+              "href": "/calculators/forex-lot-size-calculator"
+            },
+            {
+              "text": " to understand exposure. A stop order can slip."
+            }
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "id": "frequently-asked-questions",
+        "text": "Frequently asked questions"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-1",
+        "text": "Which brokers accept MTN Mobile Money in Uganda?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "FXCM explicitly confirms Uganda MTN deposits. Deriv lists MTN generally. Check Uganda account eligibility at Deriv, and verify the current methods inside Exness or HFM before relying on them."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-2",
+        "text": "Does Exness accept Airtel Money in Uganda?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Do not assume it does. Exness says available methods depend on registered region, verification and provider availability. Confirm Airtel separately in both Deposit and Withdrawal tabs."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "id": "faq-3",
+        "text": "Can I withdraw forex funds to mobile money?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Only when the method is available for your verified account. Deriv lists wallet withdrawals generally; FXCM’s African mobile-money service does not support them. Check limits, fees and alternatives first."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Which brokers accept MTN Mobile Money in Uganda?",
+        "answer": "FXCM explicitly confirms Uganda MTN deposits. Deriv lists MTN generally. Check Uganda account eligibility at Deriv, and verify the current methods inside Exness or HFM before relying on them."
+      },
+      {
+        "question": "Does Exness accept Airtel Money in Uganda?",
+        "answer": "Do not assume it does. Exness says available methods depend on registered region, verification and provider availability. Confirm Airtel separately in both Deposit and Withdrawal tabs."
+      },
+      {
+        "question": "Can I withdraw forex funds to mobile money?",
+        "answer": "Only when the method is available for your verified account. Deriv lists wallet withdrawals generally; FXCM’s African mobile-money service does not support them. Check limits, fees and alternatives first."
       }
     ]
   }

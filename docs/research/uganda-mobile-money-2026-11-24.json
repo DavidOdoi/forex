@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-11-24",
+  "scope": "Public payment evidence, signup destination availability and sourced editorial images. Not a funded-account test or legal approval.",
+  "sources": [
+    {
+      "key": "deriv-payments",
+      "url": "https://deriv.com/payment-methods",
+      "finalUrl": "https://deriv.com/payment-methods",
+      "status": 200,
+      "bytes": 147927,
+      "sha256": "da0c055759020839595cead10b97ac78898b78a961d3a9a325c1058fbd90c492"
+    },
+    {
+      "key": "exness-payments",
+      "url": "https://get.exness.help/hc/en-us/articles/11865031701532-Available-payment-methods",
+      "finalUrl": "https://get.exness.help/hc/en-us/articles/11865031701532-Available-payment-methods",
+      "status": 200,
+      "bytes": 81488,
+      "sha256": "5c9088dc6e24923413cc482903cbf30b1ddd38bff9b39651fd17951c8a92c3fd"
+    },
+    {
+      "key": "hfm-uganda",
+      "url": "https://fxscouts.ug/broker/hotforex/",
+      "finalUrl": "https://fxscouts.ug/broker/hotforex/",
+      "status": 200,
+      "bytes": 639280,
+      "sha256": "b8b1949ffb37cf2e47a82e539bda9293f20f1124add46112e387c4d8d407c419"
+    },
+    {
+      "key": "fxcm-mobile-money",
+      "url": "https://www.fxcm.com/markets/help/c/accounts/deposits-withdrawals/mobile-money-africa-faqs/",
+      "finalUrl": "https://www.fxcm.com/markets/help/c/accounts/deposits-withdrawals/mobile-money-africa-faqs/",
+      "status": 200,
+      "bytes": 99518,
+      "sha256": "47e7ca6bf3e523f7c2a7ef8fc3369da635dd192864ce259fce9ff876aa4560c3"
+    },
+    {
+      "key": "deriv-signup",
+      "url": "https://deriv.com/signup/",
+      "finalUrl": "https://home.deriv.com/dashboard/signup",
+      "status": 200,
+      "bytes": 244082,
+      "sha256": "ecf46f7ec030bd23373730704a57611ff368ecee2b097c428e72942f4f54fab2"
+    },
+    {
+      "key": "exness-signup",
+      "url": "https://my.exness.com/accounts/sign-up?lng=en",
+      "finalUrl": "https://my.exness.com/accounts/sign-up?lng=en",
+      "status": 200,
+      "bytes": 2887,
+      "sha256": "90fd980d72847f00fe898f836b26887e41eb37c7a384fbc9301bfc8f4ca1c11c"
+    },
+    {
+      "key": "hfm-signup",
+      "url": "https://my.hfm.com/sv/en/registration/",
+      "finalUrl": "https://my.hfm.com/en/login?next=%2Fen%2Fen%2Fregistration",
+      "status": 200,
+      "bytes": 281903,
+      "sha256": "cbebf7ddd02b3f5b044c5f02e70c9110e816a358e130d3bac99d788066b453b9",
+      "note": "Rejected: old route redirects to login. Current homepage links to register.hfm.com/int/en/new-live-account instead."
+    },
+    {
+      "key": "fxcm-signup",
+      "url": "https://www.fxcm.com/markets/open-account/",
+      "finalUrl": "https://www.fxcm.com/markets/open-account/",
+      "status": 200,
+      "bytes": 89032,
+      "sha256": "115d8447d6e6de31d9b13d3a7059449788442b6cb2ffe7d2c7820315c02d4a9f"
+    },
+    {
+      "key": "hfm-current-signup",
+      "url": "https://register.hfm.com/int/en/new-live-account",
+      "status": 200,
+      "sha256": "80a763494c1157ecd36cb639cec351b8864735d239a22cd2e1fb9e8884de7655",
+      "discovery": "Official HFM homepage live-account link; no form was submitted."
+    }
+  ]
+}
