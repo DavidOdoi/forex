@@ -1,0 +1,11 @@
+# Calculator fact and numerical review — 24 November 2026
+
+The requested review covers the twelve calculator guides and their models. This first correction is published separately before contextual-link work proceeds.
+
+A reproducible risk-of-ruin case used 100 paths, 2,000 trades, zero win probability, 99.9% percentage risk, no extra cost and a 100% initial-equity loss threshold. A finite sequence of losses below 100% leaves strictly positive mathematical equity, but floating-point cancellation/underflow could turn a tiny balance into zero. The previous engine counted it as a real total-loss threshold hit. A new regression failed against that behavior before the fix. The engine now rejects that numerical-precision case instead of fabricating an observed total-loss result. Genuine 100% stakes and explicit costs that exhaust equity still work. The worker error is visible in the interface and the supporting guide states that overflow and underflow are rejected.
+
+The lot-size Quick answer and FAQ now make the denominator unambiguous: cash risk divided by the product of stop-loss pips and account-currency pip value per lot. Kelly's fallback expected-log-growth label now identifies negative-infinite expected log growth rather than suggesting an unbounded monetary loss in a finite-stake binary model.
+
+Verification: 26 targeted numerical groups passed across ruin, lot sizing and Kelly, including the reproduced edge case. Eighteen browser/regression checks passed across those tools, including the worker's precision error and matching visible/schema FAQs. Production webpack build with TypeScript, ESLint and diff checks passed. No broker condition or live-price claim was added.
+
+Primary-source review is continuing for contextual links: the fetched NIST confidence-interval page explicitly documents Wilson's method; its binomial-distribution reference states the two-outcome/fixed-probability model. MetaQuotes symbol properties document contract sizes, volume steps, point size and instrument-specific swap rollover settings. The official MetaTrader trading-principles page states buy-at-Ask/sell-at-Bid execution. Formula-source pages are read for their contents, not accepted merely because they return HTTP 200. Blocked or missing candidate references are not added as verified evidence.

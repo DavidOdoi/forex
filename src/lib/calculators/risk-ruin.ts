@@ -13,7 +13,15 @@ export function parseRuin(values:Record<string,string>):RuinInput{
 }
 export function seededRandom(seed:number){let state=seed>>>0;return()=>{state=(state+0x6D2B79F5)>>>0;let t=state;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;};}
 export function drawdown(peak:number,equity:number){return(peak-equity)/peak;}
-export function nextEquity(equity:number,won:boolean,input:Pick<RuinInput,"risk"|"mode"|"payoff"|"cost">){const stake=Math.min(equity,input.mode==="percent"?equity*input.risk/100:input.risk);return Math.max(0,equity+(won?stake*input.payoff:-stake)-input.cost);}
+export function nextEquity(equity:number,won:boolean,input:Pick<RuinInput,"risk"|"mode"|"payoff"|"cost">){
+ const stake=Math.min(equity,input.mode==="percent"?equity*input.risk/100:input.risk);
+ const remaining=equity+(won?stake*input.payoff:-stake)-input.cost;
+ // A finite sequence of percentage losses below 100%, without extra costs,
+ // leaves strictly positive mathematical equity. Never count an underflow or
+ // cancellation to zero as an actual total-loss observation.
+ if(equity>0&&!won&&input.mode==="percent"&&input.risk<100&&input.cost===0&&remaining<=0)throw new CalculationError("This percentage path exceeds numerical precision near zero equity. Use a practical drawdown threshold or a shorter horizon.");
+ return Math.max(0,remaining);
+}
 export function wilsonInterval(hits:number,samples:number){const p=hits/samples,z=1.959963984540054,z2=z*z,den=1+z2/samples,center=(p+z2/(2*samples))/den,half=z*Math.sqrt(p*(1-p)/samples+z2/(4*samples*samples))/den;return{low:Math.max(0,center-half),high:Math.min(1,center+half)};}
 export type RuinResult=ReturnType<typeof simulateRuin>;
 export function simulateRuin(input:RuinInput){

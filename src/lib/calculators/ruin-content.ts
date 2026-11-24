@@ -65,7 +65,7 @@ export const ruinDefinition: CalculatorDefinition = {
         ],
         [
           {
-            "text": "Each scenario allows 100–50,000 paths and 1–2,000 trades, with at most five million path-trade steps. A background Web Worker keeps calculations off the interface thread. The base model and two sensitivity runs use the same seed and sample size. Extreme growth beyond the stated numerical limit is rejected."
+            "text": "Each scenario allows 100–50,000 paths and 1–2,000 trades, with at most five million path-trade steps. A background Web Worker keeps calculations off the interface thread. The base model and two sensitivity runs use the same seed and sample size. Numerical overflow and underflow are rejected."
           }
         ]
       ]

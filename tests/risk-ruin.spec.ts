@@ -8,6 +8,13 @@ test('simulation worker shows reproducible results and zero-hit caution while co
  await page.getByLabel('Assumed win probability (%)',{exact:true}).fill('100');await expect(page.locator('[data-result]')).toHaveText('0%');await expect(page.locator('#calculation-result')).toContainText('not proof of zero true risk');
  await page.getByLabel('Assumed win probability (%)',{exact:true}).fill('45');await expect(page.locator('[data-result]')).toHaveText(first!);
  await page.getByLabel('Assumed win probability (%)',{exact:true}).fill('101');await expect(page.locator('[data-result]')).toHaveCount(0);await expect(page.locator('#calculation-result')).toContainText('probability');
+ await page.getByLabel('Simulated paths',{exact:true}).fill('100');
+ await page.getByLabel('Trade horizon',{exact:true}).fill('2000');
+ await page.getByLabel('Risk per trade (% of current equity)',{exact:true}).fill('99.9');
+ await page.getByLabel('Threshold loss / drawdown (%)',{exact:true}).fill('100');
+ await page.getByLabel('Assumed win probability (%)',{exact:true}).fill('0');
+ await expect(page.locator('#calculation-result')).toContainText('numerical precision');
+ await expect(page.locator('[data-result]')).toHaveCount(0);
 });
 test('risk simulation share links restore the seed and reject unknown versions',async({page})=>{
  await page.addInitScript(()=>{Object.defineProperty(navigator,'clipboard',{value:{writeText:async(text:string)=>{(window as Window&{copied?:string}).copied=text;}}});});

@@ -21,3 +21,9 @@ test('brief: invalid numbers, thresholds, horizon, counts, seeds and workload bo
  for(const patch of[{risk:'-1'},{probability:'101'},{capital:'0'},{capital:'1e-999'},{threshold:'0'},{threshold:'101'},{paths:'0'},{paths:'100.5'},{trades:'0'},{seed:'-1'},{paths:'50000',trades:'2000'},{payoff:'0'},{cost:'-1'}])expect(()=>parseRuin({...defaultRuinValues,...patch})).toThrow();
  expect(()=>simulateRuin({...base(),probability:1,risk:100,payoff:100,trades:1000})).toThrow(/limit/);
 });
+test('percentage sizing must not report numerical underflow as a genuine total-loss threshold hit',()=>{
+ expect(()=>simulateRuin({...base(),paths:100,trades:2000,probability:0,risk:99.9,threshold:1,cost:0})).toThrow(/precision/);
+ // A real 100% modeled stake or an explicit charge can legitimately exhaust equity.
+ expect(nextEquity(100,false,{...base(),risk:100,cost:0})).toBe(0);
+ expect(nextEquity(100,false,{...base(),risk:50,cost:50})).toBe(0);
+});
