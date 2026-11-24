@@ -201,7 +201,7 @@ test("all tool pages fit small phones through desktop without browser errors", a
       if (path !== "/tools") {
         expect(await page.locator('article p, [data-calculator] p:not([class*="resultEyebrow"]):not([data-result]), article td, article th').evaluateAll(nodes => [...new Set(nodes.map(node => getComputedStyle(node).fontSize))])).toEqual(["18px"]);
         if (width < 800) {
-          const jump = page.getByRole("main").getByRole("link", { name: /View (calculation|scenario result|lot size|pip value|margin estimate|net profit or loss|risk and reward|break-even price|swap estimate|lot conversion)/, exact: true });
+          const jump = page.getByRole("main").getByRole("link", { name: /View (calculation|scenario result|lot size|pip value|margin estimate|net profit or loss|risk and reward|break-even price|swap estimate|lot conversion|simulation result)/, exact: true });
           await expect(jump).toHaveCSS("color", "rgb(255, 255, 255)");
           await jump.click();
           await expect(page.locator("#calculation-result")).toBeInViewport();

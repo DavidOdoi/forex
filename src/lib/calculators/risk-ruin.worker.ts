@@ -1,0 +1,3 @@
+import {simulateRuin,type RuinInput} from "./risk-ruin";
+const worker=self as unknown as {onmessage:(event:MessageEvent<{input:RuinInput;key:string}>)=>void;postMessage:(data:unknown)=>void};
+worker.onmessage=event=>{try{const {input,key}=event.data;const result=simulateRuin(input);const lowerWin=simulateRuin({...input,probability:Math.max(0,input.probability-.05)});const halfRisk=simulateRuin({...input,risk:input.risk/2});worker.postMessage({key,result,sensitivity:[{label:"Win probability minus 5 percentage points",frequency:lowerWin.frequency},{label:"Half the entered risk per trade",frequency:halfRisk.frequency}]});}catch(error){worker.postMessage({key:event.data.key,error:error instanceof Error?error.message:"Simulation failed."});}};

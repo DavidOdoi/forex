@@ -13,8 +13,8 @@ The Uganda mobile-money comparison was completed, tested (12 browser checks plus
 | 5 | Forex risk-reward ratio | Published and verified (`2751476`); supporting article: 1,796 words. |
 | 6 | Forex break-even price | Published and verified (`871a13f`); supporting article: 1,737 words. |
 | 7 | Forex swap | Published and verified (`bbe915b`); supporting article: 1,753 words. |
-| 8 | Forex lot size converter | Implemented and checked; publication in this commit. Supporting article: 1,746 words. |
-| 9 | Forex risk of ruin | Queued |
+| 8 | Forex lot size converter | Published and verified (`35ee48b`); supporting article: 1,746 words. |
+| 9 | Forex risk of ruin | Implemented and checked; publication in this commit. Supporting article: 1,773 words. |
 | 10 | Kelly criterion | Queued |
 | 11 | Fibonacci | Queued |
 | 12 | Forex pivot points | Queued |
