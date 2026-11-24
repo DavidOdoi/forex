@@ -1,6 +1,6 @@
 export const propPaths = {
   comparison: "/best-prop-firm-forex-eas",
-  calculator: "/prop-firm-consistency-calculator",
+  calculator: "/calculators/prop-firm-consistency-calculator",
 } as const;
 export const checkedAt = "2026-11-09";
 export const comparisonTitle = "Best Prop Firms for Forex EAs in 2026";

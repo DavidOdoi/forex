@@ -25,7 +25,6 @@ export const publicPaths = [
   "/insights/triangle-chart-patterns",
   "/insights/image-credits",
   "/best-prop-firm-forex-eas",
-  "/prop-firm-consistency-calculator",
 ];
 export function deploymentAllowsIndexing(environment: string | undefined): boolean {
   return environment !== "preview" && environment !== "development";

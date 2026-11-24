@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
-    return [{ source: "/tools/forex-position-size-calculator", destination: "/calculators/forex-lot-size-calculator", permanent: true }];
+    return [{ source: "/prop-firm-consistency-calculator", destination: "/calculators/prop-firm-consistency-calculator", permanent: true }, { source: "/tools/forex-position-size-calculator", destination: "/calculators/forex-lot-size-calculator", permanent: true }];
   },
   async headers() {
     return [

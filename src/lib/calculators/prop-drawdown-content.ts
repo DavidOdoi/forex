@@ -89,6 +89,15 @@ export const propDrawdownDefinition: CalculatorDefinition = {
           {
             "text": "A configured cap stops the floor rising beyond a specified amount, such as USD 100,000. Leave it blank for uncapped trailing. The percentage basis is separate: the allowance can be a percentage of starting value or of the eligible high, according to the actual rule."
           }
+        ],
+        [
+          {
+            "text": "Topstep’s Maximum Loss Limit rules",
+            "href": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters"
+          },
+          {
+            "text": " illustrate another programme-specific framework. Its Trading Combine is not a generic forex account. Check the named product, account size, eligible observation and touching/below wording. This calculator deliberately supplies no blanket provider preset; entered references remain user-supplied."
+          }
         ]
       ]
     },
@@ -196,15 +205,6 @@ export const propDrawdownDefinition: CalculatorDefinition = {
           },
           {
             "text": " separate products and evaluation stages. Their daily allowances, overall mechanisms and reset conventions are not one universal “FTMO drawdown” rule. Read the exact applicable section rather than carrying a percentage across products."
-          }
-        ],
-        [
-          {
-            "text": "Topstep’s Maximum Loss Limit rules",
-            "href": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters"
-          },
-          {
-            "text": " illustrate another programme-specific framework. Its Trading Combine is not a generic forex account. Check the named product, account size, eligible observation and touching/below wording. This calculator deliberately supplies no blanket provider preset; entered references remain user-supplied."
           }
         ]
       ]

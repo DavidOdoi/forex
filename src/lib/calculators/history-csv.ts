@@ -16,6 +16,29 @@ export function parseCsvRows(text: string): string[][] {
   if (rows.length > 1001) throw new CalculationError("Use no more than 1,000 observations plus a header.");
   return rows;
 }
+/** Read only approved columns; discard account identifiers and other CSV fields. */
+export function normalizedDailyPnlCsv(text: string): string {
+  const rows = parseCsvRows(text);
+  if (!rows.length) throw new CalculationError("Enter a nonempty daily P&L CSV.");
+  const header = rows[0].map(cell => cell.toLowerCase().replace(/[ _-]/g, ""));
+  const date = header.indexOf("date"), profits = header.map((name, i) => ["netpnl", "netprofit", "profit", "pnl"].includes(name) ? i : -1).filter(i => i >= 0);
+  const named = date >= 0 || profits.length > 0;
+  if (named && (date < 0 || profits.length !== 1)) throw new CalculationError("A named daily P&L CSV needs one date and one netPnl column.");
+  const data = named ? rows.slice(1) : rows;
+  if (data.length > 1000) throw new CalculationError("Use no more than 1,000 daily observations.");
+  let previous = "";
+  const out = data.map(row => {
+    if (!named && row.length !== 2) throw new CalculationError("Use daily date,netPnl rows without thousands separators.");
+    const d = row[named ? date : 0] ?? "", value = row[named ? profits[0] : 1] ?? "";
+    if (!/^\d{4}-\d\d-\d\d$/.test(d) || !/^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d{1,3})?$/i.test(value)) throw new CalculationError("Daily rows need ISO calendar dates and numeric net P&L.");
+    if (!Number.isFinite(Date.parse(d)) || new Date(d).toISOString().slice(0, 10) !== d) throw new CalculationError("Daily rows need valid calendar dates.");
+    if (d <= previous) throw new CalculationError("Daily dates must be unique and strictly increasing.");
+    previous = d;
+    return `${d},${value}`;
+  });
+  if (!out.length) throw new CalculationError("The daily CSV has no observations.");
+  return ["date,netPnl", ...out].join("\n");
+}
 export function parseEquityCsv(text: string) {
   const rows = parseCsvRows(text); if (!rows.length) throw new CalculationError("Enter an account-value history.");
   const header = rows[0].map(cell => cell.toLowerCase().replace(/[ _-]/g, ""));

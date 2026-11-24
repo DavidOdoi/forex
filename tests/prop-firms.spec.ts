@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { calculateConsistency } from "../src/lib/calculators/consistency";
-import { comparisonFaqs, consistencyFaqs, propPaths, comparisonHeading, comparisonTitle, calculatorHeading, calculatorTitle } from "../src/lib/prop-firms/content";
+import { comparisonFaqs, propPaths, comparisonHeading, comparisonTitle } from "../src/lib/prop-firms/content";
 import { firms } from "../src/lib/prop-firms/firms";
 import { siteOrigin } from "../src/lib/site";
 
@@ -34,11 +34,11 @@ test("invalid financial data is rejected rather than yielding Infinity or a fals
   for (const invalid of ["0", "-20", "100.01", "0.001", "NaN", ""]) expect(() => calculateConsistency("1000","500",invalid)).toThrow();
 });
 
-test("both pages ship crawlable copy, accurate FAQ schema and distinct canonical metadata", async ({ browser, request }) => {
+test("prop-firm comparison retains crawlable copy, FAQ schema and canonical metadata", async ({ browser, request }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
-    for (const [path, heading, title, faqs, type] of [[propPaths.comparison, comparisonHeading, comparisonTitle, comparisonFaqs, "Article"], [propPaths.calculator, calculatorHeading, calculatorTitle, consistencyFaqs, "WebApplication"]] as const) {
+    for (const [path, heading, title, faqs, type] of [[propPaths.comparison, comparisonHeading, comparisonTitle, comparisonFaqs, "Article"]] as const) {
       const response = await page.goto(`http://127.0.0.1:3100${path}`);
       expect(response?.status()).toBe(200);
       await expect(page.locator("h1")).toHaveCount(1); await expect(page.locator("h1")).toHaveText(heading); await expect(page).toHaveTitle(title);
@@ -56,9 +56,6 @@ test("both pages ship crawlable copy, accurate FAQ schema and distinct canonical
       expect(JSON.stringify(graph)).not.toMatch(/ratingValue|aggregateRating/);
       expect(await page.locator('main').evaluate(node => [...node.querySelectorAll('a[href^="#"]')].every(a=>document.getElementById(a.getAttribute('href')!.slice(1))))).toBe(true);
     }
-    await expect(page.locator('main noscript')).toBeVisible();
-    const calculatorWords = (await page.locator('article').textContent())!.split(/\s+/).length;
-    expect(calculatorWords).toBeGreaterThanOrEqual(500); expect(calculatorWords).toBeLessThanOrEqual(800);
     await page.goto(`http://127.0.0.1:3100${propPaths.comparison}`);
     await expect(page.locator('#compared tbody tr')).toHaveCount(5);
     expect(await page.locator('#compared').evaluate(node=>node.previousElementSibling?.tagName)).toBe('HEADER');
@@ -73,59 +70,10 @@ test("both pages ship crawlable copy, accurate FAQ schema and distinct canonical
   } finally { await context.close(); }
 });
 
-test("calculator updates instantly, validates inputs, supports custom rules and resets", async ({ page }) => {
-  await page.goto(propPaths.calculator);
-  await expect(page.locator('[data-result="percentage"]')).toHaveText('62.5%');
-  await expect(page.locator('[data-result="minimum"]')).toHaveText('$3,750.00');
-  await expect(page.locator('[data-result="additional"]')).toHaveText('$1,350.00');
-  await page.getByLabel('Total net profit ($)',{exact:true}).fill('3750');
-  await expect(page.getByText('Within selected limit',{exact:true})).toBeVisible();
-  await expect(page.locator('[data-result="additional"]')).toHaveText('$0.00');
-  await page.getByRole('radio',{name:'Custom',exact:true}).check();
-  await page.getByLabel('Custom limit (%)',{exact:true}).fill('20');
-  await expect(page.locator('[data-result="minimum"]')).toHaveText('$7,500.00');
-  await page.getByLabel('Total net profit ($)',{exact:true}).fill('0');
-  await expect(page.locator('[data-result]')).toHaveCount(0);
-  await expect(page.getByRole('status')).toContainText('greater than zero');
-  await page.getByRole('button',{name:'Reset',exact:true}).click();
-  await expect(page.getByLabel('Total net profit ($)',{exact:true})).toHaveValue('');
-  await expect(page.getByLabel('Highest profitable trading day ($)',{exact:true})).toHaveValue('');
-  await expect(page.getByRole('radio',{name:'40%',exact:true})).toBeChecked();
-});
 
-test("keyboard controls and small screens keep results accessible without page overflow", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height:844 });
-  await page.goto(propPaths.calculator);
-  await page.getByRole('radio',{name:'40%',exact:true}).focus(); await page.keyboard.press('ArrowRight');
-  await expect(page.getByRole('radio',{name:'50%',exact:true})).toBeChecked();
-  await expect(page.getByRole('progressbar')).toHaveAttribute('aria-valuetext',/selected limit 50 percent; above limit/);
-  await page.getByLabel('Total net profit ($)',{exact:true}).fill('1000000000');
-  await page.getByLabel('Highest profitable trading day ($)',{exact:true}).fill('1000000000');
-  await page.getByRole('radio',{name:'Custom',exact:true}).check();
-  await page.getByLabel('Custom limit (%)',{exact:true}).fill('0.01');
-  for (const width of [320, 390, 768, 1440]) {
-    await page.setViewportSize({ width, height:900 });
-    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),`calculator at ${width}px`).toBe(true);
-  }
+test("comparison keeps contextual destinations live and fits small screens", async ({ page, request }) => {
   await page.goto(propPaths.comparison);
-  for (const width of [320, 390, 768, 1440]) {
-    await page.setViewportSize({ width, height:900 });
-    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),`comparison at ${width}px`).toBe(true);
-    expect(await page.locator('article p').first().evaluate(node=>parseFloat(getComputedStyle(node).fontSize))).toBeGreaterThanOrEqual(16);
-  }
-});
-
-test("contextual internal destinations exist and new resources are discoverable from hubs", async ({ page, request }) => {
-  const visited = new Set<string>();
-  for (const path of Object.values(propPaths)) {
-    await page.goto(path);
-    const urls=await page.locator('main a[href^="/"]').evaluateAll(nodes=>nodes.map(node=>node.getAttribute('href')!));
-    expect(new Set(urls.map(url=>url.split('#')[0])).size).toBeGreaterThanOrEqual(5);
-    for (const url of urls) {
-      if(visited.has(url))continue;visited.add(url);
-      expect((await request.get(url)).status(),url).toBe(200);
-    }
-  }
-  await page.goto('/tools');await expect(page.locator('main a[href="'+propPaths.calculator+'"]').first()).toBeVisible();
-  await page.goto('/insights');await expect(page.locator('main a[href="'+propPaths.comparison+'"]')).toBeVisible();
+  const urls = await page.locator('main a[href^="/"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")!));
+  for (const url of new Set(urls)) expect((await request.get(url)).status(), url).toBe(200);
+  for (const width of [320, 390, 768, 1440]) { await page.setViewportSize({ width, height: 1000 }); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true); }
 });

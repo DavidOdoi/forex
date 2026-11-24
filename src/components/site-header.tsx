@@ -21,7 +21,7 @@ const baseMenu = [
     { label: "Position size calculator", href: "/calculators/forex-lot-size-calculator" },
     { label: "Compounding calculator", href: "/tools/forex-compounding-calculator" },
     { label: "Forex market hours", href: "/tools/forex-market-hours" },
-    { label: "Prop firm consistency", href: "/prop-firm-consistency-calculator" },
+    { label: "Prop firm consistency", href: "/calculators/prop-firm-consistency-calculator" },
     { label: "Gold price today", href: "/gold-price" },
     { label: "Gold & silver prices", href: "/gold-silver-prices" },
   ] },

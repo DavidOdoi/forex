@@ -46,8 +46,8 @@ Continue in numerical order, pushing each verified calculator independently. Ori
 | 22 | Forex leverage | `/calculators/forex-leverage-calculator` | Pushed as `0de6449`; 1,617 words, three FAQs, 18 numerical and 14 browser/regression groups passed. |
 | 23 | Forex stop loss | `/calculators/forex-stop-loss-calculator` | Pushed as `fe02754`; 1,754 words, three FAQs, 17 numerical and 13 browser/regression groups passed. |
 | 24 | Forex drawdown | `/calculators/forex-drawdown-calculator` | Pushed as `dfcd3ad`; 1,799 words, three FAQs, complete 128 numerical/service/privacy and 103 browser/crawl groups passed. |
-| 25 | Prop firm drawdown | `/calculators/prop-firm-drawdown-calculator` | Complete; 1,711 words, three FAQs; 17 numerical/privacy and eight browser/regression groups passed. Publication in this commit. |
-| 26 | Prop firm consistency | `/calculators/prop-firm-consistency-calculator` | Queued; inspect/reuse the existing top-level consistency tool and prevent duplicate indexable pages. |
+| 25 | Prop firm drawdown | `/calculators/prop-firm-drawdown-calculator` | Pushed as `36febd6`; 1,711 words, three FAQs; 17 numerical/privacy and eight browser/regression groups passed. |
+| 26 | Prop firm consistency | `/calculators/prop-firm-consistency-calculator` | Complete; 1,704 words, three FAQs; shared prior core upgraded, old URL redirects and leaves sitemap. Numerical and browser verification recorded in the consistency audit; publication in this commit. |
 | 27 | Trading expectancy | `/calculators/trading-expectancy-calculator` | Queued |
 | 28 | Sharpe ratio | `/calculators/sharpe-ratio-calculator` | Queued |
 | 29 | Forex Martingale | `/calculators/forex-martingale-calculator` | Queued; distinct sequential and open-grid modes, no recovery guarantees. |

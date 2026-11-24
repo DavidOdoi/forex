@@ -1,3 +1,4 @@
+import { consistencyDefinition } from "./consistency-content";
 import { propDrawdownDefinition } from "./prop-drawdown-content";
 import { lotSizeDefinition } from "./lot-size-content";
 import { spreadDefinition } from "./spread-content";
@@ -19,7 +20,7 @@ import { breakEvenDefinition } from "./break-even-content";
 import { riskDefinition } from "./risk-content";
 import { profitDefinition } from "./profit-content";
 import { marginDefinition } from "./margin-content";
-export type CalculatorKind = "forex" | "profit" | "compounding" | "position" | "pip" | "margin" | "risk" | "breakeven" | "swap" | "converter" | "ruin" | "kelly" | "fibonacci" | "pivot" | "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown";
+export type CalculatorKind = "forex" | "profit" | "compounding" | "position" | "pip" | "margin" | "risk" | "breakeven" | "swap" | "converter" | "ruin" | "kelly" | "fibonacci" | "pivot" | "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency";
 export type Inline = { text: string; href?: string }[];
 export type ContentSection = { id: string; title: string; paragraphs: Inline[]; bullets?: Inline[]; formula?: string; table?: { headers: string[]; rows: string[][] } };
 export type CalculatorDefinition = {
@@ -41,6 +42,7 @@ export const calculators: CalculatorDefinition[] = [
   stopLossDefinition,
   drawdownDefinition,
   propDrawdownDefinition,
+  consistencyDefinition,
   {
     slug: "forex-calculator", kind: "forex", keyword: "forex calculator",
     title: "Free Forex Calculator – Profit, Pips & Position Size", heading: "Forex Calculator",

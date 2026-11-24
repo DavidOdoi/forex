@@ -29,7 +29,7 @@ const linkGroups = [
       { label: "Position size", href: "/calculators/forex-lot-size-calculator" },
       { label: "Profit calculator", href: "/calculators/forex-profit-calculator" },
       { label: "Compounding", href: "/tools/forex-compounding-calculator" },
-      { label: "Prop firm consistency", href: "/prop-firm-consistency-calculator" },
+      { label: "Prop firm consistency", href: "/calculators/prop-firm-consistency-calculator" },
       { label: "Gold price", href: "/gold-price" },
       { label: "Gold & silver prices", href: "/gold-silver-prices" },
     ],
