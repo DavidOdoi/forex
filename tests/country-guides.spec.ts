@@ -3,6 +3,25 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { getInsight, articleWordCount, forexCountryGuides, relatedInsights, type InsightArticle } from "../src/lib/insights/catalog";
 import { siteOrigin } from "../src/lib/site";
+import { accountCurrencies } from "../src/lib/calculators/instruments";
+
+test("country calculator advice matches supported currencies without promising broker account availability", () => {
+  for (const [country, currency] of [["kenya", "KES"], ["nigeria", "NGN"], ["uganda", "UGX"], ["ghana", "GHS"]] as const) {
+    expect(accountCurrencies).toContain(currency);
+    const article = getInsight(`how-to-start-forex-trading-in-${country}`)!;
+    const copy = JSON.stringify(article.blocks);
+    expect(copy).toContain(`supports ${currency} as a calculation currency`);
+    expect(copy).toContain("supply a manual conversion");
+    expect(copy).not.toContain(`but not ${currency} accounts`);
+    expect(copy).toContain("/calculators/forex-lot-size-calculator");
+    expect(copy).not.toContain("/tools/forex-position-size-calculator");
+  }
+  for (const country of ["zambia", "zimbabwe", "botswana"]) {
+    const copy = JSON.stringify(getInsight(`how-to-start-forex-trading-in-${country}`)!.blocks);
+    expect(copy).toContain("the calculator does not verify broker account availability");
+    expect(copy).not.toContain("account currency accounts");
+  }
+});
 
 const manifest = JSON.parse(readFileSync(join(process.cwd(), "docs/content/country-guides-status.json"), "utf8")) as {
   countries: { country: string; slug: string; status: string; sourceIds: string[]; missingEvidence: string[]; publishable: boolean; offshoreFundingPermission: string }[];
@@ -53,7 +72,8 @@ test("all country guides reuse the seven-step template, canonical routes, disclo
     if (country.status === "education-only") await expect(page.locator(".insight-content")).toContainText("Offshore funding permission is not verified");
     if (country.country === "India") {
       await expect(page.locator(".insight-content")).toContainText("Overseas margin is not LRS-eligible");
-      await expect(page.locator('.insight-content a[href="/reviews"]')).toHaveCount(0);
+      const editorialDirectoryLinks = await page.locator('.insight-content a[href="/reviews"]').evaluateAll(links => links.filter(link => !link.closest("[data-broker-discovery]")).length);
+      expect(editorialDirectoryLinks).toBe(0);
     }
     const schema = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!)["@graph"];
     expect(schema.find((item: { "@type": string }) => item["@type"] === "FAQPage").mainEntity).toHaveLength(3);

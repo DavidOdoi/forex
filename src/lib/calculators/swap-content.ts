@@ -28,7 +28,14 @@ export const swapDefinition: CalculatorDefinition = {
         ],
         [
           {
-            "text": "Exposure matters too: two lots generally incur twice the adjustment of one lot under an unchanged per-lot schedule. Financing is separate from spread and transaction commission. The calculator uses your signed manual rate, not a live broker feed."
+            "text": "Exposure matters too: "
+          },
+          {
+            "text": "two lots",
+            "href": "/calculators/forex-lot-size-converter"
+          },
+          {
+            "text": " generally incur twice the adjustment of one lot under an unchanged per-lot schedule. Financing is separate from spread and transaction commission. The calculator uses your signed manual rate, not a live broker feed."
           }
         ]
       ]
@@ -84,7 +91,14 @@ export const swapDefinition: CalculatorDefinition = {
         ],
         [
           {
-            "text": "The point size is important. Many forex platforms quote fractional pips, so the broker's point may be one-tenth of a conventional pip."
+            "text": "The point size is important. Many forex platforms quote fractional pips, so the broker's point may be "
+          },
+          {
+            "text": "one-tenth of a conventional pip",
+            "href": "/calculators/forex-pip-calculator"
+          },
+          {
+            "text": "."
           }
         ],
         [
@@ -288,7 +302,14 @@ export const swapDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "Positive swap is a financing credit, not guaranteed income. At a hypothetical USD 5 per ordinary event, two events produce USD 10 if the rate stays constant. An adverse price movement can exceed that credit. Leverage, execution costs and changing financing conditions still affect the position."
+            "text": "Positive swap is a financing credit, not guaranteed income. At a hypothetical USD 5 per ordinary event, two events produce USD 10 if the rate stays constant. An adverse price movement can exceed that credit. "
+          },
+          {
+            "text": "Leverage",
+            "href": "/calculators/forex-margin-calculator"
+          },
+          {
+            "text": ", execution costs and changing financing conditions still affect the position."
           }
         ]
       ]
@@ -359,7 +380,14 @@ export const swapDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "Start with the broker’s current symbol specification. On MetaTrader, inspect symbol details for long and short rates, calculation type and contract settings. Confirm the unit, charging currency, ordinary cutoff, triple day, account entity and any holiday schedule. Record when you obtained the rate."
+            "text": "Start with the broker’s current "
+          },
+          {
+            "text": "symbol specification",
+            "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+          },
+          {
+            "text": ". On MetaTrader, inspect symbol details for long and short rates, calculation type and contract settings. Confirm the unit, charging currency, ordinary cutoff, triple day, account entity and any holiday schedule. Record when you obtained the rate."
           }
         ],
         [

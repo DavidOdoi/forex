@@ -327,7 +327,21 @@ export const converterDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "Lot size describes traded quantity. Risk-based position sizing selects quantity from a loss allowance and stop distance. Two traders can each hold 0.10 EUR/USD lots, but a 20-pip stop represents USD 20 gross price risk while a 100-pip stop represents USD 100, under the conventional USD-account pip value."
+            "text": "Lot size describes traded quantity. "
+          },
+          {
+            "text": "Risk-based position sizing",
+            "href": "/calculators/forex-lot-size-calculator"
+          },
+          {
+            "text": " selects quantity from a loss allowance and "
+          },
+          {
+            "text": "stop distance",
+            "href": "/calculators/forex-risk-reward-calculator"
+          },
+          {
+            "text": ". Two traders can each hold 0.10 EUR/USD lots, but a 20-pip stop represents USD 20 gross price risk while a 100-pip stop represents USD 100, under the conventional USD-account pip value."
           }
         ],
         [
@@ -348,7 +362,14 @@ export const converterDefinition: CalculatorDefinition = {
         ],
         [
           {
-            "text": "Lot size determines the underlying quantity, while leverage and the broker's margin requirement determine how much collateral is needed."
+            "text": "Lot size determines the underlying quantity, while leverage and the broker's "
+          },
+          {
+            "text": "margin requirement",
+            "href": "https://www.metatrader5.com/en/terminal/help/trading_advanced/margin_forex"
+          },
+          {
+            "text": " determine how much collateral is needed."
           }
         ],
         [
@@ -417,7 +438,14 @@ export const converterDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "Configured platform lots use the entered contract multiplier. For a 10,000-unit platform contract, two platform lots equal 20,000 base units or 0.20 conventional standard lots. They do not equal two conventional standard lots."
+            "text": "Configured platform lots use the entered "
+          },
+          {
+            "text": "contract multiplier",
+            "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+          },
+          {
+            "text": ". For a 10,000-unit platform contract, two platform lots equal 20,000 base units or 0.20 conventional standard lots. They do not equal two conventional standard lots."
           }
         ],
         [

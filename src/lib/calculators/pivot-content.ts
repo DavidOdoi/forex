@@ -51,12 +51,12 @@ export const pivotDefinition:CalculatorDefinition={
       "paragraphs": [
         [
           {
-            "text": "Here Traditional/Floor uses P=(H+L+C)/3, where H,L,C are the previous completed high, low and close. First levels are R 1=2P−L and S 1=2P−H. Second levels add or subtract the full range:H−L."
+            "text": "Here Traditional/Floor uses P=(H+L+C)/3, where H,L,C are the previous completed high, low and close. First levels are R1=2P−L and S1=2P−H. Second levels add or subtract the full range:H−L."
           }
         ],
         [
           {
-            "text": "Third levels follow R 3=H+2(P−L) and S 3=L−2(H−P). Some systems use different formulas under a Classic label. Our selector and breakdown state this exact convention; a naming match alone does not establish formula equivalence."
+            "text": "Third levels follow R3=H+2(P−L) and S3=L−2(H−P). Some systems use different formulas under a Classic label. Our selector and breakdown state this exact convention; a naming match alone does not establish formula equivalence."
           }
         ]
       ]
@@ -77,27 +77,27 @@ export const pivotDefinition:CalculatorDefinition={
         ],
         [
           {
-            "text": "R 1 equals 2 × 1.1150 − 1.1100 = 1.1200."
+            "text": "R1 equals 2 × 1.1150 − 1.1100 = 1.1200."
           }
         ],
         [
           {
-            "text": "S 1 equals 2 × 1.1150 − 1.1200 = 1.1100."
+            "text": "S1 equals 2 × 1.1150 − 1.1200 = 1.1100."
           }
         ],
         [
           {
-            "text": "R 2 equals 1.1150 + 0.0100 = 1.1250."
+            "text": "R2 equals 1.1150 + 0.0100 = 1.1250."
           }
         ],
         [
           {
-            "text": "S 2 equals 1.1150 − 0.0100 = 1.1050."
+            "text": "S2 equals 1.1150 − 0.0100 = 1.1050."
           }
         ],
         [
           {
-            "text": "Under the stated third-level formulas, R 3 is 1.1300 and S 3 is 1.1000."
+            "text": "Under the stated third-level formulas, R3 is 1.1300 and S3 is 1.1000."
           }
         ],
         [
@@ -137,12 +137,12 @@ export const pivotDefinition:CalculatorDefinition={
       "paragraphs": [
         [
           {
-            "text": "Fibonacci pivots keep P=(H+L+C)/3, then apply ratios to range R=H−L. R 1/S 1 use P±0.382R, R 2/S 2 use P±0.618R, and R 3/S 3 use the full range. These ratios refer to the completed-period range, not selected directional swing anchors."
+            "text": "Fibonacci pivots keep P=(H+L+C)/3, then apply ratios to range R=H−L. R1/S1 use P±0.382R, R2/S2 use P±0.618R, and R3/S3 use the full range. These ratios refer to the completed-period range, not selected directional swing anchors."
           }
         ],
         [
           {
-            "text": "At H 1.1200,L 1.1100,C 1.1150, the range is 0.0100 and P 1.1150. R 1=1.1150+0.382×0.0100=1.11882; S 1=1.11118. R 2=1.12118 and S 2=1.10882. Different spacing from Traditional R 1/S 1 reflects the formula, not stronger resistance or support."
+            "text": "At H 1.1200,L 1.1100,C 1.1150, the range is 0.0100 and P 1.1150. R1=1.1150+0.382×0.0100=1.11882; S1=1.11118. R2=1.12118 and S2=1.10882. Different spacing from Traditional R1/S1 reflects the formula, not stronger resistance or support."
           }
         ]
       ]
@@ -153,7 +153,7 @@ export const pivotDefinition:CalculatorDefinition={
       "paragraphs": [
         [
           {
-            "text": "Camarilla levels here are centered on the previous close C. Add or subtract 1.1(H−L) divided by 12,6,4 or 2 for levels 1–4. For example, R 1=C+1.1(H−L)/12 and S 1=C−1.1(H−L)/12; R 4/S 4 use denominator 2."
+            "text": "Camarilla levels here are centered on the previous close C. Add or subtract 1.1(H−L) divided by 12,6,4 or 2 for levels 1–4. For example, R1=C+1.1(H−L)/12 and S1=C−1.1(H−L)/12; R4/S4 use denominator 2."
           }
         ],
         [
@@ -169,7 +169,7 @@ export const pivotDefinition:CalculatorDefinition={
       "paragraphs": [
         [
           {
-            "text": "Woodie naming varies. Previous-close weighting uses P=(H+L+2C)/4. Current-open weighting instead uses P=(previous H+previous L+2×current O)/4. Our selector exposes both variants and reports R 1=2P−L and S 1=2P−H for each. Further Woodie levels are not claimed."
+            "text": "Woodie naming varies. Previous-close weighting uses P=(H+L+2C)/4. Current-open weighting instead uses P=(previous H+previous L+2×current O)/4. Our selector exposes both variants and reports R1=2P−L and S1=2P−H for each. Further Woodie levels are not claimed."
           }
         ],
         [
@@ -185,12 +185,12 @@ export const pivotDefinition:CalculatorDefinition={
       "paragraphs": [
         [
           {
-            "text": "DeMark branches according to the relationship between the previous close C and previous open O. The previous open must belong to the same completed OHLC record. Compute X using the table, then P=X/4,R 1=X/2−L and S 1=X/2−H. Only these three levels are defined here."
+            "text": "DeMark branches according to the relationship between the previous close C and previous open O. The previous open must belong to the same completed OHLC record. Compute X using the table, then P=X/4,R1=X/2−L and S1=X/2−H. Only these three levels are defined here."
           }
         ],
         [
           {
-            "text": "At O 1.1100,H 1.1200,L 1.1000,C 1.1150, C exceeds O. X=2H+L+C=4.4550; P=1.11375,R 1=1.12750,S 1=1.10750. An absent opening price leaves the DeMark comparison marked as requiring data; it is never replaced silently with another input."
+            "text": "At O 1.1100,H 1.1200,L 1.1000,C 1.1150, C exceeds O. X=2H+L+C=4.4550; P=1.11375,R1=1.12750,S1=1.10750. An absent opening price leaves the DeMark comparison marked as requiring data; it is never replaced silently with another input."
           }
         ]
       ],
@@ -258,12 +258,12 @@ export const pivotDefinition:CalculatorDefinition={
         ],
         [
           {
-            "text": "For example, a price approaching R 1 may attract attention because that level represents a calculated resistance reference."
+            "text": "For example, a price approaching R1 may attract attention because that level represents a calculated resistance reference."
           }
         ],
         [
           {
-            "text": "A price approaching S 1 may be examined as a potential support area."
+            "text": "A price approaching S1 may be examined as a potential support area."
           }
         ],
         [
@@ -283,7 +283,21 @@ export const pivotDefinition:CalculatorDefinition={
         ],
         [
           {
-            "text": "A trading plan still requires a defined entry, exit, and risk allowance."
+            "text": "A "
+          },
+          {
+            "text": "trading plan",
+            "href": "https://www.cmegroup.com/education/courses/trade-and-risk-management"
+          },
+          {
+            "text": " still requires a defined "
+          },
+          {
+            "text": "entry, exit",
+            "href": "/calculators/forex-profit-calculator"
+          },
+          {
+            "text": ", and risk allowance."
           }
         ],
         [

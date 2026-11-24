@@ -37,7 +37,7 @@ export const fibonacciDefinition:CalculatorDefinition={
           },
           {
             "text": "TradingView’s Fibonacci retracement documentation",
-            "href": "https://www.tradingview.com/support/solutions/43000518158-fib-retracement/"
+            "href": "https://www.tradingview.com/support/solutions/43000518158-fibonacci-retracement-drawing-tool/"
           },
           {
             "text": " and "
@@ -461,7 +461,14 @@ export const fibonacciDefinition:CalculatorDefinition={
         ],
         [
           {
-            "text": "Generic mode uses an explicitly entered price-distance unit. It does not assume a forex pip value, metal contract multiplier or minimum order. Non-positive arithmetic extensions from unusually wide swings are flagged outside this positive-price context. Check instrument-specific execution and contract terms separately."
+            "text": "Generic mode uses an explicitly entered price-distance unit. It does not assume a forex pip value, metal contract multiplier or minimum order. Non-positive arithmetic extensions from unusually wide swings are flagged outside this positive-price context. Check instrument-specific execution and "
+          },
+          {
+            "text": "contract terms",
+            "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+          },
+          {
+            "text": " separately."
           }
         ]
       ]
@@ -489,6 +496,16 @@ export const fibonacciDefinition:CalculatorDefinition={
         [
           {
             "text": "Use the calculator to document selected swings, compare alternative ratios and copy consistent reference levels into notes. It shows the range, direction, retracements, extensions and formula steps. The benefit is transparent arithmetic from stated anchors, rather than guaranteed turning points."
+          },
+          {
+            "text": " For completed-session price references, compare the "
+          },
+          {
+            "text": "forex pivot point calculator",
+            "href": "/calculators/forex-pivot-point-calculator"
+          },
+          {
+            "text": "."
           }
         ]
       ]

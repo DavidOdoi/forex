@@ -11,7 +11,7 @@ const resources = [
   { symbol: "EUR/USD", name: "Forex calculations", mark: "€", value: "Calculate", detail: "Profit and loss", href: "/tools/forex-calculator" },
   { symbol: "XAU/USD", name: "Gold price", mark: "Au", value: "View spot", detail: "Price, chart and value", href: "/gold-price" },
   { symbol: "XAG/USD", name: "Gold and silver", mark: "Ag", value: "Compare", detail: "Metal prices and ratio", href: "/gold-silver-prices" },
-  { symbol: "Position size", name: "Trade risk", mark: "%", value: "Size a trade", detail: "Lots and planned risk", href: "/tools/forex-position-size-calculator" },
+  { symbol: "Position size", name: "Trade risk", mark: "%", value: "Size a trade", detail: "Lots and planned risk", href: "/calculators/forex-lot-size-calculator" },
   { symbol: "Market hours", name: "Trading sessions", mark: "◷", value: "Plan ahead", detail: "Sessions in your timezone", href: "/tools/forex-market-hours" },
   { symbol: "USDC / ETH", name: "Crypto transfers", mark: "Ξ", value: "Check fees", detail: "Networks, costs and risks", href: "/insights/usdc-vs-ethereum-sending-money" },
 ];

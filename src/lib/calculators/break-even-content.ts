@@ -40,7 +40,14 @@ export const breakEvenDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "Bid is normally the price at which you sell to the broker; ask is the price at which you buy. Their difference is the spread. At the illustrative quote below, a buy opens at 1.10010 and would immediately close at 1.10000 if the market quote stayed unchanged: a one-pip gross loss."
+            "text": "Bid is normally the price at which you sell to the broker; "
+          },
+          {
+            "text": "ask is the price at which you buy",
+            "href": "https://www.metatrader5.com/en/terminal/help/trading/general_concept"
+          },
+          {
+            "text": ". Their difference is the spread. At the illustrative quote below, a buy opens at 1.10010 and would immediately close at 1.10000 if the market quote stayed unchanged: a one-pip gross loss."
           }
         ],
         [
@@ -76,7 +83,14 @@ export const breakEvenDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "Suppose a trader buys one standard lot of EUR/USD at an executable ask price of 1.10000."
+            "text": "Suppose a trader buys one "
+          },
+          {
+            "text": "standard lot",
+            "href": "/calculators/forex-lot-size-converter"
+          },
+          {
+            "text": " of EUR/USD at an executable ask price of 1.10000."
           }
         ],
         [
@@ -209,7 +223,14 @@ export const breakEvenDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "A position held overnight may incur financing charges or receive financing credits."
+            "text": "A position held overnight may incur "
+          },
+          {
+            "text": "financing charges",
+            "href": "/calculators/forex-swap-calculator"
+          },
+          {
+            "text": " or receive financing credits."
           }
         ],
         [
@@ -352,7 +373,14 @@ export const breakEvenDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "Differences can arise from conversion timing, commissions charged in another currency, changing spreads, additional financing, contract multipliers, minimum price increments and settlement rounding. The result holds the entered conversion rate fixed and cannot automatically reproduce a broker’s statement."
+            "text": "Differences can arise from conversion timing, commissions charged in another currency, changing spreads, additional financing, contract multipliers, "
+          },
+          {
+            "text": "minimum price increments",
+            "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+          },
+          {
+            "text": " and settlement rounding. The result holds the entered conversion rate fixed and cannot automatically reproduce a broker’s statement."
           }
         ],
         [

@@ -8755,7 +8755,7 @@
           },
           {
             "text": "forex position-size calculator",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
             "text": ". For a rand account, confirm the pip value in ZAR before calculating risk."
@@ -9521,10 +9521,10 @@
           },
           {
             "text": "forex position-size calculator",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
-            "text": " supports a USD teaching example and selected currencies, but not KES accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget."
+            "text": " supports KES as a calculation currency. Choose KES and supply a manual conversion if the daily reference lacks a suitable quote. Keep the risk budget, pip value and costs in the same currency."
           }
         ]
       },
@@ -10252,10 +10252,10 @@
           },
           {
             "text": "forex position-size calculator",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
-            "text": " supports a USD teaching example and selected currencies, but not NGN accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget."
+            "text": " supports NGN as a calculation currency. Choose NGN and supply a manual conversion if the daily reference lacks a suitable quote. Keep the risk budget, pip value and costs in the same currency."
           }
         ]
       },
@@ -10998,10 +10998,10 @@
           },
           {
             "text": "forex position-size calculator",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
-            "text": " supports a USD teaching example and selected currencies, but not UGX accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget."
+            "text": " supports UGX as a calculation currency. Choose UGX and supply a manual conversion if the daily reference lacks a suitable quote. Keep the risk budget, pip value and costs in the same currency."
           }
         ]
       },
@@ -11734,10 +11734,10 @@
           },
           {
             "text": "forex position-size calculator",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
-            "text": " supports a USD teaching example and selected currencies, but not GHS accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget."
+            "text": " supports GHS as a calculation currency. Choose GHS and supply a manual conversion if the daily reference lacks a suitable quote. Keep the risk budget, pip value and costs in the same currency."
           }
         ]
       },
@@ -12472,10 +12472,10 @@
           },
           {
             "text": "forex position-size calculator",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
-            "text": " supports a USD teaching example and selected currencies, but not ZMW accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget."
+            "text": " supports a USD example and other listed calculation currencies. Select a supported currency and express your risk budget, pip value and costs consistently; the calculator does not verify broker account availability."
           }
         ]
       },
@@ -13203,10 +13203,10 @@
           },
           {
             "text": "forex position-size calculator",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
-            "text": " supports a USD teaching example and selected currencies, but not account currency accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget."
+            "text": " supports a USD example and other listed calculation currencies. Select a supported currency and express your risk budget, pip value and costs consistently; the calculator does not verify broker account availability."
           }
         ]
       },
@@ -13937,10 +13937,10 @@
           },
           {
             "text": "forex position-size calculator",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
-            "text": " supports a USD teaching example and selected currencies, but not BWP accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget."
+            "text": " supports a USD example and other listed calculation currencies. Select a supported currency and express your risk budget, pip value and costs consistently; the calculator does not verify broker account availability."
           }
         ]
       },
@@ -14668,7 +14668,7 @@
           },
           {
             "text": "forex position-size calculator",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
             "text": " supports AUD accounts. Select AUD and supply the requested conversion bid and ask where needed; the estimate depends on those inputs. Compare the converted pip value and costs with your cash loss budget."
@@ -15365,7 +15365,7 @@
           },
           {
             "text": "USD position-sizing example",
-            "href": "/tools/forex-position-size-calculator"
+            "href": "/calculators/forex-lot-size-calculator"
           },
           {
             "text": " illustrates the calculation. For a different account currency, confirm the correct converted pip value. The tool does not establish local eligibility or the specifications of an Indian exchange contract."

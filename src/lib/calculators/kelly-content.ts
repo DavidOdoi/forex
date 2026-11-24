@@ -255,7 +255,14 @@ export const kellyDefinition:CalculatorDefinition={
       "paragraphs": [
         [
           {
-            "text": "Kelly gives a modeled capital fraction, not forex lots. A separate chosen loss budget requires a defined loss per unit, stop distance, pip value, costs and order limits before translating it into volume."
+            "text": "Kelly gives a modeled capital fraction, not forex lots. A separate chosen loss budget requires a defined "
+          },
+          {
+            "text": "loss per unit",
+            "href": "/calculators/forex-risk-reward-calculator"
+          },
+          {
+            "text": ", stop distance, pip value, costs and order limits before translating it into volume."
           }
         ],
         [
@@ -276,7 +283,14 @@ export const kellyDefinition:CalculatorDefinition={
         ],
         [
           {
-            "text": "Leverage, gaps, costs and margin liquidation can create losses outside a binary model. Maximizing expected log growth is different from minimizing drawdown or maximizing the probability of a particular goal. A lower-risk choice can be rational even when the mathematical curve peaks elsewhere."
+            "text": "Leverage, gaps, costs and "
+          },
+          {
+            "text": "margin",
+            "href": "/calculators/forex-margin-calculator"
+          },
+          {
+            "text": " liquidation can create losses outside a binary model. Maximizing expected log growth is different from minimizing drawdown or maximizing the probability of a particular goal. A lower-risk choice can be rational even when the mathematical curve peaks elsewhere."
           }
         ]
       ]
@@ -292,7 +306,14 @@ export const kellyDefinition:CalculatorDefinition={
         ],
         [
           {
-            "text": "Do not treat full Kelly as an instruction, a negative number as a short signal, or a result for one strategy as a property of EUR/USD itself. The same instrument can support many different payoff distributions. Historical counts provide sample context, not a verified future win probability."
+            "text": "Do not treat full Kelly as an instruction, a negative number as a short signal, or a result for one strategy as a property of EUR/USD itself. The same instrument can support many different payoff distributions. "
+          },
+          {
+            "text": "Historical counts",
+            "href": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm"
+          },
+          {
+            "text": " provide sample context, not a verified future win probability."
           }
         ]
       ]

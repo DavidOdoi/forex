@@ -146,7 +146,7 @@ test("public reviews allow indexing while duplicate demonstrations retain their 
 
 test("specific menu and contextual links lead to existing content and section targets", async ({ page, request }) => {
   await page.goto("/reviews/exness");
-  await expect(page.locator('#fees a[href="/tools/forex-position-size-calculator"]')).toHaveText("Size your position");
+  await expect(page.locator('#fees a[href="/calculators/forex-lot-size-calculator"]')).toHaveText("Size your position");
   await expect(page.locator('#alternatives a[href^="/reviews/"]')).toHaveCount(0);
   const destinations = await page.locator('nav[aria-label="Main navigation"] a[href*="#"]').evaluateAll(nodes => nodes.map(node => node.getAttribute("href")!));
   await expect(page.locator('nav[aria-label="Main navigation"] a[href="/calculators/forex-lot-size-calculator"]')).toHaveCount(1);

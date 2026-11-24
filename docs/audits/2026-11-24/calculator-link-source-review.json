@@ -1,0 +1,820 @@
+{
+  "date": "2026-11-24",
+  "scope": "Twelve calculator guides and their incoming site links; country-guide calculator-capability corrections only.",
+  "contextualLinks": [
+    {
+      "name": "lot-size",
+      "addedContextualLinks": 3,
+      "before": {
+        "internal": 5,
+        "external": 4
+      },
+      "after": {
+        "internal": 7,
+        "external": 5
+      },
+      "links": [
+        {
+          "text": "100,000 base-currency units",
+          "href": "/calculators/forex-lot-size-converter"
+        },
+        {
+          "text": "IC Markets review",
+          "href": "/reviews/ic-markets"
+        },
+        {
+          "text": "Pepperstone review",
+          "href": "/reviews/pepperstone"
+        },
+        {
+          "text": "BabyPips’ explanation of forex lots",
+          "href": "https://www.babypips.com/learn/forex/lots-leverage-and-profit-and-loss"
+        },
+        {
+          "text": "MetaQuotes’ symbol contract and volume properties",
+          "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+        },
+        {
+          "text": "Frankfurter reference rates",
+          "href": "https://frankfurter.dev/"
+        },
+        {
+          "text": "execution prices",
+          "href": "https://www.metatrader5.com/en/terminal/help/trading/general_concept"
+        },
+        {
+          "text": "forex profit calculator",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "forex pip calculator",
+          "href": "/calculators/forex-pip-calculator"
+        },
+        {
+          "text": "margin needed to hold a position",
+          "href": "/calculators/forex-margin-calculator"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        },
+        {
+          "text": "funded-account risk guide",
+          "href": "/insights/common-mistakes-in-funded-trading-accounts"
+        }
+      ]
+    },
+    {
+      "name": "pip",
+      "addedContextualLinks": 3,
+      "before": {
+        "internal": 4,
+        "external": 3
+      },
+      "after": {
+        "internal": 6,
+        "external": 4
+      },
+      "links": [
+        {
+          "text": "IG’s pip definition",
+          "href": "https://www.ig.com/en/glossary-trading-terms/pip-definition"
+        },
+        {
+          "text": "configured contract",
+          "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+        },
+        {
+          "text": "entered lot amount",
+          "href": "/calculators/forex-lot-size-converter"
+        },
+        {
+          "text": "Changing leverage",
+          "href": "/calculators/forex-margin-calculator"
+        },
+        {
+          "text": "forex lot-size calculator",
+          "href": "/calculators/forex-lot-size-calculator"
+        },
+        {
+          "text": "Frankfurter’s reference-rate service",
+          "href": "https://frankfurter.dev/"
+        },
+        {
+          "text": "forex profit calculator",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "platform comparison guide",
+          "href": "/insights/best-platforms-for-day-trading"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        },
+        {
+          "text": "Exness review",
+          "href": "/reviews/exness"
+        }
+      ]
+    },
+    {
+      "name": "margin",
+      "addedContextualLinks": 4,
+      "before": {
+        "internal": 5,
+        "external": 3
+      },
+      "after": {
+        "internal": 7,
+        "external": 5
+      },
+      "links": [
+        {
+          "text": "base-currency units",
+          "href": "/calculators/forex-lot-size-converter"
+        },
+        {
+          "text": "leverage ratio",
+          "href": "https://www.metatrader5.com/en/terminal/help/trading_advanced/margin_forex"
+        },
+        {
+          "text": "MoneySmart forex guide",
+          "href": "https://moneysmart.gov.au/complex-investment-products/forex-trading"
+        },
+        {
+          "text": "instrument specification",
+          "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+        },
+        {
+          "text": "Frankfurter daily reference",
+          "href": "https://frankfurter.dev/"
+        },
+        {
+          "text": "risk budget",
+          "href": "/calculators/forex-risk-reward-calculator"
+        },
+        {
+          "text": "forex lot-size calculator",
+          "href": "/calculators/forex-lot-size-calculator"
+        },
+        {
+          "text": "forex pip calculator",
+          "href": "/calculators/forex-pip-calculator"
+        },
+        {
+          "text": "forex profit calculator",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        },
+        {
+          "text": "Exness review",
+          "href": "/reviews/exness"
+        },
+        {
+          "text": "Pepperstone review",
+          "href": "/reviews/pepperstone"
+        }
+      ]
+    },
+    {
+      "name": "profit",
+      "addedContextualLinks": 4,
+      "before": {
+        "internal": 4,
+        "external": 3
+      },
+      "after": {
+        "internal": 6,
+        "external": 5
+      },
+      "links": [
+        {
+          "text": "contract multipliers",
+          "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+        },
+        {
+          "text": "forex pip-value calculator",
+          "href": "/calculators/forex-pip-calculator"
+        },
+        {
+          "text": "signed financing adjustment",
+          "href": "/calculators/forex-swap-calculator"
+        },
+        {
+          "text": "actual executable fills",
+          "href": "https://www.metatrader5.com/en/terminal/help/trading/general_concept"
+        },
+        {
+          "text": "Frankfurter daily reference rates",
+          "href": "https://frankfurter.dev/"
+        },
+        {
+          "text": "stop and target fields",
+          "href": "/calculators/forex-risk-reward-calculator"
+        },
+        {
+          "text": "forex lot-size calculator",
+          "href": "/calculators/forex-lot-size-calculator"
+        },
+        {
+          "text": "forex margin calculator",
+          "href": "/calculators/forex-margin-calculator"
+        },
+        {
+          "text": "Exness review",
+          "href": "/reviews/exness"
+        },
+        {
+          "text": "IG’s pip definition",
+          "href": "https://www.ig.com/en/glossary-trading-terms/pip-definition"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        }
+      ]
+    },
+    {
+      "name": "risk",
+      "addedContextualLinks": 3,
+      "before": {
+        "internal": 3,
+        "external": 3
+      },
+      "after": {
+        "internal": 5,
+        "external": 4
+      },
+      "links": [
+        {
+          "text": "IG’s pip definition",
+          "href": "https://www.ig.com/en/glossary-trading-terms/pip-definition"
+        },
+        {
+          "text": "forex pip-value calculator",
+          "href": "/calculators/forex-pip-calculator"
+        },
+        {
+          "text": "positive expectancy after costs",
+          "href": "/calculators/kelly-criterion-calculator"
+        },
+        {
+          "text": "trading plan",
+          "href": "https://www.cmegroup.com/education/courses/trade-and-risk-management"
+        },
+        {
+          "text": "excessive share of account equity",
+          "href": "/calculators/forex-risk-of-ruin-calculator"
+        },
+        {
+          "text": "Forex Lot Size Calculator",
+          "href": "/calculators/forex-lot-size-calculator"
+        },
+        {
+          "text": "Forex Profit Calculator",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        },
+        {
+          "text": "MoneySmart’s explanation of leveraged forex",
+          "href": "https://moneysmart.gov.au/complex-investment-products/forex-trading"
+        }
+      ]
+    },
+    {
+      "name": "break-even",
+      "addedContextualLinks": 4,
+      "before": {
+        "internal": 3,
+        "external": 3
+      },
+      "after": {
+        "internal": 5,
+        "external": 5
+      },
+      "links": [
+        {
+          "text": "ask is the price at which you buy",
+          "href": "https://www.metatrader5.com/en/terminal/help/trading/general_concept"
+        },
+        {
+          "text": "standard lot",
+          "href": "/calculators/forex-lot-size-converter"
+        },
+        {
+          "text": "financing charges",
+          "href": "/calculators/forex-swap-calculator"
+        },
+        {
+          "text": "minimum price increments",
+          "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+        },
+        {
+          "text": "IG’s pip definition",
+          "href": "https://www.ig.com/en/glossary-trading-terms/pip-definition"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        },
+        {
+          "text": "Frankfurter’s dated reference rates",
+          "href": "https://frankfurter.dev/"
+        },
+        {
+          "text": "forex profit calculator",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "forex lot-size calculator",
+          "href": "/calculators/forex-lot-size-calculator"
+        },
+        {
+          "text": "pip-value calculator",
+          "href": "/calculators/forex-pip-calculator"
+        }
+      ]
+    },
+    {
+      "name": "swap",
+      "addedContextualLinks": 4,
+      "before": {
+        "internal": 2,
+        "external": 3
+      },
+      "after": {
+        "internal": 5,
+        "external": 4
+      },
+      "links": [
+        {
+          "text": "two lots",
+          "href": "/calculators/forex-lot-size-converter"
+        },
+        {
+          "text": "one-tenth of a conventional pip",
+          "href": "/calculators/forex-pip-calculator"
+        },
+        {
+          "text": "Leverage",
+          "href": "/calculators/forex-margin-calculator"
+        },
+        {
+          "text": "forex profit calculator",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "forex break-even calculator",
+          "href": "/calculators/forex-break-even-calculator"
+        },
+        {
+          "text": "symbol specification",
+          "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+        },
+        {
+          "text": "IG’s pip definition",
+          "href": "https://www.ig.com/en/glossary-trading-terms/pip-definition"
+        },
+        {
+          "text": "Frankfurter daily references",
+          "href": "https://frankfurter.dev/"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        }
+      ]
+    },
+    {
+      "name": "converter",
+      "addedContextualLinks": 4,
+      "before": {
+        "internal": 3,
+        "external": 3
+      },
+      "after": {
+        "internal": 5,
+        "external": 5
+      },
+      "links": [
+        {
+          "text": "Forex Profit Calculator",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "Forex Pip Calculator",
+          "href": "/calculators/forex-pip-calculator"
+        },
+        {
+          "text": "IG’s pip definition",
+          "href": "https://www.ig.com/en/glossary-trading-terms/pip-definition"
+        },
+        {
+          "text": "Frankfurter daily conversion rates",
+          "href": "https://frankfurter.dev/"
+        },
+        {
+          "text": "Risk-based position sizing",
+          "href": "/calculators/forex-lot-size-calculator"
+        },
+        {
+          "text": "stop distance",
+          "href": "/calculators/forex-risk-reward-calculator"
+        },
+        {
+          "text": "margin requirement",
+          "href": "https://www.metatrader5.com/en/terminal/help/trading_advanced/margin_forex"
+        },
+        {
+          "text": "Forex Margin Calculator",
+          "href": "/calculators/forex-margin-calculator"
+        },
+        {
+          "text": "contract multiplier",
+          "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+        },
+        {
+          "text": "CFTC’s forex guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        }
+      ]
+    },
+    {
+      "name": "ruin",
+      "addedContextualLinks": 4,
+      "before": {
+        "internal": 3,
+        "external": 2
+      },
+      "after": {
+        "internal": 5,
+        "external": 4
+      },
+      "links": [
+        {
+          "text": "theoretical expectancy",
+          "href": "/calculators/kelly-criterion-calculator"
+        },
+        {
+          "text": "Position sizing",
+          "href": "https://www.cmegroup.com/education/courses/trade-and-risk-management"
+        },
+        {
+          "text": "binary win or loss",
+          "href": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm"
+        },
+        {
+          "text": "financing schedules",
+          "href": "/calculators/forex-swap-calculator"
+        },
+        {
+          "text": "NIST’s confidence limits for a binomial proportion",
+          "href": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        },
+        {
+          "text": "forex risk–reward calculator",
+          "href": "/calculators/forex-risk-reward-calculator"
+        },
+        {
+          "text": "forex profit calculator",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "forex lot-size calculator",
+          "href": "/calculators/forex-lot-size-calculator"
+        }
+      ]
+    },
+    {
+      "name": "kelly",
+      "addedContextualLinks": 3,
+      "before": {
+        "internal": 3,
+        "external": 3
+      },
+      "after": {
+        "internal": 5,
+        "external": 4
+      },
+      "links": [
+        {
+          "text": "Kelly’s 1956 paper, “A New Interpretation of Information Rate”",
+          "href": "https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf"
+        },
+        {
+          "text": "loss per unit",
+          "href": "/calculators/forex-risk-reward-calculator"
+        },
+        {
+          "text": "margin",
+          "href": "/calculators/forex-margin-calculator"
+        },
+        {
+          "text": "Historical counts",
+          "href": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm"
+        },
+        {
+          "text": "NIST’s explanation of binomial sampling uncertainty",
+          "href": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        },
+        {
+          "text": "risk-of-ruin calculator",
+          "href": "/calculators/forex-risk-of-ruin-calculator"
+        },
+        {
+          "text": "forex lot-size calculator",
+          "href": "/calculators/forex-lot-size-calculator"
+        },
+        {
+          "text": "forex profit calculator",
+          "href": "/calculators/forex-profit-calculator"
+        }
+      ]
+    },
+    {
+      "name": "fibonacci",
+      "addedContextualLinks": 2,
+      "before": {
+        "internal": 4,
+        "external": 3
+      },
+      "after": {
+        "internal": 5,
+        "external": 4
+      },
+      "links": [
+        {
+          "text": "TradingView’s Fibonacci retracement documentation",
+          "href": "https://www.tradingview.com/support/solutions/43000518158-fibonacci-retracement-drawing-tool/"
+        },
+        {
+          "text": "BabyPips’ Fibonacci retracement explanation",
+          "href": "https://www.babypips.com/learn/forex/fibonacci-retracement"
+        },
+        {
+          "text": "Forex Risk Reward Ratio Calculator",
+          "href": "/calculators/forex-risk-reward-calculator"
+        },
+        {
+          "text": "Forex Lot Size Calculator",
+          "href": "/calculators/forex-lot-size-calculator"
+        },
+        {
+          "text": "contract terms",
+          "href": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants"
+        },
+        {
+          "text": "forex pivot point calculator",
+          "href": "/calculators/forex-pivot-point-calculator"
+        },
+        {
+          "text": "forex pip calculator",
+          "href": "/calculators/forex-pip-calculator"
+        },
+        {
+          "text": "forex profit calculator",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        }
+      ]
+    },
+    {
+      "name": "pivot",
+      "addedContextualLinks": 2,
+      "before": {
+        "internal": 4,
+        "external": 2
+      },
+      "after": {
+        "internal": 5,
+        "external": 3
+      },
+      "links": [
+        {
+          "text": "TradingView Pivot Points Standard reference",
+          "href": "https://www.tradingview.com/support/solutions/43000521824-pivot-points-standard/"
+        },
+        {
+          "text": "trading plan",
+          "href": "https://www.cmegroup.com/education/courses/trade-and-risk-management"
+        },
+        {
+          "text": "entry, exit",
+          "href": "/calculators/forex-profit-calculator"
+        },
+        {
+          "text": "Forex Risk Reward Ratio Calculator",
+          "href": "/calculators/forex-risk-reward-calculator"
+        },
+        {
+          "text": "Forex Lot Size Calculator",
+          "href": "/calculators/forex-lot-size-calculator"
+        },
+        {
+          "text": "Fibonacci retracement calculator",
+          "href": "/calculators/fibonacci-calculator"
+        },
+        {
+          "text": "forex pip calculator",
+          "href": "/calculators/forex-pip-calculator"
+        },
+        {
+          "text": "CFTC’s forex risk guidance",
+          "href": "https://www.cftc.gov/LearnAndProtect/forexfrauds"
+        }
+      ]
+    }
+  ],
+  "incomingLinks": {
+    "canonicalReferencesUpdated": 49,
+    "files": [
+      "src/components/site-header.tsx",
+      "src/components/site-footer.tsx",
+      "src/components/market-ticker.tsx",
+      "src/app/best-prop-firm-forex-eas/page.tsx",
+      "src/app/prop-firm-consistency-calculator/page.tsx",
+      "src/app/insights/triangle-chart-patterns/page.tsx",
+      "src/app/tools/forex-market-hours/page.tsx",
+      "src/components/review-template/round-trip-cost.tsx",
+      "src/components/country-guides/country-guide.tsx",
+      "src/data/insights/articles.json",
+      "src/lib/calculators/catalog.ts",
+      "src/data/country-guides/philippines-article.json",
+      "src/data/country-guides/indonesia-article.json",
+      "src/data/country-guides/india-article.json",
+      "src/data/country-guides/tanzania-article.json",
+      "src/data/country-guides/ghana-article.json",
+      "src/data/country-guides/vietnam-article.json",
+      "src/data/country-guides/singapore-article.json",
+      "src/data/country-guides/uk-article.json",
+      "src/data/country-guides/pakistan-article.json",
+      "src/data/country-guides/netherlands-article.json",
+      "src/data/country-guides/united-arab-emirates-article.json",
+      "src/data/country-guides/nigeria-article.json",
+      "src/data/country-guides/south-africa-article.json",
+      "src/data/country-guides/ethiopia-article.json"
+    ],
+    "countryCorrections": [
+      {
+        "slug": "how-to-start-forex-trading-in-kenya",
+        "before": " supports a USD teaching example and selected currencies, but not KES accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget.",
+        "after": " supports KES as a calculation currency. Choose KES and supply a manual conversion if the daily reference lacks a suitable quote. Keep the risk budget, pip value and costs in the same currency."
+      },
+      {
+        "slug": "how-to-start-forex-trading-in-nigeria",
+        "before": " supports a USD teaching example and selected currencies, but not NGN accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget.",
+        "after": " supports NGN as a calculation currency. Choose NGN and supply a manual conversion if the daily reference lacks a suitable quote. Keep the risk budget, pip value and costs in the same currency."
+      },
+      {
+        "slug": "how-to-start-forex-trading-in-uganda",
+        "before": " supports a USD teaching example and selected currencies, but not UGX accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget.",
+        "after": " supports UGX as a calculation currency. Choose UGX and supply a manual conversion if the daily reference lacks a suitable quote. Keep the risk budget, pip value and costs in the same currency."
+      },
+      {
+        "slug": "how-to-start-forex-trading-in-ghana",
+        "before": " supports a USD teaching example and selected currencies, but not GHS accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget.",
+        "after": " supports GHS as a calculation currency. Choose GHS and supply a manual conversion if the daily reference lacks a suitable quote. Keep the risk budget, pip value and costs in the same currency."
+      },
+      {
+        "slug": "how-to-start-forex-trading-in-zambia",
+        "before": " supports a USD teaching example and selected currencies, but not ZMW accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget.",
+        "after": " supports a USD example and other listed calculation currencies. Select a supported currency and express your risk budget, pip value and costs consistently; the calculator does not verify broker account availability."
+      },
+      {
+        "slug": "how-to-start-forex-trading-in-zimbabwe",
+        "before": " supports a USD teaching example and selected currencies, but not account currency accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget.",
+        "after": " supports a USD example and other listed calculation currencies. Select a supported currency and express your risk budget, pip value and costs consistently; the calculator does not verify broker account availability."
+      },
+      {
+        "slug": "how-to-start-forex-trading-in-botswana",
+        "before": " supports a USD teaching example and selected currencies, but not BWP accounts. Convert the actual pip value and costs correctly before using a local-currency loss budget.",
+        "after": " supports a USD example and other listed calculation currencies. Select a supported currency and express your risk budget, pip value and costs consistently; the calculator does not verify broker account availability."
+      }
+    ]
+  },
+  "externalLinkChecks": [
+    {
+      "url": "https://frankfurter.dev/",
+      "status": 200,
+      "finalUrl": "https://frankfurter.dev/",
+      "title": "Frankfurter | Free exchange rate API",
+      "checkedAt": "2026-11-24T11:02:55.447853+00:00"
+    },
+    {
+      "url": "https://moneysmart.gov.au/complex-investment-products/forex-trading",
+      "status": 200,
+      "finalUrl": "https://moneysmart.gov.au/complex-investment-products/forex-trading",
+      "title": "Forex trading - Moneysmart.gov.au",
+      "checkedAt": "2026-11-24T11:02:56.256430+00:00"
+    },
+    {
+      "url": "https://www.babypips.com/learn/forex/fibonacci-retracement",
+      "status": 200,
+      "finalUrl": "https://www.babypips.com/learn/forex/fibonacci-retracement",
+      "title": "How to Use Fibonacci Retracement Levels - Babypips.com",
+      "checkedAt": "2026-11-24T11:02:55.382882+00:00"
+    },
+    {
+      "url": "https://www.babypips.com/learn/forex/lots-leverage-and-profit-and-loss",
+      "status": 200,
+      "finalUrl": "https://www.babypips.com/learn/forex/lots-leverage-and-profit-and-loss",
+      "title": "Lot Size in Forex: Standard, Mini, Micro and Nano Lots - Babypips.com",
+      "checkedAt": "2026-11-24T11:02:55.417829+00:00"
+    },
+    {
+      "url": "https://www.cftc.gov/LearnAndProtect/forexfrauds",
+      "status": 200,
+      "finalUrl": "https://www.cftc.gov/LearnAndProtect/forexfrauds",
+      "title": "Forex Frauds | CFTC",
+      "checkedAt": "2026-11-24T11:02:55.416123+00:00"
+    },
+    {
+      "url": "https://www.cmegroup.com/education/courses/trade-and-risk-management",
+      "status": 200,
+      "finalUrl": "https://www.cmegroup.com/education/courses/trade-and-risk-management",
+      "title": "Trade and Risk Management",
+      "checkedAt": "2026-11-24T11:02:56.151539+00:00"
+    },
+    {
+      "url": "https://www.ig.com/en/glossary-trading-terms/pip-definition",
+      "status": 200,
+      "finalUrl": "https://www.ig.com/en/glossary-trading-terms/pip-definition",
+      "title": "What is a Pip? | Pip Definition | What Does Pip Mean | IG | IG International",
+      "checkedAt": "2026-11-24T11:02:55.967366+00:00"
+    },
+    {
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm",
+      "status": 200,
+      "finalUrl": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm",
+      "title": "1.3.6.6.18. Binomial Distribution",
+      "checkedAt": "2026-11-24T11:02:55.771545+00:00"
+    },
+    {
+      "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+      "status": 200,
+      "finalUrl": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+      "title": "7.2.4.1. Confidence intervals",
+      "checkedAt": "2026-11-24T11:02:55.900399+00:00"
+    },
+    {
+      "url": "https://www.metatrader5.com/en/terminal/help/trading/general_concept",
+      "status": 200,
+      "finalUrl": "https://www.metatrader5.com/en/terminal/help/trading/general_concept",
+      "title": "Basic Principles - Trading Operations - MetaTrader 5 Help",
+      "checkedAt": "2026-11-24T11:02:56.565467+00:00"
+    },
+    {
+      "url": "https://www.metatrader5.com/en/terminal/help/trading_advanced/margin_forex",
+      "status": 200,
+      "finalUrl": "https://www.metatrader5.com/en/terminal/help/trading_advanced/margin_forex",
+      "title": "Margin Calculation: Retail Forex, Futures - For Advanced Users - Trading Operations - MetaTrader 5 Help",
+      "checkedAt": "2026-11-24T11:02:56.661542+00:00"
+    },
+    {
+      "url": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants",
+      "status": 200,
+      "finalUrl": "https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants",
+      "title": "Symbol Properties - Environment State - Constants, Enumerations and Structures - MQL5 Reference",
+      "checkedAt": "2026-11-24T11:02:56.583576+00:00"
+    },
+    {
+      "url": "https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf",
+      "status": 200,
+      "finalUrl": "https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf",
+      "title": "",
+      "checkedAt": "2026-11-24T11:02:56.469515+00:00"
+    },
+    {
+      "url": "https://www.tradingview.com/support/solutions/43000518158-fibonacci-retracement-drawing-tool/",
+      "status": 200,
+      "finalUrl": "https://www.tradingview.com/support/solutions/43000518158-fibonacci-retracement-drawing-tool/",
+      "title": "Fibonacci retracement drawing tool — TradingView",
+      "checkedAt": "2026-11-24T11:02:56.670777+00:00"
+    },
+    {
+      "url": "https://www.tradingview.com/support/solutions/43000521824-pivot-points-standard/",
+      "status": 200,
+      "finalUrl": "https://www.tradingview.com/support/solutions/43000521824-pivot-points-standard/",
+      "title": "Pivot Points Standard — TradingView",
+      "checkedAt": "2026-11-24T11:02:56.844773+00:00"
+    }
+  ]
+}

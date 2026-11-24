@@ -42,7 +42,7 @@ test("mobile navigation traps focus, closes with Escape or navigation, and resto
   await open.click();
   await drawer.getByRole("button", { name: "Tools links", exact: true }).click();
   await drawer.getByRole("link", { name: "Profit calculator", exact: true }).click();
-  await expect(page).toHaveURL(/\/tools\/forex-profit-calculator$/); await expect(drawer).not.toBeVisible();
+  await expect(page).toHaveURL(/\/calculators\/forex-profit-calculator$/); await expect(drawer).not.toBeVisible();
   await open.click(); await drawer.getByRole("link", { name: "Find my broker", exact: true }).click();
   await expect(page).toHaveURL(/\/find-my-broker$/); await expect(drawer).not.toBeVisible();
   await expect(page.getByRole("heading", { name: "Are you new to trading?", exact: true })).toBeVisible();
@@ -55,17 +55,27 @@ test("broker finder handles all answer combinations, going back, review links an
   test.setTimeout(90000);
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/find-my-broker");
-  const questions = ["Are you new to trading?", "Are low spreads your top priority?", "Do you want to compare demo accounts?"];
+  const questions = ["Are you new to trading?", "Do you want to compare trading costs first?", "Do you want to compare demo accounts?"];
+  const checkedReviews = new Set<string>();
   for (let pattern = 0; pattern < 8; pattern++) {
     for (let step = 0; step < 3; step++) {
       await expect(page.getByRole("heading", { name: questions[step], exact: true })).toBeVisible();
       await expect(page.getByRole("progressbar", { name: "Broker finder progress", exact: true })).toHaveAttribute("value", String(step));
       await page.getByRole("button", { name: pattern & (1 << step) ? "Yes" : "No", exact: true }).click();
     }
-    await expect(page.getByRole("heading", { name: "Illustrative match", exact: true })).toBeVisible();
-    const review = page.locator('main article a[href^="/reviews/"]');
-    await expect(review).toHaveCount(1);
-    expect((await request.get((await review.getAttribute("href"))!)).status()).toBe(200);
+    await expect(page.getByRole("heading", { name: "Your research checklist", exact: true })).toBeVisible();
+    const checklist = page.locator("#broker-finder ol > li h3 a");
+    await expect(checklist).toHaveText([
+      pattern & 1 ? "Start with the basics" : "Compare account documents",
+      pattern & 2 ? "Work out trading costs" : "Check platform fit",
+      pattern & 4 ? "Choose a demo workflow" : "Check rules for your country",
+    ]);
+    const reviews = await page.locator('main article a[href^="/reviews/"]').evaluateAll(links => links.map(link => link.getAttribute("href")!));
+    expect(reviews.length).toBeGreaterThan(0);
+    for (const href of new Set(reviews)) {
+      if (!checkedReviews.has(href)) expect((await request.get(href)).status(), href).toBe(200);
+      checkedReviews.add(href);
+    }
     expect((await request.get("/reviews")).status()).toBe(200);
     await expect(page.getByRole("link", { name: "Browse all broker research", exact: true })).toHaveAttribute("href", "/reviews");
     await page.getByRole("button", { name: "Start again", exact: true }).click();

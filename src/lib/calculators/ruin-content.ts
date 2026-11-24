@@ -39,12 +39,23 @@ export const ruinDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "At 45% wins and a 2:1 payoff, theoretical expectancy is 0.45 ×2 −0.55 ×1 =+0.35 loss units per trade before extra costs. That positive average does not produce a smooth account path. Losing sequences can cross a threshold before a long-run average has an opportunity to emerge."
+            "text": "At 45% wins and a 2:1 payoff, "
+          },
+          {
+            "text": "theoretical expectancy",
+            "href": "/calculators/kelly-criterion-calculator"
+          },
+          {
+            "text": " is 0.45 ×2 −0.55 ×1 =+0.35 loss units per trade before extra costs. That positive average does not produce a smooth account path. Losing sequences can cross a threshold before a long-run average has an opportunity to emerge."
           }
         ],
         [
           {
-            "text": "Position sizing changes how damaging a sequence becomes. An apparently profitable payoff structure can still conflict with a loss limit, especially when risk per trade is high. The simulation illustrates this distinction without forecasting a particular sequence."
+            "text": "Position sizing",
+            "href": "https://www.cmegroup.com/education/courses/trade-and-risk-management"
+          },
+          {
+            "text": " changes how damaging a sequence becomes. An apparently profitable payoff structure can still conflict with a loss limit, especially when risk per trade is high. The simulation illustrates this distinction without forecasting a particular sequence."
           }
         ]
       ]
@@ -55,7 +66,14 @@ export const ruinDefinition: CalculatorDefinition = {
       "paragraphs": [
         [
           {
-            "text": "Each trade is a binary win or loss with a constant entered probability and payoff. Repeating independently sampled sequences produces an empirical threshold-hit frequency. A seeded 32-bit pseudo-random generator makes identical inputs reproducible; it is a modeling tool, not a source of market outcomes."
+            "text": "Each trade is a "
+          },
+          {
+            "text": "binary win or loss",
+            "href": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm"
+          },
+          {
+            "text": " with a constant entered probability and payoff. Repeating independently sampled sequences produces an empirical threshold-hit frequency. A seeded 32-bit pseudo-random generator makes identical inputs reproducible; it is a modeling tool, not a source of market outcomes."
           }
         ],
         [
@@ -275,7 +293,14 @@ export const ruinDefinition: CalculatorDefinition = {
         ],
         [
           {
-            "text": "This model does not separately simulate changing spreads, financing schedules, partial fills or gaps. Unentered adverse execution is absent from the outcomes. Use the trade-level profit and swap tools to inspect those assumptions rather than interpreting the binary model as a complete account forecast."
+            "text": "This model does not separately simulate changing spreads, "
+          },
+          {
+            "text": "financing schedules",
+            "href": "/calculators/forex-swap-calculator"
+          },
+          {
+            "text": ", partial fills or gaps. Unentered adverse execution is absent from the outcomes. Use the trade-level profit and swap tools to inspect those assumptions rather than interpreting the binary model as a complete account forecast."
           }
         ]
       ]

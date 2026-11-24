@@ -347,7 +347,14 @@ export const riskDefinition: CalculatorDefinition = {
         ],
         [
           {
-            "text": "The relevant question is whether the strategy's realized winning and losing outcomes produce positive expectancy after costs."
+            "text": "The relevant question is whether the strategy's realized winning and losing outcomes produce "
+          },
+          {
+            "text": "positive expectancy after costs",
+            "href": "/calculators/kelly-criterion-calculator"
+          },
+          {
+            "text": "."
           }
         ],
         [
@@ -362,7 +369,14 @@ export const riskDefinition: CalculatorDefinition = {
         ],
         [
           {
-            "text": "A useful trading plan should determine the entry, stop, and target using a defensible method first. The resulting ratio can then help evaluate whether the setup meets the strategy's rules."
+            "text": "A useful "
+          },
+          {
+            "text": "trading plan",
+            "href": "https://www.cmegroup.com/education/courses/trade-and-risk-management"
+          },
+          {
+            "text": " should determine the entry, stop, and target using a defensible method first. The resulting ratio can then help evaluate whether the setup meets the strategy's rules."
           }
         ]
       ]
@@ -383,7 +397,14 @@ export const riskDefinition: CalculatorDefinition = {
         ],
         [
           {
-            "text": "A trade can offer an attractive 1:3 ratio while exposing an excessive share of account equity to loss."
+            "text": "A trade can offer an attractive 1:3 ratio while exposing an "
+          },
+          {
+            "text": "excessive share of account equity",
+            "href": "/calculators/forex-risk-of-ruin-calculator"
+          },
+          {
+            "text": " to loss."
           }
         ],
         [

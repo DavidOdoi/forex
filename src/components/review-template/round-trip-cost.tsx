@@ -39,7 +39,7 @@ export function RoundTripCost({ brokerName = "Exness", initialSpread = "0.3", in
     <div role="status" aria-live="polite" aria-atomic="true" data-roundtrip-result>
       {result ? <dl><div><dt>Spread cost</dt><dd>{money(result.spread)}</dd></div><div><dt>Open + close commission</dt><dd>{money(result.commission)}</dd></div><div><dt>Round-trip total</dt><dd><strong>{money(result.total)} / {result.pips.toFixed(1)} {Number(result.pips.toFixed(1)) === 1 ? "pip" : "pips"}</strong></dd></div></dl> : <p className="br-cost-error">{error}</p>}
     </div>
-    <p id={`${id}-note`}>{notional ? "First manual-FX tier: each order costs max(USD notional × basis points ÷ 10,000, US$2). Assumes the same FX rate for both legs; actual closing notional can differ." : "Spread × pip value + 2 × commission × lots. Cent lots use different units."} Excludes price movement, swaps, slippage and conversion. <Link href="/tools/forex-position-size-calculator">Size your position</Link>.</p>
+    <p id={`${id}-note`}>{notional ? "First manual-FX tier: each order costs max(USD notional × basis points ÷ 10,000, US$2). Assumes the same FX rate for both legs; actual closing notional can differ." : "Spread × pip value + 2 × commission × lots. Cent lots use different units."} Excludes price movement, swaps, slippage and conversion. <Link href="/calculators/forex-lot-size-calculator">Size your position</Link>.</p>
     <noscript><p>{notional ? "The displayed example is fixed without JavaScript: 1 lot, EUR/USD 1.1 and the first-tier US$2/order minimum." : <>The example above is fixed without JavaScript: 1 standard lot, {initialSpread} pips and {money(Number(initialCommission))}/lot/side.</>}</p></noscript>
   </figure>;
 }
