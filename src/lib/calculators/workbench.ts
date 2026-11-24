@@ -1,19 +1,21 @@
 import { calculatePip } from "./pip";
-import { pipScenarioInputs, marginScenarioInputs, profitScenarioInputs, riskScenarioInputs, defaultRiskScenario, defaultMarginScenario, defaultPipScenario, defaultProfitScenario, type TradeScenario } from "./trade-scenario";
+import { pipScenarioInputs, marginScenarioInputs, profitScenarioInputs, riskScenarioInputs, defaultRiskScenario, defaultBreakEvenScenario, breakEvenScenarioInputs, defaultMarginScenario, defaultPipScenario, defaultProfitScenario, type TradeScenario } from "./trade-scenario";
 import { cash, quantity, D } from "./precision";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 import { calculateMargin } from "./margin";
 import { calculateProfit } from "./profit";
+import { calculateBreakEven } from "./break-even";
 import { calculateRiskReward } from "./risk-reward";
 
-export type WorkbenchKind = "pip" | "margin" | "profit" | "risk";
-export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario, profit: defaultProfitScenario, risk: defaultRiskScenario };
-export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator", profit: "/calculators/forex-profit-calculator", risk: "/calculators/forex-risk-reward-calculator" };
+export type WorkbenchKind = "pip" | "margin" | "profit" | "risk" | "breakeven";
+export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario, profit: defaultProfitScenario, risk: defaultRiskScenario, breakeven: defaultBreakEvenScenario };
+export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator", profit: "/calculators/forex-profit-calculator", risk: "/calculators/forex-risk-reward-calculator", breakeven: "/calculators/forex-break-even-calculator" };
 export type WorkbenchOutput = {
   title: string; value: string; summary: string; conversion: ReturnType<typeof resolveConversion>;
   metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[];
   steps: string[]; warnings: string[];
   marginVisual?: { usedPercent: number; used: string; available: string; deficit: boolean };
+  transfer?: TradeScenario;
 };
 const exposureMoney = (value: Parameters<typeof cash>[0], currency: string) => {
   const amount = new D(value);
@@ -21,6 +23,19 @@ const exposureMoney = (value: Parameters<typeof cash>[0], currency: string) => {
 };
 
 export function workbenchResult(kind: WorkbenchKind, values: TradeScenario, rates: ExchangeRate[] = []): WorkbenchOutput {
+  if (kind === "breakeven") {
+    const input = breakEvenScenarioInputs(values, rates);
+    const r = calculateBreakEven(input);
+    const price = (v: Parameters<typeof quantity>[0]) => quantity(v, input.instrument.pricePrecision, input.instrument.pricePrecision);
+    const costCode = input.costCurrency === "quote" ? input.instrument.quote : input.account;
+    return { title: `Estimated closing ${input.direction === "buy" ? "bid" : "ask"} · rounded price`, value: price(r.rounded), summary: `${quantity(r.units)} ${input.instrument.base} · ${input.direction === "buy" ? "Buy / long" : "Sell / short"} · ${r.rows.length} ${r.rows.length === 1 ? "entry" : "entries"}`, conversion: r.conversion,
+      transfer: { ...values, volumeMode: "units", volume: r.units.toString(), entry: input.entries.length === 1 && input.priceMode === "fills" ? r.entry.toString() : "", price: "" },
+      metrics: [["Weighted input entry", quantity(r.entry, 10)], ["Modeled executable entry", quantity(r.executableEntry, 10)], ["Theoretical closing price", quantity(r.theoretical, 12)], ["Cost recovery from executable entry", `${quantity(r.movement, 6)} pips`], ["Net costs in quote currency", cash(r.quoteCosts, input.instrument.quote, 8)], ...(r.midpoint === null ? [] : [["Modeled closing midpoint", quantity(r.midpoint, 12)]])],
+      tables: [{ title: "Same-direction entry breakdown", headers: ["Base units", "Input entry price"], rows: r.rows.map(row => [quantity(row.units), quantity(row.price, input.instrument.pricePrecision)]) }, { title: "Separately entered costs", headers: ["Component", "Amount"], rows: [["Combined commission", cash(r.commission, costCode)], ["Additional exit costs", cash(r.exitCosts, costCode)], ["Signed accrued financing", cash(r.swap, costCode)], ["Net amount to recover", cash(r.costs, costCode)]] }],
+      steps: [`Volume-weighted entry = ${quantity(r.entry, 12)}; modeled executable entry = ${quantity(r.executableEntry, 12)}.`, `${quantity(r.executableEntry, 12)} ${input.direction === "buy" ? "+" : "−"} (${quantity(r.quoteCosts, 12)} ÷ ${quantity(r.units)}) = ${quantity(r.theoretical, 12)} theoretical closing ${input.direction === "buy" ? "bid" : "ask"}.`, `Round ${input.direction === "buy" ? "up" : "down"} to ${input.instrument.pricePrecision} decimal places: ${price(r.rounded)}. Modeled rounding surplus: ${cash(r.roundingNetQuote, input.instrument.quote, 8)}.`],
+      warnings: [input.priceMode === "fills" ? "Actual executable entry already reflects the opening bid/ask. No separate spread is added in this mode." : "Mid-price mode assumes a symmetric, constant entered spread at entry and exit. Half is added to a buy entry or subtracted from a sell entry; the closing midpoint lies another half-spread beyond the closing executable side.", "Enter all commissions once. Additional exit costs must exclude any closing commission already in the combined commission amount. Positive swap is an accrued credit, negative swap a charge.", "The price grid uses the configured decimal precision. Check any different broker tick increment. A rounded theoretical level is not a valid-order check or guaranteed fill.", "Conversion is held fixed. Quote-currency costs are netted in quote currency; account-currency costs use the conversion side for the gross amount needed to offset them. Broker settlement and future financing can differ."],
+    };
+  }
   if (kind === "risk") {
     const input = riskScenarioInputs(values, rates);
     const r = calculateRiskReward(input);

@@ -30,7 +30,7 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
   const [copyFallback, setCopyFallback] = useState("");
   const spec = conventionalInstrument(isPair(values.pair) ? values.pair : "EUR/USD");
   const from = kind === "margin" && spec.base === values.account ? spec.base : spec.quote;
-  const labels = { pip: { workspace: "Forex pip-value workspace", result: "Per pip at this volume", note: "Change volume, currency or pip convention to see the effect. No broker account or live quote is required.", button: "View pip value", eyebrow: "Pip value and movement" }, margin: { workspace: "Forex margin workspace", result: "Estimated required margin", note: "Estimate collateral from volume, leverage and conversion assumptions. Add your equity and existing used margin to check the account effect.", button: "View margin estimate", eyebrow: "Collateral and available equity" }, profit: { workspace: "Forex profit and loss workspace", result: "Estimated net profit / loss", note: "Compare entry and exit prices, direction and volume. Add only costs that are not already included in those fills. All starting values are editable examples.", button: "View net profit or loss", eyebrow: "Gross result, costs and net P&L" }, risk: { workspace: "Forex risk–reward workspace", result: "Net risk : potential reward", note: "Compare planned loss and potential gain. Enter executable price assumptions, extra costs and an optional win-rate assumption. The ratio cannot predict which exit will be reached.", button: "View risk and reward", eyebrow: "Planned risk, potential reward and costs" } }[kind];
+  const labels = { pip: { workspace: "Forex pip-value workspace", result: "Per pip at this volume", note: "Change volume, currency or pip convention to see the effect. No broker account or live quote is required.", button: "View pip value", eyebrow: "Pip value and movement" }, margin: { workspace: "Forex margin workspace", result: "Estimated required margin", note: "Estimate collateral from volume, leverage and conversion assumptions. Add your equity and existing used margin to check the account effect.", button: "View margin estimate", eyebrow: "Collateral and available equity" }, profit: { workspace: "Forex profit and loss workspace", result: "Estimated net profit / loss", note: "Compare entry and exit prices, direction and volume. Add only costs that are not already included in those fills. All starting values are editable examples.", button: "View net profit or loss", eyebrow: "Gross result, costs and net P&L" }, risk: { workspace: "Forex risk–reward workspace", result: "Net risk : potential reward", note: "Compare planned loss and potential gain. Enter executable price assumptions, extra costs and an optional win-rate assumption. The ratio cannot predict which exit will be reached.", button: "View risk and reward", eyebrow: "Planned risk, potential reward and costs" }, breakeven: { workspace: "Forex break-even workspace", result: "Estimated break-even closing price", note: "Find the executable exit needed to recover entered costs. Use actual entry fills or clearly modeled mid prices; combine same-direction entries with volume-weighted pricing.", button: "View break-even price", eyebrow: "Closing price, costs and rounding" } }[kind];
   const needsConversion = from !== values.account;
   const update = (patch: TradeScenario) => { setValues(old => ({ ...old, ...patch })); setCopyStatus(""); setCopyFallback(""); };
   const set = (name: string, value: string) => update({ [name]: value });
@@ -51,6 +51,7 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
   try {
     if (!error) result = workbenchResult(kind, values, reference.data?.rates ?? []);
   } catch (caught) { error = values.rateSource === "daily" && needsConversion && !reference.data && reference.state !== "error" ? "Load the daily reference rates or enter a manual conversion quote." : caught instanceof Error ? caught.message : "Check the entered values."; }
+  const transferValues = result?.transfer ?? values;
 
   const field = (name: string, label: string, help?: string) => <div className={styles.field}>
     <label htmlFor={`trade-${name}`}>{label}</label><input id={`trade-${name}`} type="text" inputMode="decimal" value={values[name]} maxLength={65} onChange={e => set(name, e.target.value)} aria-describedby={help ? `trade-${name}-help` : undefined} />
@@ -75,14 +76,18 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
         <p className={styles.inputNote}>{labels.note}</p>
         {restoreError && <p className={shared.notice}>{restoreError}</p>}
         <div className={styles.fieldGrid}>
-          {select("pair", "Currency pair", pairCodes.map(code => <option key={code}>{code}</option>), pair => { if (isPair(pair)) { const next = conventionalInstrument(pair); update({ pair, contract: next.contractSize, pipSize: next.pipSize, precision: String(next.pricePrecision), crossCurrency: crossFor(next.quote, values.account), ...(kind === "margin" ? { price: "" } : ["profit", "risk"].includes(kind) ? { entry: "", exit: "", stop: "", target: "" } : {}), ...clearRates }); } })}
+          {select("pair", "Currency pair", pairCodes.map(code => <option key={code}>{code}</option>), pair => { if (isPair(pair)) { const next = conventionalInstrument(pair); update({ pair, contract: next.contractSize, pipSize: next.pipSize, precision: String(next.pricePrecision), crossCurrency: crossFor(next.quote, values.account), ...(kind === "margin" ? { price: "" } : ["profit", "risk", "breakeven"].includes(kind) ? { entry: "", exit: "", stop: "", target: "" } : {}), ...clearRates }); } })}
           {select("account", "Account currency", currencies, account => update({ account, crossCurrency: crossFor(kind === "margin" && spec.base === account ? spec.base : spec.quote, account), ...clearRates }))}
           {select("volumeMode", "Trade-size input", <><option value="lots">Configured lots</option><option value="units">Base-currency units</option></>)}
-          {field("volume", values.volumeMode === "units" ? `Trade size (${spec.base} units)` : "Trade size (lots)")}
+          {!(kind === "breakeven" && values.entriesEnabled === "yes") && field("volume", values.volumeMode === "units" ? `Trade size (${spec.base} units)` : "Trade size (lots)")}
           {kind === "pip" ? field("pips", "Number of pips to value", "Magnitude of a move, not a net profit estimate.") : kind === "margin" ? <>
             {select("marginMode", "Margin requirement input", <><option value="leverage">Leverage ratio</option><option value="percent">Margin percentage</option></>)}
             {values.marginMode === "leverage" ? field("leverage", "Leverage (X in 1:X)", "50 means 1:50. Use the leverage permitted for your actual account.") : field("marginPercent", "Margin requirement (%)", "2 means 2% of notional, equivalent to 1:50.")}
             {spec.base !== values.account && field("price", `${values.pair} notional reference price`, `Enter ${spec.quote} per 1 ${spec.base}. The starting price is an editable example, not a market quote.`)}
+          </> : kind === "breakeven" ? <>
+            {select("direction", "Trade direction", <><option value="buy">Buy / long</option><option value="sell">Sell / short</option></>)}
+            {select("priceMode", "Entry price convention", <><option value="fills">Executable entry fill</option><option value="mid">Mid price · model symmetric spread</option></>)}
+            {values.entriesEnabled !== "yes" && field("entry", "Entry price", "Buy: opening ask. Sell: opening bid. Mid mode uses the entered midpoint instead.")}
           </> : kind === "risk" ? <>
             {select("direction", "Trade direction", <><option value="buy">Buy / long</option><option value="sell">Sell / short</option></>)}
             {field("entry", "Entry price", "Executable-price assumption, not a live quote.")}
@@ -96,6 +101,19 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
             {field("exit", "Exit price", values.priceMode === "fills" ? "Buy closes at bid; sell closes at ask." : "Illustrative mid-market exit, not a fill.")}
           </>}
         </div>
+        {kind === "breakeven" && <>
+          <details className={styles.settings} open><summary>Multiple entries · same pair and direction</summary><div className={shared.settingsBody}>
+            <label className={shared.checkbox}><input type="checkbox" checked={values.entriesEnabled === "yes"} onChange={e => set("entriesEnabled", e.target.checked ? "yes" : "no")} />Use a weighted entry basket</label>
+            {values.entriesEnabled === "yes" && <div className={styles.field}><label htmlFor="trade-entries">Entry rows: volume,price</label><textarea id="trade-entries" rows={5} value={values.entries} maxLength={4096} onChange={e => set("entries", e.target.value)} aria-describedby="trade-entries-help" /><small id="trade-entries-help">One volume,price per line, using the selected lots/units mode. Up to 20 entries; no thousands separators. Costs below apply to the whole basket.</small></div>}
+          </div></details>
+          <details className={styles.settings} open><summary>Combined charges and accrued financing</summary><div className={shared.settingsBody}><div className={styles.fieldGrid}>
+            {select("costCurrency", "Cost currency", <><option value="account">Account currency · {values.account}</option><option value="quote">Quote currency · {spec.quote}</option></>)}
+            {field("commission", "Combined commission", "Whole basket, including any opening and closing commission being recovered.")}
+            {field("exitCosts", "Additional anticipated exit costs", "Exclude closing commission already counted above.")}
+            {field("swap", "Signed accrued swap", "Positive credit; negative charge. Future rollover is not predicted.")}
+            {values.priceMode === "mid" && field("spreadPips", "Modeled spread (pips)", "Constant symmetric full bid/ask spread at entry and exit.")}
+          </div></div></details>
+        </>}
         {kind === "risk" && <details className={styles.settings}><summary>Compare two alternative targets</summary><div className={shared.settingsBody}><p className={shared.note}>Each target assumes the entire position exits there. This is not a partial-exit plan.</p><div className={styles.fieldGrid}>{field("target2", "Alternative target 2 · optional")}{field("target3", "Alternative target 3 · optional")}</div></div></details>}
         {kind === "profit" && <>
           <details className={styles.settings} open><summary>Costs and reference equity</summary><div className={shared.settingsBody}>
@@ -152,10 +170,10 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
           {result.warnings.map(note => <p className={shared.notice} key={note}>{note}</p>)}
           <div className={shared.actions}><button type="button" onClick={() => copy(false)}><Copy size={16} aria-hidden="true" />Copy results</button><button type="button" onClick={() => copy(true)}><Link2 size={16} aria-hidden="true" />Copy scenario link</button></div>
           <nav className={shared.connected} aria-label="Continue with these trade inputs">
-            <a href={`/calculators/forex-lot-size-calculator?${transferTradeQuery(values, "lot")}`}>Reuse pair and account inputs in lot sizing <ArrowRight size={17} aria-hidden="true" /></a>
-            <a href={`${kind === "pip" ? workbenchPaths.margin : workbenchPaths.pip}?${transferTradeQuery(values, kind === "pip" ? "margin" : "pip")}`}>{kind === "pip" ? "Use this volume in the margin calculator" : "Check this volume’s pip value"}<ArrowRight size={17} aria-hidden="true" /></a>
-            {kind !== "profit" && <a href={`${workbenchPaths.profit}?${transferTradeQuery(values, "profit")}`}>Estimate this volume’s profit and loss <ArrowRight size={17} aria-hidden="true" /></a>}
-            {kind === "profit" && <a href={`${workbenchPaths.margin}?${transferTradeQuery(values, "margin")}`}>Check margin for this position <ArrowRight size={17} aria-hidden="true" /></a>}
+            <a href={`/calculators/forex-lot-size-calculator?${transferTradeQuery(transferValues, "lot")}`}>Reuse pair and account inputs in lot sizing <ArrowRight size={17} aria-hidden="true" /></a>
+            <a href={`${kind === "pip" ? workbenchPaths.margin : workbenchPaths.pip}?${transferTradeQuery(transferValues, kind === "pip" ? "margin" : "pip")}`}>{kind === "pip" ? "Use this volume in the margin calculator" : "Check this volume’s pip value"}<ArrowRight size={17} aria-hidden="true" /></a>
+            {kind !== "profit" && <a href={`${workbenchPaths.profit}?${transferTradeQuery(transferValues, "profit")}`}>Estimate this volume’s profit and loss <ArrowRight size={17} aria-hidden="true" /></a>}
+            {kind === "profit" && <a href={`${workbenchPaths.margin}?${transferTradeQuery(transferValues, "margin")}`}>Check margin for this position <ArrowRight size={17} aria-hidden="true" /></a>}
           </nav>
           {copyStatus && <p className={shared.copyStatus} role="status">{copyStatus}</p>}
           {copyFallback && <div className={shared.copyFallback}><label htmlFor="trade-copy-output">Copy text</label><textarea id="trade-copy-output" readOnly value={copyFallback} onFocus={e => e.target.select()} /></div>}

@@ -53,3 +53,5 @@
 .connected { display:grid; gap:12px; margin-top:22px; font-size:18px; }
 .connected a { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px; border:1px solid #ddd; border-radius:8px; text-decoration:none; }
 .connected a svg { flex-shrink:0; }
+
+.workspace textarea { width:100%; min-height:120px; padding:12px; border:1px solid #c9c9c9; border-radius:8px; color:#000; background:#fff; font:inherit; line-height:1.6; resize:vertical; }

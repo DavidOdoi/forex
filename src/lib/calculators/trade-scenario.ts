@@ -5,6 +5,7 @@ import type { PipInputs } from "./pip";
 import type { MarginInputs } from "./margin";
 import type { ProfitInputs } from "./profit";
 import type { RiskRewardInputs } from "./risk-reward";
+import type { BreakEvenInputs } from "./break-even";
 
 export const defaultPipScenario = {
   pair: "EUR/USD", account: "USD", volumeMode: "lots", volume: "1", pips: "1", movementEnabled: "no", start: "1.10000", end: "1.10500",
@@ -21,12 +22,13 @@ export const defaultProfitScenario = {
   spreadPips: "0", slippagePips: "0", commission: "0", commissionBasis: "total", swap: "0", costCurrency: "account", equity: "", stop: "", target: "",
 };
 export const defaultRiskScenario = { ...defaultProfitScenario, volume: "1", stop: "1.0980", target: "1.1040", probability: "", target2: "", target3: "" };
+export const defaultBreakEvenScenario = { ...defaultProfitScenario, volume: "1", commission: "7", exitCosts: "0", entriesEnabled: "no", entries: "0.5,1.1000\n0.5,1.1020" };
 
 export function restoreTradeScenario(search: string, defaults: TradeScenario) {
   const params = new URLSearchParams(search);
   const values = { ...defaults };
   if (params.has("v") && params.get("v") !== "1") return { values, error: "This shared scenario version is unsupported. Reset to a fresh example." };
-  for (const key of Object.keys(defaults)) if (params.has(key)) values[key] = params.get(key)!.slice(0, 65);
+  for (const key of Object.keys(defaults)) if (params.has(key)) values[key] = params.get(key)!.slice(0, key === "entries" ? 4096 : 65);
   return { values, error: null };
 }
 
@@ -55,6 +57,17 @@ export function profitScenarioInputs(values: TradeScenario, reference: ExchangeR
 
 export function riskScenarioInputs(values: TradeScenario, reference: ExchangeRate[] = []): RiskRewardInputs {
   return { ...profitScenarioInputs({ ...values, priceMode: "fills", spreadPips: "0", slippagePips: "0", commissionBasis: "total", swap: "0", costCurrency: "account", equity: "" }, reference), stop: values.stop, target: values.target, ...(values.probability.trim() ? { probability: values.probability } : {}), extraTargets: [values.target2, values.target3].filter(value => value.trim()) };
+}
+
+export function breakEvenScenarioInputs(values: TradeScenario, reference: ExchangeRate[] = []): BreakEvenInputs {
+  const instrument = scenarioInstrument(values);
+  if (!["lots", "units"].includes(values.volumeMode) || !["yes", "no"].includes(values.entriesEnabled)) throw new CalculationError("Choose valid entry and volume settings.");
+  const entries = values.entriesEnabled === "yes" ? values.entries.trim().split(/\n/).filter(line => line.trim()).map(line => {
+    const parts = line.trim().split(/\s*,\s*|\s+/);
+    if (parts.length !== 2) throw new CalculationError("Each entry row needs volume,price. Do not use thousands separators.");
+    return { volume: parts[0], price: parts[1] };
+  }) : [{ volume: values.volume, price: values.entry }];
+  return { instrument, account: values.account as AccountCurrency, direction: values.direction as "buy" | "sell", volumeMode: values.volumeMode as "lots" | "units", entries, commission: values.commission, exitCosts: values.exitCosts, swap: values.swap, costCurrency: values.costCurrency as "account" | "quote", priceMode: values.priceMode as "fills" | "mid", spreadPips: values.spreadPips, rates: scenarioRates(values, instrument.quote, reference) };
 }
 
 export function scenarioInstrument(values: TradeScenario) {
