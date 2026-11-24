@@ -1,22 +1,45 @@
 import { calculateSpread } from "./spread";
+import { calculateCommission } from "./commission";
 import { accountCurrencies, conventionalInstrument, isPair, type AccountCurrency } from "./instruments";
 import { pairCodes, CalculationError } from "./forex";
 import { cash, quantity } from "./precision";
 import { defaultPipScenario, scenarioInstrument, scenarioRates, type TradeScenario } from "./trade-scenario";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 
-export type CostKind = "spread";
+export type CostKind = "spread" | "commission";
 export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "textarea"; options?: { value: string; label: string }[] };
 export type CostResult = { title: string; value: string; summary: string; metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[]; steps: string[]; warnings: string[]; conversions: ReturnType<typeof resolveConversion>[] };
 export const costDefinitions = {
+  commission: { path: "/calculators/forex-commission-calculator", title: "Commission schedule and executed-order workspace", note: "Rates below are hypothetical fee assumptions, not a broker schedule. Select the fee basis and denomination. Each custom row represents one executed order; partial fills inside one order do not automatically create separate minimum charges.", defaults: { ...defaultPipScenario, volume: "0.2", feeCurrency: "USD", commissionMode: "lot-side", entryRate: "3.5", exitRate: "", minimumFee: "0", feeLotUnits: "100000", billing: "split", notionalBasis: "quote", entryPrice: "1.1000", exitPrice: "1.1050", scope: "roundtrip", ordersEnabled: "no", orders: "entry,1,1.1000\nexit,0.4,1.1050\nexit,0.6,1.1080", feeDecimals: "", paid: "0", repetitions: "1", pipEnabled: "yes", pipRate: "" } },
   spread: { path: "/calculators/forex-spread-cost-calculator", title: "Spread and transaction-cost workspace", note: "Enter a bid and ask from the same instrument and observation time. Starting quotes are hypothetical examples, not a live broker feed. A separate closing spread models half the opening plus half the closing spread around reference midpoints.", defaults: { ...defaultPipScenario, quoteBid: "1.10000", quoteAsk: "1.10012", quoteTime: "", commission: "0", closingSpread: "", treatment: "standalone" } },
 };
 const options = (values: readonly string[]) => values.map(value => ({ value, label: value }));
 const choice = (name: string, label: string, rows: string[][], help?: string, advanced = false): CostField => ({ name, label, options: rows.map(([value, label]) => ({ value, label })), help, advanced });
 const number = (name: string, label: string, help?: string, advanced = false): CostField => ({ name, label, help, advanced });
-export function costConversionFrom(_kind: CostKind, values: TradeScenario): AccountCurrency { return isPair(values.pair) ? conventionalInstrument(values.pair).quote : "USD"; }
+export function costConversionFrom(kind: CostKind, values: TradeScenario): AccountCurrency {
+  const quote = isPair(values.pair) ? conventionalInstrument(values.pair).quote : "USD";
+  return kind === "commission" ? (values.feeCurrency !== values.account ? values.feeCurrency as AccountCurrency : values.pipEnabled === "yes" ? quote : values.account as AccountCurrency) : quote;
+}
+function commissionFields(values: TradeScenario): CostField[] {
+  return [
+    { name: "pair", label: "Currency pair", options: options(pairCodes) }, { name: "account", label: "Account currency", options: options(accountCurrencies) }, { name: "feeCurrency", label: "Commission denomination", options: options(accountCurrencies) },
+    choice("commissionMode", "Commission charging basis", [["lot-side", "Per billed lot per side"], ["lot-roundturn", "Per billed lot round turn"], ["million-units", "Per million base-currency units per side"], ["percent-notional", "Percentage of each order notional"]]),
+    choice("volumeMode", "Trade size unit", [["lots", "Configured lots"], ["units", "Base-currency units"]]), number("volume", "Trade size"),
+    number("entryRate", values.commissionMode === "lot-roundturn" ? "Full round-turn fee per billed lot" : values.commissionMode === "percent-notional" ? "Entry fee · percent (e.g. 0.002)" : "Entry fee rate"),
+    ...(values.commissionMode !== "lot-roundturn" ? [number("exitRate", "Exit fee rate (optional)", "Blank uses the entry rate, with the same denomination and basis.")] : [choice("billing", "Round-turn billing timing", [["split", "Half at entry and half at exit"], ["entry", "Full fee charged at entry"]])]),
+    number("minimumFee", "Minimum per charged executed order", "In commission denomination. A prepaid round turn has no separate closing minimum."),
+    choice("scope", "Simple order list", [["roundtrip", "One entry and one equal-volume exit"], ["entry", "Opening order only"]]),
+    ...(values.commissionMode === "percent-notional" ? [choice("notionalBasis", "Notional denomination", [["base", "Base-currency notional"], ["quote", "Quote-currency notional"]], "Commission denomination must match this currency. Quote notional uses each order’s price."), ...(values.notionalBasis === "quote" ? [number("entryPrice", "Entry executable price"), ...(values.scope === "roundtrip" ? [number("exitPrice", "Exit executable price")] : [])] : [])] : []),
+    choice("pipEnabled", "Equivalent pip cost", [["yes", "Calculate for total opened volume"], ["no", "Skip pip comparison"]]),
+    number("contract", "Base units per configured lot", "This describes platform volume, not necessarily the billed lot.", true), number("pipSize", "Pip size", undefined, true), number("precision", "Permitted price decimal places", undefined, true),
+    number("feeLotUnits", "Base units per billed lot", "A standard-lot fee normally uses 100,000 base units even if configured platform lots differ.", true),
+    choice("ordersEnabled", "Custom executed order list", [["no", "Use the simple order list"], ["yes", "Enter entries and partial closes"]], undefined, true),
+    ...(values.ordersEnabled === "yes" ? [{ name: "orders", label: "Executed orders · side,volume,price", help: "One executed order per line: entry,1,1.1000 then exit,0.4,1.1050. Price is required only for quote-notional percentage fees. Volume uses the selected trade size unit. Maximum 50 rows.", type: "textarea" as const, advanced: true }] : []),
+    number("feeDecimals", "Fee rounding decimal places (optional)", "Blank preserves precision. A number from 0–8 applies half-up rounding to each charged order in commission denomination.", true), number("paid", "Commission already charged · account currency", "For this same order list; subtracts only from the remaining charge, not from the total estimate.", true), number("repetitions", "Number of identical scenario repetitions", "An illustration of repeated costs, not a suggestion to trade more.", true),
+  ];
+}
 export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
-  const fields: CostField[] = [
+  const fields: CostField[] = kind === "commission" ? commissionFields(values) : [
     { name: "pair", label: "Currency pair", options: options(pairCodes) }, { name: "account", label: "Account currency", options: options(accountCurrencies) },
     choice("volumeMode", "Trade size unit", [["lots", "Configured lots"], ["units", "Base-currency units"]]), number("volume", "Trade size", "One conventional standard lot is 100,000 base-currency units; change contract size below if needed."),
     number("quoteBid", "Market bid"), number("quoteAsk", "Market ask"),
@@ -42,17 +65,23 @@ export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
       }
     }
   }
+  if (kind === "commission" && values.pipEnabled === "yes" && values.rateSource === "manual" && isPair(values.pair)) {
+    const quote = conventionalInstrument(values.pair).quote;
+    if (quote !== from && quote !== values.account) fields.push(number("pipRate", `${quote}/${values.account} pip-conversion rate`, `Account-currency units per 1 ${quote}; separate from the commission-currency conversion.`));
+  }
   return fields;
 }
 export function changeCostField(_kind: CostKind, values: TradeScenario, name: string, value: string): TradeScenario {
   const next = { ...values, [name]: value };
   if (name === "pair" && isPair(value)) { const spec = conventionalInstrument(value); Object.assign(next, { contract: spec.contractSize, pipSize: spec.pipSize, precision: String(spec.pricePrecision), quoteBid: "", quoteAsk: "", quoteTime: "" }); }
-  if (["pair", "account", "rateDirection", "crossCurrency", "bidAsk"].includes(name)) Object.assign(next, { rate: "", bid: "", ask: "", crossRate: "", crossBid: "", crossAsk: "" });
+  if (["pair", "account", "feeCurrency", "rateDirection", "crossCurrency", "bidAsk"].includes(name)) Object.assign(next, { rate: "", bid: "", ask: "", crossRate: "", crossBid: "", crossAsk: "", pipRate: "" });
+  if (name === "pair") Object.assign(next, { entryPrice: "", exitPrice: "" });
   const from = costConversionFrom(_kind, next);
   if (next.crossCurrency === from || next.crossCurrency === next.account) next.crossCurrency = accountCurrencies.find(code => code !== from && code !== next.account)!;
   return next;
 }
 export function costResult(kind: CostKind, values: TradeScenario, reference: ExchangeRate[] = []): CostResult {
+  if (kind === "commission") return commissionResult(values, reference);
   if (kind !== "spread") throw new CalculationError("Choose a supported cost tool.");
   if (values.quoteTime && (!/^\d{4}-\d\d-\d\dT\d\d:\d\d$/.test(values.quoteTime) || !Number.isFinite(Date.parse(values.quoteTime + "Z")) || new Date(values.quoteTime + "Z").toISOString().slice(0, 16) !== values.quoteTime)) throw new CalculationError("Enter a valid quote observation time in UTC.");
   const instrument = scenarioInstrument(values);
@@ -62,4 +91,19 @@ export function costResult(kind: CostKind, values: TradeScenario, reference: Exc
     tables: [{ title: "Hypothetical spread sensitivity · unchanged volume and commission", headers: ["Quote multiple", "Spread", "Spread equivalent", "Additional combined cost"], rows: r.scenarios.map(row => [`${quantity(row.multiplier)}×`, `${quantity(row.pips)} pips`, cash(row.cost, values.account), cash(row.combined, values.account)]) }],
     steps: [`Spread = (${r.ask} − ${r.bid}) ÷ ${r.pipSize} = ${quantity(r.pips)} pips.`, `Quote-currency spread cost = ${r.difference} × ${quantity(r.units)} = ${cash(r.quoteCost, instrument.quote)}.`, ...r.conversion.steps, `Midpoint round-trip allocation = (opening ${quantity(r.pips)} + closing ${quantity(r.closePips)}) ÷ 2 = ${quantity(r.modeledPips)} pips.`, values.treatment === "embedded" ? "Spread is already in supplied executable fills: additional spread deduction is zero. The headline adds only the separately entered commission." : "Standalone headline adds the modeled spread and the entered total round-turn commission. It is a cost estimate, not trade P&L."],
     warnings: ["Market bid and ask are manual inputs, not a live or historical broker feed. Conversion references do not verify these prices.", "A quoted unchanged-market round trip costs one full spread; different opening/closing spreads use the explicitly stated midpoint model. Actual fills, slippage, financing and other fees can differ.", ...(values.treatment === "embedded" ? ["Spread equivalents remain informational. Do not deduct them again from a profit/loss result that already uses executable entry and exit prices."] : []), ...(r.conversion.stale ? ["The daily conversion reference is more than four days old. Verify a current rate before using this estimate."] : [])], conversions: [r.conversion] };
+}
+
+function commissionResult(v: TradeScenario, reference: ExchangeRate[]): CostResult {
+  if (!["yes", "no"].includes(v.ordersEnabled) || !["yes", "no"].includes(v.pipEnabled) || !["entry", "roundtrip"].includes(v.scope)) throw new CalculationError("Choose valid order-list and pip settings.");
+  const instrument = scenarioInstrument(v), from = costConversionFrom("commission", v);
+  const rates = scenarioRates(v, from, reference);
+  if (v.pipEnabled === "yes" && v.rateSource === "manual" && instrument.quote !== from && instrument.quote !== v.account) rates.push({ base: instrument.quote, quote: v.account as AccountCurrency, rate: v.pipRate, source: "manual", asOf: null });
+  const orders = v.ordersEnabled === "yes" ? v.orders.trim().split(/\n/).filter(line => line.trim()).map(line => { const fields = line.split(",").map(value => value.trim()); if (fields.length < 2 || fields.length > 3) throw new CalculationError("Each executed order needs side,volume and an optional price."); return { side: fields[0] as "entry" | "exit", volume: fields[1], price: fields[2] }; }) : [{ side: "entry" as const, volume: v.volume, price: v.entryPrice }, ...(v.scope === "roundtrip" ? [{ side: "exit" as const, volume: v.volume, price: v.exitPrice }] : [])];
+  const r = calculateCommission({ instrument, account: v.account as AccountCurrency, feeCurrency: v.feeCurrency as AccountCurrency, volumeMode: v.volumeMode as "lots" | "units", orders, mode: v.commissionMode as Parameters<typeof calculateCommission>[0]["mode"], entryRate: v.entryRate, ...(v.exitRate.trim() ? { exitRate: v.exitRate } : {}), minimum: v.minimumFee, feeLotUnits: v.feeLotUnits, roundTurnBilling: v.billing as "split" | "entry", notionalBasis: v.notionalBasis as "base" | "quote", ...(v.feeDecimals.trim() ? { feeDecimals: Number(v.feeDecimals) } : {}), alreadyCharged: v.paid, repetitions: Number(v.repetitions), pipEnabled: v.pipEnabled === "yes", rates });
+  const conversions = [r.conversion, ...(r.pipConversion ? [r.pipConversion] : [])];
+  return { title: "Total commission for the entered order list", value: cash(r.total, v.account), summary: `${r.orders.length} executed orders · ${v.commissionMode} · manually entered fee assumptions`,
+    metrics: [["Original-denomination total", cash(r.totalFee, v.feeCurrency)], ["Entry commission", cash(r.entryFee, v.account)], ["Exit commission", cash(r.exitFee, v.account)], ["Commission already charged", cash(r.alreadyCharged, v.account)], ["Remaining modeled charge", cash(r.remainingCharge, v.account)], ["Opened / closed base units", `${quantity(r.entryUnits)} / ${quantity(r.exitUnits)}`], ["Unclosed modeled base units", quantity(r.remainingUnits)], ["Equivalent pips · total opened volume", r.pipEquivalent ? `${quantity(r.pipEquivalent, 8)} pips` : "Not requested"], ["Repeated-scenario total", `${cash(r.repeatedTotal, v.account)} / ${v.repetitions} repetitions`]],
+    tables: [{ title: "Executed order commission breakdown", headers: ["Order", "Base units", "Fee before conversion", "Account-currency fee"], rows: r.orders.map(row => [`${row.index}. ${row.side}${row.charged ? "" : " · prepaid"}`, quantity(row.units), cash(row.fee, v.feeCurrency, 6), cash(row.accountFee, v.account, 6)]) }],
+    steps: [v.commissionMode === "lot-roundturn" ? `Full round-turn rate ${v.entryRate} per ${v.feeLotUnits} base units. ${v.billing === "entry" ? "Charged once on entry; exit fees and exit minimums are zero." : "Half allocated to each charged side; the full rate is not doubled."}` : v.commissionMode === "percent-notional" ? `Each order uses its ${v.notionalBasis}-currency notional × entered percentage ÷ 100.` : v.commissionMode === "million-units" ? "Each side uses base-currency units ÷ 1,000,000 × its fee rate. This is not a dollar-notional convention." : `Each side uses base units ÷ ${v.feeLotUnits} × its fee rate.`, `Minimum ${v.minimumFee} ${v.feeCurrency} applies per charged executed order; ${v.feeDecimals.trim() ? `half-up rounding to ${v.feeDecimals} places follows` : "no order-level rounding is applied"}.`, ...r.conversion.steps, ...(r.pipConversion?.steps ?? []), "Equivalent pips divide total commission by the pip value of all opened volume. Fees remain separate monetary charges, not a change in the market quote."],
+    warnings: ["This tool calculates commission only. Spreads, financing, slippage and payment fees require separate estimates; do not subtract embedded spreads twice.", "Rows represent executed orders. Minimum fees per partial fill, tiered schedules, capped fees and broker-specific rounding must be checked separately.", ...(r.remainingUnits.gt(0) ? ["Some modeled volume remains open. Exit costs for the unclosed amount are not invented; prepaid round-turn fees may already cover them under the selected timing."] : []), ...(conversions.some(conversion => conversion.stale) ? ["A conversion reference is more than four days old; check its original observation date."] : [])], conversions };
 }

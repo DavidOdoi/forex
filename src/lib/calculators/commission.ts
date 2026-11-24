@@ -1,0 +1,50 @@
+import { CalculationError } from "./forex";
+import type { AccountCurrency, FxInstrument } from "./instruments";
+import { resolveConversion, type ExchangeRate } from "./exchange-rates";
+import { decimal, D, type Numeric } from "./precision";
+import { checkedAccount, tradePrice, tradeVolume } from "./trade-core";
+export type CommissionInputs = {
+  instrument: FxInstrument; account: AccountCurrency; feeCurrency: AccountCurrency; volumeMode: "lots" | "units";
+  orders: { side: "entry" | "exit"; volume: Numeric; price?: Numeric }[];
+  mode: "lot-side" | "lot-roundturn" | "million-units" | "percent-notional";
+  entryRate: Numeric; exitRate?: Numeric; minimum: Numeric; feeLotUnits: Numeric;
+  roundTurnBilling: "split" | "entry"; notionalBasis: "base" | "quote";
+  feeDecimals?: number; alreadyCharged: Numeric; repetitions: number; pipEnabled: boolean; rates: ExchangeRate[];
+};
+export function calculateCommission(input: CommissionInputs, now = Date.now()) {
+  checkedAccount(input.account); checkedAccount(input.feeCurrency);
+  if (!["lot-side", "lot-roundturn", "million-units", "percent-notional"].includes(input.mode) || !["split", "entry"].includes(input.roundTurnBilling) || !["base", "quote"].includes(input.notionalBasis)) throw new CalculationError("Choose valid commission and billing conventions.");
+  if (!Array.isArray(input.orders) || input.orders.length < 1 || input.orders.length > 50) throw new CalculationError("Enter between one and fifty executed order rows.");
+  if (!Number.isInteger(input.repetitions) || input.repetitions < 1 || input.repetitions > 1000000) throw new CalculationError("Scenario repetitions must be a whole number from 1 to 1,000,000.");
+  if (input.feeDecimals !== undefined && (!Number.isInteger(input.feeDecimals) || input.feeDecimals < 0 || input.feeDecimals > 8)) throw new CalculationError("Fee rounding must be zero to eight decimal places or left blank.");
+  const entryRate = decimal(input.entryRate, "entry commission rate", "0", "1000000000");
+  const exitRate = input.exitRate === undefined ? entryRate : decimal(input.exitRate, "exit commission rate", "0", "1000000000");
+  const minimum = decimal(input.minimum, "minimum per charged executed order", "0", "1000000000");
+  if (input.feeDecimals !== undefined && minimum.decimalPlaces() > input.feeDecimals) throw new CalculationError("The minimum commission must fit the selected fee-rounding precision.");
+  const lotUnits = decimal(input.feeLotUnits, "base units per billed lot", "1", "1000000000");
+  if (input.mode === "percent-notional" && input.feeCurrency !== (input.notionalBasis === "base" ? input.instrument.base : input.instrument.quote)) throw new CalculationError("For percentage notional, fee currency must match the selected base or quote notional currency.");
+  const conversion = resolveConversion(input.feeCurrency, input.account, input.rates, now, "liability");
+  let entryUnits = new D(0), exitUnits = new D(0);
+  const orders = input.orders.map((order, i) => {
+    if (!["entry", "exit"].includes(order.side)) throw new CalculationError("Each order row must be entry or exit.");
+    const size = tradeVolume(input.instrument, order.volume, input.volumeMode);
+    if (order.side === "entry") entryUnits = entryUnits.add(size.units); else exitUnits = exitUnits.add(size.units);
+    if (exitUnits.gt(entryUnits)) throw new CalculationError("Exit volume cannot exceed volume opened earlier in the order list.");
+    const rate = order.side === "entry" ? entryRate : exitRate;
+    const notional = input.mode === "percent-notional" ? (input.notionalBasis === "base" ? size.units : size.units.mul(tradePrice(order.price ?? "", `order ${i + 1} executable price`, input.instrument))) : null;
+    const charged = !(input.mode === "lot-roundturn" && input.roundTurnBilling === "entry" && order.side === "exit");
+    const proportional = input.mode === "lot-roundturn" ? size.units.div(lotUnits).mul(entryRate).div(input.roundTurnBilling === "split" ? 2 : 1) : input.mode === "lot-side" ? size.units.div(lotUnits).mul(rate) : input.mode === "million-units" ? size.units.div(1000000).mul(rate) : notional!.mul(rate).div(100);
+    let fee = charged ? D.max(minimum, proportional) : new D(0);
+    if (input.feeDecimals !== undefined) fee = fee.toDecimalPlaces(input.feeDecimals, D.ROUND_HALF_UP);
+    return { index: i + 1, side: order.side, units: size.units, lots: size.lots, notional, fee, accountFee: fee.mul(conversion.factor), charged };
+  });
+  const totalFee = orders.reduce((sum, row) => sum.add(row.fee), new D(0));
+  const entryFee = orders.filter(row => row.side === "entry").reduce((sum, row) => sum.add(row.accountFee), new D(0));
+  const exitFee = orders.filter(row => row.side === "exit").reduce((sum, row) => sum.add(row.accountFee), new D(0));
+  const total = entryFee.add(exitFee);
+  const alreadyCharged = decimal(input.alreadyCharged, "commission already charged in account currency", "0", "1000000000000");
+  if (alreadyCharged.gt(total)) throw new CalculationError("Already-charged commission cannot exceed the total for this same modeled order list.");
+  const pipConversion = input.pipEnabled ? resolveConversion(input.instrument.quote, input.account, input.rates, now, "liability") : null;
+  const pipValue = pipConversion ? entryUnits.mul(decimal(input.instrument.pipSize, "pip size", "0", "1", true)).mul(pipConversion.factor) : null;
+  return { orders, conversion, pipConversion, entryUnits, exitUnits, remainingUnits: entryUnits.sub(exitUnits), totalFee, total, entryFee, exitFee, alreadyCharged, remainingCharge: total.sub(alreadyCharged), repeatedTotal: total.mul(input.repetitions), pipValue, pipEquivalent: pipValue ? total.div(pipValue) : null };
+}

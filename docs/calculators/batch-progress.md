@@ -31,7 +31,25 @@ Owner-supplied brief: `/workspace/calculator-briefs/batch-5.md`. Complete, verif
 
 | # | Calculator | Status |
 | --- | --- | --- |
-| 17 | Forex spread cost | Complete; 1,759 words, three FAQs, six numerical groups and eighteen browser/regression groups passed. Publication in this commit. |
-| 18 | Forex commission | Next |
-| 19 | Currency converter | Queued |
+| 17 | Forex spread cost | Pushed as `b3e0d89`; 1,759 words, three FAQs, six numerical groups and eighteen browser/regression groups passed. |
+| 18 | Forex commission | Complete; 1,683 words, three FAQs, eight commission numerical groups plus six spread regression groups, and nine browser/regression groups passed. Publication in this commit. |
+| 19 | Currency converter | Next |
 | 20 | Margin call and stop-out | Queued |
+
+## Batches 6–8 received
+
+Continue in numerical order, pushing each verified calculator independently. Original uploads are retained as `/workspace/calculator-briefs/batch-6.md`, `batch-7.md`, `batch-7-addendum.md` and `batch-8.md`. Read the relevant brief and numerical acceptance tests before each implementation; this table is a resume checklist, not a replacement specification.
+
+| # | Calculator | Intended canonical path | Status |
+| --- | --- | --- | --- |
+| 21 | Forex take profit | `/calculators/forex-take-profit-calculator` | Queued |
+| 22 | Forex leverage | `/calculators/forex-leverage-calculator` | Queued |
+| 23 | Forex stop loss | `/calculators/forex-stop-loss-calculator` | Queued |
+| 24 | Forex drawdown | `/calculators/forex-drawdown-calculator` | Queued |
+| 25 | Prop firm drawdown | `/calculators/prop-firm-drawdown-calculator` | Queued |
+| 26 | Prop firm consistency | `/calculators/prop-firm-consistency-calculator` | Queued; inspect/reuse the existing top-level consistency tool and prevent duplicate indexable pages. |
+| 27 | Trading expectancy | `/calculators/trading-expectancy-calculator` | Queued |
+| 28 | Sharpe ratio | `/calculators/sharpe-ratio-calculator` | Queued |
+| 29 | Forex Martingale | `/calculators/forex-martingale-calculator` | Queued; distinct sequential and open-grid modes, no recovery guarantees. |
+
+Every guide: 1,600–1,800 independently counted words, 80–120-word introduction, useful Quick answer, exactly three FAQs, contextual internal and external links, real numerical/UI checks, canonical/indexing/sitemap integration, and disclosed model/data limits. Batch 7's addendum requires citations inside the relevant prose (FTMO/Topstep drawdown rules; Topstep/FundedNext consistency rules; BabyPips expectancy; CFA/Lo Sharpe research), verified before using any programme-specific number.
