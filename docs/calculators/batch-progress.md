@@ -15,8 +15,8 @@ The Uganda mobile-money comparison was completed, tested (12 browser checks plus
 | 7 | Forex swap | Published and verified (`bbe915b`); supporting article: 1,753 words. |
 | 8 | Forex lot size converter | Published and verified (`35ee48b`); supporting article: 1,746 words. |
 | 9 | Forex risk of ruin | Published and verified (`704be86`); supporting article: 1,773 words. |
-| 10 | Kelly criterion | Implemented and checked; publication in this commit. Supporting article: 1,735 words. |
-| 11 | Fibonacci | Queued |
+| 10 | Kelly criterion | Published and verified (`2a0dc57`); supporting article: 1,735 words. |
+| 11 | Fibonacci | Implemented and checked; publication in this commit. Supporting article: 1,743 words. |
 | 12 | Forex pivot points | Queued |
 
 Original owner-supplied specifications and editorial drafts are retained in the execution workspace at `/workspace/calculator-briefs/batch-1.md`, `/workspace/calculator-briefs/batch-2.md` and `/workspace/calculator-briefs/batch-3.md`. Public implementation and verification notes are recorded in the calculator audit documents.

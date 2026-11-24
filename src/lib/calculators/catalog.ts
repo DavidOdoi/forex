@@ -1,5 +1,6 @@
 import { lotSizeDefinition } from "./lot-size-content";
 import { pipDefinition } from "./pip-content";
+import { fibonacciDefinition } from "./fibonacci-content";
 import { kellyDefinition } from "./kelly-content";
 import { ruinDefinition } from "./ruin-content";
 import { converterDefinition } from "./converter-content";
@@ -8,7 +9,7 @@ import { breakEvenDefinition } from "./break-even-content";
 import { riskDefinition } from "./risk-content";
 import { profitDefinition } from "./profit-content";
 import { marginDefinition } from "./margin-content";
-export type CalculatorKind = "forex" | "profit" | "compounding" | "position" | "pip" | "margin" | "risk" | "breakeven" | "swap" | "converter" | "ruin" | "kelly";
+export type CalculatorKind = "forex" | "profit" | "compounding" | "position" | "pip" | "margin" | "risk" | "breakeven" | "swap" | "converter" | "ruin" | "kelly" | "fibonacci";
 export type Inline = { text: string; href?: string }[];
 export type ContentSection = { id: string; title: string; paragraphs: Inline[]; bullets?: Inline[]; formula?: string; table?: { headers: string[]; rows: string[][] } };
 export type CalculatorDefinition = {
@@ -71,6 +72,7 @@ export const calculators: CalculatorDefinition[] = [
   converterDefinition,
   ruinDefinition,
   kellyDefinition,
+  fibonacciDefinition,
 ];
 
 export function getCalculator(slug: string) { return calculators.find(tool => tool.slug === slug); }
