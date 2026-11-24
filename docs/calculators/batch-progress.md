@@ -16,9 +16,11 @@ The Uganda mobile-money comparison was completed, tested (12 browser checks plus
 | 8 | Forex lot size converter | Published and verified (`35ee48b`); supporting article: 1,746 words. |
 | 9 | Forex risk of ruin | Published and verified (`704be86`); supporting article: 1,773 words. |
 | 10 | Kelly criterion | Published and verified (`2a0dc57`); supporting article: 1,735 words. |
-| 11 | Fibonacci | Implemented and checked; publication in this commit. Supporting article: 1,743 words. |
-| 12 | Forex pivot points | Queued |
+| 11 | Fibonacci | Published and verified (`0dc6fd9`); supporting article: 1,743 words. |
+| 12 | Forex pivot points | Implemented and checked; publication in this commit. Supporting article: 1,791 words. |
 
 Original owner-supplied specifications and editorial drafts are retained in the execution workspace at `/workspace/calculator-briefs/batch-1.md`, `/workspace/calculator-briefs/batch-2.md` and `/workspace/calculator-briefs/batch-3.md`. Public implementation and verification notes are recorded in the calculator audit documents.
 
 Reuse the instrument registry, decimal precision, exchange-rate abstraction, white/black calculator layout and SEO catalog. Do not publish links to unimplemented routes. Publish and verify each calculator on https://www.devinforex.com as its checks pass. Update this file with actual verification, words and commit evidence as work proceeds.
+
+All twelve requested tools are implemented and checked. Full cross-calculator verification: 75 pure numerical groups and 65 browser/regression checks passed, plus production webpack build, TypeScript and lint. See `docs/audits/2026-11-24/calculator-batches-1-to-3.md` for routes, word counts, shared formulas, sources and disclosed limits.

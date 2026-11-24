@@ -191,17 +191,20 @@ test("compounding updates the chart, models losses, paginates full history and d
 });
 
 test("all tool pages fit small phones through desktop without browser errors", async ({ page }) => {
+  // This catalog-wide sweep now visits fourteen tools at four widths.
+  // Keep the per-navigation bound while allowing the complete sweep to finish.
+  test.setTimeout(120_000);
   const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
   for (const width of [320,390,768,1440]) {
     await page.setViewportSize({ width, height: 1000 });
     for (const path of ["/tools", ...calculators.map(toolPath)]) {
-      await page.goto(path); await page.evaluate(() => document.fonts.ready);
+      await page.goto(path, { timeout: 10_000 }); await page.evaluate(() => document.fonts.ready);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${path} at ${width}`).toBe(true);
       expect(await page.locator("main").evaluate(node => getComputedStyle(node).backgroundColor)).toBe("rgb(255, 255, 255)");
       if (path !== "/tools") {
         expect(await page.locator('article p, [data-calculator] p:not([class*="resultEyebrow"]):not([data-result]), article td, article th').evaluateAll(nodes => [...new Set(nodes.map(node => getComputedStyle(node).fontSize))])).toEqual(["18px"]);
         if (width < 800) {
-          const jump = page.getByRole("main").getByRole("link", { name: /View (calculation|scenario result|lot size|pip value|margin estimate|net profit or loss|risk and reward|break-even price|swap estimate|lot conversion|simulation result|Kelly analysis|Fibonacci levels)/, exact: true });
+          const jump = page.getByRole("main").getByRole("link", { name: /View (calculation|scenario result|lot size|pip value|margin estimate|net profit or loss|risk and reward|break-even price|swap estimate|lot conversion|simulation result|Kelly analysis|Fibonacci levels|pivot points)/, exact: true });
           await expect(jump).toHaveCSS("color", "rgb(255, 255, 255)");
           await jump.click();
           await expect(page.locator("#calculation-result")).toBeInViewport();
