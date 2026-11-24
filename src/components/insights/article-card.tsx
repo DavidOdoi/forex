@@ -5,9 +5,9 @@ import { featuredImage, readingMinutes, type InsightArticle } from "@/lib/insigh
 export function ArticleCard({ article }: { article: InsightArticle }) {
   const image = featuredImage(article);
   return <article className="insight-card" data-insight-card>
-    {image && <div className="insight-card-cover">
+    {image && <div className={`insight-card-cover${image.presentation === "photo" ? " insight-card-cover-photo" : ""}`}>
       <Link href={`/insights/${article.slug}`} tabIndex={-1} aria-hidden="true">
-        <Image src={image.src} alt="" fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 550px" />
+        <Image src={image.src} alt="" fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 600px" style={{ objectPosition: image.objectPosition }} />
       </Link>
       <Link className="insight-cover-credit" href={`/insights/image-credits#${image.id}`}>Image credit</Link>
     </div>}

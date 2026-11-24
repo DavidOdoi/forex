@@ -41,6 +41,10 @@ export type InsightImage = {
   modifications: string;
   sourceRetrievedAt: string;
   sha256: string;
+  presentation?: "photo" | "illustration";
+  objectPosition?: string;
+  downloadUrl?: string;
+  originalUrl?: string;
 };
 
 export const insightArticles = articleData as InsightArticle[];

@@ -6771,7 +6771,7 @@
     "category": "crypto-payments",
     "topic": "Crypto & payments",
     "publishedAt": "2026-11-06T11:30:29+00:00",
-    "updatedAt": "2026-11-06T11:30:29+00:00",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-06T11:30:29+00:00",
     "authorBio": "David Odoi writes for Devin Forex. This guide uses cited public documentation and labelled examples. It does not report a funded crypto-transfer test or an independent audit of issuer reserves.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Cryptoassets and stablecoins carry risks. Transfers may be irreversible; confirm the asset, network, recipient details and provider terms before sending.",
@@ -7062,10 +7062,10 @@
       },
       {
         "type": "image",
-        "assetId": "ethereum-logo",
+        "assetId": "usdc-logo",
         "role": "featured",
-        "alt": "How to send USDC: Ethereum ETH logo for the gas-token example",
-        "caption": "Ethereum is one possible USDC network. This logo does not identify the token or guarantee that a recipient supports a particular chain."
+        "alt": "Blue USDC token logo with a dollar symbol",
+        "caption": "USDC identifies the token, not the transfer network. Check both before sending."
       },
       {
         "type": "heading",
@@ -7549,7 +7549,7 @@
     "category": "crypto-payments",
     "topic": "Crypto & payments",
     "publishedAt": "2026-11-06T11:30:29+00:00",
-    "updatedAt": "2026-11-06T11:30:29+00:00",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-06T11:30:29+00:00",
     "authorBio": "David Odoi writes for Devin Forex. This guide uses cited public documentation and labelled examples. It does not report a funded crypto-transfer test or an independent audit of issuer reserves.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Cryptoassets and stablecoins carry risks. Transfers may be irreversible; confirm the asset, network, recipient details and provider terms before sending.",
@@ -7857,10 +7857,10 @@
       },
       {
         "type": "image",
-        "assetId": "laptop",
+        "assetId": "hardware-wallet",
         "role": "featured",
-        "alt": "Crypto wallet security guide: a laptop illustrating the importance of a trusted device",
-        "caption": "A trusted, updated device is one part of wallet security. This generic laptop photo is not a wallet test, product recommendation or endorsement."
+        "alt": "Trezor hardware wallet with a blank screen and USB connection",
+        "caption": "A hardware wallet keeps signing keys on a separate device. Illustration, not a product test or recommendation."
       },
       {
         "type": "heading",
@@ -7936,7 +7936,7 @@
     "category": "beginner-guides",
     "topic": "Forex for South African beginners",
     "publishedAt": "2026-11-06",
-    "updatedAt": "2026-11-06",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-06",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -8022,10 +8022,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "country-south-africa",
         "role": "featured",
-        "alt": "How to start forex trading in South Africa: illustrative EUR/USD candlestick chart in MetaTrader 5",
-        "caption": "Historical EUR/USD candlesticks in MetaTrader 5; an illustration, not a trading signal."
+        "alt": "Johannesburg skyline in South Africa",
+        "caption": "Johannesburg, South Africa."
       },
       {
         "type": "heading",
@@ -8711,6 +8711,13 @@
         ]
       },
       {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "how-much-money-do-you-need",
@@ -8958,7 +8965,7 @@
     "category": "beginner-guides",
     "topic": "Forex for Kenya beginners",
     "publishedAt": "2026-11-07",
-    "updatedAt": "2026-11-07",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-07",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -9055,10 +9062,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "country-kenya",
         "role": "featured",
-        "alt": "How to start forex trading in Kenya: historical EUR/USD candlestick chart used to explain demo practice",
-        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+        "alt": "UAP Old Mutual Tower and Nairobi skyline at night in Kenya",
+        "caption": "Upper Hill, Nairobi, Kenya."
       },
       {
         "type": "heading",
@@ -9455,6 +9462,13 @@
         ]
       },
       {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "risk-budget",
@@ -9650,7 +9664,7 @@
     "category": "beginner-guides",
     "topic": "Forex for Nigeria beginners",
     "publishedAt": "2026-11-07",
-    "updatedAt": "2026-11-07",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-07",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -9749,10 +9763,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "country-nigeria",
         "role": "featured",
-        "alt": "How to start forex trading in Nigeria: historical EUR/USD candlestick chart used to explain demo practice",
-        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+        "alt": "Lagos skyline in Nigeria",
+        "caption": "Marina waterfront, Lagos, Nigeria."
       },
       {
         "type": "heading",
@@ -10156,6 +10170,13 @@
         ]
       },
       {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "risk-budget",
@@ -10351,7 +10372,7 @@
     "category": "beginner-guides",
     "topic": "Forex for Uganda beginners",
     "publishedAt": "2026-11-07",
-    "updatedAt": "2026-11-07",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-07",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -10450,10 +10471,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "country-uganda",
         "role": "featured",
-        "alt": "How to start forex trading in Uganda: historical EUR/USD candlestick chart used to explain demo practice",
-        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+        "alt": "Bank of Uganda building in Kampala, Uganda",
+        "caption": "Bank of Uganda, Kampala, Uganda."
       },
       {
         "type": "heading",
@@ -10857,6 +10878,13 @@
         ]
       },
       {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "risk-budget",
@@ -11052,7 +11080,7 @@
     "category": "beginner-guides",
     "topic": "Forex for Ghana beginners",
     "publishedAt": "2026-11-07",
-    "updatedAt": "2026-11-07",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-07",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -11151,10 +11179,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "country-ghana",
         "role": "featured",
-        "alt": "How to start forex trading in Ghana: historical EUR/USD candlestick chart used to explain demo practice",
-        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+        "alt": "Illuminated Bank of Ghana Bank Square buildings in Accra, Ghana",
+        "caption": "Bank Square, Bank of Ghana, Accra."
       },
       {
         "type": "heading",
@@ -11558,6 +11586,13 @@
         ]
       },
       {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "risk-budget",
@@ -11753,7 +11788,7 @@
     "category": "beginner-guides",
     "topic": "Forex for Zambia beginners",
     "publishedAt": "2026-11-07",
-    "updatedAt": "2026-11-07",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-07",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -11852,10 +11887,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "country-zambia",
         "role": "featured",
-        "alt": "How to start forex trading in Zambia: historical EUR/USD candlestick chart used to explain demo practice",
-        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+        "alt": "Buildings and evening traffic in central Lusaka, Zambia",
+        "caption": "Central Lusaka, Zambia, at night."
       },
       {
         "type": "heading",
@@ -12266,6 +12301,13 @@
         ]
       },
       {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "risk-budget",
@@ -12461,7 +12503,7 @@
     "category": "beginner-guides",
     "topic": "Forex for Zimbabwe beginners",
     "publishedAt": "2026-11-07",
-    "updatedAt": "2026-11-07",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-07",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -12560,10 +12602,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "country-zimbabwe",
         "role": "featured",
-        "alt": "How to start forex trading in Zimbabwe: historical EUR/USD candlestick chart used to explain demo practice",
-        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+        "alt": "Harare city-centre skyline in Zimbabwe",
+        "caption": "Harare city centre, Zimbabwe."
       },
       {
         "type": "heading",
@@ -12967,6 +13009,13 @@
         ]
       },
       {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "risk-budget",
@@ -13162,7 +13211,7 @@
     "category": "beginner-guides",
     "topic": "Forex for Botswana beginners",
     "publishedAt": "2026-11-07",
-    "updatedAt": "2026-11-07",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-07",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -13261,10 +13310,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "country-botswana",
         "role": "featured",
-        "alt": "How to start forex trading in Botswana: historical EUR/USD candlestick chart used to explain demo practice",
-        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+        "alt": "Office buildings in the Gaborone Central Business District, Botswana",
+        "caption": "Gaborone Central Business District, Botswana."
       },
       {
         "type": "heading",
@@ -13668,6 +13717,13 @@
         ]
       },
       {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "risk-budget",
@@ -13863,7 +13919,7 @@
     "category": "beginner-guides",
     "topic": "Forex for Australia beginners",
     "publishedAt": "2026-11-07",
-    "updatedAt": "2026-11-07",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-07",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -13960,10 +14016,10 @@
       },
       {
         "type": "image",
-        "assetId": "mt5-chart",
+        "assetId": "country-australia",
         "role": "featured",
-        "alt": "How to start forex trading in Australia: historical EUR/USD candlestick chart used to explain demo practice",
-        "caption": "Historical MetaTrader 5 chart for education. It does not identify an authorised local provider or show current market data."
+        "alt": "Sydney harbour and Central Business District in Australia",
+        "caption": "Sydney harbour and business district, Australia."
       },
       {
         "type": "heading",
@@ -14381,6 +14437,13 @@
         ]
       },
       {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
+      },
+      {
         "type": "heading",
         "level": 2,
         "id": "risk-budget",
@@ -14576,7 +14639,7 @@
     "category": "beginner-guides",
     "topic": "Forex for India beginners",
     "publishedAt": "2026-11-07",
-    "updatedAt": "2026-11-07",
+    "updatedAt": "2026-11-24",
     "researchPreparedAt": "2026-11-07",
     "authorBio": "David Odoi writes educational guides for Devin Forex. His articles use cited public documentation and clearly labelled examples to explain trading tools, costs and risks.",
     "disclaimer": "Educational information, not personal financial, tax or legal advice. Forex and CFDs can cause substantial losses. Never trade money needed for essential living expenses. Product availability and provider terms vary; verify authorisation and current conditions. No affiliate links are used.",
@@ -14675,10 +14738,10 @@
       },
       {
         "type": "image",
-        "assetId": "laptop",
+        "assetId": "country-india",
         "role": "featured",
-        "alt": "How to start forex trading in India: illustrative laptop for researching authorised products and practising safely",
-        "caption": "Illustrative research equipment; device access does not establish permission to trade a product."
+        "alt": "BSE building and historical share-price ticker at Dalal Street in Mumbai, India",
+        "caption": "BSE, Mumbai, India; historical ticker prices."
       },
       {
         "type": "heading",
@@ -15046,6 +15109,13 @@
             "text": "Keep exchange contract specifications beside your practice journal. Expiry, settlement method and tick value can matter as much as a chart signal. A generic 100,000-unit FX lot is not a safe default for an exchange contract."
           }
         ]
+      },
+      {
+        "type": "image",
+        "assetId": "mt5-chart",
+        "role": "inline-1",
+        "alt": "Historical EUR/USD candlestick chart in MetaTrader 5",
+        "caption": "Historical EUR/USD chart, not live prices."
       },
       {
         "type": "heading",

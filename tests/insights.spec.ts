@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { articleText, articleWordCount, insightArticles, insightGuides, insightImages } from "../src/lib/insights/catalog";
+import { articleText, articleWordCount, featuredImage, forexCountryGuides, insightArticles, insightGuides, insightImages } from "../src/lib/insights/catalog";
 import { insightsIndexable, insightTitleTag } from "../src/lib/insights/seo";
 import { siteOrigin } from "../src/lib/site";
 import { linkPhrases } from "../src/lib/insights/link-phrases.mjs";
@@ -23,7 +23,7 @@ test("published guides retain complete copy, evidence links, real image files an
   expect(insightGuides).toHaveLength(24);
   expect(insightArticles).toHaveLength(25);
   expect(new Set(insightArticles.map(article => article.slug)).size).toBe(insightArticles.length);
-  expect(insightImages).toHaveLength(20);
+  expect(new Set(insightImages.map(image => image.id)).size).toBe(insightImages.length);
   const slugs = new Set(insightArticles.map(article => article.slug));
   for (const image of insightImages) {
     expect(createHash("sha256").update(readFileSync(join(process.cwd(), "public", image.src))).digest("hex")).toBe(image.sha256);
@@ -59,7 +59,7 @@ test("published guides retain complete copy, evidence links, real image files an
     expect(imageBlocks.length).toBeGreaterThanOrEqual(1);
     expect(imageBlocks.length).toBeLessThanOrEqual(3);
     expect(imageBlocks.filter(block => block.role === "featured")).toHaveLength(1);
-    expect(imageBlocks.some(block => block.type === "image" && block.alt.toLowerCase().includes(article.focusKeyword))).toBe(true);
+    for (const block of imageBlocks) expect(words(block.alt)).toBeGreaterThanOrEqual(4);
     expect(article.faqs).toHaveLength(3);
     for (const faq of article.faqs) {
       expect(words(faq.answer)).toBeGreaterThan(0);
@@ -82,6 +82,25 @@ test("published guides retain complete copy, evidence links, real image files an
   }
 });
 
+test("country guides have distinct local covers and retain the educational chart in the demo section", () => {
+  expect(forexCountryGuides).toHaveLength(10);
+  const covers = forexCountryGuides.map(article => featuredImage(article)!);
+  expect(new Set(covers.map(image => image.src)).size).toBe(10);
+  for (const article of forexCountryGuides) {
+    const country = article.slug.replace("how-to-start-forex-trading-in-", "");
+    const image = featuredImage(article)!;
+    expect(image.id).toBe(`country-${country}`);
+    expect(image.presentation).toBe("photo");
+    expect(image.alt.toLowerCase()).toContain(country.replaceAll("-", " "));
+    const chartIndex = article.blocks.findIndex(block => block.type === "image" && block.assetId === "mt5-chart");
+    expect(chartIndex).toBeGreaterThan(2);
+    const previousHeading = article.blocks.slice(0, chartIndex).findLast(block => block.type === "heading" && block.level === 2);
+    expect(previousHeading?.type === "heading" && previousHeading.text.toLowerCase()).toContain("demo");
+  }
+  expect(featuredImage(insightGuides.find(article => article.slug === "how-to-send-usdc")!)?.id).toBe("usdc-logo");
+  expect(featuredImage(insightGuides.find(article => article.slug === "crypto-wallet-security-guide")!)?.id).toBe("hardware-wallet");
+});
+
 test("Insights replaces placeholders with links to all published guides", async ({ page }) => {
   await page.goto("/insights");
   await expect(page.locator("h1")).toHaveCount(1);
@@ -89,6 +108,37 @@ test("Insights replaces placeholders with links to all published guides", async 
   await expect(page.locator("main")).not.toContainText("Coming soon");
   for (const article of insightGuides) await expect(page.locator(`[data-insight-card] h3 a[href="/insights/${article.slug}"]`)).toHaveText(article.title);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", insightsIndexable ? "index, follow" : "noindex, follow");
+});
+
+test("country photos fill cards, load on mobile and match article sharing images", async ({ page }) => {
+  test.setTimeout(60000);
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto("/insights");
+    for (const article of forexCountryGuides) {
+      const card = page.locator("[data-insight-card]").filter({ has: page.locator(`h3 a[href="/insights/${article.slug}"]`) });
+      const cover = card.locator(".insight-card-cover-photo");
+      await cover.scrollIntoViewIfNeeded();
+      await expect.poll(() => cover.locator("img").evaluate(node => (node as HTMLImageElement).complete && (node as HTMLImageElement).naturalWidth > 0)).toBe(true);
+      await expect(cover.locator("img")).toHaveCSS("object-fit", "cover");
+      const frame = (await cover.boundingBox())!;
+      const picture = (await cover.locator("img").boundingBox())!;
+      expect(Math.abs(frame.width / frame.height - 16 / 9)).toBeLessThan(.02);
+      expect(Math.abs(frame.width - picture.width)).toBeLessThan(3);
+      expect(Math.abs(frame.height - picture.height)).toBeLessThan(3);
+      await expect(cover.getByRole("link", { name: "Image credit" })).toHaveAttribute("href", `/insights/image-credits#${featuredImage(article)!.id}`);
+    }
+    const uganda = page.locator('[data-insight-card]').filter({ has: page.locator('h3 a[href="/insights/how-to-start-forex-trading-in-uganda"]') });
+    await uganda.scrollIntoViewIfNeeded();
+    await page.screenshot({ path: `test-results/country-guide-covers-${width}.png` });
+    await page.goto("/insights/how-to-start-forex-trading-in-ghana");
+    const feature = page.locator('figure[data-image-role="featured"]');
+    await expect(feature.locator("img")).toHaveAttribute("alt", "Illuminated Bank of Ghana Bank Square buildings in Accra, Ghana");
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", `${siteOrigin}/images/insights/ghana-bank-square-accra.jpg`);
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute("content", `${siteOrigin}/images/insights/ghana-bank-square-accra.jpg`);
+    await feature.scrollIntoViewIfNeeded();
+    await page.screenshot({ path: `test-results/ghana-guide-photo-${width}.png` });
+  }
 });
 
 test("South Africa guide is published with seven steps, real links and no editorial placeholders", async ({ page, request }) => {
@@ -104,7 +154,7 @@ test("South Africa guide is published with seven steps, real links and no editor
   await expect(page.locator('.insight-byline')).toContainText('David Odoi');
   await expect(page.locator('.insight-disclaimer')).toContainText('No affiliate links are used');
   await expect(page.locator('a[href="https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=financial-services-providers"]').first()).toBeVisible();
-  await expect(page.locator('.insight-content a[href="/reviews"]')).toHaveCount(2);
+  await expect(page.locator('.insight-content .insight-context-link[href="/reviews"]')).toHaveCount(2);
   await page.goto('/insights');
   await expect(page.locator(`[data-insight-card] h3 a[href="/insights/${slug}"]`)).toBeVisible();
 });
@@ -183,7 +233,7 @@ test("published guides and the companion reading list enter the sitemap alongsid
   await page.goto("/insights/best-indicators-for-swing-trading");
   await page.locator('.insight-context-link[href="/insights/best-swing-trading-books"]').click();
   await expect(page).toHaveURL(/\/insights\/best-swing-trading-books$/);
-  await expect(page.locator("h1")).toHaveText("Best Swing Trading Books: A Practical Reading List");
+  await expect(page.locator("h1")).toHaveText(insightArticles.find(article => article.slug === "best-swing-trading-books")!.title);
   expect((await request.get("/insights/not-a-published-guide")).status()).toBe(404);
   await page.goto("/reviews/exness");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", insightsIndexable ? "index, follow" : "noindex, follow");
@@ -219,7 +269,7 @@ test("guide navigation, tables, image credits and gallery fit desktop and small 
   await expect(page.locator(".insight-credit-card")).toHaveCount(insightImages.length);
   await page.goto("/insights");
   await page.locator('[data-insight-card] h3 a[href="/insights/auto-trading"]').click();
-  await expect(page.locator("h1")).toHaveText("Auto Trading: A Practical Guide to Forex Bots and Risk");
+  await expect(page.locator("h1")).toHaveText(insightGuides.find(article => article.slug === "auto-trading")!.title);
   expect(errors).toEqual([]);
 });
 

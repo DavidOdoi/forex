@@ -53,10 +53,10 @@ export function ArticleContent({ article }: { article: InsightArticle }) {
         case "table": return <DataTable key={index} headers={block.headers} rows={block.rows} label={block.label} />;
         case "image": {
           const image = getInsightImage(block.assetId);
-          return <figure key={block.role} className="insight-figure" data-image-role={block.role}>
+          return <figure key={block.role} className={`insight-figure${image.presentation === "photo" ? " insight-figure-photo" : ""}`} data-image-role={block.role}>
             <div className="insight-image-frame"><Image
               src={image.src} width={image.width} height={image.height} alt={block.alt}
-              sizes="(max-width: 900px) 100vw, 800px" preload={block.role === "featured"}
+              sizes="(max-width: 900px) 100vw, 800px" preload={block.role === "featured"} style={{ objectPosition: image.objectPosition }}
             /></div>
             <figcaption>{block.caption}<span className="insight-image-credit">
               {image.creator} · <a href={image.sourceUrl} rel="noopener noreferrer">Source</a> · <a href={image.licenseUrl} rel="noopener noreferrer">{image.license}</a>
