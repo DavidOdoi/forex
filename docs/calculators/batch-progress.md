@@ -23,4 +23,15 @@ Original owner-supplied specifications and editorial drafts are retained in the 
 
 Reuse the instrument registry, decimal precision, exchange-rate abstraction, white/black calculator layout and SEO catalog. Do not publish links to unimplemented routes. Publish and verify each calculator on https://www.devinforex.com as its checks pass. Update this file with actual verification, words and commit evidence as work proceeds.
 
-All twelve requested tools are implemented and checked. Full cross-calculator verification: 75 pure numerical groups and 65 browser/regression checks passed, plus production webpack build, TypeScript and lint. See `docs/audits/2026-11-24/calculator-batches-1-to-3.md` for routes, word counts, shared formulas, sources and disclosed limits.
+All twelve tools in Batches 1–3 are implemented and checked. The subsequent fact/link review increased the numerical suite to 76 passing groups and corrected an extreme total-loss precision case. See `docs/audits/2026-11-24/calculator-batches-1-to-3.md` and `calculator-link-source-review.md` for the original and follow-up verification.
+
+## Batch 5
+
+Owner-supplied brief: `/workspace/calculator-briefs/batch-5.md`. Complete, verify and push each tool before beginning the next. No Batch 4 implementation is inferred from this brief.
+
+| # | Calculator | Status |
+| --- | --- | --- |
+| 17 | Forex spread cost | Complete; 1,759 words, three FAQs, six numerical groups and eighteen browser/regression groups passed. Publication in this commit. |
+| 18 | Forex commission | Next |
+| 19 | Currency converter | Queued |
+| 20 | Margin call and stop-out | Queued |

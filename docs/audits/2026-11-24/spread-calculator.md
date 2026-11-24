@@ -1,0 +1,11 @@
+# Forex spread calculator — Batch 5, tool 17
+
+Route: `/calculators/forex-spread-cost-calculator`. Supporting article: 1,759 independently counted words, 94-word introduction, exactly three visible/schema FAQs. Reuses the established calculator layout, instrument registry, 40-digit decimal arithmetic, volume/price validation, conversion resolver, dated reference service, metadata, sitemap and related-tool navigation.
+
+The pure engine reports bid/ask difference, fractional pips, quote/account-currency spread equivalents, pip value, ask-denominator percentage and entered round-turn commission. Different opening/closing spreads use half of each around a symmetric midpoint reference. Embedded-price mode keeps spread values informational and adds no second spread deduction to executable-price P&L. Sensitivity scenarios use the same volume and commission at 1×, 1.5× and 2× quoted spreads; they are not historical measurements.
+
+Market quotes and the optional UTC observation time are manual assumptions. Optional Frankfurter daily references convert currency costs only, with original dates and stale/error disclosures. There is no live market feed, verified broker commission preset, execution guarantee or financing estimate on this page.
+
+Checks actually run: six numerical test groups covering all supplied spread examples, invalid inputs, JPY and bid/ask conversion, variable closing spreads and prevention of double counting. Eighteen browser/regression groups passed, including the new interface, reference-service failure, saved/reset scenarios, mobile sizes, server-rendered default, matching FAQs/canonical metadata, all-tool layout sweep and contextual link destinations. Production webpack build including TypeScript, ESLint and whitespace checks passed. A 390px capture was inspected.
+
+Source review: the fetched official MetaTrader trading-principles page states buy-at-Ask/sell-at-Bid execution. OANDA's official historical-spread page returned HTTP 200 and describes bid/ask difference and historical observations; no OANDA spread or pricing condition was imported as a current quote. The BabyPips spread explanation corroborates bid/ask terminology. Published contextual citations include MetaQuotes contract properties and Frankfurter reference-rate documentation already verified in the preceding source review.
