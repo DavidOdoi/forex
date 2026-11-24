@@ -34,7 +34,7 @@ Owner-supplied brief: `/workspace/calculator-briefs/batch-5.md`. Complete, verif
 | 17 | Forex spread cost | Pushed as `b3e0d89`; 1,759 words, three FAQs, six numerical groups and eighteen browser/regression groups passed. |
 | 18 | Forex commission | Pushed as `90a76bd`; 1,683 words, three FAQs, eight commission numerical groups plus six spread regression groups, and nine browser/regression groups passed. |
 | 19 | Currency converter | Pushed as `f71a821`; 1,715 words, three FAQs, 36 numerical/service regression groups and eighteen browser/regression groups passed. |
-| 20 | Margin call and stop-out | Complete; 1,794 words, three FAQs, full suite of 104 numerical/service groups and 86 browser/crawl regressions passed. Publication in this commit. |
+| 20 | Margin call and stop-out | Pushed as `493d7fc`; 1,794 words, three FAQs, full suite of 104 numerical/service groups and 86 browser/crawl regressions passed. All four Batch 5 pages verified live. |
 
 ## Batches 6–8 received
 
@@ -42,8 +42,8 @@ Continue in numerical order, pushing each verified calculator independently. Ori
 
 | # | Calculator | Intended canonical path | Status |
 | --- | --- | --- | --- |
-| 21 | Forex take profit | `/calculators/forex-take-profit-calculator` | Next after Batch 5 push |
-| 22 | Forex leverage | `/calculators/forex-leverage-calculator` | Queued |
+| 21 | Forex take profit | `/calculators/forex-take-profit-calculator` | Complete; 1,792 words, three FAQs, 17 numerical and 21 browser/regression groups passed. Publication in this commit. |
+| 22 | Forex leverage | `/calculators/forex-leverage-calculator` | Next |
 | 23 | Forex stop loss | `/calculators/forex-stop-loss-calculator` | Queued |
 | 24 | Forex drawdown | `/calculators/forex-drawdown-calculator` | Queued |
 | 25 | Prop firm drawdown | `/calculators/prop-firm-drawdown-calculator` | Queued |

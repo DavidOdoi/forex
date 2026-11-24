@@ -1,0 +1,11 @@
+# Take profit — Batch 6, tool 21
+
+Route: `/calculators/forex-take-profit-calculator`. Article: 1,792 independently counted words, 100-word introduction, exactly three FAQs. The draft's “three targets” heading was corrected to four to match its four-row example.
+
+The engine reuses the existing profit calculator for proceeds/liability conversion, gross/net results, costs and stop outcomes. Modes support pip distance, gross/net monetary goals, gross/net reward-to-risk with a valid adverse-side stop, and checking an explicit target. Positive-price and direction checks prevent an adverse-side target from being called a conventional profit target. Configured volume/contract/pip conventions remain shared.
+
+Buy targets round upward and sell targets downward to the entered price increment; the unrounded theoretical target remains visible. Monetary results use the rounded executable-side price. A price-level visualization shows entry, target and optional stop without assigning probabilities. No second spread is deducted from executable-price P&L. Partial exits are modeled separately, not silently combined as though all orders fill.
+
+Important limitation: conversion quotes are frozen throughout the scenario. The interface and article explicitly disclose that a future conversion rate, including conversion for a base-denominated account, can change the realized result. This is not a dynamic future-rate solver or an execution guarantee. Broker price increments, distance rules and financing assumptions are not verified presets.
+
+Verification: 17 numerical groups passed across take profit, profit and risk–reward, including all supplied mandatory examples, directional grid rounding, fees, foreign-currency valuation and invalid directions/specifications. Twenty-one browser/regression groups passed across the new tool, profit, risk–reward, spread, margin call and contextual links. Tested gross/net goals, ratio direction changes, JPY conversion, visible price levels, saved/reset scenarios, 320/390/1440px layouts, no-JavaScript defaults, canonical/sitemap and three FAQs. Production webpack build with TypeScript, ESLint and whitespace checks passed. Contextual primary references reuse the verified MetaTrader execution, MetaQuotes symbol-property and Frankfurter source documentation.
