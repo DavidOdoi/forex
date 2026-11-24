@@ -1,13 +1,14 @@
 import { calculatePip } from "./pip";
-import { pipScenarioInputs, marginScenarioInputs, profitScenarioInputs, defaultMarginScenario, defaultPipScenario, defaultProfitScenario, type TradeScenario } from "./trade-scenario";
+import { pipScenarioInputs, marginScenarioInputs, profitScenarioInputs, riskScenarioInputs, defaultRiskScenario, defaultMarginScenario, defaultPipScenario, defaultProfitScenario, type TradeScenario } from "./trade-scenario";
 import { cash, quantity, D } from "./precision";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 import { calculateMargin } from "./margin";
 import { calculateProfit } from "./profit";
+import { calculateRiskReward } from "./risk-reward";
 
-export type WorkbenchKind = "pip" | "margin" | "profit";
-export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario, profit: defaultProfitScenario };
-export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator", profit: "/calculators/forex-profit-calculator" };
+export type WorkbenchKind = "pip" | "margin" | "profit" | "risk";
+export const workbenchDefaults = { pip: defaultPipScenario, margin: defaultMarginScenario, profit: defaultProfitScenario, risk: defaultRiskScenario };
+export const workbenchPaths = { pip: "/calculators/forex-pip-calculator", margin: "/calculators/forex-margin-calculator", profit: "/calculators/forex-profit-calculator", risk: "/calculators/forex-risk-reward-calculator" };
 export type WorkbenchOutput = {
   title: string; value: string; summary: string; conversion: ReturnType<typeof resolveConversion>;
   metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[];
@@ -20,6 +21,17 @@ const exposureMoney = (value: Parameters<typeof cash>[0], currency: string) => {
 };
 
 export function workbenchResult(kind: WorkbenchKind, values: TradeScenario, rates: ExchangeRate[] = []): WorkbenchOutput {
+  if (kind === "risk") {
+    const input = riskScenarioInputs(values, rates);
+    const r = calculateRiskReward(input);
+    const money = (value: Parameters<typeof cash>[0]) => cash(value, input.account);
+    return { title: "Net risk : potential reward", value: r.netR === null ? "No positive net target" : `1 : ${quantity(r.netR, 4)}`, summary: `${quantity(r.riskPips)} risk pips · ${quantity(r.rewardPips)} reward pips · gross 1:${quantity(r.grossR, 4)}`, conversion: r.conversion,
+      metrics: [["Planned net loss at stop", money(r.loss)], ["Potential net result at target", money(r.win)], ["Break-even win rate", r.breakEven === null ? "Not attainable with this target and costs" : `${quantity(r.breakEven, 4)}%`], ...(r.expectancy === null ? [] : [["Assumed win rate", `${quantity(r.probability!.mul(100), 4)}%`], ["Modeled expectancy per trade", money(r.expectancy)]])],
+      tables: [{ title: "Individual targets · full volume each time", headers: ["Target price", "Gross R", "Net result", "Net R"], rows: r.targets.map(row => [quantity(row.price, input.instrument.pricePrecision), quantity(row.grossR, 4), money(row.net), row.netR === null ? "No positive reward" : quantity(row.netR, 4)]) }],
+      steps: [`${quantity(r.riskPips)} risk pips and ${quantity(r.rewardPips)} reward pips give gross reward/risk ${quantity(r.grossR, 4)}.`, `Net target ${money(r.win)}; net loss magnitude ${money(r.loss)} after entered costs.`, r.breakEven === null ? "Costs consume the target gain: no feasible conventional break-even win rate is shown." : `${money(r.loss)} ÷ (${money(r.win)} + ${money(r.loss)}) × 100 = ${quantity(r.breakEven, 4)}%.`],
+      warnings: ["Enter only extra round-trip costs in the account currency. The same total cost is applied to each winner and loser; executable prices already include spread.", "The stop is a planned exit, not a guaranteed maximum loss. Gaps and slippage can increase losses.", "Target comparisons apply the full volume to each independent target. They do not represent a partial-exit allocation.", "Win probability is your assumption, never inferred from the ratio. Expectancy assumes the entered fixed win/loss amounts and is not a forecast."],
+    };
+  }
   if (kind === "profit") {
     const input = profitScenarioInputs(values, rates);
     const r = calculateProfit(input);

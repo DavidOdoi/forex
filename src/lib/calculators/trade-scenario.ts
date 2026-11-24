@@ -4,6 +4,7 @@ import type { ExchangeRate } from "./exchange-rates";
 import type { PipInputs } from "./pip";
 import type { MarginInputs } from "./margin";
 import type { ProfitInputs } from "./profit";
+import type { RiskRewardInputs } from "./risk-reward";
 
 export const defaultPipScenario = {
   pair: "EUR/USD", account: "USD", volumeMode: "lots", volume: "1", pips: "1", movementEnabled: "no", start: "1.10000", end: "1.10500",
@@ -19,6 +20,7 @@ export const defaultProfitScenario = {
   ...defaultPipScenario, direction: "buy", entry: "1.1000", exit: "1.1050", volume: "0.2", priceMode: "fills",
   spreadPips: "0", slippagePips: "0", commission: "0", commissionBasis: "total", swap: "0", costCurrency: "account", equity: "", stop: "", target: "",
 };
+export const defaultRiskScenario = { ...defaultProfitScenario, volume: "1", stop: "1.0980", target: "1.1040", probability: "", target2: "", target3: "" };
 
 export function restoreTradeScenario(search: string, defaults: TradeScenario) {
   const params = new URLSearchParams(search);
@@ -49,6 +51,10 @@ export function profitScenarioInputs(values: TradeScenario, reference: ExchangeR
   const instrument = scenarioInstrument(values);
   if (!["lots", "units"].includes(values.volumeMode)) throw new CalculationError("Choose lots or units.");
   return { instrument, account: values.account as AccountCurrency, volume: values.volume, volumeMode: values.volumeMode as "lots" | "units", direction: values.direction as "buy" | "sell", entry: values.entry, exit: values.exit, priceMode: values.priceMode as "fills" | "mid", spreadPips: values.spreadPips, slippagePips: values.slippagePips, commission: values.commission, commissionBasis: values.commissionBasis as ProfitInputs["commissionBasis"], swap: values.swap, costCurrency: values.costCurrency as "account" | "quote", ...(values.equity.trim() ? { equity: values.equity } : {}), ...(values.stop.trim() ? { stop: values.stop } : {}), ...(values.target.trim() ? { target: values.target } : {}), rates: scenarioRates(values, instrument.quote, reference) };
+}
+
+export function riskScenarioInputs(values: TradeScenario, reference: ExchangeRate[] = []): RiskRewardInputs {
+  return { ...profitScenarioInputs({ ...values, priceMode: "fills", spreadPips: "0", slippagePips: "0", commissionBasis: "total", swap: "0", costCurrency: "account", equity: "" }, reference), stop: values.stop, target: values.target, ...(values.probability.trim() ? { probability: values.probability } : {}), extraTargets: [values.target2, values.target3].filter(value => value.trim()) };
 }
 
 export function scenarioInstrument(values: TradeScenario) {

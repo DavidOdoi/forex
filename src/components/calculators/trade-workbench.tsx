@@ -30,7 +30,7 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
   const [copyFallback, setCopyFallback] = useState("");
   const spec = conventionalInstrument(isPair(values.pair) ? values.pair : "EUR/USD");
   const from = kind === "margin" && spec.base === values.account ? spec.base : spec.quote;
-  const labels = { pip: { workspace: "Forex pip-value workspace", result: "Per pip at this volume", note: "Change volume, currency or pip convention to see the effect. No broker account or live quote is required.", button: "View pip value", eyebrow: "Pip value and movement" }, margin: { workspace: "Forex margin workspace", result: "Estimated required margin", note: "Estimate collateral from volume, leverage and conversion assumptions. Add your equity and existing used margin to check the account effect.", button: "View margin estimate", eyebrow: "Collateral and available equity" }, profit: { workspace: "Forex profit and loss workspace", result: "Estimated net profit / loss", note: "Compare entry and exit prices, direction and volume. Add only costs that are not already included in those fills. All starting values are editable examples.", button: "View net profit or loss", eyebrow: "Gross result, costs and net P&L" } }[kind];
+  const labels = { pip: { workspace: "Forex pip-value workspace", result: "Per pip at this volume", note: "Change volume, currency or pip convention to see the effect. No broker account or live quote is required.", button: "View pip value", eyebrow: "Pip value and movement" }, margin: { workspace: "Forex margin workspace", result: "Estimated required margin", note: "Estimate collateral from volume, leverage and conversion assumptions. Add your equity and existing used margin to check the account effect.", button: "View margin estimate", eyebrow: "Collateral and available equity" }, profit: { workspace: "Forex profit and loss workspace", result: "Estimated net profit / loss", note: "Compare entry and exit prices, direction and volume. Add only costs that are not already included in those fills. All starting values are editable examples.", button: "View net profit or loss", eyebrow: "Gross result, costs and net P&L" }, risk: { workspace: "Forex risk–reward workspace", result: "Net risk : potential reward", note: "Compare planned loss and potential gain. Enter executable price assumptions, extra costs and an optional win-rate assumption. The ratio cannot predict which exit will be reached.", button: "View risk and reward", eyebrow: "Planned risk, potential reward and costs" } }[kind];
   const needsConversion = from !== values.account;
   const update = (patch: TradeScenario) => { setValues(old => ({ ...old, ...patch })); setCopyStatus(""); setCopyFallback(""); };
   const set = (name: string, value: string) => update({ [name]: value });
@@ -75,7 +75,7 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
         <p className={styles.inputNote}>{labels.note}</p>
         {restoreError && <p className={shared.notice}>{restoreError}</p>}
         <div className={styles.fieldGrid}>
-          {select("pair", "Currency pair", pairCodes.map(code => <option key={code}>{code}</option>), pair => { if (isPair(pair)) { const next = conventionalInstrument(pair); update({ pair, contract: next.contractSize, pipSize: next.pipSize, precision: String(next.pricePrecision), crossCurrency: crossFor(next.quote, values.account), ...(kind === "margin" ? { price: "" } : kind === "profit" ? { entry: "", exit: "", stop: "", target: "" } : {}), ...clearRates }); } })}
+          {select("pair", "Currency pair", pairCodes.map(code => <option key={code}>{code}</option>), pair => { if (isPair(pair)) { const next = conventionalInstrument(pair); update({ pair, contract: next.contractSize, pipSize: next.pipSize, precision: String(next.pricePrecision), crossCurrency: crossFor(next.quote, values.account), ...(kind === "margin" ? { price: "" } : ["profit", "risk"].includes(kind) ? { entry: "", exit: "", stop: "", target: "" } : {}), ...clearRates }); } })}
           {select("account", "Account currency", currencies, account => update({ account, crossCurrency: crossFor(kind === "margin" && spec.base === account ? spec.base : spec.quote, account), ...clearRates }))}
           {select("volumeMode", "Trade-size input", <><option value="lots">Configured lots</option><option value="units">Base-currency units</option></>)}
           {field("volume", values.volumeMode === "units" ? `Trade size (${spec.base} units)` : "Trade size (lots)")}
@@ -83,6 +83,12 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
             {select("marginMode", "Margin requirement input", <><option value="leverage">Leverage ratio</option><option value="percent">Margin percentage</option></>)}
             {values.marginMode === "leverage" ? field("leverage", "Leverage (X in 1:X)", "50 means 1:50. Use the leverage permitted for your actual account.") : field("marginPercent", "Margin requirement (%)", "2 means 2% of notional, equivalent to 1:50.")}
             {spec.base !== values.account && field("price", `${values.pair} notional reference price`, `Enter ${spec.quote} per 1 ${spec.base}. The starting price is an editable example, not a market quote.`)}
+          </> : kind === "risk" ? <>
+            {select("direction", "Trade direction", <><option value="buy">Buy / long</option><option value="sell">Sell / short</option></>)}
+            {field("entry", "Entry price", "Executable-price assumption, not a live quote.")}
+            {field("stop", "Stop-loss price")}{field("target", "Take-profit target price")}
+            {field("commission", `Additional round-trip costs (${values.account})`, "Total for this whole position, applied to both outcomes. Do not add spread already embedded in the prices.")}
+            {field("probability", "Assumed win rate (%) · optional", "Your own assumption from suitable evidence; never inferred from the ratio.")}
           </> : <>
             {select("direction", "Trade direction", <><option value="buy">Buy / long</option><option value="sell">Sell / short</option></>)}
             {select("priceMode", "Entry and exit price convention", <><option value="fills">Executable fills · spread already included</option><option value="mid">Mid prices · add total spread allowance</option></>)}
@@ -90,6 +96,7 @@ function WorkbenchForm({ kind, search }: { kind: WorkbenchKind; search: string }
             {field("exit", "Exit price", values.priceMode === "fills" ? "Buy closes at bid; sell closes at ask." : "Illustrative mid-market exit, not a fill.")}
           </>}
         </div>
+        {kind === "risk" && <details className={styles.settings}><summary>Compare two alternative targets</summary><div className={shared.settingsBody}><p className={shared.note}>Each target assumes the entire position exits there. This is not a partial-exit plan.</p><div className={styles.fieldGrid}>{field("target2", "Alternative target 2 · optional")}{field("target3", "Alternative target 3 · optional")}</div></div></details>}
         {kind === "profit" && <>
           <details className={styles.settings} open><summary>Costs and reference equity</summary><div className={shared.settingsBody}>
             <p className={shared.note}>Enter zero for unused costs. Commission and swap share the selected charging currency. A positive swap is a credit; a negative swap is a charge.</p>
