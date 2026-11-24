@@ -42,9 +42,9 @@ Continue in numerical order, pushing each verified calculator independently. Ori
 
 | # | Calculator | Intended canonical path | Status |
 | --- | --- | --- | --- |
-| 21 | Forex take profit | `/calculators/forex-take-profit-calculator` | Complete; 1,792 words, three FAQs, 17 numerical and 21 browser/regression groups passed. Publication in this commit. |
-| 22 | Forex leverage | `/calculators/forex-leverage-calculator` | Next |
-| 23 | Forex stop loss | `/calculators/forex-stop-loss-calculator` | Queued |
+| 21 | Forex take profit | `/calculators/forex-take-profit-calculator` | Pushed as `2bd5be8`; 1,792 words, three FAQs, 17 numerical and 21 browser/regression groups passed. |
+| 22 | Forex leverage | `/calculators/forex-leverage-calculator` | Complete; 1,617 words, three FAQs, 18 numerical and 14 browser/regression groups passed. Publication in this commit. |
+| 23 | Forex stop loss | `/calculators/forex-stop-loss-calculator` | Next |
 | 24 | Forex drawdown | `/calculators/forex-drawdown-calculator` | Queued |
 | 25 | Prop firm drawdown | `/calculators/prop-firm-drawdown-calculator` | Queued |
 | 26 | Prop firm consistency | `/calculators/prop-firm-consistency-calculator` | Queued; inspect/reuse the existing top-level consistency tool and prevent duplicate indexable pages. |

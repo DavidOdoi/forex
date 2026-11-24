@@ -1,0 +1,11 @@
+# Leverage — Batch 6, tool 22
+
+Route: `/calculators/forex-leverage-calculator`. Article: 1,617 independently counted words, 95-word introduction, exactly three FAQs and a 155-character meta description.
+
+Two input modes distinguish a directly entered account-currency notional from forex trade-derived exposure. The latter reuses the margin engine's contract, base-account identity, reference-price and currency-conversion logic. Effective leverage divides proposed exposure by positive equity; permitted leverage/margin percentage determines a separate constant-rate collateral estimate. Other unsigned gross exposure, existing used margin and a separate entered platform-available-margin comparison remain distinct.
+
+Outputs include proposed/combined effective leverage, entered permitted ratio, required margin, estimated remaining free margin and alternative constant-rate scenarios. A proportional graphic compares exposure, equity and proposed margin on one account-currency scale. Ratios above the entered limit are explicitly labelled hypothetical, not offers. Warnings cover margin shortfalls and a simplified gross cap; none imply order approval, netted portfolio treatment, a liquidation price or suitability.
+
+Sources: the fetched official OANDA US spreads/margin page explicitly describes regulatory and instrument-dependent leverage limits. It is cited as a scoped example without importing its ratios as user defaults. The article also links the verified official MetaTrader margin methodology and ASIC MoneySmart leverage-risk explanation within the relevant paragraphs. Five contextual internal links lead to implemented tools.
+
+Verification: eighteen numerical regression groups passed across leverage, margin and profit, including all mandatory exposure/margin examples, a zero-equity rejection and unchanged-position P&L under different permitted ratios. Fourteen browser/regression groups passed across leverage, margin, take profit and contextual destinations: modes, identity conversion, available-margin warnings, accessible proportional bars, saved scenarios, phone/desktop widths, SSR defaults, canonical/sitemap and three FAQs. Production webpack build with TypeScript, ESLint and whitespace checks passed.
