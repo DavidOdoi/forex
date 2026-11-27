@@ -61,3 +61,16 @@ Batch 7 specifically forbids financial histories in share URLs. The shared cost/
 The later 29-entry introduction/Quick answer rewrite supersedes the earlier 80–120-word intro target. Exact replacements were applied to 23 existing matching pages, with the owner-approved removal of unsupported withdrawals from the compounding intro. Six requested dedicated routes are absent: ATR position size, hedge, notional value, expectancy, Sharpe and Martingale. No pages or engines were created by this copy edit. Supporting articles, metadata and links remain unchanged; implementation-time total-word counts above are historical. See `docs/audits/2026-11-24/calculator-intro-rewrites.md` and `tests/fixtures/calculator-intro-rewrites.json`.
 
 The original tools 27–29 task is paused for this copy update. Early tool 27 drafts are preserved outside git in `/workspace/task-drafts/expectancy-paused/`; do not inadvertently publish them as finished. Use the new supplied intro/Quick answer copy when those tools are completed later.
+
+## Six-tool completion request — 27 November 2026
+
+The owner resumed work specifically to finish all six missing tools. Preserve the supplied 29-entry intro/Quick Answer copy, use the existing calculator template, verify each tool and push it independently.
+
+| Tool | Status |
+| --- | --- |
+| ATR position size | Complete: 1,625 words, three FAQs, 20 numerical and six browser/inventory groups passed. Publication in this commit. |
+| Forex hedge | Next |
+| Forex notional value | Queued |
+| Trading expectancy | Queued; drafts retained outside git |
+| Sharpe ratio | Queued |
+| Forex Martingale | Queued |

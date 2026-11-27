@@ -123,7 +123,8 @@
     "requestedPath": "/calculators/atr-position-size-calculator",
     "intro": "A fixed stop distance can mean different things in quiet and volatile markets. Use Average True Range (ATR) to explore a volatility-based stop, then calculate the trading volume that fits a specified monetary risk budget. The result is a planning estimate, not a guarantee against gaps or slippage.",
     "quickAnswer": "First calculate Stop distance = ATR in pips × Multiplier. Then Lots = Risk budget ÷ (Stop pips × Pip value per standard lot). With a 25-pip ATR, 2× multiplier, $100 risk budget, and $10 per pip per standard lot, the stop is 50 pips and theoretical size 0.20 lots.",
-    "actualPath": null
+    "actualPath": "/calculators/atr-position-size-calculator",
+    "sourceFile": "src/lib/calculators/atr-position-content.ts"
   },
   {
     "number": 15,
