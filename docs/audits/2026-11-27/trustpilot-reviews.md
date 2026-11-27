@@ -31,3 +31,9 @@ These were recorded rather than changing broker facts or unrelated article struc
 ## Final focused verification
 
 All 33 focused tests passed on the final build: the 21 public review pages and JSON records, profile identities and counts across supported country variants, withheld-score handling, CMC geographic separation, fractional-star rendering, 320/390/1440px layout, browser-error checks, unchanged XM financial facts and the complete 123-URL canonical/indexing crawl. Production webpack build and TypeScript, ESLint and whitespace checks passed. Desktop/mobile screenshots were inspected, including the fractional fifth star. The wider suite's three unrelated failures remain documented above; a fully green wider suite is not claimed.
+
+## Quick Answer placement follow-up
+
+The owner clarified that the score belongs in the Quick Answer badge shown in their screenshot. All 21 selected review pages now use the checked Trustpilot snapshot in that badge, with an explicit Trustpilot label, numerical score and proportional stars where available. Withheld profiles show “Trustpilot · Unavailable.” The badge links to the existing customer-review section for exact counts, profile links and checked dates. Editorial score data and structured data remain unchanged.
+
+The two star displays share one renderer with separate SVG identifier prefixes so fractional fills do not collide. Final verification: 24 focused source/SSR/browser tests passed, including all 21 Quick Answer badges, unavailable states, detail links, unique star IDs and 320/390/1440px layouts. Production webpack/TypeScript, ESLint and whitespace checks passed. The Exness desktop and mobile Quick Answer screenshots were inspected against the requested placement.

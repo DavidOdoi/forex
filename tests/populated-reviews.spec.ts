@@ -190,7 +190,8 @@ test("reading navigation and commercial disclosure work with the keyboard", asyn
 test("Exness template follows the requested table-first flow without unsupported figures", async ({ page }) => {
   await page.goto("/reviews/template");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Exness Review 2026: Fees, Safety & Account Types");
-  await expect(page.getByRole("complementary", { name: "Review verdict" })).toContainText("Not rated");
+  await expect(page.getByRole("complementary", { name: "Review verdict" })).toContainText("Trustpilot");
+  await expect(page.getByRole("complementary", { name: "Review verdict" })).toContainText("4.7 / 5");
   await expect(page.locator(".br-quick-grid > div")).toHaveCount(9);
   await expect(page.locator(".br-quick-grid > div").first()).toContainText("professional: from US$200");
   await expect(page.locator(".br-account-table tbody tr")).toHaveCount(5);

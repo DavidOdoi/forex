@@ -5,6 +5,23 @@ function checkedDate(value: string) {
   return new Date(`${value}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }
 
+function TrustpilotStars({ score, idPrefix }: { score: number; idPrefix: string }) {
+  return <span className="br-trustpilot-stars" aria-hidden="true">{Array.from({ length: 5 }, (_, index) => {
+    const id = `${idPrefix}-${index}`, width = (Math.max(0, Math.min(1, score - index)) * 24).toFixed(4);
+    return <svg key={id} viewBox="0 0 24 24" width="26" height="26"><defs><clipPath id={id}><rect width={width} height="24" /></clipPath></defs><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3 1.2-6.9-5-4.9 6.9-1Z" fill="#d8d8d8" /><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3 1.2-6.9-5-4.9 6.9-1Z" fill="#000" clipPath={`url(#${id})`} /></svg>;
+  })}</span>;
+}
+
+export function TrustpilotRatingBadge({ review }: { review: BrokerReview }) {
+  const snapshot = review.customerReviews;
+  if (!snapshot) return null;
+  const score = snapshot.rating !== null && snapshot.rating >= 1 && snapshot.rating <= 5 ? snapshot.rating : null;
+  return <a className="br-rating br-trustpilot-badge" href="#customer-reviews" aria-label={score === null ? "Trustpilot rating unavailable. View the profile details." : `Trustpilot ${score.toFixed(1)} out of 5. View the profile, review count and checked date.`} title={snapshot.checkedAt ? `Trustpilot snapshot checked ${checkedDate(snapshot.checkedAt)}` : "View the Trustpilot profile details"}>
+    <span className="br-rating-source">Trustpilot</span><strong>{score === null ? "Unavailable" : `${score.toFixed(1)} / 5`}</strong>
+    {score !== null && <TrustpilotStars score={score} idPrefix={`trustpilot-hero-${review.broker.slug}`} />}
+  </a>;
+}
+
 export function CustomerReviews({ review }: { review: BrokerReview }) {
   const snapshot = review.customerReviews;
   if (!snapshot) return null;
@@ -15,10 +32,7 @@ export function CustomerReviews({ review }: { review: BrokerReview }) {
       <div className="br-trustpilot-score">
         <span>Trustpilot TrustScore</span>
         <strong data-trustpilot-score>{score === null ? "Rating unavailable" : <>{score.toFixed(1)}<span> / 5</span></>}</strong>
-        {score !== null && <span className="br-trustpilot-stars" aria-hidden="true">{Array.from({ length: 5 }, (_, index) => {
-          const id = `trustpilot-${review.broker.slug}-${index}`, width = (Math.max(0, Math.min(1, score - index)) * 24).toFixed(4);
-          return <svg key={id} viewBox="0 0 24 24" width="26" height="26"><defs><clipPath id={id}><rect width={width} height="24" /></clipPath></defs><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3 1.2-6.9-5-4.9 6.9-1Z" fill="#d8d8d8" /><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3 1.2-6.9-5-4.9 6.9-1Z" fill="#000" clipPath={`url(#${id})`} /></svg>;
-        })}</span>}
+        {score !== null && <TrustpilotStars score={score} idPrefix={`trustpilot-detail-${review.broker.slug}`} />}
       </div>
       <div className="br-trustpilot-details">
         {snapshot.reviewCount !== null && <p><strong data-trustpilot-count>{snapshot.reviewCount.toLocaleString("en-US")}</strong> reviews on this profile</p>}

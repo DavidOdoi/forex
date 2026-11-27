@@ -18,7 +18,7 @@ import { Finding } from "./finding";
 import { AccountOpeningCta } from "./account-cta";
 import { ReaderContents, ReaderDisclosure, ReaderMarket } from "./reader-controls";
 import { RoundTripCost } from "./round-trip-cost";
-import { CustomerReviews } from "./customer-reviews";
+import { CustomerReviews, TrustpilotRatingBadge } from "./customer-reviews";
 import "./editorial-review.css";
 
 const labels: Record<string, string> = {
@@ -109,7 +109,7 @@ export function EditorialReviewPage({ review, research, countries = [], demo = f
         {review.suppliedResearch && <aside className="br-supplied-research" aria-label="Supplied research status"><strong>Supplied dossier · independent recheck pending.</strong><p>{review.suppliedResearch.note}</p></aside>}
         <div className={platformImage ? "br-opening-grid" : undefined}>
         <aside className="br-verdict-box" aria-label="Review verdict">
-          <div className="br-verdict-copy"><div className="br-verdict-label"><h2>Quick answer</h2>{retail && <div className="br-rating">{score && <span aria-hidden="true">{Array.from({ length: 5 }, (_, i) => <Star size={20} key={i} fill={review.overallScore && i < Math.round(review.overallScore.value) ? "currentColor" : "none"} />)}</span>}<strong>{score ?? "Not rated"}</strong></div>}</div>
+          <div className="br-verdict-copy"><div className="br-verdict-label"><h2>Quick answer</h2>{retail && (review.customerReviews?.checkedAt ? <TrustpilotRatingBadge review={review} /> : <div className="br-rating">{score && <span aria-hidden="true">{Array.from({ length: 5 }, (_, i) => <Star size={20} key={i} fill={review.overallScore && i < Math.round(review.overallScore.value) ? "currentColor" : "none"} />)}</span>}<strong>{score ?? "Not rated"}</strong></div>)}</div>
             <p><strong>{verdict[0]}</strong>{" "}{verdict.slice(1).join(" ")}</p>
             <dl className="br-fit">{openingChecks.map(check => <div key={check.label}><dt>{check.label}</dt><dd>{check.value}</dd></div>)}</dl>
           </div>

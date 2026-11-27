@@ -45,23 +45,40 @@ for (const snapshot of snapshots) test(`${snapshot.slug}: checked Trustpilot sco
   expect(section).toContain(snapshot.reviewCount.toLocaleString("en-US")); expect(section).toMatch(/datetime="2026-11-27"/i);
   if (snapshot.rating === null) { expect(section).toContain("Rating unavailable"); expect(section).not.toContain("br-trustpilot-stars"); }
   else { expect(section).toContain(snapshot.rating.toFixed(1)); expect(section).toContain("br-trustpilot-stars"); }
+  const badge = html.match(/<a[^>]*class="br-rating br-trustpilot-badge"[^>]*>([\s\S]*?)<\/a>/)![1];
+  expect(badge).toContain("Trustpilot");
+  if (snapshot.rating === null) expect(badge).toContain("Unavailable");
+  else expect(badge).toContain(snapshot.rating.toFixed(1));
+  expect(badge).not.toContain("Not rated");
   const data = await (await request.get(`/reviews/${snapshot.slug}/data`)).json();
   expect(data.review.customerReviews.rating).toBe(snapshot.rating); expect(data.review.customerReviews.reviewCount).toBe(snapshot.reviewCount);
 });
 
-test("customer ratings remain separate from editorial verdicts and fit mobile screens", async ({ page }) => {
+test("Quick Answer badges identify Trustpilot, link to details and fit mobile screens", async ({ page }) => {
   const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
   for (const slug of ["exness", "xm", "z-forex", "cmc-markets"]) {
     await page.goto(`/reviews/${slug}`);
-    await expect(page.locator(".br-rating")).toContainText("Not rated");
+    await expect(page.locator(".br-verdict-label .br-rating")).toContainText("Trustpilot");
+    await expect(page.locator(".br-verdict-label .br-rating")).not.toContainText("Not rated");
+    await expect(page.locator(".br-verdict-label .br-rating")).toHaveAttribute("href", "#customer-reviews");
     for (const width of [320, 390, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     }
   }
+  await page.goto("/reviews/exness");
+  await expect(page.locator(".br-verdict-label .br-rating")).toContainText("4.7 / 5");
+  const ids = await page.locator(".br-trustpilot-stars clipPath").evaluateAll(nodes => nodes.map(node => node.id));
+  expect(new Set(ids).size).toBe(ids.length);
+  await page.locator(".br-verdict-box").screenshot({ path: "test-results/trustpilot-hero-desktop.png" });
+  await page.setViewportSize({ width: 390, height: 1000 });
+  await page.locator(".br-verdict-box").screenshot({ path: "test-results/trustpilot-hero-mobile.png" });
+  await page.locator(".br-trustpilot-badge").click();
+  await expect(page).toHaveURL(/#customer-reviews$/);
+  await page.goto("/reviews/cmc-markets");
   await expect(page.locator("#customer-reviews")).toContainText("separate profile");
-  await expect(page.locator(".br-trustpilot-stars svg")).toHaveCount(5);
-  await expect(page.locator(".br-trustpilot-stars svg").last().locator("clipPath rect")).toHaveAttribute("width", "7.2000");
+  await expect(page.locator("#customer-reviews .br-trustpilot-stars svg")).toHaveCount(5);
+  await expect(page.locator("#customer-reviews .br-trustpilot-stars svg").last().locator("clipPath rect")).toHaveAttribute("width", "7.2000");
   await page.locator("#customer-reviews").screenshot({ path: "test-results/trustpilot-cmc-desktop.png" });
   await page.setViewportSize({ width: 390, height: 1000 });
   await page.locator("#customer-reviews").screenshot({ path: "test-results/trustpilot-cmc-mobile.png" });

@@ -528,6 +528,12 @@ body:has(.br-review) > header .bg-gold {
 .br-trustpilot-score > strong > span { font-size: 24px; font-weight: 500; letter-spacing: 0; }
 .br-trustpilot-stars { display: inline-flex; gap: 4px; align-items: center; }
 .br-trustpilot-stars > svg { width: 26px; height: 26px; flex-shrink: 0; }
+.br-rating.br-trustpilot-badge { display: grid; grid-template-columns: auto auto; gap: 3px 12px; padding: 8px 12px; border-radius: 12px; color: #000; background: #fff; text-decoration: none; max-width: 100%; }
+.br-trustpilot-badge > .br-rating-source { display: block; font-size: 16px; font-weight: 600; }
+.br-trustpilot-badge > strong { font-size: 18px; line-height: 1.4; }
+.br-trustpilot-badge > .br-trustpilot-stars { grid-column: 1 / -1; justify-self: end; gap: 3px; }
+.br-trustpilot-badge > .br-trustpilot-stars > svg { width: 17px; height: 17px; }
+.br-trustpilot-badge:hover { border-color: #000; }
 .br-trustpilot-details { min-width: 0; overflow-wrap: anywhere; }
 .br-trustpilot-details > p + p { margin-top: 6px; }
 .br-trustpilot-details > a { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; font-weight: 650; text-decoration: underline; }

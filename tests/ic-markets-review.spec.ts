@@ -93,7 +93,8 @@ test("updated shared template renders supplied findings and three FAQs without J
     await expect(page.locator("#safety")).toContainText("Global FAQ warns");
     await expect(page.locator("#safety")).toContainText("historical match");
     await expect(page.locator("#customer-reviews")).toContainText("4.8 / 5");
-    await expect(page.locator(".br-rating")).toHaveText("Not rated");
+    await expect(page.locator(".br-rating")).toContainText("Trustpilot");
+    await expect(page.locator(".br-rating")).toContainText("4.8 / 5");
     await expect(page.locator("#review-faq details")).toHaveCount(3);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
     await expect(page.getByRole("link", { name: "Open an account with IC Markets", exact: true })).toHaveCount(0);
