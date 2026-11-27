@@ -1,4 +1,4 @@
-# Calculator work queue — 24 November 2026
+# Calculator work queue — updated 27 November 2026
 
 Owner instructions: complete and verify one calculator, push it, then proceed to the next. Use useful, detailed intros and Quick answers. Each completed content page must be pushed. Batch 2 and 3 supporting articles target 1,600–1,800 independently counted words, with 80–120-word intros and exactly three FAQs. Preserve source maths and qualifications; no invented live prices or broker conditions.
 
@@ -48,19 +48,19 @@ Continue in numerical order, pushing each verified calculator independently. Ori
 | 24 | Forex drawdown | `/calculators/forex-drawdown-calculator` | Pushed as `dfcd3ad`; 1,799 words, three FAQs, complete 128 numerical/service/privacy and 103 browser/crawl groups passed. |
 | 25 | Prop firm drawdown | `/calculators/prop-firm-drawdown-calculator` | Pushed as `36febd6`; 1,711 words, three FAQs; 17 numerical/privacy and eight browser/regression groups passed. |
 | 26 | Prop firm consistency | `/calculators/prop-firm-consistency-calculator` | Pushed as `c21e62c`; 1,704 words at implementation, three FAQs; shared prior core upgraded, old URL redirects and leaves sitemap. Verification recorded in the consistency audit. |
-| 27 | Trading expectancy | `/calculators/trading-expectancy-calculator` | Queued |
-| 28 | Sharpe ratio | `/calculators/sharpe-ratio-calculator` | Queued |
-| 29 | Forex Martingale | `/calculators/forex-martingale-calculator` | Queued; distinct sequential and open-grid modes, no recovery guarantees. |
+| 27 | Trading expectancy | `/calculators/trading-expectancy-calculator` | Pushed as `2dced80`; see the completion record below. |
+| 28 | Sharpe ratio | `/calculators/sharpe-ratio-calculator` | Pushed as `828844c`; see the completion record below. |
+| 29 | Forex Martingale | `/calculators/forex-martingale-calculator` | Complete in this commit; distinct sequential and open-grid modes, no recovery guarantees. |
 
 Every guide: 1,600–1,800 independently counted words, 80–120-word introduction, useful Quick answer, exactly three FAQs, contextual internal and external links, real numerical/UI checks, canonical/indexing/sitemap integration, and disclosed model/data limits. Batch 7's addendum requires citations inside the relevant prose (FTMO/Topstep drawdown rules; Topstep/FundedNext consistency rules; BabyPips expectancy; CFA/Lo Sharpe research), verified before using any programme-specific number.
 
-Batch 7 specifically forbids financial histories in share URLs. The shared cost/scenario form now supports `privateFields` and `serializePrivateSettings`; include `privateDataOmitted: "no"` in new tool defaults, omit all private financial fields from copied settings, and require recipient inputs. CSV file handling currently normalizes equity/balance CSV only; implement a format-specific reader before using the file control for trade logs or return series.
+Batch 7 specifically forbids financial histories in share URLs. The shared cost/scenario form now supports `privateFields` and `serializePrivateSettings`; include `privateDataOmitted: "no"` in new tool defaults, omit all private financial fields from copied settings, and require recipient inputs. CSV input has separate readers for equity/balance histories, daily P&L, individual trade journals and aligned simple-return series. Use the appropriate format-specific reader.
 
 ## Owner copy-only update
 
-The later 29-entry introduction/Quick answer rewrite supersedes the earlier 80–120-word intro target. Exact replacements were applied to 23 existing matching pages, with the owner-approved removal of unsupported withdrawals from the compounding intro. Six requested dedicated routes are absent: ATR position size, hedge, notional value, expectancy, Sharpe and Martingale. No pages or engines were created by this copy edit. Supporting articles, metadata and links remain unchanged; implementation-time total-word counts above are historical. See `docs/audits/2026-11-24/calculator-intro-rewrites.md` and `tests/fixtures/calculator-intro-rewrites.json`.
+The later 29-entry introduction/Quick answer rewrite supersedes the earlier 80–120-word intro target. Exact replacements were applied to 23 existing matching pages, with the owner-approved removal of unsupported withdrawals from the compounding intro. At the copy-only stage, six requested dedicated routes were absent: ATR position size, hedge, notional value, expectancy, Sharpe and Martingale. No pages or engines were created by this copy edit. Supporting articles, metadata and links remain unchanged; implementation-time total-word counts above are historical. See `docs/audits/2026-11-24/calculator-intro-rewrites.md` and `tests/fixtures/calculator-intro-rewrites.json`.
 
-The original tools 27–29 task is paused for this copy update. Early tool 27 drafts are preserved outside git in `/workspace/task-drafts/expectancy-paused/`; do not inadvertently publish them as finished. Use the new supplied intro/Quick answer copy when those tools are completed later.
+The original tools 27–29 task was paused for the copy update and resumed in the completion request below. Early tool 27 drafts are preserved outside git in `/workspace/task-drafts/expectancy-paused/`; do not inadvertently publish them as finished. The completed implementations use the supplied intro/Quick answer copy.
 
 ## Six-tool completion request — 27 November 2026
 
@@ -72,5 +72,7 @@ The owner resumed work specifically to finish all six missing tools. Preserve th
 | Forex hedge | Pushed as `ae617bf`: 1,680 words, three FAQs, 24 numerical/regression and nine browser/inventory groups passed. |
 | Forex notional value | Pushed as `ca6f6ee`: 1,679 words, three FAQs, 17 numerical and 17 browser/inventory groups passed. |
 | Trading expectancy | Pushed as `2dced80`: 1,694 words, three FAQs, 32 numerical/regression and nine browser/inventory groups passed. Use these implemented files rather than the paused drafts. |
-| Sharpe ratio | Complete: 1,674 words, three FAQs, 15 numerical/CSV regression and seven browser/inventory groups passed. Publication in this commit. |
-| Forex Martingale | Queued |
+| Sharpe ratio | Pushed as `828844c`: 1,674 words, three FAQs, 15 numerical/CSV regression and seven browser/inventory groups passed. |
+| Forex Martingale | Complete: 1,651 words, three FAQs; 14 new numerical groups and the complete 190-group numerical suite passed. All 51 final browser/inventory/crawl groups passed. Publication in this commit. |
+
+All 29 requested entries now have implemented routes and the exact owner-supplied replacement introduction and Quick Answer (including the previously approved compounding correction). No requested calculator remains absent. Final browser verification checks the supplied copy on all 29 pages and crawls all 123 canonical content URLs. Production webpack/TypeScript, ESLint and whitespace checks pass. Implementation and evidence: `docs/audits/2026-11-27/missing-calculators.md`.

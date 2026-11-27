@@ -258,6 +258,7 @@
     "requestedPath": "/calculators/forex-martingale-calculator",
     "intro": "Doubling trade size after each loss sounds simple until you calculate the exposure after several losing levels. Explore the progression of lots, cumulative losses, and margin pressure in sequential trades or an open-position grid. The tool shows what the strategy could demand from your account—not a guaranteed recovery path.",
     "quickAnswer": "Lot at level n = Starting lot × Multiplier^(n − 1). Starting at 0.01 lots and doubling gives 0.01, 0.02, 0.04, 0.08, 0.16, 0.32 across six levels, totaling 0.63 lots. That total represents simultaneous exposure only when all six positions remain open; otherwise, it is cumulative traded volume.",
-    "actualPath": null
+    "actualPath": "/calculators/forex-martingale-calculator",
+    "sourceFile": "src/lib/calculators/martingale-content.ts"
   }
 ]
