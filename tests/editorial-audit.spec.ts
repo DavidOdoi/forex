@@ -17,10 +17,10 @@ test("read Sri Lankan documents establish their provisions without inventing res
   expect(sriLankaGuide.commercialLinksAllowed).toBe(false);
 });
 
-test("homepage avoids a worldwide legality assurance, fictional market quotes and unconfigured affiliate claims", async ({ page }) => {
+test("homepage keeps legality and market-price limits and discloses active affiliate links", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("#faq")).toContainText("Rules depend on your country of residence");
-  await expect(page.locator("#faq")).toContainText("no active affiliate tracking links");
+  await expect(page.locator("#faq")).toContainText("Some broker links are affiliate links");
   await expect(page.locator("main")).not.toContainText("68,210.00");
   await expect(page.locator("main")).not.toContainText("2,384.10");
   await expect(page.locator('main a[href="/gold-price"]').first()).toBeVisible();

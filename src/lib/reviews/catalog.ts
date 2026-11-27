@@ -24,6 +24,7 @@ import { applyAafxTradingResearch } from "./aafx-trading";
 import { applyZForexResearch } from "./z-forex";
 import { applyTradingComResearch } from "./trading-com";
 import { applyTrustpilotSnapshot } from "./trustpilot";
+import { reviewPartnerDestination } from "../partners";
 
 export const researchEntries: ResearchEntry[] = raw.entries.map(entry => ({ ...entry, providerType: Object.hasOwn(providerLabels, entry.providerType) ? entry.providerType as ProviderType : "other" }));
 export const researchInventory = { total: raw.inputEntries, retail: raw.retailEntries, separate: raw.separateProviderEntries };
@@ -105,6 +106,8 @@ export function getReview(slug: string, requestedCountry?: string) {
     review.customerReviews = { publisher: "Trustpilot", url: customerUrl.href, rating: null, reviewCount: null, checkedAt: null };
   }
   applyTrustpilotSnapshot(review);
+  const partnerDestination = research.providerType === "retail" ? reviewPartnerDestination(review.broker.slug, review.jurisdiction, review.accountOpening.url) : null;
+  if (partnerDestination) Object.assign(review.accountOpening, { partnerDestination, isAffiliate: true });
   if (research.providerType !== "retail") delete review.customerReviews;
   if (!review.verdict) {
     review.verdict = research.sources.length

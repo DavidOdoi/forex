@@ -4,6 +4,7 @@ import type {
   ReviewField,
   ReviewSectionId,
 } from "./types";
+import { reviewPartnerDestination } from "../partners";
 function field(label: string): ReviewField {
   return {
     id: label
@@ -337,9 +338,12 @@ export function scoreValue(
 
 export function accountOpeningHref(review: BrokerReview): string | null {
   const link = review.accountOpening;
+  const ownerDestination = reviewPartnerDestination(review.broker.slug, review.jurisdiction, link.url);
+  const partnerDestination = link.isAffiliate && link.partnerDestination === ownerDestination ? ownerDestination : null;
   if (
     review.status === "template" ||
-    (review.status !== "published" && link.isAffiliate) ||
+    (link.partnerDestination && !partnerDestination) ||
+    (review.status !== "published" && link.isAffiliate && !partnerDestination) ||
     link.status !== "verified" ||
     !review.jurisdiction ||
     review.jurisdiction !== link.jurisdiction ||
@@ -365,7 +369,7 @@ export function accountOpeningHref(review: BrokerReview): string | null {
     },
     review,
   );
-  return display === link.url ? link.url : null;
+  return display === link.url ? partnerDestination ?? link.url : null;
 }
 
 export function verifiedVerdictSentences(review: BrokerReview): string[] | undefined {

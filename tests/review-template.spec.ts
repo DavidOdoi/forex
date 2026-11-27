@@ -238,7 +238,7 @@ test("unsupported values and scores are withheld until supporting evidence is pr
   expect(fieldValue(field, review)).toBe("Needs verification");
 });
 
-test("account-opening links require a published review and matching verified destination records", () => {
+test("generic affiliate account links retain publication, scope and evidence checks", () => {
   const review = createReviewTemplate();
   expect(accountOpeningHref(review)).toBeNull();
   review.accountOpening.url = "https://broker.example/open?partner=devin";

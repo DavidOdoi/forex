@@ -130,7 +130,7 @@ export default function Index() {
           ],
           [
             "Do you charge anything?",
-            "The guides and tools are free to read and use. We currently have no active affiliate tracking links. If that changes, paid links will be labelled; the broker’s own account and trading charges still apply.",
+            "The guides and tools are free to read and use. Some broker links are affiliate links and may earn us compensation. Paid links are labelled; the broker’s own account and trading charges still apply.",
           ],
         ].map(([q, a]) => (
           <details key={q} className="border-b py-6">

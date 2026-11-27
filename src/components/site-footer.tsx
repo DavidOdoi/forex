@@ -100,8 +100,8 @@ export function SiteFooter() {
           <section aria-labelledby="footer-transparency">
             <h3 id="footer-transparency">Transparency matters</h3>
             <p>Our content is for information, not personal financial advice.
-              There are currently no active affiliate referral links.
-              Future commercial relationships will be disclosed.</p>
+              Some broker links are affiliate links, and we may receive compensation when you use them.
+              Paid links are labelled.</p>
           </section>
         </div>
 

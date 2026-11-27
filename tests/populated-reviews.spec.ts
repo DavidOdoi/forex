@@ -22,7 +22,7 @@ test("all directory records retain identity, country separation and evidence int
       const { review } = getReview(entry.slug, country)!;
       expect(review.status).toBe("draft");
       expect(review.overallScore).toBeNull();
-      if (review.accountOpening.url) expect(review.accountOpening.isAffiliate).toBe(false);
+      if (review.accountOpening.url) expect(review.accountOpening.isAffiliate).toBe(entry.slug === "exness" && country === "Global");
       for (const field of reviewedFields(review).filter(f => f.status === "verified")) {
         expect(fieldValue(field, review)).toBe(field.value);
         expect(field.jurisdiction).toBe(country);
@@ -109,8 +109,8 @@ test("global Exness review retains citations, research and five official account
   await expect(page.locator("[data-account-cta]")).toHaveCount(5);
   const links = page.getByRole("link", { name: "Open an account with Exness", exact: true });
   await expect(links).toHaveCount(5);
-  await expect(links.first()).toHaveAttribute("href", "https://my.exness.com/accounts/sign-up?lng=en");
-  await expect(links.first()).not.toHaveAttribute("rel", /sponsored/);
+  await expect(links.first()).toHaveAttribute("href", "https://one.toexness.com/a/5fvl1ylh6f");
+  await expect(links.first()).toHaveAttribute("rel", /sponsored/);
   await expect(page.getByRole("main")).not.toContainText(/Kenya|M-Pesa|KES\b/);
   await page.locator("#key-data .review-citations a").first().click();
   await expect(page).toHaveURL(/#source-global-minimum-deposit$/);
@@ -174,7 +174,7 @@ test("reading navigation and commercial disclosure work with the keyboard", asyn
   const disclosure = page.getByRole("button", { name: "Advertiser disclosure", exact: true });
   await disclosure.click();
   await expect(page.getByRole("dialog")).toBeVisible();
-  await expect(page.getByRole("dialog")).toContainText("No affiliate tracking");
+  await expect(page.getByRole("dialog")).toContainText("may receive compensation");
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).not.toBeVisible();
   await expect(disclosure).toBeFocused();
@@ -339,6 +339,6 @@ test("global branding, expanded sourced pros and cons, and Trustpilot links are 
   await expect(page.locator("#customer-reviews")).toContainText("Checked directly on Trustpilot");
   const account = page.getByRole("link", { name: "Open an account with Exness", exact: true }).first();
   expect(await account.evaluate(el => getComputedStyle(el).backgroundImage)).toContain("linear-gradient");
-  await expect(account).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(account).toHaveAttribute("rel", "sponsored nofollow noopener noreferrer");
   expect((await (await request.get("/reviews/exness/data")).json()).review.customerReviews.rating).toBe(4.7);
 });

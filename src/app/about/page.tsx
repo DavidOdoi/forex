@@ -41,7 +41,7 @@ export default function Page() {
           ],
           [
             "How we earn",
-            "Any future affiliate relationships will be clearly disclosed. There are currently no active referral links.",
+            "Some broker account links are affiliate links. We may earn compensation when readers use them. These links are labelled, and compensation does not establish a broker’s suitability.",
           ],
         ].map(([t, d]) => (
           <div key={t} id={t === "How we research" ? "research-methodology" : t === "Our story" ? "our-story" : "commercial-policy"} className="scroll-mt-32 rounded-2xl glass p-8">

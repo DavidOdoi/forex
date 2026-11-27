@@ -58,6 +58,8 @@ export interface ReviewChapter {
 }
 export interface AccountOpeningLink {
   url: string | null;
+  // Commercial routing only; the documented official URL and its evidence stay intact.
+  partnerDestination?: string;
   status: "not-configured" | "needs-verification" | "verified";
   sourceIds: string[];
   legalEntity: string | null;
