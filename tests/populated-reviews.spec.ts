@@ -334,10 +334,10 @@ test("global branding, expanded sourced pros and cons, and Trustpilot links are 
     await expect(point.locator("a")).toHaveAttribute("href", /^https:\/\/(www\.exness\.com|get\.exness\.help)\//);
   }
   const trustpilot = page.getByRole("link", { name: /Find Exness customer reviews on Trustpilot/ });
-  await expect(trustpilot).toHaveAttribute("href", /https:\/\/www\.trustpilot\.com\/search\?query=exness\.com/);
-  await expect(page.locator("#customer-reviews")).toContainText("no rating or count was collected");
+  await expect(trustpilot).toHaveAttribute("href", /https:\/\/www\.trustpilot\.com\/review\/exness\.com/);
+  await expect(page.locator("#customer-reviews")).toContainText("Checked directly on Trustpilot");
   const account = page.getByRole("link", { name: "Open an account with Exness", exact: true }).first();
   expect(await account.evaluate(el => getComputedStyle(el).backgroundImage)).toContain("linear-gradient");
   await expect(account).toHaveAttribute("rel", "noopener noreferrer");
-  expect((await (await request.get("/reviews/exness/data")).json()).review.customerReviews.rating).toBeNull();
+  expect((await (await request.get("/reviews/exness/data")).json()).review.customerReviews.rating).toBe(4.7);
 });

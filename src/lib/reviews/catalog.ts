@@ -23,6 +23,7 @@ import { applyEtoroResearch } from "./etoro";
 import { applyAafxTradingResearch } from "./aafx-trading";
 import { applyZForexResearch } from "./z-forex";
 import { applyTradingComResearch } from "./trading-com";
+import { applyTrustpilotSnapshot } from "./trustpilot";
 
 export const researchEntries: ResearchEntry[] = raw.entries.map(entry => ({ ...entry, providerType: Object.hasOwn(providerLabels, entry.providerType) ? entry.providerType as ProviderType : "other" }));
 export const researchInventory = { total: raw.inputEntries, retail: raw.retailEntries, separate: raw.separateProviderEntries };
@@ -103,6 +104,7 @@ export function getReview(slug: string, requestedCountry?: string) {
     customerUrl.searchParams.set("query", review.broker.website ? new URL(review.broker.website).hostname.replace(/^www\./, "") : review.broker.name);
     review.customerReviews = { publisher: "Trustpilot", url: customerUrl.href, rating: null, reviewCount: null, checkedAt: null };
   }
+  applyTrustpilotSnapshot(review);
   if (research.providerType !== "retail") delete review.customerReviews;
   if (!review.verdict) {
     review.verdict = research.sources.length

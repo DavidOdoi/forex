@@ -46,8 +46,9 @@ test("reported findings cannot be silently promoted to verified, published or ac
   expect(publicationBlockers(review).join(" ")).toContain("primary-source rechecks");
   const schema = JSON.stringify(reviewStructuredData(review));
   expect(schema).not.toMatch(/AggregateRating|ratingValue|datePublished/);
-  expect(review.customerReviews).toMatchObject({ publisher: "Trustpilot", rating: 4.8, reviewCount: 57517, checkedAt: "2026-11-10" });
+  expect(review.customerReviews).toMatchObject({ publisher: "Trustpilot", rating: 4.8, reviewCount: 57840, checkedAt: "2026-11-27" });
   expect(review.customerReviews?.researchNote).toContain("not our editorial score");
+  expect(review.customerReviews?.previousSnapshot).toEqual({ rating: 4.8, reviewCount: 57517, checkedAt: "2026-11-10" });
 });
 test("missing or mismatched dossier provenance suppresses financial facts and does not affect other scopes", () => {
   for (const kind of ["date", "origin", "dossier", "scope", "source"] as const) {
@@ -91,7 +92,7 @@ test("updated shared template renders supplied findings and three FAQs without J
     await expect(page.locator("#deposit-and-withdrawal")).toContainText("2–14");
     await expect(page.locator("#safety")).toContainText("Global FAQ warns");
     await expect(page.locator("#safety")).toContainText("historical match");
-    await expect(page.locator("#customer-reviews")).toContainText("4.8/5 from 57,517");
+    await expect(page.locator("#customer-reviews")).toContainText("4.8 / 5");
     await expect(page.locator(".br-rating")).toHaveText("Not rated");
     await expect(page.locator("#review-faq details")).toHaveCount(3);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", indexable ? "index, follow" : "noindex, follow");
@@ -102,7 +103,7 @@ test("updated shared template renders supplied findings and three FAQs without J
     console.log(`IC Markets complete review: ${count} words.`); expect(count).toBeLessThanOrEqual(1800);
     const data = await (await request.get("/reviews/ic-markets/data")).json();
     expect(data.review.suppliedResearch.reportedFindings.length).toBeGreaterThanOrEqual(10);
-    expect(data.review.customerReviews.reviewCount).toBe(57517);
+    expect(data.review.customerReviews.reviewCount).toBe(57840);
     const citationTargets = await page.locator('main a[href^="#source-"]').evaluateAll(links => links.every(link => document.getElementById(link.getAttribute("href")!.slice(1))));
     expect(citationTargets).toBe(true);
   } finally { await context.close(); }

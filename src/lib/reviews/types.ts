@@ -108,5 +108,13 @@ export interface BrokerReview {
   sources: ReviewSource[];
   regulatoryNotices?: { title: string; summary: string; sourceIds: string[] }[];
   entities?: { country: string; name: string; regulator: string | null; licence: string | null; sourceId: string; note?: string; identitySourceId?: string }[];
-  customerReviews?: { publisher: "Trustpilot"; url: string; rating: number | null; reviewCount: number | null; checkedAt: string | null; researchNote?: string };
+  customerReviews?: {
+    publisher: "Trustpilot"; url: string; rating: number | null; reviewCount: number | null; checkedAt: string | null; researchNote?: string;
+    profileName?: string; profileDomain?: string; retrievedAt?: string;
+    evidenceOrigin?: "direct-profile-check";
+    ratingStatus?: "displayed" | "unavailable";
+    notice?: string;
+    regionalProfiles?: { label: string; url: string; rating: number | null; reviewCount: number; checkedAt: string }[];
+    previousSnapshot?: { rating: number | null; reviewCount: number | null; checkedAt: string | null };
+  };
 }

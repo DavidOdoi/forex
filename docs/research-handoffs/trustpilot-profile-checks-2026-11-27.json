@@ -1,0 +1,604 @@
+[
+  {
+    "brokerSlug": "exness",
+    "requestedUrl": "https://www.trustpilot.com/review/exness.com",
+    "retrievedAt": "2026-11-27T11:28:33.528084+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/exness.com",
+    "sha256": "917b59a96fb5da711012bd907e2a8c9c9d708ae944a64efa506b9b83a33658bf",
+    "profileDomain": "exness.com",
+    "displayName": "Exness",
+    "reviewCount": 34353,
+    "aggregates": [
+      {
+        "name": "Exness",
+        "sameAs": "https://exness.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.7",
+          "reviewCount": "34353"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.7,
+    "publicReviewCount": 34353,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "xm",
+    "requestedUrl": "https://www.trustpilot.com/review/xm.com",
+    "retrievedAt": "2026-11-27T11:28:33.531290+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/xm.com",
+    "sha256": "9ef42675809c4c9441857a6b676c2023b844ec0141af05adb15c69e2b586a296",
+    "profileDomain": "xm.com",
+    "displayName": "XM",
+    "reviewCount": 3112,
+    "aggregates": [],
+    "consumerAlertTypes": [
+      "WarningFabricatedReviews"
+    ],
+    "publicScore": null,
+    "publicReviewCount": null,
+    "publicRatingWithheld": true
+  },
+  {
+    "brokerSlug": "ic-markets",
+    "requestedUrl": "https://www.trustpilot.com/review/icmarkets.com",
+    "retrievedAt": "2026-11-27T11:28:33.532225+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/icmarkets.com",
+    "sha256": "a7af5d681648e59453f0cc32022f785745395090307c2d6c69d6d85c8f2eaae9",
+    "profileDomain": "icmarkets.com",
+    "displayName": "IC",
+    "reviewCount": 57840,
+    "aggregates": [
+      {
+        "name": "IC",
+        "sameAs": "https://www.icmarkets.com/en/",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.8",
+          "reviewCount": "57840"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.8,
+    "publicReviewCount": 57840,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "pepperstone",
+    "requestedUrl": "https://www.trustpilot.com/review/pepperstone.com",
+    "retrievedAt": "2026-11-27T11:28:34.374689+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/pepperstone.com",
+    "sha256": "77cfed1a5fa56cf6dfe48d56b0fd9a3bf03d35f7464df2ec8bca97474a86326a",
+    "profileDomain": "pepperstone.com",
+    "displayName": "Pepperstone",
+    "reviewCount": 3779,
+    "aggregates": [
+      {
+        "name": "Pepperstone",
+        "sameAs": "https://pepperstone.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.2",
+          "reviewCount": "3779"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.2,
+    "publicReviewCount": 3779,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "fusion-markets",
+    "requestedUrl": "https://www.trustpilot.com/review/fusionmarkets.com",
+    "retrievedAt": "2026-11-27T11:28:34.423798+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/fusionmarkets.com",
+    "sha256": "601d356931de10b1c13f9c60d51d7458859738d2249c1a17cb5807a2e1e82f4c",
+    "profileDomain": "fusionmarkets.com",
+    "displayName": "Fusion Markets ",
+    "reviewCount": 10908,
+    "aggregates": [
+      {
+        "name": "Fusion Markets ",
+        "sameAs": "https://fusionmarkets.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.8",
+          "reviewCount": "10908"
+        }
+      }
+    ],
+    "consumerAlertTypes": [
+      "InfoRegulatoryNotification"
+    ],
+    "publicScore": 4.8,
+    "publicReviewCount": 10908,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "ig",
+    "requestedUrl": "https://www.trustpilot.com/review/ig.com",
+    "retrievedAt": "2026-11-27T11:28:34.448916+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/ig.com",
+    "sha256": "7edbfa71bc76fa40ca0e7bc590440ab92607dab7246ee1dc1a3b6d22509bcb2e",
+    "profileDomain": "ig.com",
+    "displayName": "IG",
+    "reviewCount": 10448,
+    "aggregates": [
+      {
+        "name": "IG",
+        "sameAs": "https://www.ig.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "3.7",
+          "reviewCount": "10448"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 3.7,
+    "publicReviewCount": 10448,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "fp-markets",
+    "requestedUrl": "https://www.trustpilot.com/review/fpmarkets.com",
+    "retrievedAt": "2026-11-27T11:28:34.980187+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/fpmarkets.com",
+    "sha256": "bbfc700f1f48d91d877b159efc21162885f3054e5094f047f0232fce04e5bb61",
+    "profileDomain": "fpmarkets.com",
+    "displayName": "FP Markets",
+    "reviewCount": 10428,
+    "aggregates": [
+      {
+        "name": "FP Markets",
+        "sameAs": "https://www.fpmarkets.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.7",
+          "reviewCount": "10428"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.7,
+    "publicReviewCount": 10428,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "capital-com",
+    "requestedUrl": "https://www.trustpilot.com/review/capital.com",
+    "retrievedAt": "2026-11-27T11:28:35.287224+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/capital.com",
+    "sha256": "fa93e64ceda2e7429d7a5c4e99eaa7d82c9b4bca6bdf4b7f470dd82495956de9",
+    "profileDomain": "capital.com",
+    "displayName": "Capital·com",
+    "reviewCount": 15292,
+    "aggregates": [
+      {
+        "name": "Capital·com",
+        "sameAs": "https://capital.com/",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.6",
+          "reviewCount": "15292"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.6,
+    "publicReviewCount": 15292,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "hantec-markets",
+    "requestedUrl": "https://www.trustpilot.com/review/hmarkets.com",
+    "retrievedAt": "2026-11-27T11:28:35.566238+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/hmarkets.com",
+    "sha256": "e14ccd26ba909bc9194df245daadc63a184a11c516195ef9e94f946a2528c59a",
+    "profileDomain": "hmarkets.com",
+    "displayName": "Hantec Markets",
+    "reviewCount": 5820,
+    "aggregates": [
+      {
+        "name": "Hantec Markets",
+        "sameAs": "https://www.hmarkets.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.9",
+          "reviewCount": "5820"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.9,
+    "publicReviewCount": 5820,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "plus500",
+    "requestedUrl": "https://www.trustpilot.com/review/www.plus500.com",
+    "retrievedAt": "2026-11-27T11:28:35.688008+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/www.plus500.com",
+    "sha256": "16307f5dc2b825633c961bc19839fa8d33ceb5945ff03ad2ed7498894b2c4c70",
+    "profileDomain": "www.plus500.com",
+    "displayName": "Plus500",
+    "reviewCount": 20402,
+    "aggregates": [
+      {
+        "name": "Plus500",
+        "sameAs": "https://www.plus500.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.2",
+          "reviewCount": "20402"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.2,
+    "publicReviewCount": 20402,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "oanda",
+    "requestedUrl": "https://www.trustpilot.com/review/www.oanda.com",
+    "retrievedAt": "2026-11-27T11:28:35.891236+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/www.oanda.com",
+    "sha256": "ed2c3e39cb24b2941f92fcc72b4a9b72655b67b5f72ed3954a030748a521b14a",
+    "profileDomain": "www.oanda.com",
+    "displayName": "OANDA",
+    "reviewCount": 1244,
+    "aggregates": [
+      {
+        "name": "OANDA",
+        "sameAs": "https://www.oanda.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "3.5",
+          "reviewCount": "1244"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 3.5,
+    "publicReviewCount": 1244,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "tickmill",
+    "requestedUrl": "https://www.trustpilot.com/review/www.tickmill.com",
+    "retrievedAt": "2026-11-27T11:28:36.177325+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/www.tickmill.com",
+    "sha256": "933b5eeb3687e265d22c7be826ee210e585d77ff8d0152c68f2805e0a665f2fb",
+    "profileDomain": "www.tickmill.com",
+    "displayName": "Tickmill",
+    "reviewCount": 1340,
+    "aggregates": [
+      {
+        "name": "Tickmill",
+        "sameAs": "https://tickmill.com/",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "2.9",
+          "reviewCount": "1340"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 2.9,
+    "publicReviewCount": 1340,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "cmc-markets",
+    "requestedUrl": "https://www.trustpilot.com/review/www.cmcmarkets.com",
+    "retrievedAt": "2026-11-27T11:28:36.262222+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/www.cmcmarkets.com",
+    "sha256": "d9fedb9441bf06a1677dc8431c94d63336828a8ec7a40c342f1444ac1012db54",
+    "profileDomain": "www.cmcmarkets.com",
+    "displayName": "CMC Markets plc",
+    "reviewCount": 3623,
+    "aggregates": [
+      {
+        "name": "CMC Markets plc",
+        "sameAs": "https://www.cmcmarkets.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.3",
+          "reviewCount": "3623"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.3,
+    "publicReviewCount": 3623,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "xtb",
+    "requestedUrl": "https://www.trustpilot.com/review/xtb.com",
+    "retrievedAt": "2026-11-27T11:28:36.524266+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/xtb.com",
+    "sha256": "61fb212c9f91703e513e683f53e6b700ddb773d6ad7c28a4827e7c777cd03a2d",
+    "profileDomain": "xtb.com",
+    "displayName": "XTB Online Investing",
+    "reviewCount": 3488,
+    "aggregates": [
+      {
+        "name": "XTB Online Investing",
+        "sameAs": "https://geolink.xtb.com/yNaw2",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.1",
+          "reviewCount": "3488"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.1,
+    "publicReviewCount": 3488,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "interactive-brokers",
+    "requestedUrl": "https://www.trustpilot.com/review/interactivebrokers.com",
+    "retrievedAt": "2026-11-27T11:28:36.684108+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/interactivebrokers.com",
+    "sha256": "d299088468acf1f3ec7e52d8361404c848b55f0e573e486b94860e0261e27151",
+    "profileDomain": "interactivebrokers.com",
+    "displayName": "Interactive Brokers",
+    "reviewCount": 5599,
+    "aggregates": [
+      {
+        "name": "Interactive Brokers",
+        "sameAs": "https://interactivebrokers.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "3",
+          "reviewCount": "5599"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 3.0,
+    "publicReviewCount": 5599,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "avatrade",
+    "requestedUrl": "https://www.trustpilot.com/review/avatrade.com",
+    "retrievedAt": "2026-11-27T11:28:36.970672+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/avatrade.com",
+    "sha256": "79f1c998e1143f4824fd700598a6722edfe249abf8a0d7eb231f963c40a551d6",
+    "profileDomain": "avatrade.com",
+    "displayName": "AvaTrade",
+    "reviewCount": 13817,
+    "aggregates": [
+      {
+        "name": "AvaTrade",
+        "sameAs": "https://www.avatrade.com/?tag=77221",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.8",
+          "reviewCount": "13817"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.8,
+    "publicReviewCount": 13817,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "blackbull-markets",
+    "requestedUrl": "https://www.trustpilot.com/review/blackbull.com",
+    "retrievedAt": "2026-11-27T11:28:37.307617+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/blackbull.com",
+    "sha256": "247444eb0fba75d5d7ab55a70092a0e05044c08bb6bf45164e10de9828c5fb6b",
+    "profileDomain": "blackbull.com",
+    "displayName": "BlackBull Markets",
+    "reviewCount": 3532,
+    "aggregates": [
+      {
+        "name": "BlackBull Markets",
+        "sameAs": "https://blackbull.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.6",
+          "reviewCount": "3532"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.6,
+    "publicReviewCount": 3532,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "etoro",
+    "requestedUrl": "https://www.trustpilot.com/review/etoro.com",
+    "retrievedAt": "2026-11-27T11:28:37.338258+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/www.etoro.com",
+    "sha256": "aeb0112e79093b311f5ae66d14efcee86e4715a788f78dda1f1d04860c72fff1",
+    "profileDomain": "www.etoro.com",
+    "displayName": "eToro",
+    "reviewCount": 32537,
+    "aggregates": [
+      {
+        "name": "eToro",
+        "sameAs": "https://www.etoro.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4",
+          "reviewCount": "32537"
+        }
+      }
+    ],
+    "consumerAlertTypes": [
+      "InfoHighRiskInvestment"
+    ],
+    "publicScore": 4.0,
+    "publicReviewCount": 32537,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "aafx-trading",
+    "requestedUrl": "https://www.trustpilot.com/review/aafxtrading.com",
+    "retrievedAt": "2026-11-27T11:28:37.442847+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/aafxtrading.com",
+    "sha256": "5083787ff28da82c7620aa5a4f2ca53e3d83b6908fec4a97820c7e9b753ee8f3",
+    "profileDomain": "aafxtrading.com",
+    "displayName": "AAFX Trading",
+    "reviewCount": 76,
+    "aggregates": [
+      {
+        "name": "AAFX Trading",
+        "sameAs": "https://aafxtrading.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "2.4",
+          "reviewCount": "76"
+        }
+      }
+    ],
+    "consumerAlertTypes": [
+      "InfoRegulatoryNotification"
+    ],
+    "publicScore": 2.4,
+    "publicReviewCount": 76,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "z-forex",
+    "requestedUrl": "https://www.trustpilot.com/review/zforex.com",
+    "retrievedAt": "2026-11-27T11:28:37.934344+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/zforex.com",
+    "sha256": "60acbb9b4e6a0e5e2c989bc3a67bcaabbde80dcf069dabc47f26ac3b8f37340a",
+    "profileDomain": "zforex.com",
+    "displayName": "zForex",
+    "reviewCount": 111,
+    "aggregates": [],
+    "consumerAlertTypes": [
+      "WarningFabricatedReviews"
+    ],
+    "publicScore": null,
+    "publicReviewCount": null,
+    "publicRatingWithheld": true
+  },
+  {
+    "brokerSlug": "trading-com",
+    "requestedUrl": "https://www.trustpilot.com/review/trading.com",
+    "retrievedAt": "2026-11-27T11:28:38.006320+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/trading.com",
+    "sha256": "36311319320e32a9c705b67d3486994bbc1c3ba350df16285d269f1e77de2051",
+    "profileDomain": "trading.com",
+    "displayName": "Trading.com",
+    "reviewCount": 118,
+    "aggregates": [
+      {
+        "name": "Trading.com",
+        "sameAs": "https://www.trading.com",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "4.1",
+          "reviewCount": "118"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 4.1,
+    "publicReviewCount": 118,
+    "publicRatingWithheld": false
+  },
+  {
+    "brokerSlug": "cmc-australia",
+    "requestedUrl": "https://www.trustpilot.com/review/cmcmarkets.com.au",
+    "retrievedAt": "2026-11-27T11:28:38.225693+00:00",
+    "httpStatus": 200,
+    "finalUrl": "https://www.trustpilot.com/review/cmcmarkets.com.au",
+    "sha256": "03839817bf93e9326faae08d68ef8b6ceec6f6399330c61c0415714b2305c26b",
+    "profileDomain": "cmcmarkets.com.au",
+    "displayName": "CMC Markets",
+    "reviewCount": 51,
+    "aggregates": [
+      {
+        "name": "CMC Markets",
+        "sameAs": "https://cmcmarkets.com.au",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingValue": "1.7",
+          "reviewCount": "51"
+        }
+      }
+    ],
+    "consumerAlertTypes": [],
+    "publicScore": 1.7,
+    "publicReviewCount": 51,
+    "publicRatingWithheld": false
+  }
+]

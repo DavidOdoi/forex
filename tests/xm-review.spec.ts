@@ -25,7 +25,8 @@ test("XM Global has current sourced pricing and nine meaningful quick facts with
   for (const field of reviewedFields(review).filter(field => field.status === "verified")) expect(fieldValue(field, review)).toBe(field.value);
   expect(review.overallScore).toBeNull();
   expect(review.customerReviews?.rating).toBeNull();
-  expect(review.customerReviews?.reviewCount).toBeNull();
+  expect(review.customerReviews?.reviewCount).toBe(3112);
+  expect(review.customerReviews?.ratingStatus).toBe("unavailable");
   expect(accountOpeningHref(review)).toBe("https://www.xm.com/goto/profile/en");
   expect(review.accountOpening.isAffiliate).toBe(false);
   expect(JSON.stringify(reviewStructuredData(review))).not.toMatch(/ratingValue|aggregateRating/);
