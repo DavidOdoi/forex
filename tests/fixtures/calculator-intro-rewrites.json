@@ -240,7 +240,8 @@
     "requestedPath": "/calculators/trading-expectancy-calculator",
     "intro": "A high win rate doesn't necessarily mean a trading strategy is profitable. Look at how often trades win and how much the average winner earns compared with the average loser. Use summary statistics or your trading history to calculate the average net result per trade.",
     "quickAnswer": "For a two-outcome strategy, Expectancy = Win rate × Average win − Loss rate × Average loss. With a 40% win rate, $300 average win, and $100 average loss, expectancy is +$60 per trade before any additional costs. Breakeven trades require their own probability rather than being counted as losses.",
-    "actualPath": null
+    "actualPath": "/calculators/trading-expectancy-calculator",
+    "sourceFile": "src/lib/calculators/expectancy-content.ts"
   },
   {
     "number": 28,

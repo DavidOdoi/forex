@@ -1,4 +1,5 @@
 "use client";
+import { importExpectancyCsv } from "@/lib/calculators/expectancy-workbench";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { ArrowRight, Copy, Link2, RotateCcw } from "lucide-react";
 import { costDefinitions, costFields, costResult, changeCostField, reverseCurrencyScenario, type CostField, type CostKind, type CostResult } from "@/lib/calculators/cost-workbench";
@@ -39,6 +40,7 @@ function CostForm({ kind, query }: { kind: CostKind; query: string }) {
     try {
       if (file.size > 65536) throw new Error("Use a file no larger than 64 KiB.");
       const text = await file.text();
+      if (kind === "expectancy") { const updates = importExpectancyCsv(text, values); setValues(old => ({ ...old, ...updates, privateDataOmitted: "no" })); setUploadError(null); setCopyStatus("CSV read locally. Only mapped P&L, cost, risk, date and currency fields were retained."); setFallback(""); return; }
       if (kind === "consistency") { const history = normalizedDailyPnlCsv(text); setValues(old => ({ ...old, history, privateDataOmitted: "no" })); setUploadError(null); setCopyStatus("CSV read locally. Only date and net P&L columns were retained."); setFallback(""); return; }
       const parsed = parseEquityCsv(text), dated = parsed.observations.some(row => row.date !== undefined);
       const csvCell = (value: string) => /[,"\r\n]/.test(value) ? `"${value.replaceAll('"', '""')}"` : value;

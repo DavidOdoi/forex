@@ -1,3 +1,4 @@
+import { expectancyWorkbench, expectancyFields, expectancyResult } from "./expectancy-workbench";
 import { notionalWorkbench, notionalFields, notionalResult, notionalFrom } from "./notional-workbench";
 import { hedgeWorkbench, hedgeFields, hedgeResult } from "./hedge-workbench";
 import { atrPositionWorkbench, atrPositionFields, atrPositionResult } from "./atr-position-workbench";
@@ -17,11 +18,12 @@ import { cash, quantity, decimal } from "./precision";
 import { defaultPipScenario, scenarioInstrument, scenarioRates, type TradeScenario } from "./trade-scenario";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 
-export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition" | "hedge" | "notional";
+export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition" | "hedge" | "notional" | "expectancy";
 export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "date" | "textarea" | "csv"; options?: { value: string; label: string }[] };
 export type CostResult = { title: string; value: string; summary: string; metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[]; steps: string[]; warnings: string[]; conversions: ReturnType<typeof resolveConversion>[]; references?: { label: string; href: string }[]; levels?: { label: string; price: string; position: number }[]; bars?: { label: string; value: string; ratio: number }[]; barsCaption?: string; chart?: { title: string; axisLabel: string; points: { x: number; label: string; value: number; peak: number }[]; caption: string } };
 export type CostDefinition = { path: string; title: string; note: string; defaults: TradeScenario; privateFields?: string[] };
 export const costDefinitions: Record<CostKind, CostDefinition> = {
+  expectancy: expectancyWorkbench,
   notional: notionalWorkbench,
   hedge: hedgeWorkbench,
   atrposition: atrPositionWorkbench,
@@ -93,6 +95,7 @@ function commissionFields(values: TradeScenario): CostField[] {
   ];
 }
 export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
+  if (kind === "expectancy") return expectancyFields(values);
   if (kind === "consistency") return consistencyFields(values);
   if (kind === "propdrawdown") return propDrawdownFields(values);
   if (kind === "drawdown") return drawdownFields(values);
@@ -146,6 +149,7 @@ export function changeCostField(_kind: CostKind, values: TradeScenario, name: st
   return next;
 }
 export function costResult(kind: CostKind, values: TradeScenario, reference: ExchangeRate[] = []): CostResult {
+  if (kind === "expectancy") return expectancyResult(values);
   if (kind === "notional") return notionalResult(values, reference);
   if (kind === "hedge") return hedgeResult(values, reference);
   if (kind === "atrposition") return atrPositionResult(values, reference);

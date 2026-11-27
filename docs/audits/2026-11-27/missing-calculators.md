@@ -29,3 +29,15 @@ Seventeen numerical/regression groups passed. Production webpack/TypeScript, ESL
 The notional browser check caught a generic-widget fallback before publication. The shared renderer now selects all registered cost/risk/performance tools through a typed registry guard, avoiding fragile chains of per-kind template conditions. The corrected build was rechecked against notional, hedge, ATR and existing leverage pages.
 
 All 17 final related browser/inventory groups passed after the renderer fix.
+
+## Trading expectancy
+
+Route: `/calculators/trading-expectancy-calculator`. Guide: 1,694 words, supplied intro/Quick Answer, three FAQs, five internal links and contextual BabyPips/NIST methodology references. The original pages block direct automated retrieval; their public text renderings were read, while the guide links to the original sources. A positive historical mean is never called a statistically proven edge.
+
+Summary mode includes winning, losing and zero-result probabilities, positive average magnitudes, gross/net declarations, uniform missing costs, conditional break-even shares and optional constant-input expected total/common-risk R. Net outcome classification and profit factor are recalculated after costs; a gross zero can become a net loss. Already-net data is not deducted again. An unattainable break-even rate or no losing amount is explicit rather than a false finite ratio.
+
+History mode supports ordered local CSVs with exact column mapping, optional individual risk/date/currency columns, net totals, true mean individual R, payoff/profit factor, zero outcomes, cumulative realised P&L and all/recent/UTC-date windows. It rejects future/invalid/unordered dates, ambiguous timestamps, mixed labelled currencies and incomplete selected-trade risk denominators. Same-calendar-date trades preserve row order. Date-less normalised files remain supported. Unknown columns are discarded; normalised data is bounded to 64 KiB/1,000 trades. No finance history is uploaded or placed in settings URLs.
+
+Thirty-two numerical/regression groups passed after the final CSV normalization changes, including consistency/drawdown filters. Production webpack/TypeScript, ESLint and whitespace checks passed. The client-component directive remains first when importing the new format-specific CSV reader. Browser verification covers probability/cost changes, mapped files, individual R, recent windows, private restoration, layout, SSR/canonical/FAQ/sitemap and supplied-copy inventory, plus earlier CSV-tool regressions.
+
+All nine expectancy/CSV/inventory browser groups passed on the final build.
