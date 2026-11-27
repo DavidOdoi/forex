@@ -132,7 +132,8 @@
     "requestedPath": "/calculators/forex-hedge-calculator",
     "intro": "Holding a buy and sell position in the same currency pair can reduce directional exposure, but it doesn’t erase existing profit or loss. Compare the two sides of a proposed hedge to see gross volume, remaining net exposure, and estimated costs or margin under your broker’s rules.",
     "quickAnswer": "For compatible same-symbol positions, Net lots = Buy lots − Sell lots, while Gross lots = Buy lots + Sell lots. Buying 1.00 lot of EUR/USD and selling 0.60 lots leaves 0.40 lots net long and 1.60 lots gross open volume. Opposite positions may still incur commissions, swap charges, and broker-specific margin requirements.",
-    "actualPath": null
+    "actualPath": "/calculators/forex-hedge-calculator",
+    "sourceFile": "src/lib/calculators/hedge-content.ts"
   },
   {
     "number": 16,

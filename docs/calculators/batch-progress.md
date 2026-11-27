@@ -68,8 +68,8 @@ The owner resumed work specifically to finish all six missing tools. Preserve th
 
 | Tool | Status |
 | --- | --- |
-| ATR position size | Complete: 1,625 words, three FAQs, 20 numerical and six browser/inventory groups passed. Publication in this commit. |
-| Forex hedge | Next |
+| ATR position size | Pushed as `d46d215`: 1,625 words, three FAQs, 20 numerical and six browser/inventory groups passed. |
+| Forex hedge | Complete: 1,680 words, three FAQs, 24 numerical/regression and nine browser/inventory groups passed. Publication in this commit. |
 | Forex notional value | Queued |
 | Trading expectancy | Queued; drafts retained outside git |
 | Sharpe ratio | Queued |

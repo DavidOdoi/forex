@@ -1,3 +1,4 @@
+import { hedgeDefinition } from "./hedge-content";
 import { atrPositionDefinition } from "./atr-position-content";
 import { consistencyDefinition } from "./consistency-content";
 import { propDrawdownDefinition } from "./prop-drawdown-content";
@@ -21,7 +22,7 @@ import { breakEvenDefinition } from "./break-even-content";
 import { riskDefinition } from "./risk-content";
 import { profitDefinition } from "./profit-content";
 import { marginDefinition } from "./margin-content";
-export type CalculatorKind = "forex" | "profit" | "compounding" | "position" | "pip" | "margin" | "risk" | "breakeven" | "swap" | "converter" | "ruin" | "kelly" | "fibonacci" | "pivot" | "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition";
+export type CalculatorKind = "forex" | "profit" | "compounding" | "position" | "pip" | "margin" | "risk" | "breakeven" | "swap" | "converter" | "ruin" | "kelly" | "fibonacci" | "pivot" | "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition" | "hedge";
 export type Inline = { text: string; href?: string }[];
 export type ContentSection = { id: string; title: string; paragraphs: Inline[]; bullets?: Inline[]; formula?: string; table?: { headers: string[]; rows: string[][] } };
 export type CalculatorDefinition = {
@@ -34,6 +35,7 @@ const link = (before: string, label: string, href: string, after = ""): Inline =
 const riskUrl = "https://www.cftc.gov/LearnAndProtect/forexfrauds";
 
 export const calculators: CalculatorDefinition[] = [
+  hedgeDefinition,
   atrPositionDefinition,
   spreadDefinition,
   commissionDefinition,

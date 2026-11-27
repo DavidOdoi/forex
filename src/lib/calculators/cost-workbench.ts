@@ -1,3 +1,4 @@
+import { hedgeWorkbench, hedgeFields, hedgeResult } from "./hedge-workbench";
 import { atrPositionWorkbench, atrPositionFields, atrPositionResult } from "./atr-position-workbench";
 import { consistencyWorkbench, consistencyFields, consistencyResult } from "./consistency-workbench";
 import { propDrawdownWorkbench, propDrawdownFields, propDrawdownResult } from "./prop-drawdown-workbench";
@@ -15,11 +16,12 @@ import { cash, quantity, decimal } from "./precision";
 import { defaultPipScenario, scenarioInstrument, scenarioRates, type TradeScenario } from "./trade-scenario";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 
-export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition";
+export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition" | "hedge";
 export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "date" | "textarea" | "csv"; options?: { value: string; label: string }[] };
 export type CostResult = { title: string; value: string; summary: string; metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[]; steps: string[]; warnings: string[]; conversions: ReturnType<typeof resolveConversion>[]; references?: { label: string; href: string }[]; levels?: { label: string; price: string; position: number }[]; bars?: { label: string; value: string; ratio: number }[]; barsCaption?: string; chart?: { title: string; axisLabel: string; points: { x: number; label: string; value: number; peak: number }[]; caption: string } };
 export type CostDefinition = { path: string; title: string; note: string; defaults: TradeScenario; privateFields?: string[] };
 export const costDefinitions: Record<CostKind, CostDefinition> = {
+  hedge: hedgeWorkbench,
   atrposition: atrPositionWorkbench,
   consistency: consistencyWorkbench,
   propdrawdown: propDrawdownWorkbench,
@@ -90,7 +92,7 @@ export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
   if (kind === "propdrawdown") return propDrawdownFields(values);
   if (kind === "drawdown") return drawdownFields(values);
   if (kind === "margincall") return marginCallFields(values);
-  const fields: CostField[] = kind === "atrposition" ? atrPositionFields(values) : kind === "stoploss" ? stopLossFields(values) : kind === "leverage" ? leverageFields(values) : kind === "takeprofit" ? takeProfitFields(values) : kind === "currency" ? currencyFields(values) : kind === "commission" ? commissionFields(values) : [
+  const fields: CostField[] = kind === "hedge" ? hedgeFields(values) : kind === "atrposition" ? atrPositionFields(values) : kind === "stoploss" ? stopLossFields(values) : kind === "leverage" ? leverageFields(values) : kind === "takeprofit" ? takeProfitFields(values) : kind === "currency" ? currencyFields(values) : kind === "commission" ? commissionFields(values) : [
     { name: "pair", label: "Currency pair", options: options(pairCodes) }, { name: "account", label: "Account currency", options: options(accountCurrencies) },
     choice("volumeMode", "Trade size unit", [["lots", "Configured lots"], ["units", "Base-currency units"]]), number("volume", "Trade size", "One conventional standard lot is 100,000 base-currency units; change contract size below if needed."),
     number("quoteBid", "Market bid"), number("quoteAsk", "Market ask"),
@@ -130,6 +132,8 @@ export function changeCostField(_kind: CostKind, values: TradeScenario, name: st
   if (_kind === "currency" && ["source", "account"].includes(name)) Object.assign(next, { providerRate: "", providerMode: "reference", feePercent: "0", fixedFee: "0", reportedReceived: "" });
   if (name === "pair") Object.assign(next, { entryPrice: "", exitPrice: "" });
   if (name === "pair" && _kind === "stoploss") next.atr = "";
+  if (name === "pair" && _kind === "atrposition") next.atr = "";
+  if (name === "pair" && _kind === "hedge") Object.assign(next, { buyEntry: "", sellEntry: "", hedgeBid: "", hedgeAsk: "" });
   if (name === "pair" && _kind === "leverage") next.price = "";
   if (name === "pair" && isPair(value) && ["takeprofit", "stoploss"].includes(_kind)) Object.assign(next, { entry: "", stopPrice: "", explicitTarget: "", priceStep: (10 ** -conventionalInstrument(value).pricePrecision).toFixed(conventionalInstrument(value).pricePrecision) });
   const from = costConversionFrom(_kind, next);
@@ -137,6 +141,7 @@ export function changeCostField(_kind: CostKind, values: TradeScenario, name: st
   return next;
 }
 export function costResult(kind: CostKind, values: TradeScenario, reference: ExchangeRate[] = []): CostResult {
+  if (kind === "hedge") return hedgeResult(values, reference);
   if (kind === "atrposition") return atrPositionResult(values, reference);
   if (kind === "stoploss") return stopLossResult(values, reference);
   if (kind === "leverage") return leverageResult(values, reference);
