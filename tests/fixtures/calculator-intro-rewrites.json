@@ -141,7 +141,8 @@
     "requestedPath": "/calculators/forex-notional-value-calculator",
     "intro": "The amount of margin you deposit is usually much smaller than the full currency position you control. See that underlying exposure clearly by converting your lot size into base-currency units and an account-currency value. This helps distinguish trade size from required collateral and planned stop-loss risk.",
     "quickAnswer": "Base-currency notional = Lots × Contract size. For one conventional standard lot of EUR/USD, that is 100,000 EUR. At EUR/USD 1.1000, the quote-currency notional is $110,000. If permitted leverage is 1:50, a simplified margin estimate is $2,200—not the full exposure or a maximum-loss amount.",
-    "actualPath": null
+    "actualPath": "/calculators/forex-notional-value-calculator",
+    "sourceFile": "src/lib/calculators/notional-content.ts"
   },
   {
     "number": 17,

@@ -1,3 +1,4 @@
+import { notionalWorkbench, notionalFields, notionalResult, notionalFrom } from "./notional-workbench";
 import { hedgeWorkbench, hedgeFields, hedgeResult } from "./hedge-workbench";
 import { atrPositionWorkbench, atrPositionFields, atrPositionResult } from "./atr-position-workbench";
 import { consistencyWorkbench, consistencyFields, consistencyResult } from "./consistency-workbench";
@@ -16,11 +17,12 @@ import { cash, quantity, decimal } from "./precision";
 import { defaultPipScenario, scenarioInstrument, scenarioRates, type TradeScenario } from "./trade-scenario";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 
-export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition" | "hedge";
+export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition" | "hedge" | "notional";
 export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "date" | "textarea" | "csv"; options?: { value: string; label: string }[] };
 export type CostResult = { title: string; value: string; summary: string; metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[]; steps: string[]; warnings: string[]; conversions: ReturnType<typeof resolveConversion>[]; references?: { label: string; href: string }[]; levels?: { label: string; price: string; position: number }[]; bars?: { label: string; value: string; ratio: number }[]; barsCaption?: string; chart?: { title: string; axisLabel: string; points: { x: number; label: string; value: number; peak: number }[]; caption: string } };
 export type CostDefinition = { path: string; title: string; note: string; defaults: TradeScenario; privateFields?: string[] };
 export const costDefinitions: Record<CostKind, CostDefinition> = {
+  notional: notionalWorkbench,
   hedge: hedgeWorkbench,
   atrposition: atrPositionWorkbench,
   consistency: consistencyWorkbench,
@@ -34,10 +36,13 @@ export const costDefinitions: Record<CostKind, CostDefinition> = {
   commission: { path: "/calculators/forex-commission-calculator", title: "Commission schedule and executed-order workspace", note: "Rates below are hypothetical fee assumptions, not a broker schedule. Select the fee basis and denomination. Each custom row represents one executed order; partial fills inside one order do not automatically create separate minimum charges.", defaults: { ...defaultPipScenario, volume: "0.2", feeCurrency: "USD", commissionMode: "lot-side", entryRate: "3.5", exitRate: "", minimumFee: "0", feeLotUnits: "100000", billing: "split", notionalBasis: "quote", entryPrice: "1.1000", exitPrice: "1.1050", scope: "roundtrip", ordersEnabled: "no", orders: "entry,1,1.1000\nexit,0.4,1.1050\nexit,0.6,1.1080", feeDecimals: "", paid: "0", repetitions: "1", pipEnabled: "yes", pipRate: "" } },
   spread: { path: "/calculators/forex-spread-cost-calculator", title: "Spread and transaction-cost workspace", note: "Enter a bid and ask from the same instrument and observation time. Starting quotes are hypothetical examples, not a live broker feed. A separate closing spread models half the opening plus half the closing spread around reference midpoints.", defaults: { ...defaultPipScenario, quoteBid: "1.10000", quoteAsk: "1.10012", quoteTime: "", commission: "0", closingSpread: "", treatment: "standalone" } },
 };
+export function isCostKind(kind: string): kind is CostKind { return Object.hasOwn(costDefinitions, kind); }
+
 const options = (values: readonly string[]) => values.map(value => ({ value, label: value }));
 const choice = (name: string, label: string, rows: string[][], help?: string, advanced = false): CostField => ({ name, label, options: rows.map(([value, label]) => ({ value, label })), help, advanced });
 const number = (name: string, label: string, help?: string, advanced = false): CostField => ({ name, label, help, advanced });
 export function costConversionFrom(kind: CostKind, values: TradeScenario): AccountCurrency {
+  if (kind === "notional") return notionalFrom(values);
   if (kind === "drawdown" || kind === "propdrawdown" || kind === "consistency") return values.account as AccountCurrency;
   if (kind === "margincall") return values.account as AccountCurrency;
   if (kind === "leverage") return leverageFrom(values);
@@ -92,7 +97,7 @@ export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
   if (kind === "propdrawdown") return propDrawdownFields(values);
   if (kind === "drawdown") return drawdownFields(values);
   if (kind === "margincall") return marginCallFields(values);
-  const fields: CostField[] = kind === "hedge" ? hedgeFields(values) : kind === "atrposition" ? atrPositionFields(values) : kind === "stoploss" ? stopLossFields(values) : kind === "leverage" ? leverageFields(values) : kind === "takeprofit" ? takeProfitFields(values) : kind === "currency" ? currencyFields(values) : kind === "commission" ? commissionFields(values) : [
+  const fields: CostField[] = kind === "notional" ? notionalFields(values) : kind === "hedge" ? hedgeFields(values) : kind === "atrposition" ? atrPositionFields(values) : kind === "stoploss" ? stopLossFields(values) : kind === "leverage" ? leverageFields(values) : kind === "takeprofit" ? takeProfitFields(values) : kind === "currency" ? currencyFields(values) : kind === "commission" ? commissionFields(values) : [
     { name: "pair", label: "Currency pair", options: options(pairCodes) }, { name: "account", label: "Account currency", options: options(accountCurrencies) },
     choice("volumeMode", "Trade size unit", [["lots", "Configured lots"], ["units", "Base-currency units"]]), number("volume", "Trade size", "One conventional standard lot is 100,000 base-currency units; change contract size below if needed."),
     number("quoteBid", "Market bid"), number("quoteAsk", "Market ask"),
@@ -134,13 +139,14 @@ export function changeCostField(_kind: CostKind, values: TradeScenario, name: st
   if (name === "pair" && _kind === "stoploss") next.atr = "";
   if (name === "pair" && _kind === "atrposition") next.atr = "";
   if (name === "pair" && _kind === "hedge") Object.assign(next, { buyEntry: "", sellEntry: "", hedgeBid: "", hedgeAsk: "" });
-  if (name === "pair" && _kind === "leverage") next.price = "";
+  if (name === "pair" && (_kind === "leverage" || _kind === "notional")) next.price = "";
   if (name === "pair" && isPair(value) && ["takeprofit", "stoploss"].includes(_kind)) Object.assign(next, { entry: "", stopPrice: "", explicitTarget: "", priceStep: (10 ** -conventionalInstrument(value).pricePrecision).toFixed(conventionalInstrument(value).pricePrecision) });
   const from = costConversionFrom(_kind, next);
   if (next.crossCurrency === from || next.crossCurrency === next.account) next.crossCurrency = accountCurrencies.find(code => code !== from && code !== next.account)!;
   return next;
 }
 export function costResult(kind: CostKind, values: TradeScenario, reference: ExchangeRate[] = []): CostResult {
+  if (kind === "notional") return notionalResult(values, reference);
   if (kind === "hedge") return hedgeResult(values, reference);
   if (kind === "atrposition") return atrPositionResult(values, reference);
   if (kind === "stoploss") return stopLossResult(values, reference);
