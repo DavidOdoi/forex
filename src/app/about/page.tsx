@@ -53,7 +53,7 @@ export default function Page() {
       <section id="corrections" className="scroll-mt-32 mx-auto max-w-3xl px-6 pb-16 text-base leading-relaxed">
         <h2 className="font-display text-4xl">Corrections and updates</h2>
         <p className="mt-4">A correction should identify the page, disputed claim, relevant legal entity and a primary-source URL with its date. Recheck the evidence and record substantive changes separately from source retrieval dates. Drafts stay unpublished until an accountable editor records approval.</p>
-        <p className="mt-4">The research workflow uses automated collection and AI-assisted drafting. Financial claims require source checking; no author qualifications or independent approvals are assumed. Author information is available on <a className="underline" href="/authors/david-odoi">David Odoi’s profile</a>.</p>
+        <p className="mt-4">Broker information is based on linked documents and dated source checks. Financial claims require verification. Author information is available on <a className="underline" href="/authors/david-odoi">David Odoi’s profile</a>.</p>
       </section>
       <section id="country-suggestions" className="scroll-mt-32 mx-auto max-w-3xl px-6 pb-16 text-base leading-relaxed">
         <h2 className="font-display text-4xl">Country-based broker suggestions</h2>
