@@ -41,3 +41,13 @@ History mode supports ordered local CSVs with exact column mapping, optional ind
 Thirty-two numerical/regression groups passed after the final CSV normalization changes, including consistency/drawdown filters. Production webpack/TypeScript, ESLint and whitespace checks passed. The client-component directive remains first when importing the new format-specific CSV reader. Browser verification covers probability/cost changes, mapped files, individual R, recent windows, private restoration, layout, SSR/canonical/FAQ/sitemap and supplied-copy inventory, plus earlier CSV-tool regressions.
 
 All nine expectancy/CSV/inventory browser groups passed on the final build.
+
+## Sharpe ratio
+
+Route: `/calculators/sharpe-ratio-calculator`. Guide: 1,674 independently counted words, exact supplied introduction/Quick Answer, three FAQs, five contextual internal links and two CFA Institute methodology sources. Direct retrieval was blocked; public text renderings of the Sharpe explainer and Lo paper's abstract were read. The premium full paper was not accessed or claimed as read.
+
+Summary and local-history modes accept explicit simple-return units, frequency, spacing, risk-free convention and annualization. Sample/population volatility, varying aligned benchmark columns, effective annual-to-period conversion, zero volatility, one observation, missing frequency and visibly gapped calendar periods are handled explicitly. Square-root scaling is an assumption, not generally valid under serial correlation. No live benchmark, statistical significance or performance grade is invented.
+
+CSV input selects exact return/benchmark/date/currency columns, strips unrelated identifiers, rejects incomplete benchmark alignment, invalid/future/non-increasing dates, mixed declared currencies and common balance/P&L column mappings. Private histories, mean, volatility and benchmark inputs never enter settings URLs. Receiving a settings-only link requires the recipient's own data.
+
+Fifteen Sharpe/expectancy numerical and CSV regression groups passed. Production webpack build/TypeScript, ESLint and whitespace checks passed. Seven browser/inventory groups passed, including sample/population changes, summary mode, undefined cases, mapped local CSV, private settings restoration, irregular-period suppression, mobile fit, server rendering, canonical, exactly three FAQs, sitemap and exact supplied-copy inventory.

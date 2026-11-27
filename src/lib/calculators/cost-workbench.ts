@@ -1,3 +1,4 @@
+import { sharpeWorkbench, sharpeFields, sharpeResult } from "./sharpe-workbench";
 import { expectancyWorkbench, expectancyFields, expectancyResult } from "./expectancy-workbench";
 import { notionalWorkbench, notionalFields, notionalResult, notionalFrom } from "./notional-workbench";
 import { hedgeWorkbench, hedgeFields, hedgeResult } from "./hedge-workbench";
@@ -18,11 +19,12 @@ import { cash, quantity, decimal } from "./precision";
 import { defaultPipScenario, scenarioInstrument, scenarioRates, type TradeScenario } from "./trade-scenario";
 import type { ExchangeRate, resolveConversion } from "./exchange-rates";
 
-export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition" | "hedge" | "notional" | "expectancy";
+export type CostKind = "spread" | "commission" | "currency" | "margincall" | "takeprofit" | "leverage" | "stoploss" | "drawdown" | "propdrawdown" | "consistency" | "atrposition" | "hedge" | "notional" | "expectancy" | "sharpe";
 export type CostField = { name: string; label: string; help?: string; advanced?: boolean; type?: "text" | "datetime-local" | "date" | "textarea" | "csv"; options?: { value: string; label: string }[] };
 export type CostResult = { title: string; value: string; summary: string; metrics: string[][]; tables: { title: string; headers: string[]; rows: string[][] }[]; steps: string[]; warnings: string[]; conversions: ReturnType<typeof resolveConversion>[]; references?: { label: string; href: string }[]; levels?: { label: string; price: string; position: number }[]; bars?: { label: string; value: string; ratio: number }[]; barsCaption?: string; chart?: { title: string; axisLabel: string; points: { x: number; label: string; value: number; peak: number }[]; caption: string } };
 export type CostDefinition = { path: string; title: string; note: string; defaults: TradeScenario; privateFields?: string[] };
 export const costDefinitions: Record<CostKind, CostDefinition> = {
+  sharpe: sharpeWorkbench,
   expectancy: expectancyWorkbench,
   notional: notionalWorkbench,
   hedge: hedgeWorkbench,
@@ -95,6 +97,7 @@ function commissionFields(values: TradeScenario): CostField[] {
   ];
 }
 export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
+  if (kind === "sharpe") return sharpeFields(values);
   if (kind === "expectancy") return expectancyFields(values);
   if (kind === "consistency") return consistencyFields(values);
   if (kind === "propdrawdown") return propDrawdownFields(values);
@@ -135,6 +138,7 @@ export function costFields(kind: CostKind, values: TradeScenario): CostField[] {
 }
 export function changeCostField(_kind: CostKind, values: TradeScenario, name: string, value: string): TradeScenario {
   const next = { ...values, [name]: value };
+  if (_kind === "sharpe" && name === "inputMode" && value === "summary" && next.rfMode === "column") Object.assign(next, { rfMode: "periodic", riskFree: "" });
   if (name === "pair" && isPair(value)) { const spec = conventionalInstrument(value); Object.assign(next, { contract: spec.contractSize, pipSize: spec.pipSize, precision: String(spec.pricePrecision), quoteBid: "", quoteAsk: "", quoteTime: "" }); }
   if (["pair", "account", "source", "feeCurrency", "rateDirection", "crossCurrency", "bidAsk"].includes(name)) Object.assign(next, { rate: "", bid: "", ask: "", crossRate: "", crossBid: "", crossAsk: "", pipRate: "" });
   if (_kind === "currency" && ["source", "account"].includes(name)) Object.assign(next, { providerRate: "", providerMode: "reference", feePercent: "0", fixedFee: "0", reportedReceived: "" });
@@ -149,6 +153,7 @@ export function changeCostField(_kind: CostKind, values: TradeScenario, name: st
   return next;
 }
 export function costResult(kind: CostKind, values: TradeScenario, reference: ExchangeRate[] = []): CostResult {
+  if (kind === "sharpe") return sharpeResult(values);
   if (kind === "expectancy") return expectancyResult(values);
   if (kind === "notional") return notionalResult(values, reference);
   if (kind === "hedge") return hedgeResult(values, reference);

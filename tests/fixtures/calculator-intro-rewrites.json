@@ -249,7 +249,8 @@
     "requestedPath": "/calculators/sharpe-ratio-calculator",
     "intro": "Two trading strategies can earn similar returns while experiencing very different levels of volatility. Compare risk-adjusted performance by supplying a consistent series of returns and an appropriate risk-free benchmark. The Sharpe ratio is useful context, but it cannot capture every form of downside risk.",
     "quickAnswer": "Sharpe ratio = (Average return − Matching risk-free return) ÷ Return standard deviation. An illustrative strategy with 14% annual average return, 2% annual risk-free return, and 10% annual volatility has a Sharpe ratio of 1.20. Annualizing daily or monthly Sharpe values requires additional assumptions about return behavior.",
-    "actualPath": null
+    "actualPath": "/calculators/sharpe-ratio-calculator",
+    "sourceFile": "src/lib/calculators/sharpe-content.ts"
   },
   {
     "number": 29,

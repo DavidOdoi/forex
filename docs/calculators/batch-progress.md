@@ -71,6 +71,6 @@ The owner resumed work specifically to finish all six missing tools. Preserve th
 | ATR position size | Pushed as `d46d215`: 1,625 words, three FAQs, 20 numerical and six browser/inventory groups passed. |
 | Forex hedge | Pushed as `ae617bf`: 1,680 words, three FAQs, 24 numerical/regression and nine browser/inventory groups passed. |
 | Forex notional value | Pushed as `ca6f6ee`: 1,679 words, three FAQs, 17 numerical and 17 browser/inventory groups passed. |
-| Trading expectancy | Complete: 1,694 words, three FAQs, 32 numerical/regression and nine browser/inventory groups passed. Publication in this commit; use these implemented files rather than the paused drafts. |
-| Sharpe ratio | Queued |
+| Trading expectancy | Pushed as `2dced80`: 1,694 words, three FAQs, 32 numerical/regression and nine browser/inventory groups passed. Use these implemented files rather than the paused drafts. |
+| Sharpe ratio | Complete: 1,674 words, three FAQs, 15 numerical/CSV regression and seven browser/inventory groups passed. Publication in this commit. |
 | Forex Martingale | Queued |
